@@ -1,0 +1,25 @@
+name: Materialize Flying cover HQ
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/materialize-flying-cover.yml'
+permissions:
+  contents: write
+jobs:
+  materialize:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Write HQ cover from Git blob
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          mkdir -p assets/img
+          curl -fsSL -H "Authorization: Bearer $GH_TOKEN" -H "Accept: application/vnd.github+json" "https://api.github.com/repos/LCAofImpossible/LCA-of-the-Impossible/git/blobs/ac4b38f69fb725539e97ee2bb20c57ab02845191" | jq -r '.content' | tr -d '\n' | base64 -d > assets/img/flying-dutchman-cover-hq2.jpg
+          test -s assets/img/flying-dutchman-cover-hq2.jpg
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add assets/img/flying-dutchman-cover-hq2.jpg
+          git commit -m "Materialize high-quality Flying Dutchman cover"
+          git push
