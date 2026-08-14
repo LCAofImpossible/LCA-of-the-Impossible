@@ -94,6 +94,18 @@ nav a:hover{color:var(--accent)}
 .quickfact{min-height:200px}
 .verdict blockquote{max-width:1000px;margin:18px 0 0;font-size:clamp(1.8rem,5vw,4.5rem);line-height:1.07;letter-spacing:-.045em;font-weight:770}
 footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);flex-wrap:wrap}
+@media(max-width:1000px){
+  .hero-grid,.featured-card,.split,.book-section,.cover-hero,.status-grid,.process-grid,.episode-summary,.episode-quickfacts,.cards{grid-template-columns:1fr}
+  .hero-art{justify-self:start;max-width:460px}
+}
+@media(max-width:760px){
+  .site-header{padding:16px 5vw}
+  .section,.hero{padding-left:5vw;padding-right:5vw}
+  nav{gap:12px;font-size:.8rem}
+  .strip{grid-template-columns:1fr}
+  .hero{min-height:auto}
+}
+
 .hero.no-side-art .hero-grid{grid-template-columns:1fr;max-width:920px}
 .hero.no-side-art .hero-copy{max-width:860px}
 .cards.square-previews .card img{
@@ -104,14 +116,54 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 }
 .small-section-title h2{font-size:clamp(1.7rem,3.2vw,2.7rem)}
 @media(max-width:1000px){
-  .hero-grid,.featured-card,.split,.book-section,.cover-hero,.status-grid,.process-grid,.episode-summary,.episode-quickfacts,.cards{grid-template-columns:1fr}
-  .hero-art{justify-self:start;max-width:460px}
   .hero.no-side-art .hero-grid{grid-template-columns:1fr}
 }
-@media(max-width:760px){
-  .site-header{padding:16px 5vw}
-  .section,.hero{padding-left:5vw;padding-right:5vw}
-  nav{gap:12px;font-size:.8rem}
-  .strip{grid-template-columns:1fr}
-  .hero{min-height:auto}
+
+/* Episode inventory expansion */
+.inventory-section h2{font-size:clamp(1.9rem,4vw,3.4rem)}
+.inventory-table-wrap{
+  overflow-x:auto;
+  border:1px solid var(--line);
+  background:rgba(255,255,255,.018);
+}
+.inventory-table{
+  width:100%;
+  min-width:880px;
+  border-collapse:collapse;
+  font-size:.92rem;
+}
+.inventory-table th,
+.inventory-table td{
+  padding:15px 16px;
+  text-align:left;
+  vertical-align:top;
+  border-bottom:1px solid rgba(109,231,255,.10);
+  line-height:1.5;
+}
+.inventory-table th{
+  color:var(--accent2);
+  background:rgba(109,231,255,.055);
+  font-size:.72rem;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+}
+.inventory-table td:nth-child(1){
+  color:var(--accent);
+  font-size:.78rem;
+  text-transform:uppercase;
+  letter-spacing:.08em;
+  white-space:nowrap;
+}
+.inventory-table td:nth-child(3),
+.inventory-table td:nth-child(4){white-space:nowrap}
+.inventory-table tbody tr:hover{background:rgba(109,231,255,.025)}
+.model-notes{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+  margin-top:24px;
+}
+.fact-card strong,.stat-card strong{color:var(--text)}
+@media(max-width:1000px){
+  .model-notes{grid-template-columns:1fr}
 }
