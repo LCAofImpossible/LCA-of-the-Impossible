@@ -19,7 +19,7 @@
   <main>
     <section class="section cover-hero" style="padding-top:90px; border-top:none;">
       <div class="cover-frame">
-        <img src="../assets/img/tower-of-babel-linkedin.webp" alt="The Tower of Babel cover">
+        <img src="../assets/img/tower-of-babel-linkedin-v2.svg" alt="The Tower of Babel cover">
       </div>
       <div class="episode-title">
         <p class="eyebrow">EPISODE #36 · MYTH & LEGENDS</p>
@@ -32,7 +32,18 @@
       </div>
     </section>
 
-    <section class="section split"><div><p class="eyebrow">THE SUBJECT</p><h2>Architecture against the sky.</h2></div><div class="prose"><p>The Tower of Babel is reconstructed as a completed 90 m form of Etemenanki, Babylon's great seven-stage ziggurat. The footprint is historically anchored, while upper tiers, shell thickness and stair volume remain explicit engineering assumptions.</p></div></section>
+    <section class="section split">
+      <div>
+        <p class="eyebrow">THE SUBJECT</p>
+        <h2>Architecture against the sky.</h2>
+      </div>
+      <div class="prose">
+        <p>
+          The Tower of Babel is reconstructed as a completed 90 m form of Etemenanki, Babylon's great seven-stage ziggurat.
+          The footprint is historically anchored, while upper tiers, shell thickness and stair volume remain explicit engineering assumptions.
+        </p>
+      </div>
+    </section>
 
     <section class="section episode-quickfacts">
       <div class="quickfact"><span>01</span><h3>Geometry</h3><p>90 × 90 m square base, 90 m total height and seven stages including the summit sanctuary.</p></div>
@@ -42,33 +53,75 @@
     </section>
 
     <section id="inventory" class="section inventory-section">
-      <div class="section-heading"><div><p class="eyebrow">LIFE CYCLE INVENTORY</p><h2>The material mountain</h2></div><p class="section-note">The tower is mostly earth by volume. Its climate burden is dominated by the material that required fire.</p></div>
-      <div class="inventory-table-wrap"><table class="inventory-table"><thead><tr><th>Stage</th><th>Component / activity</th><th>Activity data</th><th>Climate change</th><th>Modelling basis</th></tr></thead><tbody>
-        <tr><td>Construction</td><td>Sun-dried mudbrick core</td><td>396,837 m³ / ~476,204 t</td><td>45.4 t CO₂e</td><td>Manual on-site adobe production analogue</td></tr>
-        <tr><td>Construction</td><td>Fired-brick facing</td><td>88,734 t</td><td>21,456.1 t CO₂e</td><td>DEFRA 2026 fired-brick proxy</td></tr>
-        <tr><td>Construction</td><td>Natural bitumen mortar</td><td>5,345 t</td><td>209.6 t CO₂e</td><td>DEFRA asphalt proxy</td></tr>
-        <tr><td>Construction</td><td>Cedar & other timber</td><td>1,500 t</td><td>404.3 t CO₂e</td><td>Generic wood proxy</td></tr>
-        <tr><td>Construction</td><td>Metal fittings & tools</td><td>50 t</td><td>191.1 t CO₂e</td><td>Average metals proxy</td></tr>
-        <tr><td>Construction</td><td>Process water</td><td>119,051 m³</td><td>0 t CO₂e modelled</td><td>River/canal supply assumed gravity/manual</td></tr>
-        <tr><td>Construction</td><td>Fired-brick transport</td><td>443,668 t·km</td><td>56.4 t CO₂e</td><td>Road transport direct + WTT proxy</td></tr>
-        <tr><td>Construction</td><td>Bitumen transport</td><td>1,068,955 t·km</td><td>18.5 t CO₂e</td><td>Small cargo vessel direct + WTT proxy</td></tr>
-        <tr><td>Construction</td><td>Timber transport</td><td>1,200,000 t·km</td><td>20.7 t CO₂e</td><td>Small cargo vessel direct + WTT proxy</td></tr>
-        <tr><td>Construction</td><td>Metals transport</td><td>5,000 t·km</td><td>0.6 t CO₂e</td><td>Road transport proxy</td></tr>
-        <tr><td>Construction</td><td>Construction fires</td><td>500 t wood logs</td><td>50.4 t CO₂e</td><td>Bitumen heating, food preparation and site fires</td></tr>
-        <tr><td>Maintenance</td><td>Annual repairs</td><td>992 m³ mudbrick + 88.7 t fired brick + 53.4 t bitumen + 30 t timber + 0.5 t metals</td><td>35.9 t CO₂e</td><td>Annual engineering maintenance assumptions</td></tr>
-        <tr><td>Operation</td><td>Annual ceremonial fires</td><td>20 t wood logs</td><td>2.02 t CO₂e</td><td>Biogenic CO₂ disclosed separately</td></tr>
-      </tbody></table></div>
-      <div class="model-notes"><div class="stat-card"><h3>Included</h3><p>Mudbrick core, fired-brick facing, bitumen mortar, timber, metals, material transport, construction fires, one year of repairs and ceremonial fires.</p></div><div class="stat-card"><h3>Excluded / separate</h3><p>Human labour, food, animal metabolism, divine intervention and language confusion are excluded. Biogenic CO₂ from wood combustion is disclosed separately.</p></div><div class="stat-card"><h3>The supernatural rule</h3><p>Magic is not a fuel. No emissions are assigned unless a physical flow can be reconstructed.</p></div></div>
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">LIFE CYCLE INVENTORY</p>
+          <h2>The material mountain</h2>
+        </div>
+        <p class="section-note">The tower is mostly earth by volume. Its climate burden is dominated by the material that required fire.</p>
+      </div>
+
+      <div class="inventory-table-wrap">
+        <table class="inventory-table">
+          <thead>
+            <tr><th>Stage</th><th>Component / activity</th><th>Activity data</th><th>Climate change</th><th>Modelling basis</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Construction</td><td>Sun-dried mudbrick core</td><td>396,837 m³ / ~476,204 t</td><td>45.4 t CO₂e</td><td>Manual on-site adobe production analogue</td></tr>
+            <tr><td>Construction</td><td>Fired-brick facing</td><td>88,734 t</td><td>21,456.1 t CO₂e</td><td>DEFRA 2026 fired-brick proxy</td></tr>
+            <tr><td>Construction</td><td>Natural bitumen mortar</td><td>5,345 t</td><td>209.6 t CO₂e</td><td>DEFRA asphalt proxy</td></tr>
+            <tr><td>Construction</td><td>Cedar & other timber</td><td>1,500 t</td><td>404.3 t CO₂e</td><td>Generic wood proxy</td></tr>
+            <tr><td>Construction</td><td>Metal fittings & tools</td><td>50 t</td><td>191.1 t CO₂e</td><td>Average metals proxy</td></tr>
+            <tr><td>Construction</td><td>Process water</td><td>119,051 m³</td><td>0 t CO₂e modelled</td><td>River/canal supply assumed gravity/manual</td></tr>
+            <tr><td>Construction</td><td>Fired-brick transport</td><td>443,668 t·km</td><td>56.4 t CO₂e</td><td>Road transport direct + WTT proxy</td></tr>
+            <tr><td>Construction</td><td>Bitumen transport</td><td>1,068,955 t·km</td><td>18.5 t CO₂e</td><td>Small cargo vessel direct + WTT proxy</td></tr>
+            <tr><td>Construction</td><td>Timber transport</td><td>1,200,000 t·km</td><td>20.7 t CO₂e</td><td>Small cargo vessel direct + WTT proxy</td></tr>
+            <tr><td>Construction</td><td>Metals transport</td><td>5,000 t·km</td><td>0.6 t CO₂e</td><td>Road transport proxy</td></tr>
+            <tr><td>Construction</td><td>Construction fires</td><td>500 t wood logs</td><td>50.4 t CO₂e</td><td>Bitumen heating, food preparation and site fires</td></tr>
+            <tr><td>Maintenance</td><td>Annual repairs</td><td>992 m³ mudbrick + 88.7 t fired brick + 53.4 t bitumen + 30 t timber + 0.5 t metals</td><td>35.9 t CO₂e</td><td>Annual engineering maintenance assumptions</td></tr>
+            <tr><td>Operation</td><td>Annual ceremonial fires</td><td>20 t wood logs</td><td>2.02 t CO₂e</td><td>Biogenic CO₂ disclosed separately</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="model-notes">
+        <div class="stat-card"><h3>Included</h3><p>Mudbrick core, fired-brick facing, bitumen mortar, timber, metals, material transport, construction fires, one year of repairs and ceremonial fires.</p></div>
+        <div class="stat-card"><h3>Excluded / separate</h3><p>Human labour, food, animal metabolism, divine intervention and language confusion are excluded. Biogenic CO₂ from wood combustion is disclosed separately.</p></div>
+        <div class="stat-card"><h3>The supernatural rule</h3><p>Magic is not a fuel. No emissions are assigned unless a physical flow can be reconstructed.</p></div>
+      </div>
     </section>
 
-    <section id="results" class="section episode-summary"><div class="fact-card"><h3>Fired-brick facing</h3><p><strong>21,456.1 t CO₂e</strong><br>95.4% of the total result.</p></div><div class="fact-card"><h3>Other construction</h3><p><strong>~997 t CO₂e</strong><br>Bitumen, timber, metals, transport, fires and mudbrick combined.</p></div><div class="fact-card"><h3>Annual maintenance + operation</h3><p><strong>37.9 t CO₂e</strong><br>Repairs plus one year of auxiliary fires.</p></div><div class="fact-card"><h3>Separate disclosure</h3><p><strong>746.8 t biogenic CO₂</strong><br>Reported outside the main GWP result.</p></div></section>
+    <section id="results" class="section episode-summary">
+      <div class="fact-card"><h3>Fired-brick facing</h3><p><strong>21,456.1 t CO₂e</strong><br>95.4% of the total result.</p></div>
+      <div class="fact-card"><h3>Other construction</h3><p><strong>~997 t CO₂e</strong><br>Bitumen, timber, metals, transport, fires and mudbrick combined.</p></div>
+      <div class="fact-card"><h3>Annual maintenance + operation</h3><p><strong>37.9 t CO₂e</strong><br>Repairs plus one year of auxiliary fires.</p></div>
+      <div class="fact-card"><h3>Separate disclosure</h3><p><strong>746.8 t biogenic CO₂</strong><br>Reported outside the main GWP result.</p></div>
+    </section>
 
-    <section class="section status-grid"><div class="stat-card"><h3>100-year sensitivity</h3><p>Spreading construction across a 100-year service life reduces the annualised result to about <strong>262 t CO₂e/year</strong>, 98.8% below the main FU.</p></div><div class="stat-card"><h3>Largest limitation</h3><p>A high-carbon kiln factor raises the result to about <strong>123,495 t CO₂e</strong>. The kiln assumption is therefore the dominant sensitivity.</p></div></section>
+    <section class="section status-grid">
+      <div class="stat-card"><h3>100-year sensitivity</h3><p>Spreading construction across a 100-year service life reduces the annualised result to about <strong>262 t CO₂e/year</strong>, 98.8% below the main FU.</p></div>
+      <div class="stat-card"><h3>Largest limitation</h3><p>A high-carbon kiln factor raises the result to about <strong>123,495 t CO₂e</strong>. The kiln assumption is therefore the dominant sensitivity.</p></div>
+    </section>
 
-    <section class="section status-grid"><div class="stat-card"><h3>Key interpretation</h3><p>The sun-dried core holds almost nine tenths of the masonry volume, yet the fired-brick skin carries almost the entire climate burden.</p></div><div class="stat-card"><h3>Full carousel</h3><p><a class="button" href="../assets/pdfs/LCA_of_the_Impossible_36_Tower_of_Babel.pdf" target="_blank">Open episode PDF →</a></p></div></section>
+    <section class="section status-grid">
+      <div class="stat-card"><h3>Key interpretation</h3><p>The sun-dried core holds almost nine tenths of the masonry volume, yet the fired-brick skin carries almost the entire climate burden.</p></div>
+      <div class="stat-card"><h3>Full carousel</h3><p><a class="button" href="../assets/pdfs/LCA_of_the_Impossible_36_Tower_of_Babel.pdf" target="_blank">Open episode PDF →</a></p></div>
+    </section>
 
-    <section class="section verdict"><p class="eyebrow">THE VERDICT</p><blockquote>They tried to give one language to the sky.<br>The kilns answered first.<br>The words were scattered.<br>The carbon stayed.</blockquote></section>
+    <section class="section verdict">
+      <p class="eyebrow">THE VERDICT</p>
+      <blockquote>
+        They tried to give one language to the sky.<br>
+        The kilns answered first.<br>
+        The words were scattered.<br>
+        The carbon stayed.
+      </blockquote>
+    </section>
   </main>
-  <footer><span>© LCA of the Impossible</span><a href="../index.html#episodes">Back to archive ↑</a></footer>
+
+  <footer>
+    <span>© LCA of the Impossible</span>
+    <a href="../index.html#episodes">Back to archive ↑</a>
+  </footer>
 </body>
 </html>
