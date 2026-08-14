@@ -1,31 +1,44 @@
-# LCA of the Impossible — Website Update Pack
+# LCA of the Impossible — Website
 
-This package contains an updated static version of the site with:
+Static GitHub Pages archive for the **LCA of the Impossible** series.
 
-- improved homepage
-- real visual covers integrated
-- updated Flying Dutchman page
-- full Tower of Babel page with real results
-- downloadable Tower of Babel PDF
-- reusable episode template
+## Repository structure
 
-## Folder structure
-- index.html
-- assets/style.css
-- assets/img/
-- assets/pdfs/
-- episodes/
+```text
+/
+├── index.html
+├── assets/
+│   ├── style.css
+│   ├── images/
+│   │   ├── episodes/
+│   │   │   ├── ep35-flying-dutchman.jpg
+│   │   │   └── ep36-tower-of-babel.jpg
+│   │   └── book/
+│   │       └── where-others-see-fantasy.png
+│   └── pdf/
+│       └── episodes/
+│           └── ep36-tower-of-babel.pdf
+└── episodes/
+    ├── flying-dutchman.html
+    ├── tower-of-babel.html
+    └── template.html
+```
 
-## How to upload to GitHub Pages
-1. Open your repository `LCA-of-the-Impossible`.
-2. Choose **Add file → Upload files**.
-3. Drag and drop all files and folders from this package.
-4. If GitHub asks whether to replace files, confirm.
-5. Commit the changes to `main`.
-6. Wait 1–2 minutes and refresh your Pages URL.
+## Conventions for new episodes
 
-## Next upgrade ideas
-- add real LinkedIn post URLs
-- add Flying Dutchman PDF
-- add final book cover and Payhip link
-- add next episodes using `episodes/template.html`
+- Episode pages: `episodes/<slug>.html`
+- Episode covers: `assets/images/episodes/epNN-<slug>.jpg`
+- Episode PDFs: `assets/pdf/episodes/epNN-<slug>.pdf`
+- Use one canonical cover per episode; do not keep `v2`, `live`, `final`, `hq2` or similar duplicates.
+- Update the homepage and the episode page in the same change.
+- Verify the GitHub Pages deployment and asset paths after each release.
+
+## Publishing workflow
+
+1. Prepare the episode page from `episodes/template.html`.
+2. Add the canonical episode cover and PDF.
+3. Add or update the homepage card.
+4. Commit the complete episode as one coherent change.
+5. Verify the live GitHub Pages deployment.
+
+The website is an independent archive of narrative LCA reconstructions and is not presented as a verified ISO study.
