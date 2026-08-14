@@ -94,9 +94,19 @@ nav a:hover{color:var(--accent)}
 .quickfact{min-height:200px}
 .verdict blockquote{max-width:1000px;margin:18px 0 0;font-size:clamp(1.8rem,5vw,4.5rem);line-height:1.07;letter-spacing:-.045em;font-weight:770}
 footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;color:var(--muted);font-size:.82rem;border-top:1px solid var(--line);flex-wrap:wrap}
+.hero.no-side-art .hero-grid{grid-template-columns:1fr;max-width:920px}
+.hero.no-side-art .hero-copy{max-width:860px}
+.cards.square-previews .card img{
+  width:100%;
+  aspect-ratio:1/1;
+  object-fit:cover;
+  object-position:center top;
+}
+.small-section-title h2{font-size:clamp(1.7rem,3.2vw,2.7rem)}
 @media(max-width:1000px){
   .hero-grid,.featured-card,.split,.book-section,.cover-hero,.status-grid,.process-grid,.episode-summary,.episode-quickfacts,.cards{grid-template-columns:1fr}
   .hero-art{justify-self:start;max-width:460px}
+  .hero.no-side-art .hero-grid{grid-template-columns:1fr}
 }
 @media(max-width:760px){
   .site-header{padding:16px 5vw}
