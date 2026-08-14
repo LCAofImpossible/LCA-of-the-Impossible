@@ -1,25 +1,31 @@
-# LCA of the Impossible — Website
+# LCA of the Impossible — Website Update Pack
 
-Static website starter for GitHub Pages.
+This package contains an updated static version of the site with:
 
-## Structure
-- `index.html` — homepage and episode archive
-- `episodes/` — one HTML page per episode
-- `assets/style.css` — shared visual style
+- improved homepage
+- real visual covers integrated
+- updated Flying Dutchman page
+- full Tower of Babel page with real results
+- downloadable Tower of Babel PDF
+- reusable episode template
 
-## Publish on GitHub Pages
-1. Create a public GitHub repository.
-2. Upload all files preserving the folders.
-3. Open **Settings → Pages**.
-4. Under **Build and deployment**, choose **Deploy from a branch**.
-5. Select `main` and `/ (root)`.
-6. Save.
+## Folder structure
+- index.html
+- assets/style.css
+- assets/img/
+- assets/pdfs/
+- episodes/
 
-## Update a new episode
-Duplicate one of the files in `episodes/`, change the title/content, then add a new card in `index.html`.
+## How to upload to GitHub Pages
+1. Open your repository `LCA-of-the-Impossible`.
+2. Choose **Add file → Upload files**.
+3. Drag and drop all files and folders from this package.
+4. If GitHub asks whether to replace files, confirm.
+5. Commit the changes to `main`.
+6. Wait 1–2 minutes and refresh your Pages URL.
 
-## To customize
-Replace all `href="#"` placeholders with:
-- LinkedIn episode URL
-- PDF/carousel URL
-- Payhip book URL
+## Next upgrade ideas
+- add real LinkedIn post URLs
+- add Flying Dutchman PDF
+- add final book cover and Payhip link
+- add next episodes using `episodes/template.html`
