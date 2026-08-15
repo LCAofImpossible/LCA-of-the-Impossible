@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Sisyphus technical plate</title>
+<desc id="desc">Technical plate showing route geometry and boulder dimensions for the Sisyphus episode.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#9cc7b7" stroke-opacity="0.28"/>
+<text x="40" y="58" fill="#d7efe8" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">TECHNICAL PLATE · SLOPE GEOMETRY</text>
+<text x="40" y="90" fill="#27d39b" font-size="30" font-weight="700" font-family="Arial, Helvetica, sans-serif">Punishment course and reusable stone</text>
+<line x1="90" y1="320" x2="500" y2="320" stroke="#7ea6b5" stroke-width="2"/>
+<line x1="500" y1="320" x2="500" y2="120" stroke="#7ea6b5" stroke-width="2" stroke-dasharray="6 6"/>
+<line x1="90" y1="320" x2="500" y2="120" stroke="#27d39b" stroke-width="4"/>
+<text x="270" y="305" fill="#e6f7f2" font-size="14" font-family="Arial, Helvetica, sans-serif">489.9 m horizontal run</text>
+<text x="515" y="224" fill="#e6f7f2" font-size="14" font-family="Arial, Helvetica, sans-serif">100 m rise</text>
+<text x="246" y="205" fill="#f2d48f" font-size="15" font-family="Arial, Helvetica, sans-serif">500 m slope · 11.54°</text>
+<circle cx="600" cy="245" r="62" fill="none" stroke="#27d39b" stroke-width="3"/>
+<line x1="538" y1="245" x2="662" y2="245" stroke="#7ea6b5" stroke-width="2"/>
+<line x1="600" y1="183" x2="600" y2="307" stroke="#7ea6b5" stroke-width="2"/>
+<text x="545" y="333" fill="#e6f7f2" font-size="14" font-family="Arial, Helvetica, sans-serif">Equivalent sphere</text>
+<text x="548" y="353" fill="#f2d48f" font-size="15" font-family="Arial, Helvetica, sans-serif">1.524 m diameter</text>
+<rect x="40" y="120" width="170" height="108" rx="14" fill="#0b2136" stroke="#27d39b" stroke-opacity="0.45"/>
+<text x="58" y="148" fill="#27d39b" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">MECHANICAL MODEL</text>
+<text x="58" y="176" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Mass: 5,000 kg</text>
+<text x="58" y="198" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Density: 2,700 kg/m³</text>
+<text x="58" y="220" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Volume: 1.852 m³</text>
+<rect x="40" y="342" width="640" height="42" rx="10" fill="#081b2b" stroke="#9cc7b7" stroke-opacity="0.2"/>
+<text x="58" y="368" fill="#9cc7b7" font-size="14" font-family="Arial, Helvetica, sans-serif">One ascent requires 1.496 kWh of mechanical work and an average push force of 10.77 kN.</text>
+</svg>
