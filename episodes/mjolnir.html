@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mjölnir — LCA of the Impossible</title>
+  <meta name="description" content="Episode #41 of LCA of the Impossible: a 1,000-cycle life cycle reconstruction of Mjölnir, where a gigajoule-scale discharge determines the footprint.">
+  <link rel="stylesheet" href="../assets/style.css">
+</head>
+<body data-episode="41">
+  <header class="site-header">
+    <a class="brand" href="../index.html">LCA OF THE IMPOSSIBLE</a>
+    <nav>
+      <a href="../archive.html">← Archive</a>
+      <a href="../index.html#method">Method</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section cover-hero" style="padding-top:90px; border-top:none;">
+      <div class="cover-frame">
+        <img src="../assets/images/episodes/ep41-mjolnir.webp" alt="Mjölnir cover: an iron hammer resting on an anvil with electrical discharge">
+      </div>
+      <div class="episode-title">
+        <p class="eyebrow">EPISODE #41 · MYTHS &amp; LEGENDS</p>
+        <h1>Mjölnir</h1>
+        <p class="episode-question">What happens when thunder becomes the product?</p>
+        <div class="metric">
+          <span class="metric-value">51.50 t CO₂e</span>
+          <span class="metric-label">manufacture and deployment of one reusable Mjölnir-class iron hammer over 1,000 combat cycles, each with a 50 m outbound flight, a 50 m powered return and one 1 GJ lightning-equivalent discharge</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section split">
+      <div>
+        <p class="eyebrow">THE SUBJECT</p>
+        <h2>The Edda defines the function. The model defines the energy.</h2>
+      </div>
+      <div class="prose">
+        <p>Snorri Sturluson’s <em>Skáldskaparmál</em> §43 supplies the source-faithful requirements: Sindri forges the head from iron, the hammer resists failure, it does not miss when thrown, it returns to the hand and its fore-haft is short. The website model preserves those requirements while treating dimensions, velocity, efficiency and service cycles as explicit engineering assumptions.</p>
+        <p>The electrical discharge is deliberately kept separate from the literary evidence. It is a deployment scenario used to test the culturally familiar thunder function, not a claim that the cited passage specifies lightning. This separation is crucial because the discharge, not the physical hammer, determines the headline result.</p>
+      </div>
+    </section>
+
+    <section class="section episode-quickfacts">
+      <div class="quickfact"><span>01</span><h3>Compact machine</h3><p>46.72 kg finished tool: a 45.72 kg forged iron head plus a short 0.42 m hardwood handle and grip.</p></div>
+      <div class="quickfact"><span>02</span><h3>Combat cycle</h3><p>1,000 cycles, each with 50 m outbound flight, 50 m powered return and a modeled speed of 50 m/s.</p></div>
+      <div class="quickfact"><span>03</span><h3>Thunder module</h3><p>1 GJ per discharge equals 277.78 kWh per cycle and 277.78 MWh across the functional unit.</p></div>
+      <div class="quickfact"><span>04</span><h3>Main hotspot</h3><p>The lightning-equivalent discharge contributes 51.211 t CO₂e, or 99.43% of the modeled total.</p></div>
+    </section>
+
+    <section class="section episode-visual-section">
+      <div class="section-heading visual-heading">
+        <div>
+          <p class="eyebrow">VISUAL MODEL</p>
+          <h2>Hammer, return, thunder</h2>
+        </div>
+        <p class="section-note">Three calculation modules keep the physical product, the powered return and the scenario discharge analytically separate.</p>
+      </div>
+      <div class="visual-grid">
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep41-inventory-map.svg" alt="Mjölnir inventory map showing manufacture, ballistic cycle and discharge modules" loading="lazy" decoding="async">
+          <figcaption>Inventory map · manufacture, powered flight and lightning-equivalent deployment</figcaption>
+        </figure>
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep41-technical-plate.svg" alt="Mjölnir technical plate showing reconstructed hammer geometry and mass" loading="lazy" decoding="async">
+          <figcaption>Technical plate · 46.72 kg reconstruction with short haft and rectangular-equivalent iron head</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section id="inventory" class="section inventory-section">
+      <div class="section-heading">
+        <div><p class="eyebrow">LIFE CYCLE INVENTORY</p><h2>What enters the system</h2></div>
+        <p class="section-note">Material and electricity factors use the supplied UK Government GHG Conversion Factors 2026 full set. Modern factors are transparent accounting proxies, not a claim of representativeness for Asgard.</p>
+      </div>
+      <div class="inventory-table-wrap">
+        <table class="inventory-table">
+          <thead><tr><th>Stage</th><th>Component / activity</th><th>Activity data</th><th>Climate change</th><th>Modelling basis</th></tr></thead>
+          <tbody>
+            <tr><td>Manufacture</td><td>Primary metal input</td><td>0.05715 t</td><td>218.42 kg CO₂e</td><td>45.72 kg finished iron head at 80% forging yield; primary-metal screening proxy.</td></tr>
+            <tr><td>Manufacture</td><td>Hardwood handles</td><td>0.00321 t</td><td>0.86 kg CO₂e</td><td>Initial handle plus two replacement sets; 70% woodworking yield.</td></tr>
+            <tr><td>Manufacture</td><td>Grip replacements</td><td>0.00075 t</td><td>16.73 kg CO₂e</td><td>Three grip sets over the functional unit.</td></tr>
+            <tr><td>Manufacture</td><td>Forge and finishing electricity</td><td>250 kWh</td><td>46.09 kg CO₂e</td><td>Combined electricity-consumption proxy: 0.18436 kg CO₂e/kWh.</td></tr>
+            <tr><td>Ballistic cycle</td><td>Powered outbound + return</td><td>54.07 kWh / 1,000 cycles</td><td>9.97 kg CO₂e</td><td>46.7168 kg hammer, 50 m/s, two powered legs and 60% system efficiency; drag and guidance excluded.</td></tr>
+            <tr><td>Discharge</td><td>Lightning-equivalent energy</td><td>277,777.78 kWh / 1,000 cycles</td><td>51,211 kg CO₂e</td><td>1 GJ per cycle translated to electricity equivalent; scenario module, not a literary-source requirement.</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="model-notes">
+        <div class="stat-card"><h3>Included</h3><p>Primary metal, wood and grip production, forge/workshop electricity, powered-flight equivalent and lightning-equivalent discharge.</p></div>
+        <div class="stat-card"><h3>Excluded</h3><p>Specific mining and transport, charcoal and direct forge fuels, Thor, targets, sound and heat, recovery and end of life.</p></div>
+        <div class="stat-card"><h3>Evidence rule</h3><p>The ancient text defines performance. Dimensions, velocities, efficiencies and service cycles are reconstruction assumptions. Lightning remains a separate scenario module.</p></div>
+      </div>
+    </section>
+
+    <section class="section hotspot-visual-section">
+      <div class="section-heading visual-heading">
+        <div><p class="eyebrow">HOTSPOT</p><h2>The head is not the product-system hotspot</h2></div>
+        <p class="section-note">The physical hammer establishes engineering credibility and durability. Once a gigajoule-scale discharge is repeated 1,000 times, it contributes less than one percent of the system footprint.</p>
+      </div>
+      <figure class="visual-panel visual-panel-feature">
+        <img src="../assets/images/episode-graphics/ep41-hotspot-breakdown.svg" alt="Mjölnir hotspot breakdown showing lightning-equivalent discharge at 99.43 percent" loading="lazy" decoding="async">
+        <figcaption>Hotspot breakdown · lightning-equivalent discharge contributes 99.43% of the 51.50 t CO₂e total</figcaption>
+      </figure>
+    </section>
+
+    <section id="results" class="section episode-summary">
+      <div class="fact-card"><h3>Main result</h3><p><strong>51.50 t CO₂e</strong><br>For 1,000 combat cycles at 1 GJ discharge per cycle.</p></div>
+      <div class="fact-card"><h3>Per combat cycle</h3><p><strong>51.50 kg CO₂e</strong><br>The denominator is intentionally operational rather than one-off product mass.</p></div>
+      <div class="fact-card"><h3>Discharge</h3><p><strong>51.211 t CO₂e</strong><br>99.43% of the total result.</p></div>
+      <div class="fact-card"><h3>No-discharge residual</h3><p><strong>0.292 t CO₂e</strong><br>Manufacturing plus powered flight over the same 1,000 cycles.</p></div>
+    </section>
+
+    <section class="section status-grid">
+      <div class="stat-card"><h3>Discharge-energy sensitivity</h3><p><strong>0 GJ → 0.292 t CO₂e</strong><br>0.1 GJ → 5.413 t<br>1 GJ → 51.503 t<br><strong>10 GJ → 512.403 t CO₂e</strong></p><p>One order of magnitude in event energy creates almost one order of magnitude in total GWP.</p></div>
+      <div class="stat-card"><h3>Material circularity</h3><p>Closed-loop metal reduces the manufacturing module from <strong>282 kg to 157 kg CO₂e</strong>, a 44% reduction in the physical product footprint.</p><p>At total-system level the benefit is only <strong>−0.24%</strong> because the discharge is unchanged.</p></div>
+    </section>
+
+    <section class="section status-grid">
+      <div class="stat-card"><h3>Speed sensitivity</h3><p>At 25 m/s the total is <strong>51.496 t CO₂e</strong>; at 100 m/s it is <strong>51.533 t CO₂e</strong>. Flight energy changes quadratically, but the module is too small to move the headline order of magnitude.</p></div>
+      <div class="stat-card"><h3>Design priority</h3><p>Decarbonize, recover or redefine the discharge energy before optimizing material mass. Report the physical product footprint alongside the deployment scenario so the conclusion remains interpretable.</p></div>
+    </section>
+
+    <section class="section verdict">
+      <p class="eyebrow">THE VERDICT</p>
+      <blockquote>
+        The head carries the legend.<br>
+        The return proves the function.<br>
+        The footprint lives in the discharge.<br>
+        Mjölnir is an energy system with a hammer-shaped housing.
+      </blockquote>
+    </section>
+  </main>
+
+  <footer>
+    <span>© LCA of the Impossible</span>
+    <a href="../archive.html">Full archive ↑</a>
+  </footer>
+  <script src="../assets/site.js"></script>
+</body>
+</html>
