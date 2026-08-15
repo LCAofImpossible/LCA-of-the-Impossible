@@ -1,0 +1,126 @@
+name: Install episode graphics
+
+on:
+  push:
+    branches:
+      - episode-graphics-stage
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: episode-graphics-stage
+
+      - name: Install assets and patch episode pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          tar -xzf .deploy/episode_graphics.tar.gz
+
+          python - <<'PY'
+          from pathlib import Path
+
+          def insert_once(path, marker, block, sentinel):
+              p = Path(path)
+              text = p.read_text()
+              if sentinel not in text:
+                  if marker not in text:
+                      raise SystemExit(f"Marker not found in {path}: {marker[:50]}")
+                  text = text.replace(marker, block + marker, 1)
+                  p.write_text(text)
+
+          flying_visual = r'''
+    <section class="section episode-visual-section">
+      <div class="section-heading visual-heading">
+        <div>
+          <p class="eyebrow">VISUAL MODEL</p>
+          <h2>From legend to inventory</h2>
+        </div>
+        <p class="section-note">A visual reconstruction of the ship, its principal material inputs and the engineering assumptions behind the model.</p>
+      </div>
+      <div class="visual-grid">
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep35-inventory-map.webp" alt="Flying Dutchman inventory map" loading="lazy" decoding="async">
+          <figcaption>Inventory map · main inputs to the reconstructed East Indiaman</figcaption>
+        </figure>
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep35-technical-plate.webp" alt="Flying Dutchman technical reconstruction plate" loading="lazy" decoding="async">
+          <figcaption>Technical plate · vessel reconstruction parameters</figcaption>
+        </figure>
+      </div>
+    </section>
+'''
+          flying_hotspot = r'''
+    <section class="section hotspot-visual-section">
+      <div class="section-heading visual-heading">
+        <div>
+          <p class="eyebrow">HOTSPOT</p>
+          <h2>Where the footprint lands</h2>
+        </div>
+        <p class="section-note">The construction burden overwhelms the operational year: the curse keeps the vessel moving, but the ship itself carries the carbon.</p>
+      </div>
+      <figure class="visual-panel visual-panel-feature">
+        <img src="../assets/images/episode-graphics/ep35-hotspot-breakdown.webp" alt="Flying Dutchman hotspot contribution graphic" loading="lazy" decoding="async">
+        <figcaption>Hotspot breakdown · construction represents 97.4% of the one-year footprint</figcaption>
+      </figure>
+    </section>
+'''
+          tower_visual = r'''
+    <section class="section episode-visual-section">
+      <div class="section-heading visual-heading">
+        <div>
+          <p class="eyebrow">VISUAL MODEL</p>
+          <h2>Architecture becomes inventory</h2>
+        </div>
+        <p class="section-note">A compact visual reconstruction of the material system and the geometry used to turn the myth into an auditable model.</p>
+      </div>
+      <div class="visual-grid">
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep36-inventory-map.webp" alt="Tower of Babel inventory map" loading="lazy" decoding="async">
+          <figcaption>Inventory map · main inputs to the completed 90 m tower</figcaption>
+        </figure>
+        <figure class="visual-panel">
+          <img src="../assets/images/episode-graphics/ep36-technical-plate.webp" alt="Tower of Babel technical reconstruction plate" loading="lazy" decoding="async">
+          <figcaption>Technical plate · geometry and reconstruction parameters</figcaption>
+        </figure>
+      </div>
+    </section>
+'''
+          tower_hotspot = r'''
+    <section class="section hotspot-visual-section">
+      <div class="section-heading visual-heading">
+        <div>
+          <p class="eyebrow">HOTSPOT</p>
+          <h2>The burden is in the fire</h2>
+        </div>
+        <p class="section-note">Almost the entire climate burden sits in the fired-brick skin, while the immense sun-dried core remains comparatively light.</p>
+      </div>
+      <figure class="visual-panel visual-panel-feature">
+        <img src="../assets/images/episode-graphics/ep36-hotspot-breakdown.webp" alt="Tower of Babel hotspot contribution graphic" loading="lazy" decoding="async">
+        <figcaption>Hotspot breakdown · fired-brick facing contributes 95.4% of the total result</figcaption>
+      </figure>
+    </section>
+'''
+
+          inventory_marker = '\n    <section id="inventory" class="section inventory-section">'
+          results_marker = '\n    <section id="results" class="section episode-summary">'
+
+          insert_once('episodes/flying-dutchman.html', inventory_marker, flying_visual, 'ep35-inventory-map.webp')
+          insert_once('episodes/flying-dutchman.html', results_marker, flying_hotspot, 'ep35-hotspot-breakdown.webp')
+          insert_once('episodes/tower-of-babel.html', inventory_marker, tower_visual, 'ep36-inventory-map.webp')
+          insert_once('episodes/tower-of-babel.html', results_marker, tower_hotspot, 'ep36-hotspot-breakdown.webp')
+          PY
+
+          rm -rf .deploy
+          rm -f .github/workflows/install-episode-graphics.yml
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add editorial graphics to episode pages"
+          git push origin HEAD:episode-graphics-stage
