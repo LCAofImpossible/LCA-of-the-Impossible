@@ -6,23 +6,22 @@
   <title>Episode Template — LCA of the Impossible</title>
   <link rel="stylesheet" href="../assets/style.css">
 </head>
-<body>
+<body data-episode="[NUMBER]">
   <header class="site-header">
     <a class="brand" href="../index.html">LCA OF THE IMPOSSIBLE</a>
     <nav>
-      <a href="../index.html#episodes">← Episodes</a>
-      <a href="#inventory">Inventory</a>
-      <a href="#results">Results</a>
+      <a href="../archive.html">← Archive</a>
+      <a href="../index.html#method">Method</a>
     </nav>
   </header>
 
   <main>
     <section class="section cover-hero" style="padding-top:90px; border-top:none;">
       <div class="cover-frame">
-        <img src="../assets/images/episodes/epXX-slug-cover.jpg" alt="Episode cover">
+        <img src="../assets/images/episodes/epXX-slug-cover.jpg" alt="[TITLE] cover">
       </div>
       <div class="episode-title">
-        <p class="eyebrow">EPISODE #[NUMBER] · SERIES</p>
+        <p class="eyebrow">EPISODE #[NUMBER] · [SERIES]</p>
         <h1>[TITLE]</h1>
         <p class="episode-question">[Central narrative question]</p>
         <div class="metric">
@@ -42,6 +41,13 @@
       </div>
     </section>
 
+    <section class="section episode-quickfacts">
+      <div class="quickfact"><span>01</span><h3>[Quick fact]</h3><p>[Fact]</p></div>
+      <div class="quickfact"><span>02</span><h3>[Quick fact]</h3><p>[Fact]</p></div>
+      <div class="quickfact"><span>03</span><h3>[Quick fact]</h3><p>[Fact]</p></div>
+      <div class="quickfact"><span>04</span><h3>[Quick fact]</h3><p>[Fact]</p></div>
+    </section>
+
     <section class="section episode-visual-section">
       <div class="section-heading visual-heading">
         <div>
@@ -52,11 +58,11 @@
       </div>
       <div class="visual-grid">
         <figure class="visual-panel">
-          <img src="../assets/images/episode-graphics/epXX-inventory-map.svg" alt="Episode inventory map" loading="lazy" decoding="async">
+          <img src="../assets/images/episode-graphics/epXX-inventory-map.svg" alt="[TITLE] inventory map" loading="lazy" decoding="async">
           <figcaption>Inventory map · main life-cycle inputs</figcaption>
         </figure>
         <figure class="visual-panel">
-          <img src="../assets/images/episode-graphics/epXX-technical-plate.svg" alt="Episode technical reconstruction plate" loading="lazy" decoding="async">
+          <img src="../assets/images/episode-graphics/epXX-technical-plate.svg" alt="[TITLE] technical reconstruction plate" loading="lazy" decoding="async">
           <figcaption>Technical plate · reconstruction parameters</figcaption>
         </figure>
       </div>
@@ -76,7 +82,7 @@
         <p class="section-note">Contribution analysis translating the inventory into the dominant climate driver.</p>
       </div>
       <figure class="visual-panel visual-panel-feature">
-        <img src="../assets/images/episode-graphics/epXX-hotspot-breakdown.svg" alt="Episode hotspot contribution chart" loading="lazy" decoding="async">
+        <img src="../assets/images/episode-graphics/epXX-hotspot-breakdown.svg" alt="[TITLE] hotspot contribution chart" loading="lazy" decoding="async">
         <figcaption>Hotspot breakdown · contribution to total CO₂e</figcaption>
       </figure>
     </section>
@@ -84,11 +90,21 @@
     <section id="results" class="section episode-summary">
       <!-- Insert result cards here. -->
     </section>
+
+    <section class="section status-grid">
+      <!-- Insert sensitivities and interpretation here. -->
+    </section>
+
+    <section class="section verdict">
+      <p class="eyebrow">THE VERDICT</p>
+      <blockquote>[Technically anchored closing statement]</blockquote>
+    </section>
   </main>
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="../index.html#episodes">Back to archive ↑</a>
+    <a href="../archive.html">Full archive ↑</a>
   </footer>
+  <script src="../assets/site.js"></script>
 </body>
 </html>
