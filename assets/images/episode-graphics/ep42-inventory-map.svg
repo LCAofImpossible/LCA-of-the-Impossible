@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Talos inventory map</title>
+<desc id="desc">Diagram showing manufacture, patrol and defence modules for the Talos life cycle model.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="40" y="58" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">INVENTORY MAP · EPISODE #42</text>
+<text x="40" y="92" fill="#d0a563" font-size="36" font-weight="700" font-family="Arial, Helvetica, sans-serif">TALOS</text>
+<text x="40" y="118" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">Manufacture + 30 years of continuous coastal defence</text>
+<rect x="40" y="150" width="192" height="104" rx="14" fill="#0d1b27" stroke="#d0a563" stroke-opacity="0.52"/>
+<text x="58" y="178" fill="#d0a563" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">01 · MANUFACTURE</text>
+<text x="58" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">109.0 t primary bronze</text>
+<text x="58" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">87.2 MWh casting + finish</text>
+<text x="58" y="247" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">98.1 t finished machine</text>
+<rect x="264" y="150" width="192" height="104" rx="14" fill="#0d1b27" stroke="#6de7ff" stroke-opacity="0.52"/>
+<text x="282" y="178" fill="#6de7ff" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">02 · PATROL</text>
+<text x="282" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">34.361 million km</text>
+<text x="282" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">2.4495 TWh input energy</text>
+<text x="282" y="247" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">COT 0.20 · η = 75%</text>
+<rect x="488" y="150" width="192" height="104" rx="14" fill="#0d1b27" stroke="#c4f7ff" stroke-opacity="0.40"/>
+<text x="506" y="178" fill="#c4f7ff" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">03 · DEFENCE</text>
+<text x="506" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">360 heat events · 4.225 GWh</text>
+<text x="506" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">32,850 throws · 65,700 t rock</text>
+<text x="506" y="247" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">+ 38.0 MWh launch energy</text>
+<line x1="232" y1="202" x2="264" y2="202" stroke="#6de7ff" stroke-width="2"/>
+<line x1="456" y1="202" x2="488" y2="202" stroke="#6de7ff" stroke-width="2"/>
+<path d="M252 197 l10 5 -10 5" fill="none" stroke="#6de7ff" stroke-width="2"/>
+<path d="M476 197 l10 5 -10 5" fill="none" stroke="#6de7ff" stroke-width="2"/>
+<rect x="40" y="286" width="640" height="92" rx="14" fill="#081b2b" stroke="#d0a563" stroke-opacity="0.28"/>
+<text x="58" y="314" fill="#d0a563" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">FUNCTIONAL UNIT</text>
+<text x="58" y="340" fill="#eef7fb" font-size="16" font-family="Arial, Helvetica, sans-serif">One 25 m Talos · 30 years · 3 × 1,046 km patrol circuits/day</text>
+<text x="58" y="362" fill="#9ab0bc" font-size="14" font-family="Arial, Helvetica, sans-serif">One 2 t boulder throw per circuit + one 20→700 °C deterrence event per month.</text>
+</svg>
