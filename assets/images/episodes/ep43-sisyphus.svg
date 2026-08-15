@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+<title id="title">Sisyphus — LCA of the Impossible</title>
+<desc id="desc">Editorial cover with a stylized figure pushing a boulder up a steep slope.</desc>
+<defs>
+  <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#07121f"/>
+    <stop offset="1" stop-color="#0a1827"/>
+  </linearGradient>
+  <radialGradient id="stone" cx="42%" cy="36%" r="65%">
+    <stop offset="0" stop-color="#43505b"/>
+    <stop offset="1" stop-color="#1a222a"/>
+  </radialGradient>
+</defs>
+<rect width="900" height="1125" fill="url(#bg)"/>
+<g opacity=".16" stroke="#7ea6b5" stroke-width="1">
+  <path d="M0 170H900M0 340H900M0 510H900M0 680H900M0 850H900M0 1020H900"/>
+  <path d="M150 0V1125M300 0V1125M450 0V1125M600 0V1125M750 0V1125"/>
+</g>
+<text x="68" y="78" fill="#e7f4f1" font-size="25" font-weight="700" font-family="Arial, Helvetica, sans-serif">LCA of impossible · Myths &amp; Legends</text>
+<text x="68" y="180" fill="#27d39b" font-size="92" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">SISYPHUS</text>
+<text x="72" y="238" fill="#e7f4f1" font-size="27" font-family="Arial, Helvetica, sans-serif" letter-spacing="4">THE SUM NEVER STOPS.</text>
+<path d="M0 1065 L900 520 L900 1125 L0 1125 Z" fill="#121d26"/>
+<path d="M0 1065 L900 520" stroke="#243c48" stroke-width="7"/>
+<g opacity=".28" stroke="#91b0ba" stroke-width="2">
+  <path d="M95 1030l90-55m15 22l110-68m20 24l95-58m25 24l100-61m20 25l92-57m22 24l105-63"/>
+  <path d="M165 1072l60-37m90 10l68-42m88 15l75-46m82 16l78-48"/>
+</g>
+<circle cx="695" cy="520" r="155" fill="url(#stone)" stroke="#6a7882" stroke-width="3"/>
+<g opacity=".28" stroke="#a4b3ba" stroke-width="2" fill="none">
+  <path d="M590 465q78-83 174-28q50 29 72 92"/>
+  <path d="M577 530q88-52 190-1q39 19 65 62"/>
+  <path d="M610 600q81-30 159 3"/>
+</g>
+<g stroke="#d5b78a" stroke-linecap="round" stroke-linejoin="round" fill="none">
+  <circle cx="465" cy="704" r="27" fill="#2a2520" stroke-width="5"/>
+  <path d="M472 731 C505 760 525 794 522 844" stroke-width="21"/>
+  <path d="M496 756 L586 645" stroke-width="16"/>
+  <path d="M508 770 L613 675" stroke-width="14"/>
+  <path d="M586 645 L640 610" stroke-width="11"/>
+  <path d="M613 675 L657 636" stroke-width="10"/>
+  <path d="M520 840 L455 944" stroke-width="18"/>
+  <path d="M519 843 L574 960" stroke-width="18"/>
+  <path d="M455 944 L414 1025" stroke-width="12"/>
+  <path d="M574 960 L624 1028" stroke-width="12"/>
+</g>
+<circle cx="640" cy="610" r="8" fill="#d5b78a"/>
+<circle cx="657" cy="636" r="8" fill="#d5b78a"/>
+<rect x="68" y="330" width="304" height="112" rx="14" fill="#0a1b2d" stroke="#27d39b" stroke-opacity=".45"/>
+<text x="92" y="365" fill="#27d39b" font-size="17" font-weight="700" font-family="Arial, Helvetica, sans-serif">REPORTING SLICE</text>
+<text x="92" y="399" fill="#edf7f4" font-size="24" font-family="Arial, Helvetica, sans-serif">1,000 cycles</text>
+<text x="92" y="426" fill="#9fc2b8" font-size="16" font-family="Arial, Helvetica, sans-serif">one stone · repeated effort</text>
+<text x="68" y="1090" fill="#8fb3a9" font-size="16" font-family="Arial, Helvetica, sans-serif">EPISODE #43 · SEASON II</text>
+</svg>
