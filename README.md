@@ -25,6 +25,7 @@ Current canonical covers:
 
 - `ep35-flying-dutchman.jpg`
 - `ep36-tower-of-babel.png`
+- `ep43-sisyphus.webp`
 
 Use the original source format for covers when it is the most reliable/high-quality web asset. Avoid duplicate `live`, `v2` or ad-hoc `hq` filenames.
 
