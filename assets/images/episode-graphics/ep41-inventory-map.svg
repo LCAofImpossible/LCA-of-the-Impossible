@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Mjölnir inventory map</title>
+<desc id="desc">Diagram showing manufacture, ballistic flight and lightning-equivalent discharge modules for Mjölnir.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="40" y="58" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">INVENTORY MAP · EPISODE #41</text>
+<text x="40" y="92" fill="#d0a563" font-size="36" font-weight="700" font-family="Arial, Helvetica, sans-serif">MJÖLNIR</text>
+<text x="40" y="118" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">One reusable hammer · 1,000 combat cycles</text>
+<rect x="40" y="150" width="192" height="112" rx="14" fill="#0d1b27" stroke="#d0a563" stroke-opacity="0.52"/>
+<text x="58" y="178" fill="#d0a563" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">01 · MANUFACTURE</text>
+<text x="58" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">57.15 kg metal input</text>
+<text x="58" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">250 kWh forge electricity</text>
+<text x="58" y="249" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">282 kg CO₂e · 0.55%</text>
+<rect x="264" y="150" width="192" height="112" rx="14" fill="#0d1b27" stroke="#6de7ff" stroke-opacity="0.52"/>
+<text x="282" y="178" fill="#6de7ff" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">02 · BALLISTIC CYCLE</text>
+<text x="282" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">50 m outbound + return</text>
+<text x="282" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">54.07 kWh / 1,000 cycles</text>
+<text x="282" y="249" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">9.97 kg CO₂e · 0.019%</text>
+<rect x="488" y="150" width="192" height="112" rx="14" fill="#0d1b27" stroke="#c4f7ff" stroke-opacity="0.46"/>
+<text x="506" y="178" fill="#c4f7ff" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">03 · DISCHARGE</text>
+<text x="506" y="205" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">1 GJ / combat cycle</text>
+<text x="506" y="227" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">277.78 MWh total</text>
+<text x="506" y="249" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">51.211 t CO₂e · 99.43%</text>
+<line x1="232" y1="206" x2="264" y2="206" stroke="#6de7ff" stroke-width="2"/>
+<path d="M252 201 l10 5 -10 5" fill="none" stroke="#6de7ff" stroke-width="2"/>
+<line x1="456" y1="206" x2="488" y2="206" stroke="#6de7ff" stroke-width="2"/>
+<path d="M476 201 l10 5 -10 5" fill="none" stroke="#6de7ff" stroke-width="2"/>
+<rect x="40" y="294" width="640" height="84" rx="14" fill="#081b2b" stroke="#d0a563" stroke-opacity="0.28"/>
+<text x="58" y="322" fill="#d0a563" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">FUNCTIONAL UNIT</text>
+<text x="58" y="348" fill="#eef7fb" font-size="16" font-family="Arial, Helvetica, sans-serif">1 hammer · 1,000 cycles · 50 m out + 50 m return · 1 GJ discharge/cycle</text>
+<text x="58" y="369" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">The discharge is a separate deployment scenario, not a source-faithful literary requirement.</text>
+</svg>
