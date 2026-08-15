@@ -2,23 +2,24 @@
 
 Static GitHub Pages archive for the **LCA of the Impossible** series.
 
-This README is the canonical editorial and publishing reference for building, updating and reviewing episode pages. Its purpose is to make the website reproducible even in a future session with no prior conversational context.
-
-If a new episode PDF and this repository are available, the page should be rebuildable without relying on memory.
+This README is the canonical editorial and publishing reference for building, updating and reviewing episode pages. Its purpose is to make the website reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode must be rebuildable without relying on memory.
 
 ---
 
 ## 1. Source-of-truth hierarchy
 
-Use the following hierarchy whenever sources disagree or a future episode is reconstructed.
+Use this hierarchy whenever sources disagree:
 
-1. **Episode PDF / approved carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions and wording.
-2. **This README** — source of truth for website editorial structure, publishing rules, asset conventions and QA requirements.
-3. **`assets/style.css`** — source of truth for the live visual system, palette, responsive behaviour and component styling.
-4. **`episodes/template.html`** — canonical implementation starter for a new episode page.
-5. Existing episode pages — examples of execution, not authorities over the PDF or this README.
+1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions, wording **and cover artwork**.
+2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the new cover.
+3. **This README** — source of truth for website editorial structure, publishing rules, asset conventions and QA requirements.
+4. **`assets/style.css`** — source of truth for the live visual system, palette, responsive behaviour and component styling.
+5. **`episodes/template.html`** — canonical implementation starter for new episode pages.
+6. Existing episode pages — examples of execution, not authorities over the approved PDF or this README.
 
-Do not silently replace, reconcile or “improve” numerical content from an approved episode PDF. If a website adaptation requires simplification, preserve the underlying meaning and disclose the simplification.
+Do not silently replace, reconcile or “improve” approved episode content. If a website adaptation requires simplification, preserve the underlying meaning and disclose the simplification.
+
+**Cover artwork is part of the approved episode content. If page 1 of an approved PDF contains the final cover, that exact visual composition is mandatory for the website unless the user explicitly asks for a different cover.**
 
 ---
 
@@ -28,11 +29,11 @@ Do not silently replace, reconcile or “improve” numerical content from an ap
 - `episodes/` — individual episode pages and reusable episode template
 - `assets/style.css` — global visual system
 - `assets/images/episodes/` — canonical episode covers
-- `assets/images/episode-graphics/` — editorial inventory, technical and hotspot graphics
+- `assets/images/episode-graphics/` — inventory, technical and hotspot graphics
 - `assets/images/book/` — book artwork
 - `assets/pdf/episodes/` — downloadable episode carousels
 
-Do not create parallel folders for temporary fixes. Avoid duplicate `live`, `v2`, `final`, `new`, `hq2` or similar filenames in the canonical tree.
+Do not create parallel folders for temporary fixes. Avoid duplicate `live`, `v2`, `final`, `new`, `hq2`, `final-final` or similar filenames in the canonical tree. Temporary staging assets must be removed before publication.
 
 ---
 
@@ -41,18 +42,28 @@ Do not create parallel folders for temporary fixes. Avoid duplicate `live`, `v2`
 Each episode uses one canonical cover plus three standard editorial graphics:
 
 - `epNN-short-slug.ext` — canonical cover
-- `epNN-inventory-map.svg` — visual map of the main life-cycle inputs
+- `epNN-inventory-map.svg` — visual map of main life-cycle inputs
 - `epNN-technical-plate.svg` — engineering / reconstruction plate
 - `epNN-hotspot-breakdown.svg` — contribution / hotspot graphic
 - `epNN-short-slug.pdf` — downloadable carousel when available
 
-Current canonical covers:
+Current canonical covers include:
 
 - `ep35-flying-dutchman.jpg`
 - `ep36-tower-of-babel.png`
-- `ep43-sisyphus.svg`
+- `ep42-talos.jpg`
+- `ep43-sisyphus.webp`
 
-Use the original source format for covers when it is the most reliable and highest-quality web asset. A cover may later be replaced with a better raster image without changing page structure or naming conventions.
+### Canonical-cover lock
+
+When an approved PDF or approved LinkedIn carousel exists, **extract or rasterize the exact approved cover and use it as the canonical website cover**. Do not redraw, regenerate, vectorize, reinterpret, restyle, clean up, crop away meaningful content, or substitute the cover because another version appears more cinematic, technical, consistent or visually polished.
+
+The only permitted reasons to use a different visual are:
+
+1. the user explicitly requests a replacement; or
+2. no approved cover exists.
+
+If extraction quality is poor, improve the **export/rasterization of the same approved cover**, not the design. Use the source format or a high-quality raster derivative that preserves the exact composition.
 
 ---
 
@@ -64,12 +75,12 @@ Every episode should follow this sequence unless the subject genuinely requires 
 
 Must contain:
 
-- canonical episode cover;
+- canonical approved cover;
 - `EPISODE #NN · SERIES` eyebrow;
 - episode title;
 - one central narrative question;
 - main result as the dominant metric;
-- short description of the functional unit / reporting basis.
+- short explanation of the functional unit / reporting basis.
 
 The hero should communicate the problem in seconds. Do not overload it with methodology.
 
@@ -79,146 +90,86 @@ A short editorial framing section containing:
 
 - one strong subheading;
 - concise reconstruction of the subject;
-- explanation of the real analogue, evidence or engineering logic used;
+- real analogue, evidence or engineering logic used;
 - explicit distinction between narrative source and modelling assumption when relevant.
 
 Tone: technical, confident, cinematic. It must not read like a generic LCA report introduction.
 
 ### 4.3 Four Quick Facts
 
-Use four compact cards. As a default, cover four different dimensions:
+Use four compact cards covering different dimensions by default:
 
-1. **Geometry / scale** — dimensions, mass, capacity, route, energy scale or equivalent.
-2. **Operation / function** — what the subject does and how the FU is delivered.
-3. **Main hotspot / result logic** — dominant contributor or key physical insight.
-4. **Modelling convention / uncertainty** — lifetime allocation, reporting slice, proxy, supernatural rule or major assumption.
+1. geometry / scale;
+2. operation / function;
+3. main hotspot / result logic;
+4. modelling convention / uncertainty.
 
 Do not repeat the same fact four ways.
 
 ### 4.4 Visual Model
 
-Always include two graphics before the detailed inventory:
+Always include before the detailed inventory:
 
-- **Inventory Map**
-- **Technical Plate**
+- **Inventory Map**;
+- **Technical Plate**.
 
-The section heading should explain that these are compact representations of the reconstructed system, not decorative illustrations.
+These are compact analytical representations of the reconstructed system, not decorative illustrations.
 
 ### 4.5 Detailed Life Cycle Inventory
 
-Use the standard table columns:
+Use the standard columns:
 
 `Stage | Component / activity | Activity data | Climate change | Modelling basis`
 
-The table should reconcile with the approved episode result and must remain horizontally scrollable on mobile.
-
-After the table, add model-note cards where useful. Typical categories:
-
-- Included
-- Excluded / separate disclosure
-- Emission-factor logic
-- Supernatural rule
-- Main proxy / limitation
+The table must reconcile with the approved episode and remain horizontally scrollable on mobile. After it, add model-note cards where useful, typically Included, Excluded / separate disclosure, Emission-factor logic, Supernatural rule, Main proxy / limitation.
 
 ### 4.6 Hotspot section
 
-Always include the **Hotspot Breakdown** graphic after the inventory and before the result cards.
-
-The surrounding text should answer one question: **where does the footprint actually land, and why?**
+Always include the **Hotspot Breakdown** after the inventory and before result cards. The text must answer: **where does the footprint actually land, and why?**
 
 ### 4.7 Results
 
-Use result cards for the most decision-relevant outputs. Examples:
-
-- main stage / material contribution;
-- operation or maintenance contribution;
-- main hotspot percentage;
-- separate biogenic disclosure;
-- DEFRA share when relevant;
-- per-cycle / per-year / per-unit result when analytically useful.
-
-Do not use result cards for trivia.
+Use result cards only for decision-relevant outputs: principal stage/material contribution, operation/maintenance contribution, main hotspot percentage, separate biogenic disclosure, DEFRA share where relevant, and useful per-cycle/per-year/per-unit values.
 
 ### 4.8 Sensitivities and interpretation
 
-Include sensitivities reported in the approved episode PDF. Typical cases:
-
-- lifetime / annualisation;
-- alternative energy or material factor;
-- mass or geometry variation;
-- efficiency;
-- recovery rate;
-- alternative allocation / modelling convention.
-
-Sensitivity results must be visually and verbally separated from the main result.
+Include sensitivities reported in the approved PDF and label them clearly as sensitivities. Typical cases: lifetime, energy/material factor, mass/geometry, efficiency, recovery rate and alternative modelling convention.
 
 ### 4.9 Verdict
 
-End with a short, memorable interpretation linking the LCA result to the nature of the subject.
-
-The verdict should normally contain 3–5 short lines or one compact editorial statement. It should be memorable but technically anchored in the actual hotspot.
+End with 3–5 short memorable lines or one compact statement that links the result to the nature of the subject. It must remain technically anchored in the actual hotspot.
 
 ---
 
 ## 5. Functional unit and reporting basis
 
-The website must reproduce the functional unit or reporting slice used in the approved episode.
+Reproduce the functional unit or reporting slice used in the approved episode. It must be quantified, understandable without the PDF, specific enough to explain the result, and include duration/service quantity when relevant. State construction allocation when material to interpretation.
 
-Requirements:
-
-- quantified;
-- understandable without reading the PDF;
-- sufficiently specific to explain the main result;
-- duration / service quantity stated when relevant;
-- construction allocation convention stated when it materially affects interpretation.
-
-For infinite, cyclic or otherwise unbounded subjects, use the finite reporting slice defined in the approved episode. Never present infinity itself as a calculable functional unit.
+For infinite, cyclic or unbounded subjects, use the finite reporting slice defined in the approved episode. Never present infinity itself as a calculable functional unit.
 
 ---
 
 ## 6. Numerical integrity rules
 
-Website values must reconcile with the episode PDF.
+Website values must reconcile with the approved episode.
 
-### Mandatory rules
-
-- Main result must match the approved episode.
+- Main result must match.
 - Hotspot percentages must reconcile with the total.
-- Phase and material contributions must not introduce double counting.
-- Use no more precision than justified by the underlying inventory.
-- Do not invent missing percentages merely to make a chart look complete.
-- Sensitivity values must be labelled as sensitivities, not alternatives to the main result.
-- If explanatory sub-shares sum to a parent flow already counted in the total, state that they are explanatory and do not add them again.
+- Phase/material contributions must not introduce double counting.
+- Use no more precision than the inventory justifies.
+- Do not invent missing percentages for visual balance.
+- Sensitivities are not alternative main results.
+- If explanatory sub-shares sum to a parent already counted, state that and do not add them again.
 
-### Separate disclosures
-
-Where applicable, keep separate:
-
-- biogenic CO₂;
-- outside-of-scopes values;
-- avoided-production credits;
-- other quantities excluded from the main GWP result.
-
-Do not silently fold separate disclosures into the headline result.
+Keep separate where applicable: biogenic CO₂, outside-of-scopes values, avoided-production credits and other quantities excluded from headline GWP.
 
 ---
 
 ## 7. Inventory and modelling rules
 
-The website inventory should show enough information for a technically literate reader to understand how the result was built.
+Show enough information for a technically literate reader to understand the model. Preserve, when available: stage, component/process, quantity, unit, climate-change contribution and modelling basis/proxy/assumption.
 
-For each significant flow, preserve when available:
-
-- stage;
-- component / process;
-- quantity;
-- unit;
-- climate-change contribution;
-- modelling basis, proxy or assumption.
-
-The website is not required to reproduce every workbook row, but it must retain the principal audit trail.
-
-When the episode uses analogues, state them clearly. When a value is an engineering assumption, do not present it as historical or canonical fact.
+The website need not reproduce every workbook row, but it must retain the principal audit trail. Analogues must be named. Engineering assumptions must remain recognisable as assumptions rather than historical or canonical facts.
 
 ---
 
@@ -228,32 +179,15 @@ Apply the project rule consistently:
 
 **Magic is not a fuel.**
 
-A supernatural element is only assigned emissions when it can be translated into a defensible physical flow.
-
-Examples:
-
-- a curse that only changes narrative behaviour → no emission flow by itself;
-- magical propulsion replacing combustion → model the physical system actually used, not an invented fuel;
-- repeated resurrection with no defined material or energy flow → exclude and explain;
-- supernatural return that dissipates mechanical energy → model the physical energy consequence if the approved episode does so.
-
-Never add emissions simply because an element is “magical”.
+Assign emissions to supernatural elements only when they can be translated into a defensible physical flow. A curse that only changes behaviour has no emission flow by itself; repeated resurrection without defined material/energy is excluded and explained; a physical energy consequence may be modelled when the approved episode does so.
 
 ---
 
 ## 9. Emission-factor and DEFRA handling
 
-Where the approved episode uses UK Government GHG Conversion Factors, preserve the distinction between:
+Where UK Government GHG Conversion Factors are used, preserve the distinction between direct emissions, WTT, T&D where applicable, outside of scopes and biogenic reporting. Include DEFRA share where editorially useful.
 
-- direct emissions;
-- WTT;
-- T&D where applicable;
-- outside of scopes;
-- biogenic reporting.
-
-If the episode reports the proportion of the result based on DEFRA factors, include it where editorially useful.
-
-Do not imply that a DEFRA proxy is more representative than the source episode states. Phrases such as “accounting proxy”, “screening proxy” or “weak representativeness” should be retained when material to interpretation.
+Do not imply greater representativeness than the approved episode. Retain terms such as “accounting proxy”, “screening proxy” or “weak representativeness” where material.
 
 ---
 
@@ -263,52 +197,21 @@ Every episode uses three graphics in the same design family.
 
 ### 10.1 Inventory Map
 
-Purpose: explain the model logic at a glance.
-
-Should show:
-
-- main material / energy / operation blocks;
-- logical flow or grouped inputs;
-- functional-unit or reporting-slice context when useful;
-- only the most important inventory categories.
-
-It is not a decorative mood board.
+Show the main material / energy / operation blocks, logical flow, functional-unit context where useful and only the most important inventory categories. It is not a decorative mood board.
 
 ### 10.2 Technical Plate
 
-Purpose: communicate the physical reconstruction.
-
-Typical content:
-
-- geometry;
-- dimensions;
-- mass;
-- route;
-- capacity;
-- key engineering parameters;
-- sectional / silhouette / schematic representation.
-
-It should look like an editorial engineering plate, not a corporate infographic.
+Communicate the physical reconstruction: geometry, dimensions, mass, route, capacity, key engineering parameters and schematic/sectional representation. It should look like an editorial engineering plate, not a corporate infographic.
 
 ### 10.3 Hotspot Breakdown
 
-Purpose: show the quantitative contribution structure.
+Use real episode values, make the dominant contributor immediately visible, group minor contributors only when appropriate, and never invent precise percentages for visual balance.
 
-Rules:
+### 10.4 Technical requirement
 
-- use real episode values;
-- make the dominant contributor immediately visible;
-- minor contributors may be grouped when individual percentages are not material;
-- never invent precise percentages for visual balance;
-- main result may be repeated if it helps interpretation.
+Use **native self-contained SVG** for editorial graphics wherever practical. Do not embed raster images inside SVG wrappers for the three analytical graphics. SVGs should contain their own paths, shapes, text and vector geometry.
 
-### 10.4 Technical requirement for graphics
-
-Use **native self-contained SVG** wherever practical.
-
-Do not embed WebP, PNG or other raster images inside SVG wrappers. Previous embedded-image wrappers caused inconsistent rendering across browsers.
-
-SVGs should contain their own shapes, paths, text and vector geometry and should render independently.
+This SVG rule applies to analytical graphics, **not to canonical episode covers**. Approved covers may and often should remain raster images when that is the faithful way to preserve the source artwork.
 
 ---
 
@@ -316,171 +219,97 @@ SVGs should contain their own shapes, paths, text and vector geometry and should
 
 The live visual system is defined by `assets/style.css`.
 
-Current core palette:
+Core palette:
 
-- Background: `#071019`
-- Secondary background: `#0b1622`
-- Panel: `#0d1b27`
-- Secondary panel: `#112232`
-- Main text: `#eef7fb`
-- Muted text: `#9ab0bc`
-- Lines: `#234557`
-- Primary accent: `#6de7ff`
-- Light accent: `#c4f7ff`
-- Gold accent: `#d0a563`
+- Background `#071019`
+- Secondary background `#0b1622`
+- Panel `#0d1b27`
+- Secondary panel `#112232`
+- Main text `#eef7fb`
+- Muted text `#9ab0bc`
+- Lines `#234557`
+- Primary accent `#6de7ff`
+- Light accent `#c4f7ff`
+- Gold accent `#d0a563`
 
-Graphic direction:
+Direction: dark technical / blueprint atmosphere, restrained palette, fine linework, minimal dashboard styling, serious engineering tone with an epic editorial layer. Avoid generic Excel charts, rainbow palettes, stock-dashboard visuals, purposeless icons, cartoon styling and excessive gradients/glow.
 
-- dark technical / blueprint atmosphere;
-- restrained palette;
-- fine technical linework;
-- minimal dashboard styling;
-- high information density without clutter;
-- serious engineering tone with an epic editorial layer.
-
-Avoid:
-
-- generic Excel charts;
-- rainbow palettes;
-- stock-dashboard visuals;
-- decorative icons without analytical purpose;
-- cartoon styling;
-- excessive gradients or glow effects.
-
-Episode-specific accent colours may appear in covers or graphics when justified by the episode identity, but they must remain compatible with the global dark technical system.
+Episode-specific cover colours do not need to be recoloured to match the website. **Approved cover artwork takes precedence over global palette consistency.**
 
 ---
 
-## 12. Cover rules
+## 12. Cover rules — mandatory
 
-The cover is a major editorial asset, not a placeholder.
+The cover is an approved editorial asset, not a placeholder and not an invitation to redesign.
 
-Preference order:
+### Source rule
 
-1. approved PDF / LinkedIn cover if visually strong and high quality;
-2. improved cover derived from the same visual concept;
-3. newly generated cinematic cover consistent with the series.
+1. If page 1 of the approved episode PDF / approved carousel contains the final cover, **use that exact cover**.
+2. If the user explicitly supplies and approves a replacement cover, use that exact replacement.
+3. Only when no approved cover exists may a new cover be created.
 
-Cover requirements:
+### Prohibited substitutions when an approved cover exists
 
-- vertical composition;
-- strong subject recognition;
-- cinematic / epic atmosphere;
-- readable episode title;
-- no visual clutter;
-- no low-resolution placeholders;
-- no visibly schematic temporary artwork when a final cover is available.
+Do **not**:
 
-If the canonical cover changes, replace only the canonical asset and the necessary references. Do not create chains of `v2`, `live`, `hq`, `final-final` files.
+- generate a new cinematic alternative;
+- redraw the subject;
+- vectorize or stylize the cover into a new design;
+- “improve” composition, typography, palette or subject appearance;
+- replace it for consistency with another episode;
+- use a schematic placeholder when the PDF cover is available.
+
+A different file format or resolution is acceptable only if the rendered visual remains faithful to the approved cover.
+
+### Mandatory cover verification
+
+Before committing a new episode, visually compare the canonical website cover with page 1 of the approved PDF or with the explicitly approved replacement image. **Any visual mismatch is a publication blocker.**
+
+If a cover mismatch is reported, correct the asset first, then update references if required, then repeat the visual comparison.
 
 ---
 
 ## 13. Homepage rules
 
-When a new episode is published:
+The newest episode becomes `LATEST CASE` unless explicitly decided otherwise. The feature includes cover, title, short reconstruction description, episode number, headline result, hotspot badge and episode link.
 
-### Latest Case
+Every published episode must also remain in the archive grid. Each card contains a square crop of the canonical cover, series label, title, episode number, headline result and concise hotspot/inventory cue. Do not remove older episodes. The homepage hero remains image-free unless explicitly redesigned.
 
-The newest episode becomes the featured `LATEST CASE` unless explicitly decided otherwise.
-
-The feature contains:
-
-- cover;
-- title;
-- short reconstruction description;
-- episode number;
-- headline result;
-- hotspot badge;
-- link to the episode page.
-
-### Archive cards
-
-The new episode must also remain in the archive grid.
-
-Each card contains:
-
-- square crop of the canonical cover;
-- series label;
-- episode title;
-- episode number;
-- headline result;
-- concise hotspot / inventory cue.
-
-Do not remove older episodes when adding a new one.
-
-The homepage hero remains image-free unless the site design is explicitly changed.
+Square card cropping may use CSS `object-fit`, but must not alter the canonical cover asset itself.
 
 ---
 
 ## 14. PDF handling
 
-When the approved episode PDF is available and intended for download:
-
-- store it in `assets/pdf/episodes/`;
-- use a canonical filename such as `epNN-short-slug.pdf`;
-- add an `Open episode PDF →` button in the episode page;
-- open in a new tab where appropriate.
-
-If the PDF has not yet been uploaded to the repository, do not create a broken download link.
+When the approved episode PDF is intended for download, store it in `assets/pdf/episodes/` with a canonical filename such as `epNN-short-slug.pdf` and add an `Open episode PDF →` button. Do not create broken links when the PDF is not in the repository.
 
 ---
 
 ## 15. Page path convention
 
-From `index.html`:
+From `index.html` use `assets/images/...` and `episodes/slug.html`.
 
-- `assets/images/...`
-- `episodes/slug.html`
+From files inside `episodes/` use `../assets/images/...`, `../assets/pdf/...` and `../index.html#episodes`.
 
-From files inside `episodes/`:
-
-- `../assets/images/...`
-- `../assets/pdf/...`
-- `../index.html#episodes`
-
-Avoid root-relative paths beginning with `/` because this site is a GitHub Pages project site rather than a domain-root site.
+Avoid root-relative `/...` paths because this is a GitHub Pages project site.
 
 ---
 
 ## 16. Responsive and accessibility rules
 
-The site must remain usable on mobile.
-
-Requirements:
-
-- inventory tables use horizontal scrolling rather than compressed unreadable text;
-- visual model grid collapses to one column on smaller screens;
-- episode cards collapse to one column;
-- images use meaningful `alt` text;
-- editorial graphics use `loading="lazy"` and `decoding="async"` where appropriate;
-- headings remain legible without forcing horizontal scrolling;
-- do not place essential information only inside an image if the page text does not communicate it elsewhere.
+- Inventory tables scroll horizontally on mobile.
+- Visual grids and episode cards collapse to one column.
+- Images use meaningful `alt` text.
+- Editorial graphics use `loading="lazy"` and `decoding="async"` where appropriate.
+- Headings must remain legible without horizontal scrolling.
+- Essential information must not exist only inside images.
+- No image may exceed its container.
 
 ---
 
 ## 17. Editorial tone
 
-The website is not a conventional corporate LCA portal.
-
-Tone should combine:
-
-- technical credibility;
-- engineering reconstruction;
-- epic storytelling;
-- restrained irony where appropriate;
-- accessibility for non-specialists;
-- transparent uncertainty.
-
-Use strong editorial headings such as:
-
-- “Architecture against the sky.”
-- “The material mountain.”
-- “The burden is in the fire.”
-- “A finite slice of eternity.”
-
-Avoid generic headings such as “Analysis”, “Data” or “Discussion” when a more meaningful episode-specific heading is possible.
-
-Narrative language must support the analysis, never replace it.
+Combine technical credibility, engineering reconstruction, epic storytelling, restrained irony, accessibility and transparent uncertainty. Use meaningful episode-specific headings rather than generic “Analysis”, “Data” or “Discussion”. Narrative language supports the analysis; it never replaces it.
 
 ---
 
@@ -488,17 +317,22 @@ Narrative language must support the analysis, never replace it.
 
 A new episode is not complete merely because GitHub Pages reports a successful build.
 
-Check all of the following.
-
 ### Content
 
 - [ ] Main result matches the approved PDF.
-- [ ] Functional unit / reporting slice matches the approved PDF.
-- [ ] Hotspot percentage reconciles with the result.
+- [ ] Functional unit / reporting slice matches.
+- [ ] Hotspot percentage reconciles.
 - [ ] Sensitivities are correct and clearly labelled.
 - [ ] Facts and assumptions are not conflated.
-- [ ] Biogenic / outside-of-scopes / separate disclosures are handled correctly.
+- [ ] Separate disclosures are handled correctly.
 - [ ] No unsupported numerical detail has been invented.
+
+### Cover — publication blocker
+
+- [ ] Canonical cover visually matches page 1 of the approved PDF / approved carousel, or the exact explicitly user-approved replacement.
+- [ ] No AI-generated, redrawn, vectorized, restyled or otherwise reinterpreted substitute has replaced an approved cover.
+- [ ] Cover text, composition, subject, background and meaningful visual elements match the approved source.
+- [ ] Any resizing/compression preserves the approved composition.
 
 ### Inventory
 
@@ -512,15 +346,14 @@ Check all of the following.
 - [ ] Inventory Map renders correctly.
 - [ ] Technical Plate renders correctly.
 - [ ] Hotspot Breakdown renders correctly.
-- [ ] SVGs are self-contained vector files.
-- [ ] Graphics use the correct episode values.
-- [ ] Cover is readable and sufficiently high quality.
+- [ ] Analytical SVGs are self-contained vector files.
+- [ ] Graphics use correct episode values.
 
 ### Links and paths
 
 - [ ] Homepage card opens the correct episode.
 - [ ] Featured Latest Case opens the correct episode.
-- [ ] Cover paths work from both homepage and episode page.
+- [ ] Cover paths work from homepage and episode page.
 - [ ] PDF link works if present.
 - [ ] Back-to-archive link works.
 
@@ -534,12 +367,11 @@ Check all of the following.
 ### Deployment
 
 - [ ] Changes are committed to `main`.
-- [ ] GitHub Pages workflow completes with `success`.
-- [ ] Pages build reports `built`.
-- [ ] Live page is checked after deployment.
-- [ ] At least the cover and all three editorial graphics are confirmed visible live.
+- [ ] GitHub Pages build reports `built` / workflow success.
+- [ ] Live episode is inspected after deployment.
+- [ ] Canonical cover and all three editorial graphics are confirmed visible live.
 
-A green build alone is not sufficient evidence that image paths or browser rendering are correct.
+A green build alone is not sufficient evidence that the page is correct.
 
 ---
 
@@ -548,75 +380,60 @@ A green build alone is not sufficient evidence that image paths or browser rende
 For each new episode:
 
 1. Read the approved episode PDF completely.
-2. Extract title, episode number, series, FU, main result, hotspot, inventory, exclusions, sensitivities and verdict.
-3. Identify or create the canonical cover.
-4. Create native SVG Inventory Map.
-5. Create native SVG Technical Plate.
-6. Create native SVG Hotspot Breakdown.
-7. Build the episode from `episodes/template.html`.
-8. Add Quick Facts and model-note cards.
-9. Reconcile the inventory table with the approved result.
-10. Add sensitivities and verdict.
-11. Upload the episode PDF when a download is intended.
-12. Update `LATEST CASE` on the homepage.
-13. Add the episode to the archive cards.
-14. Commit the release in a controlled set of changes.
-15. Verify all repository paths.
-16. Wait for GitHub Pages deployment.
-17. Inspect the live episode and all visual assets.
-18. Only then consider publication complete.
-
-Avoid experimental live-site edits when a staging or locally verified asset can be used first.
+2. Extract title, number, series, FU, main result, hotspot, inventory, exclusions, sensitivities and verdict.
+3. **Extract/rasterize page 1 as the canonical cover, or use the exact explicitly user-approved replacement. Create a new cover only if no approved cover exists.**
+4. Visually compare the extracted cover with the approved source before proceeding.
+5. Create native SVG Inventory Map.
+6. Create native SVG Technical Plate.
+7. Create native SVG Hotspot Breakdown.
+8. Build the episode from `episodes/template.html`.
+9. Add Quick Facts and model-note cards.
+10. Reconcile the inventory table with the approved result.
+11. Add sensitivities and verdict.
+12. Upload the episode PDF when download is intended.
+13. Update `LATEST CASE` where applicable.
+14. Add the episode to archive cards without removing older episodes.
+15. Commit the release in a controlled set of changes.
+16. Verify paths and remove all staging/temporary assets.
+17. Wait for GitHub Pages deployment.
+18. Inspect the live episode, cover and all three analytical graphics.
+19. Only then consider publication complete.
 
 ---
 
 ## 20. Future-episode reconstruction protocol
 
-If a future session begins without prior conversation history, the minimum required inputs are:
+Minimum required inputs:
 
 - this repository;
 - this README;
-- the approved PDF of the new episode.
+- approved PDF of the new episode.
 
-Optional but useful:
+Optional: original high-resolution cover image, calculation workbook, LinkedIn post/source list and latest DEFRA workbook if the episode itself still needs to be produced.
 
-- original high-resolution cover image;
-- calculation workbook;
-- LinkedIn post / source list;
-- latest DEFRA workbook if the episode itself still needs to be produced rather than merely published.
-
-With the repository + README + approved PDF, the website episode should be reconstructable without asking the user to restate established design rules.
+With repository + README + approved PDF, the website episode must be reconstructable without asking the user to restate established design rules. **The default is to preserve the PDF cover exactly, not to create a new one.**
 
 ---
 
-## 21. Relationship with the wider LCA of the Impossible production workflow
+## 21. Relationship with the wider production workflow
 
-The website is the permanent archive. LinkedIn remains the publishing channel for the carousel, while the website exposes a more durable technical narrative.
+LinkedIn remains the publishing channel; the website is the permanent technical archive. Upstream work may include historical/engineering research, FU definition, boundaries, inventory, factors, Excel model, 13-page carousel and LinkedIn post.
 
-The upstream episode-production workflow may include:
-
-- historical / engineering research;
-- functional-unit definition;
-- system boundaries;
-- inventory reconstruction;
-- DEFRA and literature factors;
-- Excel calculation model;
-- 13-page LinkedIn carousel;
-- LinkedIn post.
-
-The website does not need to duplicate the full workbook, but it must preserve the episode’s core audit trail: **what was modelled, why, with which major flows, where the footprint lands, and what changes the result.**
+The website does not need to duplicate the full workbook but must preserve the core audit trail: **what was modelled, why, with which major flows, where the footprint lands, and what changes the result.**
 
 ---
 
 ## 22. Non-negotiable principles
 
-1. **The approved PDF controls the numbers.**
-2. **The README controls the web editorial system.**
-3. **The website must remain technically auditable even when the storytelling is epic.**
-4. **Every assumption must remain recognisable as an assumption.**
-5. **Every new episode receives the three standard editorial graphics.**
-6. **Graphics must be browser-safe and self-contained.**
-7. **The newest episode is featured without removing the archive.**
-8. **No broken image or PDF link is acceptable at publication.**
-9. **A successful GitHub Pages build is necessary but not sufficient: the live page must be visually checked.**
-10. **Where others see fantasy, we see a functional unit.**
+1. **The approved PDF controls episode-specific facts, numbers, wording and cover artwork.**
+2. **If an approved cover exists, that exact cover is the website cover unless the user explicitly requests a replacement.**
+3. **A perceived opportunity to improve, harmonize or restyle a cover is not permission to replace it.**
+4. **The README controls the web editorial system.**
+5. **The website must remain technically auditable even when the storytelling is epic.**
+6. **Every assumption must remain recognisable as an assumption.**
+7. **Every new episode receives the three standard analytical graphics.**
+8. **Analytical graphics must be browser-safe and self-contained.**
+9. **The newest episode is featured without removing the archive.**
+10. **No broken image or PDF link is acceptable at publication.**
+11. **A successful GitHub Pages build is necessary but not sufficient: the live page and canonical cover must be visually checked.**
+12. **Where others see fantasy, we see a functional unit.**
