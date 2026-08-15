@@ -29,7 +29,7 @@
             legendary structures and fictional worlds — translating imagination into inventories, hotspots and carbon footprints.
           </p>
           <div class="cta-row">
-            <a class="button" href="#episodes">Explore the archive ↓</a>
+            <a class="button" href="#archive">Explore the archive ↓</a>
             <a class="button secondary" href="#book">Discover the book →</a>
           </div>
         </div>
@@ -43,71 +43,124 @@
       <div class="strip-item"><span>PURPOSE</span><strong>Make LCA visible and memorable</strong></div>
     </section>
 
-    <section id="episodes" class="section small-section-title">
+    <section id="episodes" class="section small-section-title latest-section">
       <div class="section-heading">
         <div>
-          <p class="eyebrow">ARCHIVE</p>
-          <h2>Published episodes</h2>
+          <p class="eyebrow">LATEST ANALYSIS</p>
+          <h2>The newest impossible case</h2>
         </div>
-        <p class="section-note">Each episode now includes the modelling logic, inventory snapshot and result interpretation.</p>
+        <p class="section-note">Start with the latest reconstruction, then move through the complete technical archive.</p>
       </div>
 
       <div class="featured-card">
-        <div>
+        <div class="featured-cover">
           <img src="assets/images/episodes/ep43-sisyphus.webp" alt="Sisyphus cover">
         </div>
         <div class="featured-copy">
-          <p class="eyebrow">LATEST CASE</p>
+          <p class="eyebrow">LATEST CASE · EPISODE #43</p>
           <h3>Sisyphus</h3>
           <p>
             A finite slice of an eternal punishment: one reusable 5.0 t limestone boulder,
             a 500 m slope, 1,000 ascent-return cycles and a material loop that closes while the energy loop does not.
           </p>
           <div class="badge-row">
-            <span class="badge">Episode #43</span>
             <span class="badge">1.418 t CO₂e</span>
             <span class="badge">Repetition hotspot</span>
+            <span class="badge">Mythology</span>
           </div>
-          <a class="button" href="episodes/sisyphus.html">Explore case →</a>
+          <a class="button" href="episodes/sisyphus.html">Explore the LCA →</a>
         </div>
       </div>
+    </section>
 
-      <div class="cards square-previews">
-        <a class="card" href="episodes/flying-dutchman.html">
-          <img src="assets/images/episodes/ep35-flying-dutchman.jpg" alt="The Flying Dutchman cover">
-          <div class="card-copy">
-            <p>MYTH & LEGENDS</p>
-            <h3>The Flying Dutchman</h3>
-            <span>Episode #35 · 528.2 t CO₂e · Full inventory inside</span>
-          </div>
-        </a>
+    <section id="archive" class="section archive-section small-section-title">
+      <div class="section-heading archive-heading">
+        <div>
+          <p class="eyebrow">EPISODE LIBRARY</p>
+          <h2>Explore the archive</h2>
+        </div>
+        <p class="section-note">Every published case, ordered from newest to oldest. Search by subject, episode number or theme.</p>
+      </div>
 
-        <a class="card" href="episodes/tower-of-babel.html">
-          <img src="assets/images/episodes/ep36-tower-of-babel.png" alt="The Tower of Babel cover">
-          <div class="card-copy">
-            <p>MYTH & LEGENDS</p>
-            <h3>The Tower of Babel</h3>
-            <span>Episode #36 · 22,491 t CO₂e · Full inventory inside</span>
-          </div>
-        </a>
+      <div class="archive-toolbar" aria-label="Episode archive controls">
+        <div class="filter-row" aria-label="Filter episodes by theme">
+          <button class="filter-button active" type="button" data-filter="all" aria-pressed="true">All</button>
+          <button class="filter-button" type="button" data-filter="mythology" aria-pressed="false">Mythology</button>
+          <button class="filter-button" type="button" data-filter="legends" aria-pressed="false">Legends</button>
+          <button class="filter-button" type="button" data-filter="structures" aria-pressed="false">Structures</button>
+        </div>
+        <label class="archive-search">
+          <span class="sr-only">Search episodes</span>
+          <input id="episode-search" type="search" placeholder="Search episodes…" autocomplete="off">
+        </label>
+      </div>
 
-        <a class="card" href="episodes/talos.html">
-          <img src="assets/images/episodes/ep42-talos.jpg" alt="Talos cover">
-          <div class="card-copy">
-            <p>MYTHS & LEGENDS</p>
-            <h3>Talos</h3>
-            <span>Episode #42 · 453.324 kt CO₂e · Patrol drives 99.62%</span>
-          </div>
-        </a>
+      <div class="archive-meta">
+        <span id="archive-count" aria-live="polite">4 episodes</span>
+        <span>Newest first</span>
+      </div>
 
-        <a class="card" href="episodes/sisyphus.html">
-          <img src="assets/images/episodes/ep43-sisyphus.webp" alt="Sisyphus cover">
+      <div class="cards square-previews episode-grid" id="episode-grid">
+        <a class="card archive-card" href="episodes/sisyphus.html" data-category="mythology" data-search="sisyphus episode 43 mythology boulder repetition limestone eternal punishment">
+          <img src="assets/images/episodes/ep43-sisyphus.webp" alt="Sisyphus cover" loading="lazy" decoding="async">
           <div class="card-copy">
-            <p>MYTHS & LEGENDS</p>
+            <p>MYTHOLOGY</p>
             <h3>Sisyphus</h3>
-            <span>Episode #43 · 1.418 t CO₂e · Repetition drives 97.25%</span>
+            <div class="card-meta">
+              <span>Episode #43</span>
+              <span>1.418 t CO₂e</span>
+            </div>
+            <span class="card-note">Repetition drives 97.25% of the footprint.</span>
+            <strong class="card-cue">Explore the LCA →</strong>
           </div>
         </a>
+
+        <a class="card archive-card" href="episodes/talos.html" data-category="mythology" data-search="talos episode 42 mythology bronze automaton crete patrol drives">
+          <img src="assets/images/episodes/ep42-talos.jpg" alt="Talos cover" loading="lazy" decoding="async">
+          <div class="card-copy">
+            <p>MYTHOLOGY</p>
+            <h3>Talos</h3>
+            <div class="card-meta">
+              <span>Episode #42</span>
+              <span>453.324 kt CO₂e</span>
+            </div>
+            <span class="card-note">Patrol drives 99.62% of the footprint.</span>
+            <strong class="card-cue">Explore the LCA →</strong>
+          </div>
+        </a>
+
+        <a class="card archive-card" href="episodes/tower-of-babel.html" data-category="mythology structures" data-search="tower of babel episode 36 mythology structures brick tower construction monument">
+          <img src="assets/images/episodes/ep36-tower-of-babel.png" alt="The Tower of Babel cover" loading="lazy" decoding="async">
+          <div class="card-copy">
+            <p>MYTHIC STRUCTURE</p>
+            <h3>The Tower of Babel</h3>
+            <div class="card-meta">
+              <span>Episode #36</span>
+              <span>22,491 t CO₂e</span>
+            </div>
+            <span class="card-note">Full reconstruction and inventory inside.</span>
+            <strong class="card-cue">Explore the LCA →</strong>
+          </div>
+        </a>
+
+        <a class="card archive-card" href="episodes/flying-dutchman.html" data-category="legends" data-search="flying dutchman episode 35 legend ship sailing vessel timber maritime">
+          <img src="assets/images/episodes/ep35-flying-dutchman.jpg" alt="The Flying Dutchman cover" loading="lazy" decoding="async">
+          <div class="card-copy">
+            <p>LEGENDS</p>
+            <h3>The Flying Dutchman</h3>
+            <div class="card-meta">
+              <span>Episode #35</span>
+              <span>528.2 t CO₂e</span>
+            </div>
+            <span class="card-note">Full reconstruction and inventory inside.</span>
+            <strong class="card-cue">Explore the LCA →</strong>
+          </div>
+        </a>
+      </div>
+
+      <p class="archive-empty" id="archive-empty" hidden>No episodes match this search.</p>
+      <div class="load-more-row">
+        <button class="button load-more" id="load-more" type="button" hidden>Load more episodes ↓</button>
       </div>
     </section>
 
@@ -190,5 +243,61 @@
     <span>© LCA of the Impossible</span>
     <span>Independent analysis, commentary and reconstruction</span>
   </footer>
+
+  <script>
+    (() => {
+      const cards = [...document.querySelectorAll('.archive-card')];
+      const filters = [...document.querySelectorAll('.filter-button')];
+      const search = document.getElementById('episode-search');
+      const count = document.getElementById('archive-count');
+      const empty = document.getElementById('archive-empty');
+      const loadMore = document.getElementById('load-more');
+      const batchSize = 9;
+      let activeFilter = 'all';
+      let visibleLimit = batchSize;
+
+      const applyArchive = () => {
+        const query = search.value.trim().toLowerCase();
+        const matches = cards.filter((card) => {
+          const categories = card.dataset.category.split(' ');
+          const categoryMatch = activeFilter === 'all' || categories.includes(activeFilter);
+          const textMatch = !query || card.dataset.search.toLowerCase().includes(query) || card.textContent.toLowerCase().includes(query);
+          return categoryMatch && textMatch;
+        });
+
+        cards.forEach((card) => { card.hidden = true; });
+        matches.slice(0, visibleLimit).forEach((card) => { card.hidden = false; });
+
+        count.textContent = `${matches.length} ${matches.length === 1 ? 'episode' : 'episodes'}`;
+        empty.hidden = matches.length !== 0;
+        loadMore.hidden = matches.length <= visibleLimit;
+      };
+
+      filters.forEach((button) => {
+        button.addEventListener('click', () => {
+          activeFilter = button.dataset.filter;
+          visibleLimit = batchSize;
+          filters.forEach((item) => {
+            const selected = item === button;
+            item.classList.toggle('active', selected);
+            item.setAttribute('aria-pressed', selected ? 'true' : 'false');
+          });
+          applyArchive();
+        });
+      });
+
+      search.addEventListener('input', () => {
+        visibleLimit = batchSize;
+        applyArchive();
+      });
+
+      loadMore.addEventListener('click', () => {
+        visibleLimit += batchSize;
+        applyArchive();
+      });
+
+      applyArchive();
+    })();
+  </script>
 </body>
 </html>
