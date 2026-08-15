@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Sisyphus inventory map</title>
+<desc id="desc">Diagram showing the inventory structure of the Sisyphus episode.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#9cc7b7" stroke-opacity="0.28"/>
+<text x="40" y="58" fill="#d7efe8" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">INVENTORY MAP · EPISODE #43</text>
+<text x="40" y="92" fill="#27d39b" font-size="36" font-weight="700" font-family="Arial, Helvetica, sans-serif">SISYPHUS</text>
+<text x="40" y="118" fill="#9cc7b7" font-size="15" font-family="Arial, Helvetica, sans-serif">Finite reporting slice for an infinite punishment loop</text>
+<rect x="40" y="150" width="144" height="86" rx="14" fill="#0b2136" stroke="#27d39b" stroke-opacity="0.45"/>
+<text x="56" y="176" fill="#27d39b" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">01 · CONSTRUCTION</text>
+<text x="56" y="202" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Reusable limestone</text>
+<text x="56" y="222" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">boulder · 5.0 t</text>
+<rect x="206" y="150" width="144" height="86" rx="14" fill="#0b2136" stroke="#27d39b" stroke-opacity="0.45"/>
+<text x="222" y="176" fill="#27d39b" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">02 · ASCENT</text>
+<text x="222" y="202" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">500 m route</text>
+<text x="222" y="222" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">100 m vertical rise</text>
+<rect x="372" y="150" width="144" height="86" rx="14" fill="#0b2136" stroke="#27d39b" stroke-opacity="0.45"/>
+<text x="388" y="176" fill="#27d39b" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">03 · ENERGY</text>
+<text x="388" y="202" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">7,480 kWh input</text>
+<text x="388" y="222" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">equivalent @ 20%</text>
+<rect x="538" y="150" width="142" height="86" rx="14" fill="#0b2136" stroke="#27d39b" stroke-opacity="0.45"/>
+<text x="554" y="176" fill="#27d39b" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">04 · RETURN</text>
+<text x="554" y="202" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Uncontrolled descent</text>
+<text x="554" y="222" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">no energy recovery</text>
+<line x1="184" y1="193" x2="206" y2="193" stroke="#27d39b" stroke-width="2"/>
+<line x1="350" y1="193" x2="372" y2="193" stroke="#27d39b" stroke-width="2"/>
+<line x1="516" y1="193" x2="538" y2="193" stroke="#27d39b" stroke-width="2"/>
+<rect x="40" y="270" width="640" height="98" rx="14" fill="#081b2b" stroke="#9cc7b7" stroke-opacity="0.2"/>
+<text x="58" y="298" fill="#f2d48f" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">REPORTING SLICE</text>
+<text x="58" y="324" fill="#e6f7f2" font-size="17" font-family="Arial, Helvetica, sans-serif">1,000 complete ascent-return cycles · one reusable object · fixed geometry</text>
+<text x="58" y="348" fill="#9cc7b7" font-size="14" font-family="Arial, Helvetica, sans-serif">The stone loops back materially, but each ascent still demands fresh input energy.</text>
+</svg>
