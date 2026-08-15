@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Sisyphus hotspot breakdown</title>
+<desc id="desc">Bar chart showing contribution of input energy and boulder construction to total climate impact.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#9cc7b7" stroke-opacity="0.28"/>
+<text x="40" y="58" fill="#d7efe8" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">HOTSPOT BREAKDOWN · 1,000 CYCLES</text>
+<text x="40" y="92" fill="#27d39b" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">1.418 t CO₂e total</text>
+<text x="40" y="118" fill="#9cc7b7" font-size="15" font-family="Arial, Helvetica, sans-serif">The boulder is reused. The repetition is not.</text>
+<text x="40" y="184" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Input-energy equivalent</text>
+<rect x="240" y="166" width="420" height="28" rx="12" fill="#0d3140"/>
+<rect x="240" y="166" width="409" height="28" rx="12" fill="#27d39b"/>
+<text x="250" y="185" fill="#071423" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">1,379.0 kg CO₂e · 97.25%</text>
+<text x="40" y="242" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Boulder construction</text>
+<rect x="240" y="224" width="420" height="28" rx="12" fill="#0d3140"/>
+<rect x="240" y="224" width="12" height="28" rx="12" fill="#f2d48f"/>
+<text x="262" y="243" fill="#f2d48f" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">39.0 kg CO₂e · 2.75%</text>
+<rect x="40" y="292" width="620" height="72" rx="14" fill="#081b2b" stroke="#9cc7b7" stroke-opacity="0.2"/>
+<text x="58" y="320" fill="#f2d48f" font-size="14" font-weight="700" font-family="Arial, Helvetica, sans-serif">DESIGN LEVER</text>
+<text x="58" y="346" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">Capturing downhill potential energy cuts the total to 0.790 t at 50%, 0.539 t at 70%,</text>
+<text x="58" y="366" fill="#e6f7f2" font-size="15" font-family="Arial, Helvetica, sans-serif">and 0.162 t at 100% recovery.</text>
+</svg>
