@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Episode Archive — LCA of the Impossible</title>
+  <meta name="description" content="Complete archive of LCA of the Impossible episodes, searchable by subject and life cycle hotspot.">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body data-page="archive">
+  <header class="site-header">
+    <a class="brand" href="index.html">LCA OF THE IMPOSSIBLE</a>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="#archive">Archive</a>
+      <a href="index.html#method">Method</a>
+      <a href="index.html#book">Book</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="section archive-hero" style="border-top:none;">
+      <p class="eyebrow">COMPLETE CATALOGUE</p>
+      <h1>Episode Archive</h1>
+      <p class="intro">Browse every published case by narrative world or by the life-cycle mechanism that controls its footprint.</p>
+    </section>
+
+    <section id="archive" class="section archive-section small-section-title">
+      <div class="section-heading archive-heading">
+        <div>
+          <p class="eyebrow">EPISODE LIBRARY</p>
+          <h2>Find the impossible by subject or LCA lens</h2>
+        </div>
+        <p class="section-note">The catalogue is generated from the central episode registry and is always ordered from newest to oldest.</p>
+      </div>
+
+      <div class="archive-toolbar archive-toolbar-stacked" aria-label="Episode archive controls">
+        <div class="filter-group">
+          <span class="filter-label">Subject</span>
+          <div id="category-filters" class="filter-row" aria-label="Filter episodes by subject category"></div>
+        </div>
+        <div class="filter-group">
+          <span class="filter-label">LCA lens</span>
+          <div id="lca-filters" class="filter-row" aria-label="Filter episodes by LCA characteristic"></div>
+        </div>
+        <label class="archive-search archive-search-wide">
+          <span class="sr-only">Search episodes</span>
+          <input id="episode-search" type="search" placeholder="Search title, episode, material, hotspot…" autocomplete="off">
+        </label>
+      </div>
+
+      <div class="archive-meta">
+        <span id="archive-count" aria-live="polite" data-registry-status>Loading episodes…</span>
+        <span>Newest first</span>
+      </div>
+
+      <div class="cards square-previews episode-grid" id="episode-grid"></div>
+      <p class="archive-empty" id="archive-empty" hidden>No episodes match the selected filters.</p>
+      <div class="load-more-row">
+        <button class="button load-more" id="load-more" type="button" hidden>Load more episodes ↓</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>© LCA of the Impossible</span>
+    <a href="index.html">Back to home ↑</a>
+  </footer>
+
+  <script src="assets/site.js"></script>
+</body>
+</html>
