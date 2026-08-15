@@ -56,6 +56,8 @@ nav a:hover{color:var(--accent)}
 .button:hover{background:var(--accent);color:#061019}
 .button.secondary{border-color:var(--line);color:var(--text)}
 .button.secondary:hover{border-color:var(--accent)}
+.text-link{color:var(--accent);font-weight:760;font-size:.88rem;letter-spacing:.03em}
+.text-link:hover{color:var(--accent2)}
 .hero-art{justify-self:end;max-width:560px;position:relative}
 .hero-art img,.cover-frame img{border:1px solid rgba(109,231,255,.14);box-shadow:0 26px 70px rgba(0,0,0,.35)}
 .hero-art:after,.cover-frame:after{content:"";position:absolute;inset:20px -18px -18px 20px;border:1px solid rgba(208,165,99,.26);pointer-events:none}
@@ -195,22 +197,29 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
   .visual-panel figcaption{font-size:.7rem;letter-spacing:.06em}
 }
 
-/* Homepage episode library */
+/* Registry-driven episode library */
 [hidden]{display:none!important}
 .sr-only{
   position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
   clip:rect(0,0,0,0);white-space:nowrap;border:0
 }
 .latest-section{padding-bottom:74px}
+.recent-section{padding-top:74px}
 .archive-section{padding-top:74px}
 .featured-cover{display:flex;align-items:center;justify-content:center;min-width:0;background:rgba(0,0,0,.12)}
 .featured-cover img{width:100%;height:100%;max-height:520px;object-fit:contain}
 .featured-copy{align-self:center;padding:12px 4px}
 .archive-heading{margin-bottom:26px}
+.archive-hero{padding-top:110px;padding-bottom:72px}
+.archive-hero h1{font-size:clamp(3.2rem,8vw,6.8rem);line-height:.95;letter-spacing:-.065em;margin:16px 0 22px}
+.archive-hero .intro{max-width:780px}
 .archive-toolbar{
   display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
   padding:16px;border:1px solid var(--line);background:rgba(255,255,255,.018);margin-bottom:14px
 }
+.archive-toolbar-stacked{display:grid;grid-template-columns:1fr;align-items:stretch;padding:20px;gap:18px}
+.filter-group{display:grid;grid-template-columns:100px 1fr;gap:14px;align-items:start}
+.filter-label{padding-top:10px;color:var(--accent2);font-size:.7rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase}
 .filter-row{display:flex;gap:8px;flex-wrap:wrap}
 .filter-button{
   appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
@@ -220,9 +229,10 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .filter-button:hover,.filter-button.active{border-color:var(--accent);color:var(--accent);background:rgba(109,231,255,.06)}
 .filter-button:focus-visible,.archive-search input:focus-visible,.load-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .archive-search{display:block;min-width:min(100%,280px)}
+.archive-search-wide{width:100%;min-width:100%}
 .archive-search input{
   width:100%;border:1px solid var(--line);background:#08131d;color:var(--text);font:inherit;
-  padding:11px 13px;border-radius:0;outline:none
+  padding:12px 13px;border-radius:0;outline:none
 }
 .archive-search input::placeholder{color:#708895}
 .archive-search input:focus{border-color:var(--accent)}
@@ -233,7 +243,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .cards.episode-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
 .archive-card{display:flex;flex-direction:column;min-width:0}
 .archive-card .card-copy{display:flex;flex:1;flex-direction:column;padding:18px}
-.archive-card .card-copy p{margin-bottom:9px}
+.archive-card .card-copy p{margin-bottom:9px;line-height:1.45}
 .archive-card .card-copy h3{font-size:1.28rem;line-height:1.1;margin-bottom:13px}
 .card-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:13px}
 .card-meta span{color:var(--accent2);font-size:.76rem;font-weight:720}
@@ -242,12 +252,47 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .archive-empty{border:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);margin:20px 0 0}
 .load-more-row{display:flex;justify-content:center;margin-top:28px}
 .load-more{min-width:220px}
+.compact-card .card-copy{padding:16px}
+
+/* Episode navigation and related cases */
+.episode-jumpnav{
+  position:sticky;top:57px;z-index:35;border-bottom:1px solid var(--line-soft);
+  background:rgba(8,19,29,.94);backdrop-filter:blur(12px);overflow-x:auto
+}
+.episode-jumpnav-inner{display:flex;gap:6px;padding:9px 6vw;min-width:max-content}
+.episode-jumpnav a{padding:8px 10px;color:var(--muted);font-size:.76rem;font-weight:760;letter-spacing:.05em;border:1px solid transparent}
+.episode-jumpnav a:hover{color:var(--accent);border-color:var(--line)}
+.episode-jumpnav + main [id],body[data-episode] main [id]{scroll-margin-top:125px}
+.related-section{padding-top:72px;padding-bottom:72px}
+.related-grid{max-width:1200px}
+.episode-pager{
+  display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);align-items:stretch;
+  gap:14px;padding:28px 6vw 72px;border-top:1px solid var(--line)
+}
+.pager-link,.pager-archive{border:1px solid var(--line);background:rgba(255,255,255,.018);padding:18px;min-width:0}
+.pager-link{display:flex;flex-direction:column;gap:6px}
+.pager-link span{color:var(--muted);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase}
+.pager-link strong{font-size:.92rem;line-height:1.35}
+.pager-link:hover,.pager-archive:hover{border-color:var(--accent);color:var(--accent)}
+.pager-next{text-align:right;align-items:flex-end}
+.pager-archive{display:flex;align-items:center;justify-content:center;color:var(--accent);font-size:.78rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase}
+.pager-placeholder{visibility:hidden}
+
 @media(max-width:1100px){
   .cards.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:760px){
+  .episode-jumpnav{top:61px}
+  .episode-jumpnav-inner{padding-left:5vw;padding-right:5vw}
+  .episode-pager{grid-template-columns:1fr;padding-left:5vw;padding-right:5vw}
+  .pager-next{text-align:left;align-items:flex-start}
+  .pager-placeholder{display:none}
 }
 @media(max-width:700px){
   .archive-toolbar{align-items:stretch}
   .archive-search{width:100%;min-width:100%}
   .archive-meta{align-items:flex-start;flex-direction:column;gap:6px}
   .cards.episode-grid{grid-template-columns:1fr}
+  .filter-group{grid-template-columns:1fr;gap:6px}
+  .filter-label{padding-top:0}
 }
