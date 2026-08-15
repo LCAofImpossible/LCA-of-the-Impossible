@@ -167,3 +167,30 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 @media(max-width:1000px){
   .model-notes{grid-template-columns:1fr}
 }
+
+/* Editorial episode graphics */
+.episode-visual-section,.hotspot-visual-section{overflow:hidden}
+.visual-heading h2{font-size:clamp(1.8rem,3.8vw,3.2rem)}
+.visual-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.visual-panel{
+  margin:0;
+  border:1px solid var(--line);
+  background:linear-gradient(145deg,rgba(13,27,39,.9),rgba(7,16,25,.95));
+  padding:12px;
+  overflow:hidden;
+  box-shadow:0 22px 60px rgba(0,0,0,.18);
+}
+.visual-panel img{width:100%;height:auto;display:block;border:1px solid rgba(208,165,99,.18)}
+.visual-panel figcaption{
+  padding:12px 4px 2px;
+  color:var(--muted);
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.visual-panel-feature{max-width:1180px;margin:0 auto}
+@media(max-width:1000px){.visual-grid{grid-template-columns:1fr}}
+@media(max-width:760px){
+  .visual-panel{padding:7px}
+  .visual-panel figcaption{font-size:.7rem;letter-spacing:.06em}
+}
