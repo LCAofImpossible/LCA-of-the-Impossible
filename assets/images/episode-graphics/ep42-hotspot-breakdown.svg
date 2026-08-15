@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Talos hotspot breakdown</title>
+<desc id="desc">Contribution graphic showing patrol as 99.62 percent of the Talos total climate change result.</desc>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="40" y="58" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">HOTSPOT BREAKDOWN · 30-YEAR FUNCTIONAL UNIT</text>
+<text x="40" y="94" fill="#d0a563" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">453.324 kt CO₂e total</text>
+<text x="40" y="120" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">The statue is not the system. The route is.</text>
+<text x="40" y="170" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">PATROL · 451.593 kt CO₂e</text>
+<rect x="40" y="184" width="640" height="46" rx="16" fill="#0d3140"/>
+<rect x="40" y="184" width="637.6" height="46" rx="16" fill="#6de7ff"/>
+<text x="56" y="214" fill="#071423" font-size="19" font-weight="700" font-family="Arial, Helvetica, sans-serif">99.62%</text>
+<rect x="40" y="260" width="300" height="92" rx="14" fill="#0d1b27" stroke="#c4f7ff" stroke-opacity="0.28"/>
+<text x="58" y="286" fill="#c4f7ff" font-size="13" font-weight="700" font-family="Arial, Helvetica, sans-serif">DEFENCE</text>
+<text x="58" y="316" fill="#eef7fb" font-size="24" font-weight="700" font-family="Arial, Helvetica, sans-serif">1.299 kt</text>
+<text x="58" y="338" fill="#9ab0bc" font-size="14" font-family="Arial, Helvetica, sans-serif">0.286% of total</text>
+<rect x="380" y="260" width="300" height="92" rx="14" fill="#0d1b27" stroke="#d0a563" stroke-opacity="0.42"/>
+<text x="398" y="286" fill="#d0a563" font-size="13" font-weight="700" font-family="Arial, Helvetica, sans-serif">MANUFACTURING</text>
+<text x="398" y="316" fill="#eef7fb" font-size="24" font-weight="700" font-family="Arial, Helvetica, sans-serif">0.433 kt</text>
+<text x="398" y="338" fill="#9ab0bc" font-size="14" font-family="Arial, Helvetica, sans-serif">0.095% of total</text>
+<text x="40" y="382" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">Minor modules are shown numerically; the patrol bar alone is proportional to the full 100% result.</text>
+</svg>
