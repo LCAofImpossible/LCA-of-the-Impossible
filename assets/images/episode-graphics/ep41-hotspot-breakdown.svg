@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1080" height="440" viewBox="0 0 1080 440" role="img" aria-labelledby="title desc">
+<title id="title">Mjölnir hotspot breakdown</title>
+<desc id="desc">Contribution analysis showing lightning-equivalent discharge at 99.43 percent, manufacturing at 0.55 percent and powered flight at 0.019 percent.</desc>
+<rect width="1080" height="440" rx="24" fill="#071423"/>
+<rect x="24" y="24" width="1032" height="392" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="52" y="70" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">HOTSPOT BREAKDOWN · EPISODE #41</text>
+<text x="52" y="112" fill="#d0a563" font-size="38" font-weight="700" font-family="Arial, Helvetica, sans-serif">THUNDER SETS THE ORDER OF MAGNITUDE</text>
+<text x="52" y="139" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">Main result · 51.50 t CO₂e · 1,000 cycles · 1 GJ discharge per cycle</text>
+<text x="52" y="190" fill="#eef7fb" font-size="15" font-weight="700" font-family="Arial, Helvetica, sans-serif">LIGHTNING-EQUIVALENT DISCHARGE</text>
+<rect x="52" y="205" width="910" height="28" rx="14" fill="#102535"/><rect x="52" y="205" width="905" height="28" rx="14" fill="#6de7ff"/><text x="982" y="225" fill="#c4f7ff" font-size="15" text-anchor="end" font-family="Arial, Helvetica, sans-serif">51,211 kg · 99.43%</text>
+<text x="52" y="272" fill="#eef7fb" font-size="15" font-weight="700" font-family="Arial, Helvetica, sans-serif">MANUFACTURING</text>
+<rect x="52" y="287" width="910" height="20" rx="10" fill="#102535"/><rect x="52" y="287" width="6" height="20" rx="10" fill="#d0a563"/><text x="982" y="303" fill="#d0a563" font-size="14" text-anchor="end" font-family="Arial, Helvetica, sans-serif">282 kg · 0.55%</text>
+<text x="52" y="342" fill="#eef7fb" font-size="15" font-weight="700" font-family="Arial, Helvetica, sans-serif">POWERED FLIGHT</text>
+<rect x="52" y="357" width="910" height="14" rx="7" fill="#102535"/><rect x="52" y="357" width="2" height="14" rx="7" fill="#c4f7ff"/><text x="982" y="369" fill="#9ab0bc" font-size="14" text-anchor="end" font-family="Arial, Helvetica, sans-serif">9.97 kg · 0.019%</text>
+<text x="52" y="401" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">Visual minimum widths keep minor modules visible; labels retain the true percentages.</text>
+</svg>
