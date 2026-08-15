@@ -25,9 +25,9 @@ Do not silently replace, reconcile or “improve” approved episode content. If
 
 ## 2. Canonical repository structure
 
-- `index.html` — homepage and episode archive
+- `index.html` — homepage, Latest Case and searchable/filterable episode archive
 - `episodes/` — individual episode pages and reusable episode template
-- `assets/style.css` — global visual system
+- `assets/style.css` — global visual system, including archive-grid and filter/search styling
 - `assets/images/episodes/` — canonical episode covers
 - `assets/images/episode-graphics/` — inventory, technical and hotspot graphics
 - `assets/images/book/` — book artwork
@@ -269,13 +269,78 @@ If a cover mismatch is reported, correct the asset first, then update references
 
 ---
 
-## 13. Homepage rules
+## 13. Homepage and episode-library rules
 
-The newest episode becomes `LATEST CASE` unless explicitly decided otherwise. The feature includes cover, title, short reconstruction description, episode number, headline result, hotspot badge and episode link.
+The homepage is a scalable editorial archive, not a chronological stack of full-width episode blocks. Its canonical sequence is:
 
-Every published episode must also remain in the archive grid. Each card contains a square crop of the canonical cover, series label, title, episode number, headline result and concise hotspot/inventory cue. Do not remove older episodes. The homepage hero remains image-free unless explicitly redesigned.
+1. main image-free project hero;
+2. compact project-format strip;
+3. **Latest Analysis / Latest Case** feature;
+4. **Episode Library** archive grid;
+5. Method, process, Series and Book sections.
 
-Square card cropping may use CSS `object-fit`, but must not alter the canonical cover asset itself.
+### 13.1 Latest Case
+
+The newest published episode becomes `LATEST CASE` unless explicitly decided otherwise. The feature includes the canonical cover, title, concise reconstruction description, episode number, headline result, hotspot/theme badges and direct episode link.
+
+The Latest Case is a feature, not a substitute for the archive card: **the newest episode must also remain in the Episode Library**.
+
+### 13.2 Episode Library grid
+
+Every published website episode must appear in the archive, ordered **newest to oldest**.
+
+The standard responsive grid is:
+
+- **3 cards per row on desktop**;
+- **2 cards per row on tablet / medium viewport**;
+- **1 card per row on mobile**.
+
+Each card contains:
+
+- square CSS crop of the canonical cover;
+- one concise primary category label;
+- episode title;
+- episode number;
+- headline result;
+- one short hotspot / inventory cue;
+- `Explore the LCA →` interaction cue.
+
+Square card cropping may use CSS `object-fit`, but must not alter the canonical cover asset itself. The Latest Case cover should be displayed without destructive cropping.
+
+### 13.3 Search and filters
+
+The Episode Library includes a lightweight client-side search and thematic filters. Search must work against at least title, episode number, category and meaningful subject keywords.
+
+Archive cards therefore use:
+
+- `data-category="..."` for one or more normalized category tokens;
+- `data-search="..."` for meaningful search terms not necessarily visible in the card.
+
+Current taxonomy may include categories such as `mythology`, `legends`, `structures`, `science-fiction`, `fantasy` or other clearly justified themes. A subject may belong to more than one filter category. **Only expose filter buttons that are useful for the currently published archive; do not create empty categories merely for future use.**
+
+The selected filter must remain visually obvious and must expose `aria-pressed` state. A zero-result search must produce a readable empty-state message rather than an apparently broken blank grid.
+
+### 13.4 Archive pagination / Load More
+
+The archive initially exposes up to **9 matching episodes**. When more than 9 cards match the active filter/search, show `Load more episodes ↓` and reveal the next batch of 9 on activation.
+
+When 9 or fewer results exist, the Load More control remains hidden. Filtering or changing the search resets the visible batch to the first 9 matching episodes.
+
+This is a display rule only: every published card remains present in the HTML so search, accessibility and future maintenance do not depend on remote pagination.
+
+### 13.5 Adding a future episode to the homepage
+
+For every new episode:
+
+1. update the Latest Case feature if it is the newest release;
+2. add the new archive card at the beginning of the grid;
+3. assign appropriate `data-category` token(s);
+4. add useful `data-search` terms;
+5. preserve all older cards;
+6. add a new filter button only if the category is materially useful and represented in the archive;
+7. verify filtering, search, archive count and Load More behaviour after insertion.
+
+The homepage archive interaction currently lives directly in `index.html`; do not introduce a framework or build dependency unless explicitly required. The page must remain a simple static GitHub Pages site.
 
 ---
 
@@ -298,9 +363,14 @@ Avoid root-relative `/...` paths because this is a GitHub Pages project site.
 ## 16. Responsive and accessibility rules
 
 - Inventory tables scroll horizontally on mobile.
-- Visual grids and episode cards collapse to one column.
+- Visual grids and episode-page cards collapse to one column where appropriate.
+- Homepage Episode Library uses the canonical 3-column desktop / 2-column tablet / 1-column mobile layout.
+- Archive filter controls wrap cleanly on narrow screens; search becomes full width on mobile.
+- Selected archive filters expose `aria-pressed` state.
+- Archive search has an accessible label even when the visible interface relies on placeholder text.
 - Images use meaningful `alt` text.
 - Editorial graphics use `loading="lazy"` and `decoding="async"` where appropriate.
+- Archive-card cover images should use lazy loading where practical; the featured Latest Case may load normally.
 - Headings must remain legible without horizontal scrolling.
 - Essential information must not exist only inside images.
 - No image may exceed its container.
@@ -349,10 +419,17 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 - [ ] Analytical SVGs are self-contained vector files.
 - [ ] Graphics use correct episode values.
 
-### Links and paths
+### Links and homepage archive
 
-- [ ] Homepage card opens the correct episode.
+- [ ] Homepage archive card opens the correct episode.
 - [ ] Featured Latest Case opens the correct episode.
+- [ ] Newest episode appears both as Latest Case and as the first archive card.
+- [ ] Archive cards remain ordered newest to oldest.
+- [ ] `data-category` and `data-search` metadata are present and meaningful.
+- [ ] All visible thematic filters return the intended episodes.
+- [ ] Search works by title and episode number and returns a readable zero-result state.
+- [ ] Archive result count updates correctly.
+- [ ] Load More appears only when more than 9 matching episodes exist and reveals the next batch correctly.
 - [ ] Cover paths work from homepage and episode page.
 - [ ] PDF link works if present.
 - [ ] Back-to-archive link works.
@@ -360,6 +437,8 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 ### Responsive behaviour
 
 - [ ] Page is readable on mobile.
+- [ ] Episode Library is 3 columns on desktop, 2 on medium viewports and 1 on mobile.
+- [ ] Filter controls wrap correctly and archive search becomes usable at narrow width.
 - [ ] Visual grid collapses correctly.
 - [ ] Inventory table scrolls horizontally.
 - [ ] No image exceeds its container.
@@ -368,6 +447,7 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 
 - [ ] Changes are committed to `main`.
 - [ ] GitHub Pages build reports `built` / workflow success.
+- [ ] Live homepage archive is inspected after deployment.
 - [ ] Live episode is inspected after deployment.
 - [ ] Canonical cover and all three editorial graphics are confirmed visible live.
 
@@ -392,12 +472,14 @@ For each new episode:
 11. Add sensitivities and verdict.
 12. Upload the episode PDF when download is intended.
 13. Update `LATEST CASE` where applicable.
-14. Add the episode to archive cards without removing older episodes.
-15. Commit the release in a controlled set of changes.
-16. Verify paths and remove all staging/temporary assets.
-17. Wait for GitHub Pages deployment.
-18. Inspect the live episode, cover and all three analytical graphics.
-19. Only then consider publication complete.
+14. Add the new episode as the first archive card without removing older episodes.
+15. Add/verify `data-category` and `data-search` metadata and expose a new filter only when useful.
+16. Verify archive ordering, filter/search behaviour, result count and Load More logic.
+17. Commit the release in a controlled set of changes.
+18. Verify paths and remove all staging/temporary assets.
+19. Wait for GitHub Pages deployment.
+20. Inspect the live homepage archive, episode, cover and all three analytical graphics.
+21. Only then consider publication complete.
 
 ---
 
@@ -433,7 +515,9 @@ The website does not need to duplicate the full workbook but must preserve the c
 6. **Every assumption must remain recognisable as an assumption.**
 7. **Every new episode receives the three standard analytical graphics.**
 8. **Analytical graphics must be browser-safe and self-contained.**
-9. **The newest episode is featured without removing the archive.**
-10. **No broken image or PDF link is acceptable at publication.**
-11. **A successful GitHub Pages build is necessary but not sufficient: the live page and canonical cover must be visually checked.**
-12. **Where others see fantasy, we see a functional unit.**
+9. **The newest episode is featured and also retained as the first card of the complete archive.**
+10. **The homepage archive must remain scalable: newest-first grid, working search/filter metadata and Load More behaviour when required.**
+11. **Older published episodes are never removed merely to reduce homepage length.**
+12. **No broken image or PDF link is acceptable at publication.**
+13. **A successful GitHub Pages build is necessary but not sufficient: the live homepage, episode and canonical cover must be visually checked.**
+14. **Where others see fantasy, we see a functional unit.**
