@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="720" height="420" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+<title id="title">Mjölnir technical reconstruction plate</title>
+<desc id="desc">Technical plate showing the reconstructed iron hammer head, short handle, total mass and ballistic assumptions.</desc>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M 0 0 L 10 5 L 0 10 z" fill="#6de7ff"/></marker></defs>
+<rect width="720" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="680" height="380" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="40" y="58" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">TECHNICAL PLATE · EPISODE #41</text>
+<text x="40" y="92" fill="#d0a563" font-size="34" font-weight="700" font-family="Arial, Helvetica, sans-serif">46.72 kg MACHINE</text>
+<text x="40" y="117" fill="#9ab0bc" font-size="14" font-family="Arial, Helvetica, sans-serif">Rectangular-equivalent head · side elevation · not to scale</text>
+<rect x="235" y="175" width="250" height="38" rx="14" fill="#183040" stroke="#6de7ff" stroke-opacity="0.55"/>
+<rect x="430" y="138" width="145" height="112" rx="10" fill="#253846" stroke="#d0a563" stroke-width="2"/>
+<line x1="452" y1="152" x2="452" y2="236" stroke="#c4f7ff" stroke-opacity="0.28"/><line x1="476" y1="152" x2="476" y2="236" stroke="#c4f7ff" stroke-opacity="0.18"/><line x1="500" y1="152" x2="500" y2="236" stroke="#c4f7ff" stroke-opacity="0.18"/><line x1="524" y1="152" x2="524" y2="236" stroke="#c4f7ff" stroke-opacity="0.18"/>
+<line x1="235" y1="274" x2="430" y2="274" stroke="#6de7ff" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text x="305" y="297" fill="#6de7ff" font-size="14" font-family="Arial, Helvetica, sans-serif">0.42 m short haft</text>
+<line x1="430" y1="118" x2="575" y2="118" stroke="#6de7ff" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text x="478" y="106" fill="#6de7ff" font-size="14" font-family="Arial, Helvetica, sans-serif">0.26 m</text>
+<line x1="604" y1="138" x2="604" y2="250" stroke="#6de7ff" stroke-width="1.5" marker-start="url(#arrow)" marker-end="url(#arrow)"/><text x="616" y="198" fill="#6de7ff" font-size="14" font-family="Arial, Helvetica, sans-serif">0.14 m</text>
+<rect x="40" y="150" width="160" height="78" rx="12" fill="#0d1b27" stroke="#234557"/><text x="55" y="177" fill="#d0a563" font-size="13" font-weight="700" font-family="Arial, Helvetica, sans-serif">FINISHED HEAD</text><text x="55" y="201" fill="#eef7fb" font-size="20" font-weight="700" font-family="Arial, Helvetica, sans-serif">45.72 kg</text><text x="55" y="218" fill="#9ab0bc" font-size="12" font-family="Arial, Helvetica, sans-serif">0.005824 m³ iron</text>
+<rect x="40" y="244" width="160" height="78" rx="12" fill="#0d1b27" stroke="#234557"/><text x="55" y="271" fill="#d0a563" font-size="13" font-weight="700" font-family="Arial, Helvetica, sans-serif">HANDLE + GRIP</text><text x="55" y="295" fill="#eef7fb" font-size="20" font-weight="700" font-family="Arial, Helvetica, sans-serif">1.00 kg</text><text x="55" y="312" fill="#9ab0bc" font-size="12" font-family="Arial, Helvetica, sans-serif">initial configuration</text>
+<rect x="224" y="326" width="456" height="52" rx="12" fill="#081b2b" stroke="#d0a563" stroke-opacity="0.28"/><text x="242" y="349" fill="#eef7fb" font-size="14" font-family="Arial, Helvetica, sans-serif">80% forging yield → 57.15 kg metal input · 250 kWh forge electricity</text><text x="242" y="368" fill="#9ab0bc" font-size="13" font-family="Arial, Helvetica, sans-serif">Ballistic case: 50 m/s · two powered legs · η = 60% · drag/guidance excluded</text>
+</svg>
