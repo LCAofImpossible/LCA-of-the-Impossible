@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1125" viewBox="0 0 900 1125" role="img" aria-labelledby="title desc">
+<title id="title">Talos — LCA of the Impossible</title>
+<desc id="desc">Dark cinematic editorial cover showing the bronze giant Talos guarding the coast of Crete while holding a boulder above a small ship.</desc>
+<defs>
+  <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#08131e"/><stop offset=".58" stop-color="#152433"/><stop offset="1" stop-color="#25313a"/></linearGradient>
+  <radialGradient id="storm" cx="28%" cy="48%" r="58%"><stop offset="0" stop-color="#9aa6ad" stop-opacity=".25"/><stop offset=".55" stop-color="#53636f" stop-opacity=".08"/><stop offset="1" stop-color="#071019" stop-opacity="0"/></radialGradient>
+  <linearGradient id="bronze" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b673a"/><stop offset=".28" stop-color="#553d27"/><stop offset=".60" stop-color="#2c2621"/><stop offset="1" stop-color="#161a1c"/></linearGradient>
+  <linearGradient id="bronzeHi" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#b78a4c"/><stop offset=".42" stop-color="#6e5030"/><stop offset="1" stop-color="#2a2420"/></linearGradient>
+  <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3547"/><stop offset="1" stop-color="#081925"/></linearGradient>
+  <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="16"/></filter>
+</defs>
+<rect width="900" height="1125" fill="url(#sky)"/>
+<rect width="900" height="1125" fill="url(#storm)"/>
+<g fill="none" stroke="#83909a" stroke-opacity=".10" stroke-width="2">
+  <path d="M0 215 C170 150 315 190 450 165 C595 139 713 164 900 110"/>
+  <path d="M0 285 C165 238 320 260 470 230 C625 198 760 223 900 181"/>
+  <path d="M0 370 C196 315 345 340 495 302 C655 263 767 290 900 247"/>
+</g>
+<path d="M0 760 L70 706 132 720 205 645 269 700 339 638 414 712 492 665 562 728 633 681 710 727 772 690 840 733 900 713 900 856 0 856Z" fill="#07121b"/>
+<path d="M0 789 L105 739 164 757 240 702 317 755 386 718 461 781 530 739 612 793 691 741 775 791 842 754 900 771 900 878 0 878Z" fill="#0b1721" opacity=".9"/>
+<path d="M0 806 C170 784 259 829 416 809 C592 787 701 835 900 805 L900 1125 0 1125Z" fill="url(#sea)"/>
+<g fill="none" stroke="#9ab0bc" stroke-opacity=".14" stroke-width="1.2">
+  <path d="M0 856 C190 824 296 880 466 850 C642 820 763 873 900 844"/><path d="M0 922 C149 889 297 946 456 916 C622 885 768 937 900 911"/><path d="M0 995 C170 965 313 1015 471 985 C637 953 771 1001 900 978"/>
+</g>
+<ellipse cx="478" cy="650" rx="280" ry="360" fill="#000" opacity=".30" filter="url(#shadow)"/>
+<path d="M151 286 l-52 32 -18 64 35 54 69 9 54-38 11-69 -37-53z" fill="#171b1d" stroke="#60574d" stroke-width="4"/>
+<path d="M106 329 l54-28 48 20 17 43-31 46-56 14-36-31z" fill="#292826" opacity=".75"/>
+<path d="M127 318 l38-10 29 13 -48 17z" fill="#665846" opacity=".46"/>
+<path d="M237 502 C204 466 183 428 171 395 L206 376 C232 416 263 447 310 478 L353 512 C371 527 368 552 348 565 C325 579 302 561 284 548Z" fill="url(#bronzeHi)"/>
+<path d="M182 405 C162 403 146 391 141 373 C136 354 146 337 163 329 C181 321 203 329 212 347 C220 364 213 387 197 398Z" fill="url(#bronze)"/>
+<path d="M454 432 C428 403 427 362 445 335 C462 309 502 298 532 312 C558 324 575 353 570 386 C565 418 546 444 516 454 C491 463 470 453 454 432Z" fill="url(#bronze)"/>
+<path d="M435 342 L492 294 L555 324 L583 377 L534 365 L516 329 L466 357Z" fill="#6a4b2e"/>
+<path d="M490 294 L520 255 L542 319Z" fill="#9c713a"/>
+<path d="M465 367 L541 358 L533 381 L471 385Z" fill="#11161a"/>
+<path d="M471 434 L529 425 L538 475 L468 482Z" fill="#3c3027"/>
+<path d="M381 487 C420 458 493 451 554 476 C617 502 653 566 643 651 L614 782 L481 848 L359 785 L337 653 C324 584 342 520 381 487Z" fill="url(#bronze)"/>
+<path d="M390 502 C431 481 496 478 548 495 C588 509 612 539 622 575 C568 550 426 548 354 580 C360 543 371 516 390 502Z" fill="#7b5935" opacity=".58"/>
+<path d="M365 612 C439 575 558 578 629 616" fill="none" stroke="#a67b42" stroke-opacity=".45" stroke-width="4"/>
+<path d="M360 683 C432 647 559 647 628 686" fill="none" stroke="#a67b42" stroke-opacity=".38" stroke-width="4"/>
+<path d="M371 752 C446 720 544 721 611 748" fill="none" stroke="#a67b42" stroke-opacity=".34" stroke-width="4"/>
+<path d="M601 520 C652 526 700 555 754 589 C800 618 842 653 883 688 L850 725 C798 692 758 667 706 643 C655 620 619 609 588 596 C567 587 556 562 566 543 C574 527 585 519 601 520Z" fill="url(#bronzeHi)"/>
+<path d="M845 691 L900 704 L849 739 C838 745 825 736 830 725Z" fill="#8a6032"/>
+<path d="M397 767 C423 752 457 761 470 785 C478 802 474 823 465 845 L385 1081 C377 1106 350 1120 326 1111 C301 1102 292 1077 301 1051 L374 810 C380 788 385 776 397 767Z" fill="url(#bronzeHi)"/>
+<path d="M545 777 C572 762 603 771 616 795 L741 1050 C753 1074 745 1100 722 1112 C697 1124 671 1115 659 1091 L523 837 C511 815 517 793 545 777Z" fill="url(#bronzeHi)"/>
+<path d="M300 1048 L398 1048 L406 1094 C406 1110 392 1120 374 1120 L315 1120 C292 1120 282 1099 290 1081Z" fill="#5d4329"/>
+<path d="M652 1049 L747 1049 L782 1090 C791 1103 781 1120 763 1120 L694 1120 C674 1120 665 1110 661 1095Z" fill="#5d4329"/>
+<path d="M503 462 C497 510 497 574 499 647 C501 730 500 803 494 878 C489 948 500 1012 524 1066" fill="none" stroke="#101820" stroke-width="6" stroke-dasharray="15 13" opacity=".9"/>
+<circle cx="524" cy="1066" r="8" fill="#6de7ff"/><path d="M532 1061 L593 1032" stroke="#6de7ff" stroke-width="2"/><text x="603" y="1037" fill="#c4f7ff" font-size="13" font-family="Arial,Helvetica,sans-serif" letter-spacing="1.5">SEALED VEIN</text>
+<g transform="translate(758 844)"><path d="M-28 40 L38 40 L23 61 L-10 61Z" fill="#6d5032" stroke="#d0a563" stroke-width="1.8"/><line x1="10" y1="40" x2="10" y2="-19" stroke="#d0a563" stroke-width="2"/><path d="M12 -15 L12 18 L42 12Z" fill="#d9d1b4" opacity=".9"/></g>
+<rect x="0" y="0" width="900" height="360" fill="#071019" opacity=".52"/>
+<text x="68" y="76" fill="#eef7fb" font-size="23" font-weight="700" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">LCA of impossible - Myths &amp; Legends</text>
+<text x="68" y="181" fill="#25c78a" font-size="92" font-weight="800" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">TALOS</text>
+<text x="71" y="326" fill="#eef7fb" font-size="25" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace" letter-spacing="2">THREE CIRCUITS A DAY. NO PLACE TO HIDE.</text>
+<text x="68" y="1091" fill="#9ab0bc" font-size="14" font-family="Arial,Helvetica,sans-serif" letter-spacing="2">EPISODE #42 · SEASON II</text>
+</svg>
