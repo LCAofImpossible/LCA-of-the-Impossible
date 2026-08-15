@@ -52,7 +52,7 @@ nav a:hover{color:var(--accent)}
 .hero h1 span{color:var(--accent2)}
 .intro,.section-note,.metric-label,.prose,.fact-card p,.stat-card p,.small-note,.episode-question{color:var(--muted);line-height:1.75}
 .cta-row{display:flex;gap:12px;flex-wrap:wrap;margin-top:24px}
-.button{display:inline-block;padding:14px 18px;border:1px solid var(--accent);color:var(--accent);font-weight:760;font-size:.88rem;letter-spacing:.04em}
+.button{display:inline-block;padding:14px 18px;border:1px solid var(--accent);color:var(--accent);font-weight:760;font-size:.88rem;letter-spacing:.04em;background:transparent;cursor:pointer;font-family:inherit}
 .button:hover{background:var(--accent);color:#061019}
 .button.secondary{border-color:var(--line);color:var(--text)}
 .button.secondary:hover{border-color:var(--accent)}
@@ -193,4 +193,61 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 @media(max-width:760px){
   .visual-panel{padding:7px}
   .visual-panel figcaption{font-size:.7rem;letter-spacing:.06em}
+}
+
+/* Homepage episode library */
+[hidden]{display:none!important}
+.sr-only{
+  position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0
+}
+.latest-section{padding-bottom:74px}
+.archive-section{padding-top:74px}
+.featured-cover{display:flex;align-items:center;justify-content:center;min-width:0;background:rgba(0,0,0,.12)}
+.featured-cover img{width:100%;height:100%;max-height:520px;object-fit:contain}
+.featured-copy{align-self:center;padding:12px 4px}
+.archive-heading{margin-bottom:26px}
+.archive-toolbar{
+  display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;
+  padding:16px;border:1px solid var(--line);background:rgba(255,255,255,.018);margin-bottom:14px
+}
+.filter-row{display:flex;gap:8px;flex-wrap:wrap}
+.filter-button{
+  appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
+  padding:10px 13px;font:inherit;font-size:.78rem;font-weight:760;letter-spacing:.05em;
+  cursor:pointer;transition:.2s
+}
+.filter-button:hover,.filter-button.active{border-color:var(--accent);color:var(--accent);background:rgba(109,231,255,.06)}
+.filter-button:focus-visible,.archive-search input:focus-visible,.load-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.archive-search{display:block;min-width:min(100%,280px)}
+.archive-search input{
+  width:100%;border:1px solid var(--line);background:#08131d;color:var(--text);font:inherit;
+  padding:11px 13px;border-radius:0;outline:none
+}
+.archive-search input::placeholder{color:#708895}
+.archive-search input:focus{border-color:var(--accent)}
+.archive-meta{
+  display:flex;justify-content:space-between;gap:16px;color:var(--muted);font-size:.76rem;
+  letter-spacing:.09em;text-transform:uppercase;margin:0 0 20px
+}
+.cards.episode-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.archive-card{display:flex;flex-direction:column;min-width:0}
+.archive-card .card-copy{display:flex;flex:1;flex-direction:column;padding:18px}
+.archive-card .card-copy p{margin-bottom:9px}
+.archive-card .card-copy h3{font-size:1.28rem;line-height:1.1;margin-bottom:13px}
+.card-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:13px}
+.card-meta span{color:var(--accent2);font-size:.76rem;font-weight:720}
+.card-note{display:block;color:var(--muted);font-size:.84rem;line-height:1.55;margin-bottom:18px}
+.card-cue{display:block;margin-top:auto;padding-top:15px;border-top:1px solid var(--line-soft);color:var(--accent);font-size:.78rem;letter-spacing:.04em}
+.archive-empty{border:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);margin:20px 0 0}
+.load-more-row{display:flex;justify-content:center;margin-top:28px}
+.load-more{min-width:220px}
+@media(max-width:1100px){
+  .cards.episode-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  .archive-toolbar{align-items:stretch}
+  .archive-search{width:100%;min-width:100%}
+  .archive-meta{align-items:flex-start;flex-direction:column;gap:6px}
+  .cards.episode-grid{grid-template-columns:1fr}
 }
