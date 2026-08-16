@@ -5,6 +5,7 @@
   const isEpisode = Boolean(body.dataset.episode);
   const registryPath = isEpisode ? '../episodes.json' : 'episodes.json';
   const rootPrefix = isEpisode ? '../' : '';
+  const rawAssetBase = 'https://raw.githubusercontent.com/LCAofImpossible/LCA-of-the-Impossible/main/';
 
   const escapeHtml = (value = '') => String(value)
     .replaceAll('&', '&amp;')
@@ -12,6 +13,59 @@
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&#039;');
+
+  const cleanAssetPath = (value = '') => String(value)
+    .split('?')[0]
+    .replace(/^https?:\/\/raw\.githubusercontent\.com\/LCAofImpossible\/LCA-of-the-Impossible\/main\//, '')
+    .replace(/^(\.\.\/)+/, '')
+    .replace(/^\.\//, '')
+    .replace(/^\//, '');
+
+  const rawAssetUrl = (value = '') => {
+    const path = cleanAssetPath(value);
+    return `${rawAssetBase}${path}?rev=20260816-coverfix`;
+  };
+
+  const isEpisodeCoverPath = (value = '') => cleanAssetPath(value).startsWith('assets/images/episodes/');
+
+  const coverUrl = (value = '') => {
+    const stringValue = String(value);
+    if (stringValue.startsWith('data:')) return stringValue;
+    if (isEpisodeCoverPath(stringValue)) return rawAssetUrl(stringValue);
+    if (/^https?:\/\//i.test(stringValue)) return stringValue;
+    return `${rootPrefix}${stringValue}`;
+  };
+
+  const fallbackImage = (img) => {
+    if (!img || img.dataset.rawFallbackApplied === 'true') return;
+    const source = img.getAttribute('src') || '';
+    if (!source || source.startsWith('data:') || source.includes('raw.githubusercontent.com')) return;
+    const clean = cleanAssetPath(source);
+    if (!clean.startsWith('assets/')) return;
+    img.dataset.rawFallbackApplied = 'true';
+    img.src = rawAssetUrl(clean);
+  };
+
+  document.addEventListener('error', (event) => {
+    const target = event.target;
+    if (target && target.tagName === 'IMG') fallbackImage(target);
+  }, true);
+
+  const forceCanonicalCoverSources = () => {
+    document.querySelectorAll('.cover-frame img').forEach((img) => {
+      const source = img.getAttribute('src') || '';
+      if (isEpisodeCoverPath(source) && !source.includes('raw.githubusercontent.com')) {
+        img.src = rawAssetUrl(source);
+      }
+    });
+
+    document.querySelectorAll('img').forEach((img) => {
+      if (img.complete && img.naturalWidth === 0) fallbackImage(img);
+    });
+  };
+
+  forceCanonicalCoverSources();
+  window.setTimeout(forceCanonicalCoverSources, 250);
 
   const tokenLabels = {
     mythology: 'Mythology',
@@ -25,7 +79,8 @@
     'mobility-driven': 'Mobility-driven',
     'process-energy-driven': 'Process-energy-driven',
     'repetition-sensitive': 'Repetition-sensitive',
-    'lifetime-sensitive': 'Lifetime-sensitive'
+    'lifetime-sensitive': 'Lifetime-sensitive',
+    'proxy-sensitive': 'Proxy-sensitive'
   };
 
   const labelFor = (token) => tokenLabels[token] || token
@@ -33,12 +88,17 @@
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
 
+  const pageUrl = (episodeUrl = '') => {
+    if (/^https?:\/\//i.test(episodeUrl)) return episodeUrl;
+    return `${rootPrefix}${episodeUrl}`;
+  };
+
   const episodeCard = (episode, compact = false) => {
     const category = escapeHtml(episode.categoryLabel);
     const lca = escapeHtml(episode.lcaLabel);
     return `
-      <a class="card archive-card${compact ? ' compact-card' : ''}" href="${rootPrefix}${escapeHtml(episode.url)}">
-        <img src="${rootPrefix}${escapeHtml(episode.cover)}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async">
+      <a class="card archive-card${compact ? ' compact-card' : ''}" href="${escapeHtml(pageUrl(episode.url))}">
+        <img src="${escapeHtml(coverUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async">
         <div class="card-copy">
           <p>${category} · ${lca}</p>
           <h3>${escapeHtml(episode.title)}</h3>
@@ -60,7 +120,7 @@
 
     latestTarget.innerHTML = `
       <div class="featured-cover">
-        <img src="${escapeHtml(latest.cover)}" alt="${escapeHtml(latest.title)} cover">
+        <img src="${escapeHtml(coverUrl(latest.cover))}" alt="${escapeHtml(latest.title)} cover">
       </div>
       <div class="featured-copy">
         <p class="eyebrow">LATEST CASE · EPISODE #${latest.number}</p>
@@ -71,7 +131,7 @@
           <span class="badge">${escapeHtml(latest.lcaLabel)}</span>
           <span class="badge">${escapeHtml(latest.categoryLabel)}</span>
         </div>
-        <a class="button" href="${escapeHtml(latest.url)}">Explore the LCA →</a>
+        <a class="button" href="${escapeHtml(pageUrl(latest.url))}">Explore the LCA →</a>
       </div>`;
 
     recentTarget.innerHTML = episodes.slice(1, 7).map((episode) => episodeCard(episode)).join('');
@@ -222,9 +282,9 @@
     pager.className = 'episode-pager';
     pager.setAttribute('aria-label', 'Episode navigation');
     pager.innerHTML = `
-      ${older ? `<a class="pager-link pager-prev" href="${rootPrefix}${escapeHtml(older.url)}"><span>← Previous episode</span><strong>#${older.number} · ${escapeHtml(older.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}
+      ${older ? `<a class="pager-link pager-prev" href="${escapeHtml(pageUrl(older.url))}"><span>← Previous episode</span><strong>#${older.number} · ${escapeHtml(older.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}
       <a class="pager-archive" href="${rootPrefix}archive.html">Full archive</a>
-      ${newer ? `<a class="pager-link pager-next" href="${rootPrefix}${escapeHtml(newer.url)}"><span>Next episode →</span><strong>#${newer.number} · ${escapeHtml(newer.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}`;
+      ${newer ? `<a class="pager-link pager-next" href="${escapeHtml(pageUrl(newer.url))}"><span>Next episode →</span><strong>#${newer.number} · ${escapeHtml(newer.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}`;
     main.appendChild(pager);
   };
 
@@ -238,6 +298,7 @@
       if (body.dataset.page === 'home') renderHome(episodes);
       if (body.dataset.page === 'archive') renderArchive(episodes);
       if (isEpisode) renderEpisodeNavigation(episodes);
+      forceCanonicalCoverSources();
     })
     .catch((error) => {
       console.error('Unable to load episode registry:', error);
