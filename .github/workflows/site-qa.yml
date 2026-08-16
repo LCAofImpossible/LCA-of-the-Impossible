@@ -28,8 +28,14 @@ jobs:
       - name: Build deterministic SEO metadata in QA workspace
         run: python scripts/apply_seo.py
 
+      - name: Build deterministic Phase 3 metadata in QA workspace
+        run: python scripts/feature_sync.py
+
       - name: Run structural site QA
         run: python scripts/site_qa.py
 
       - name: Run SEO and social QA
         run: python scripts/seo_qa.py
+
+      - name: Run Phase 3 feature QA
+        run: python scripts/feature_qa.py

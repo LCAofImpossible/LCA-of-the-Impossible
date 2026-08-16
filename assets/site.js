@@ -5,6 +5,12 @@
   const isEpisode = Boolean(body && body.dataset.episode);
   const registryPath = isEpisode ? '../episodes.json' : 'episodes.json';
   const rootPrefix = isEpisode ? '../' : '';
+  const compareStorageKey = 'lcaImpossibleCompare';
+
+  const featureStyles = document.createElement('link');
+  featureStyles.rel = 'stylesheet';
+  featureStyles.href = `${rootPrefix}assets/features.css?v=20260816-phase3`;
+  document.head.appendChild(featureStyles);
 
   const ensureAccessibilityScaffold = () => {
     const main = document.querySelector('main');
@@ -69,18 +75,34 @@
     return `${rootPrefix}${stringValue}`;
   };
 
+  const loadCompareSelection = () => {
+    try {
+      const parsed = JSON.parse(sessionStorage.getItem(compareStorageKey) || '[]');
+      return new Set((Array.isArray(parsed) ? parsed : []).map(Number).filter(Number.isFinite).slice(0, 3));
+    } catch (_) {
+      return new Set();
+    }
+  };
+
+  const saveCompareSelection = (selected) => {
+    try {
+      sessionStorage.setItem(compareStorageKey, JSON.stringify([...selected].slice(0, 3)));
+    } catch (_) {
+      // Session storage is an enhancement only.
+    }
+  };
+
   const episodeCard = (episode, options = {}) => {
     const compact = Boolean(options.compact);
     const showCover = options.showCover !== false;
+    const compareEnabled = Boolean(options.compareEnabled);
+    const selected = options.selected instanceof Set ? options.selected.has(episode.number) : false;
     const category = escapeHtml(episode.categoryLabel);
     const lca = escapeHtml(episode.lcaLabel);
     const coverMarkup = showCover
       ? `<img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async" width="1200" height="1500">`
       : '';
-
-    return `
-      <a class="card archive-card${compact ? ' compact-card' : ''}${showCover ? '' : ' text-only-card'}" href="${escapeHtml(pageUrl(episode.url))}">
-        ${coverMarkup}
+    const copyMarkup = `
         <div class="card-copy">
           <p>${category} · ${lca}</p>
           <h3>${escapeHtml(episode.title)}</h3>
@@ -90,9 +112,47 @@
           </div>
           <span class="card-note">${escapeHtml(episode.hotspot)}</span>
           <strong class="card-cue">Explore the LCA →</strong>
-        </div>
+        </div>`;
+
+    if (compareEnabled) {
+      return `
+        <article class="card archive-card compare-card" data-card-episode="${episode.number}">
+          <a class="card-main-link" href="${escapeHtml(pageUrl(episode.url))}">
+            ${coverMarkup}
+            ${copyMarkup}
+          </a>
+          <div class="card-actions">
+            <button class="compare-toggle${selected ? ' active' : ''}" type="button" data-compare-episode="${episode.number}" aria-pressed="${selected ? 'true' : 'false'}">${selected ? '✓ Selected' : '+ Compare'}</button>
+          </div>
+        </article>`;
+    }
+
+    return `
+      <a class="card archive-card${compact ? ' compact-card' : ''}${showCover ? '' : ' text-only-card'}" href="${escapeHtml(pageUrl(episode.url))}">
+        ${coverMarkup}
+        ${copyMarkup}
       </a>`;
   };
+
+  const addFeatureEntryPoints = () => {
+    if (body.dataset.page === 'home') {
+      const row = document.querySelector('#series .cta-row');
+      if (row && !row.querySelector('[data-phase3-link]')) {
+        row.insertAdjacentHTML('beforeend', `
+          <a class="button secondary" data-phase3-link href="compare.html">Compare cases →</a>
+          <a class="button secondary" data-phase3-link href="explore.html">Explore impact scale →</a>`);
+      }
+    }
+
+    if (isEpisode) {
+      const nav = document.querySelector('.site-header nav');
+      if (nav && !nav.querySelector('[data-phase3-link]')) {
+        nav.insertAdjacentHTML('beforeend', `<a data-phase3-link href="${rootPrefix}compare.html">Compare</a><a data-phase3-link href="${rootPrefix}explore.html">Impact map</a>`);
+      }
+    }
+  };
+
+  addFeatureEntryPoints();
 
   const renderHome = (episodes) => {
     const latest = episodes[0];
@@ -131,11 +191,21 @@
     const lcaFilters = document.getElementById('lca-filters');
     if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters) return;
 
+    const toolbar = document.querySelector('.archive-toolbar');
+    if (toolbar && !document.querySelector('.archive-feature-entrypoints')) {
+      toolbar.insertAdjacentHTML('beforebegin', `
+        <div class="archive-feature-entrypoints">
+          <div><p class="eyebrow">EXPLORE THE SERIES</p><p class="section-note">Compare modelling choices side by side or place every headline result on a logarithmic impact scale.</p></div>
+          <div class="cta-row"><a class="button secondary" href="compare.html">Compare cases →</a><a class="button secondary" href="explore.html">Impact map →</a></div>
+        </div>`);
+    }
+
     const categories = [...new Set(episodes.flatMap((episode) => episode.categories || []))];
     const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics || []))];
     let activeCategory = 'all';
     let activeLca = 'all';
     let visibleLimit = 9;
+    const selected = loadCompareSelection();
 
     const makeButtons = (tokens, group, allLabel) => {
       const all = `<button class="filter-button active" type="button" data-group="${group}" data-filter="all" aria-pressed="true">${allLabel}</button>`;
@@ -152,12 +222,47 @@
       episode.result,
       episode.hotspot,
       episode.featuredDescription,
+      episode.functionalUnit,
+      episode.evidence?.basis,
+      episode.evidence?.uncertainty,
       episode.categoryLabel,
       episode.lcaLabel,
       ...(episode.categories || []),
       ...(episode.lcaCharacteristics || []),
       ...(episode.keywords || [])
     ].join(' ').toLowerCase();
+
+    const compareBar = document.createElement('div');
+    compareBar.className = 'compare-bar';
+    compareBar.hidden = true;
+    compareBar.setAttribute('aria-live', 'polite');
+    body.appendChild(compareBar);
+
+    const updateCompareBar = () => {
+      const chosen = [...selected]
+        .map((number) => episodes.find((episode) => episode.number === number))
+        .filter(Boolean)
+        .slice(0, 3);
+      compareBar.hidden = chosen.length === 0;
+      if (!chosen.length) return;
+      const query = chosen.map((episode) => episode.number).join(',');
+      compareBar.innerHTML = `
+        <div class="compare-bar-copy"><strong>${chosen.length}/3 selected</strong><span>${chosen.map((episode) => escapeHtml(episode.title)).join(' · ')}</span></div>
+        <div class="compare-bar-actions">
+          <button class="compare-clear" type="button">Clear</button>
+          <a class="button" href="compare.html?cases=${query}">${chosen.length >= 2 ? 'Compare now →' : 'Select one more case'}</a>
+        </div>`;
+      const link = compareBar.querySelector('a.button');
+      if (link && chosen.length < 2) {
+        link.setAttribute('aria-disabled', 'true');
+        link.addEventListener('click', (event) => event.preventDefault(), { once: true });
+      }
+      compareBar.querySelector('.compare-clear')?.addEventListener('click', () => {
+        selected.clear();
+        saveCompareSelection(selected);
+        applyArchive();
+      });
+    };
 
     const applyArchive = () => {
       const query = search.value.trim().toLowerCase();
@@ -169,11 +274,12 @@
       });
 
       grid.innerHTML = matches.slice(0, visibleLimit)
-        .map((episode) => episodeCard(episode, { showCover: true }))
+        .map((episode) => episodeCard(episode, { showCover: true, compareEnabled: true, selected }))
         .join('');
       count.textContent = `${matches.length} ${matches.length === 1 ? 'episode' : 'episodes'}`;
       empty.hidden = matches.length !== 0;
       loadMore.hidden = matches.length <= visibleLimit;
+      updateCompareBar();
     };
 
     const selectFilter = (button) => {
@@ -181,9 +287,9 @@
       const value = button.dataset.filter;
       const container = group === 'category' ? categoryFilters : lcaFilters;
       container.querySelectorAll('.filter-button').forEach((item) => {
-        const selected = item === button;
-        item.classList.toggle('active', selected);
-        item.setAttribute('aria-pressed', selected ? 'true' : 'false');
+        const isSelected = item === button;
+        item.classList.toggle('active', isSelected);
+        item.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
       });
       if (group === 'category') activeCategory = value;
       if (group === 'lca') activeLca = value;
@@ -196,6 +302,23 @@
         const button = event.target.closest('.filter-button');
         if (button) selectFilter(button);
       });
+    });
+
+    grid.addEventListener('click', (event) => {
+      const button = event.target.closest('.compare-toggle');
+      if (!button) return;
+      const number = Number(button.dataset.compareEpisode);
+      if (selected.has(number)) {
+        selected.delete(number);
+      } else if (selected.size < 3) {
+        selected.add(number);
+      } else {
+        compareBar.hidden = false;
+        compareBar.innerHTML = '<div class="compare-bar-copy"><strong>Maximum 3 cases</strong><span>Remove one selected case before adding another.</span></div>';
+        return;
+      }
+      saveCompareSelection(selected);
+      applyArchive();
     });
 
     search.addEventListener('input', () => {
@@ -211,6 +334,32 @@
     applyArchive();
   };
 
+  const renderEvidenceProfile = (episode) => {
+    const evidence = episode.evidence;
+    const quickFacts = document.querySelector('.episode-quickfacts');
+    if (!evidence || !quickFacts || document.getElementById('evidence')) return;
+
+    const section = document.createElement('section');
+    section.id = 'evidence';
+    section.className = 'section evidence-section small-section-title';
+    section.innerHTML = `
+      <div class="section-heading">
+        <div><p class="eyebrow">EVIDENCE PROFILE</p><h2>How much of the impossible is reconstructed?</h2></div>
+        <p class="section-note">Qualitative editorial indicators — not a formal LCA data-quality rating.</p>
+      </div>
+      <div class="evidence-grid">
+        <article class="evidence-card"><span>Evidence confidence</span><strong>${escapeHtml(evidence.confidence)}</strong><p>Strength of the narrative, historical or physical basis used to constrain the reconstruction.</p></article>
+        <article class="evidence-card"><span>Proxy dependence</span><strong>${escapeHtml(evidence.proxyDependence)}</strong><p>How strongly the result depends on modern emission factors or analogue processes standing in for impossible conditions.</p></article>
+        <article class="evidence-card"><span>Assumption sensitivity</span><strong>${escapeHtml(evidence.assumptionSensitivity)}</strong><p>How strongly the interpretation can move when key engineering assumptions or boundaries are changed.</p></article>
+      </div>
+      <div class="evidence-details">
+        <details open><summary>Evidence basis</summary><p>${escapeHtml(evidence.basis)}</p></details>
+        <details><summary>Main modelling uncertainty</summary><p>${escapeHtml(evidence.uncertainty)}</p></details>
+        <details><summary>Audit-trail principle</summary><p>The episode result remains tied to its own functional unit and assumptions. These indicators help explain modelling confidence; they do not make unlike cases directly comparable.</p></details>
+      </div>`;
+    quickFacts.insertAdjacentElement('afterend', section);
+  };
+
   const renderEpisodeNavigation = (episodes) => {
     const currentNumber = Number(body.dataset.episode);
     const currentIndex = episodes.findIndex((episode) => episode.number === currentNumber);
@@ -224,6 +373,7 @@
     if (!header || !main) return;
 
     const subject = main.querySelector(':scope > .split');
+    const evidence = document.getElementById('evidence');
     const model = main.querySelector('.episode-visual-section');
     const inventory = document.getElementById('inventory');
     const hotspot = main.querySelector('.hotspot-visual-section');
@@ -237,6 +387,7 @@
 
     const jumpLinks = [
       ['subject', 'Subject', subject],
+      ['evidence', 'Evidence', evidence],
       ['model', 'Model', model],
       ['inventory', 'Inventory', inventory],
       ['hotspot', 'Hotspots', hotspot],
@@ -277,6 +428,154 @@
     main.appendChild(pager);
   };
 
+  const parseCasesFromUrl = (episodes) => {
+    const valid = new Set(episodes.map((episode) => episode.number));
+    const params = new URLSearchParams(window.location.search);
+    return (params.get('cases') || '')
+      .split(',')
+      .map(Number)
+      .filter((number, index, array) => valid.has(number) && array.indexOf(number) === index)
+      .slice(0, 3);
+  };
+
+  const renderCompare = (episodes) => {
+    const picker = document.getElementById('compare-picker');
+    const output = document.getElementById('comparison-output');
+    if (!picker || !output) return;
+
+    let selectedNumbers = parseCasesFromUrl(episodes);
+    if (selectedNumbers.length < 2) selectedNumbers = episodes.slice(0, 3).map((episode) => episode.number);
+
+    const updateUrl = () => {
+      const url = new URL(window.location.href);
+      if (selectedNumbers.length) url.searchParams.set('cases', selectedNumbers.join(','));
+      else url.searchParams.delete('cases');
+      history.replaceState({}, '', url);
+      saveCompareSelection(new Set(selectedNumbers));
+    };
+
+    const render = () => {
+      picker.innerHTML = [0, 1, 2].map((index) => {
+        const current = selectedNumbers[index] || '';
+        const options = [`<option value="">${index === 2 ? 'Optional third case' : `Select case ${index + 1}`}</option>`]
+          .concat(episodes.map((episode) => `<option value="${episode.number}"${episode.number === current ? ' selected' : ''}>#${episode.number} · ${escapeHtml(episode.title)}</option>`))
+          .join('');
+        return `<label class="compare-select"><span>Case ${index + 1}${index === 2 ? ' · optional' : ''}</span><select data-compare-slot="${index}">${options}</select></label>`;
+      }).join('');
+
+      const chosen = selectedNumbers
+        .map((number) => episodes.find((episode) => episode.number === number))
+        .filter(Boolean);
+
+      if (chosen.length < 2) {
+        output.innerHTML = '<p class="archive-empty">Select at least two different cases to build a comparison.</p>';
+        return;
+      }
+
+      const rows = [
+        ['Functional unit / reporting basis', (episode) => episode.functionalUnit || 'Not registered'],
+        ['Headline result', (episode) => episode.result],
+        ['Narrative category', (episode) => episode.categoryLabel],
+        ['Principal LCA lens', (episode) => episode.lcaLabel],
+        ['Main hotspot', (episode) => episode.hotspot],
+        ['Evidence confidence', (episode) => episode.evidence?.confidence || 'Not rated'],
+        ['Proxy dependence', (episode) => episode.evidence?.proxyDependence || 'Not rated'],
+        ['Assumption sensitivity', (episode) => episode.evidence?.assumptionSensitivity || 'Not rated'],
+        ['Main modelling uncertainty', (episode) => episode.evidence?.uncertainty || 'Not registered']
+      ];
+
+      output.innerHTML = `
+        <div class="comparison-warning"><strong>Interpretation rule</strong><p>Headline footprints use different functional units and system boundaries. This table compares modelling structure and hotspot behaviour; it is not a comparative environmental claim and does not rank cases as better or worse.</p></div>
+        <div class="comparison-table-wrap">
+          <table class="comparison-table">
+            <thead><tr><th scope="col">Dimension</th>${chosen.map((episode) => `<th scope="col"><a href="${escapeHtml(episode.url)}">#${episode.number}<br>${escapeHtml(episode.title)}</a></th>`).join('')}</tr></thead>
+            <tbody>${rows.map(([label, value]) => `<tr><th scope="row">${escapeHtml(label)}</th>${chosen.map((episode) => `<td>${escapeHtml(value(episode))}</td>`).join('')}</tr>`).join('')}</tbody>
+          </table>
+        </div>
+        <div class="compare-open-row">${chosen.map((episode) => `<a class="button secondary" href="${escapeHtml(episode.url)}">Open #${episode.number} →</a>`).join('')}</div>`;
+    };
+
+    picker.addEventListener('change', (event) => {
+      const select = event.target.closest('select[data-compare-slot]');
+      if (!select) return;
+      const slot = Number(select.dataset.compareSlot);
+      const number = Number(select.value);
+      const next = [...selectedNumbers];
+      if (number) next[slot] = number;
+      else next.splice(slot, 1);
+      selectedNumbers = next.filter((item, index, array) => Number.isFinite(item) && array.indexOf(item) === index).slice(0, 3);
+      updateUrl();
+      render();
+    });
+
+    updateUrl();
+    render();
+  };
+
+  const resultToKg = (result = '') => {
+    const numberMatch = String(result).match(/[\d.,]+/);
+    const unitMatch = String(result).match(/\b(Mt|kt|t|kg)\s*CO/i);
+    if (!numberMatch || !unitMatch) return null;
+    const value = Number(numberMatch[0].replaceAll(',', ''));
+    const unit = unitMatch[1].toLowerCase();
+    const multiplier = unit === 'mt' ? 1e9 : unit === 'kt' ? 1e6 : unit === 't' ? 1e3 : 1;
+    return Number.isFinite(value) ? value * multiplier : null;
+  };
+
+  const renderExplore = (episodes) => {
+    const filters = document.getElementById('impact-filters');
+    const plot = document.getElementById('impact-plot');
+    const count = document.getElementById('impact-count');
+    if (!filters || !plot || !count) return;
+
+    const data = episodes
+      .map((episode) => ({ ...episode, resultKg: resultToKg(episode.result) }))
+      .filter((episode) => episode.resultKg && episode.resultKg > 0)
+      .sort((a, b) => a.resultKg - b.resultKg);
+    const lenses = [...new Set(data.map((episode) => episode.lcaLabel))];
+    let activeLens = 'all';
+
+    filters.innerHTML = `<button class="filter-button active" type="button" data-impact-lens="all" aria-pressed="true">All lenses</button>${lenses.map((lens) => `<button class="filter-button" type="button" data-impact-lens="${escapeHtml(lens)}" aria-pressed="false">${escapeHtml(lens)}</button>`).join('')}`;
+
+    const minLog = 1;
+    const maxLog = 10;
+    const axisLabels = [
+      [1, '10 kg'], [2, '100 kg'], [3, '1 t'], [4, '10 t'], [5, '100 t'],
+      [6, '1 kt'], [7, '10 kt'], [8, '100 kt'], [9, '1 Mt'], [10, '10 Mt']
+    ];
+
+    const render = () => {
+      const visible = data.filter((episode) => activeLens === 'all' || episode.lcaLabel === activeLens);
+      count.textContent = `${visible.length} ${visible.length === 1 ? 'case' : 'cases'} shown`;
+      plot.innerHTML = `
+        <div class="impact-axis" aria-hidden="true">${axisLabels.map(([power, label]) => `<span style="--axis-pos:${((power - minLog) / (maxLog - minLog)) * 100}%">${label}</span>`).join('')}</div>
+        <div class="impact-rows">${visible.map((episode) => {
+          const log = Math.log10(episode.resultKg);
+          const pos = Math.max(0, Math.min(100, ((log - minLog) / (maxLog - minLog)) * 100));
+          return `<article class="impact-row">
+            <div class="impact-row-label"><a href="${escapeHtml(episode.url)}"><strong>#${episode.number} · ${escapeHtml(episode.title)}</strong></a><span>${escapeHtml(episode.lcaLabel)}</span></div>
+            <div class="impact-track">
+              <a class="impact-point" style="--impact-pos:${pos}%" href="${escapeHtml(episode.url)}" aria-label="${escapeHtml(episode.title)}: ${escapeHtml(episode.result)}"><span>${escapeHtml(episode.result)}</span></a>
+            </div>
+          </article>`;
+        }).join('')}</div>`;
+    };
+
+    filters.addEventListener('click', (event) => {
+      const button = event.target.closest('[data-impact-lens]');
+      if (!button) return;
+      activeLens = button.dataset.impactLens;
+      filters.querySelectorAll('[data-impact-lens]').forEach((item) => {
+        const selected = item === button;
+        item.classList.toggle('active', selected);
+        item.setAttribute('aria-pressed', selected ? 'true' : 'false');
+      });
+      render();
+    });
+
+    render();
+  };
+
   fetch(registryPath, { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`Episode registry returned ${response.status}`);
@@ -286,7 +585,13 @@
       const episodes = [...data.episodes].sort((a, b) => b.number - a.number);
       if (body.dataset.page === 'home') renderHome(episodes);
       if (body.dataset.page === 'archive') renderArchive(episodes);
-      if (isEpisode) renderEpisodeNavigation(episodes);
+      if (body.dataset.page === 'compare') renderCompare(episodes);
+      if (body.dataset.page === 'explore') renderExplore(episodes);
+      if (isEpisode) {
+        const current = episodes.find((episode) => episode.number === Number(body.dataset.episode));
+        if (current) renderEvidenceProfile(current);
+        renderEpisodeNavigation(episodes);
+      }
     })
     .catch((error) => {
       console.error('Unable to load episode registry:', error);

@@ -1,0 +1,93 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import re
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
+ALLOWED_LEVELS = {"Low", "Medium", "High"}
+errors: list[str] = []
+
+
+def fail(message: str) -> None:
+    errors.append(message)
+
+
+def require_file(relative: str) -> Path:
+    path = ROOT / relative
+    if not path.is_file():
+        fail(f"Missing Phase 3 file: {relative}")
+    return path
+
+
+def main() -> int:
+    registry_path = require_file("episodes.json")
+    require_file("assets/features.css")
+    site_js = require_file("assets/site.js")
+    compare = require_file("compare.html")
+    explore = require_file("explore.html")
+    sitemap = require_file("sitemap.xml")
+
+    if registry_path.is_file():
+        data = json.loads(registry_path.read_text(encoding="utf-8"))
+        if data.get("schemaVersion", 0) < 2:
+            fail("episodes.json schemaVersion must be >= 2 for Phase 3")
+        for episode in data.get("episodes", []):
+            number = episode.get("number", "?")
+            functional_unit = episode.get("functionalUnit")
+            if not isinstance(functional_unit, str) or len(functional_unit.strip()) < 20:
+                fail(f"Episode #{number}: missing meaningful functionalUnit")
+            evidence = episode.get("evidence")
+            if not isinstance(evidence, dict):
+                fail(f"Episode #{number}: missing evidence profile")
+                continue
+            for key in ("confidence", "proxyDependence", "assumptionSensitivity"):
+                if evidence.get(key) not in ALLOWED_LEVELS:
+                    fail(f"Episode #{number}: evidence.{key} must be Low, Medium or High")
+            for key in ("basis", "uncertainty"):
+                value = evidence.get(key)
+                if not isinstance(value, str) or len(value.strip()) < 30:
+                    fail(f"Episode #{number}: evidence.{key} is missing or too short")
+
+    if site_js.is_file():
+        text = site_js.read_text(encoding="utf-8")
+        for token in ("renderCompare", "renderExplore", "renderEvidenceProfile", "compareStorageKey"):
+            if token not in text:
+                fail(f"assets/site.js missing Phase 3 function/token: {token}")
+
+    for path, canonical, page_name in (
+        (compare, BASE_URL + "compare.html", "compare.html"),
+        (explore, BASE_URL + "explore.html", "explore.html"),
+    ):
+        if not path.is_file():
+            continue
+        text = path.read_text(encoding="utf-8")
+        if '<script src="assets/site.js' not in text:
+            fail(f"{page_name}: missing assets/site.js")
+        if canonical not in text:
+            fail(f"{page_name}: canonical URL missing")
+        if "<!-- FEATURE-SEO:START -->" not in text or "<!-- FEATURE-SEO:END -->" not in text:
+            fail(f"{page_name}: Phase 3 SEO block missing")
+        if 'name="robots" content="index,follow,max-image-preview:large"' not in text:
+            fail(f"{page_name}: robots metadata missing")
+
+    if sitemap.is_file():
+        text = sitemap.read_text(encoding="utf-8")
+        for url in (BASE_URL + "compare.html", BASE_URL + "explore.html"):
+            if text.count(url) != 1:
+                fail(f"sitemap.xml must contain exactly one entry for {url}")
+
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        print(f"\nPhase 3 QA failed with {len(errors)} error(s).", file=sys.stderr)
+        return 1
+    print("Phase 3 QA passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())

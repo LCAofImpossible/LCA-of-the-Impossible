@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "episodes": [
     {
       "number": 43,
@@ -14,6 +14,14 @@
       "result": "1.418 t CO₂e",
       "hotspot": "Repetition drives 97.25% of the footprint.",
       "featuredDescription": "A finite slice of an eternal punishment: one reusable 5.0 t limestone boulder, a 500 m slope, 1,000 ascent-return cycles and a material loop that closes while the energy loop does not.",
+      "functionalUnit": "Construction and execution of 1,000 complete punishment cycles using one reusable 5.0 t limestone boulder on a 500 m slope with 100 m vertical rise.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The Homeric punishment loop defines the repeated function. Boulder geometry, slope mechanics and conversion efficiency are explicit reconstructions; DEFRA 2026 aggregate and electricity-equivalent factors provide the physical accounting proxies.",
+        "uncertainty": "The finite cycle count, 20% conversion efficiency and electricity-equivalent energy proxy control interpretation of an otherwise unbounded punishment."
+      },
       "keywords": ["boulder", "limestone", "eternal punishment", "repetition", "reuse", "energy", "hades"],
       "related": [42, 40, 41],
       "pdf": "assets/pdf/episodes/ep43-sisyphus.pdf"
@@ -31,6 +39,14 @@
       "result": "453.324 kt CO₂e",
       "hotspot": "Patrol drives 99.62% of the footprint.",
       "featuredDescription": "A 25 m bronze guardian reconstructed as a mobility system: manufacture is significant, but three daily circuits of Crete make patrol energy the overwhelming life-cycle hotspot.",
+      "functionalUnit": "Manufacture and 30 years of operation of one 25 m bronze Talos providing continuous coastal defence for Crete: three 1,046 km patrol circuits per day, one 2 t boulder throw per circuit and one red-heat deterrence event per month.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "Apollonius Rhodius and Pseudo-Apollodorus define the guardian behaviours. Height, shell thickness, coastline route, locomotion energy and service life are explicit engineering assumptions; modern DEFRA factors are used as proxies.",
+        "uncertainty": "The patrol-energy proxy, assumed 1,046 km circuit and 30-year duty cycle dominate the model because operation overwhelms manufacture."
+      },
       "keywords": ["bronze", "automaton", "crete", "patrol", "guardian", "mobility", "boulder"],
       "related": [40, 41, 43],
       "pdf": "assets/pdf/episodes/ep42-talos.pdf"
@@ -48,6 +64,14 @@
       "result": "51.50 t CO₂e",
       "hotspot": "Lightning-equivalent discharge contributes 99.43% of the footprint.",
       "featuredDescription": "A reusable 46.7 kg iron hammer becomes an energy system once a 1 GJ thunder-equivalent event is repeated over 1,000 combat cycles: discharge energy overwhelms manufacture and flight.",
+      "functionalUnit": "Manufacture and deployment of one reusable Mjölnir-class iron hammer over 1,000 combat cycles, each with a 50 m outbound flight, a 50 m powered return and one 1 GJ lightning-equivalent discharge.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "Skáldskaparmál §43 defines the iron head, short haft, return behaviour and durability. Dimensions, flight speed, return efficiency and the thunder-equivalent discharge are explicit modelling assumptions.",
+        "uncertainty": "The 1 GJ discharge scenario is not specified by the cited literary passage and contributes almost the entire headline footprint."
+      },
       "keywords": ["mjolnir", "hammer", "thor", "thunder", "lightning", "iron", "return", "flight", "discharge", "snorri", "asgard"],
       "related": [42, 43, 36],
       "pdf": "assets/pdf/episodes/ep41-mjolnir.pdf"
@@ -65,6 +89,14 @@
       "result": "18.595 kt CO₂e",
       "hotspot": "Worked stone contributes 75.1% of lifecycle GWP; initial construction is 92.4%.",
       "featuredDescription": "A Knossos-scale two-level maze reconstructed as a navigation-denial system: 18.595 kt CO₂e over 30 years, while a 24 kg thread defeats the material system by preserving the way back.",
+      "functionalUnit": "Construction and 30 years of material maintenance for one two-level, Knossos-scale Labyrinth with a 22,000 m² plan footprint, designed to confine one Minotaur and defeat unaided navigation; Ariadne's thread is quantified separately.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "Pseudo-Apollodorus and Diodorus define the navigation-denial function. The Palace of Knossos provides the 22,000 m² scale benchmark; levels, routes, wall geometry and material quantities are reconstructed.",
+        "uncertainty": "Maze geometry, passage-network length and worked-stone quantities are the principal reconstruction choices behind the materials-dominated result."
+      },
       "keywords": ["minotaur", "labyrinth", "maze", "daedalus", "ariadne", "thread", "knossos", "crete", "worked stone", "navigation", "memory", "uncertainty"],
       "related": [36, 42, 35],
       "pdf": "assets/pdf/episodes/ep40-minotaur-labyrinth.pdf"
@@ -82,6 +114,14 @@
       "result": "3.618 Mt CO₂e",
       "hotspot": "Initial construction contributes 58.4% of lifecycle GWP; water supply and treatment add 27.4%.",
       "featuredDescription": "Plato's concentric royal-harbor core reconstructed as a 100-year urban system: 8.41 km² of buildable land, 7.57 Mm² GFA and 500,000 residents, with the result dominated by construction and highly sensitive to where the city boundary is drawn.",
+      "functionalUnit": "Construction, material maintenance and 100 years of water supply and treatment for one concentric Atlantean royal-harbor core with 8.41 km² of buildable land, 7.57 million m² of gross floor area and 500,000 operational residents.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "Plato's Critias constrains the concentric urban geometry. Density, material quantities, population, service life and modern emission-factor proxies are explicit reconstruction assumptions.",
+        "uncertainty": "The spatial system boundary is dominant: alternative readings move the result from 1.94 Mt to 3.62 Mt to 33.04 Mt CO₂e."
+      },
       "keywords": ["atlantis", "plato", "critias", "concentric", "harbor", "city", "worked stone", "water", "system boundary", "urban", "orichalcum"],
       "related": [40, 36, 42]
     },
@@ -98,6 +138,14 @@
       "result": "8.4 t CO₂e",
       "hotspot": "Primary timber contributes 45.2%; timber + rope together account for 77.2% of the main result.",
       "featuredDescription": "A one-use hollow timber machine reconstructed around a 50-warrior payload: 25 m³ of finished timber, 16.52 t rolling mass and a footprint driven far more by materials than by the human-powered entry into Troy.",
+      "functionalUnit": "Construction, regional supply, one-way human-powered entry into Troy and assumed end-of-life destruction of one full-scale wooden horse capable of concealing and delivering 50 equipped warriors.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "Ancient sources constrain timber origin, hollow form, 50-warrior capacity, wheels, ropes and build logic. Dimensions, timber volumes, fasteners and regional freight are explicit engineering assumptions.",
+        "uncertainty": "Rope mass and the reconstructed timber bill of materials materially influence the result; the published rope sensitivity spans 7.0–9.7 t CO₂e."
+      },
       "keywords": ["trojan horse", "troy", "mount ida", "timber", "hemp rope", "wheels", "virgil", "homer", "payload", "infiltration", "system boundaries", "proxy"],
       "related": [40, 36, 35]
     },
@@ -114,6 +162,14 @@
       "result": "73 kg CO₂e",
       "hotspot": "The charcoal route contributes 52.2 kg CO₂e, or 71.0% of the forty-year result.",
       "featuredDescription": "Arthur's lake-born blade reconstructed as a 1.71 kg late-medieval sword with scabbard over 40 years: the object is light, but bloomery ironmaking and inefficient charcoal production place 517 kg of dry-wood equivalent behind its steel.",
+      "functionalUnit": "Provision, use and maintenance of one complete Excalibur sword and scabbard over 40 years of Arthurian rule, including manufacture, one replacement scabbard, blade care and return to the lake.",
+      "evidence": {
+        "confidence": "High",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "Malory provides the narrative constraints; the Royal Armouries supplies a measurable late-medieval sword analogue; bloomery ironmaking is reconstructed from an experimental analogue.",
+        "uncertainty": "Charcoal yield controls the upstream wood demand and the process-energy hotspot, making the ironmaking reconstruction the principal sensitivity."
+      },
       "keywords": ["excalibur", "arthur", "sword", "scabbard", "bloomery", "charcoal", "iron", "leather", "malory", "lady of the lake", "royal armouries", "biogenic carbon"],
       "related": [41, 38, 35]
     },
@@ -131,6 +187,14 @@
       "result": "22,491 t CO₂e",
       "hotspot": "Fired-brick facing contributes 95.4% of the footprint.",
       "featuredDescription": "A 90 m ziggurat reconstructed from Etemenanki: most of the masonry is sun-dried earth, yet the fired-brick skin carries almost the entire climate burden.",
+      "functionalUnit": "Provision and operation of one completed 90 m Tower of Babel for one year, including full construction, one year of maintenance and auxiliary fires.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "Medium",
+        "basis": "Etemenanki supplies the physical analogue for the completed 90 m ziggurat. Upper tiers, shell thickness, stair volume and material split remain explicit engineering assumptions.",
+        "uncertainty": "The fired-brick shell geometry and process intensity dominate the result because fired masonry contributes 95.4% of the footprint."
+      },
       "keywords": ["babel", "ziggurat", "brick", "fired brick", "mudbrick", "construction", "architecture"],
       "related": [40, 35, 42]
     },
@@ -147,6 +211,14 @@
       "result": "528.2 t CO₂e",
       "hotspot": "Construction represents 97.4% of the one-year footprint.",
       "featuredDescription": "A cursed East Indiaman that sails forever without fuel: the operational year is light, while metal armament, fittings and the vessel itself carry the carbon burden.",
+      "functionalUnit": "One year of continuous cursed navigation, including full vessel construction, one year of maintenance and auxiliary use.",
+      "evidence": {
+        "confidence": "High",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "Batavia provides the main physical analogue and Vasa a contemporary scale check. The curse belongs to the narrative while vessel geometry and material reconstruction are anchored in historical evidence.",
+        "uncertainty": "Charging the full construction burden to the first year strongly affects the headline result; a 25-year allocation sensitivity is therefore material to interpretation."
+      },
       "keywords": ["ship", "legend", "sailing", "timber", "metal", "maritime", "curse"],
       "related": [36, 40, 42]
     }
