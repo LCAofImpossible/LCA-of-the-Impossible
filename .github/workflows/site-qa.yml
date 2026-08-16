@@ -25,5 +25,11 @@ jobs:
       - name: Install QA dependencies
         run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Run site QA
+      - name: Build deterministic SEO metadata in QA workspace
+        run: python scripts/apply_seo.py
+
+      - name: Run structural site QA
         run: python scripts/site_qa.py
+
+      - name: Run SEO and social QA
+        run: python scripts/seo_qa.py
