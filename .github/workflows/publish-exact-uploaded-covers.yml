@@ -1,0 +1,166 @@
+name: Publish exact uploaded covers
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/publish-exact-uploaded-covers.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install OCR dependency
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y tesseract-ocr
+
+      - name: Identify and publish the exact uploaded covers
+        run: |
+          set -euo pipefail
+          python - <<'PY'
+          from pathlib import Path
+          import hashlib
+          import json
+          import re
+          import shutil
+          import subprocess
+          import unicodedata
+
+          staging = Path('.cover-staging')
+          out = Path('assets/images/episodes')
+          out.mkdir(parents=True, exist_ok=True)
+
+          uploaded = sorted(staging.glob('*.png'))
+          if len(uploaded) != 6:
+              raise SystemExit(f'Expected exactly 6 uploaded PNG covers, found {len(uploaded)}: {[p.name for p in uploaded]}')
+
+          expected = {35, 36, 40, 41, 42, 43}
+          detected = {}
+
+          def normalized(text):
+              return ''.join(
+                  c for c in unicodedata.normalize('NFKD', text.upper())
+                  if not unicodedata.combining(c)
+              )
+
+          for path in uploaded:
+              texts = []
+              for psm in ('6', '11'):
+                  proc = subprocess.run(
+                      ['tesseract', str(path), 'stdout', '--psm', psm],
+                      stdout=subprocess.PIPE,
+                      stderr=subprocess.DEVNULL,
+                      text=True,
+                      check=False,
+                  )
+                  texts.append(proc.stdout)
+              text = normalized('\n'.join(texts))
+
+              number = None
+              m = re.search(r'EPISODE\s*#?\s*(35|36|40|41|42|43)\b', text)
+              if m:
+                  number = int(m.group(1))
+              else:
+                  keyword_map = {
+                      35: ('DUTCHMAN',),
+                      36: ('BABEL',),
+                      40: ('LABYRINTH', 'MINOTAUR'),
+                      41: ('MJOLNIR',),
+                      42: ('TALOS',),
+                      43: ('SISYPHUS',),
+                  }
+                  matches = [ep for ep, words in keyword_map.items() if any(word in text for word in words)]
+                  if len(matches) == 1:
+                      number = matches[0]
+
+              if number is None:
+                  raise SystemExit(f'Unable to identify episode for {path.name}. OCR output:\n{text[:2000]}')
+              if number in detected:
+                  raise SystemExit(f'Duplicate episode #{number}: {detected[number].name} and {path.name}')
+              detected[number] = path
+              print(f'{path.name} -> episode #{number}')
+
+          if set(detected) != expected:
+              raise SystemExit(f'Detected episodes {sorted(detected)}; expected {sorted(expected)}')
+
+          final_names = {
+              35: 'ep35-flying-dutchman-cover-20260816.png',
+              36: 'ep36-tower-of-babel-cover-20260816.png',
+              40: 'ep40-minotaur-labyrinth-cover-20260816.png',
+              41: 'ep41-mjolnir-cover-20260816.png',
+              42: 'ep42-talos-cover-20260816.png',
+              43: 'ep43-sisyphus-cover-20260816.png',
+          }
+
+          def sha256(path):
+              return hashlib.sha256(path.read_bytes()).hexdigest()
+
+          for ep, source in detected.items():
+              target = out / final_names[ep]
+              shutil.copyfile(source, target)
+              if sha256(source) != sha256(target):
+                  raise SystemExit(f'Byte-for-byte verification failed for episode #{ep}')
+              print(f'Published #{ep}: {target} | SHA256 {sha256(target)}')
+
+          registry_path = Path('episodes.json')
+          registry = json.loads(registry_path.read_text(encoding='utf-8'))
+          for episode in registry['episodes']:
+              number = episode['number']
+              if number in final_names:
+                  episode['cover'] = f'assets/images/episodes/{final_names[number]}'
+          registry_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          css_path = Path('assets/style.css')
+          css = css_path.read_text(encoding='utf-8')
+          old = '''.cards.square-previews .card img{
+            width:100%;
+            aspect-ratio:1/1;
+            object-fit:cover;
+            object-position:center top;
+          }'''
+          new = '''.cards.square-previews .card img{
+            width:100%;
+            aspect-ratio:4/5;
+            object-fit:contain;
+            object-position:center;
+            background:#071015;
+          }'''
+          if old in css:
+              css = css.replace(old, new)
+          elif 'aspect-ratio:4/5;' not in css:
+              raise SystemExit('Could not locate catalogue-cover CSS block to update safely.')
+          css_path.write_text(css, encoding='utf-8')
+
+          # Remove temporary staging only after exact copies and registry update succeed.
+          for p in staging.iterdir():
+              if p.is_file():
+                  p.unlink()
+          try:
+              staging.rmdir()
+          except OSError:
+              pass
+
+          # Remove superseded one-shot workflow if still present.
+          old_workflow = Path('.github/workflows/publish-new-web-covers.yml')
+          if old_workflow.exists():
+              old_workflow.unlink()
+
+          # Remove this one-shot workflow after successful publication.
+          self_workflow = Path('.github/workflows/publish-exact-uploaded-covers.yml')
+          if self_workflow.exists():
+              self_workflow.unlink()
+          PY
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Publish exact uploaded episode covers"
+          git push
