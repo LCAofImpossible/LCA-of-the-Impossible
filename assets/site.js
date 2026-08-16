@@ -202,6 +202,18 @@
     applyArchive();
   };
 
+  const renderEpisodePdfAction = (episode) => {
+    if (!isEpisode || !episode.pdf) return;
+    const hero = document.querySelector('.cover-hero');
+    const title = hero && hero.querySelector('.episode-title');
+    if (!title || title.querySelector('.episode-pdf-action')) return;
+
+    const action = document.createElement('div');
+    action.className = 'cta-row episode-pdf-action';
+    action.innerHTML = `<a class="button secondary" href="${escapeHtml(assetUrl(episode.pdf))}" download>Download episode PDF ↓</a>`;
+    title.appendChild(action);
+  };
+
   const renderEpisodeNavigation = (episodes) => {
     const currentNumber = Number(body.dataset.episode);
     const currentIndex = episodes.findIndex((episode) => episode.number === currentNumber);
@@ -213,6 +225,8 @@
     const header = document.querySelector('.site-header');
     const main = document.querySelector('main');
     if (!header || !main) return;
+
+    renderEpisodePdfAction(current);
 
     const subject = main.querySelector(':scope > .split');
     const model = main.querySelector('.episode-visual-section');
