@@ -6,7 +6,7 @@
       "slug": "sisyphus",
       "title": "Sisyphus",
       "url": "episodes/sisyphus.html",
-      "cover": "assets/images/episodes/ep43-sisyphus.webp",
+      "cover": "assets/images/episodes/ep43-web-cover.svg",
       "categoryLabel": "Mythology",
       "categories": [
         "mythology"
@@ -41,7 +41,7 @@
       "slug": "talos",
       "title": "Talos",
       "url": "episodes/talos.html",
-      "cover": "assets/images/episodes/ep42-talos.jpg",
+      "cover": "assets/images/episodes/ep42-web-cover.svg",
       "categoryLabel": "Mythology",
       "categories": [
         "mythology"
@@ -76,7 +76,7 @@
       "slug": "mjolnir",
       "title": "Mjölnir",
       "url": "episodes/mjolnir.html",
-      "cover": "assets/images/episodes/ep41-mjolnir.jpg",
+      "cover": "assets/images/episodes/ep41-web-cover.svg",
       "categoryLabel": "Mythology",
       "categories": [
         "mythology"
@@ -115,7 +115,7 @@
       "slug": "minotaur-labyrinth",
       "title": "The Minotaur's Labyrinth",
       "url": "episodes/minotaur-labyrinth.html",
-      "cover": "assets/images/episodes/ep40-minotaur.jpg",
+      "cover": "assets/images/episodes/ep40-web-cover.svg",
       "categoryLabel": "Mythic Structure",
       "categories": [
         "mythology",
@@ -155,7 +155,7 @@
       "slug": "tower-of-babel",
       "title": "The Tower of Babel",
       "url": "episodes/tower-of-babel.html",
-      "cover": "assets/images/episodes/ep36-tower-of-babel.png",
+      "cover": "assets/images/episodes/ep36-web-cover.svg",
       "pdf": "assets/pdf/episodes/ep36-tower-of-babel.pdf",
       "categoryLabel": "Mythic Structure",
       "categories": [
@@ -191,7 +191,7 @@
       "slug": "flying-dutchman",
       "title": "The Flying Dutchman",
       "url": "episodes/flying-dutchman.html",
-      "cover": "assets/images/episodes/ep35-flying-dutchman.jpg",
+      "cover": "assets/images/episodes/ep35-web-cover.svg",
       "categoryLabel": "Legends",
       "categories": [
         "legends"

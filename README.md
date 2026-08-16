@@ -56,7 +56,7 @@ Every published episode must contain:
 - `slug` — stable filename slug;
 - `title` — displayed episode title;
 - `url` — relative episode-page path from repository root;
-- `cover` — relative canonical catalogue-cover path from repository root;
+- `cover` — relative path to the approved purpose-built website catalogue cover from repository root; this asset is independent from the PDF/carousel cover.
 - `categoryLabel` — concise human-readable narrative category;
 - `categories` — normalized subject-filter tokens;
 - `lcaLabel` — principal LCA characteristic shown on cards;
@@ -97,7 +97,7 @@ The principal label and all secondary tokens must be defensible from the actual 
 
 Each episode may have:
 
-- `epNN-short-slug.ext` — canonical catalogue cover, homepage/Archive only;
+- `epNN-web-cover.svg` — canonical purpose-built vector website catalogue cover, homepage/Archive only;
 - `epNN-inventory-map.svg` — life-cycle input map;
 - `epNN-technical-plate.svg` — engineering/reconstruction plate;
 - `epNN-hotspot-breakdown.svg` — contribution/hotspot graphic;
@@ -108,6 +108,30 @@ Canonical PDF naming must be stable and simple. Do not publish PDFs with tempora
 ### 4.1 Canonical-cover lock
 
 When an approved PDF/carousel exists, extract or rasterize the exact approved cover and use it as the catalogue cover. Do not redraw, regenerate, reinterpret, restyle or substitute it unless the user explicitly requests a replacement.
+
+### 4.1 Website catalogue-cover system
+
+The website catalogue cover is a **purpose-built web asset** and is independent from page 1 of the approved PDF/carousel. The approved carousel remains unchanged; the website cover exists only to make Homepage and Archive visually coherent, sharp and readable at card scale.
+
+Canonical naming:
+
+`assets/images/episodes/epNN-web-cover.svg`
+
+Required visual system:
+
+- portrait **4:5** composition;
+- vector-first SVG output for maximum sharpness and reliable browser rendering;
+- dark charcoal / deep navy foundation consistent with the website;
+- restrained technical/blueprint linework, thin geometric framing and analytical annotations;
+- one clearly readable central subject rather than a busy collage;
+- off-white and muted gold/bronze core palette with one restrained episode-specific accent;
+- consistent hierarchy for `LCA OF THE IMPOSSIBLE`, episode number, title and principal LCA lens;
+- typography and subject must remain clear at mobile card size;
+- no intentional blur, soft focus or low-resolution rasterization.
+
+When the user explicitly approves a redesigned website cover, that design becomes the canonical catalogue asset even if it differs from the PDF cover. Do **not** replace or redesign the cover inside the approved PDF unless separately requested.
+
+When replacing a published catalogue cover, use a cache-safe new filename or revision, update `episodes.json`, and verify the rendered Homepage and Archive after deployment.
 
 ### 4.2 Where covers are allowed
 
@@ -530,3 +554,12 @@ The website need not duplicate the full workbook but must preserve the core audi
 14. **Analytical graphics must be browser-safe, self-contained and legible.**
 15. **A successful GitHub Pages build is necessary but not sufficient: live pages and any registered PDF download must be checked.**
 16. **Where others see fantasy, we see a functional unit.**
+
+
+### Catalogue-cover QA
+
+- Verify the `cover` path in `episodes.json`.
+- Verify the SVG exists and renders without external dependencies.
+- Inspect Latest Case, Recent Cases and Archive on desktop and mobile.
+- Reject blurred, soft, broken or visibly inconsistent cover assets.
+- When replacing a live cover, use a cache-safe publication path and confirm the new asset is what GitHub Pages serves.

@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1000" viewBox="0 0 800 1000" role="img" aria-label="LCA of the Impossible Episode 40 catalogue cover">
+<defs>
+  <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+    <path d="M40 0H0V40" fill="none" stroke="#b78b55" stroke-width="0.7" opacity="0.10"/>
+  </pattern>
+  <filter id="paper" x="-20%" y="-20%" width="140%" height="140%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" seed="40" result="noise"/>
+    <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+    <feComponentTransfer in="mono"><feFuncA type="table" tableValues="0 0.06"/></feComponentTransfer>
+  </filter>
+  <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+    <feGaussianBlur stdDeviation="4" result="b"/><feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+  </filter>
+  <style>
+    .series{font-family:Georgia,'Times New Roman',serif;font-size:20px;letter-spacing:5px;fill:#c7ad83}
+    .episode{font-family:Arial,sans-serif;font-size:15px;font-weight:600;letter-spacing:5px;fill:#c7463c}
+    .title{font-family:Georgia,'Times New Roman',serif;font-weight:400;letter-spacing:5px;fill:#ddd2bf}
+    .micro{font-family:Arial,sans-serif;font-size:12px;letter-spacing:2px;fill:#9e8665}
+    .lens{font-family:Georgia,'Times New Roman',serif;font-size:17px;font-style:italic;letter-spacing:4px;fill:#c7ad83}
+    .tech{fill:none;stroke:#a77c45;stroke-width:1.2;opacity:.62}
+    .tech2{fill:none;stroke:#c7ad83;stroke-width:1;opacity:.28}
+    .accent{fill:none;stroke:#c7463c;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+    .subject{fill:none;stroke:#d0c1a9;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+    .subject2{fill:none;stroke:#9c8666;stroke-width:1.2;stroke-linecap:round;stroke-linejoin:round}
+  </style>
+</defs>
+<rect width="800" height="1000" fill="#071015"/>
+<rect width="800" height="1000" fill="url(#grid)"/>
+<rect width="800" height="1000" fill="#fff" opacity="0.15" filter="url(#paper)"/>
+
+<rect x="18" y="18" width="764" height="964" rx="2" fill="none" stroke="#9c7343" stroke-width="1.4"/>
+<path d="M42 42h70M688 42h70M42 958h70M688 958h70" class="tech"/>
+<circle cx="28" cy="28" r="8" class="tech"/><circle cx="772" cy="28" r="8" class="tech"/>
+<circle cx="28" cy="972" r="8" class="tech"/><circle cx="772" cy="972" r="8" class="tech"/>
+<path d="M400 18v24M388 30h24" class="tech"/>
+
+<text x="400" y="72" text-anchor="middle" class="series">LCA OF THE IMPOSSIBLE</text>
+<line x1="92" y1="66" x2="250" y2="66" class="tech"/><line x1="550" y1="66" x2="708" y2="66" class="tech"/>
+<circle cx="260" cy="66" r="3" class="tech"/><circle cx="540" cy="66" r="3" class="tech"/>
+<text x="400" y="116" text-anchor="middle" class="episode">EPISODE #40</text>
+<line x1="340" y1="132" x2="386" y2="132" stroke="#c7463c" opacity=".9"/><line x1="414" y1="132" x2="460" y2="132" stroke="#c7463c" opacity=".9"/>
+<rect x="396" y="128" width="8" height="8" transform="rotate(45 400 132)" fill="none" stroke="#c7463c"/>
+<text x="400" y="155" text-anchor="middle" class="title" font-size="68">THE MINOTAUR&#x27;S</text><text x="400" y="221" text-anchor="middle" class="title" font-size="68">LABYRINTH</text>
+
+<circle cx="390" cy="520" r="235" class="tech2"/><circle cx="390" cy="520" r="180" class="tech2"/>
+<circle cx="390" cy="520" r="125" class="tech2"/>
+<path d="M155 520h470M390 285v470" class="tech2"/>
+<path d="M170 352A235 235 0 0 1 601 420" class="tech" stroke-dasharray="3 9"/>
+<path d="M190 690A235 235 0 0 0 590 670" class="tech" stroke-dasharray="2 7"/>
+
+
+<g>
+  <circle cx="390" cy="530" r="210" stroke="#d0c1a9" stroke-width="18" fill="none"/>
+  <circle cx="390" cy="530" r="174" stroke="#a9987c" stroke-width="16" fill="none"/>
+  <circle cx="390" cy="530" r="140" stroke="#d0c1a9" stroke-width="15" fill="none"/>
+  <circle cx="390" cy="530" r="108" stroke="#a9987c" stroke-width="14" fill="none"/>
+  <circle cx="390" cy="530" r="76" stroke="#d0c1a9" stroke-width="13" fill="none"/>
+  <rect x="382" y="312" width="18" height="60" fill="#071015"/>
+  <rect x="478" y="350" width="70" height="20" transform="rotate(32 513 360)" fill="#071015"/>
+  <rect x="533" y="462" width="70" height="20" transform="rotate(78 568 472)" fill="#071015"/>
+  <rect x="492" y="621" width="72" height="20" transform="rotate(140 528 631)" fill="#071015"/>
+  <rect x="338" y="662" width="20" height="70" transform="rotate(10 348 697)" fill="#071015"/>
+  <rect x="232" y="565" width="72" height="20" transform="rotate(175 268 575)" fill="#071015"/>
+  <rect x="252" y="395" width="72" height="20" transform="rotate(220 288 405)" fill="#071015"/>
+  <path d="M390 760C385 714 363 681 390 646C420 607 425 590 398 560C371 529 377 502 410 478C443 454 442 424 405 398C386 385 390 363 390 340" class="accent"/>
+  <circle cx="390" cy="530" r="32" fill="#071015" stroke="#c7ad83" stroke-width="1.5"/>
+  <path d="M371 535q19-24 38 0M375 523l-13-14M405 523l13-14M378 543q12 10 24 0" class="subject"/>
+  <circle cx="381" cy="531" r="2.5" fill="#d0c1a9"/><circle cx="399" cy="531" r="2.5" fill="#d0c1a9"/>
+</g>
+
+<g transform="translate(58 690)">
+  <text x="0" y="0" class="micro">CYCLE</text>
+  <rect x="0" y="14" width="54" height="46" class="tech"/>
+  <text x="27" y="48" text-anchor="middle" font-family="Georgia,serif" font-size="30" fill="#c7463c">∞</text>
+  <rect x="0" y="74" width="54" height="44" class="tech2"/>
+  <path d="M0 74l54 44M54 74L0 118" class="tech2"/>
+</g>
+
+<g transform="translate(610 650)">
+  <rect x="0" y="0" width="142" height="186" fill="#071015" opacity=".78" stroke="#9c7343"/>
+  <text x="24" y="28" class="micro" fill="#c7ad83">SYSTEM LENS</text>
+  <circle cx="72" cy="72" r="34" class="tech"/><circle cx="72" cy="72" r="20" class="tech2"/>
+  <path d="M38 72h68M72 38v68" class="tech2"/>
+  <path d="M72 72l25 -22" class="accent"/>
+  <text x="634" y="690" class="micro" fill="#c7ad83">STONE</text><text x="634" y="718" class="micro" fill="#c7ad83">NETWORK</text><text x="634" y="746" class="micro" fill="#c7ad83">THREAD</text>
+  <text x="24" y="166" class="micro">Σ FLOW × FACTOR</text>
+</g>
+
+<g transform="translate(400 895)">
+  <circle cx="0" cy="0" r="20" fill="none" stroke="#a77c45"/>
+  <path d="M0 -13L13 11H-13Z" fill="none" stroke="#c7ad83"/>
+</g>
+<line x1="250" y1="895" x2="365" y2="895" class="tech"/><line x1="435" y1="895" x2="550" y2="895" class="tech"/>
+<text x="400" y="938" text-anchor="middle" class="lens">Materials-driven</text>
+</svg>
