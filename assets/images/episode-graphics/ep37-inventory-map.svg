@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Excalibur life cycle inventory map</title>
+<desc id="desc">Flow map from ore, dry wood, leather and wood components through bloomery smelting, forging, scabbard manufacture, regional supply and forty years of maintenance.</desc>
+<rect width="1200" height="760" fill="#071019"/>
+<g fill="none" stroke="#234557" stroke-width="2">
+  <path d="M180 190 H410"/><path d="M180 315 H410"/><path d="M180 440 H410"/><path d="M180 565 H410"/><path d="M590 250 H810"/><path d="M590 500 H810"/><path d="M975 330 V455"/>
+</g>
+<g font-family="Inter,Arial,sans-serif">
+  <text x="60" y="72" fill="#d0a563" font-size="24" letter-spacing="4">INVENTORY MAP</text>
+  <text x="60" y="108" fill="#eef7fb" font-size="42" font-weight="700">From forest and ore to forty years of use</text>
+  <g><rect x="60" y="145" width="240" height="88" rx="8" fill="#0d1b27" stroke="#d0a563"/><text x="82" y="178" fill="#c4f7ff" font-size="18" font-weight="700">IRON ORE</text><text x="82" y="207" fill="#eef7fb" font-size="24">45.6 kg</text></g>
+  <g><rect x="60" y="270" width="240" height="88" rx="8" fill="#0d1b27" stroke="#d0a563"/><text x="82" y="303" fill="#c4f7ff" font-size="18" font-weight="700">DRY WOOD</text><text x="82" y="332" fill="#eef7fb" font-size="24">517 kg equivalent</text></g>
+  <g><rect x="60" y="395" width="240" height="88" rx="8" fill="#0d1b27" stroke="#d0a563"/><text x="82" y="428" fill="#c4f7ff" font-size="18" font-weight="700">LEATHER + TEXTILE</text><text x="82" y="457" fill="#eef7fb" font-size="22">grip + scabbards</text></g>
+  <g><rect x="60" y="520" width="240" height="88" rx="8" fill="#0d1b27" stroke="#d0a563"/><text x="82" y="553" fill="#c4f7ff" font-size="18" font-weight="700">WOOD COMPONENTS</text><text x="82" y="582" fill="#eef7fb" font-size="22">grip + scabbards</text></g>
+  <g><rect x="410" y="175" width="180" height="150" rx="10" fill="#112232" stroke="#6de7ff"/><text x="500" y="215" fill="#6de7ff" font-size="18" text-anchor="middle" font-weight="700">BLOOMERY</text><text x="500" y="246" fill="#eef7fb" font-size="22" text-anchor="middle">77.5 kg charcoal</text><text x="500" y="278" fill="#eef7fb" font-size="22" text-anchor="middle">smelting</text></g>
+  <g><rect x="410" y="430" width="180" height="140" rx="10" fill="#112232" stroke="#6de7ff"/><text x="500" y="470" fill="#6de7ff" font-size="18" text-anchor="middle" font-weight="700">FORGE + SET</text><text x="500" y="501" fill="#eef7fb" font-size="22" text-anchor="middle">26.0 kg charcoal</text><text x="500" y="533" fill="#eef7fb" font-size="22" text-anchor="middle">sword + scabbard</text></g>
+  <g><rect x="810" y="205" width="330" height="150" rx="10" fill="#0d1b27" stroke="#d0a563"/><text x="975" y="247" fill="#d0a563" font-size="18" text-anchor="middle" font-weight="700">INITIAL SET</text><text x="975" y="286" fill="#eef7fb" font-size="30" text-anchor="middle" font-weight="700">2.59 kg</text><text x="975" y="320" fill="#9ab0bc" font-size="20" text-anchor="middle">1.71 kg sword + scabbard</text></g>
+  <g><rect x="810" y="455" width="330" height="170" rx="10" fill="#0d1b27" stroke="#d0a563"/><text x="975" y="497" fill="#d0a563" font-size="18" text-anchor="middle" font-weight="700">40-YEAR SERVICE</text><text x="975" y="535" fill="#eef7fb" font-size="22" text-anchor="middle">1 replacement scabbard</text><text x="975" y="568" fill="#eef7fb" font-size="22" text-anchor="middle">0.015 kg oil / year</text><text x="975" y="601" fill="#eef7fb" font-size="22" text-anchor="middle">0.5 kg whetstone</text></g>
+  <text x="60" y="685" fill="#9ab0bc" font-size="18">Regional supply: ore 100 km · charcoal 20 km · wood/leather/fittings 100 km · direct + WTT freight</text>
+  <text x="60" y="718" fill="#6de7ff" font-size="20" font-weight="700">RETURN TO THE LAKE → 0 kg CO₂e quantified end-of-life burden</text>
+</g>
+</svg>
