@@ -673,3 +673,77 @@ SEO metadata, sitemap, robots, favicon and manifest are maintained deterministic
 - [ ] LinkedIn/social preview metadata exists in static HTML before publication.
 
 <!-- SEO-RULES:END -->
+
+---
+
+<!-- PHASE3-RULES:START -->
+
+## 25. Interactive exploration, comparison and evidence profiles — mandatory
+
+Phase 3 adds analytical exploration without turning unlike functional units into comparative environmental claims.
+
+### 25.1 Registry fields
+
+`episodes.json` uses `schemaVersion: 2`. Every published episode must additionally contain:
+
+- `functionalUnit` — the exact or faithfully normalized functional unit / reporting basis shown in the episode hero;
+- `evidence.confidence` — `Low`, `Medium` or `High` qualitative confidence in the narrative, historical or physical evidence constraining the reconstruction;
+- `evidence.proxyDependence` — `Low`, `Medium` or `High` dependence on analogue processes or modern emission-factor proxies;
+- `evidence.assumptionSensitivity` — `Low`, `Medium` or `High` sensitivity to key engineering assumptions, boundaries or scenario choices;
+- `evidence.basis` — concise description of the source/analogue basis and what is reconstructed;
+- `evidence.uncertainty` — the main modelling uncertainty that materially affects interpretation.
+
+These evidence fields are editorial transparency indicators. They are **not** a formal ISO data-quality rating, uncertainty analysis or verification statement.
+
+### 25.2 Compare Cases
+
+`compare.html` allows selection of two or three published episodes. The table may compare functional unit, headline result, narrative category, LCA lens, hotspot, evidence confidence, proxy dependence, assumption sensitivity and principal modelling uncertainty.
+
+The comparison must always display an explicit warning that headline results have different functional units and system boundaries. Do not calculate ratios, rankings, winners/losers or comparative environmental claims between unlike cases.
+
+The selected episode numbers may be encoded in the URL as `compare.html?cases=43,42,41` so a comparison can be shared. Archive cards may expose `+ Compare`; no more than three cases may be selected at once.
+
+### 25.3 Explore the Impossible / impact map
+
+`explore.html` places published headline results on a logarithmic climate-impact scale. Result strings may be normalized internally to kg CO₂e **only to calculate position on the logarithmic axis**. This normalization does not harmonize functional units and must never be described as a like-for-like comparison.
+
+The map must:
+
+- retain the published result text beside each point;
+- link every point back to the episode;
+- allow filtering by principal LCA lens;
+- display a persistent explanation that scale position is descriptive, not a ranking;
+- remain usable on mobile without horizontal page overflow.
+
+### 25.4 Episode Evidence Profile
+
+Every episode receives an Evidence Profile immediately after Quick Facts and before the Visual Model. It displays Evidence confidence, Proxy dependence and Assumption sensitivity plus expandable Evidence basis and Main modelling uncertainty notes.
+
+The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do not duplicate these values manually inside individual episode HTML. The episode jump navigation must include `Evidence` when the profile is present.
+
+### 25.5 Phase 3 files and QA
+
+Canonical Phase 3 files:
+
+- `compare.html` — side-by-side technical comparison;
+- `explore.html` — logarithmic impact-scale exploration;
+- `assets/features.css` — styles for comparison, impact map and evidence profiles;
+- `scripts/feature_sync.py` — synchronizes Phase 3 metadata, sitemap entries and these README rules;
+- `scripts/feature_qa.py` — validates registry evidence fields and Phase 3 page integrity.
+
+`SEO Sync` must run `scripts/feature_sync.py` after `scripts/apply_seo.py`. `Site QA` must run both feature synchronization in its temporary QA workspace and `scripts/feature_qa.py`.
+
+### Phase 3 QA
+
+- [ ] Every published episode has a meaningful `functionalUnit`.
+- [ ] Every published episode has all five `evidence` fields.
+- [ ] Evidence levels use only `Low`, `Medium` or `High`.
+- [ ] Compare Cases accepts 2–3 unique cases and never presents a better/worse ranking.
+- [ ] Archive compare selection is capped at three cases.
+- [ ] Impact map uses a logarithmic magnitude scale and retains original published result labels.
+- [ ] Both interactive pages contain the functional-unit/non-comparability warning.
+- [ ] Every episode renders its Evidence Profile before the Visual Model.
+- [ ] `compare.html` and `explore.html` are present exactly once in `sitemap.xml`.
+- [ ] Phase 3 pages carry canonical/social metadata and remain responsive.
+
+<!-- PHASE3-RULES:END -->
