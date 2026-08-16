@@ -115,6 +115,7 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .hero.no-side-art .hero-copy{max-width:860px}
 .cards.square-previews .card img{
   width:100%;
+  height:auto;
   aspect-ratio:4/5;
   object-fit:contain;
   object-position:center;
