@@ -632,3 +632,44 @@ The website need not duplicate the full workbook but must preserve the core audi
 - Verify that the repository/live asset is the **exact image approved in the creation step**. A visually similar regenerated image is not acceptable.
 - If an exact user-approved image was supplied, verify no transformation occurred.
 - When replacing a live cover, use a cache-safe publication path and confirm the new asset is what GitHub Pages serves.
+
+---
+
+<!-- SEO-RULES:START -->
+
+## 24. SEO, social sharing and discovery — mandatory
+
+Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
+
+Required on `index.html`, `archive.html` and every published episode page:
+
+- one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
+- a concise meta description;
+- `robots` set to `index,follow,max-image-preview:large`;
+- Open Graph metadata: `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, `og:image`, `og:image:alt`, `og:locale`;
+- Twitter/X card metadata using `summary_large_image`, with title, description, image and image alt text;
+- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive and `Article` for episode pages;
+- shared favicon and web manifest links.
+
+For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
+
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive and every published episode URL, and must exclude `episodes/template.html`.
+
+`episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
+
+SEO metadata, sitemap, robots, favicon and manifest are maintained deterministically by `scripts/apply_seo.py`. `scripts/seo_qa.py` verifies that the committed site matches `episodes.json`. When a new episode is added, publication is incomplete until these checks pass and the live deployment contains the updated canonical/social metadata.
+
+### SEO/social QA
+
+- [ ] Canonical URL is absolute and correct.
+- [ ] Meta description is present and episode-specific where applicable.
+- [ ] Open Graph and Twitter card fields are complete.
+- [ ] Episode social image is the exact registered cover path.
+- [ ] JSON-LD parses and uses the correct page type.
+- [ ] Sitemap contains every published episode exactly once.
+- [ ] `robots.txt` references the live sitemap.
+- [ ] Favicon and manifest are linked from public pages.
+- [ ] Template is excluded from indexing.
+- [ ] LinkedIn/social preview metadata exists in static HTML before publication.
+
+<!-- SEO-RULES:END -->

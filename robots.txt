@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://lcaofimpossible.github.io/LCA-of-the-Impossible/sitemap.xml

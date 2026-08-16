@@ -1,0 +1,18 @@
+{
+  "name": "LCA of the Impossible",
+  "short_name": "LCA Impossible",
+  "description": "Where others see fantasy, we see a functional unit.",
+  "start_url": "/LCA-of-the-Impossible/",
+  "scope": "/LCA-of-the-Impossible/",
+  "display": "standalone",
+  "background_color": "#071019",
+  "theme_color": "#071019",
+  "icons": [
+    {
+      "src": "assets/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any"
+    }
+  ]
+}

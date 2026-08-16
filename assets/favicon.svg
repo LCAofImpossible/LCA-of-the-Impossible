@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="LCA of the Impossible">
+  <rect width="64" height="64" rx="8" fill="#071019"/>
+  <rect x="5" y="5" width="54" height="54" rx="5" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <path d="M13 45V18h5v22h13v5H13Zm23 0V18h15v5H41v6h9v5h-9v11h-5Z" fill="#eef7fb"/>
+  <path d="M10 11h18M36 53h18" stroke="#6de7ff" stroke-width="2"/>
+</svg>
