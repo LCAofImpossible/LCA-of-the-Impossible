@@ -124,6 +124,7 @@ def main() -> int:
     check_public_page(ROOT / "archive.html", BASE_URL + "archive.html", latest_image, "website", "CollectionPage")
     check_public_page(ROOT / "compare.html", BASE_URL + "compare.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "explore.html", BASE_URL + "explore.html", latest_image, "website", "CollectionPage")
+    check_public_page(ROOT / "collections.html", BASE_URL + "collections.html", latest_image, "website", "CollectionPage")
 
     for episode in episodes:
         canonical = BASE_URL + episode["url"]
@@ -138,13 +139,13 @@ def main() -> int:
         if re.search(r'<link\s+rel=["\']canonical["\']', template, flags=re.I):
             fail("episodes/template.html: template must not publish a canonical URL")
 
-    sitemap_path = ROOT / "sitemap.xml"
-    sitemap_text = read(sitemap_path)
+    sitemap_text = read(ROOT / "sitemap.xml")
     expected_urls = {
         BASE_URL,
         BASE_URL + "archive.html",
         BASE_URL + "compare.html",
         BASE_URL + "explore.html",
+        BASE_URL + "collections.html",
         *[BASE_URL + e["url"] for e in episodes],
     }
     if sitemap_text:
@@ -194,7 +195,7 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"\nSEO QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
-    print(f"SEO QA passed for {len(episodes) + 4} public pages.")
+    print(f"SEO QA passed for {len(episodes) + 5} public pages.")
     return 0
 
 

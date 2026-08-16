@@ -1,0 +1,43 @@
+{
+  "schemaVersion": 1,
+  "socialLinks": {
+    "linkedin": null
+  },
+  "collections": [
+    {
+      "slug": "impossible-structures",
+      "title": "Impossible Structures",
+      "eyebrow": "ARCHITECTURE & INFRASTRUCTURE",
+      "description": "Cities, towers and labyrinths where geometry becomes inventory and construction choices determine the climate hotspot.",
+      "episodes": [
+        39,
+        40,
+        36
+      ]
+    },
+    {
+      "slug": "legendary-engineering",
+      "title": "Legendary Engineering",
+      "eyebrow": "WEAPONS, MACHINES & DECEPTION",
+      "description": "Objects that behave like engineered systems: forged weapons, autonomous guardians and one wooden machine designed to cross a city gate.",
+      "episodes": [
+        42,
+        41,
+        38,
+        37
+      ]
+    },
+    {
+      "slug": "systems-that-never-stop",
+      "title": "Systems That Never Stop",
+      "eyebrow": "REPETITION, DUTY CYCLES & CURSES",
+      "description": "Cases where time, repetition or continuous operation changes the answer more than the object itself.",
+      "episodes": [
+        43,
+        35,
+        42,
+        41
+      ]
+    }
+  ]
+}

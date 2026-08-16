@@ -29,19 +29,22 @@ jobs:
       - name: Synchronize static SEO metadata
         run: python scripts/apply_seo.py
 
-      - name: Synchronize Phase 3 feature metadata
+      - name: Synchronize Phase 3 metadata
         run: python scripts/feature_sync.py
+
+      - name: Synchronize Phase 4 engagement metadata
+        run: python scripts/engagement_sync.py
 
       - name: Commit synchronized metadata
         shell: bash
         run: |
           if git diff --quiet; then
-            echo "SEO metadata already synchronized."
+            echo "SEO and feature metadata already synchronized."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html archive.html compare.html explore.html episodes README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
-          git commit -m "Sync SEO metadata"
+          git add index.html archive.html compare.html explore.html collections.html episodes README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
+          git commit -m "Sync site metadata and engagement wiring"
           git pull --rebase origin main
           git push origin HEAD:main
