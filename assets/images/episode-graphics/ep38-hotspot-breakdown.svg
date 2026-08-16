@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Trojan Horse hotspot contribution breakdown</title>
+<desc id="desc">Primary timber contributes 45.2 percent, hemp rope textile proxy 31.9 percent, metal fasteners 13.7 percent, wood combustion 6.5 percent, resin finish 1.7 percent and freight 0.9 percent of the 8.4 tonne carbon dioxide equivalent main result.</desc>
+<style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.bar{fill:#183346}.b1{fill:#d0a563}.b2{fill:#42b883}.b3{fill:#6d93a7}.b4{fill:#486d80}.b5{fill:#31566a}.b6{fill:#234557}
+.h{font:700 28px ui-monospace,monospace;fill:#eef7fb}.t{font:500 19px ui-monospace,monospace;fill:#c4d4dc}.m{font:500 16px ui-monospace,monospace;fill:#9ab0bc}.v{font:700 20px ui-monospace,monospace;fill:#eef7fb}.g{font:700 22px ui-monospace,monospace;fill:#d0a563}.k{font:700 22px ui-monospace,monospace;fill:#42b883}
+</style>
+<rect class="bg" width="1200" height="720" rx="24"/>
+<text x="65" y="62" class="h">THE ORGANIC HOTSPOT</text>
+<text x="65" y="94" class="m">Main result: 8.4 t CO₂e · one 50-warrior infiltration mission · DEFRA 2026 proxies</text>
+<text x="70" y="160" class="t">Primary timber</text><rect x="330" y="137" width="560" height="30" rx="8" class="bar"/><rect x="330" y="137" width="506" height="30" rx="8" class="b1"/><text x="920" y="160" class="v">45.2% · 3,789.9 kg</text>
+<text x="70" y="225" class="t">Hemp rope / textile proxy</text><rect x="330" y="202" width="560" height="30" rx="8" class="bar"/><rect x="330" y="202" width="357" height="30" rx="8" class="b2"/><text x="920" y="225" class="v">31.9% · 2,677.2 kg</text>
+<text x="70" y="290" class="t">Metal fasteners + straps</text><rect x="330" y="267" width="560" height="30" rx="8" class="bar"/><rect x="330" y="267" width="153" height="30" rx="8" class="b3"/><text x="920" y="290" class="v">13.7% · 1,146.6 kg</text>
+<text x="70" y="355" class="t">Wood combustion — direct</text><rect x="330" y="332" width="560" height="30" rx="8" class="bar"/><rect x="330" y="332" width="73" height="30" rx="8" class="b4"/><text x="920" y="355" class="v">6.5% · 548.3 kg</text>
+<text x="70" y="420" class="t">Resin / pitch finish</text><rect x="330" y="397" width="560" height="30" rx="8" class="bar"/><rect x="330" y="397" width="19" height="30" rx="8" class="b5"/><text x="920" y="420" class="v">1.7% · 140.1 kg</text>
+<text x="70" y="485" class="t">Freight — direct + WTT</text><rect x="330" y="462" width="560" height="30" rx="8" class="bar"/><rect x="330" y="462" width="10" height="30" rx="8" class="b6"/><text x="920" y="485" class="v">0.9% · 78.1 kg</text>
+<rect x="65" y="545" width="500" height="115" rx="15" class="panel"/>
+<text x="92" y="582" class="m">TIMBER + ROPE</text><text x="92" y="626" class="k">77.2% of main GWP</text><text x="92" y="651" class="m">materials dominate movement</text>
+<rect x="600" y="545" width="535" height="115" rx="15" class="panel"/>
+<text x="627" y="582" class="m">SEPARATE DISCLOSURE</text><text x="627" y="626" class="g">16.2 t biogenic CO₂</text><text x="627" y="651" class="m">outside the 8.4 t CO₂e headline</text>
+</svg>
