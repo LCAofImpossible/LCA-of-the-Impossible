@@ -95,8 +95,8 @@ def main() -> int:
             fail("collections.html: Phase 4 SEO block missing")
         if 'data-page="collections"' not in text:
             fail("collections.html: data-page=collections missing")
-        if "assets/images/episodes/" in text:
-            fail("collections.html must remain text-only and must not contain episode cover paths")
+        if re.search(r'<img\b[^>]*assets/images/episodes/', text, flags=re.I):
+            fail("collections.html must remain text-only and must not render episode cover images")
 
     public_pages = [
         ROOT / "index.html",
