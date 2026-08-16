@@ -112,9 +112,10 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .hero.no-side-art .hero-copy{max-width:860px}
 .cards.square-previews .card img{
   width:100%;
-  aspect-ratio:1/1;
-  object-fit:cover;
-  object-position:center top;
+  aspect-ratio:4/5;
+  object-fit:contain;
+  object-position:center;
+  background:#071015;
 }
 .small-section-title h2{font-size:clamp(1.7rem,3.2vw,2.7rem)}
 @media(max-width:1000px){
