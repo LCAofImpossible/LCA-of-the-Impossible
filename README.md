@@ -12,7 +12,7 @@ Use this hierarchy whenever sources disagree:
 
 1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions, wording and approved cover artwork.
 2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the catalogue cover.
-3. **This README** — source of truth for website editorial structure, publishing rules, taxonomy, asset conventions and QA requirements.
+3. **This README and the currently approved catalogue-cover family (#35, #36, #40, #41, #42, #43)** — source of truth for website editorial structure, cover style, publishing rules, taxonomy, asset conventions and QA requirements.
 4. **`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, PDF availability, taxonomy, related cases and navigation relationships.
 5. **`assets/style.css`** — source of truth for the live visual system and responsive behaviour.
 6. **`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode heroes, automatic PDF download actions, Related Cases and Previous/Next behaviour.
@@ -56,7 +56,7 @@ Every published episode must contain:
 - `slug` — stable filename slug;
 - `title` — displayed episode title;
 - `url` — relative episode-page path from repository root;
-- `cover` — relative path to the approved purpose-built website catalogue cover from repository root; this asset is independent from the PDF/carousel cover.
+- `cover` — relative path to the approved website catalogue cover from repository root. For new episodes, the cover must follow the canonical catalogue-cover family defined in Section 4; an explicitly user-approved exact replacement always overrides the generated/default cover.
 - `categoryLabel` — concise human-readable narrative category;
 - `categories` — normalized subject-filter tokens;
 - `lcaLabel` — principal LCA characteristic shown on cards;
@@ -97,43 +97,82 @@ The principal label and all secondary tokens must be defensible from the actual 
 
 Each episode may have:
 
-- `epNN-web-cover.svg` — canonical purpose-built vector website catalogue cover, homepage/Archive only;
+- `epNN-short-slug-cover.png` — canonical high-resolution website catalogue cover, homepage/Archive only;
 - `epNN-inventory-map.svg` — life-cycle input map;
 - `epNN-technical-plate.svg` — engineering/reconstruction plate;
 - `epNN-hotspot-breakdown.svg` — contribution/hotspot graphic;
 - `epNN-short-slug.pdf` — approved downloadable carousel.
 
+A cache-safe revision suffix such as `-cover-YYYYMMDD.png` is allowed and recommended when replacing an already published cover. Do not overwrite a live cover in place if doing so could leave stale CDN/browser content.
+
 Canonical PDF naming must be stable and simple. Do not publish PDFs with temporary suffixes such as `(1)`, `rev-final`, `v2`, `copy` or similar. Normalize them to `epNN-short-slug.pdf` before adding the registry `pdf` field.
 
-### 4.1 Canonical-cover lock
+### 4.1 Canonical catalogue-cover family — mandatory
 
-When an approved PDF/carousel exists, extract or rasterize the exact approved cover and use it as the catalogue cover. Do not redraw, regenerate, reinterpret, restyle or substitute it unless the user explicitly requests a replacement.
+All new episode covers must belong to the same visual family as the currently approved catalogue set. The canonical style references are the live covers for:
 
-### 4.1 Website catalogue-cover system
+- Episode #35 — The Flying Dutchman;
+- Episode #36 — The Tower of Babel;
+- Episode #40 — The Minotaur's Labyrinth;
+- Episode #41 — Mjölnir;
+- Episode #42 — Talos;
+- Episode #43 — Sisyphus.
 
-The website catalogue cover is a **purpose-built web asset** and is independent from page 1 of the approved PDF/carousel. The approved carousel remains unchanged; the website cover exists only to make Homepage and Archive visually coherent, sharp and readable at card scale.
+These six covers are the **style source of truth** for future catalogue artwork. New covers must look like another issue from the same designed series, not merely use similar colours.
 
-Canonical naming:
+The cover must be created specifically for the website catalogue unless the user supplies and explicitly approves an exact replacement image. An approved PDF/carousel cover may be reused only when it already belongs to this same visual family or the user explicitly instructs that it be used.
 
-`assets/images/episodes/epNN-web-cover.svg`
+If the user provides or approves a specific cover image, use **that exact image**. Do not redraw, regenerate, reinterpret, crop, recolour, retouch, recompress or substitute it unless explicitly requested.
 
-Required visual system:
+### 4.2 Required cover design language
+
+Mandatory characteristics:
 
 - portrait **4:5** composition;
-- vector-first SVG output for maximum sharpness and reliable browser rendering;
-- dark charcoal / deep navy foundation consistent with the website;
-- restrained technical/blueprint linework, thin geometric framing and analytical annotations;
-- one clearly readable central subject rather than a busy collage;
-- off-white and muted gold/bronze core palette with one restrained episode-specific accent;
-- consistent hierarchy for `LCA OF THE IMPOSSIBLE`, episode number, title and principal LCA lens;
-- typography and subject must remain clear at mobile card size;
-- no intentional blur, soft focus or low-resolution rasterization.
+- high-resolution raster output, preferably PNG, with the full artwork visible and no catalogue crop;
+- near-black charcoal / deep navy background with subtle paper/engraving texture;
+- thin aged bronze/gold outer frame with small geometric/technical registration marks;
+- centered top line `LCA OF THE IMPOSSIBLE` in widely tracked classical serif capitals;
+- a smaller centered `EPISODE #NN` line below it, using one restrained episode-specific accent colour;
+- a very large off-white / warm ivory serif title dominating the upper third;
+- one unmistakable central subject, rendered with detailed etched/engraved, technical-realistic or sculptural treatment rather than flat vector iconography;
+- restrained blueprint/engineering construction geometry behind or around the subject: circles, axes, measurement marks, technical panels, trajectories, diagrams or equations as appropriate to the case;
+- analytical decoration must remain secondary to the subject and title; never turn the cover into a dashboard or collage;
+- bottom-center small geometric series mark and an italic principal LCA lens such as `Materials-driven`, `Operation-driven` or `Energy-driven`;
+- optional recurring micro-elements such as `CYCLE ∞`, a side technical panel, route line, work/energy notation or resource-accounting schematic when they are relevant to the episode;
+- muted bronze/gold and warm ivory as the common palette, with **only one restrained episode-specific accent** (for example cyan, green or red) used consistently for episode number and selected technical cues;
+- dark, serious, archaeological/engineering atmosphere with an epic editorial layer;
+- typography, border proportions, title scale, visual density and subject treatment must remain recognizably consistent with the six reference covers.
 
-When the user explicitly approves a redesigned website cover, that design becomes the canonical catalogue asset even if it differs from the PDF cover. Do **not** replace or redesign the cover inside the approved PDF unless separately requested.
+Do **not** use:
 
-When replacing a published catalogue cover, use a cache-safe new filename or revision, update `episodes.json`, and verify the rendered Homepage and Archive after deployment.
+- generic website-blue/neon styling as the dominant cover language;
+- bright multi-colour palettes;
+- flat vector poster art;
+- clean modern corporate infographic styling;
+- generic photorealistic movie-poster composition;
+- multiple competing subjects or busy collage layouts;
+- soft focus, intentional blur, low-resolution rasterization or illegible microtext;
+- a square crop or any other aspect ratio for the canonical catalogue asset.
 
-### 4.2 Where covers are allowed
+The composition may adapt to the subject — ship, structure, object, automaton, landscape or figure — but it must preserve the same editorial grammar. Consistency of **series identity** takes priority over forcing every subject into the exact same geometry.
+
+### 4.3 Cover production and approval rule
+
+For every new episode:
+
+1. Determine the principal visual subject from the approved episode content.
+2. Determine the principal LCA lens (`Materials-driven`, `Operation-driven`, `Energy-driven`, etc.) from the actual result.
+3. Create a new 4:5 cover using the canonical family above and the six current covers as direct style references.
+4. Keep the episode-specific accent restrained and subordinate to bronze/gold and ivory.
+5. Check spelling, episode number, title, diacritics and LCA lens before publication.
+6. Compare the new cover side-by-side with at least three existing reference covers. It must look like the next issue of the same series.
+7. Publish the exact approved cover file to `assets/images/episodes/` and point `episodes.json` to that exact path.
+8. Render Homepage and Archive at desktop and mobile widths and confirm the entire 4:5 artwork is visible without cropping.
+
+When a cover is replaced after publication, use a cache-safe new filename/revision, update `episodes.json`, deploy, and verify what GitHub Pages actually serves before considering the replacement complete.
+
+### 4.4 Where covers are allowed
 
 Covers may appear only in:
 
@@ -307,11 +346,13 @@ Direction: dark technical/blueprint atmosphere, restrained palette, fine linewor
 
 The cover is an approved catalogue asset, not an episode-page hero.
 
-1. If page 1 of the approved PDF contains the final cover, use that exact cover for homepage/archive.
-2. If the user explicitly approves a replacement, use that exact replacement.
-3. Only when no approved cover exists may a new cover be created.
+1. Every new episode requires a 4:5 catalogue cover in the canonical visual family defined in Section 4.
+2. The live covers for Episodes #35, #36, #40, #41, #42 and #43 are the mandatory style references.
+3. If the user explicitly approves or supplies a specific replacement, use that exact image without alteration.
+4. A PDF/carousel cover is not automatically the website catalogue cover; reuse it only when it already matches the canonical family or the user explicitly requests it.
+5. Homepage and Archive must show the full cover with no crop.
 
-Before publication, visually compare the catalogue cover with the approved source. Any mismatch is a homepage/archive publication blocker.
+Before publication, compare the new cover with the reference family and with any explicitly approved source image. A style mismatch, wrong episode number/title, unauthorized image alteration or visible crop is a homepage/archive publication blocker.
 
 ---
 
@@ -424,9 +465,12 @@ Combine technical credibility, engineering reconstruction, epic storytelling, re
 
 ### Catalogue cover — homepage/archive only
 
-- [ ] Cover matches page 1 or approved replacement.
-- [ ] No unauthorized redraw/restyle.
-- [ ] Cover renders in homepage/archive.
+- [ ] Cover is portrait 4:5 and follows the canonical #35/#36/#40/#41/#42/#43 visual family.
+- [ ] Title, episode number, diacritics and principal LCA lens are correct.
+- [ ] Bronze/gold + ivory remain the common palette; episode accent is restrained.
+- [ ] One clear central subject and technical/blueprint framing are present without becoming a collage.
+- [ ] If the user supplied/approved an exact cover, the published file is byte-for-byte that image unless alteration was explicitly requested.
+- [ ] Full artwork renders in Homepage and Archive without cropping on desktop and mobile.
 
 ### Registry
 
@@ -490,8 +534,8 @@ For each new episode:
 
 1. Read approved episode PDF completely.
 2. Extract title, number, series, FU, result, hotspot, inventory, exclusions, sensitivities and verdict.
-3. Extract/rasterize page 1 as canonical catalogue cover.
-4. Visually compare cover with approved source.
+3. Create the 4:5 catalogue cover in the canonical #35/#36/#40/#41/#42/#43 visual family, unless the user has supplied an explicitly approved exact cover.
+4. Validate title, episode number, diacritics, LCA lens, style continuity and no-crop rendering; if an exact user-approved cover is supplied, verify the published asset is unaltered.
 5. Create Inventory Map SVG.
 6. Create Technical Plate SVG.
 7. Create Hotspot Breakdown SVG.
@@ -522,7 +566,7 @@ Minimum inputs:
 - this README;
 - approved PDF of the new episode.
 
-Optional: original high-resolution cover image, calculation workbook, LinkedIn post/source list and latest DEFRA workbook if the episode itself still needs to be produced.
+Optional: an explicitly user-approved exact cover image, calculation workbook, LinkedIn post/source list and latest DEFRA workbook if the episode itself still needs to be produced. If no exact cover is supplied, the live covers for Episodes #35, #36, #40, #41, #42 and #43 provide the mandatory visual reference family.
 
 With repository + README + approved PDF, the website episode and catalogue entry must be reconstructable without asking the user to restate established design rules.
 
@@ -538,8 +582,8 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 ## 23. Non-negotiable principles
 
-1. **The approved PDF controls episode-specific facts, numbers, wording and approved cover artwork.**
-2. **Approved covers are catalogue assets displayed only on homepage and Archive.**
+1. **The approved PDF controls episode-specific facts, numbers and wording; the website catalogue cover follows the canonical visual family unless an exact cover is explicitly approved by the user.**
+2. **Approved catalogue covers are 4:5 assets in the canonical #35/#36/#40/#41/#42/#43 visual family and are displayed only on Homepage and Archive.**
 3. **Individual episode heroes are text-only.**
 4. **The README controls the web editorial system.**
 5. **`episodes.json` is the single registry for catalogue metadata, navigation relationships and PDF availability.**
@@ -559,7 +603,10 @@ The website need not duplicate the full workbook but must preserve the core audi
 ### Catalogue-cover QA
 
 - Verify the `cover` path in `episodes.json`.
-- Verify the SVG exists and renders without external dependencies.
+- Verify the high-resolution 4:5 cover asset exists and renders correctly.
+- Compare it side-by-side with the canonical reference covers #35, #36, #40, #41, #42 and #43.
+- Verify the full artwork is visible with no square crop or `object-fit: cover` loss.
 - Inspect Latest Case, Recent Cases and Archive on desktop and mobile.
-- Reject blurred, soft, broken or visibly inconsistent cover assets.
+- Reject wrong titles/numbers, blurred, soft, broken, over-coloured, flat-vector, generic-poster or visibly inconsistent cover assets.
+- If an exact user-approved image was supplied, verify no transformation occurred.
 - When replacing a live cover, use a cache-safe publication path and confirm the new asset is what GitHub Pages serves.
