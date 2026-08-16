@@ -63,6 +63,20 @@
 
   stripEpisodeCover();
 
+  const removeLegacyPdfActions = () => {
+    if (!isEpisode) return;
+    document.querySelectorAll('a[href*="assets/pdf/episodes/"]').forEach((link) => {
+      const card = link.closest('.stat-card');
+      if (card && /full carousel|episode pdf/i.test(card.textContent || '')) {
+        card.remove();
+      } else {
+        link.remove();
+      }
+    });
+  };
+
+  removeLegacyPdfActions();
+
   const episodeCard = (episode, options = {}) => {
     const compact = Boolean(options.compact);
     const showCover = options.showCover !== false;
