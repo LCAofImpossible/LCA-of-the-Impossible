@@ -1,0 +1,44 @@
+name: SEO Sync
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: seo-sync-main
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Synchronize static SEO metadata
+        run: python scripts/apply_seo.py
+
+      - name: Commit synchronized metadata
+        shell: bash
+        run: |
+          if git diff --quiet; then
+            echo "SEO metadata already synchronized."
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add index.html archive.html episodes README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
+          git commit -m "Sync SEO metadata"
+          git pull --rebase origin main
+          git push origin HEAD:main
