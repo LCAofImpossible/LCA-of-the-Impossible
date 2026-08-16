@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Excalibur hotspot breakdown</title>
+<desc id="desc">Contribution chart using the approved episode values. The charcoal route contributes 52.2 kilograms CO2 equivalent and is the explicit 71 percent hotspot. Leather and textile components contribute 19.3 kilograms, followed by transport, oil, wood and whetstone.</desc>
+<rect width="1200" height="700" fill="#071019"/>
+<g font-family="Inter,Arial,sans-serif">
+  <text x="60" y="70" fill="#d0a563" font-size="24" letter-spacing="4">HOTSPOT BREAKDOWN</text>
+  <text x="60" y="112" fill="#eef7fb" font-size="42" font-weight="700">The forest paid for the fire</text>
+  <text x="60" y="192" fill="#eef7fb" font-size="23">Charcoal route · direct + WTT</text><rect x="430" y="164" width="620" height="38" rx="8" fill="#112232"/><rect x="430" y="164" width="620" height="38" rx="8" fill="#6de7ff"/><text x="1120" y="192" fill="#6de7ff" font-size="25" font-weight="700" text-anchor="end">52.2 kg · 71.0%</text>
+  <text x="60" y="280" fill="#eef7fb" font-size="23">Leather / textile components</text><rect x="430" y="252" width="620" height="38" rx="8" fill="#112232"/><rect x="430" y="252" width="229" height="38" rx="8" fill="#d0a563"/><text x="1120" y="280" fill="#d0a563" font-size="25" font-weight="700" text-anchor="end">19.3 kg</text>
+  <text x="60" y="368" fill="#eef7fb" font-size="23">Transport · direct + WTT</text><rect x="430" y="340" width="620" height="38" rx="8" fill="#112232"/><rect x="430" y="340" width="11" height="38" rx="5" fill="#c4f7ff"/><text x="1120" y="368" fill="#c4f7ff" font-size="25" font-weight="700" text-anchor="end">0.9 kg</text>
+  <text x="60" y="456" fill="#eef7fb" font-size="23">Protective mineral oil</text><rect x="430" y="428" width="620" height="38" rx="8" fill="#112232"/><rect x="430" y="428" width="10" height="38" rx="5" fill="#9ab0bc"/><text x="1120" y="456" fill="#9ab0bc" font-size="25" font-weight="700" text-anchor="end">0.8 kg</text>
+  <text x="60" y="544" fill="#eef7fb" font-size="23">Wood components</text><rect x="430" y="516" width="620" height="38" rx="8" fill="#112232"/><rect x="430" y="516" width="5" height="38" rx="3" fill="#9ab0bc"/><text x="1120" y="544" fill="#9ab0bc" font-size="25" font-weight="700" text-anchor="end">0.3 kg</text>
+  <text x="60" y="614" fill="#9ab0bc" font-size="20">Whetstone &lt;0.1 kg CO₂e · operation 0 · end of life 0</text>
+  <line x1="60" y1="640" x2="1140" y2="640" stroke="#234557"/>
+  <text x="60" y="676" fill="#d0a563" font-size="20">Separate disclosure: 743 kg biogenic CO₂ outside the main total</text>
+</g>
+</svg>
