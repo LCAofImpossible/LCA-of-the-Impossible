@@ -151,6 +151,46 @@
       "pdf": "assets/pdf/episodes/ep40-minotaur-labyrinth.pdf"
     },
     {
+      "number": 39,
+      "slug": "atlantis",
+      "title": "Atlantis",
+      "url": "episodes/atlantis.html",
+      "cover": "assets/images/episodes/ep39-atlantis-cover-20260816.png",
+      "categoryLabel": "Mythic City",
+      "categories": [
+        "mythology",
+        "structures"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "operation-driven",
+        "lifetime-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "3.618 Mt CO₂e",
+      "hotspot": "Initial construction contributes 58.4% of lifecycle GWP; water supply and treatment add 27.4%.",
+      "featuredDescription": "Plato's concentric royal-harbor core reconstructed as a 100-year urban system: 8.41 km² of buildable land, 7.57 Mm² GFA and 500,000 residents, with the result dominated by construction and highly sensitive to where the city boundary is drawn.",
+      "keywords": [
+        "atlantis",
+        "plato",
+        "critias",
+        "concentric",
+        "harbor",
+        "city",
+        "worked stone",
+        "water",
+        "system boundary",
+        "urban",
+        "orichalcum"
+      ],
+      "related": [
+        40,
+        36,
+        42
+      ]
+    },
+    {
       "number": 36,
       "slug": "tower-of-babel",
       "title": "The Tower of Babel",
