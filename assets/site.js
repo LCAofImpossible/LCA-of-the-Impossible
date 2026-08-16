@@ -6,6 +6,29 @@
   const registryPath = isEpisode ? '../episodes.json' : 'episodes.json';
   const rootPrefix = isEpisode ? '../' : '';
 
+  const ensureAccessibilityScaffold = () => {
+    const main = document.querySelector('main');
+    if (main) {
+      if (!main.id) main.id = 'main-content';
+      if (!main.hasAttribute('tabindex')) main.setAttribute('tabindex', '-1');
+    }
+
+    if (main && !document.querySelector('.skip-link')) {
+      const skipLink = document.createElement('a');
+      skipLink.className = 'skip-link';
+      skipLink.href = '#main-content';
+      skipLink.textContent = 'Skip to content';
+      body.insertBefore(skipLink, body.firstChild);
+    }
+
+    const primaryNav = document.querySelector('.site-header nav');
+    if (primaryNav && !primaryNav.hasAttribute('aria-label')) {
+      primaryNav.setAttribute('aria-label', 'Primary navigation');
+    }
+  };
+
+  ensureAccessibilityScaffold();
+
   const escapeHtml = (value = '') => String(value)
     .replaceAll('&', '&amp;')
     .replaceAll('<', '&lt;')
@@ -52,7 +75,7 @@
     const category = escapeHtml(episode.categoryLabel);
     const lca = escapeHtml(episode.lcaLabel);
     const coverMarkup = showCover
-      ? `<img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async">`
+      ? `<img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async" width="1200" height="1500">`
       : '';
 
     return `
