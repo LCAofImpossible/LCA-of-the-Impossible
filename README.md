@@ -10,7 +10,7 @@ This README is the canonical editorial and publishing reference for building, up
 
 Use this hierarchy whenever sources disagree:
 
-1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions, wording and approved cover artwork.
+1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions and wording. Website catalogue-cover style is governed separately by Section 4.
 2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the catalogue cover.
 3. **This README and the currently approved catalogue-cover family (#35, #36, #40, #41, #42, #43)** — source of truth for website editorial structure, cover style, publishing rules, taxonomy, asset conventions and QA requirements.
 4. **`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, PDF availability, taxonomy, related cases and navigation relationships.
