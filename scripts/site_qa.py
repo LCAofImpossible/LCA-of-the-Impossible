@@ -4,8 +4,9 @@ from __future__ import annotations
 import json
 import re
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
-from urllib.parse import urlparse
+from urllib.parse import unquote, urlparse
 
 from PIL import Image, UnidentifiedImageError
 
@@ -34,7 +35,7 @@ def local_path(value: str) -> Path | None:
     parsed = urlparse(value)
     if parsed.scheme or value.startswith("//"):
         return None
-    return ROOT / value.lstrip("/")
+    return ROOT / unquote(parsed.path).lstrip("/")
 
 
 def check_exists(label: str, value: str) -> Path | None:
@@ -71,6 +72,55 @@ def check_cover(number: int, value: str) -> None:
         fail(f"Episode #{number} cover: expected portrait 4:5, found {width}x{height} (ratio {ratio:.4f})")
 
 
+class PageParser(HTMLParser):
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.refs: list[tuple[str, str]] = []
+        self.images_without_alt: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = {key.lower(): value for key, value in attrs}
+        if tag.lower() == "a" and values.get("href"):
+            self.refs.append(("href", values["href"] or ""))
+        if tag.lower() in {"img", "script"} and values.get("src"):
+            self.refs.append(("src", values["src"] or ""))
+        if tag.lower() == "link" and values.get("href"):
+            self.refs.append(("href", values["href"] or ""))
+        if tag.lower() == "img":
+            alt = values.get("alt")
+            if alt is None or not alt.strip():
+                self.images_without_alt.append(values.get("src") or "[inline image]")
+
+
+def check_html_references(path: Path) -> None:
+    text = path.read_text(encoding="utf-8")
+    parser = PageParser()
+    parser.feed(text)
+
+    for image in parser.images_without_alt:
+        fail(f"{path.relative_to(ROOT)}: image missing non-empty alt text: {image}")
+
+    for attr, ref in parser.refs:
+        if not ref or ref.startswith(("#", "mailto:", "tel:", "data:", "javascript:")):
+            continue
+        parsed = urlparse(ref)
+        if parsed.scheme in {"http", "https"} or ref.startswith("//"):
+            continue
+        clean_path = unquote(parsed.path)
+        if not clean_path:
+            continue
+        target = (path.parent / clean_path).resolve()
+        try:
+            target.relative_to(ROOT.resolve())
+        except ValueError:
+            fail(f"{path.relative_to(ROOT)}: {attr} escapes repository root: {ref}")
+            continue
+        if clean_path.endswith("/"):
+            target = target / "index.html"
+        if not target.is_file():
+            fail(f"{path.relative_to(ROOT)}: broken local {attr}: {ref}")
+
+
 def check_episode_page(number: int, url: str) -> None:
     path = check_exists(f"Episode #{number} page", url)
     if not path:
@@ -85,6 +135,7 @@ def check_episode_page(number: int, url: str) -> None:
         fail(f"Episode #{number} page: missing ../assets/site.js")
     if "cover-frame" in text:
         fail(f"Episode #{number} page: legacy cover-frame markup still present")
+    check_html_references(path)
 
 
 def main() -> int:
@@ -178,9 +229,14 @@ def main() -> int:
                 if not graphic.is_file():
                     fail(f"Episode #{number}: missing required graphic {graphic.relative_to(ROOT)}")
 
-    for path in (ROOT / "index.html", ROOT / "archive.html", ROOT / "assets/style.css", ROOT / "assets/site.js"):
+    core_html = (ROOT / "index.html", ROOT / "archive.html")
+    for path in (*core_html, ROOT / "assets/style.css", ROOT / "assets/site.js"):
         if not path.is_file():
             fail(f"Missing core file: {path.relative_to(ROOT)}")
+
+    for path in core_html:
+        if path.is_file():
+            check_html_references(path)
 
     for warning in warnings:
         print(f"WARNING: {warning}")
