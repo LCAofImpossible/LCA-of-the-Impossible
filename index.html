@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="home">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="index.html">LCA OF THE IMPOSSIBLE</a>
-    <nav>
+    <nav aria-label="Primary navigation">
       <a href="#episodes">Latest</a>
       <a href="archive.html">Archive</a>
       <a href="#method">Method</a>
@@ -18,7 +19,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="hero no-side-art">
       <div class="hero-grid">
         <div class="hero-copy">
@@ -133,7 +134,7 @@
 
     <section id="book" class="section book-section">
       <div>
-        <img src="assets/images/book/where-others-see-fantasy.png" alt="Where Others See Fantasy cover">
+        <img src="assets/images/book/where-others-see-fantasy.png" alt="Where Others See Fantasy cover" loading="lazy" decoding="async">
       </div>
       <div>
         <p class="eyebrow">THE BOOK</p>

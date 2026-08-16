@@ -46,24 +46,6 @@
     return `${rootPrefix}${stringValue}`;
   };
 
-  const stripEpisodeCover = () => {
-    if (!isEpisode) return;
-    const hero = document.querySelector('.cover-hero');
-    if (!hero) return;
-
-    const cover = hero.querySelector('.cover-frame');
-    if (cover) cover.remove();
-
-    hero.style.gridTemplateColumns = '1fr';
-    hero.style.maxWidth = '1180px';
-
-    const title = hero.querySelector('.episode-title');
-    if (title) title.style.maxWidth = '1080px';
-  };
-
-  stripEpisodeCover();
-
-
   const episodeCard = (episode, options = {}) => {
     const compact = Boolean(options.compact);
     const showCover = options.showCover !== false;
@@ -97,7 +79,7 @@
 
     latestTarget.innerHTML = `
       <div class="featured-cover">
-        <img src="${escapeHtml(assetUrl(latest.cover))}" alt="${escapeHtml(latest.title)} cover">
+        <img src="${escapeHtml(assetUrl(latest.cover))}" alt="${escapeHtml(latest.title)} cover" width="1200" height="1500">
       </div>
       <div class="featured-copy">
         <p class="eyebrow">LATEST CASE · EPISODE #${latest.number}</p>
@@ -144,6 +126,9 @@
     const searchableText = (episode) => [
       episode.title,
       `episode ${episode.number}`,
+      episode.result,
+      episode.hotspot,
+      episode.featuredDescription,
       episode.categoryLabel,
       episode.lcaLabel,
       ...(episode.categories || []),

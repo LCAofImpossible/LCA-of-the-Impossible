@@ -1,0 +1,29 @@
+name: Site QA
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate static site
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install QA dependencies
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Run site QA
+        run: python scripts/site_qa.py

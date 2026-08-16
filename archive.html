@@ -8,9 +8,10 @@
   <link rel="stylesheet" href="assets/style.css">
 </head>
 <body data-page="archive">
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <header class="site-header">
     <a class="brand" href="index.html">LCA OF THE IMPOSSIBLE</a>
-    <nav>
+    <nav aria-label="Primary navigation">
       <a href="index.html">Home</a>
       <a href="#archive">Archive</a>
       <a href="index.html#method">Method</a>
@@ -18,7 +19,7 @@
     </nav>
   </header>
 
-  <main>
+  <main id="main-content" tabindex="-1">
     <section class="section archive-hero" style="border-top:none;">
       <p class="eyebrow">COMPLETE CATALOGUE</p>
       <h1>Episode Archive</h1>
@@ -45,7 +46,7 @@
         </div>
         <label class="archive-search archive-search-wide">
           <span class="sr-only">Search episodes</span>
-          <input id="episode-search" type="search" placeholder="Search title, episode, material, hotspot…" autocomplete="off">
+          <input id="episode-search" type="search" placeholder="Search title, episode, result, material, hotspot…" autocomplete="off">
         </label>
       </div>
 
