@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="980" height="420" viewBox="0 0 980 420" role="img" aria-labelledby="title desc">
+<title id="title">Atlantis hotspot contribution chart</title>
+<desc id="desc">Contribution chart showing 58.4 percent initial construction, 27.4 percent water service and 14.2 percent material maintenance, with the catastrophe excluded.</desc>
+<rect width="980" height="420" rx="24" fill="#071423"/>
+<rect x="20" y="20" width="940" height="380" rx="18" fill="none" stroke="#6de7ff" stroke-opacity="0.22"/>
+<text x="44" y="58" fill="#c4f7ff" font-size="16" font-family="Arial, Helvetica, sans-serif" letter-spacing="2">HOTSPOT BREAKDOWN · EPISODE #39</text>
+<text x="44" y="94" fill="#d0a563" font-size="32" font-weight="700" font-family="Arial, Helvetica, sans-serif">THE WAVE IS NOT THE HOTSPOT</text>
+<text x="44" y="120" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">3.618 Mt CO₂e · one royal-harbor core · 100-year main scenario</text>
+<text x="44" y="171" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">Initial construction</text>
+<rect x="230" y="154" width="650" height="24" rx="12" fill="#0d1b27"/>
+<rect x="230" y="154" width="380" height="24" rx="12" fill="#d0a563"/>
+<text x="900" y="172" fill="#d0a563" font-size="16" text-anchor="end" font-weight="700" font-family="Arial, Helvetica, sans-serif">58.4% · 2.114 Mt</text>
+<text x="44" y="223" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">Water supply + treatment</text>
+<rect x="230" y="206" width="650" height="24" rx="12" fill="#0d1b27"/>
+<rect x="230" y="206" width="178" height="24" rx="12" fill="#2aa79e"/>
+<text x="900" y="224" fill="#52d9d1" font-size="16" text-anchor="end" font-weight="700" font-family="Arial, Helvetica, sans-serif">27.4% · 0.991 Mt</text>
+<text x="44" y="275" fill="#eef7fb" font-size="15" font-family="Arial, Helvetica, sans-serif">Material maintenance</text>
+<rect x="230" y="258" width="650" height="24" rx="12" fill="#0d1b27"/>
+<rect x="230" y="258" width="92" height="24" rx="12" fill="#6de7ff"/>
+<text x="900" y="276" fill="#6de7ff" font-size="16" text-anchor="end" font-weight="700" font-family="Arial, Helvetica, sans-serif">14.2% · 0.512 Mt</text>
+<text x="44" y="327" fill="#9ab0bc" font-size="15" font-family="Arial, Helvetica, sans-serif">Earthquake / flood / sinking</text>
+<line x1="230" y1="319" x2="880" y2="319" stroke="#9ab0bc" stroke-opacity="0.32" stroke-width="2" stroke-dasharray="7 6"/>
+<text x="900" y="327" fill="#9ab0bc" font-size="15" text-anchor="end" font-family="Arial, Helvetica, sans-serif">excluded · 0 quantified</text>
+<rect x="44" y="350" width="856" height="34" rx="10" fill="#081b2b" stroke="#d0a563" stroke-opacity="0.25"/>
+<text x="60" y="372" fill="#c4f7ff" font-size="14" font-family="Arial, Helvetica, sans-serif">Boundary sensitivity:</text>
+<text x="215" y="372" fill="#eef7fb" font-size="14" font-family="Arial, Helvetica, sans-serif">1.94 Mt conservative core → 3.62 Mt main core → 33.04 Mt literal 50-stade enclosure</text>
+</svg>
