@@ -1,6 +1,5 @@
 {
   "schemaVersion": 1,
-
   "episodes": [
     {
       "number": 43,
@@ -11,12 +10,12 @@
       "categoryLabel": "Mythology",
       "categories": ["mythology"],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven","energy-driven","repetition-sensitive"],
+      "lcaCharacteristics": ["operation-driven", "energy-driven", "repetition-sensitive"],
       "result": "1.418 t CO₂e",
       "hotspot": "Repetition drives 97.25% of the footprint.",
       "featuredDescription": "A finite slice of an eternal punishment: one reusable 5.0 t limestone boulder, a 500 m slope, 1,000 ascent-return cycles and a material loop that closes while the energy loop does not.",
-      "keywords": ["boulder","limestone","eternal punishment","repetition","reuse","energy","hades"],
-      "related": [42,40,41]
+      "keywords": ["boulder", "limestone", "eternal punishment", "repetition", "reuse", "energy", "hades"],
+      "related": [42, 40, 41]
     },
     {
       "number": 42,
@@ -27,12 +26,12 @@
       "categoryLabel": "Mythology",
       "categories": ["mythology"],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven","energy-driven","mobility-driven"],
+      "lcaCharacteristics": ["operation-driven", "energy-driven", "mobility-driven"],
       "result": "453.324 kt CO₂e",
       "hotspot": "Patrol drives 99.62% of the footprint.",
       "featuredDescription": "A 25 m bronze guardian reconstructed as a mobility system: manufacture is significant, but three daily circuits of Crete make patrol energy the overwhelming life-cycle hotspot.",
-      "keywords": ["bronze","automaton","crete","patrol","guardian","mobility","boulder"],
-      "related": [40,41,43]
+      "keywords": ["bronze", "automaton", "crete", "patrol", "guardian", "mobility", "boulder"],
+      "related": [40, 41, 43]
     },
     {
       "number": 41,
@@ -43,28 +42,28 @@
       "categoryLabel": "Mythology",
       "categories": ["mythology"],
       "lcaLabel": "Energy-driven",
-      "lcaCharacteristics": ["energy-driven","operation-driven","repetition-sensitive"],
+      "lcaCharacteristics": ["energy-driven", "operation-driven", "repetition-sensitive"],
       "result": "51.50 t CO₂e",
       "hotspot": "Lightning-equivalent discharge contributes 99.43% of the footprint.",
       "featuredDescription": "A reusable 46.7 kg iron hammer becomes an energy system once a 1 GJ thunder-equivalent event is repeated over 1,000 combat cycles: discharge energy overwhelms manufacture and flight.",
-      "keywords": ["mjolnir","hammer","thor","thunder","lightning","iron","return","flight","discharge","snorri","asgard"],
-      "related": [42,43,36]
+      "keywords": ["mjolnir", "hammer", "thor", "thunder", "lightning", "iron", "return", "flight", "discharge", "snorri", "asgard"],
+      "related": [42, 43, 36]
     },
     {
       "number": 40,
       "slug": "minotaur-labyrinth",
       "title": "The Minotaur's Labyrinth",
       "url": "episodes/minotaur-labyrinth.html",
-      "cover": "assets/images/episodes/ep40-minotaur-labyrinth.jpg",
+      "cover": "assets/images/episodes/ep40-minotaur.jpg",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology","structures"],
+      "categories": ["mythology", "structures"],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven","proxy-sensitive"],
+      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
       "result": "18.595 kt CO₂e",
       "hotspot": "Worked stone contributes 75.1% of lifecycle GWP; initial construction is 92.4%.",
       "featuredDescription": "A Knossos-scale two-level maze reconstructed as a navigation-denial system: 18.595 kt CO₂e over 30 years, while a 24 kg thread defeats the material system by preserving the way back.",
-      "keywords": ["minotaur","labyrinth","maze","daedalus","ariadne","thread","knossos","crete","worked stone","navigation","memory","uncertainty"],
-      "related": [36,42,35]
+      "keywords": ["minotaur", "labyrinth", "maze", "daedalus", "ariadne", "thread", "knossos", "crete", "worked stone", "navigation", "memory", "uncertainty"],
+      "related": [36, 42, 35]
     },
     {
       "number": 36,
@@ -73,14 +72,14 @@
       "url": "episodes/tower-of-babel.html",
       "cover": "assets/images/episodes/ep36-tower-of-babel.png",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology","structures"],
+      "categories": ["mythology", "structures"],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven","process-energy-driven","lifetime-sensitive"],
+      "lcaCharacteristics": ["materials-driven", "process-energy-driven", "lifetime-sensitive"],
       "result": "22,491 t CO₂e",
       "hotspot": "Fired-brick facing contributes 95.4% of the footprint.",
       "featuredDescription": "A 90 m ziggurat reconstructed from Etemenanki: most of the masonry is sun-dried earth, yet the fired-brick skin carries almost the entire climate burden.",
-      "keywords": ["babel","ziggurat","brick","fired brick","mudbrick","construction","architecture"],
-      "related": [40,35,42]
+      "keywords": ["babel", "ziggurat", "brick", "fired brick", "mudbrick", "construction", "architecture"],
+      "related": [40, 35, 42]
     },
     {
       "number": 35,
@@ -91,12 +90,12 @@
       "categoryLabel": "Legends",
       "categories": ["legends"],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven","lifetime-sensitive"],
+      "lcaCharacteristics": ["materials-driven", "lifetime-sensitive"],
       "result": "528.2 t CO₂e",
       "hotspot": "Construction represents 97.4% of the one-year footprint.",
       "featuredDescription": "A cursed East Indiaman that sails forever without fuel: the operational year is light, while metal armament, fittings and the vessel itself carry the carbon burden.",
-      "keywords": ["ship","legend","sailing","timber","metal","maritime","curse"],
-      "related": [36,40,42]
+      "keywords": ["ship", "legend", "sailing", "timber", "metal", "maritime", "curse"],
+      "related": [36, 40, 42]
     }
   ]
 }

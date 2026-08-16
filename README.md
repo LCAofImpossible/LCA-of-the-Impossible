@@ -10,18 +10,18 @@ This README is the canonical editorial and publishing reference for building, up
 
 Use this hierarchy whenever sources disagree:
 
-1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions, wording **and cover artwork**.
-2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the new cover.
+1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions, wording and approved cover artwork.
+2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the catalogue cover.
 3. **This README** — source of truth for website editorial structure, publishing rules, taxonomy, asset conventions and QA requirements.
 4. **`episodes.json`** — canonical website catalogue registry for published episode metadata, ordering, search/filter taxonomy, related cases and navigation relationships. Its values must reconcile with the approved episode source.
 5. **`assets/style.css`** — source of truth for the live visual system, palette, responsive behaviour and component styling.
-6. **`assets/site.js`** — source of truth for registry-driven homepage/archive rendering and episode navigation behaviour.
+6. **`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode hero normalisation, Related Cases and Previous/Next behaviour.
 7. **`episodes/template.html`** — canonical implementation starter for new episode pages.
 8. Existing episode pages — examples of execution, not authorities over the approved PDF or this README.
 
 Do not silently replace, reconcile or “improve” approved episode content. If a website adaptation requires simplification, preserve the underlying meaning and disclose the simplification.
 
-**Cover artwork is part of the approved episode content. If page 1 of an approved PDF contains the final cover, that exact visual composition is mandatory for the website unless the user explicitly asks for a different cover.**
+**Important structural rule:** approved cover artwork remains part of the episode package, but the website displays episode covers **only on the homepage and in the full Archive catalogue**. Individual episode pages are deliberately image-free at hero level.
 
 If `episodes.json` conflicts with an approved PDF, correct the registry; do not change the approved episode fact to fit the registry.
 
@@ -33,10 +33,10 @@ If `episodes.json` conflicts with an approved PDF, correct the registry; do not 
 - `archive.html` — complete searchable/filterable episode catalogue
 - `episodes.json` — central episode registry and navigation metadata
 - `episodes/` — individual episode pages and reusable episode template
-- `assets/site.js` — shared client-side catalogue, archive, related-case and Previous/Next logic
+- `assets/site.js` — shared client-side catalogue, archive, text-only episode hero, related-case and Previous/Next logic
 - `assets/style.css` — global visual system, including archive and navigation styling
-- `assets/images/episodes/` — canonical episode covers
-- `assets/images/episode-graphics/` — inventory, technical and hotspot graphics
+- `assets/images/episodes/` — canonical **catalogue covers** used only by homepage and Archive
+- `assets/images/episode-graphics/` — inventory, technical and hotspot graphics used inside episode pages
 - `assets/images/book/` — book artwork
 - `assets/pdf/episodes/` — downloadable episode carousels
 
@@ -56,7 +56,7 @@ Every published episode must have one registry object containing at least:
 - `slug` — stable filename slug;
 - `title` — displayed episode title;
 - `url` — relative episode-page path from the repository root;
-- `cover` — relative canonical-cover path from the repository root;
+- `cover` — relative canonical catalogue-cover path from the repository root;
 - `categoryLabel` — concise human-readable narrative category;
 - `categories` — normalized filter tokens;
 - `lcaLabel` — principal LCA characteristic shown on cards;
@@ -66,6 +66,8 @@ Every published episode must have one registry object containing at least:
 - `featuredDescription` — short description used when the episode is featured;
 - `keywords` — meaningful search terms not already obvious from the title;
 - `related` — ordered list of related episode numbers.
+
+The `cover` field remains mandatory even though individual episode pages do not show a cover. It is consumed by the homepage and Archive only.
 
 ### 3.1 Ordering
 
@@ -96,6 +98,7 @@ LCA characteristics answer **what life-cycle mechanism controls or meaningfully 
 - `process-energy-driven`
 - `repetition-sensitive`
 - `lifetime-sensitive`
+- `proxy-sensitive`
 
 The `lcaLabel` is the principal card label; `lcaCharacteristics` may contain multiple analytical descriptors.
 
@@ -105,35 +108,57 @@ Do not classify an episode for aesthetic symmetry. The classification must be de
 
 `related` is editorially controlled, not algorithmically inferred. Choose up to three cases connected by subject, system behaviour, modelling issue or hotspot. Prefer meaningful analytical relationships over superficial visual similarity.
 
+On individual episode pages, Related Cases are rendered as **text-only cards**. Cover images are intentionally not shown there.
+
 ---
 
 ## 4. Episode asset convention
 
-Each episode uses one canonical cover plus three standard editorial graphics:
+Each episode uses one canonical catalogue cover plus three standard editorial graphics:
 
-- `epNN-short-slug.ext` — canonical cover
+- `epNN-short-slug.ext` — canonical catalogue cover, used only on homepage and Archive
 - `epNN-inventory-map.svg` — visual map of main life-cycle inputs
 - `epNN-technical-plate.svg` — engineering / reconstruction plate
 - `epNN-hotspot-breakdown.svg` — contribution / hotspot graphic
 - `epNN-short-slug.pdf` — downloadable carousel when available
 
-Current canonical covers include:
+Current canonical catalogue covers include:
 
 - `ep35-flying-dutchman.jpg`
 - `ep36-tower-of-babel.png`
+- `ep40-minotaur.jpg`
+- `ep41-mjolnir.jpg`
 - `ep42-talos.jpg`
 - `ep43-sisyphus.webp`
 
-### Canonical-cover lock
+### 4.1 Canonical-cover lock
 
-When an approved PDF or approved LinkedIn carousel exists, **extract or rasterize the exact approved cover and use it as the canonical website cover**. Do not redraw, regenerate, vectorize, reinterpret, restyle, clean up, crop away meaningful content, or substitute the cover because another version appears more cinematic, technical, consistent or visually polished.
+When an approved PDF or approved LinkedIn carousel exists, **extract or rasterize the exact approved cover and use it as the canonical catalogue cover**. Do not redraw, regenerate, vectorize, reinterpret, restyle, clean up, crop away meaningful content or substitute the cover because another version appears more cinematic, technical, consistent or visually polished.
 
 The only permitted reasons to use a different visual are:
 
 1. the user explicitly requests a replacement; or
 2. no approved cover exists.
 
-If extraction quality is poor, improve the **export/rasterization of the same approved cover**, not the design.
+If extraction quality is poor, improve the export/rasterization of the same approved cover, not the design.
+
+### 4.2 Where covers are allowed
+
+Covers may appear only in:
+
+- Homepage **Latest Case**;
+- Homepage **Recent Cases**;
+- Full **Archive** episode cards.
+
+Covers must **not** appear in:
+
+- the hero of an individual episode page;
+- the Life Cycle Inventory section;
+- Related Cases inside an episode;
+- Previous/Next navigation;
+- analytical graphics as decorative backgrounds.
+
+This rule deliberately reduces image-loading dependencies inside technical episode pages.
 
 ---
 
@@ -141,9 +166,19 @@ If extraction quality is poor, improve the **export/rasterization of the same ap
 
 Every episode should follow this sequence unless the subject genuinely requires a justified deviation.
 
-### 5.1 Cover hero
+### 5.1 Text-only episode hero
 
-Must contain canonical approved cover, `EPISODE #NN · SERIES` eyebrow, title, one central narrative question, main result as the dominant metric and a concise functional-unit / reporting-basis description.
+The individual episode page begins with a **text-only hero**. It must contain:
+
+- `EPISODE #NN · SERIES` eyebrow;
+- title;
+- one central narrative question;
+- main result as the dominant metric;
+- concise functional-unit / reporting-basis description.
+
+**Do not include a cover `<img>`, `.cover-frame`, catalogue artwork or decorative hero image.**
+
+For legacy pages that still contain old cover markup, `assets/site.js` removes `.cover-frame` at runtime and normalises the hero to one column. New pages must not rely on this compatibility safeguard; they must be authored without the cover markup from the start.
 
 ### 5.2 The Subject
 
@@ -196,8 +231,9 @@ The shared script automatically adds:
 
 - sticky internal navigation: `Subject · Model · Inventory · Hotspots · Results · Verdict`;
 - section anchors where required;
-- **Related Cases** after the Verdict;
-- bottom **Previous episode / Full archive / Next episode** navigation.
+- **text-only Related Cases** after the Verdict;
+- bottom **Previous episode / Full archive / Next episode** navigation;
+- compatibility removal of legacy episode-cover markup.
 
 Do not hard-code these navigation blocks inside individual episode pages unless the shared system is intentionally being replaced. Previous/Next relationships derive from registry ordering; Related Cases derive from the registry `related` field.
 
@@ -263,7 +299,7 @@ Show the main material/energy/operation blocks, logical flow, functional-unit co
 
 ### 11.2 Technical Plate
 
-Communicate the physical reconstruction: geometry, dimensions, mass, route, capacity, key engineering parameters and schematic/sectional representation.
+Communicate the physical reconstruction: geometry, dimensions, mass, route, capacity, key engineering parameters and schematic/sectional representation. It must be a legible engineering diagram, not decorative linework or a visually tangled abstraction.
 
 ### 11.3 Hotspot Breakdown
 
@@ -273,7 +309,7 @@ Use real episode values, make the dominant contributor immediately visible, grou
 
 Use **native self-contained SVG** for analytical graphics wherever practical. Do not embed raster images inside SVG wrappers for the three analytical graphics.
 
-This SVG rule applies to analytical graphics, **not to canonical episode covers**.
+This SVG rule applies to analytical graphics, not to catalogue covers.
 
 ---
 
@@ -296,27 +332,29 @@ Core palette:
 
 Direction: dark technical / blueprint atmosphere, restrained palette, fine linework, minimal dashboard styling, serious engineering tone with an epic editorial layer. Avoid generic Excel charts, rainbow palettes, stock-dashboard visuals, purposeless icons, cartoon styling and excessive gradients/glow.
 
-Episode-specific cover colours do not need to be recoloured to match the website. **Approved cover artwork takes precedence over global palette consistency.**
+Episode-specific cover colours do not need to be recoloured to match the website. Approved cover artwork takes precedence over global palette consistency on homepage/archive catalogue cards.
 
 ---
 
-## 13. Cover rules — mandatory
+## 13. Catalogue-cover rules — mandatory
 
-The cover is an approved editorial asset, not a placeholder and not an invitation to redesign.
+The cover is an approved **catalogue asset**, not an episode-page hero.
 
 ### Source rule
 
-1. If page 1 of the approved episode PDF/carousel contains the final cover, **use that exact cover**.
+1. If page 1 of the approved episode PDF/carousel contains the final cover, use that exact cover for homepage/archive.
 2. If the user explicitly supplies and approves a replacement cover, use that exact replacement.
 3. Only when no approved cover exists may a new cover be created.
 
 ### Prohibited substitutions when an approved cover exists
 
-Do **not** generate a new cinematic alternative, redraw the subject, vectorize or stylize the cover into a new design, “improve” composition/typography/palette, replace it for consistency with another episode, or use a schematic placeholder when the PDF cover is available.
+Do not generate a new cinematic alternative, redraw the subject, vectorize or stylize the cover into a new design, “improve” composition/typography/palette, replace it for consistency with another episode, or use a schematic placeholder when the PDF cover is available.
 
 ### Mandatory cover verification
 
-Before committing a new episode, visually compare the canonical website cover with page 1 of the approved PDF or with the explicitly approved replacement image. **Any visual mismatch is a publication blocker.**
+Before committing a new episode, visually compare the canonical catalogue cover with page 1 of the approved PDF or with the explicitly approved replacement image. Any visual mismatch is a publication blocker for homepage/archive.
+
+**The cover is never required to render on the individual episode page because individual episode pages intentionally do not display covers.**
 
 ---
 
@@ -338,11 +376,11 @@ Canonical sequence:
 
 `assets/site.js` reads `episodes.json`, sorts by episode number and automatically renders the newest episode as Latest Case. Do not manually duplicate the latest episode content in `index.html`.
 
-The feature includes cover, title, featured description, episode number, result, principal LCA label, subject category and direct link.
+The feature includes catalogue cover, title, featured description, episode number, result, principal LCA label, subject category and direct link.
 
 ### 14.2 Recent Cases
 
-The homepage displays up to six episodes after the Latest Case. It is intentionally concise. The complete catalogue lives on `archive.html`.
+The homepage displays up to six episodes after the Latest Case. Each card may show the canonical catalogue cover. The complete catalogue lives on `archive.html`.
 
 Do not reintroduce the entire archive into the homepage merely because the number of episodes grows.
 
@@ -360,7 +398,7 @@ Standard grid:
 - **2 cards per row on tablet / medium viewport**;
 - **1 card per row on mobile**.
 
-Each card contains square CSS crop of the canonical cover, `Category · LCA lens`, title, episode number, result, concise hotspot cue and `Explore the LCA →`.
+Each card contains square CSS crop of the canonical catalogue cover, `Category · LCA lens`, title, episode number, result, concise hotspot cue and `Explore the LCA →`.
 
 Square cropping may use CSS `object-fit`, but must not alter the canonical cover asset itself.
 
@@ -371,15 +409,11 @@ The archive exposes two independent filter groups generated automatically from r
 - **Subject** — narrative category;
 - **LCA lens** — life-cycle characteristic.
 
-The two groups combine using AND logic. Example: `Mythology` + `Operation-driven` returns only episodes satisfying both.
-
-Only categories/characteristics actually present in `episodes.json` should appear. Do not maintain filter buttons manually.
+The two groups combine using AND logic. Only categories/characteristics actually present in `episodes.json` should appear. Do not maintain filter buttons manually.
 
 ### 15.3 Search
 
-Search operates against title, episode number, human-readable labels, category tokens, LCA-characteristic tokens and registry keywords.
-
-A zero-result search must show a readable empty state.
+Search operates against title, episode number, human-readable labels, category tokens, LCA-characteristic tokens and registry keywords. A zero-result search must show a readable empty state.
 
 ### 15.4 Load More
 
@@ -389,25 +423,13 @@ All catalogue data remain local in `episodes.json`; this is display pagination o
 
 ---
 
-## 16. PDF handling
+## 16. PDF, paths, responsive and accessibility rules
 
 When the approved episode PDF is intended for download, store it in `assets/pdf/episodes/` with a canonical filename such as `epNN-short-slug.pdf` and add an `Open episode PDF →` button. Do not create broken links when the PDF is absent.
 
----
+From root files such as `index.html` and `archive.html`, use `assets/...` and `episodes/slug.html`. From files inside `episodes/`, use `../assets/...`, `../archive.html` and `../index.html`. Avoid root-relative `/...` paths because this is a GitHub Pages project site.
 
-## 17. Page path convention
-
-From root files such as `index.html` and `archive.html`, use `assets/...` and `episodes/slug.html`.
-
-From files inside `episodes/`, use `../assets/...`, `../archive.html` and `../index.html`.
-
-Avoid root-relative `/...` paths because this is a GitHub Pages project site.
-
-Registry paths are always stored **relative to repository root**. `assets/site.js` adds `../` automatically when rendering inside an episode page.
-
----
-
-## 18. Responsive and accessibility rules
+Responsive/accessibility requirements:
 
 - Inventory tables scroll horizontally on mobile.
 - Visual grids and episode cards collapse appropriately.
@@ -417,22 +439,23 @@ Registry paths are always stored **relative to repository root**. `assets/site.j
 - Archive search has an accessible label.
 - Episode jump navigation is horizontally scrollable on narrow screens.
 - Previous/Next navigation collapses to a vertical sequence on mobile.
-- Images use meaningful `alt` text.
+- Analytical images use meaningful `alt` text.
 - Editorial graphics use `loading="lazy"` and `decoding="async"` where appropriate.
-- Archive-card cover images use lazy loading; Latest Case may load normally.
+- Archive-card covers use lazy loading; Latest Case may load normally.
 - Headings must remain legible without horizontal scrolling.
 - Essential information must not exist only inside images.
 - No image may exceed its container.
+- Individual episode pages must remain fully usable even if catalogue-cover assets are unavailable.
 
 ---
 
-## 19. Editorial tone
+## 17. Editorial tone
 
 Combine technical credibility, engineering reconstruction, epic storytelling, restrained irony, accessibility and transparent uncertainty. Use meaningful episode-specific headings rather than generic “Analysis”, “Data” or “Discussion”. Narrative language supports the analysis; it never replaces it.
 
 ---
 
-## 20. Quality-assurance checklist before publication
+## 18. Quality-assurance checklist before publication
 
 A new episode is not complete merely because GitHub Pages reports a successful build.
 
@@ -446,11 +469,13 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 - [ ] Separate disclosures are handled correctly.
 - [ ] No unsupported numerical detail has been invented.
 
-### Cover — publication blocker
+### Catalogue cover — homepage/archive only
 
-- [ ] Canonical cover visually matches page 1 of the approved PDF/carousel or exact approved replacement.
+- [ ] Canonical catalogue cover visually matches page 1 of the approved PDF/carousel or exact approved replacement.
 - [ ] No redrawn, regenerated, vectorized or restyled substitute has replaced an approved cover.
 - [ ] Resizing/compression preserves the approved composition.
+- [ ] Cover renders in Homepage Latest/Recent as applicable.
+- [ ] Cover renders in Archive.
 
 ### Registry
 
@@ -466,8 +491,10 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 
 - [ ] `<body data-episode="NN">` matches registry number.
 - [ ] `../assets/site.js` is loaded.
+- [ ] Hero is text-only: eyebrow, title, question, result and FU/reporting basis.
+- [ ] No cover image is visible or required on the episode page.
 - [ ] Sticky internal navigation appears and links to Subject, Model, Inventory, Hotspots, Results and Verdict.
-- [ ] Related Cases render after the Verdict.
+- [ ] Related Cases render after the Verdict as text-only cards.
 - [ ] Previous/Next order is correct.
 - [ ] Full Archive link works.
 
@@ -479,6 +506,7 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 - [ ] Proxies and exclusions are disclosed.
 - [ ] Inventory Map, Technical Plate and Hotspot Breakdown render correctly.
 - [ ] Analytical SVGs are self-contained vector files.
+- [ ] Technical Plate is visually legible and schematic, not a tangle of decorative lines.
 
 ### Homepage and archive
 
@@ -493,15 +521,6 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 - [ ] Archive result count updates correctly.
 - [ ] Load More appears only when more than 9 matches exist.
 
-### Responsive behaviour
-
-- [ ] Homepage and archive are readable on mobile.
-- [ ] Archive grid is 3/2/1 columns at intended widths.
-- [ ] Jump navigation is usable on mobile.
-- [ ] Previous/Next navigation stacks correctly.
-- [ ] Inventory table scrolls horizontally.
-- [ ] No image exceeds its container.
-
 ### Deployment
 
 - [ ] Changes are committed to `main`.
@@ -509,41 +528,42 @@ A new episode is not complete merely because GitHub Pages reports a successful b
 - [ ] Live homepage is inspected.
 - [ ] Live archive is inspected.
 - [ ] Live episode is inspected.
-- [ ] Canonical cover and all three analytical graphics are visible live.
+- [ ] Homepage/archive catalogue covers and all three episode analytical graphics are visible live.
 
 A green build alone is not sufficient evidence that the page is correct.
 
 ---
 
-## 21. Controlled publishing workflow
+## 19. Controlled publishing workflow
 
 For each new episode:
 
 1. Read the approved episode PDF completely.
 2. Extract title, number, series, FU, main result, hotspot, inventory, exclusions, sensitivities and verdict.
-3. Extract/rasterize page 1 as the canonical cover, or use the exact explicitly approved replacement.
-4. Visually compare the canonical cover with the approved source.
+3. Extract/rasterize page 1 as the canonical **catalogue cover** for homepage/archive, or use the exact explicitly approved replacement.
+4. Visually compare the catalogue cover with the approved source.
 5. Create native SVG Inventory Map.
 6. Create native SVG Technical Plate.
 7. Create native SVG Hotspot Breakdown.
 8. Build the page from `episodes/template.html` and set `data-episode="NN"`.
-9. Add Quick Facts and model-note cards.
-10. Reconcile inventory and results.
-11. Add sensitivities and verdict.
-12. Upload the episode PDF when download is intended.
-13. Add **one** new object to `episodes.json` with complete taxonomy, keywords and related cases.
-14. Do **not** manually edit Latest Case, Recent Cases, archive cards, filter buttons, Previous/Next or Related Cases: they are registry-driven.
-15. Verify homepage Latest Case and Recent Cases.
-16. Verify full archive ordering, Subject filters, LCA-lens filters, search, count and Load More.
-17. Verify episode jump navigation, Related Cases and Previous/Next.
-18. Verify all asset paths and remove staging/temporary files.
-19. Commit the controlled release to `main`.
-20. Inspect the live homepage, full archive and episode after deployment.
-21. Only then consider publication complete.
+9. Build a text-only episode hero. Do not insert the catalogue cover into the episode page.
+10. Add Quick Facts and model-note cards.
+11. Reconcile inventory and results.
+12. Add sensitivities and verdict.
+13. Upload the episode PDF when download is intended.
+14. Add one new object to `episodes.json` with complete taxonomy, catalogue-cover path, keywords and related cases.
+15. Do not manually edit Latest Case, Recent Cases, archive cards, filter buttons, Previous/Next or Related Cases: they are registry-driven.
+16. Verify homepage Latest Case and Recent Cases, including their covers.
+17. Verify full archive ordering, Subject filters, LCA-lens filters, search, count, Load More and covers.
+18. Verify episode hero contains no cover, then verify jump navigation, text-only Related Cases and Previous/Next.
+19. Verify analytical graphic paths and remove staging/temporary files.
+20. Commit the controlled release to `main`.
+21. Inspect the live homepage, full archive and episode after deployment.
+22. Only then consider publication complete.
 
 ---
 
-## 22. Future-episode reconstruction protocol
+## 20. Future-episode reconstruction protocol
 
 Minimum required inputs:
 
@@ -553,11 +573,11 @@ Minimum required inputs:
 
 Optional: original high-resolution cover image, calculation workbook, LinkedIn post/source list and latest DEFRA workbook if the episode itself still needs to be produced.
 
-With repository + README + approved PDF, the website episode and catalogue entry must be reconstructable without asking the user to restate established design rules. **The default is to preserve the PDF cover exactly, not to create a new one.**
+With repository + README + approved PDF, the website episode and catalogue entry must be reconstructable without asking the user to restate established design rules. The default is to preserve the PDF cover exactly for **homepage/archive catalogue use**, while keeping the individual episode page hero text-only.
 
 ---
 
-## 23. Relationship with the wider production workflow
+## 21. Relationship with the wider production workflow
 
 LinkedIn remains the publishing channel; the website is the permanent technical archive. Upstream work may include historical/engineering research, FU definition, boundaries, inventory, factors, Excel model, carousel and LinkedIn post.
 
@@ -567,20 +587,22 @@ The archive adds a second analytical layer: **what class of subject is this, and
 
 ---
 
-## 24. Non-negotiable principles
+## 22. Non-negotiable principles
 
-1. **The approved PDF controls episode-specific facts, numbers, wording and cover artwork.**
-2. **If an approved cover exists, that exact cover is the website cover unless the user explicitly requests a replacement.**
-3. **A perceived opportunity to improve, harmonize or restyle a cover is not permission to replace it.**
-4. **The README controls the web editorial system.**
-5. **`episodes.json` is the single catalogue registry; homepage/archive/navigation metadata must not be duplicated manually.**
-6. **Registry data must reconcile with the approved episode source.**
-7. **The homepage is concise; the complete searchable catalogue belongs on `archive.html`.**
-8. **Every new episode receives the three standard analytical graphics.**
-9. **Every published episode participates in automatic internal navigation, Related Cases and Previous/Next navigation.**
-10. **Subject categories and LCA characteristics must be analytically meaningful, not decorative labels.**
-11. **Every assumption must remain recognisable as an assumption.**
-12. **Analytical graphics must be browser-safe and self-contained.**
-13. **No broken image, PDF, archive or episode-navigation link is acceptable at publication.**
-14. **A successful GitHub Pages build is necessary but not sufficient: the live homepage, archive, episode and canonical cover must be visually checked.**
-15. **Where others see fantasy, we see a functional unit.**
+1. **The approved PDF controls episode-specific facts, numbers, wording and approved cover artwork.**
+2. **Approved covers are catalogue assets displayed only on homepage and Archive. Individual episode pages are text-only at hero level.**
+3. **If an approved cover exists, that exact visual is the catalogue cover unless the user explicitly requests a replacement.**
+4. **A perceived opportunity to improve, harmonize or restyle a cover is not permission to replace it.**
+5. **The README controls the web editorial system.**
+6. **`episodes.json` is the single catalogue registry; homepage/archive/navigation metadata must not be duplicated manually.**
+7. **Registry data must reconcile with the approved episode source.**
+8. **The homepage is concise; the complete searchable catalogue belongs on `archive.html`.**
+9. **Every new episode receives the three standard analytical graphics.**
+10. **Every published episode participates in automatic internal navigation, text-only Related Cases and Previous/Next navigation.**
+11. **Subject categories and LCA characteristics must be analytically meaningful, not decorative labels.**
+12. **Every assumption must remain recognisable as an assumption.**
+13. **Analytical graphics must be browser-safe, self-contained and legible.**
+14. **No broken image, PDF, archive or episode-navigation link is acceptable at publication.**
+15. **A successful GitHub Pages build is necessary but not sufficient: the live homepage, archive and episode must be visually checked.**
+16. **Individual episode pages must never depend on catalogue-cover loading to remain visually complete.**
+17. **Where others see fantasy, we see a functional unit.**

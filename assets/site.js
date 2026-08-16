@@ -2,7 +2,7 @@
   'use strict';
 
   const body = document.body;
-  const isEpisode = Boolean(body.dataset.episode);
+  const isEpisode = Boolean(body && body.dataset.episode);
   const registryPath = isEpisode ? '../episodes.json' : 'episodes.json';
   const rootPrefix = isEpisode ? '../' : '';
 
@@ -46,12 +46,35 @@
     return `${rootPrefix}${stringValue}`;
   };
 
-  const episodeCard = (episode, compact = false) => {
+  const stripEpisodeCover = () => {
+    if (!isEpisode) return;
+    const hero = document.querySelector('.cover-hero');
+    if (!hero) return;
+
+    const cover = hero.querySelector('.cover-frame');
+    if (cover) cover.remove();
+
+    hero.style.gridTemplateColumns = '1fr';
+    hero.style.maxWidth = '1180px';
+
+    const title = hero.querySelector('.episode-title');
+    if (title) title.style.maxWidth = '1080px';
+  };
+
+  stripEpisodeCover();
+
+  const episodeCard = (episode, options = {}) => {
+    const compact = Boolean(options.compact);
+    const showCover = options.showCover !== false;
     const category = escapeHtml(episode.categoryLabel);
     const lca = escapeHtml(episode.lcaLabel);
+    const coverMarkup = showCover
+      ? `<img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async">`
+      : '';
+
     return `
-      <a class="card archive-card${compact ? ' compact-card' : ''}" href="${escapeHtml(pageUrl(episode.url))}">
-        <img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async">
+      <a class="card archive-card${compact ? ' compact-card' : ''}${showCover ? '' : ' text-only-card'}" href="${escapeHtml(pageUrl(episode.url))}">
+        ${coverMarkup}
         <div class="card-copy">
           <p>${category} · ${lca}</p>
           <h3>${escapeHtml(episode.title)}</h3>
@@ -87,7 +110,9 @@
         <a class="button" href="${escapeHtml(pageUrl(latest.url))}">Explore the LCA →</a>
       </div>`;
 
-    recentTarget.innerHTML = episodes.slice(1, 7).map((episode) => episodeCard(episode)).join('');
+    recentTarget.innerHTML = episodes.slice(1, 7)
+      .map((episode) => episodeCard(episode, { showCover: true }))
+      .join('');
   };
 
   const renderArchive = (episodes) => {
@@ -100,8 +125,8 @@
     const lcaFilters = document.getElementById('lca-filters');
     if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters) return;
 
-    const categories = [...new Set(episodes.flatMap((episode) => episode.categories))];
-    const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics))];
+    const categories = [...new Set(episodes.flatMap((episode) => episode.categories || []))];
+    const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics || []))];
     let activeCategory = 'all';
     let activeLca = 'all';
     let visibleLimit = 9;
@@ -120,21 +145,23 @@
       `episode ${episode.number}`,
       episode.categoryLabel,
       episode.lcaLabel,
-      ...episode.categories,
-      ...episode.lcaCharacteristics,
-      ...episode.keywords
+      ...(episode.categories || []),
+      ...(episode.lcaCharacteristics || []),
+      ...(episode.keywords || [])
     ].join(' ').toLowerCase();
 
     const applyArchive = () => {
       const query = search.value.trim().toLowerCase();
       const matches = episodes.filter((episode) => {
-        const categoryMatch = activeCategory === 'all' || episode.categories.includes(activeCategory);
-        const lcaMatch = activeLca === 'all' || episode.lcaCharacteristics.includes(activeLca);
+        const categoryMatch = activeCategory === 'all' || (episode.categories || []).includes(activeCategory);
+        const lcaMatch = activeLca === 'all' || (episode.lcaCharacteristics || []).includes(activeLca);
         const textMatch = !query || searchableText(episode).includes(query);
         return categoryMatch && lcaMatch && textMatch;
       });
 
-      grid.innerHTML = matches.slice(0, visibleLimit).map((episode) => episodeCard(episode)).join('');
+      grid.innerHTML = matches.slice(0, visibleLimit)
+        .map((episode) => episodeCard(episode, { showCover: true }))
+        .join('');
       count.textContent = `${matches.length} ${matches.length === 1 ? 'episode' : 'episodes'}`;
       empty.hidden = matches.length !== 0;
       loadMore.hidden = matches.length <= visibleLimit;
@@ -227,7 +254,7 @@
           <div><p class="eyebrow">KEEP EXPLORING</p><h2>Related cases</h2></div>
           <p class="section-note">Cases connected by subject, system behaviour or LCA hotspot.</p>
         </div>
-        <div class="cards episode-grid related-grid">${relatedEpisodes.map((episode) => episodeCard(episode, true)).join('')}</div>`;
+        <div class="cards episode-grid related-grid">${relatedEpisodes.map((episode) => episodeCard(episode, { compact: true, showCover: false })).join('')}</div>`;
       verdict.insertAdjacentElement('afterend', relatedSection);
     }
 
@@ -241,7 +268,7 @@
     main.appendChild(pager);
   };
 
-  fetch(registryPath)
+  fetch(registryPath, { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`Episode registry returned ${response.status}`);
       return response.json();
