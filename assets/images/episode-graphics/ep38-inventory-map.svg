@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Trojan Horse life cycle inventory map</title>
+<desc id="desc">Material supply from Mount Ida and regional sources flows into construction of one wooden horse, human-powered deployment into Troy, and assumed timber combustion at end of life. Main result is 8.4 tonnes carbon dioxide equivalent with 16.2 tonnes biogenic carbon dioxide disclosed separately.</desc>
+<style>
+  .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.panel2{fill:#112232;stroke:#31566a;stroke-width:2}
+  .h{font:700 26px ui-monospace,monospace;fill:#eef7fb}.t{font:500 19px ui-monospace,monospace;fill:#c4d4dc}.m{font:500 16px ui-monospace,monospace;fill:#9ab0bc}.k{font:700 19px ui-monospace,monospace;fill:#6de7ff}.g{font:700 19px ui-monospace,monospace;fill:#d0a563}.green{fill:#42b883}.line{stroke:#31566a;stroke-width:3;fill:none}.accent{stroke:#6de7ff;stroke-width:3;fill:none}.gold{stroke:#d0a563;stroke-width:3;fill:none}.dash{stroke:#31566a;stroke-width:2;stroke-dasharray:8 8;fill:none}
+</style>
+<rect class="bg" width="1200" height="760" rx="24"/>
+<text x="70" y="65" class="h">ONE HORSE · ONE ENTRY</text>
+<text x="70" y="96" class="m">Functional unit: one full-scale decoy, from regional supply and construction to human-powered entry and destruction.</text>
+<rect x="70" y="150" width="280" height="128" rx="14" class="panel"/>
+<text x="95" y="185" class="k">MOUNT IDA TIMBER</text>
+<text x="95" y="220" class="t">14.06 t input · 40 km</text>
+<text x="95" y="250" class="g">3,789.9 kg CO₂e</text>
+<rect x="70" y="302" width="280" height="112" rx="14" class="panel"/>
+<text x="95" y="337" class="k">METAL</text>
+<text x="95" y="370" class="t">0.30 t · 100 km</text>
+<text x="95" y="399" class="g">1,146.6 kg CO₂e</text>
+<rect x="70" y="438" width="280" height="142" rx="14" class="panel"/>
+<text x="95" y="473" class="k">ROPE + FINISH</text>
+<text x="95" y="506" class="t">0.22 t combined · 100 km</text>
+<text x="95" y="535" class="t">hemp rope: 120 kg</text>
+<text x="95" y="564" class="g">2,817.3 kg CO₂e</text>
+<rect x="450" y="205" width="310" height="230" rx="18" class="panel2"/>
+<text x="480" y="248" class="h">CONSTRUCTION</text>
+<text x="480" y="286" class="t">25 m³ finished timber</text>
+<text x="480" y="319" class="t">11.25 t in horse</text>
+<text x="480" y="352" class="t">20% fabrication loss</text>
+<text x="480" y="385" class="t">4 wheels + 2 axles</text>
+<text x="480" y="414" class="m">3-day build stated by Quintus.</text><text x="480" y="434" class="m">Human labour energy not quantified.</text>
+<rect x="840" y="158" width="290" height="168" rx="16" class="panel"/>
+<text x="870" y="199" class="h">DEPLOYMENT</text>
+<text x="870" y="235" class="t">16.52 t rolling mass</text>
+<text x="870" y="267" class="t">52 effective pullers</text>
+<text x="870" y="299" class="k">0 kg CO₂e quantified</text>
+<rect x="840" y="388" width="290" height="184" rx="16" class="panel"/>
+<text x="870" y="429" class="h">END OF LIFE</text>
+<text x="870" y="465" class="t">11.25 t timber burns</text>
+<text x="870" y="497" class="g">548.3 kg CO₂e direct</text>
+<text x="870" y="529" class="t">16.2 t biogenic CO₂</text>
+<text x="870" y="558" class="m">biogenic amount disclosed separately</text>
+<path d="M350 214 H430" class="accent"/><path d="M350 358 H430" class="accent"/><path d="M350 509 H430" class="accent"/>
+<path d="M760 286 H820" class="gold"/><path d="M985 326 V368" class="gold"/>
+<path d="M605 435 V615" class="dash"/>
+<text x="535" y="646" class="m">Freight activity: 614.5 tonne·km</text>
+<text x="535" y="675" class="g">78.1 kg CO₂e direct + WTT</text>
+<rect x="70" y="635" width="350" height="75" rx="13" class="panel2"/>
+<text x="95" y="668" class="m">MAIN QUANTIFIED RESULT</text>
+<text x="95" y="699" class="h">8.4 t CO₂e</text>
+<rect x="800" y="635" width="330" height="75" rx="13" class="panel2"/>
+<text x="825" y="668" class="m">BOUNDARY RULE</text>
+<text x="825" y="699" class="t">measure the decoy · not the war</text>
+</svg>
