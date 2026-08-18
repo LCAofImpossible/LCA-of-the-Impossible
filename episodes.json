@@ -2,6 +2,31 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 56,
+      "slug": "hydra-of-lerna",
+      "title": "Hydra of Lerna",
+      "url": "episodes/hydra-of-lerna.html",
+      "cover": "assets/images/episodes/ep56-hydra-of-lerna-cover.png",
+      "categoryLabel": "Mythology",
+      "categories": ["mythology"],
+      "lcaLabel": "Operation-driven",
+      "lcaCharacteristics": ["operation-driven", "energy-driven", "proxy-sensitive"],
+      "result": "1.35 t CO₂e",
+      "hotspot": "Field heat and energy contribute 44.5% of the baseline footprint.",
+      "featuredDescription": "A 3.2 t, nine-headed Hydra reconstructed as a hazardous field-control event: cutting is only the first step, while cauterisation, logistics and containment create a 1.35 t CO₂e footprint.",
+      "functionalUnit": "One Hydra neutralisation and containment event, modelled as one field response cycle from arrival to the immortal head sealed under the boulder and the containment pit closed.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The canonical nine-headed Hydra and its regeneration problem define the intervention logic. The approved episode uses an 11 m, 3.2 t semi-aquatic reconstruction and models neutralisation as cutting, thermal cauterisation and controlled containment with modern field-response flows and emission-factor proxies.",
+        "uncertainty": "Body mass scales fuel, lime, sheeting and freight and moves the result from 1.01 to 1.88 t CO₂e; the quicklime emission factor is a secondary proxy sensitivity that does not change the hotspot story."
+      },
+      "keywords": ["hydra", "lerna", "regeneration", "cauterisation", "propane", "diesel", "quicklime", "LDPE", "containment", "field response", "freight"],
+      "related": [42, 41, 40],
+      "pdf": "assets/pdf/episodes/ep56-hydra-of-lerna.pdf"
+    },
+    {
       "number": 43,
       "slug": "sisyphus",
       "title": "Sisyphus",
