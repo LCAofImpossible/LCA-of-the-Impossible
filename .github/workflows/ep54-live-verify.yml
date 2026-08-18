@@ -18,6 +18,9 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Install live QA dependency
+        run: python -m pip install --disable-pip-version-check pillow
+
       - name: Wait for GitHub Pages and verify live publication
         shell: bash
         run: |
@@ -85,8 +88,6 @@ jobs:
           assert 54 in target['episodes']
           PY
 
-          # Catalogue rendering is registry-driven. Confirm live pages load the shared script
-          # and live CSS keeps catalogue artwork contained rather than cropped.
           grep -Fq 'assets/site.js' /tmp/home.html
           grep -Fq 'assets/site.js' /tmp/archive.html
           curl -fLsS --max-time 20 "$BASE/assets/style.css" -o /tmp/style.css
