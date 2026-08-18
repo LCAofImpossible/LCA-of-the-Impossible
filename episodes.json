@@ -27,6 +27,31 @@
       "pdf": "assets/pdf/episodes/ep56-hydra-of-lerna.pdf"
     },
     {
+      "number": 55,
+      "slug": "garden-of-the-hesperides",
+      "title": "The Garden of the Hesperides",
+      "url": "episodes/garden-of-the-hesperides.html",
+      "cover": "assets/images/episodes/ep55-garden-of-the-hesperides-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": ["mythology", "legends"],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "result": "336 kg CO₂e",
+      "hotspot": "The 10 µm gold gilding layer contributes 296.4 kg CO₂e, or 88.2% of the modeled total.",
+      "featuredDescription": "Three golden apples reconstructed as one annual guarded orchard service: a 10 µm gold skin is enough to make primary gold dominate the 336 kg CO₂e baseline while water, electricity and freight remain minor.",
+      "functionalUnit": "One annual guarded presentation of three golden apples from the Hesperidean orchard gate.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The documented myth constrains the guarded golden fruit and Ladon. The approved episode reconstructs three 80 mm apples, a 10 µm gold surface and one year of western Mediterranean orchard support using literature benchmarks, engineering assumptions, DEFRA 2026 factors and a separately disclosed primary-gold proxy.",
+        "uncertainty": "Gold thickness and gold-source intensity dominate interpretation: the physical sensitivity spans 188–781 kg CO₂e and the gold-factor sensitivity spans 139–484 kg CO₂e."
+      },
+      "keywords": ["hesperides", "garden of the hesperides", "golden apples", "ladon", "gold gilding", "gold", "orchard", "surface treatment", "DEFRA 2026", "sensitivity", "mythology"],
+      "related": [56, 40, 38],
+      "pdf": "assets/pdf/episodes/ep55-garden-of-the-hesperides.pdf"
+    },
+    {
       "number": 43,
       "slug": "sisyphus",
       "title": "Sisyphus",
