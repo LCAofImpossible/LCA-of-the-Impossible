@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Hydra of Lerna inventory map</title>
+  <desc id="desc">Inventory map for one Hydra neutralisation and containment event, showing travel, freight, fuels, electricity, containment materials and the five-step field-control chain.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.gold{fill:#d0a563}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 26px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.title{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #56 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white title">One neutralisation event becomes a field system</text>
+  <text x="64" y="149" class="muted small">Functional unit: one Hydra neutralisation and containment event · Lerna / UK EF proxy</text>
+
+  <g transform="translate(60 190)">
+    <rect width="255" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">RESPONSE TRAVEL</text><text x="20" y="63" class="white value">280 km</text><text x="145" y="63" class="muted tiny">van</text>
+  </g>
+  <g transform="translate(60 298)">
+    <rect width="255" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">FIELD FREIGHT</text><text x="20" y="63" class="white value">1,120 t·km</text><text x="20" y="82" class="muted tiny">4.0 t × 280 km</text>
+  </g>
+  <g transform="translate(60 406)">
+    <rect width="255" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">CAUTERISATION</text><text x="20" y="63" class="white value">190 L propane</text>
+  </g>
+  <g transform="translate(60 514)">
+    <rect width="255" height="118" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">FIELD POWER</text><text x="20" y="62" class="white value">80 L diesel</text><text x="20" y="93" class="white value">60 kWh</text><text x="140" y="93" class="muted tiny">electricity proxy</text>
+  </g>
+
+  <g transform="translate(885 190)">
+    <rect width="255" height="118" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">CONTAINMENT</text><text x="20" y="62" class="white value">250 kg quicklime</text><text x="20" y="94" class="white value">35 kg LDPE</text>
+  </g>
+  <g transform="translate(885 326)">
+    <rect width="255" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">CONSUMABLES</text><text x="20" y="63" class="white value">80 kg wood</text><text x="20" y="82" class="muted tiny">stakes / firebrands</text>
+  </g>
+  <g transform="translate(885 436)">
+    <rect width="255" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">ALLOCATED TOOLS</text><text x="20" y="63" class="white value">12 kg metal</text>
+  </g>
+
+  <rect x="390" y="205" width="420" height="352" rx="18" class="core"/>
+  <text x="600" y="245" text-anchor="middle" class="gold label">FIELD-CONTROL CHAIN</text>
+  <text x="600" y="286" text-anchor="middle" class="white value">1 × 3.2 t Hydra</text>
+  <text x="600" y="313" text-anchor="middle" class="muted small">8 mortal heads + 1 immortal head</text>
+
+  <g class="small" text-anchor="middle">
+    <circle cx="440" cy="378" r="28" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="440" y="384" class="white">01</text>
+    <circle cx="520" cy="378" r="28" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="520" y="384" class="white">02</text>
+    <circle cx="600" cy="378" r="28" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="600" y="384" class="white">03</text>
+    <circle cx="680" cy="378" r="28" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="680" y="384" class="white">04</text>
+    <circle cx="760" cy="378" r="28" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="760" y="384" class="white">05</text>
+    <text x="440" y="430" class="cyan">Locate</text><text x="520" y="430" class="cyan">Immobilise</text><text x="600" y="430" class="gold">Sever</text><text x="680" y="430" class="gold">Cauterise</text><text x="760" y="430" class="gold">Contain</text>
+  </g>
+  <path d="M468 378H491M548 378H571M628 378H651M708 378H731" class="line"/>
+  <text x="600" y="485" text-anchor="middle" class="white small">Cutting prevents survival only when regrowth is stopped and the immortal head is secured.</text>
+  <text x="600" y="515" text-anchor="middle" class="muted tiny">Living biomass excluded · intervention flows carry the footprint</text>
+
+  <path d="M315 236 C350 236 350 300 390 300" class="line"/>
+  <path d="M315 344 C350 344 350 330 390 330" class="line"/>
+  <path d="M315 452 C350 452 350 410 390 410" class="line"/>
+  <path d="M315 573 C350 573 350 455 390 455" class="line"/>
+  <path d="M885 249 C850 249 850 455 810 455" class="line"/>
+  <path d="M885 372 C850 372 850 425 810 425" class="line"/>
+  <path d="M885 482 C850 482 850 395 810 395" class="line"/>
+
+  <rect x="360" y="606" width="480" height="78" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="636" text-anchor="middle" class="gold label">CUT-OFF EVENT</text>
+  <text x="600" y="663" text-anchor="middle" class="white small">Immortal head sealed under boulder · containment pit closed</text>
+  <path d="M600 557V606" class="line"/>
+  <text x="60" y="704" class="muted tiny">Source: approved Episode #56 carousel. Quantities shown without adding undisclosed flows.</text>
+</svg>
