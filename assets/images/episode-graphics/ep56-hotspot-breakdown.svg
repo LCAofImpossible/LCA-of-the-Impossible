@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Hydra of Lerna hotspot breakdown</title>
+  <desc id="desc">Contribution breakdown for the 1.35 tonne carbon footprint: heat and field energy 44.5 percent, transport 21.9 percent, containment reagent 20.3 percent and consumables 13.2 percent.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 36px Georgia,serif}.label{font:700 20px Arial,sans-serif}.value{font:700 28px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.base{fill:#112232}.bar1{fill:#6de7ff}.bar2{fill:#4da9bd}.bar3{fill:#d0a563}.bar4{fill:#708896}
+    </style>
+  </defs>
+  <rect width="1200" height="720" rx="20" class="bg"/>
+  <rect x="28" y="28" width="1144" height="664" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="78" class="gold label">EPISODE #56 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="126" class="white title">The footprint of regeneration</text>
+  <text x="64" y="160" class="muted small">Published baseline contribution shares · one neutralised Hydra event</text>
+
+  <g transform="translate(64 205)">
+    <rect width="1072" height="104" rx="14" class="panel"/>
+    <text x="28" y="38" class="gold label">BASELINE TOTAL</text>
+    <text x="28" y="80" class="white value">1.35 t CO₂e</text>
+    <text x="270" y="78" class="muted small">per neutralised Hydra event</text>
+    <text x="1040" y="65" text-anchor="end" class="cyan label">OPERATIONAL CONTROL DOMINATES</text>
+  </g>
+
+  <g transform="translate(64 350)">
+    <text x="0" y="20" class="white label">Heat &amp; field energy</text><text x="1070" y="20" text-anchor="end" class="white value">44.5%</text>
+    <rect x="0" y="38" width="1072" height="34" rx="7" class="base"/><rect x="0" y="38" width="477" height="34" rx="7" class="bar1"/>
+
+    <text x="0" y="116" class="white label">Transport</text><text x="1070" y="116" text-anchor="end" class="white value">21.9%</text>
+    <rect x="0" y="134" width="1072" height="34" rx="7" class="base"/><rect x="0" y="134" width="235" height="34" rx="7" class="bar2"/>
+
+    <text x="0" y="212" class="white label">Containment reagent</text><text x="1070" y="212" text-anchor="end" class="white value">20.3%</text>
+    <rect x="0" y="230" width="1072" height="34" rx="7" class="base"/><rect x="0" y="230" width="218" height="34" rx="7" class="bar3"/>
+
+    <text x="0" y="308" class="white label">Consumables</text><text x="1070" y="308" text-anchor="end" class="white value">13.2%</text>
+    <rect x="0" y="326" width="1072" height="34" rx="7" class="base"/><rect x="0" y="326" width="142" height="34" rx="7" class="bar4"/>
+  </g>
+
+  <rect x="64" y="642" width="1072" height="34" rx="8" fill="#0b1622"/>
+  <text x="82" y="664" class="muted tiny">Shares total 99.9% because the approved carousel reports one-decimal rounded contributions. No balancing percentage has been invented.</text>
+</svg>
