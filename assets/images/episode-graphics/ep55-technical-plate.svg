@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">The Garden of the Hesperides technical reconstruction</title>
+<desc id="desc">Technical plate showing three 80 millimetre apples, 10 micrometre gold skin, 0.0603 square metre total surface area and 0.0116 kilogram gold mass.</desc>
+<defs>
+<style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.wire{fill:none;stroke:#6de7ff;stroke-width:2}.goldwire{fill:none;stroke:#d0a563;stroke-width:3}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.6;stroke-dasharray:7 6}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:700 23px Arial,sans-serif}.value{fill:#d0a563;font:700 30px Arial,sans-serif}.small{fill:#9ab0bc;font:19px Arial,sans-serif}.micro{fill:#9ab0bc;font:16px Arial,sans-serif}
+</style>
+<radialGradient id="apple" cx="35%" cy="30%" r="70%"><stop offset="0" stop-color="#f3d684"/><stop offset=".45" stop-color="#d0a563"/><stop offset="1" stop-color="#6f5129"/></radialGradient>
+</defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #55 · TECHNICAL PLATE</text>
+<text x="60" y="105" class="head">Ordinary apple geometry. Extraordinary surface.</text>
+
+<!-- reconstruction field -->
+<rect x="55" y="155" width="690" height="510" rx="18" class="panel"/>
+<circle cx="400" cy="410" r="215" class="dim"/><line x1="185" y1="410" x2="615" y2="410" class="dim"/><line x1="400" y1="195" x2="400" y2="625" class="dim"/>
+
+<!-- apples -->
+<g>
+<circle cx="305" cy="340" r="92" fill="url(#apple)" stroke="#d0a563" stroke-width="4"/>
+<path d="M302 250 C298 225 312 214 325 202" class="goldwire"/><path d="M322 213 C345 201 362 207 373 223 C351 226 333 225 322 213Z" fill="#5f815d" stroke="#9ab0bc"/>
+<circle cx="498" cy="340" r="92" fill="url(#apple)" stroke="#d0a563" stroke-width="4"/>
+<path d="M495 250 C491 225 505 214 518 202" class="goldwire"/><path d="M515 213 C538 201 555 207 566 223 C544 226 526 225 515 213Z" fill="#5f815d" stroke="#9ab0bc"/>
+<circle cx="401" cy="510" r="92" fill="url(#apple)" stroke="#d0a563" stroke-width="4"/>
+<path d="M398 420 C394 395 408 384 421 372" class="goldwire"/><path d="M418 383 C441 371 458 377 469 393 C447 396 429 395 418 383Z" fill="#5f815d" stroke="#9ab0bc"/>
+</g>
+
+<!-- dimensions -->
+<line x1="213" y1="222" x2="397" y2="222" class="wire"/><line x1="213" y1="212" x2="213" y2="232" class="wire"/><line x1="397" y1="212" x2="397" y2="232" class="wire"/><text x="305" y="207" text-anchor="middle" class="small">Ø 80 mm</text>
+<line x1="590" y1="248" x2="650" y2="205" class="goldwire"/><text x="655" y="196" class="value">10 µm</text><text x="655" y="221" class="micro">average gold skin</text>
+<line x1="585" y1="338" x2="675" y2="338" class="wire"/><text x="680" y="345" class="small">3 spherical apples</text>
+
+<text x="86" y="622" class="small">Reference flow: three apples + one year allocated orchard support</text>
+
+<!-- parameter rail -->
+<g transform="translate(785 155)">
+<rect width="360" height="510" rx="18" class="panel"/>
+<text x="28" y="47" class="eyebrow">RECONSTRUCTION</text>
+<text x="28" y="100" class="label">Total surface area</text><text x="28" y="138" class="value">0.0603 m²</text>
+<line x1="28" y1="165" x2="332" y2="165" stroke="#234557" stroke-width="2"/>
+<text x="28" y="215" class="label">Gold density</text><text x="28" y="253" class="value">19,300 kg/m³</text>
+<line x1="28" y1="280" x2="332" y2="280" stroke="#234557" stroke-width="2"/>
+<text x="28" y="330" class="label">Gold mass / FU</text><text x="28" y="368" class="value">0.0116 kg Au</text>
+<line x1="28" y1="395" x2="332" y2="395" stroke="#234557" stroke-width="2"/>
+<text x="28" y="438" class="label">Allocation rule</text>
+<text x="28" y="470" class="small">Tree support, trellis and wall</text><text x="28" y="497" class="small">allocated by annual service life.</text>
+</g>
+
+<text x="60" y="711" class="small">Physical uncertainty is tested by changing only gold thickness: 5 µm → 188 kg CO₂e · 10 µm → 336 kg CO₂e · 25 µm → 781 kg CO₂e.</text>
+</svg>

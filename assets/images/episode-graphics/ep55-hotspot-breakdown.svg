@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">The Garden of the Hesperides hotspot breakdown</title>
+<desc id="desc">Contribution chart for the 336 kilogram carbon dioxide equivalent baseline, led by 296.4 kilograms from the gold skin, or 88.2 percent.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.bar{fill:#6de7ff}.gold{fill:#d0a563}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:21px Arial,sans-serif}.value{fill:#eef7fb;font:700 21px Arial,sans-serif}.big{fill:#d0a563;font:700 50px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.note{fill:#c4f7ff;font:700 22px Arial,sans-serif}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #55 · HOTSPOT BREAKDOWN</text>
+<text x="60" y="105" class="head">The garden is light. The golden skin is not.</text>
+<rect x="60" y="145" width="1080" height="110" rx="16" class="panel"/>
+<text x="90" y="198" class="big">336 kg CO₂e</text><text x="425" y="190" class="note">per annual guarded presentation</text><text x="425" y="222" class="small">Gold gilding layer: 296.4 kg CO₂e · 88.2% of modeled total</text>
+
+<!-- chart tracks use 296.4 kg as 100% visual maximum -->
+<g transform="translate(60 300)">
+<text x="0" y="22" class="label">Gold skin</text><rect x="290" y="3" width="700" height="24" rx="4" class="track"/><rect x="290" y="3" width="700" height="24" rx="4" class="gold"/><text x="1010" y="23" class="value">296.4</text>
+<text x="0" y="68" class="label">Metal upkeep</text><rect x="290" y="49" width="700" height="24" rx="4" class="track"/><rect x="290" y="49" width="45" height="24" rx="4" class="bar"/><text x="1010" y="69" class="value">19.1</text>
+<text x="0" y="114" class="label">Garden compost</text><rect x="290" y="95" width="700" height="24" rx="4" class="track"/><rect x="290" y="95" width="13" height="24" rx="4" class="bar"/><text x="1010" y="115" class="value">5.6</text>
+<text x="0" y="160" class="label">Electricity incl. WTT</text><rect x="290" y="141" width="700" height="24" rx="4" class="track"/><rect x="290" y="141" width="11" height="24" rx="4" class="bar"/><text x="1010" y="161" class="value">4.6</text>
+<text x="0" y="206" class="label">Inbound freight incl. WTT</text><rect x="290" y="187" width="700" height="24" rx="4" class="track"/><rect x="290" y="187" width="9" height="24" rx="4" class="bar"/><text x="1010" y="207" class="value">3.8</text>
+<text x="0" y="252" class="label">Apple biological core</text><rect x="290" y="233" width="700" height="24" rx="4" class="track"/><rect x="290" y="233" width="7" height="24" rx="4" class="bar"/><text x="1010" y="253" class="value">2.8</text>
+<text x="0" y="298" class="label">Irrigation water supply</text><rect x="290" y="279" width="700" height="24" rx="4" class="track"/><rect x="290" y="279" width="5.5" height="24" rx="4" class="bar"/><text x="1010" y="299" class="value">2.3</text>
+<text x="0" y="344" class="label">Stone works</text><rect x="290" y="325" width="700" height="24" rx="4" class="track"/><rect x="290" y="325" width="2.4" height="24" rx="4" class="bar"/><text x="1010" y="345" class="value">1.0</text>
+<text x="0" y="390" class="label">Shared timber trellis</text><rect x="290" y="371" width="700" height="24" rx="4" class="track"/><rect x="290" y="371" width="1" height="24" rx="4" class="bar"/><text x="1010" y="391" class="value">0.3</text>
+</g>
+<text x="60" y="721" class="small">kg CO₂e per functional unit · Bars follow calculated values; minor flows are not visually enlarged. Rounded contributions reconcile to 336 kg CO₂e.</text>
+</svg>
