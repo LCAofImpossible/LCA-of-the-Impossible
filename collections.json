@@ -38,6 +38,17 @@
         42,
         41
       ]
+    },
+    {
+      "slug": "mythic-threat-control",
+      "title": "Mythic Threat Control",
+      "eyebrow": "CONTAINMENT, DEFENCE & CONTROL",
+      "description": "Cases where the footprint is shaped by the system built to contain, patrol or control a mythic threat rather than by the creature alone.",
+      "episodes": [
+        56,
+        42,
+        40
+      ]
     }
   ]
 }
