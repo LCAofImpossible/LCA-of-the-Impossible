@@ -1,0 +1,111 @@
+name: Verify live Episode 54
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ep54-live-verify.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  live-verify:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Wait for GitHub Pages and verify live publication
+        shell: bash
+        run: |
+          set -euo pipefail
+          BASE='https://lcaofimpossible.github.io/LCA-of-the-Impossible'
+          EP="$BASE/episodes/santas-sleigh.html"
+          COVER="$BASE/assets/images/episodes/ep54-santas-sleigh-cover.png"
+          PDF="$BASE/assets/pdf/episodes/ep54-santas-sleigh.pdf"
+          HOME="$BASE/"
+          ARCHIVE="$BASE/archive.html"
+          REGISTRY="$BASE/episodes.json"
+          COLLECTIONS="$BASE/collections.json"
+          SITEMAP="$BASE/sitemap.xml"
+
+          ok=0
+          for i in $(seq 1 36); do
+            echo "Live check attempt $i/36"
+            if curl -fLsS --max-time 20 "$EP" -o /tmp/episode.html \
+              && curl -fLsS --max-time 20 "$REGISTRY" -o /tmp/episodes.json \
+              && grep -Fq "Santa's Sleigh" /tmp/episode.html \
+              && grep -Fq '267 kg CO₂e' /tmp/episode.html \
+              && grep -Fq 'assets/images/episodes/ep54-santas-sleigh-cover.png' /tmp/episode.html \
+              && grep -Fq 'assets/pdf/episodes/ep54-santas-sleigh.pdf' /tmp/episode.html \
+              && python - <<'PY'
+          import json
+          d=json.load(open('/tmp/episodes.json',encoding='utf-8'))
+          e=next((x for x in d['episodes'] if x['number']==54),None)
+          assert e is not None
+          assert e['title']=="Santa's Sleigh"
+          assert e['result']=='267 kg CO₂e'
+          assert e['cover']=='assets/images/episodes/ep54-santas-sleigh-cover.png'
+          assert e['pdf']=='assets/pdf/episodes/ep54-santas-sleigh.pdf'
+          assert e['functionalUnit']=='One reusable airborne gift-delivery sleigh completing one Christmas Eve mission.'
+          assert e['related']==[35,42,41]
+          assert e['evidence']['confidence']=='Medium'
+          assert e['evidence']['proxyDependence']=='High'
+          assert e['evidence']['assumptionSensitivity']=='High'
+          PY
+            then
+              ok=1
+              break
+            fi
+            sleep 10
+          done
+          test "$ok" -eq 1
+
+          curl -fLsS --max-time 30 "$COVER" -o /tmp/cover.png
+          curl -fLsS --max-time 30 "$PDF" -o /tmp/episode.pdf
+          echo '18dea5718a3b786d8def1c77eb4c971f7cea428b704a875f1e2be19c4ef2b1e5  /tmp/cover.png' | sha256sum -c -
+          echo '5c01e7118079372f8c2e69a563d949687eb572d304673493cd91ebea0f3d7f6c  /tmp/episode.pdf' | sha256sum -c -
+
+          curl -fLsS --max-time 20 "$HOME" -o /tmp/home.html
+          curl -fLsS --max-time 20 "$ARCHIVE" -o /tmp/archive.html
+          curl -fLsS --max-time 20 "$COLLECTIONS" -o /tmp/collections.json
+          curl -fLsS --max-time 20 "$SITEMAP" -o /tmp/sitemap.xml
+          curl -fLsS --max-time 20 "$BASE/compare.html" -o /tmp/compare.html
+          curl -fLsS --max-time 20 "$BASE/explore.html" -o /tmp/explore.html
+          curl -fLsS --max-time 20 "$BASE/collections.html" -o /tmp/collections.html
+
+          grep -Fq 'episodes/santas-sleigh.html' /tmp/sitemap.xml
+          python - <<'PY'
+          import json
+          c=json.load(open('/tmp/collections.json',encoding='utf-8'))
+          target=next(x for x in c['collections'] if x['slug']=='legendary-engineering')
+          assert 54 in target['episodes']
+          PY
+
+          # Catalogue rendering is registry-driven. Confirm live pages load the shared script
+          # and live CSS keeps catalogue artwork contained rather than cropped.
+          grep -Fq 'assets/site.js' /tmp/home.html
+          grep -Fq 'assets/site.js' /tmp/archive.html
+          curl -fLsS --max-time 20 "$BASE/assets/style.css" -o /tmp/style.css
+          python - <<'PY'
+          from PIL import Image
+          im=Image.open('/tmp/cover.png')
+          assert abs(im.width/im.height-0.8) <= 0.012, im.size
+          css=open('/tmp/style.css',encoding='utf-8').read()
+          assert 'object-fit: contain' in css or 'object-fit:contain' in css
+          PY
+
+      - name: Remove one-shot verifier and record successful live QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm .github/workflows/ep54-live-verify.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit --allow-empty -m 'Verify live Episode 54 deployment'
+          git pull --rebase origin main
+          git push origin HEAD:main
