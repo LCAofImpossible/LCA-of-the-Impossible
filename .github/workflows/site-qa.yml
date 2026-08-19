@@ -37,6 +37,9 @@ jobs:
       - name: Build deterministic Phase 5 editorial infrastructure in QA workspace
         run: python scripts/phase5_sync.py
 
+      - name: Build deterministic Phase 6 model transparency in QA workspace
+        run: python scripts/phase6_sync.py
+
       - name: Run structural site QA
         run: python scripts/site_qa.py
 
@@ -51,3 +54,6 @@ jobs:
 
       - name: Run Phase 5 editorial QA
         run: python scripts/phase5_qa.py
+
+      - name: Run Phase 6 model transparency QA
+        run: python scripts/phase6_qa.py
