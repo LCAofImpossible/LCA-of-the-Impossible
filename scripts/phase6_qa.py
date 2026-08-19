@@ -7,7 +7,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 errors: list[str] = []
-CURRENT_ASSET_VERSION = "20260819-epic-passport2"
+CURRENT_ASSET_VERSION = "20260819-epic-passport3"
+CLEANUP_VERSION = "20260819-passport-cleanup1"
 
 
 def fail(message: str) -> None:
@@ -28,6 +29,8 @@ def check_episode_assets_and_exports() -> None:
             fail(f"{path.relative_to(ROOT)}: current Epic Passport CSS missing")
         if f"../assets/phase6.js?v={CURRENT_ASSET_VERSION}" not in text:
             fail(f"{path.relative_to(ROOT)}: current Epic Passport JS missing")
+        if f"../assets/passport-cleanup.js?v={CLEANUP_VERSION}" not in text:
+            fail(f"{path.relative_to(ROOT)}: defensive export-cleanup JS missing")
         if "episode-pdf-action-static" in text or "assets/pdf/episodes/" in text:
             fail(f"{path.relative_to(ROOT)}: legacy source-PDF download is still exposed")
 
@@ -64,6 +67,14 @@ def check_phase6_js() -> None:
             fail(f"assets/phase6.js: retired or fabricated implementation token detected: {token}")
 
 
+def check_cleanup_js() -> None:
+    text = read(ROOT / "assets/passport-cleanup.js")
+    for token in ["episode-pdf-action-static", "assets/pdf/episodes/", "Raw text".lower(), "MutationObserver"]:
+        needle = token if token != "raw text" else "raw text"
+        if needle not in text.lower() if token == "raw text" else needle not in text:
+            fail(f"assets/passport-cleanup.js: required cleanup token missing: {token}")
+
+
 def check_phase6_css() -> None:
     text = read(ROOT / "assets/phase6.css")
     for token in [".passport-sheet", ".passport-overlay", ".passport-seal", "@media print", "A4 portrait", "print-color-adjust"]:
@@ -95,13 +106,20 @@ def check_method() -> None:
 
 
 def main() -> int:
-    for path in [ROOT / "assets/phase6.css", ROOT / "assets/phase6.js", ROOT / "scripts/phase6_sync.py", ROOT / "scripts/epic_passport_sync.py"]:
+    for path in [
+        ROOT / "assets/phase6.css",
+        ROOT / "assets/phase6.js",
+        ROOT / "assets/passport-cleanup.js",
+        ROOT / "scripts/phase6_sync.py",
+        ROOT / "scripts/epic_passport_sync.py",
+    ]:
         if not path.is_file():
             fail(f"Missing Phase 6 file: {path.relative_to(ROOT)}")
 
     check_episode_assets_and_exports()
     check_registry_basis()
     check_phase6_js()
+    check_cleanup_js()
     check_phase6_css()
     check_template()
     check_explore()
