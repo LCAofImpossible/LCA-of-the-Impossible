@@ -40,6 +40,9 @@ jobs:
       - name: Build deterministic Phase 6 model transparency in QA workspace
         run: python scripts/phase6_sync.py
 
+      - name: Build deterministic Epic Passport presentation in QA workspace
+        run: python scripts/epic_passport_sync.py
+
       - name: Run structural site QA
         run: python scripts/site_qa.py
 
