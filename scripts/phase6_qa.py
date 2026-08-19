@@ -7,6 +7,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 errors: list[str] = []
+CURRENT_ASSET_VERSION = "20260819-epic-passport2"
 
 
 def fail(message: str) -> None:
@@ -20,19 +21,23 @@ def read(path: Path) -> str:
     return path.read_text(encoding="utf-8")
 
 
-def check_episode_assets() -> None:
+def check_episode_assets_and_exports() -> None:
     for path in sorted((ROOT / "episodes").glob("*.html")):
         text = read(path)
-        if "../assets/phase6.css" not in text:
-            fail(f"{path.relative_to(ROOT)}: Phase 6 CSS missing")
-        if "../assets/phase6.js" not in text:
-            fail(f"{path.relative_to(ROOT)}: Phase 6 JS missing")
+        if f"../assets/phase6.css?v={CURRENT_ASSET_VERSION}" not in text:
+            fail(f"{path.relative_to(ROOT)}: current Epic Passport CSS missing")
+        if f"../assets/phase6.js?v={CURRENT_ASSET_VERSION}" not in text:
+            fail(f"{path.relative_to(ROOT)}: current Epic Passport JS missing")
+        if "episode-pdf-action-static" in text or "assets/pdf/episodes/" in text:
+            fail(f"{path.relative_to(ROOT)}: legacy source-PDF download is still exposed")
 
 
 def check_registry_basis() -> None:
     data = json.loads(read(ROOT / "episodes.json") or "{}")
     for episode in data.get("episodes", []):
         number = episode.get("number")
+        if "pdf" in episode:
+            fail(f"Episode #{number}: public registry must not expose a pdf field")
         for key in ["title", "cover", "categoryLabel", "functionalUnit", "result", "lcaLabel", "hotspot"]:
             if not episode.get(key):
                 fail(f"Episode #{number}: Epic Model Passport requires {key}")
@@ -45,18 +50,18 @@ def check_registry_basis() -> None:
 def check_phase6_js() -> None:
     text = read(ROOT / "assets/phase6.js")
     required = [
-        "MODEL PASSPORT", "View epic passport", "Print / Save as PDF", "Raw text",
+        "MODEL PASSPORT", "View epic passport", "Print / Save as PDF",
         "passport-sheet", "passport-overlay", "window.print", "episode.cover",
         "functionalUnit", "result", "lcaLabel", "hotspot", "categoryLabel",
         "proxyDependence", "assumptionSensitivity", "basis", "uncertainty",
-        "approved PDF", "MutationObserver",
+        "MutationObserver",
     ]
     for token in required:
         if token not in text:
             fail(f"assets/phase6.js: required implementation token missing: {token}")
-    for token in ["systemBoundary:", "factorList:", "allocationRule:"]:
+    for token in ["Raw text", "downloadRawPassport", "passport-raw", "systemBoundary:", "factorList:", "allocationRule:"]:
         if token in text:
-            fail(f"assets/phase6.js: unregistered fabricated field detected: {token}")
+            fail(f"assets/phase6.js: retired or fabricated implementation token detected: {token}")
 
 
 def check_phase6_css() -> None:
@@ -64,6 +69,12 @@ def check_phase6_css() -> None:
     for token in [".passport-sheet", ".passport-overlay", ".passport-seal", "@media print", "A4 portrait", "print-color-adjust"]:
         if token not in text:
             fail(f"assets/phase6.css: epic/print style missing: {token}")
+
+
+def check_template() -> None:
+    text = read(ROOT / "episodes/template.html")
+    if "episode-pdf-action-static" in text or "assets/pdf/episodes/" in text:
+        fail("episodes/template.html: legacy source-PDF download guidance remains")
 
 
 def check_explore() -> None:
@@ -84,14 +95,15 @@ def check_method() -> None:
 
 
 def main() -> int:
-    for path in [ROOT / "assets/phase6.css", ROOT / "assets/phase6.js", ROOT / "scripts/phase6_sync.py"]:
+    for path in [ROOT / "assets/phase6.css", ROOT / "assets/phase6.js", ROOT / "scripts/phase6_sync.py", ROOT / "scripts/epic_passport_sync.py"]:
         if not path.is_file():
             fail(f"Missing Phase 6 file: {path.relative_to(ROOT)}")
 
-    check_episode_assets()
+    check_episode_assets_and_exports()
     check_registry_basis()
     check_phase6_js()
     check_phase6_css()
+    check_template()
     check_explore()
     check_method()
 
