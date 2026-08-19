@@ -417,7 +417,7 @@ If retained, preserve the approved file and use a stable canonical filename such
 
 - [ ] No episode page or template links to `assets/pdf/episodes/*.pdf`.
 - [ ] `episodes.json` contains no `pdf` field.
-- [ ] No `Download episode PDF` control is visible.
+- [ ] No source-PDF download control is visible.
 - [ ] No raw-text Passport export is visible.
 - [ ] `View epic passport →` and `Print / Save as PDF` are the only Passport output actions.
 - [ ] Any archived source PDF remains editorial/technical material only.
