@@ -8,7 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 ASSET_VERSION = "20260819-epic-passport3"
-CLEANUP_VERSION = "20260819-passport-cleanup1"
+CLEANUP_VERSION = "20260819-passport-cleanup2"
 START = "<!-- EPIC-PASSPORT-RULES:START -->"
 END = "<!-- EPIC-PASSPORT-RULES:END -->"
 
