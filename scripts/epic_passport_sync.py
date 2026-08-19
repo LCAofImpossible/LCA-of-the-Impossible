@@ -82,22 +82,53 @@ def remove_registry_pdf_fields(check: bool, changed: list[Path]) -> None:
     write_if_changed(path, content, check, changed)
 
 
+def clean_legacy_readme(text: str) -> str:
+    """Remove historical public-PDF rules so the README has one coherent contract."""
+    replacements = {
+        "If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory.":
+            "If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download.",
+        "**An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the catalogue cover.":
+            "**An explicitly user-approved replacement image** — overrides the source PDF/carousel cover only when the user has specifically selected it as the catalogue cover.",
+        "**`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, PDF availability, taxonomy, related cases and navigation relationships.":
+            "**`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, taxonomy, Evidence Profile data, related cases and navigation relationships. It must not contain public source-PDF fields.",
+        "**`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode heroes, automatic PDF download actions, Related Cases and Previous/Next behaviour.":
+            "**`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode heroes, Related Cases and Previous/Next behaviour.",
+        "- `episodes.json` — central episode registry and navigation/download metadata":
+            "- `episodes.json` — central episode registry, taxonomy, evidence and navigation metadata; no public source-PDF fields",
+        "- `assets/pdf/episodes/` — approved downloadable episode carousels":
+            "- `assets/pdf/episodes/` — optional editorial/technical archive for approved source PDFs; these files are not exposed by the public website",
+        "`episodes.json` is the single catalogue record used by the homepage, full archive, episode PDF action and episode-to-episode navigation.":
+            "`episodes.json` is the single catalogue record used by the homepage, full archive, Evidence Profile / Epic Passport data and episode-to-episode navigation.",
+        "- `epNN-short-slug.pdf` — approved downloadable carousel.":
+            "- `epNN-short-slug.pdf` — optional approved source PDF retained only as editorial/technical archive material; never linked from the public site or registry.",
+        "Canonical PDF naming must be stable and simple. Do not publish PDFs with temporary suffixes such as `(1)`, `rev-final`, `v2`, `copy` or similar. Normalize them to `epNN-short-slug.pdf` before adding the registry `pdf` field.":
+            "If a source PDF is retained in the repository archive, use a stable canonical name such as `epNN-short-slug.pdf`. Do not expose it through episode pages, navigation, `episodes.json`, metadata or public download controls.",
+        "- static **Download episode PDF ↓** action when the registry contains a valid `pdf` field and the PDF exists in the repository.":
+            "- no source-PDF download action. The only episode export is the Epic Model Passport through `Print / Save as PDF`.",
+        "The PDF button is intentionally hard-coded in the individual episode HTML so it remains visible even if JavaScript is cached, blocked or unavailable. Use the standardized wording and button class defined in this README.":
+            "Do not hard-code or dynamically inject links to the source episode PDF. Legacy source-PDF controls must be removed by synchronization and defensively suppressed by `assets/passport-cleanup.js`.",
+        "Readers are directed to the episode inventory and approved PDF for the full model.":
+            "Readers are directed to the episode inventory and registered source/model notes for the full public interpretation.",
+        "A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.":
+            "The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.",
+        "- [ ] Downloaded passport text contains the canonical episode URL and the interpretation disclaimer.\n":
+            "- [ ] Printed/saved Passport retains the canonical episode URL and the interpretation disclaimer.\n",
+    }
+    for old, new in replacements.items():
+        text = text.replace(old, new)
+
+    text = re.sub(
+        r'\nOptional field:\n\n- `pdf` — relative path to the approved carousel in `assets/pdf/episodes/`\. \*\*Add this field only after the PDF file exists at that exact path\.\*\*\n',
+        '\nThe public registry must **not** contain a `pdf` field or any other source-PDF download reference. Source PDFs may exist only as editorial/technical archive material outside the public registry contract.\n',
+        text,
+    )
+
+    return text
+
+
 def update_readme(check: bool, changed: list[Path]) -> None:
     path = ROOT / "README.md"
-    text = path.read_text(encoding="utf-8")
-
-    text = text.replace(
-        "Readers are directed to the episode inventory and approved PDF for the full model.",
-        "Readers are directed to the episode inventory and registered source/model notes for the full public interpretation."
-    )
-    text = text.replace(
-        "A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.",
-        "The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download."
-    )
-    text = text.replace(
-        "- [ ] Downloaded passport text contains the canonical episode URL and the interpretation disclaimer.\n",
-        "- [ ] Printed/saved Passport retains the canonical episode URL and the interpretation disclaimer.\n"
-    )
+    text = clean_legacy_readme(path.read_text(encoding="utf-8"))
 
     block = f'''{START}
 
