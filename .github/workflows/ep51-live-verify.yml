@@ -1,0 +1,180 @@
+name: Episode 51 Live Verification
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - '.github/workflows/ep51-live-verify.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install QA and browser dependencies
+        run: python -m pip install --disable-pip-version-check pillow selenium
+
+      - name: Run deterministic synchronization and full repository QA
+        run: |
+          python scripts/apply_seo.py
+          python scripts/feature_sync.py
+          python scripts/engagement_sync.py
+          python scripts/phase5_sync.py
+          python scripts/phase6_sync.py
+          python scripts/epic_passport_sync.py
+          git diff --exit-code
+          python scripts/site_qa.py
+          python scripts/seo_qa.py
+          python scripts/feature_qa.py
+          python scripts/engagement_qa.py
+          python scripts/phase5_qa.py
+          python scripts/phase6_qa.py
+
+      - name: Wait for GitHub Pages and validate live static assets
+        env:
+          EXPECTED_COVER_SHA256: 469b45981a05b8379a25c9e6369b67d2158273252130a6686d45f8507873db92
+        run: |
+          python - <<'PY'
+          import hashlib, json, os, time, urllib.request
+          from PIL import Image
+          from io import BytesIO
+
+          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          expected_hash = os.environ['EXPECTED_COVER_SHA256']
+
+          def get(path, binary=False):
+              sep = '&' if '?' in path else '?'
+              url = base + path + sep + 'qa=' + str(time.time_ns())
+              req = urllib.request.Request(url, headers={'Cache-Control':'no-cache','User-Agent':'ep51-live-qa'})
+              with urllib.request.urlopen(req, timeout=30) as response:
+                  data = response.read()
+              return data if binary else data.decode('utf-8')
+
+          last = None
+          for attempt in range(30):
+              try:
+                  html = get('episodes/pandoras-jar.html')
+                  registry_text = get('episodes.json')
+                  registry = json.loads(registry_text)
+                  collections = json.loads(get('collections.json'))
+                  sitemap = get('sitemap.xml')
+                  cleanup = get('assets/passport-cleanup.js')
+                  phase6 = get('assets/phase6.js')
+                  cover = get('assets/images/episodes/ep51-pandoras-jar-cover.png', binary=True)
+
+                  assert "Pandora's Jar" in html and '26.0 kg CO₂e' in html
+                  assert 'assets/pdf/episodes/' not in html and 'Raw text' not in html
+                  assert all('pdf' not in episode for episode in registry['episodes'])
+                  ep = next(e for e in registry['episodes'] if e['number'] == 51)
+                  assert ep['cover'] == 'assets/images/episodes/ep51-pandoras-jar-cover.png'
+                  assert ep['result'] == '26.0 kg CO₂e'
+                  assert ep['hotspot'] == 'Kiln energy and freight together account for 49.9% of the baseline footprint.'
+                  assert ep['functionalUnit'].startswith('One sealed 45 L ceramic pithos')
+                  assert ep['evidence']['proxyDependence'] == 'High'
+                  assert sitemap.count('/episodes/pandoras-jar.html') == 1
+
+                  groups = {c['slug']: c['episodes'] for c in collections['collections']}
+                  assert 51 in groups['legendary-engineering']
+                  assert 51 in groups['mythic-threat-control']
+
+                  assert 'View epic passport →' in phase6
+                  assert 'Print / Save as PDF' in phase6
+                  assert 'Raw text' not in phase6
+                  assert 'allowedPassportActions' in cleanup
+                  assert 'view epic passport →' in cleanup.lower()
+                  assert 'print / save as pdf' in cleanup.lower()
+                  assert 'raw text' in cleanup.lower()
+                  assert 'assets/pdf/episodes/' in cleanup
+
+                  digest = hashlib.sha256(cover).hexdigest()
+                  assert digest == expected_hash, (digest, expected_hash)
+                  with Image.open(BytesIO(cover)) as image:
+                      assert image.size == (1122, 1402), image.size
+                      assert abs(image.width / image.height - 0.8) < 0.012
+                  print('Live static validation passed.')
+                  break
+              except Exception as exc:
+                  last = exc
+                  print(f'Attempt {attempt + 1}/30 not ready: {exc}')
+                  time.sleep(10)
+          else:
+              raise SystemExit(f'Live static validation failed after polling: {last}')
+          PY
+
+      - name: Validate live rendered UX and Passport-only controls
+        run: |
+          python - <<'PY'
+          from selenium import webdriver
+          from selenium.webdriver.common.by import By
+          from selenium.webdriver.support.ui import WebDriverWait
+          from selenium.webdriver.support import expected_conditions as EC
+
+          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          opts = webdriver.ChromeOptions()
+          opts.add_argument('--headless=new')
+          opts.add_argument('--no-sandbox')
+          opts.add_argument('--disable-dev-shm-usage')
+          opts.add_argument('--window-size=1440,1000')
+          driver = webdriver.Chrome(options=opts)
+          wait = WebDriverWait(driver, 30)
+          try:
+              for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
+                  driver.get(base + path + ('?qa=ep51' if path else '?qa=ep51'))
+                  wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
+                  wait.until(lambda d: "Pandora's Jar" in d.find_element(By.TAG_NAME, 'body').text)
+
+              driver.get(base + 'episodes/pandoras-jar.html?qa=ep51')
+              wait.until(EC.presence_of_element_located((By.ID, 'evidence')))
+              wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
+              body_text = driver.find_element(By.TAG_NAME, 'body').text
+              assert 'EVIDENCE PROFILE' in body_text
+              assert 'RELATED CASES' in body_text
+              assert 'Raw text' not in body_text
+              assert 'Download episode PDF' not in body_text
+
+              actions = [el.text.strip() for el in driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *') if el.is_displayed()]
+              assert actions == ['View epic passport →', 'Print / Save as PDF'], actions
+
+              cover = driver.find_element(By.CSS_SELECTOR, '#model-passport .passport-preview-cover img')
+              dims = driver.execute_script('return [arguments[0].naturalWidth, arguments[0].naturalHeight]', cover)
+              assert dims == [1122, 1402], dims
+
+              driver.find_element(By.CSS_SELECTOR, '#model-passport .passport-view').click()
+              overlay = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.passport-overlay')))
+              overlay_text = overlay.text
+              assert '26.0 kg CO₂e' in overlay_text
+              assert 'Print / Save as PDF' in overlay_text
+              assert 'CANONICAL RECORD' in overlay_text
+              assert 'Raw text' not in overlay_text
+              assert 'Download episode PDF' not in overlay_text
+
+              driver.find_element(By.CSS_SELECTOR, '.passport-close').click()
+              driver.set_window_size(390, 844)
+              driver.get(base + 'episodes/pandoras-jar.html?qa=mobile')
+              wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
+              overflow = driver.execute_script('return document.documentElement.scrollWidth - document.documentElement.clientWidth')
+              assert overflow <= 2, overflow
+              print('Live rendered UX validation passed.')
+          finally:
+              driver.quit()
+          PY
+
+      - name: Record successful live verification
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit --allow-empty -m "QA: Episode 51 live verification passed"
+          git push origin HEAD:main
