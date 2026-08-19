@@ -102,15 +102,31 @@ def check_readme() -> None:
         "before adding the registry `pdf` field",
         "A text download may be generated client-side",
         "Downloaded passport text contains",
+        "## 16. PDF publishing system",
+        "PDF availability is **registry-declared**",
+        "### PDF download",
+        "Live PDF action tested",
+        "including `pdf` only after",
+        "PDF download buttons are static HTML",
+        "A `pdf` registry field is allowed",
+        "No broken PDF link is acceptable",
+        "any registered PDF download must be checked",
     ]
     for token in forbidden:
         if token in text:
             fail(f"README.md: legacy public-export rule remains: {token}")
 
+    source_note = "The approved PDF is an editorial/technical source, not a public website download."
+    if text.count(source_note) != 1:
+        fail(f"README.md: source-PDF note must appear exactly once in the introduction; found {text.count(source_note)}")
+
     required = [
-        "The approved PDF is an editorial/technical source, not a public website download.",
+        "## 16. Source PDF archival policy — mandatory",
         "The public registry must **not** contain a `pdf` field",
         "The only episode export is the Epic Model Passport through `Print / Save as PDF`.",
+        "## 20. Controlled publishing workflow",
+        "**Do not add a `pdf` field.**",
+        "**The Epic Model Passport is the only public episode-level export",
         "Source PDF artefacts may remain in the repository as editorial/technical archive material",
         "No raw-text Passport export is exposed.",
     ]
