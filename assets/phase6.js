@@ -100,7 +100,8 @@
         <a class="button secondary" href="${prefix}sources.html">Sources & data →</a>
       </div>
       <p class="passport-note">This passport summarizes fields already registered for the episode. It deliberately does not invent a system boundary, factor list or assumption set when those details are not structured in the registry; consult the episode inventory and approved PDF for the full model.</p>`;
-    quickFacts.insertAdjacentElement('afterend', section);
+    const anchor = document.getElementById('evidence') || quickFacts;
+    anchor.insertAdjacentElement('afterend', section);
     section.querySelector('.passport-download')?.addEventListener('click', () => downloadPassport(episode));
     watchForPassportJumpLink();
   };
