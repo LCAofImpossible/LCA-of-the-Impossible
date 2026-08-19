@@ -49,6 +49,27 @@
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };
 
+  const ensurePassportJumpLink = () => {
+    const inner = document.querySelector('.episode-jumpnav-inner');
+    if (!inner) return false;
+    if (inner.querySelector('a[href="#model-passport"]')) return true;
+    const link = document.createElement('a');
+    link.href = '#model-passport';
+    link.textContent = 'Passport';
+    const evidenceLink = inner.querySelector('a[href="#evidence"]');
+    if (evidenceLink) evidenceLink.insertAdjacentElement('afterend', link);
+    else inner.appendChild(link);
+    return true;
+  };
+
+  const watchForPassportJumpLink = () => {
+    if (ensurePassportJumpLink()) return;
+    const observer = new MutationObserver(() => {
+      if (ensurePassportJumpLink()) observer.disconnect();
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  };
+
   const renderPassport = (episode) => {
     if (!isEpisode || document.querySelector('.model-passport')) return;
     const quickFacts = document.querySelector('.episode-quickfacts');
@@ -81,6 +102,7 @@
       <p class="passport-note">This passport summarizes fields already registered for the episode. It deliberately does not invent a system boundary, factor list or assumption set when those details are not structured in the registry; consult the episode inventory and approved PDF for the full model.</p>`;
     quickFacts.insertAdjacentElement('afterend', section);
     section.querySelector('.passport-download')?.addEventListener('click', () => downloadPassport(episode));
+    watchForPassportJumpLink();
   };
 
   const enrichImpactRows = (episodes) => {
@@ -90,7 +112,7 @@
 
     const apply = () => {
       plot.querySelectorAll('.impact-row').forEach((row) => {
-        if (row.querySelector('.impact-detail')) return;
+        if (row.nextElementSibling?.classList.contains('impact-detail')) return;
         const link = row.querySelector('.impact-row-label a');
         if (!link) return;
         const raw = link.getAttribute('href') || '';
@@ -100,6 +122,7 @@
         const evidence = episode.evidence || {};
         const details = document.createElement('details');
         details.className = 'impact-detail';
+        details.dataset.episode = String(episode.number);
         details.innerHTML = `
           <summary>Technical context</summary>
           <div class="impact-detail-grid">
