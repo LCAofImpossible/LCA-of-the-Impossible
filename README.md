@@ -2,7 +2,7 @@
 
 Static GitHub Pages archive for the **LCA of the Impossible** series.
 
-This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download.
+This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download. The approved PDF is an editorial/technical source, not a public website download.
 
 ---
 
