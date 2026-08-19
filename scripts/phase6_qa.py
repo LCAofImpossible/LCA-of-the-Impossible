@@ -89,6 +89,36 @@ def check_template() -> None:
         fail("episodes/template.html: legacy source-PDF download guidance remains")
 
 
+def check_readme() -> None:
+    text = read(ROOT / "README.md")
+    forbidden = [
+        "PDF availability",
+        "automatic PDF download actions",
+        "navigation/download metadata",
+        "episode PDF action",
+        "approved downloadable episode carousels",
+        "Download episode PDF",
+        "Optional field:\n\n- `pdf`",
+        "before adding the registry `pdf` field",
+        "A text download may be generated client-side",
+        "Downloaded passport text contains",
+    ]
+    for token in forbidden:
+        if token in text:
+            fail(f"README.md: legacy public-export rule remains: {token}")
+
+    required = [
+        "The approved PDF is an editorial/technical source, not a public website download.",
+        "The public registry must **not** contain a `pdf` field",
+        "The only episode export is the Epic Model Passport through `Print / Save as PDF`.",
+        "Source PDF artefacts may remain in the repository as editorial/technical archive material",
+        "No raw-text Passport export is exposed.",
+    ]
+    for token in required:
+        if token not in text:
+            fail(f"README.md: canonical Passport-only rule missing: {token}")
+
+
 def check_explore() -> None:
     text = read(ROOT / "explore.html")
     if "assets/phase6.css" not in text or "assets/phase6.js" not in text:
@@ -123,6 +153,7 @@ def main() -> int:
     check_cleanup_js()
     check_phase6_css()
     check_template()
+    check_readme()
     check_explore()
     check_method()
 
