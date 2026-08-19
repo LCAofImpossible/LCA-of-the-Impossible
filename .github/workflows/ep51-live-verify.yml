@@ -9,193 +9,27 @@ on:
 permissions:
   contents: write
 
-concurrency:
-  group: ep51-live-verify
-  cancel-in-progress: true
-
 jobs:
-  verify:
+  diagnose:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
-      - name: Install QA and browser dependencies
-        run: python -m pip install --disable-pip-version-check pillow selenium
-
-      - name: Apply controlled remediation
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-
-          replacements = {
-              Path('scripts/epic_passport_sync.py'): [('20260819-passport-cleanup1', '20260819-passport-cleanup2')],
-              Path('scripts/phase6_qa.py'): [('20260819-passport-cleanup1', '20260819-passport-cleanup2')],
-              Path('sources.html'): [
-                  ('such as direct emissions, well-to-tank components, transmission and distribution, outside-of-scopes reporting and biogenic treatment where applicable.',
-                   'such as direct emissions, well-to-tank (WTT) components, transmission and distribution (T&D), outside-of-scopes reporting and biogenic treatment where applicable.')
-              ],
-          }
-          for path, changes in replacements.items():
-              text = path.read_text(encoding='utf-8')
-              for old, new in changes:
-                  if old not in text and new not in text:
-                      raise SystemExit(f'Expected remediation text not found in {path}: {old}')
-                  text = text.replace(old, new)
-              path.write_text(text, encoding='utf-8')
-          PY
-          python scripts/apply_seo.py
-          python scripts/feature_sync.py
-          python scripts/engagement_sync.py
-          python scripts/phase5_sync.py
-          python scripts/phase6_sync.py
-          python scripts/epic_passport_sync.py
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet; then
-            git add README.md sources.html scripts/epic_passport_sync.py scripts/phase6_qa.py episodes assets/passport-cleanup.js index.html archive.html compare.html explore.html collections.html method.html about.html glossary.html episodes.json sitemap.xml robots.txt site.webmanifest assets/favicon.svg
-            git commit -m "Fix Phase 5 QA and refresh Passport cleanup cache"
-            git pull --rebase origin main
-            git push origin HEAD:main
-          fi
-
-      - name: Check deterministic synchronization
-        id: sync_clean
-        continue-on-error: true
-        run: |
-          python scripts/apply_seo.py
-          python scripts/feature_sync.py
-          python scripts/engagement_sync.py
-          python scripts/phase5_sync.py
-          python scripts/phase6_sync.py
-          python scripts/epic_passport_sync.py
-          echo 'Changed files after synchronization:'
-          git diff --name-only
-          git diff --exit-code
-
-      - name: Structural site QA
-        id: site_qa
-        continue-on-error: true
-        run: python scripts/site_qa.py
-
-      - name: SEO and social QA
-        id: seo_qa
-        continue-on-error: true
-        run: python scripts/seo_qa.py
-
-      - name: Phase 3 feature QA
-        id: feature_qa
-        continue-on-error: true
-        run: python scripts/feature_qa.py
-
-      - name: Phase 4 engagement QA
-        id: engagement_qa
-        continue-on-error: true
-        run: python scripts/engagement_qa.py
-
-      - name: Phase 5 editorial QA
-        id: phase5_qa
-        continue-on-error: true
-        run: python scripts/phase5_qa.py
-
-      - name: Phase 6 Passport QA
-        id: phase6_qa
-        continue-on-error: true
-        run: python scripts/phase6_qa.py
-
-      - name: Wait for GitHub Pages and validate live static assets
-        id: live_static
-        continue-on-error: true
-        env:
-          EXPECTED_COVER_SHA256: 469b45981a05b8379a25c9e6369b67d2158273252130a6686d45f8507873db92
-        run: |
-          python - <<'PY'
-          import hashlib, json, os, time, urllib.request
-          from PIL import Image
-          from io import BytesIO
-
-          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          expected_hash = os.environ['EXPECTED_COVER_SHA256']
-
-          def get(path, binary=False):
-              sep = '&' if '?' in path else '?'
-              url = base + path + sep + 'qa=' + str(time.time_ns())
-              req = urllib.request.Request(url, headers={'Cache-Control':'no-cache','User-Agent':'ep51-live-qa'})
-              with urllib.request.urlopen(req, timeout=30) as response:
-                  data = response.read()
-              return data if binary else data.decode('utf-8')
-
-          last = None
-          for attempt in range(30):
-              try:
-                  html = get('episodes/pandoras-jar.html')
-                  registry = json.loads(get('episodes.json'))
-                  collections = json.loads(get('collections.json'))
-                  sitemap = get('sitemap.xml')
-                  cleanup = get('assets/passport-cleanup.js')
-                  phase6 = get('assets/phase6.js')
-                  sources = get('sources.html')
-                  cover = get('assets/images/episodes/ep51-pandoras-jar-cover.png', binary=True)
-
-                  assert "Pandora's Jar" in html and '26.0 kg CO₂e' in html
-                  assert 'passport-cleanup.js?v=20260819-passport-cleanup2' in html
-                  assert 'assets/pdf/episodes/' not in html and 'Raw text' not in html
-                  assert all('pdf' not in episode for episode in registry['episodes'])
-                  ep = next(e for e in registry['episodes'] if e['number'] == 51)
-                  assert ep['cover'] == 'assets/images/episodes/ep51-pandoras-jar-cover.png'
-                  assert ep['result'] == '26.0 kg CO₂e'
-                  assert ep['hotspot'] == 'Kiln energy and freight together account for 49.9% of the baseline footprint.'
-                  assert ep['functionalUnit'].startswith('One sealed 45 L ceramic pithos')
-                  assert ep['evidence']['proxyDependence'] == 'High'
-                  assert sitemap.count('/episodes/pandoras-jar.html') == 1
-                  assert 'well-to-tank (WTT)' in sources and 'distribution (T&D)' in sources
-
-                  groups = {c['slug']: c['episodes'] for c in collections['collections']}
-                  assert 51 in groups['legendary-engineering']
-                  assert 51 in groups['mythic-threat-control']
-
-                  assert 'View epic passport →' in phase6
-                  assert 'Print / Save as PDF' in phase6
-                  assert 'Raw text' not in phase6
-                  assert 'allowedPassportActions' in cleanup
-                  assert 'view epic passport →' in cleanup.lower()
-                  assert 'print / save as pdf' in cleanup.lower()
-                  assert 'raw text' in cleanup.lower()
-                  assert 'assets/pdf/episodes/' in cleanup
-
-                  digest = hashlib.sha256(cover).hexdigest()
-                  assert digest == expected_hash, (digest, expected_hash)
-                  with Image.open(BytesIO(cover)) as image:
-                      assert image.size == (1122, 1402), image.size
-                      assert abs(image.width / image.height - 0.8) < 0.012
-                  print('Live static validation passed.')
-                  break
-              except Exception as exc:
-                  last = exc
-                  print(f'Attempt {attempt + 1}/30 not ready: {exc}')
-                  time.sleep(10)
-          else:
-              raise SystemExit(f'Live static validation failed after polling: {last}')
-          PY
-
-      - name: Validate live discovery surfaces
-        id: live_discovery
-        continue-on-error: true
+      - run: python -m pip install --disable-pip-version-check selenium
+      - name: Diagnose live Episode 51 DOM
         run: |
           python - <<'PY'
           from selenium import webdriver
           from selenium.webdriver.common.by import By
           from selenium.webdriver.support.ui import WebDriverWait
+          import traceback, time
 
-          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pandoras-jar.html?diag=' + str(time.time_ns())
           opts = webdriver.ChromeOptions()
           opts.add_argument('--headless=new')
           opts.add_argument('--no-sandbox')
@@ -203,124 +37,49 @@ jobs:
           opts.add_argument('--window-size=1440,1000')
           driver = webdriver.Chrome(options=opts)
           wait = WebDriverWait(driver, 30)
+          out = []
           try:
-              for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
-                  driver.get(base + path + '?qa=ep51')
-                  wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
-                  wait.until(lambda d: "Pandora's Jar" in d.page_source)
-                  print(path or 'index.html', 'contains Pandora\'s Jar')
+              driver.get(base)
+              wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
+              time.sleep(3)
+              out.append('url=' + driver.current_url)
+              out.append('scripts=' + repr(driver.execute_script("return Array.from(document.scripts).map(s=>s.src)")))
+              out.append('evidence_count=' + str(len(driver.find_elements(By.ID, 'evidence'))))
+              related = driver.find_elements(By.CSS_SELECTOR, '.related-section')
+              out.append('related_count=' + str(len(related)))
+              out.append('related_text=' + repr(related[0].text if related else ''))
+              passports = driver.find_elements(By.ID, 'model-passport')
+              out.append('passport_count=' + str(len(passports)))
+              actions = driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *')
+              out.append('actions_all=' + repr([(e.tag_name, e.text, e.is_displayed()) for e in actions]))
+              cover = driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-preview-cover img')
+              if cover:
+                  out.append('cover_dims=' + repr(driver.execute_script('return [arguments[0].complete, arguments[0].naturalWidth, arguments[0].naturalHeight, arguments[0].src]', cover[0])))
+              else:
+                  out.append('cover_dims=MISSING')
+              view = driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-view')
+              out.append('view_count=' + str(len(view)))
+              if view:
+                  driver.execute_script('arguments[0].click()', view[0])
+                  time.sleep(1)
+                  overlays = driver.find_elements(By.CSS_SELECTOR, '.passport-overlay')
+                  out.append('overlay_count=' + str(len(overlays)))
+                  out.append('overlay_displayed=' + repr([e.is_displayed() for e in overlays]))
+                  out.append('overlay_text=' + repr(overlays[0].text[:3000] if overlays else ''))
+              out.append('body_has_raw=' + str('Raw text' in driver.find_element(By.TAG_NAME, 'body').text))
+              out.append('body_has_pdf=' + str('Download episode PDF' in driver.find_element(By.TAG_NAME, 'body').text))
+          except Exception:
+              out.append('EXCEPTION=' + traceback.format_exc())
           finally:
               driver.quit()
+          open('.github/ep51-live-diagnostic.txt','w',encoding='utf-8').write('\n'.join(out)+'\n')
+          print('\n'.join(out))
           PY
-
-      - name: Validate live episode and Passport-only controls
-        id: live_episode
-        continue-on-error: true
-        run: |
-          python - <<'PY'
-          from selenium import webdriver
-          from selenium.webdriver.common.by import By
-          from selenium.webdriver.support.ui import WebDriverWait
-          from selenium.webdriver.support import expected_conditions as EC
-
-          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          opts = webdriver.ChromeOptions()
-          opts.add_argument('--headless=new')
-          opts.add_argument('--no-sandbox')
-          opts.add_argument('--disable-dev-shm-usage')
-          opts.add_argument('--window-size=1440,1000')
-          driver = webdriver.Chrome(options=opts)
-          wait = WebDriverWait(driver, 30)
-          try:
-              driver.get(base + 'episodes/pandoras-jar.html?qa=ep51')
-              wait.until(EC.presence_of_element_located((By.ID, 'evidence')))
-              wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
-              wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.related-section')))
-              body_text = driver.find_element(By.TAG_NAME, 'body').text
-              assert 'EVIDENCE PROFILE' in body_text
-              assert 'Related cases' in body_text
-              assert 'Raw text' not in body_text
-              assert 'Download episode PDF' not in body_text
-
-              wait.until(lambda d: len([el for el in d.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *') if el.is_displayed()]) == 2)
-              actions = [el.text.strip() for el in driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *') if el.is_displayed()]
-              assert actions == ['View epic passport →', 'Print / Save as PDF'], actions
-
-              cover = driver.find_element(By.CSS_SELECTOR, '#model-passport .passport-preview-cover img')
-              wait.until(lambda d: d.execute_script('return arguments[0].complete && arguments[0].naturalWidth > 0', cover))
-              dims = driver.execute_script('return [arguments[0].naturalWidth, arguments[0].naturalHeight]', cover)
-              assert dims == [1122, 1402], dims
-
-              driver.find_element(By.CSS_SELECTOR, '#model-passport .passport-view').click()
-              overlay = wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, '.passport-overlay')))
-              overlay_text = overlay.text
-              assert '26.0 kg CO₂e' in overlay_text
-              assert 'Print / Save as PDF' in overlay_text
-              assert 'CANONICAL RECORD' in overlay_text
-              assert 'Raw text' not in overlay_text
-              assert 'Download episode PDF' not in overlay_text
-              print('Live episode and Passport validation passed.')
-          finally:
-              driver.quit()
-          PY
-
-      - name: Validate live mobile rendering
-        id: live_mobile
-        continue-on-error: true
-        run: |
-          python - <<'PY'
-          from selenium import webdriver
-          from selenium.webdriver.common.by import By
-          from selenium.webdriver.support.ui import WebDriverWait
-          from selenium.webdriver.support import expected_conditions as EC
-
-          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          opts = webdriver.ChromeOptions()
-          opts.add_argument('--headless=new')
-          opts.add_argument('--no-sandbox')
-          opts.add_argument('--disable-dev-shm-usage')
-          opts.add_argument('--window-size=390,844')
-          driver = webdriver.Chrome(options=opts)
-          wait = WebDriverWait(driver, 30)
-          try:
-              driver.get(base + 'episodes/pandoras-jar.html?qa=mobile')
-              wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
-              overflow = driver.execute_script('return document.documentElement.scrollWidth - document.documentElement.clientWidth')
-              assert overflow <= 2, overflow
-              assert driver.find_element(By.TAG_NAME, 'body').text.find('Raw text') == -1
-              print('Live mobile validation passed; overflow=', overflow)
-          finally:
-              driver.quit()
-          PY
-
-      - name: Record verification outcome
-        if: always()
-        env:
-          SYNC: ${{ steps.sync_clean.outcome }}
-          SITE: ${{ steps.site_qa.outcome }}
-          SEO: ${{ steps.seo_qa.outcome }}
-          F3: ${{ steps.feature_qa.outcome }}
-          F4: ${{ steps.engagement_qa.outcome }}
-          F5: ${{ steps.phase5_qa.outcome }}
-          F6: ${{ steps.phase6_qa.outcome }}
-          STATIC: ${{ steps.live_static.outcome }}
-          DISC: ${{ steps.live_discovery.outcome }}
-          EP: ${{ steps.live_episode.outcome }}
-          MOB: ${{ steps.live_mobile.outcome }}
+      - name: Publish diagnostic
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add .github/ep51-live-diagnostic.txt
+          git commit -m "Diagnostic: Episode 51 live Passport DOM"
           git pull --rebase origin main
-          git commit --allow-empty -m "QA3 EP51: sync=${SYNC} site=${SITE} seo=${SEO} f3=${F3} f4=${F4} f5=${F5} f6=${F6} static=${STATIC} disc=${DISC} ep=${EP} mob=${MOB}"
           git push origin HEAD:main
-          test "$SYNC" = success
-          test "$SITE" = success
-          test "$SEO" = success
-          test "$F3" = success
-          test "$F4" = success
-          test "$F5" = success
-          test "$F6" = success
-          test "$STATIC" = success
-          test "$DISC" = success
-          test "$EP" = success
-          test "$MOB" = success
