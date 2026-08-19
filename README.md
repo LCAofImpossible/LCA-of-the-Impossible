@@ -2,7 +2,7 @@
 
 Static GitHub Pages archive for the **LCA of the Impossible** series.
 
-This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory.
+This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download.
 
 ---
 
@@ -11,11 +11,11 @@ This README is the canonical editorial and publishing reference for building, up
 Use this hierarchy whenever sources disagree:
 
 1. **Approved episode PDF / approved LinkedIn carousel** — source of truth for episode-specific facts, numbers, assumptions, results, sensitivities, narrative conclusions and wording. Website catalogue-cover style is governed separately by Section 4.
-2. **An explicitly user-approved replacement image** — overrides the PDF cover only when the user has specifically selected it as the catalogue cover.
+2. **An explicitly user-approved replacement image** — overrides the source PDF/carousel cover only when the user has specifically selected it as the catalogue cover.
 3. **This README and the currently approved catalogue-cover family (#35, #36, #38, #40, #41, #42, #43)** — source of truth for website editorial structure, cover style, publishing rules, taxonomy, asset conventions and QA requirements.
-4. **`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, PDF availability, taxonomy, related cases and navigation relationships.
+4. **`episodes.json`** — canonical website registry for published episode metadata, ordering, catalogue assets, taxonomy, Evidence Profile data, related cases and navigation relationships. It must not contain public source-PDF fields.
 5. **`assets/style.css`** — source of truth for the live visual system and responsive behaviour.
-6. **`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode heroes, automatic PDF download actions, Related Cases and Previous/Next behaviour.
+6. **`assets/site.js`** — source of truth for registry-driven homepage/archive rendering, text-only episode heroes, Related Cases and Previous/Next behaviour.
 7. **`episodes/template.html`** — canonical implementation starter for new episode pages.
 8. Existing episode pages — examples of execution, not authorities over the approved PDF or this README.
 
@@ -31,14 +31,14 @@ If `episodes.json` conflicts with an approved PDF, correct the registry; do not 
 
 - `index.html` — concise homepage with project hero, Latest Case, recent episodes, Method, Series and Book
 - `archive.html` — complete searchable/filterable episode catalogue
-- `episodes.json` — central episode registry and navigation/download metadata
+- `episodes.json` — central episode registry, taxonomy, evidence and navigation metadata; no public source-PDF fields
 - `episodes/` — individual episode pages and reusable episode template
 - `assets/site.js` — shared catalogue, archive and episode-navigation logic
 - `assets/style.css` — global visual system
 - `assets/images/episodes/` — canonical catalogue covers used only by homepage and Archive
 - `assets/images/episode-graphics/` — Inventory Map, Technical Plate and Hotspot Breakdown graphics
 - `assets/images/book/` — book artwork
-- `assets/pdf/episodes/` — approved downloadable episode carousels
+- `assets/pdf/episodes/` — optional editorial/technical archive for approved source PDFs; these files are not exposed by the public website
 
 Do not create parallel folders for temporary fixes. Avoid duplicate `live`, `v2`, `final`, `new`, `hq2`, `final-final` or similar filenames in the canonical tree. Temporary staging assets must be removed before publication.
 
@@ -48,7 +48,7 @@ The website must remain a simple static GitHub Pages site. Do not introduce a fr
 
 ## 3. Central episode registry — mandatory
 
-`episodes.json` is the single catalogue record used by the homepage, full archive, episode PDF action and episode-to-episode navigation.
+`episodes.json` is the single catalogue record used by the homepage, full archive, Evidence Profile / Epic Passport data and episode-to-episode navigation.
 
 Every published episode must contain:
 
@@ -67,9 +67,7 @@ Every published episode must contain:
 - `keywords` — useful search terms;
 - `related` — ordered list of related episode numbers.
 
-Optional field:
-
-- `pdf` — relative path to the approved carousel in `assets/pdf/episodes/`. **Add this field only after the PDF file exists at that exact path.**
+The public registry must **not** contain a `pdf` field or any other source-PDF download reference. Source PDFs may exist only as editorial/technical archive material outside the public registry contract.
 
 The `cover` field remains mandatory even though individual episode pages do not show a cover. It is consumed by homepage and Archive only.
 
@@ -101,11 +99,11 @@ Each episode may have:
 - `epNN-inventory-map.svg` — life-cycle input map;
 - `epNN-technical-plate.svg` — engineering/reconstruction plate;
 - `epNN-hotspot-breakdown.svg` — contribution/hotspot graphic;
-- `epNN-short-slug.pdf` — approved downloadable carousel.
+- `epNN-short-slug.pdf` — optional approved source PDF retained only as editorial/technical archive material; never linked from the public site or registry.
 
 A cache-safe revision suffix such as `-cover-YYYYMMDD.png` is allowed and recommended when replacing an already published cover. Do not overwrite a live cover in place if doing so could leave stale CDN/browser content.
 
-Canonical PDF naming must be stable and simple. Do not publish PDFs with temporary suffixes such as `(1)`, `rev-final`, `v2`, `copy` or similar. Normalize them to `epNN-short-slug.pdf` before adding the registry `pdf` field.
+If a source PDF is retained in the repository archive, use a stable canonical name such as `epNN-short-slug.pdf`. Do not expose it through episode pages, navigation, `episodes.json`, metadata or public download controls.
 
 ### 4.1 Canonical catalogue-cover family — mandatory
 
@@ -202,9 +200,9 @@ Must contain:
 - central narrative question;
 - main result as dominant metric;
 - concise functional-unit/reporting-basis description;
-- static **Download episode PDF ↓** action when the registry contains a valid `pdf` field and the PDF exists in the repository.
+- no source-PDF download action. The only episode export is the Epic Model Passport through `Print / Save as PDF`.
 
-The PDF button is intentionally hard-coded in the individual episode HTML so it remains visible even if JavaScript is cached, blocked or unavailable. Use the standardized wording and button class defined in this README.
+Do not hard-code or dynamically inject links to the source episode PDF. Legacy source-PDF controls must be removed by synchronization and defensively suppressed by `assets/passport-cleanup.js`.
 
 Legacy cover markup may still exist in old episode HTML; `assets/site.js` removes `.cover-frame` at runtime. New pages must be authored without cover markup.
 
