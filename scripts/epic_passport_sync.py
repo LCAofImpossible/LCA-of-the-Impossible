@@ -74,6 +74,10 @@ def update_readme(check: bool, changed: list[Path]) -> None:
     # Section 30 is canonical, but keep the older Phase 6 wording aligned so
     # the preceding synchronization step cannot reintroduce retired exports.
     text = text.replace(
+        "Readers are directed to the episode inventory and approved PDF for the full model.",
+        "Readers are directed to the episode inventory and registered source/model notes for the full public interpretation."
+    )
+    text = text.replace(
         "A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.",
         "The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download."
     )
