@@ -132,7 +132,7 @@ jobs:
           wait = WebDriverWait(driver, 30)
           try:
               for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
-                  driver.get(base + path + ('?qa=ep51' if path else '?qa=ep51'))
+                  driver.get(base + path + '?qa=ep51')
                   wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
                   wait.until(lambda d: "Pandora's Jar" in d.find_element(By.TAG_NAME, 'body').text)
 
@@ -178,3 +178,5 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit --allow-empty -m "QA: Episode 51 live verification passed"
           git push origin HEAD:main
+
+# Triggered once after publication to validate the deployed GitHub Pages site.
