@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Publish Episode 52 registry metadata
+        run: python scripts/publish_ep52.py
+
       - name: Synchronize static SEO metadata
         run: python scripts/apply_seo.py
 
@@ -44,7 +47,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html archive.html compare.html explore.html collections.html episodes README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
-          git commit -m "Sync site metadata and engagement wiring"
+          git add index.html archive.html compare.html explore.html collections.html collections.json episodes episodes.json README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
+          git commit -m "Publish Episode 52 and sync site metadata"
           git pull --rebase origin main
           git push origin HEAD:main
