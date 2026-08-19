@@ -99,9 +99,9 @@ The passport may display only fields already present in `episodes.json`:
 - Evidence basis;
 - Main modelling uncertainty.
 
-The passport must explicitly state that it introduces no additional assumptions. It must not fabricate system boundaries, factor lists, allocation rules or detailed assumptions that are not structured in the registry. Readers are directed to the episode inventory and approved PDF for the full model.
+The passport must explicitly state that it introduces no additional assumptions. It must not fabricate system boundaries, factor lists, allocation rules or detailed assumptions that are not structured in the registry. Readers are directed to the episode inventory and registered source/model notes for the full public interpretation.
 
-A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.
+The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.
 
 ### 29.2 Richer Impact Map
 
@@ -141,7 +141,7 @@ Phase 6 canonical files:
 
 - [ ] Every published episode loads Phase 6 CSS and JavaScript after synchronization.
 - [ ] Model Passport fields are registry-derived only.
-- [ ] Downloaded passport text contains the canonical episode URL and the interpretation disclaimer.
+- [ ] Printed/saved Passport retains the canonical episode URL and the interpretation disclaimer.
 - [ ] No passport invents an unregistered system boundary, factor list or assumption set.
 - [ ] Impact Map retains the non-comparability warning and gains expandable technical context.
 - [ ] Method page displays `Methodology version 1.0` and `Updated August 2026`.
