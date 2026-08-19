@@ -34,6 +34,9 @@ jobs:
       - name: Build deterministic Phase 4 metadata in QA workspace
         run: python scripts/engagement_sync.py
 
+      - name: Build deterministic Phase 5 editorial infrastructure in QA workspace
+        run: python scripts/phase5_sync.py
+
       - name: Run structural site QA
         run: python scripts/site_qa.py
 
@@ -45,3 +48,6 @@ jobs:
 
       - name: Run Phase 4 engagement QA
         run: python scripts/engagement_qa.py
+
+      - name: Run Phase 5 editorial QA
+        run: python scripts/phase5_qa.py
