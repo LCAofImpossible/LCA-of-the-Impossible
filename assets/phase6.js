@@ -26,37 +26,6 @@
 
   const canonicalEpisode = (episode) => `https://lcaofimpossible.github.io/LCA-of-the-Impossible/${episode.url}`;
 
-  const downloadRawPassport = (episode) => {
-    const evidence = episode.evidence || {};
-    const lines = [
-      'LCA OF THE IMPOSSIBLE — MODEL PASSPORT',
-      `Episode #${episode.number} — ${episode.title}`,
-      '',
-      `Functional unit / reporting basis: ${safeText(episode.functionalUnit)}`,
-      `Headline result: ${safeText(episode.result)}`,
-      `Principal LCA lens: ${safeText(episode.lcaLabel)}`,
-      `Main hotspot: ${safeText(episode.hotspot)}`,
-      `Evidence confidence: ${safeText(evidence.confidence, 'Not rated')}`,
-      `Proxy dependence: ${safeText(evidence.proxyDependence, 'Not rated')}`,
-      `Assumption sensitivity: ${safeText(evidence.assumptionSensitivity, 'Not rated')}`,
-      `Evidence basis: ${safeText(evidence.basis)}`,
-      `Main modelling uncertainty: ${safeText(evidence.uncertainty)}`,
-      '',
-      'Interpretation note: This model passport summarizes registered episode metadata. It is not a verification statement, a formal data-quality rating or a substitute for the full episode and its approved source material.',
-      '',
-      `Canonical episode: ${canonicalEpisode(episode)}`,
-    ];
-    const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
-    const url = URL.createObjectURL(blob);
-    const link = document.createElement('a');
-    link.href = url;
-    link.download = `ep${String(episode.number).padStart(2, '0')}-${episode.slug}-model-passport.txt`;
-    document.body.appendChild(link);
-    link.click();
-    link.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  };
-
   const passportSheetMarkup = (episode) => {
     const evidence = episode.evidence || {};
     return `
@@ -157,7 +126,6 @@
         <div><span>MODEL PASSPORT</span><strong>#${episode.number} · ${escapeHtml(episode.title)}</strong></div>
         <div class="passport-overlay-actions">
           <button class="button secondary passport-print" type="button">Print / Save as PDF</button>
-          <button class="button secondary passport-raw" type="button">Raw text ↓</button>
           <button class="passport-close" type="button" aria-label="Close Model Passport">×</button>
         </div>
       </div>
@@ -167,7 +135,6 @@
 
     overlay.querySelector('.passport-close')?.addEventListener('click', closePassport);
     overlay.querySelector('.passport-print')?.addEventListener('click', () => printPassport(episode));
-    overlay.querySelector('.passport-raw')?.addEventListener('click', () => downloadRawPassport(episode));
     overlay.addEventListener('click', (event) => {
       if (event.target === overlay) closePassport();
     });
@@ -228,7 +195,6 @@
       <div class="passport-actions">
         <button class="button passport-view" type="button">View epic passport →</button>
         <button class="button secondary passport-print-direct" type="button">Print / Save as PDF</button>
-        <button class="button secondary passport-raw-download" type="button">Raw text ↓</button>
         <a class="button secondary" href="${prefix}method.html">Method →</a>
         <a class="button secondary" href="${prefix}sources.html">Sources & data →</a>
       </div>
@@ -237,7 +203,6 @@
     anchor.insertAdjacentElement('afterend', section);
     section.querySelector('.passport-view')?.addEventListener('click', () => openPassport(episode));
     section.querySelector('.passport-print-direct')?.addEventListener('click', () => printPassport(episode));
-    section.querySelector('.passport-raw-download')?.addEventListener('click', () => downloadRawPassport(episode));
     watchForPassportJumpLink();
   };
 
