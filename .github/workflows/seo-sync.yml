@@ -41,6 +41,9 @@ jobs:
       - name: Synchronize Phase 6 model transparency
         run: python scripts/phase6_sync.py
 
+      - name: Propagate Epic Passport presentation
+        run: python scripts/epic_passport_sync.py
+
       - name: Commit synchronized metadata
         shell: bash
         run: |
