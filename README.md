@@ -2,7 +2,7 @@
 
 Static GitHub Pages archive for the **LCA of the Impossible** series.
 
-This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download. The approved PDF is an editorial/technical source, not a public website download. The approved PDF is an editorial/technical source, not a public website download.
+This README is the canonical editorial and publishing reference for building, updating and reviewing the website. Its purpose is to make the site reproducible in a future session with no prior conversational context. If a new approved episode PDF and this repository are available, the website episode and its catalogue metadata must be rebuildable without relying on memory. The approved PDF is an editorial/technical source, not a public website download.
 
 ---
 
@@ -393,43 +393,34 @@ Subject and LCA filters are generated from registry tokens and combine with AND 
 
 ---
 
-## 16. PDF publishing system — mandatory
+## 16. Source PDF archival policy — mandatory
 
-PDF availability is **registry-declared**, while the visible download action is **static HTML** in the episode page.
+The approved episode PDF / LinkedIn carousel is a **source-of-truth input**, not a public website product.
 
-### 16.1 File rule
+### 16.1 Public website rule
 
-The approved carousel must be stored in:
+The public site must not expose the original episode PDF through episode heroes, navigation, metadata, registry fields, download buttons or dynamically injected links. `episodes.json` must not contain a `pdf` field.
 
-`assets/pdf/episodes/epNN-short-slug.pdf`
+The only episode-level export offered to readers is the **Epic Model Passport** through `Print / Save as PDF`. Raw-text export is retired.
 
-Use the exact approved PDF. Do not regenerate, recompress, rasterize or redesign it merely to make website upload easier unless the user explicitly approves that change.
+### 16.2 Repository archive rule
 
-### 16.2 Registry rule
+An exact approved source PDF may remain in `assets/pdf/episodes/` solely as editorial/technical archive material. Keeping such a file does not make it a public website asset and does not authorize a link to it.
 
-After the file is confirmed in the repository, add:
+If retained, preserve the approved file and use a stable canonical filename such as `epNN-short-slug.pdf`. Do not regenerate, recompress, rasterize or redesign it merely for repository storage unless the user explicitly approves that change.
 
-`"pdf": "assets/pdf/episodes/epNN-short-slug.pdf"`
+### 16.3 Defensive enforcement
 
-to that episode object in `episodes.json`.
+`scripts/epic_passport_sync.py` removes legacy source-PDF CTAs and legacy `pdf` registry fields. `assets/passport-cleanup.js` removes stale or injected source-PDF controls and raw-text controls at runtime.
 
-Never add a `pdf` field before the target file exists. A missing `pdf` field means **no download button**; it must never create a broken link.
+### Source-PDF / Passport QA
 
-### 16.3 Rendering rule
-
-When a valid `pdf` field exists, the episode HTML must contain exactly one standardized **Download episode PDF ↓** button in the text-only hero. The button is static HTML and must not depend on `assets/site.js`.
-
-Use a local project path to the approved file. For cache safety with older site-script versions, the live href may use the equivalent `../assets/pdf/./episodes/epNN-short-slug.pdf` form; the registry itself must retain the canonical `assets/pdf/episodes/epNN-short-slug.pdf` path.
-
-### 16.4 Publication expectation
-
-When an approved carousel exists and is intended for public download, publication is not complete until:
-
-1. the exact PDF is stored in `assets/pdf/episodes/`;
-2. the registry `pdf` field points to it;
-3. the live episode shows the download button;
-4. the button opens/downloads the intended PDF successfully.
-
+- [ ] No episode page or template links to `assets/pdf/episodes/*.pdf`.
+- [ ] `episodes.json` contains no `pdf` field.
+- [ ] No `Download episode PDF` control is visible.
+- [ ] No raw-text Passport export is visible.
+- [ ] `View epic passport →` and `Print / Save as PDF` are the only Passport output actions.
+- [ ] Any archived source PDF remains editorial/technical material only.
 ---
 
 ## 17. Paths, responsive and accessibility rules
@@ -449,7 +440,7 @@ Responsive/accessibility requirements:
 - essential information does not exist only inside images;
 - no image exceeds its container;
 - episode pages remain usable without catalogue-cover assets;
-- PDF button text clearly states that the action downloads the episode PDF.
+- Epic Passport controls remain readable and usable on mobile; the print action clearly identifies `Print / Save as PDF`.
 
 ---
 
@@ -463,7 +454,7 @@ Combine technical credibility, engineering reconstruction, epic storytelling, re
 
 ### Content
 
-- [ ] Main result matches approved PDF.
+- [ ] Main result matches the approved source PDF/carousel.
 - [ ] Functional unit/reporting slice matches.
 - [ ] Hotspot percentage reconciles.
 - [ ] Sensitivities are correct and labelled.
@@ -476,33 +467,28 @@ Combine technical credibility, engineering reconstruction, epic storytelling, re
 - [ ] Central subject is realistically rendered with credible form, materiality, depth and construction detail; technical graphics remain secondary.
 - [ ] Title, episode number, diacritics and principal LCA lens are correct.
 - [ ] Bronze/gold + ivory remain the common palette; episode accent is restrained.
-- [ ] One clear central subject and technical/blueprint framing are present without becoming a collage.
-- [ ] The published cover is **the exact image approved during the creation/approval step**, not a subsequent regeneration or look-alike.
-- [ ] If the user supplied/approved an exact cover, the published file is byte-for-byte that image unless alteration was explicitly requested.
-- [ ] If a manually uploaded file was renamed/normalized, the repository blob SHA is unchanged or the binary identity has otherwise been verified.
+- [ ] The published cover is the exact image approved during the creation/approval step, not a subsequent regeneration or look-alike.
 - [ ] Full artwork renders in Homepage and Archive without cropping on desktop and mobile.
 - [ ] The live GitHub Pages image has been visually checked against the approved source image.
 
 ### Registry
 
 - [ ] Exactly one registry entry exists for the episode.
-- [ ] Number, title, URL, cover, result and hotspot reconcile.
+- [ ] Number, title, URL, cover, functional unit, result and hotspot reconcile.
 - [ ] Categories/LCA lenses are meaningful.
+- [ ] Evidence Profile fields are complete and defensible.
 - [ ] Related episode numbers exist.
-- [ ] If a PDF is published, `pdf` exists and exactly matches the repository path.
-- [ ] No `pdf` field points to a missing file.
+- [ ] No `pdf` field or source-PDF URL is present.
 
-### Episode page
+### Episode page and Passport
 
 - [ ] `<body data-episode="NN">` matches registry number.
-- [ ] `../assets/site.js` loads.
-- [ ] Hero is text-only.
-- [ ] No cover is required on the episode page.
-- [ ] If `pdf` exists, exactly one **Download episode PDF ↓** button appears in the hero.
-- [ ] No obsolete hard-coded PDF button remains visible.
-- [ ] Jump navigation works.
-- [ ] Related Cases are text-only.
-- [ ] Previous/Next order is correct.
+- [ ] `../assets/site.js`, current Phase 6 assets and `../assets/passport-cleanup.js` load.
+- [ ] Hero is text-only and contains no source-PDF download control.
+- [ ] Evidence Profile and Epic Model Passport render in canonical order.
+- [ ] Passport exposes `View epic passport →` and `Print / Save as PDF` only.
+- [ ] No Raw text control is present.
+- [ ] Jump navigation, Related Cases and Previous/Next navigation work.
 
 ### Inventory and graphics
 
@@ -512,65 +498,48 @@ Combine technical credibility, engineering reconstruction, epic storytelling, re
 - [ ] Inventory Map, Technical Plate and Hotspot Breakdown render.
 - [ ] Analytical SVGs are self-contained and legible.
 
-### Homepage/archive
+### Homepage/archive and discovery
 
 - [ ] Highest episode number is Latest Case.
 - [ ] Recent Cases and Archive render from registry.
 - [ ] Ordering, filters, search, count and Load More work.
-
-### PDF download
-
-- [ ] Approved PDF file exists in `assets/pdf/episodes/`.
-- [ ] Canonical filename is used.
-- [ ] Registry `pdf` path matches exact case-sensitive filename.
-- [ ] Live button resolves successfully.
-- [ ] Downloaded/opened file is the approved carousel, not a placeholder or altered export.
+- [ ] Collections, Compare and Impact Map reflect the new episode where applicable.
 
 ### Deployment
 
 - [ ] Changes are on `main`.
-- [ ] GitHub Pages deploys latest commit.
-- [ ] Live homepage inspected.
-- [ ] Live archive inspected.
-- [ ] Live episode inspected.
-- [ ] Live PDF action tested when applicable.
+- [ ] Synchronization scripts complete without reintroducing retired exports.
+- [ ] Site QA, SEO QA, Phase 3/4/5/6 QA pass.
+- [ ] GitHub Pages deploys the latest synchronized commit.
+- [ ] Live homepage, archive and episode are inspected.
+- [ ] Live episode has no source-PDF or raw-text control and the Epic Passport works.
 
 A green build alone is not sufficient evidence that the page is correct.
-
 ---
 
 ## 20. Controlled publishing workflow
 
 For each new episode:
 
-1. Read approved episode PDF completely.
-2. Extract title, number, series, FU, result, hotspot, inventory, exclusions, sensitivities and verdict.
-3. Create the 4:5 catalogue cover in the canonical #35/#36/#38/#40/#41/#42/#43 visual family, with a **realistic central illustration**; unless the user has supplied an explicitly approved exact cover.
-4. Validate title, episode number, diacritics, LCA lens, style continuity, realistic subject treatment and no-crop rendering.
-5. Obtain explicit or contextual approval of the displayed cover and **freeze that exact generated/uploaded raster file**. Do not regenerate it after approval.
-6. Upload/publish that exact approved image to `assets/images/episodes/`. If direct transfer is unavailable, have the user upload the exact file and then normalize only the filename/path while preserving the binary/blob.
-7. Verify the repository file and update `episodes.json` to that exact path.
-8. Create Inventory Map SVG.
-9. Create Technical Plate SVG.
-10. Create Hotspot Breakdown SVG.
-11. Build page from `episodes/template.html` and set `data-episode="NN"`.
-12. Build text-only episode hero.
-13. Add Quick Facts and model notes.
-14. Reconcile inventory/results.
-15. Add sensitivities and verdict.
-16. If public download is intended, upload the **exact approved PDF** to `assets/pdf/episodes/epNN-short-slug.pdf`.
-17. Add one object to `episodes.json`, including `pdf` only after the file exists.
-18. Do not manually edit Latest Case, Recent Cases, archive cards, filters, Previous/Next or Related Cases; they are registry-driven. Add the standardized static PDF button to the episode hero when a public PDF has been registered.
-19. Verify homepage Latest/Recent and covers against the exact approved cover source.
-20. Verify Archive ordering, filters, search, count, Load More and covers.
-21. Verify episode has no cover, navigation works and PDF action appears when registered.
-22. Verify all analytical graphic paths and remove staging files.
-23. Commit controlled release to `main`.
-24. Inspect live homepage, archive and episode.
-25. Verify that the live cover is the exact approved image; do not rely on a successful build alone.
-26. Test PDF download when applicable.
-27. Only then consider publication complete.
-
+1. Read the approved episode PDF/carousel completely; treat it as the episode-specific technical and editorial source of truth.
+2. Extract title, number, series, functional unit/reporting basis, result, hotspot, inventory, exclusions, sensitivities, evidence basis, modelling uncertainty and verdict without inventing missing facts.
+3. Create the 4:5 catalogue cover in the canonical visual family with a realistic central illustration, unless the user supplied an explicitly approved exact cover.
+4. Validate title, episode number, diacritics, LCA lens, style continuity, realism and no-crop rendering.
+5. Obtain approval of the displayed cover and freeze that exact raster file. Do not regenerate, reinterpret or recompress it after approval.
+6. Publish that exact approved image to `assets/images/episodes/` and verify the repository/live asset identity.
+7. Add/update the episode object in `episodes.json` with all required catalogue, functional-unit and Evidence Profile fields. **Do not add a `pdf` field.**
+8. Create the Inventory Map, Technical Plate and Hotspot Breakdown analytical graphics.
+9. Build the episode page from `episodes/template.html`, set `data-episode="NN"`, retain a text-only hero and reconcile inventory/results/sensitivities/verdict.
+10. Ensure Related Cases, Collections and applicable taxonomy relationships are editorially correct.
+11. Let the shared scripts generate Evidence Profile, Epic Model Passport, navigation, Related Cases, sharing and discovery features; do not duplicate registry-driven blocks manually.
+12. Confirm the Epic Passport offers only `View epic passport →` and `Print / Save as PDF`; never expose Raw text or the original source PDF.
+13. If the source PDF is retained in `assets/pdf/episodes/`, treat it solely as editorial/technical archive material with no public link or registry reference.
+14. Run SEO, feature, engagement, Phase 5, Phase 6 and Epic Passport synchronization.
+15. Run structural, SEO/social, feature, engagement, Phase 5 and Phase 6 QA.
+16. Verify Homepage Latest/Recent, Archive, Collections, Compare/Impact Map where applicable, metadata, sitemap and all episode paths.
+17. Commit the controlled release to `main` and verify the synchronized commit.
+18. Inspect the live GitHub Pages homepage, archive and episode. Confirm the exact approved cover, working Epic Passport and absence of source-PDF/raw-text controls.
+19. Only then consider publication complete.
 ---
 
 ## 21. Future-episode reconstruction protocol
@@ -597,26 +566,25 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 ## 23. Non-negotiable principles
 
-1. **The approved PDF controls episode-specific facts, numbers and wording; the website catalogue cover follows the canonical visual family unless an exact cover is explicitly approved by the user.**
+1. **The approved source PDF/carousel controls episode-specific facts, numbers, assumptions, sensitivities and wording; it is not a public website download.**
 2. **Approved catalogue covers are 4:5 assets in the canonical #35/#36/#38/#40/#41/#42/#43 visual family and are displayed only on Homepage and Archive.**
 3. **The central cover illustration must be realistic; blueprint/technical graphics support it but do not replace it.**
 4. **Once a cover is approved during the image-creation step, that exact image file is the publication asset. Never regenerate a substitute merely to upload it to GitHub.**
 5. **If direct connector transfer of the approved image is unavailable, the user uploads the exact image and the publishing workflow links that exact repository file without re-encoding or reinterpretation.**
 6. **Individual episode heroes are text-only.**
 7. **The README controls the web editorial system.**
-8. **`episodes.json` is the single registry for catalogue metadata, navigation relationships and PDF availability.**
-9. **PDF download buttons are static HTML in each eligible episode hero; they must remain usable without JavaScript.**
-10. **A `pdf` registry field is allowed only when the exact file exists in `assets/pdf/episodes/`.**
-11. **No broken PDF link is acceptable.**
+8. **`episodes.json` is the single public registry for catalogue metadata, Evidence Profile data, taxonomy, related cases and navigation; it must not contain a `pdf` field.**
+9. **The Epic Model Passport is the only public episode-level export and exposes only `View epic passport →` and `Print / Save as PDF`.**
+10. **Raw-text export and source-PDF download controls are prohibited.**
+11. **Source PDFs may remain only as editorial/technical repository archive material and must not be linked by the public site.**
 12. **Registry data must reconcile with the approved episode.**
 13. **The homepage is concise; the full searchable catalogue belongs on `archive.html`.**
 14. **Every episode receives the three standard analytical graphics.**
-15. **Every published episode participates in automatic navigation and text-only Related Cases.**
+15. **Every published episode participates in automatic navigation, Evidence Profile, Epic Model Passport and text-only Related Cases.**
 16. **Every assumption remains recognizable as an assumption.**
 17. **Analytical graphics must be browser-safe, self-contained and legible.**
-18. **A successful GitHub Pages build is necessary but not sufficient: live pages, the exact live cover asset and any registered PDF download must be checked.**
+18. **A successful GitHub Pages build is necessary but not sufficient: live pages, the exact live cover asset and the Passport-only interaction model must be checked.**
 19. **Where others see fantasy, we see a functional unit.**
-
 
 ### Catalogue-cover QA
 
@@ -626,11 +594,8 @@ The website need not duplicate the full workbook but must preserve the core audi
 - Verify that the central subject is realistically rendered; reject a flat, schematic-only or icon-like replacement.
 - Verify the full artwork is visible with no square crop or `object-fit: cover` loss.
 - Inspect Latest Case, Recent Cases and Archive on desktop and mobile.
-- Reject wrong titles/numbers, blurred, soft, broken, over-coloured, flat-vector, generic-poster or visibly inconsistent cover assets.
-- Verify that the repository/live asset is the **exact image approved in the creation step**. A visually similar regenerated image is not acceptable.
-- If an exact user-approved image was supplied, verify no transformation occurred.
+- Verify that the repository/live asset is the exact image approved in the creation step.
 - When replacing a live cover, use a cache-safe publication path and confirm the new asset is what GitHub Pages serves.
-
 ---
 
 <!-- SEO-RULES:START -->
