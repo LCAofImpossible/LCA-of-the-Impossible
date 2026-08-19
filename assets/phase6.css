@@ -1,0 +1,35 @@
+/* Phase 6 — model passports, richer impact exploration and methodology versioning */
+.model-passport{border-top:1px solid var(--line);padding:72px 6vw;background:linear-gradient(180deg,rgba(109,231,255,.018),transparent)}
+.model-passport-heading{display:flex;justify-content:space-between;align-items:end;gap:22px;flex-wrap:wrap;margin-bottom:28px}
+.model-passport-heading h2{font-size:clamp(1.8rem,3.5vw,3rem);margin:0;letter-spacing:-.045em}
+.passport-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.passport-field{border:1px solid var(--line);padding:20px;background:rgba(255,255,255,.018);min-width:0}
+.passport-field span{display:block;color:var(--accent);font-size:.68rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase;margin-bottom:16px}
+.passport-field strong{display:block;font-size:1rem;line-height:1.35;overflow-wrap:anywhere}
+.passport-field p{margin:8px 0 0;color:var(--muted);line-height:1.55;font-size:.88rem}
+.passport-field.wide{grid-column:span 2}
+.passport-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:20px}
+.passport-download{appearance:none}
+.passport-note{color:var(--muted);font-size:.82rem;line-height:1.55;margin-top:16px;max-width:900px}
+
+.impact-detail{margin:10px 0 18px;padding:14px 16px;border:1px solid rgba(109,231,255,.13);background:rgba(255,255,255,.015)}
+.impact-detail summary{cursor:pointer;color:var(--accent2);font-size:.8rem;font-weight:800;letter-spacing:.06em;list-style:none}
+.impact-detail summary::-webkit-details-marker{display:none}
+.impact-detail summary:after{content:" +";color:var(--accent)}
+.impact-detail[open] summary:after{content:" −"}
+.impact-detail-grid{display:grid;grid-template-columns:1.3fr 1fr 1fr;gap:12px;margin-top:14px}
+.impact-detail-grid div{border-top:1px solid rgba(109,231,255,.12);padding-top:10px}
+.impact-detail-grid span{display:block;color:var(--accent);font-size:.64rem;font-weight:850;letter-spacing:.12em;text-transform:uppercase;margin-bottom:6px}
+.impact-detail-grid p{margin:0;color:var(--muted);font-size:.84rem;line-height:1.5}
+.impact-detail-actions{margin-top:12px}
+
+.method-version{padding:34px 0 0;margin-top:34px;border-top:1px solid var(--line)}
+.method-version-head{display:flex;justify-content:space-between;gap:18px;flex-wrap:wrap;align-items:end}
+.method-version-head strong{font-size:1.1rem}
+.method-version-head span{color:var(--accent);font-size:.72rem;font-weight:850;letter-spacing:.14em;text-transform:uppercase}
+.method-changelog{display:grid;grid-template-columns:150px 1fr;gap:16px;margin-top:18px;padding:16px 0;border-top:1px solid rgba(109,231,255,.12)}
+.method-changelog strong{color:var(--accent2);font-size:.78rem;text-transform:uppercase;letter-spacing:.08em}
+.method-changelog p{margin:0;color:var(--muted);line-height:1.6}
+
+@media(max-width:1000px){.passport-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.impact-detail-grid{grid-template-columns:1fr 1fr}.passport-field.wide{grid-column:span 2}}
+@media(max-width:760px){.model-passport{padding-left:5vw;padding-right:5vw}.passport-grid,.impact-detail-grid{grid-template-columns:1fr}.passport-field.wide{grid-column:auto}.method-changelog{grid-template-columns:1fr;gap:6px}}
