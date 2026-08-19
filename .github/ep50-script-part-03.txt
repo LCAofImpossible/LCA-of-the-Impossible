@@ -1,0 +1,112 @@
+
+    <section id="inventory" class="section inventory-section">
+      <div class="section-heading"><div><p class="eyebrow">LIFE CYCLE INVENTORY</p><h2>One activation, with the infrastructure allocated.</h2></div><p class="section-note">The approved carousel reports contributions for the major modeled flows. Where row-level physical activity data are not separately stated, this table does not reconstruct them from the result.</p></div>
+      <div class="inventory-table-wrap"><table class="inventory-table">
+        <thead><tr><th>Stage</th><th>Component / activity</th><th>Activity data</th><th>Climate change</th><th>Modelling basis</th></tr></thead>
+        <tbody>
+          <tr><td>Operation</td><td>Optical corridor</td><td>Part of 621.0 kWh total activation electricity; row-level kWh not separately stated</td><td>36.87 kg CO₂e</td><td>Electricity composite 0.18436 kg CO₂e/kWh, including generation, T&amp;D and WTT.</td></tr>
+          <tr><td>Operation</td><td>Red fire-guard</td><td>Part of 621.0 kWh total activation electricity; row-level kWh not separately stated</td><td>73.74 kg CO₂e</td><td>Declared narrative proxy for the red thermal exclusion strand; electricity factor as above.</td></tr>
+          <tr><td>Operation</td><td>Gate control</td><td>Row-level electricity not separately stated</td><td>0.6 kg CO₂e</td><td>Reported baseline component; included within activation electricity.</td></tr>
+          <tr><td>Operation</td><td>Cooling auxiliary</td><td>Row-level electricity not separately stated</td><td>3.1 kg CO₂e</td><td>Reported baseline component; included within activation electricity.</td></tr>
+          <tr><td>Infrastructure</td><td>Allocated gate standby</td><td>Per-activation allocation; underlying activity not separately stated</td><td>0.18 kg CO₂e</td><td>Allocated standby reported in the inventory ledger.</td></tr>
+          <tr><td>Infrastructure</td><td>Allocated gate materials</td><td>Materials allocated over 10,000 design activations; constituent masses not stated</td><td>5.49 kg CO₂e</td><td>Factor set includes concrete 118.80 kg CO₂e/t, glass/crystal proxy 1402.77, aluminium proxy 9113.58 and steel proxy 2861.58.</td></tr>
+          <tr><td>Maintenance</td><td>Maintenance freight</td><td>3.5 t × 85 km, allocated across 100 activations</td><td>0.31 kg CO₂e</td><td>DEFRA average non-refrigerated HGV diesel, 0.10356 kg CO₂e/t·km.</td></tr>
+        </tbody>
+      </table></div>
+      <div class="model-notes">
+        <div class="stat-card"><h3>Electricity factor</h3><p>0.18436 kg CO₂e/kWh: generation 0.13096, T&amp;D 0.01299, WTT generation 0.03682 and WTT T&amp;D 0.00359.</p></div>
+        <div class="stat-card"><h3>Included</h3><p>Gate activation electricity, red fire-guard energy, control and cooling, allocated gate materials and maintenance logistics.</p></div>
+        <div class="stat-card"><h3>Excluded</h3><p>Realm creation, divine labour, traveller biology, avoided travel, Ragnarok collapse and magic distance.</p></div>
+        <div class="stat-card"><h3>Evidence status</h3><p>Documented: DEFRA 2026 factors. Literature: myth and visible-light framing. Engineering assumptions: dimensions, mass, power and duration. Narrative proxy: red fire-guard strand.</p></div>
+      </div>
+    </section>
+
+    <section class="section hotspot-visual-section">
+      <div class="section-heading visual-heading"><div><p class="eyebrow">HOTSPOT</p><h2>Electricity carries the burden.</h2></div><p class="section-note">The approved episode assigns 95.2% of the total to electricity. The red fire-guard alone contributes 73.7 kg CO₂e.</p></div>
+      <figure class="visual-panel visual-panel-feature"><img src="../assets/images/episode-graphics/ep50-hotspot-breakdown.svg" alt="Bifrost hotspot breakdown showing electricity at 95.2 percent of the baseline and the red fire-guard as the largest modeled flow at 73.7 kilograms carbon dioxide equivalent" loading="lazy" decoding="async"><figcaption>Hotspot breakdown · contribution to the 120.3 kg CO₂e baseline</figcaption></figure>
+    </section>
+
+    <section id="results" class="section episode-summary">
+      <div class="fact-card"><h3>Main result</h3><p><strong>120.3 kg CO₂e</strong><br>Per controlled 10-minute activation.</p></div>
+      <div class="fact-card"><h3>Electricity</h3><p><strong>95.2%</strong><br>The dominant baseline contribution.</p></div>
+      <div class="fact-card"><h3>Red fire-guard</h3><p><strong>73.7 kg CO₂e</strong><br>The largest single modeled flow.</p></div>
+      <div class="fact-card"><h3>Materials</h3><p><strong>4.6%</strong><br>After allocation over the 10,000-activation design life.</p></div>
+    </section>
+
+    <section class="section status-grid">
+      <div class="stat-card"><h3>Physical sensitivity</h3><p><strong>Baseline → 120.3 kg CO₂e</strong><br><strong>Lower light intensity → 101.8</strong><br><strong>Higher light intensity → 157.2</strong><br><strong>Cooler red strand → 83.4</strong><br><strong>Hotter red strand → 194.0</strong><br>The approved reading identifies the fire strand as the physical uncertainty that matters most.</p></div>
+      <div class="stat-card"><h3>Data sensitivity</h3><p><strong>Baseline → 120.3 kg CO₂e</strong><br><strong>Shorter design life → 125.8</strong><br><strong>Higher grid factor → 177.5</strong><br><strong>Low-carbon supply → 28.7</strong><br>Shortening gate life to 5,000 activations changes little; electricity carbon intensity changes the result far more.</p></div>
+    </section>
+
+    <section class="section status-grid">
+      <div class="stat-card"><h3>Interpretation</h3><p>A reusable bridge is not necessarily a material story. Allocated gate materials are only 4.6% of the baseline, while the operating event dominates.</p></div>
+      <div class="stat-card"><h3>Decision lever</h3><p>The low-carbon supply sensitivity falls to 28.7 kg CO₂e. In the approved episode, power procurement is the real lever.</p></div>
+    </section>
+
+    <section class="section verdict"><p class="eyebrow">THE VERDICT</p><blockquote>The bridge is not weightless; its burden is operational.</blockquote></section>
+  </main>
+
+  <footer><span>© LCA of the Impossible</span><a href="../archive.html">Full archive ↑</a></footer>
+  <script src="../assets/site.js"></script>
+  <script src="../assets/phase6.js?v=20260819-epic-passport3"></script>
+  <script src="../assets/passport-cleanup.js?v=20260819-passport-cleanup2"></script>
+  <script src="../assets/engagement.js?v=20260816-phase4"></script>
+</body>
+</html>'''
+
+
+def write_text(rel: str, text: str) -> None:
+    p = ROOT / rel
+    p.parent.mkdir(parents=True, exist_ok=True)
+    p.write_text(text, encoding='utf-8')
+
+
+def main() -> None:
+    cover_path = ROOT / COVER_REL
+    if not cover_path.exists():
+        raise SystemExit(f'Approved cover missing: {COVER_REL}')
+    cover = cover_path.read_bytes()
+    if hashlib.sha256(cover).hexdigest() != COVER_SHA256:
+        raise SystemExit('Approved cover SHA256 mismatch')
+    with Image.open(cover_path) as im:
+        if im.size != (1122, 1402):
+            raise SystemExit(f'Unexpected approved cover dimensions: {im.size}')
+
+    registry_path = ROOT / 'episodes.json'
+    registry = json.loads(registry_path.read_text(encoding='utf-8'))
+    episodes = [e for e in registry['episodes'] if e.get('number') != 50]
+    episodes.append(EPISODE)
+    episodes.sort(key=lambda e: e['number'], reverse=True)
+    registry['schemaVersion'] = 2
+    registry['episodes'] = episodes
+    registry_path.write_text(json.dumps(registry, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+
+    collections_path = ROOT / 'collections.json'
+    collections = json.loads(collections_path.read_text(encoding='utf-8'))
+    for coll in collections.get('collections', []):
+        if coll.get('slug') == 'impossible-structures':
+            nums = [n for n in coll['episodes'] if n != 50]
+            # Keep the existing editorial sequence; place Bifrost directly after the most recent structure.
+            coll['episodes'] = ([nums[0], 50] + nums[1:]) if nums else [50]
+        elif coll.get('slug') == 'legendary-engineering':
+            nums = [n for n in coll['episodes'] if n != 50]
+            insert_at = next((i for i, n in enumerate(nums) if n < 50), len(nums))
+            coll['episodes'] = nums[:insert_at] + [50] + nums[insert_at:]
+    collections_path.write_text(json.dumps(collections, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+    write_text('assets/images/episode-graphics/ep50-inventory-map.svg', INVENTORY_MAP)
+    write_text('assets/images/episode-graphics/ep50-technical-plate.svg', TECHNICAL_PLATE)
+    write_text('assets/images/episode-graphics/ep50-hotspot-breakdown.svg', HOTSPOT)
+    write_text('episodes/bifrost.html', HTML)
+
+    # Hard publication guards before synchronization.
+    if any('pdf' in e for e in registry['episodes']):
+        raise SystemExit('Registry contains a forbidden pdf field')
+    html = (ROOT / 'episodes/bifrost.html').read_text(encoding='utf-8')
+    if 'assets/pdf/episodes/' in html or 'Raw text' in html or 'Download episode PDF' in html:
+        raise SystemExit('Forbidden source-PDF/raw-text control detected')
+    print('Episode 50 source files prepared; approved cover exact SHA verified.')
+
+
+if __name__ == '__main__':
+    main()
