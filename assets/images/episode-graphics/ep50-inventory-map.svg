@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Bifrost inventory map</title>
+<desc id="desc">Inventory map for one controlled ten-minute Bifrost activation, showing operating electricity, allocated gate infrastructure and maintenance logistics feeding one reusable 1.2 kilometre light-bridge crossing window, with explicitly excluded narrative flows outside the boundary.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#d0a563;stroke-width:3}.line{stroke:#6de7ff;stroke-width:3;fill:none}.goldline{stroke:#d0a563;stroke-width:3;fill:none}.redline{stroke:#d96d4d;stroke-width:3;fill:none}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:700 22px Arial,sans-serif}.value{fill:#c4f7ff;font:700 20px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.gold{fill:#d0a563}.red{fill:#ff9b75}
+</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+<marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d0a563"/></marker>
+<marker id="arrowRed" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d96d4d"/></marker>
+</defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #50 · INVENTORY MAP</text>
+<text x="60" y="105" class="head">The crossing is an operating event.</text>
+<text x="60" y="138" class="small">One reusable gate pair · one 10-minute crossing window · 621.0 kWh total activation electricity</text>
+
+<g transform="translate(55 190)"><rect width="300" height="96" rx="12" class="panel"/><text x="24" y="34" class="label">Optical corridor</text><text x="24" y="65" class="value">36.87 kg CO₂e</text><text x="24" y="86" class="small">activation electricity</text></g>
+<g transform="translate(55 307)"><rect width="300" height="96" rx="12" class="panel"/><text x="24" y="34" class="label">Red fire-guard</text><text x="24" y="65" class="value red">73.74 kg CO₂e</text><text x="24" y="86" class="small">thermal exclusion strand</text></g>
+<g transform="translate(55 424)"><rect width="300" height="96" rx="12" class="panel"/><text x="24" y="34" class="label">Control + cooling</text><text x="24" y="65" class="value">3.69 kg CO₂e</text><text x="24" y="86" class="small">gate systems</text></g>
+<g transform="translate(55 541)"><rect width="300" height="96" rx="12" class="panel"/><text x="24" y="34" class="label">Allocated standby</text><text x="24" y="65" class="value">0.18 kg CO₂e</text><text x="24" y="86" class="small">per activation</text></g>
+
+<g transform="translate(845 250)"><rect width="300" height="96" rx="12" class="panel"/><text x="24" y="34" class="label">Gate materials</text><text x="24" y="65" class="value">5.49 kg CO₂e</text><text x="24" y="86" class="small">allocated over 10,000 activations</text></g>
+<g transform="translate(845 389)"><rect width="300" height="112" rx="12" class="panel"/><text x="24" y="34" class="label">Maintenance freight</text><text x="24" y="65" class="value">0.31 kg CO₂e</text><text x="24" y="87" class="small">3.5 t × 85 km</text><text x="24" y="107" class="small">allocated across 100 activations</text></g>
+
+<rect x="420" y="265" width="360" height="260" rx="20" class="core"/>
+<text x="600" y="311" text-anchor="middle" class="eyebrow" fill="#d0a563">FUNCTIONAL UNIT</text>
+<text x="600" y="357" text-anchor="middle" class="label">One controlled activation</text>
+<text x="600" y="391" text-anchor="middle" class="label">10-minute crossing window</text>
+<line x1="480" y1="420" x2="720" y2="420" stroke="#234557" stroke-width="2"/>
+<text x="600" y="458" text-anchor="middle" class="small">1.2 km visible corridor</text>
+<text x="600" y="487" text-anchor="middle" class="small">between two reusable gate pylons</text>
+
+<path d="M355 238 C395 238 400 315 420 330" class="line" marker-end="url(#arrow)"/>
+<path d="M355 355 C395 355 400 365 420 370" class="redline" marker-end="url(#arrowRed)"/>
+<path d="M355 472 C395 472 400 425 420 420" class="line" marker-end="url(#arrow)"/>
+<path d="M355 589 C395 589 402 480 420 474" class="line" marker-end="url(#arrow)"/>
+<path d="M845 298 C805 298 800 340 780 350" class="goldline" marker-end="url(#arrowGold)"/>
+<path d="M845 445 C805 445 800 425 780 420" class="goldline" marker-end="url(#arrowGold)"/>
+
+<rect x="420" y="578" width="360" height="105" rx="12" class="panel"/>
+<text x="600" y="612" text-anchor="middle" class="label">Explicitly outside the model</text>
+<text x="600" y="643" text-anchor="middle" class="small">realm creation · divine labour · traveller biology</text>
+<text x="600" y="668" text-anchor="middle" class="small">avoided travel · Ragnarok collapse · magic distance</text>
+<text x="60" y="724" class="small">Minor flows below the expected 1% contribution threshold may be declared and excluded where no representative factor exists.</text>
+</svg>
