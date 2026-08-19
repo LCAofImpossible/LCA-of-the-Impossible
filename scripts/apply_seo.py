@@ -118,7 +118,7 @@ def apply_template(check: bool, changed: list[Path]) -> None:
 
 
 def build_sitemap(episodes: list[dict]) -> str:
-    urls = [BASE_URL, BASE_URL + "archive.html"] + [BASE_URL + e["url"] for e in episodes]
+    urls = [BASE_URL, BASE_URL + "archive.html", BASE_URL + "method.html"] + [BASE_URL + e["url"] for e in episodes]
     body = "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}\n</urlset>\n'
 
@@ -162,19 +162,19 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html` and every published episode page:
+Required on `index.html`, `archive.html`, `method.html` and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
 - `robots` set to `index,follow,max-image-preview:large`;
 - Open Graph metadata: `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, `og:image`, `og:image:alt`, `og:locale`;
 - Twitter/X card metadata using `summary_large_image`, with title, description, image and image alt text;
-- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive and `Article` for episode pages;
+- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive, `WebPage` for the Method page and `Article` for episode pages;
 - shared favicon and web manifest links.
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -269,6 +269,29 @@ def main() -> int:
         json_ld=archive_ld,
     )
     apply_page(ROOT / "archive.html", archive_block, args.check, changed)
+
+    method_description = "The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation."
+    method_url = BASE_URL + "method.html"
+    method_ld = {
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "Method — LCA of the Impossible",
+        "url": method_url,
+        "description": method_description,
+        "inLanguage": "en",
+        "isPartOf": {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL},
+    }
+    method_block = seo_block(
+        title="Method — LCA of the Impossible",
+        description=method_description,
+        canonical=method_url,
+        image=latest_image,
+        image_alt=f"{latest['title']} — latest LCA of the Impossible episode cover",
+        page_type="website",
+        prefix="",
+        json_ld=method_ld,
+    )
+    apply_page(ROOT / "method.html", method_block, args.check, changed)
 
     for episode in episodes:
         canonical = BASE_URL + episode["url"]
