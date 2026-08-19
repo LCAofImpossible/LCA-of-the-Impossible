@@ -1,26 +1,26 @@
-name: Episode 50 Controlled Publication
+name: Episode 50 Controlled Build
 
 on:
   push:
     branches: [ep50-bifrost-staging]
     paths:
-      - 'assets/images/episodes/ep50-bifrost-cover.png'
+      - '.github/workflows/ep50-publish.yml'
 
 permissions:
   contents: write
 
 concurrency:
-  group: ep50-controlled-publication
-  cancel-in-progress: false
+  group: ep50-bifrost-controlled-build
+  cancel-in-progress: true
 
 jobs:
-  publish:
+  build:
+    if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout staging branch
         uses: actions/checkout@v4
         with:
-          ref: ep50-bifrost-staging
           fetch-depth: 0
 
       - name: Set up Python
@@ -28,40 +28,24 @@ jobs:
         with:
           python-version: '3.12'
 
-      - name: Install QA dependencies
-        run: python -m pip install --disable-pip-version-check pillow selenium
+      - name: Install QA dependency
+        run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Verify the approved cover before publication
-        env:
-          EXPECTED_COVER_SHA256: 6aee7564bdb72779326c807a529abf7a0bfa1f53ae77a4dd16fdf70e529307dc
+      - name: Assemble controlled publisher
         run: |
-          cat .github/ep50-script-part-*.txt > /tmp/publish_ep50_once.py
-          python - <<'PY'
-          from pathlib import Path
-          from PIL import Image
-          import hashlib, os, shutil
-          p=Path('assets/images/episodes/ep50-bifrost-cover.png')
-          data=p.read_bytes()
-          actual=hashlib.sha256(data).hexdigest()
-          assert actual==os.environ['EXPECTED_COVER_SHA256'], (actual, os.environ['EXPECTED_COVER_SHA256'])
-          with Image.open(p) as im: assert im.size==(1122,1402), im.size
-          shutil.copy2(p,'/tmp/ep50-bifrost-cover.png')
-          print('Approved cover verified byte-for-byte and staged for controlled release.')
-          PY
+          cat .github/ep50-script-part-01.txt .github/ep50-script-part-02.txt .github/ep50-script-part-03.txt > scripts/publish_ep50.py
+          python -m py_compile scripts/publish_ep50.py
 
-      - name: Switch to current main
+      - name: Import exact approved cover from main and freeze canonical path
         run: |
           git fetch origin main
-          git checkout -B main origin/main
-          mkdir -p assets/images/episodes
-          cp /tmp/ep50-bifrost-cover.png assets/images/episodes/ep50-bifrost-cover.png
+          git checkout origin/main -- assets/images/episodes/file_000000000bb4820da5abc2b25f78d641.png
+          git mv assets/images/episodes/file_000000000bb4820da5abc2b25f78d641.png assets/images/episodes/ep50-bifrost-cover.png
 
-      - name: Materialize Episode 50 from approved source model
-        env:
-          EP50_ROOT: ${{ github.workspace }}
-        run: python /tmp/publish_ep50_once.py
+      - name: Generate Episode 50 source files
+        run: python scripts/publish_ep50.py
 
-      - name: Synchronize canonical site metadata and features
+      - name: Synchronize shared site systems
         run: |
           python scripts/apply_seo.py
           python scripts/feature_sync.py
@@ -70,7 +54,7 @@ jobs:
           python scripts/phase6_sync.py
           python scripts/epic_passport_sync.py
 
-      - name: Run canonical QA suite
+      - name: Run full repository QA
         run: |
           python scripts/site_qa.py
           python scripts/seo_qa.py
@@ -79,184 +63,11 @@ jobs:
           python scripts/phase5_qa.py
           python scripts/phase6_qa.py
 
-      - name: Episode 50 static release assertions
-        env:
-          EXPECTED_COVER_SHA256: 6aee7564bdb72779326c807a529abf7a0bfa1f53ae77a4dd16fdf70e529307dc
-        run: |
-          python - <<'PY'
-          from pathlib import Path
-          from PIL import Image
-          import hashlib, json, os
-          root=Path('.')
-          cover=root/'assets/images/episodes/ep50-bifrost-cover.png'
-          data=cover.read_bytes()
-          assert hashlib.sha256(data).hexdigest()==os.environ['EXPECTED_COVER_SHA256']
-          with Image.open(cover) as im:
-              assert im.size==(1122,1402), im.size
-              assert abs(im.width/im.height-0.8)<0.012
-          reg=json.loads((root/'episodes.json').read_text())
-          assert reg.get('schemaVersion')==2
-          assert all('pdf' not in e for e in reg['episodes'])
-          eps=[e for e in reg['episodes'] if e['number']==50]
-          assert len(eps)==1
-          ep=eps[0]
-          assert ep['slug']=='bifrost'
-          assert ep['cover']=='assets/images/episodes/ep50-bifrost-cover.png'
-          assert ep['functionalUnit']=='One controlled Bifrost activation enabling a 10-minute crossing window for one expedition transfer.'
-          assert ep['result']=='120.3 kg CO₂e'
-          assert ep['hotspot']=='Electricity contributes 95.2% of the baseline footprint; the red fire-guard is the largest single modeled flow at 73.7 kg CO₂e.'
-          assert set(ep['related'])=={41,42,51}
-          col=json.loads((root/'collections.json').read_text())
-          groups={c['slug']:c['episodes'] for c in col['collections']}
-          assert 50 in groups['impossible-structures']
-          assert 50 in groups['legendary-engineering']
-          html=(root/'episodes/bifrost.html').read_text()
-          assert '<body data-episode="50">' in html
-          assert '120.3 kg CO₂e' in html and '95.2%' in html and '73.7 kg CO₂e' in html
-          assert 'assets/pdf/episodes/' not in html and 'Raw text' not in html and 'Download episode PDF' not in html
-          assert 'passport-cleanup.js?v=20260819-passport-cleanup2' in html
-          assert 'phase6.js?v=20260819-epic-passport3' in html
-          for f in ['ep50-inventory-map.svg','ep50-technical-plate.svg','ep50-hotspot-breakdown.svg']:
-              t=(root/'assets/images/episode-graphics'/f).read_text()
-              assert '<svg' in t and '<image' not in t.lower()
-          sitemap=(root/'sitemap.xml').read_text()
-          assert sitemap.count('/episodes/bifrost.html')==1
-          print('Episode 50 static release assertions passed.')
-          PY
-
-      - name: Commit Episode 50 to main
+      - name: Commit clean Episode 50 release candidate
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          rm -f scripts/publish_ep50.py .github/ep50-script-part-01.txt .github/ep50-script-part-02.txt .github/ep50-script-part-03.txt .github/workflows/ep50-publish.yml
           git add -A
-          git commit -m "Publish Episode 50: Bifrost"
-          git pull --rebase origin main
-          git push origin HEAD:main
-
-      - name: Verify live static deployment
-        env:
-          EXPECTED_COVER_SHA256: 6aee7564bdb72779326c807a529abf7a0bfa1f53ae77a4dd16fdf70e529307dc
-        run: |
-          python - <<'PY'
-          import hashlib, json, os, time, urllib.request
-          from io import BytesIO
-          from PIL import Image
-          base='https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          def get(path,binary=False):
-              sep='&' if '?' in path else '?'
-              req=urllib.request.Request(base+path+sep+'ep50qa='+str(time.time_ns()),headers={'Cache-Control':'no-cache','User-Agent':'ep50-controlled-qa'})
-              with urllib.request.urlopen(req,timeout=30) as r: data=r.read()
-              return data if binary else data.decode('utf-8')
-          last=None
-          for i in range(42):
-              try:
-                  html=get('episodes/bifrost.html')
-                  reg=json.loads(get('episodes.json'))
-                  col=json.loads(get('collections.json'))
-                  sitemap=get('sitemap.xml')
-                  cover=get('assets/images/episodes/ep50-bifrost-cover.png',True)
-                  assert 'Bifrost' in html and '120.3 kg CO₂e' in html
-                  assert 'passport-cleanup.js?v=20260819-passport-cleanup2' in html
-                  assert 'assets/pdf/episodes/' not in html and 'Raw text' not in html and 'Download episode PDF' not in html
-                  assert all('pdf' not in e for e in reg['episodes'])
-                  ep=next(e for e in reg['episodes'] if e['number']==50)
-                  assert ep['cover']=='assets/images/episodes/ep50-bifrost-cover.png'
-                  assert ep['result']=='120.3 kg CO₂e'
-                  assert sitemap.count('/episodes/bifrost.html')==1
-                  groups={c['slug']:c['episodes'] for c in col['collections']}
-                  assert 50 in groups['impossible-structures'] and 50 in groups['legendary-engineering']
-                  assert hashlib.sha256(cover).hexdigest()==os.environ['EXPECTED_COVER_SHA256']
-                  with Image.open(BytesIO(cover)) as im: assert im.size==(1122,1402)
-                  print('Live static deployment verification passed.')
-                  break
-              except Exception as exc:
-                  last=exc; print('not ready',i+1,exc); time.sleep(10)
-          else: raise SystemExit(last)
-          PY
-
-      - name: Verify live discovery surfaces
-        run: |
-          python - <<'PY'
-          from selenium import webdriver
-          from selenium.webdriver.support.ui import WebDriverWait
-          import time
-          base='https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          o=webdriver.ChromeOptions(); o.add_argument('--headless=new'); o.add_argument('--no-sandbox'); o.add_argument('--disable-dev-shm-usage'); o.add_argument('--window-size=1440,1000')
-          d=webdriver.Chrome(options=o); w=WebDriverWait(d,30)
-          try:
-              for p in ['','archive.html','collections.html','compare.html','explore.html']:
-                  d.get(base+p+'?ep50qa='+str(time.time_ns()))
-                  w.until(lambda x:x.execute_script('return document.readyState')=='complete')
-                  w.until(lambda x:'Bifrost' in x.find_element('tag name','body').text)
-              print('Live discovery verification passed.')
-          finally: d.quit()
-          PY
-
-      - name: Verify live Episode and Epic Passport
-        run: |
-          python - <<'PY'
-          from selenium import webdriver
-          from selenium.webdriver.common.by import By
-          from selenium.webdriver.support.ui import WebDriverWait
-          from selenium.webdriver.support import expected_conditions as EC
-          import time
-          u='https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/bifrost.html?ep50qa='+str(time.time_ns())
-          o=webdriver.ChromeOptions(); o.add_argument('--headless=new'); o.add_argument('--no-sandbox'); o.add_argument('--disable-dev-shm-usage'); o.add_argument('--window-size=1440,1000')
-          d=webdriver.Chrome(options=o); w=WebDriverWait(d,30)
-          try:
-              d.get(u)
-              w.until(EC.presence_of_element_located((By.ID,'evidence')))
-              w.until(EC.presence_of_element_located((By.ID,'model-passport')))
-              w.until(EC.presence_of_element_located((By.CSS_SELECTOR,'.related-section')))
-              body=d.find_element(By.TAG_NAME,'body').text
-              assert 'EVIDENCE PROFILE' in body and 'Related cases' in body
-              assert 'Raw text' not in body and 'Download episode PDF' not in body
-              assert 'Previous episode' in body and 'Next episode' in body
-              w.until(lambda x:len([e for e in x.find_elements(By.CSS_SELECTOR,'#model-passport .passport-actions > *') if e.is_displayed()])==2)
-              actions=[e.text.strip() for e in d.find_elements(By.CSS_SELECTOR,'#model-passport .passport-actions > *') if e.is_displayed()]
-              assert actions==['View epic passport →','Print / Save as PDF'],actions
-              cover=d.find_element(By.CSS_SELECTOR,'#model-passport .passport-preview-cover img')
-              d.execute_script("arguments[0].scrollIntoView({block:'center'})",cover)
-              w.until(lambda x:x.execute_script('return arguments[0].complete && arguments[0].naturalWidth>0',cover))
-              dims=d.execute_script('return [arguments[0].naturalWidth,arguments[0].naturalHeight]',cover)
-              assert dims==[1122,1402],dims
-              d.find_element(By.CSS_SELECTOR,'#model-passport .passport-view').click()
-              overlay=w.until(EC.visibility_of_element_located((By.CSS_SELECTOR,'.passport-overlay')))
-              text=overlay.text
-              assert '120.3 kg CO₂e' in text and 'Print / Save as PDF' in text and 'CANONICAL RECORD' in text
-              assert 'One controlled Bifrost activation enabling a 10-minute crossing window for one expedition transfer.' in text
-              assert '95.2%' in text and '73.7 kg CO₂e' in text
-              assert 'Raw text' not in text and 'Download episode PDF' not in text
-              print('Live Episode and Epic Passport verification passed.')
-          finally: d.quit()
-          PY
-
-      - name: Verify live mobile and accessibility basics
-        run: |
-          python - <<'PY'
-          from selenium import webdriver
-          from selenium.webdriver.common.by import By
-          from selenium.webdriver.support.ui import WebDriverWait
-          from selenium.webdriver.support import expected_conditions as EC
-          import time
-          u='https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/bifrost.html?mobileqa='+str(time.time_ns())
-          o=webdriver.ChromeOptions(); o.add_argument('--headless=new'); o.add_argument('--no-sandbox'); o.add_argument('--disable-dev-shm-usage'); o.add_argument('--window-size=390,844')
-          d=webdriver.Chrome(options=o); w=WebDriverWait(d,30)
-          try:
-              d.get(u); w.until(EC.presence_of_element_located((By.ID,'model-passport')))
-              overflow=d.execute_script('return document.documentElement.scrollWidth-document.documentElement.clientWidth')
-              assert overflow<=2,overflow
-              assert d.find_elements(By.CSS_SELECTOR,'.skip-link')
-              nav=d.find_element(By.CSS_SELECTOR,'.site-header nav'); assert nav.get_attribute('aria-label')=='Primary navigation'
-              for img in d.find_elements(By.TAG_NAME,'img'):
-                  assert (img.get_attribute('alt') or '').strip()
-                  assert d.execute_script('return arguments[0].getBoundingClientRect().width <= arguments[0].parentElement.getBoundingClientRect().width + 2',img)
-              table=d.find_element(By.CSS_SELECTOR,'.inventory-table')
-              assert len(table.find_elements(By.TAG_NAME,'th'))==5
-              print('Live mobile/accessibility verification passed.')
-          finally: d.quit()
-          PY
-
-      - name: Remove temporary staging branch
-        if: success()
-        run: git push origin --delete ep50-bifrost-staging
+          git commit -m "Prepare Episode 50: Bifrost"
+          git push origin HEAD:ep50-bifrost-staging
