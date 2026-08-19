@@ -821,3 +821,122 @@ Canonical Phase 4 files:
 - [ ] Phase 4 remains usable on mobile and respects existing cover-rendering rules.
 
 <!-- PHASE4-RULES:END -->
+
+---
+
+<!-- METHOD-RULES:START -->
+
+## 27. Dedicated Method page and methodological transparency — mandatory
+
+The site now contains a dedicated methodology layer. The canonical files are:
+
+- `method.html` — full public methodology page;
+- `assets/method.css` — isolated styling for the methodology page and the homepage Method preview.
+
+The homepage must remain concise. Its Method section is a **preview**, not the full methodology. It must retain the headline `Fantasy in. Inventory out.`, show the four macro-phases `Define → Reconstruct → Quantify → Interpret`, and link to `method.html` with a visible `Explore the full methodology →` action.
+
+`method.html` is the canonical public explanation of how impossible subjects are translated into traceable life-cycle models. It must remain a static, framework-free page and must not require JavaScript for core content.
+
+### 27.1 Canonical methodology pipeline
+
+The full Method page must present these seven stages in this order:
+
+1. **Define the subject** — establish what is actually being assessed.
+2. **Establish the evidence** — distinguish source evidence, reconstruction, inference and assumptions.
+3. **Define the functional unit** — translate the narrative into a quantified service, event, journey, lifetime or reporting basis.
+4. **Reconstruct the system** — translate form and function into geometry, materials, energy, movement, operation and maintenance.
+5. **Build the inventory** — assign activity data, boundaries, proxies, quantities and modelling bases.
+6. **Calculate the footprint** — connect activity data to the best available defensible emission factors while preserving traceability.
+7. **Interpret the result** — identify hotspots, sensitivities and uncertainty and explain what the result means within the scenario.
+
+Do not collapse the methodology into a simplistic “pick subject / calculate number” narrative. Interpretation and evidence transparency are part of the method, not optional editorial decoration.
+
+### 27.2 Evidence Ladder
+
+The Method page uses the provenance ladder:
+
+`Known → Reconstructed → Inferred → Assumed`
+
+These labels describe how an input enters the model; they are not a numeric ranking or formal data-quality score.
+
+- **Known** — directly stated, measured, historically documented or otherwise supported by explicit source evidence.
+- **Reconstructed** — derived from dimensions, mechanics, engineering relationships or defensible physical reconstruction.
+- **Inferred** — supported by contextual evidence, comparable systems or a reasoned analogue but not directly stated.
+- **Assumed** — a declared scenario choice required to close the model where evidence cannot.
+
+The public Method explanation of Evidence confidence, Proxy dependence and Assumption sensitivity must remain aligned with the registry fields defined in Section 25. Levels remain only `Low`, `Medium` or `High`. These are transparency indicators, not formal ISO data-quality ratings, verification statements or uncertainty distributions.
+
+### 27.3 Assumption Ledger
+
+The Method page must explain that assumptions are accounted for rather than hidden. The canonical illustrative statuses are:
+
+- `Reconstruction` for geometry/mass derived through physical or engineering logic;
+- `Inference` for material/technology choices based on historical, canonical or comparable-system evidence;
+- `Assumption` for declared transport, operation, duration, frequency or other scenario choices;
+- `Factor` for the dataset applied to an activity flow.
+
+This ledger is illustrative methodology, not an episode-specific inventory. Do not insert invented episode values into it.
+
+### 27.4 Emission-factor hierarchy
+
+The public methodology expresses the selection logic as:
+
+`Specific → Representative → Proxy`
+
+Use the most specific defensible factor available for the activity being modelled. Where a representative dataset or proxy is required, the loss of specificity and proxy dependence must remain visible. This hierarchy does not override episode-specific factor choices in an approved PDF and does not authorize silently replacing an approved factor.
+
+### 27.5 System boundary and result interpretation
+
+The Method page may illustrate the life cycle as:
+
+`Raw materials → Construction / manufacture → Transport → Operation → Maintenance / repetition → End of life`
+
+This is an illustrative boundary only. Individual episodes define their own reporting slice and do not automatically include every stage.
+
+The Method page must also make three interpretive principles explicit:
+
+1. the result is **not a claim that the fictional or legendary subject physically exists exactly as modelled**;
+2. the result must **not imply false precision beyond the inventory and evidence quality**;
+3. the reconstructed scenario can still support a meaningful LCA question using functional units, inventories, boundaries, factors, hotspots and sensitivities.
+
+### 27.6 Audit trail
+
+The canonical public chain is:
+
+`Subject → Source → Assumption → Activity data → Factor → Result`
+
+The Method page must reinforce the principle that every published result should retain a path back to the model that produced it. This is consistent with the inventory and modelling rules in Section 8 and the Evidence Profile requirements in Section 25.
+
+### 27.7 Visual and accessibility rules
+
+The Method page uses the existing dark technical/blueprint visual language, with cyan/light-cyan and restrained gold accents. It should read as a technical manifesto or laboratory protocol rather than a corporate dashboard.
+
+Required:
+
+- responsive layouts with no horizontal page overflow; intentional horizontal scrolling is allowed only for bounded analytical flows/tables;
+- semantic headings and meaningful `aria-label` use for process diagrams;
+- essential methodological meaning must exist as HTML text, not only as decoration;
+- no framework, package manager or build dependency;
+- `assets/method.css` must remain isolated from episode-specific styling as far as practical;
+- no decorative cover artwork is required on `method.html`.
+
+### 27.8 SEO and discovery
+
+`method.html` must have its own absolute canonical URL, meta description, robots directive, Open Graph metadata, Twitter metadata, favicon/manifest links and parseable `WebPage` JSON-LD. It must appear exactly once in `sitemap.xml`.
+
+### Method QA
+
+- [ ] Homepage Method preview contains exactly the four macro-phases `Define`, `Reconstruct`, `Quantify`, `Interpret`.
+- [ ] Homepage links to `method.html`.
+- [ ] Full Method page contains the seven-stage canonical pipeline in the correct order.
+- [ ] Evidence Ladder uses exactly `Known`, `Reconstructed`, `Inferred`, `Assumed`.
+- [ ] Evidence Profile terminology matches `episodes.json` and Section 25.
+- [ ] Evidence levels are only `Low`, `Medium`, `High`.
+- [ ] Factor hierarchy is `Specific → Representative → Proxy` and is described as a modelling preference, not an override of approved episode data.
+- [ ] System-boundary graphic is explicitly labelled illustrative.
+- [ ] Audit trail is `Subject → Source → Assumption → Activity data → Factor → Result`.
+- [ ] Method content remains usable without JavaScript.
+- [ ] `method.html` is present exactly once in `sitemap.xml`.
+- [ ] Desktop and mobile rendering show no unintended overflow or clipped content.
+
+<!-- METHOD-RULES:END -->
