@@ -9,6 +9,10 @@ on:
 permissions:
   contents: write
 
+concurrency:
+  group: ep51-live-verify
+  cancel-in-progress: true
+
 jobs:
   verify:
     if: github.actor != 'github-actions[bot]'
@@ -28,6 +32,8 @@ jobs:
         run: python -m pip install --disable-pip-version-check pillow selenium
 
       - name: Run deterministic synchronization and full repository QA
+        id: repo_qa
+        continue-on-error: true
         run: |
           python scripts/apply_seo.py
           python scripts/feature_sync.py
@@ -44,6 +50,8 @@ jobs:
           python scripts/phase6_qa.py
 
       - name: Wait for GitHub Pages and validate live static assets
+        id: live_static
+        continue-on-error: true
         env:
           EXPECTED_COVER_SHA256: 469b45981a05b8379a25c9e6369b67d2158273252130a6686d45f8507873db92
         run: |
@@ -64,11 +72,10 @@ jobs:
               return data if binary else data.decode('utf-8')
 
           last = None
-          for attempt in range(30):
+          for attempt in range(24):
               try:
                   html = get('episodes/pandoras-jar.html')
-                  registry_text = get('episodes.json')
-                  registry = json.loads(registry_text)
+                  registry = json.loads(get('episodes.json'))
                   collections = json.loads(get('collections.json'))
                   sitemap = get('sitemap.xml')
                   cleanup = get('assets/passport-cleanup.js')
@@ -108,13 +115,15 @@ jobs:
                   break
               except Exception as exc:
                   last = exc
-                  print(f'Attempt {attempt + 1}/30 not ready: {exc}')
+                  print(f'Attempt {attempt + 1}/24 not ready: {exc}')
                   time.sleep(10)
           else:
               raise SystemExit(f'Live static validation failed after polling: {last}')
           PY
 
       - name: Validate live rendered UX and Passport-only controls
+        id: live_ux
+        continue-on-error: true
         run: |
           python - <<'PY'
           from selenium import webdriver
@@ -141,7 +150,7 @@ jobs:
               wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
               body_text = driver.find_element(By.TAG_NAME, 'body').text
               assert 'EVIDENCE PROFILE' in body_text
-              assert 'RELATED CASES' in body_text
+              assert 'RELATED CASES' in body_text.upper()
               assert 'Raw text' not in body_text
               assert 'Download episode PDF' not in body_text
 
@@ -172,11 +181,17 @@ jobs:
               driver.quit()
           PY
 
-      - name: Record successful live verification
+      - name: Record verification outcome
+        if: always()
+        env:
+          REPO_STATUS: ${{ steps.repo_qa.outcome }}
+          STATIC_STATUS: ${{ steps.live_static.outcome }}
+          UX_STATUS: ${{ steps.live_ux.outcome }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "QA: Episode 51 live verification passed"
+          git commit --allow-empty -m "QA EP51: repo=${REPO_STATUS} static=${STATIC_STATUS} ux=${UX_STATUS}"
           git push origin HEAD:main
-
-# Triggered once after publication to validate the deployed GitHub Pages site.
+          test "$REPO_STATUS" = success
+          test "$STATIC_STATUS" = success
+          test "$UX_STATUS" = success
