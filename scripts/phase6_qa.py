@@ -69,10 +69,11 @@ def check_phase6_js() -> None:
 
 def check_cleanup_js() -> None:
     text = read(ROOT / "assets/passport-cleanup.js")
-    for token in ["episode-pdf-action-static", "assets/pdf/episodes/", "Raw text".lower(), "MutationObserver"]:
-        needle = token if token != "raw text" else "raw text"
-        if needle not in text.lower() if token == "raw text" else needle not in text:
+    for token in ["episode-pdf-action-static", "assets/pdf/episodes/", "MutationObserver"]:
+        if token not in text:
             fail(f"assets/passport-cleanup.js: required cleanup token missing: {token}")
+    if "raw text" not in text.lower():
+        fail("assets/passport-cleanup.js: raw-text cleanup guard missing")
 
 
 def check_phase6_css() -> None:
