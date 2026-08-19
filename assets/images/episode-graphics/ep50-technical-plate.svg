@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Bifrost technical reconstruction</title>
+<desc id="desc">Technical plate showing a 1,200 metre visible light-bridge corridor, 3.0 metre walkable band, two reusable basalt and bronze gate pylons, emerald prism lenses, three translucent corridor bands and a red-orange thermal exclusion strand.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.wire{fill:none;stroke:#6de7ff;stroke-width:2}.goldwire{fill:none;stroke:#d0a563;stroke-width:3}.redwire{fill:none;stroke:#d96d4d;stroke-width:4}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.5;stroke-dasharray:7 6}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:700 22px Arial,sans-serif}.value{fill:#d0a563;font:700 28px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.gate{fill:#112232;stroke:#d0a563;stroke-width:3}.lens{fill:#17493f;stroke:#6de7ff;stroke-width:3}.band1{fill:#6de7ff;opacity:.22}.band2{fill:#8ad99a;opacity:.22}.band3{fill:#9f8cff;opacity:.22}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #50 · TECHNICAL PLATE</text>
+<text x="60" y="105" class="head">A reusable two-gate light-bridge apparatus.</text>
+
+<rect x="55" y="155" width="800" height="500" rx="18" class="panel"/>
+<rect x="110" y="255" width="105" height="290" rx="18" class="gate"/>
+<circle cx="162" cy="400" r="54" class="goldwire"/><circle cx="162" cy="400" r="28" class="lens"/>
+<rect x="695" y="255" width="105" height="290" rx="18" class="gate"/>
+<circle cx="747" cy="400" r="54" class="goldwire"/><circle cx="747" cy="400" r="28" class="lens"/>
+<polygon points="215,345 695,345 695,375 215,375" class="band1"/>
+<polygon points="215,375 695,375 695,405 215,405" class="band2"/>
+<polygon points="215,405 695,405 695,435 215,435" class="band3"/>
+<path d="M215 455 L695 455" class="redwire"/>
+<path d="M215 310 L695 310" class="dim"/><path d="M215 300 L215 320 M695 300 L695 320" class="wire"/>
+<text x="455" y="292" text-anchor="middle" class="value">1,200 m visible span</text>
+<path d="M640 345 L640 435" class="dim"/><text x="656" y="395" class="small">3.0 m band</text>
+<text x="112" y="584" class="small">Basalt plinth + bronze ring</text><text x="665" y="584" class="small">Basalt plinth + bronze ring</text>
+<text x="292" y="496" class="small">red-orange thermal exclusion strand</text>
+<text x="265" y="527" class="small">three translucent corridor bands · emerald prism lenses</text>
+
+<rect x="890" y="155" width="255" height="500" rx="18" class="panel"/>
+<text x="920" y="204" class="eyebrow">OPERATING BASIS</text>
+<text x="920" y="254" class="value">621.0 kWh</text><text x="920" y="280" class="small">per activation</text>
+<line x1="920" y1="310" x2="1115" y2="310" stroke="#234557" stroke-width="2"/>
+<text x="920" y="348" class="label">10 minutes</text><text x="920" y="373" class="small">crossing window</text>
+<text x="920" y="420" class="label">10,000</text><text x="920" y="445" class="small">design activations</text><text x="920" y="468" class="small">for material allocation</text>
+<text x="920" y="518" class="label">0.18436</text><text x="920" y="543" class="small">kg CO₂e/kWh</text><text x="920" y="566" class="small">generation + T&amp;D + WTT</text>
+<text x="920" y="616" class="small">The bridge is not rebuilt</text><text x="920" y="640" class="small">at each crossing.</text>
+<text x="60" y="712" class="small">Canonical subject design and dimensions reproduce the approved Episode #50 physical reconstruction; no unreported material mass is introduced.</text>
+</svg>

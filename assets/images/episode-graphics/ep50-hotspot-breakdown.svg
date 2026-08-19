@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Bifrost hotspot breakdown</title>
+<desc id="desc">Hotspot chart for the 120.3 kilogram carbon dioxide equivalent Bifrost baseline, showing 73.7 kilograms from the red fire-guard, 36.9 from the optical corridor, 5.5 from allocated materials, 3.7 from control and cooling, 0.3 from maintenance freight and 0.2 from allocated standby. Electricity is 95.2 percent of the total.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.bar{fill:#6de7ff}.gold{fill:#d0a563}.red{fill:#d96d4d}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:21px Arial,sans-serif}.value{fill:#eef7fb;font:700 21px Arial,sans-serif}.big{fill:#d0a563;font:700 50px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.note{fill:#c4f7ff;font:700 22px Arial,sans-serif}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #50 · HOTSPOT BREAKDOWN</text>
+<text x="60" y="105" class="head">The bridge is an electricity story.</text>
+<rect x="60" y="145" width="1080" height="110" rx="16" class="panel"/>
+<text x="90" y="198" class="big">120.3 kg CO₂e</text>
+<text x="500" y="190" class="note">per controlled activation</text>
+<text x="500" y="222" class="small">Electricity: 95.2% · Materials: 4.6% · Logistics: 0.3%</text>
+<g transform="translate(60 300)">
+<text x="0" y="22" class="label">Red fire-guard</text><rect x="300" y="3" width="700" height="24" rx="4" class="track"/><rect x="300" y="3" width="700" height="24" rx="4" class="red"/><text x="1025" y="23" class="value">73.7</text>
+<text x="0" y="70" class="label">Optical corridor</text><rect x="300" y="51" width="700" height="24" rx="4" class="track"/><rect x="300" y="51" width="350" height="24" rx="4" class="bar"/><text x="1025" y="71" class="value">36.9</text>
+<text x="0" y="118" class="label">Allocated materials</text><rect x="300" y="99" width="700" height="24" rx="4" class="track"/><rect x="300" y="99" width="52" height="24" rx="4" class="gold"/><text x="1025" y="119" class="value">5.5</text>
+<text x="0" y="166" class="label">Control + cooling</text><rect x="300" y="147" width="700" height="24" rx="4" class="track"/><rect x="300" y="147" width="35" height="24" rx="4" class="bar"/><text x="1025" y="167" class="value">3.7</text>
+<text x="0" y="214" class="label">Maintenance freight</text><rect x="300" y="195" width="700" height="24" rx="4" class="track"/><rect x="300" y="195" width="6" height="24" rx="3" class="gold"/><text x="1025" y="215" class="value">0.3</text>
+<text x="0" y="262" class="label">Allocated standby</text><rect x="300" y="243" width="700" height="24" rx="4" class="track"/><rect x="300" y="243" width="4" height="24" rx="2" class="bar"/><text x="1025" y="263" class="value">0.2</text>
+</g>
+<text x="60" y="655" class="note">The red fire-guard is the largest single modeled flow.</text>
+<text x="60" y="690" class="small">Values are the rounded contributions reported by the approved episode; the baseline lock is 120.28 kg CO₂e.</text>
+</svg>
