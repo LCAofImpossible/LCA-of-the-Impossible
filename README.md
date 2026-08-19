@@ -1110,3 +1110,35 @@ Phase 6 canonical files:
 - [ ] Phase 6 remains usable on mobile and does not alter catalogue-cover rules.
 
 <!-- PHASE6-RULES:END -->
+
+---
+
+<!-- EPIC-PASSPORT-RULES:START -->
+
+## 30. Epic Model Passport presentation — mandatory
+
+The canonical Model Passport presentation is now the **Epic Passport**. This rule extends Section 29 without changing its data-governance constraints.
+
+Every published episode must expose three Passport actions:
+
+1. `View epic passport →` — opens the full-screen technical dossier;
+2. `Print / Save as PDF` — uses the dedicated A4 print layout defined in `assets/phase6.css`;
+3. `Raw text ↓` — retained only as a secondary portability/accessibility export.
+
+The Epic Passport uses the registered episode cover and the existing registry fields only. Its visual language is dark technical/blueprint with cyan accents, restrained gold, archive-record identifiers, evidence blocks and a traceability seal. It must feel epic and collectible without weakening methodological readability.
+
+No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement, formal data-quality rating or substitute for the approved episode/PDF.
+
+The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` is responsible for propagating the current versioned Phase 6 assets so browser caching cannot leave older Passport behaviour active after an upgrade.
+
+### Epic Passport QA
+
+- [ ] All episode pages reference the current versioned Phase 6 assets.
+- [ ] Full-screen Passport includes registered cover, episode number/title/category/LCA lens and headline result.
+- [ ] Reporting basis, hotspot and Evidence Profile remain visible.
+- [ ] Evidence basis and main modelling uncertainty remain visible.
+- [ ] `Print / Save as PDF` uses the dedicated A4 print stylesheet.
+- [ ] `Raw text` is secondary to the visual Passport.
+- [ ] Mobile Passport remains readable with no unintended page overflow.
+
+<!-- EPIC-PASSPORT-RULES:END -->
