@@ -1060,7 +1060,7 @@ The passport may display only fields already present in `episodes.json`:
 - Evidence basis;
 - Main modelling uncertainty.
 
-The passport must explicitly state that it introduces no additional assumptions. It must not fabricate system boundaries, factor lists, allocation rules or detailed assumptions that are not structured in the registry. Readers are directed to the episode inventory and approved PDF for the full model.
+The passport must explicitly state that it introduces no additional assumptions. It must not fabricate system boundaries, factor lists, allocation rules or detailed assumptions that are not structured in the registry. Readers are directed to the episode inventory and registered source/model notes for the full public interpretation.
 
 The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.
 
