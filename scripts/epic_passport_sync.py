@@ -70,6 +70,18 @@ def remove_registry_pdf_fields(check: bool, changed: list[Path]) -> None:
 def update_readme(check: bool, changed: list[Path]) -> None:
     path = ROOT / "README.md"
     text = path.read_text(encoding="utf-8")
+
+    # Section 30 is canonical, but keep the older Phase 6 wording aligned so
+    # the preceding synchronization step cannot reintroduce retired exports.
+    text = text.replace(
+        "A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.",
+        "The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download."
+    )
+    text = text.replace(
+        "- [ ] Downloaded passport text contains the canonical episode URL and the interpretation disclaimer.\n",
+        "- [ ] Printed/saved Passport retains the canonical episode URL and the interpretation disclaimer.\n"
+    )
+
     block = f'''{START}
 
 ## 30. Epic Model Passport presentation — mandatory
