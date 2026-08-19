@@ -33,27 +33,37 @@ def check_registry_basis() -> None:
     data = json.loads(read(ROOT / "episodes.json") or "{}")
     for episode in data.get("episodes", []):
         number = episode.get("number")
-        if not episode.get("functionalUnit"):
-            fail(f"Episode #{number}: Model Passport requires functionalUnit")
+        for key in ["title", "cover", "categoryLabel", "functionalUnit", "result", "lcaLabel", "hotspot"]:
+            if not episode.get(key):
+                fail(f"Episode #{number}: Epic Model Passport requires {key}")
         evidence = episode.get("evidence") or {}
         for key in ["confidence", "proxyDependence", "assumptionSensitivity", "basis", "uncertainty"]:
             if not evidence.get(key):
-                fail(f"Episode #{number}: Model Passport requires evidence.{key}")
+                fail(f"Episode #{number}: Epic Model Passport requires evidence.{key}")
 
 
 def check_phase6_js() -> None:
     text = read(ROOT / "assets/phase6.js")
-    for token in [
-        "MODEL PASSPORT", "functionalUnit", "result", "lcaLabel", "hotspot",
+    required = [
+        "MODEL PASSPORT", "View epic passport", "Print / Save as PDF", "Raw text",
+        "passport-sheet", "passport-overlay", "window.print", "episode.cover",
+        "functionalUnit", "result", "lcaLabel", "hotspot", "categoryLabel",
         "proxyDependence", "assumptionSensitivity", "basis", "uncertainty",
-        "Download model passport", "approved PDF", "MutationObserver",
-    ]:
+        "approved PDF", "MutationObserver",
+    ]
+    for token in required:
         if token not in text:
             fail(f"assets/phase6.js: required implementation token missing: {token}")
-    forbidden_claims = ["systemBoundary:", "factorList:", "allocationRule:"]
-    for token in forbidden_claims:
+    for token in ["systemBoundary:", "factorList:", "allocationRule:"]:
         if token in text:
             fail(f"assets/phase6.js: unregistered fabricated field detected: {token}")
+
+
+def check_phase6_css() -> None:
+    text = read(ROOT / "assets/phase6.css")
+    for token in [".passport-sheet", ".passport-overlay", ".passport-seal", "@media print", "A4 portrait", "print-color-adjust"]:
+        if token not in text:
+            fail(f"assets/phase6.css: epic/print style missing: {token}")
 
 
 def check_explore() -> None:
@@ -81,6 +91,7 @@ def main() -> int:
     check_episode_assets()
     check_registry_basis()
     check_phase6_js()
+    check_phase6_css()
     check_explore()
     check_method()
 
@@ -89,7 +100,7 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"\nPhase 6 QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
-    print("Phase 6 QA passed.")
+    print("Phase 6 Epic Model Passport QA passed.")
     return 0
 
 
