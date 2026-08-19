@@ -2,11 +2,12 @@
 from __future__ import annotations
 
 import argparse
+import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSET_VERSION = "20260819-epic-passport1"
+ASSET_VERSION = "20260819-epic-passport2"
 START = "<!-- EPIC-PASSPORT-RULES:START -->"
 END = "<!-- EPIC-PASSPORT-RULES:END -->"
 
@@ -35,6 +36,37 @@ def normalize_assets(path: Path, prefix: str, check: bool, changed: list[Path]) 
     write_if_changed(path, updated, check, changed)
 
 
+def remove_public_pdf_download(path: Path, check: bool, changed: list[Path]) -> None:
+    text = path.read_text(encoding="utf-8")
+    updated = re.sub(
+        r'\s*<div\s+class="cta-row\s+episode-pdf-action-static"[^>]*>.*?</div>',
+        '', text, flags=re.S,
+    )
+    updated = re.sub(
+        r'\s*<!--\s*If an approved PDF is published, add the standardized static episode-pdf-action-static CTA after the metric\.\s*-->',
+        '', updated,
+    )
+    updated = re.sub(
+        r'\s*<a\b[^>]*href="[^\"]*assets/pdf/episodes/[^\"]+\.pdf"[^>]*>.*?</a>',
+        '', updated, flags=re.S | re.I,
+    )
+    write_if_changed(path, updated, check, changed)
+
+
+def remove_registry_pdf_fields(check: bool, changed: list[Path]) -> None:
+    path = ROOT / "episodes.json"
+    data = json.loads(path.read_text(encoding="utf-8"))
+    modified = False
+    for episode in data.get("episodes", []):
+        if "pdf" in episode:
+            del episode["pdf"]
+            modified = True
+    if not modified:
+        return
+    content = json.dumps(data, ensure_ascii=False, separators=(",", ":"))
+    write_if_changed(path, content, check, changed)
+
+
 def update_readme(check: bool, changed: list[Path]) -> None:
     path = ROOT / "README.md"
     text = path.read_text(encoding="utf-8")
@@ -42,19 +74,20 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 30. Epic Model Passport presentation — mandatory
 
-The canonical Model Passport presentation is now the **Epic Passport**. This rule extends Section 29 without changing its data-governance constraints.
+The canonical Model Passport presentation is the **Epic Passport**. This rule extends Section 29 without changing its data-governance constraints.
 
-Every published episode must expose three Passport actions:
+Every published episode exposes only two Passport actions:
 
 1. `View epic passport →` — opens the full-screen technical dossier;
-2. `Print / Save as PDF` — uses the dedicated A4 print layout defined in `assets/phase6.css`;
-3. `Raw text ↓` — retained only as a secondary portability/accessibility export.
+2. `Print / Save as PDF` — uses the dedicated A4 print layout defined in `assets/phase6.css`.
+
+The former raw-text export is retired. The original episode PDF is also no longer a public website download: episode pages, the episode template and `episodes.json` must not expose or link a source PDF. Source PDF artefacts may remain in the repository as editorial/technical archive material, but they are not part of the public website navigation or registry contract.
 
 The Epic Passport uses the registered episode cover and the existing registry fields only. Its visual language is dark technical/blueprint with cyan accents, restrained gold, archive-record identifiers, evidence blocks and a traceability seal. It must feel epic and collectible without weakening methodological readability.
 
-No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement, formal data-quality rating or substitute for the approved episode/PDF.
+No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement or formal data-quality rating.
 
-The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` is responsible for propagating the current versioned Phase 6 assets so browser caching cannot leave older Passport behaviour active after an upgrade.
+The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry.
 
 ### Epic Passport QA
 
@@ -63,7 +96,9 @@ The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies 
 - [ ] Reporting basis, hotspot and Evidence Profile remain visible.
 - [ ] Evidence basis and main modelling uncertainty remain visible.
 - [ ] `Print / Save as PDF` uses the dedicated A4 print stylesheet.
-- [ ] `Raw text` is secondary to the visual Passport.
+- [ ] No raw-text Passport export is exposed.
+- [ ] No episode page or episode template exposes a source-PDF download link.
+- [ ] `episodes.json` contains no public `pdf` field.
 - [ ] Mobile Passport remains readable with no unintended page overflow.
 
 {END}'''
@@ -83,8 +118,11 @@ def main() -> int:
 
     for path in sorted((ROOT / "episodes").glob("*.html")):
         normalize_assets(path, "../", args.check, changed)
+        remove_public_pdf_download(path, args.check, changed)
     for name in ["explore.html", "method.html"]:
         normalize_assets(ROOT / name, "", args.check, changed)
+
+    remove_registry_pdf_fields(args.check, changed)
     update_readme(args.check, changed)
 
     if changed:
