@@ -7,7 +7,8 @@ import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ASSET_VERSION = "20260819-epic-passport2"
+ASSET_VERSION = "20260819-epic-passport3"
+CLEANUP_VERSION = "20260819-passport-cleanup1"
 START = "<!-- EPIC-PASSPORT-RULES:START -->"
 END = "<!-- EPIC-PASSPORT-RULES:END -->"
 
@@ -36,6 +37,20 @@ def normalize_assets(path: Path, prefix: str, check: bool, changed: list[Path]) 
     write_if_changed(path, updated, check, changed)
 
 
+def ensure_cleanup_asset(path: Path, prefix: str, check: bool, changed: list[Path]) -> None:
+    text = path.read_text(encoding="utf-8")
+    cleanup = f'{prefix}assets/passport-cleanup.js?v={CLEANUP_VERSION}'
+    pattern = r'<script\s+src="[^\"]*assets/passport-cleanup\.js(?:\?v=[^\"]*)?"></script>'
+    if re.search(pattern, text):
+        updated = re.sub(pattern, f'<script src="{cleanup}"></script>', text)
+    else:
+        marker = text.rfind('</body>')
+        if marker == -1:
+            raise RuntimeError(f"Missing </body> in {path}")
+        updated = text[:marker] + f'<script src="{cleanup}"></script>\n' + text[marker:]
+    write_if_changed(path, updated, check, changed)
+
+
 def remove_public_pdf_download(path: Path, check: bool, changed: list[Path]) -> None:
     text = path.read_text(encoding="utf-8")
     updated = re.sub(
@@ -47,7 +62,7 @@ def remove_public_pdf_download(path: Path, check: bool, changed: list[Path]) -> 
         '', updated,
     )
     updated = re.sub(
-        r'\s*<a\b[^>]*href="[^\"]*assets/pdf/episodes/[^\"]+\.pdf"[^>]*>.*?</a>',
+        r'\s*<a\b[^>]*href="[^\"]*assets/pdf/episodes/[^\"]+\.pdf(?:\?[^\"]*)?"[^>]*>.*?</a>',
         '', updated, flags=re.S | re.I,
     )
     write_if_changed(path, updated, check, changed)
@@ -71,8 +86,6 @@ def update_readme(check: bool, changed: list[Path]) -> None:
     path = ROOT / "README.md"
     text = path.read_text(encoding="utf-8")
 
-    # Section 30 is canonical, but keep the older Phase 6 wording aligned so
-    # the preceding synchronization step cannot reintroduce retired exports.
     text = text.replace(
         "Readers are directed to the episode inventory and approved PDF for the full model.",
         "Readers are directed to the episode inventory and registered source/model notes for the full public interpretation."
@@ -103,7 +116,7 @@ The Epic Passport uses the registered episode cover and the existing registry fi
 
 No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement or formal data-quality rating.
 
-The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry.
+The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry. `assets/passport-cleanup.js` is a defensive runtime safeguard: if stale or legacy markup injects a source-PDF CTA or raw-text control, it removes it from the rendered episode page.
 
 ### Epic Passport QA
 
@@ -115,6 +128,7 @@ The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies 
 - [ ] No raw-text Passport export is exposed.
 - [ ] No episode page or episode template exposes a source-PDF download link.
 - [ ] `episodes.json` contains no public `pdf` field.
+- [ ] Every episode loads `assets/passport-cleanup.js` as a defensive safeguard against stale/legacy export controls.
 - [ ] Mobile Passport remains readable with no unintended page overflow.
 
 {END}'''
@@ -135,6 +149,7 @@ def main() -> int:
     for path in sorted((ROOT / "episodes").glob("*.html")):
         normalize_assets(path, "../", args.check, changed)
         remove_public_pdf_download(path, args.check, changed)
+        ensure_cleanup_asset(path, "../", args.check, changed)
     for name in ["explore.html", "method.html"]:
         normalize_assets(ROOT / name, "", args.check, changed)
 
