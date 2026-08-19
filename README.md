@@ -641,19 +641,19 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html` and every published episode page:
+Required on `index.html`, `archive.html`, `method.html` and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
 - `robots` set to `index,follow,max-image-preview:large`;
 - Open Graph metadata: `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, `og:image`, `og:image:alt`, `og:locale`;
 - Twitter/X card metadata using `summary_large_image`, with title, description, image and image alt text;
-- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive and `Article` for episode pages;
+- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive, `WebPage` for the Method page and `Article` for episode pages;
 - shared favicon and web manifest links.
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -940,3 +940,98 @@ Required:
 - [ ] Desktop and mobile rendering show no unintended overflow or clipped content.
 
 <!-- METHOD-RULES:END -->
+
+---
+
+<!-- PHASE5-RULES:START -->
+
+## 28. Phase 5 — global navigation, Sources & Data, About and LCA Glossary — mandatory
+
+Phase 5 turns the website from an episode archive into a self-explaining editorial and technical project.
+
+### 28.1 Canonical global navigation
+
+Every public page and every episode page uses the same primary navigation:
+
+`Episodes · Explore · Method · About`
+
+`Explore` contains:
+
+- `Collections`;
+- `Compare`;
+- `Impact map`;
+- `Sources & data`;
+- `Glossary`.
+
+The brand remains the Home link. Navigation must be keyboard-accessible, responsive and valid without a framework. `scripts/phase5_sync.py` normalizes this header across root pages and all published episode HTML so older pages cannot retain a divergent menu.
+
+### 28.2 Sources & Data
+
+`sources.html` is the canonical public data-policy page. It explains source provenance, emission-factor selection, proxies and versioning without inventing episode-specific source lists.
+
+Canonical hierarchy:
+
+`Direct evidence → Engineering reconstruction → Representative data → Declared proxy`
+
+Canonical emission-factor preference:
+
+`Specific → Representative → Proxy`
+
+Where UK Government / DEFRA factors are used, distinctions such as direct emissions, WTT, T&D, outside-of-scopes and biogenic treatment must remain separate when relevant. The page describes selection logic; it never overrides the factor choices in an approved episode.
+
+Published episodes are not silently recalculated when a newer dataset is released. A methodological or numerical revision must be explicit and traceable.
+
+### 28.3 About
+
+`about.html` explains why the project exists, its independent status and its limits. It must make clear that:
+
+- impossible subjects are used to make LCA reasoning visible and memorable;
+- the work is analytical reconstruction, not certification of fictional products;
+- Evidence Profile indicators are not formal ISO data-quality ratings or verification statements;
+- unlike functional units must not be turned into better/worse environmental rankings;
+- storytelling supports the analysis and never replaces it.
+
+### 28.4 LCA Glossary
+
+`glossary.html` is a searchable plain-language glossary of terminology actually used by the project. It must retain precise meanings while remaining readable to non-specialists.
+
+The glossary is explanatory, not normative. It does not replace ISO standards, GHG accounting standards, official dataset documentation or programme rules.
+
+### 28.5 Homepage project infrastructure
+
+The homepage includes a compact `PROJECT INFRASTRUCTURE` block linking to:
+
+- Method;
+- Sources & Data;
+- LCA Glossary;
+- About.
+
+This block is text-only and must not compete visually with Latest Case or Recent Cases.
+
+### 28.6 Canonical files and automation
+
+Phase 5 canonical files:
+
+- `sources.html`;
+- `about.html`;
+- `glossary.html`;
+- `assets/editorial.css`;
+- `scripts/phase5_sync.py`;
+- `scripts/phase5_qa.py`.
+
+`SEO Sync` must run `scripts/phase5_sync.py` after Phase 4 synchronization. `Site QA` must run the same Phase 5 synchronization in the QA workspace and then execute `scripts/phase5_qa.py`.
+
+### Phase 5 QA
+
+- [ ] Every public root page uses the canonical global navigation.
+- [ ] Every published episode page uses the canonical global navigation after synchronization.
+- [ ] `Explore` links to Collections, Compare, Impact map, Sources & Data and Glossary.
+- [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
+- [ ] All three pages contain complete static canonical/social metadata.
+- [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.
+- [ ] Glossary contains at least 20 meaningful project terms and remains usable without the search enhancement.
+- [ ] Homepage exposes the four Project Infrastructure links.
+- [ ] `method.html`, `sources.html`, `about.html` and `glossary.html` each appear exactly once in `sitemap.xml`.
+- [ ] Phase 5 pages load `assets/editorial.css` and have no broken local references.
+
+<!-- PHASE5-RULES:END -->
