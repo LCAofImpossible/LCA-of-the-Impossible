@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Baba Yaga's Hut hotspot breakdown</title><desc id="desc">Ranked approved contributions show metal hardware at 46.1 percent and wood at 34.7 percent of the 3.73 tonne carbon dioxide equivalent baseline.</desc>
+<rect width="1200" height="760" fill="#071019"/>
+<g font-family="Inter,Arial,sans-serif">
+<text x="60" y="70" fill="#6de7ff" font-size="22" letter-spacing="3">HOTSPOT BREAKDOWN · EPISODE #53</text>
+<text x="60" y="116" fill="#eef7fb" font-size="38" font-weight="700">THE LEGS DOMINATE.</text>
+<text x="60" y="150" fill="#9ab0bc" font-size="19">Approved ranked baseline contributions · 3.73 t CO₂e per reconstructed hut</text>
+<rect x="60" y="190" width="1080" height="78" rx="12" fill="#112232" stroke="#d0a563" stroke-width="2"/>
+<text x="88" y="223" fill="#d0a563" font-size="17" letter-spacing="2">BASELINE</text>
+<text x="88" y="252" fill="#eef7fb" font-size="27" font-weight="700">3.73 t CO₂e</text>
+<g font-size="19">
+<text x="78" y="334" fill="#9ab0bc">01</text>
+<text x="125" y="334" fill="#eef7fb" font-weight="600">Metal hardware / leg bracing</text>
+<rect x="500" y="314" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="314" width="516.3" height="24" rx="12" fill="#68c995"/>
+<text x="1080" y="334" fill="#eef7fb" text-anchor="end" font-weight="700">46.1% · 1.72 t CO₂e</text>
+<text x="78" y="392" fill="#9ab0bc">02</text>
+<text x="125" y="392" fill="#eef7fb" font-weight="600">Wood logs, roof shingles and floor</text>
+<rect x="500" y="372" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="372" width="388.6" height="24" rx="12" fill="#6de7ff"/>
+<text x="1080" y="392" fill="#eef7fb" text-anchor="end" font-weight="700">34.7% · 1.29 t CO₂e</text>
+<text x="78" y="450" fill="#9ab0bc">03</text>
+<text x="125" y="450" fill="#eef7fb" font-weight="600">Workshop electricity</text>
+<rect x="500" y="430" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="430" width="47.0" height="24" rx="12" fill="#d0a563"/>
+<text x="1080" y="450" fill="#eef7fb" text-anchor="end" font-weight="700">4.2% · 0.16 t CO₂e</text>
+<text x="78" y="508" fill="#9ab0bc">04</text>
+<text x="125" y="508" fill="#eef7fb" font-weight="600">Brick chimney and hearth</text>
+<rect x="500" y="488" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="488" width="40.3" height="24" rx="12" fill="#c98765"/>
+<text x="1080" y="508" fill="#eef7fb" text-anchor="end" font-weight="700">3.6% · 0.13 t CO₂e</text>
+<text x="78" y="566" fill="#9ab0bc">05</text>
+<text x="125" y="566" fill="#eef7fb" font-weight="600">Bindings, seals and straps</text>
+<rect x="500" y="546" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="546" width="28.0" height="24" rx="12" fill="#b8a06c"/>
+<text x="1080" y="566" fill="#eef7fb" text-anchor="end" font-weight="700">2.5% · 0.10 t CO₂e</text>
+<text x="78" y="624" fill="#9ab0bc">06</text>
+<text x="125" y="624" fill="#eef7fb" font-weight="600">Small shuttered glass window</text>
+<rect x="500" y="604" width="560" height="24" rx="12" fill="#0d1b27" stroke="#234557"/>
+<rect x="500" y="604" width="14.6" height="24" rx="12" fill="#73c9a1"/>
+<text x="1080" y="624" fill="#eef7fb" text-anchor="end" font-weight="700">1.3% · 0.05 t CO₂e</text></g>
+<line x1="60" y1="665" x2="1140" y2="665" stroke="#234557"/>
+<text x="60" y="700" fill="#9ab0bc" font-size="17">Freight and installation diesel are included in the 3.73 t baseline but the approved ranked chart does not assign them separate percentages.</text>
+<text x="60" y="730" fill="#d0a563" font-size="18" font-weight="700">Interpretation: the smaller metal mass outweighs the visible timber shell because its emission factor is much higher.</text>
+</g></svg>
