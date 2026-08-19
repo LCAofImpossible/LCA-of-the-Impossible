@@ -31,8 +31,8 @@ jobs:
       - name: Install QA and browser dependencies
         run: python -m pip install --disable-pip-version-check pillow selenium
 
-      - name: Run deterministic synchronization and full repository QA
-        id: repo_qa
+      - name: Check deterministic synchronization
+        id: sync_clean
         continue-on-error: true
         run: |
           python scripts/apply_seo.py
@@ -41,13 +41,39 @@ jobs:
           python scripts/phase5_sync.py
           python scripts/phase6_sync.py
           python scripts/epic_passport_sync.py
+          echo 'Changed files after synchronization:'
+          git diff --name-only
           git diff --exit-code
-          python scripts/site_qa.py
-          python scripts/seo_qa.py
-          python scripts/feature_qa.py
-          python scripts/engagement_qa.py
-          python scripts/phase5_qa.py
-          python scripts/phase6_qa.py
+
+      - name: Structural site QA
+        id: site_qa
+        continue-on-error: true
+        run: python scripts/site_qa.py
+
+      - name: SEO and social QA
+        id: seo_qa
+        continue-on-error: true
+        run: python scripts/seo_qa.py
+
+      - name: Phase 3 feature QA
+        id: feature_qa
+        continue-on-error: true
+        run: python scripts/feature_qa.py
+
+      - name: Phase 4 engagement QA
+        id: engagement_qa
+        continue-on-error: true
+        run: python scripts/engagement_qa.py
+
+      - name: Phase 5 editorial QA
+        id: phase5_qa
+        continue-on-error: true
+        run: python scripts/phase5_qa.py
+
+      - name: Phase 6 Passport QA
+        id: phase6_qa
+        continue-on-error: true
+        run: python scripts/phase6_qa.py
 
       - name: Wait for GitHub Pages and validate live static assets
         id: live_static
@@ -121,8 +147,35 @@ jobs:
               raise SystemExit(f'Live static validation failed after polling: {last}')
           PY
 
-      - name: Validate live rendered UX and Passport-only controls
-        id: live_ux
+      - name: Validate live discovery surfaces
+        id: live_discovery
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          from selenium import webdriver
+          from selenium.webdriver.common.by import By
+          from selenium.webdriver.support.ui import WebDriverWait
+
+          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          opts = webdriver.ChromeOptions()
+          opts.add_argument('--headless=new')
+          opts.add_argument('--no-sandbox')
+          opts.add_argument('--disable-dev-shm-usage')
+          opts.add_argument('--window-size=1440,1000')
+          driver = webdriver.Chrome(options=opts)
+          wait = WebDriverWait(driver, 30)
+          try:
+              for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
+                  driver.get(base + path + '?qa=ep51')
+                  wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
+                  wait.until(lambda d: "Pandora's Jar" in d.find_element(By.TAG_NAME, 'body').text)
+                  print(path or 'index.html', 'contains Pandora\'s Jar')
+          finally:
+              driver.quit()
+          PY
+
+      - name: Validate live episode and Passport-only controls
+        id: live_episode
         continue-on-error: true
         run: |
           python - <<'PY'
@@ -140,24 +193,22 @@ jobs:
           driver = webdriver.Chrome(options=opts)
           wait = WebDriverWait(driver, 30)
           try:
-              for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
-                  driver.get(base + path + '?qa=ep51')
-                  wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
-                  wait.until(lambda d: "Pandora's Jar" in d.find_element(By.TAG_NAME, 'body').text)
-
               driver.get(base + 'episodes/pandoras-jar.html?qa=ep51')
               wait.until(EC.presence_of_element_located((By.ID, 'evidence')))
               wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
+              wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, '.related-section')))
               body_text = driver.find_element(By.TAG_NAME, 'body').text
               assert 'EVIDENCE PROFILE' in body_text
-              assert 'RELATED CASES' in body_text.upper()
+              assert 'Related cases' in body_text
               assert 'Raw text' not in body_text
               assert 'Download episode PDF' not in body_text
 
+              wait.until(lambda d: len([el for el in d.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *') if el.is_displayed()]) == 2)
               actions = [el.text.strip() for el in driver.find_elements(By.CSS_SELECTOR, '#model-passport .passport-actions > *') if el.is_displayed()]
               assert actions == ['View epic passport →', 'Print / Save as PDF'], actions
 
               cover = driver.find_element(By.CSS_SELECTOR, '#model-passport .passport-preview-cover img')
+              wait.until(lambda d: d.execute_script('return arguments[0].complete && arguments[0].naturalWidth > 0', cover))
               dims = driver.execute_script('return [arguments[0].naturalWidth, arguments[0].naturalHeight]', cover)
               assert dims == [1122, 1402], dims
 
@@ -169,14 +220,36 @@ jobs:
               assert 'CANONICAL RECORD' in overlay_text
               assert 'Raw text' not in overlay_text
               assert 'Download episode PDF' not in overlay_text
+              print('Live episode and Passport validation passed.')
+          finally:
+              driver.quit()
+          PY
 
-              driver.find_element(By.CSS_SELECTOR, '.passport-close').click()
-              driver.set_window_size(390, 844)
+      - name: Validate live mobile rendering
+        id: live_mobile
+        continue-on-error: true
+        run: |
+          python - <<'PY'
+          from selenium import webdriver
+          from selenium.webdriver.common.by import By
+          from selenium.webdriver.support.ui import WebDriverWait
+          from selenium.webdriver.support import expected_conditions as EC
+
+          base = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          opts = webdriver.ChromeOptions()
+          opts.add_argument('--headless=new')
+          opts.add_argument('--no-sandbox')
+          opts.add_argument('--disable-dev-shm-usage')
+          opts.add_argument('--window-size=390,844')
+          driver = webdriver.Chrome(options=opts)
+          wait = WebDriverWait(driver, 30)
+          try:
               driver.get(base + 'episodes/pandoras-jar.html?qa=mobile')
               wait.until(EC.presence_of_element_located((By.ID, 'model-passport')))
               overflow = driver.execute_script('return document.documentElement.scrollWidth - document.documentElement.clientWidth')
               assert overflow <= 2, overflow
-              print('Live rendered UX validation passed.')
+              assert driver.find_element(By.TAG_NAME, 'body').text.find('Raw text') == -1
+              print('Live mobile validation passed; overflow=', overflow)
           finally:
               driver.quit()
           PY
@@ -184,14 +257,30 @@ jobs:
       - name: Record verification outcome
         if: always()
         env:
-          REPO_STATUS: ${{ steps.repo_qa.outcome }}
-          STATIC_STATUS: ${{ steps.live_static.outcome }}
-          UX_STATUS: ${{ steps.live_ux.outcome }}
+          SYNC: ${{ steps.sync_clean.outcome }}
+          SITE: ${{ steps.site_qa.outcome }}
+          SEO: ${{ steps.seo_qa.outcome }}
+          F3: ${{ steps.feature_qa.outcome }}
+          F4: ${{ steps.engagement_qa.outcome }}
+          F5: ${{ steps.phase5_qa.outcome }}
+          F6: ${{ steps.phase6_qa.outcome }}
+          STATIC: ${{ steps.live_static.outcome }}
+          DISC: ${{ steps.live_discovery.outcome }}
+          EP: ${{ steps.live_episode.outcome }}
+          MOB: ${{ steps.live_mobile.outcome }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "QA EP51: repo=${REPO_STATUS} static=${STATIC_STATUS} ux=${UX_STATUS}"
+          git commit --allow-empty -m "QA2 EP51: sync=${SYNC} site=${SITE} seo=${SEO} f3=${F3} f4=${F4} f5=${F5} f6=${F6} static=${STATIC} disc=${DISC} ep=${EP} mob=${MOB}"
           git push origin HEAD:main
-          test "$REPO_STATUS" = success
-          test "$STATIC_STATUS" = success
-          test "$UX_STATUS" = success
+          test "$SYNC" = success
+          test "$SITE" = success
+          test "$SEO" = success
+          test "$F3" = success
+          test "$F4" = success
+          test "$F5" = success
+          test "$F6" = success
+          test "$STATIC" = success
+          test "$DISC" = success
+          test "$EP" = success
+          test "$MOB" = success
