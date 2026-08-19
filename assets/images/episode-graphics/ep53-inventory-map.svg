@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Baba Yaga's Hut inventory map</title><desc id="desc">Physical materials, workshop energy, freight and installation flow into one reconstructed hut; supernatural functions are excluded.</desc>
+<rect width="1200" height="820" fill="#071019"/>
+<g font-family="Inter,Arial,sans-serif">
+<text x="60" y="70" fill="#6de7ff" font-size="22" letter-spacing="3">INVENTORY MAP · EPISODE #53</text>
+<text x="60" y="116" fill="#eef7fb" font-size="38" font-weight="700">ONE HUT. EIGHT PHYSICAL FLOWS.</text>
+<text x="60" y="150" fill="#9ab0bc" font-size="19">Cradle-to-assembly reconstruction · reference flow: 1 reconstructed cabin</text>
+<g stroke="#234557" stroke-width="2" fill="#0d1b27">
+<rect x="60" y="205" width="285" height="102" rx="12"/><rect x="60" y="327" width="285" height="102" rx="12"/>
+<rect x="60" y="449" width="285" height="102" rx="12"/><rect x="60" y="571" width="285" height="102" rx="12"/>
+<rect x="855" y="205" width="285" height="102" rx="12"/><rect x="855" y="327" width="285" height="102" rx="12"/>
+<rect x="855" y="449" width="285" height="102" rx="12"/><rect x="855" y="571" width="285" height="102" rx="12"/>
+</g>
+<g fill="#eef7fb" font-size="20" font-weight="600">
+<text x="85" y="242">TIMBER</text><text x="85" y="364">METAL BRACING</text><text x="85" y="486">CHIMNEY / HEARTH</text><text x="85" y="608">GLASS + BINDINGS</text>
+<text x="880" y="242">WORKSHOP ELECTRICITY</text><text x="880" y="364">DELIVERY FREIGHT</text><text x="880" y="486">INSTALLATION DIESEL</text><text x="880" y="608">EXPLICIT CUT-OFFS</text>
+</g>
+<g fill="#9ab0bc" font-size="18">
+<text x="85" y="276">4.80 t · 1.29 t CO₂e</text><text x="85" y="398">0.45 t · 1.72 t CO₂e</text>
+<text x="85" y="520">0.55 t · 0.13 t CO₂e</text><text x="85" y="642">0.035 t + 0.03 t</text>
+<text x="880" y="276">850 kWh · 0.16 t CO₂e</text><text x="880" y="398">879.75 t·km · ≈0.11 t CO₂e</text>
+<text x="880" y="520">55 l · ≈0.18 t CO₂e</text><text x="880" y="642">Magic · witch ops · visitor use · EoL</text>
+</g>
+<g stroke="#6de7ff" stroke-width="2.5" fill="none" opacity=".8">
+<path d="M345 256 H470"/><path d="M345 378 H470"/><path d="M345 500 H470"/><path d="M345 622 H470"/>
+<path d="M855 256 H730"/><path d="M855 378 H730"/><path d="M855 500 H730"/>
+</g>
+<g fill="#6de7ff">
+<path d="M470 256 l-12 -7 v14 z"/><path d="M470 378 l-12 -7 v14 z"/><path d="M470 500 l-12 -7 v14 z"/><path d="M470 622 l-12 -7 v14 z"/>
+<path d="M730 256 l12 -7 v14 z"/><path d="M730 378 l12 -7 v14 z"/><path d="M730 500 l12 -7 v14 z"/>
+</g>
+<rect x="470" y="250" width="260" height="350" rx="22" fill="#112232" stroke="#d0a563" stroke-width="2"/>
+<path d="M520 392 L600 325 L680 392 V510 H520 Z" fill="none" stroke="#c4f7ff" stroke-width="5"/>
+<path d="M548 510 C545 565 535 585 528 600 M652 510 C655 565 665 585 672 600" fill="none" stroke="#d0a563" stroke-width="8"/>
+<path d="M502 600 H548 M652 600 H698" stroke="#d0a563" stroke-width="7"/>
+<text x="600" y="292" text-anchor="middle" fill="#68c995" font-size="17" letter-spacing="2">OUTPUT</text>
+<text x="600" y="646" text-anchor="middle" fill="#eef7fb" font-size="25" font-weight="700">1 RECONSTRUCTED HUT</text>
+<text x="600" y="678" text-anchor="middle" fill="#d0a563" font-size="28" font-weight="700">3.73 t CO₂e</text>
+<line x1="60" y1="735" x2="1140" y2="735" stroke="#234557"/>
+<text x="60" y="778" fill="#9ab0bc" font-size="18">Boundary stops after assembly and commissioning. Magic is a narrative proxy, not a fuel.</text>
+</g></svg>
