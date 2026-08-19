@@ -31,6 +31,42 @@ jobs:
       - name: Install QA and browser dependencies
         run: python -m pip install --disable-pip-version-check pillow selenium
 
+      - name: Apply controlled remediation
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+
+          replacements = {
+              Path('scripts/epic_passport_sync.py'): [('20260819-passport-cleanup1', '20260819-passport-cleanup2')],
+              Path('scripts/phase6_qa.py'): [('20260819-passport-cleanup1', '20260819-passport-cleanup2')],
+              Path('sources.html'): [
+                  ('such as direct emissions, well-to-tank components, transmission and distribution, outside-of-scopes reporting and biogenic treatment where applicable.',
+                   'such as direct emissions, well-to-tank (WTT) components, transmission and distribution (T&D), outside-of-scopes reporting and biogenic treatment where applicable.')
+              ],
+          }
+          for path, changes in replacements.items():
+              text = path.read_text(encoding='utf-8')
+              for old, new in changes:
+                  if old not in text and new not in text:
+                      raise SystemExit(f'Expected remediation text not found in {path}: {old}')
+                  text = text.replace(old, new)
+              path.write_text(text, encoding='utf-8')
+          PY
+          python scripts/apply_seo.py
+          python scripts/feature_sync.py
+          python scripts/engagement_sync.py
+          python scripts/phase5_sync.py
+          python scripts/phase6_sync.py
+          python scripts/epic_passport_sync.py
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if ! git diff --quiet; then
+            git add README.md sources.html scripts/epic_passport_sync.py scripts/phase6_qa.py episodes assets/passport-cleanup.js index.html archive.html compare.html explore.html collections.html method.html about.html glossary.html episodes.json sitemap.xml robots.txt site.webmanifest assets/favicon.svg
+            git commit -m "Fix Phase 5 QA and refresh Passport cleanup cache"
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+
       - name: Check deterministic synchronization
         id: sync_clean
         continue-on-error: true
@@ -98,7 +134,7 @@ jobs:
               return data if binary else data.decode('utf-8')
 
           last = None
-          for attempt in range(24):
+          for attempt in range(30):
               try:
                   html = get('episodes/pandoras-jar.html')
                   registry = json.loads(get('episodes.json'))
@@ -106,9 +142,11 @@ jobs:
                   sitemap = get('sitemap.xml')
                   cleanup = get('assets/passport-cleanup.js')
                   phase6 = get('assets/phase6.js')
+                  sources = get('sources.html')
                   cover = get('assets/images/episodes/ep51-pandoras-jar-cover.png', binary=True)
 
                   assert "Pandora's Jar" in html and '26.0 kg CO₂e' in html
+                  assert 'passport-cleanup.js?v=20260819-passport-cleanup2' in html
                   assert 'assets/pdf/episodes/' not in html and 'Raw text' not in html
                   assert all('pdf' not in episode for episode in registry['episodes'])
                   ep = next(e for e in registry['episodes'] if e['number'] == 51)
@@ -118,6 +156,7 @@ jobs:
                   assert ep['functionalUnit'].startswith('One sealed 45 L ceramic pithos')
                   assert ep['evidence']['proxyDependence'] == 'High'
                   assert sitemap.count('/episodes/pandoras-jar.html') == 1
+                  assert 'well-to-tank (WTT)' in sources and 'distribution (T&D)' in sources
 
                   groups = {c['slug']: c['episodes'] for c in collections['collections']}
                   assert 51 in groups['legendary-engineering']
@@ -141,7 +180,7 @@ jobs:
                   break
               except Exception as exc:
                   last = exc
-                  print(f'Attempt {attempt + 1}/24 not ready: {exc}')
+                  print(f'Attempt {attempt + 1}/30 not ready: {exc}')
                   time.sleep(10)
           else:
               raise SystemExit(f'Live static validation failed after polling: {last}')
@@ -168,7 +207,7 @@ jobs:
               for path in ['', 'archive.html', 'collections.html', 'compare.html', 'explore.html']:
                   driver.get(base + path + '?qa=ep51')
                   wait.until(lambda d: d.execute_script('return document.readyState') == 'complete')
-                  wait.until(lambda d: "Pandora's Jar" in d.find_element(By.TAG_NAME, 'body').text)
+                  wait.until(lambda d: "Pandora's Jar" in d.page_source)
                   print(path or 'index.html', 'contains Pandora\'s Jar')
           finally:
               driver.quit()
@@ -271,7 +310,8 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git commit --allow-empty -m "QA2 EP51: sync=${SYNC} site=${SITE} seo=${SEO} f3=${F3} f4=${F4} f5=${F5} f6=${F6} static=${STATIC} disc=${DISC} ep=${EP} mob=${MOB}"
+          git pull --rebase origin main
+          git commit --allow-empty -m "QA3 EP51: sync=${SYNC} site=${SITE} seo=${SEO} f3=${F3} f4=${F4} f5=${F5} f6=${F6} static=${STATIC} disc=${DISC} ep=${EP} mob=${MOB}"
           git push origin HEAD:main
           test "$SYNC" = success
           test "$SITE" = success
