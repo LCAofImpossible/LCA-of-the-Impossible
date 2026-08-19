@@ -84,7 +84,7 @@ def check_sources() -> None:
     required = [
         "Direct evidence", "Engineering reconstruction", "Representative data", "Declared proxy",
         "Specific", "Representative", "Proxy", "UK Government GHG Conversion Factors",
-        "WTT", "T&amp;D", "Data-policy version 1.0",
+        "WTT", "T&D", "Data-policy version 1.0",
     ]
     for token in required:
         if token not in text:
@@ -93,11 +93,13 @@ def check_sources() -> None:
 
 def check_about() -> None:
     text = read(ROOT / "about.html")
-    required = ["independent", "not certification", "not a comparative claim", "Life Cycle Assessment"]
     lowered = text.lower()
+    required = ["independent", "not a verification claim", "not a comparative claim", "life cycle assessment"]
     for token in required:
-        if token.lower() not in lowered:
+        if token not in lowered:
             fail(f"about.html: required project-positioning concept missing: {token}")
+    if "certified" not in lowered and "verification" not in lowered:
+        fail("about.html: certification/verification limitation is not explicit")
 
 
 def check_glossary() -> None:
