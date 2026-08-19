@@ -1062,7 +1062,7 @@ The passport may display only fields already present in `episodes.json`:
 
 The passport must explicitly state that it introduces no additional assumptions. It must not fabricate system boundaries, factor lists, allocation rules or detailed assumptions that are not structured in the registry. Readers are directed to the episode inventory and approved PDF for the full model.
 
-A text download may be generated client-side from the same registered fields. The downloaded passport is a convenience summary, not a verification statement, formal data-quality rating or replacement for the approved episode.
+The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.
 
 ### 29.2 Richer Impact Map
 
@@ -1102,7 +1102,7 @@ Phase 6 canonical files:
 
 - [ ] Every published episode loads Phase 6 CSS and JavaScript after synchronization.
 - [ ] Model Passport fields are registry-derived only.
-- [ ] Downloaded passport text contains the canonical episode URL and the interpretation disclaimer.
+- [ ] Printed/saved Passport retains the canonical episode URL and the interpretation disclaimer.
 - [ ] No passport invents an unregistered system boundary, factor list or assumption set.
 - [ ] Impact Map retains the non-comparability warning and gains expandable technical context.
 - [ ] Method page displays `Methodology version 1.0` and `Updated August 2026`.
@@ -1117,19 +1117,20 @@ Phase 6 canonical files:
 
 ## 30. Epic Model Passport presentation — mandatory
 
-The canonical Model Passport presentation is now the **Epic Passport**. This rule extends Section 29 without changing its data-governance constraints.
+The canonical Model Passport presentation is the **Epic Passport**. This rule extends Section 29 without changing its data-governance constraints.
 
-Every published episode must expose three Passport actions:
+Every published episode exposes only two Passport actions:
 
 1. `View epic passport →` — opens the full-screen technical dossier;
-2. `Print / Save as PDF` — uses the dedicated A4 print layout defined in `assets/phase6.css`;
-3. `Raw text ↓` — retained only as a secondary portability/accessibility export.
+2. `Print / Save as PDF` — uses the dedicated A4 print layout defined in `assets/phase6.css`.
+
+The former raw-text export is retired. The original episode PDF is also no longer a public website download: episode pages, the episode template and `episodes.json` must not expose or link a source PDF. Source PDF artefacts may remain in the repository as editorial/technical archive material, but they are not part of the public website navigation or registry contract.
 
 The Epic Passport uses the registered episode cover and the existing registry fields only. Its visual language is dark technical/blueprint with cyan accents, restrained gold, archive-record identifiers, evidence blocks and a traceability seal. It must feel epic and collectible without weakening methodological readability.
 
-No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement, formal data-quality rating or substitute for the approved episode/PDF.
+No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement or formal data-quality rating.
 
-The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` is responsible for propagating the current versioned Phase 6 assets so browser caching cannot leave older Passport behaviour active after an upgrade.
+The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry.
 
 ### Epic Passport QA
 
@@ -1138,7 +1139,9 @@ The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies 
 - [ ] Reporting basis, hotspot and Evidence Profile remain visible.
 - [ ] Evidence basis and main modelling uncertainty remain visible.
 - [ ] `Print / Save as PDF` uses the dedicated A4 print stylesheet.
-- [ ] `Raw text` is secondary to the visual Passport.
+- [ ] No raw-text Passport export is exposed.
+- [ ] No episode page or episode template exposes a source-PDF download link.
+- [ ] `episodes.json` contains no public `pdf` field.
 - [ ] Mobile Passport remains readable with no unintended page overflow.
 
 <!-- EPIC-PASSPORT-RULES:END -->
