@@ -1,0 +1,97 @@
+#!/usr/bin/env python3
+from __future__ import annotations
+
+import json
+import sys
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parents[1]
+errors: list[str] = []
+
+
+def fail(message: str) -> None:
+    errors.append(message)
+
+
+def read(path: Path) -> str:
+    if not path.is_file():
+        fail(f"Missing file: {path.relative_to(ROOT)}")
+        return ""
+    return path.read_text(encoding="utf-8")
+
+
+def check_episode_assets() -> None:
+    for path in sorted((ROOT / "episodes").glob("*.html")):
+        text = read(path)
+        if "../assets/phase6.css" not in text:
+            fail(f"{path.relative_to(ROOT)}: Phase 6 CSS missing")
+        if "../assets/phase6.js" not in text:
+            fail(f"{path.relative_to(ROOT)}: Phase 6 JS missing")
+
+
+def check_registry_basis() -> None:
+    data = json.loads(read(ROOT / "episodes.json") or "{}")
+    for episode in data.get("episodes", []):
+        number = episode.get("number")
+        if not episode.get("functionalUnit"):
+            fail(f"Episode #{number}: Model Passport requires functionalUnit")
+        evidence = episode.get("evidence") or {}
+        for key in ["confidence", "proxyDependence", "assumptionSensitivity", "basis", "uncertainty"]:
+            if not evidence.get(key):
+                fail(f"Episode #{number}: Model Passport requires evidence.{key}")
+
+
+def check_phase6_js() -> None:
+    text = read(ROOT / "assets/phase6.js")
+    for token in [
+        "MODEL PASSPORT", "functionalUnit", "result", "lcaLabel", "hotspot",
+        "proxyDependence", "assumptionSensitivity", "basis", "uncertainty",
+        "Download model passport", "approved PDF", "MutationObserver",
+    ]:
+        if token not in text:
+            fail(f"assets/phase6.js: required implementation token missing: {token}")
+    forbidden_claims = ["systemBoundary:", "factorList:", "allocationRule:"]
+    for token in forbidden_claims:
+        if token in text:
+            fail(f"assets/phase6.js: unregistered fabricated field detected: {token}")
+
+
+def check_explore() -> None:
+    text = read(ROOT / "explore.html")
+    if "assets/phase6.css" not in text or "assets/phase6.js" not in text:
+        fail("explore.html: Phase 6 assets missing")
+    if "Do not read this as a ranking" not in text:
+        fail("explore.html: non-comparability warning missing")
+
+
+def check_method() -> None:
+    text = read(ROOT / "method.html")
+    for token in ["METHODOLOGY VERSION", "Methodology version 1.0", "Updated August 2026", "v1.0 · Aug 2026"]:
+        if token not in text:
+            fail(f"method.html: versioning token missing: {token}")
+    if "assets/phase6.css" not in text:
+        fail("method.html: Phase 6 CSS missing")
+
+
+def main() -> int:
+    for path in [ROOT / "assets/phase6.css", ROOT / "assets/phase6.js", ROOT / "scripts/phase6_sync.py"]:
+        if not path.is_file():
+            fail(f"Missing Phase 6 file: {path.relative_to(ROOT)}")
+
+    check_episode_assets()
+    check_registry_basis()
+    check_phase6_js()
+    check_explore()
+    check_method()
+
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        print(f"\nPhase 6 QA failed with {len(errors)} error(s).", file=sys.stderr)
+        return 1
+    print("Phase 6 QA passed.")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
