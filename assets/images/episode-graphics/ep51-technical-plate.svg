@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Pandora's Jar technical reconstruction</title>
+<desc id="desc">Technical plate for a sealed terracotta pithos 0.55 metres high and 0.42 metres in body diameter, with 45 litre capacity, 22 kilogram fired clay body and 1.2 kilogram lid and fittings.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.wire{fill:none;stroke:#6de7ff;stroke-width:2}
+.goldwire{fill:none;stroke:#d0a563;stroke-width:3}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.5;stroke-dasharray:7 6}
+.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}
+.label{fill:#eef7fb;font:700 23px Arial,sans-serif}.value{fill:#d0a563;font:700 29px Arial,sans-serif}
+.small{fill:#9ab0bc;font:19px Arial,sans-serif}.body{fill:#8f5d3b;stroke:#d0a563;stroke-width:3}.lid{fill:#47685d;stroke:#d0a563;stroke-width:3}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #51 · TECHNICAL PLATE</text>
+<text x="60" y="105" class="head">A sealed pithos, not a box.</text>
+
+<rect x="55" y="155" width="690" height="510" rx="18" class="panel"/>
+<path d="M315 305 C310 280 330 258 355 250 L445 250 C470 258 490 280 485 305 C475 355 490 470 455 555 C435 605 365 605 345 555 C310 470 325 355 315 305Z" class="body"/>
+<rect x="316" y="245" width="168" height="42" rx="18" class="lid"/>
+<path d="M374 244 C374 208 426 208 426 244" class="goldwire"/>
+<circle cx="400" cy="226" r="20" fill="none" stroke="#d0a563" stroke-width="4"/>
+<path d="M316 291 C350 305 450 305 484 291" class="wire"/>
+<line x1="255" y1="245" x2="255" y2="606" class="dim"/><line x1="238" y1="245" x2="272" y2="245" class="wire"/><line x1="238" y1="606" x2="272" y2="606" class="wire"/>
+<text x="230" y="430" text-anchor="middle" transform="rotate(-90 230 430)" class="value">0.55 m</text>
+<line x1="310" y1="625" x2="490" y2="625" class="dim"/><line x1="310" y1="610" x2="310" y2="640" class="wire"/><line x1="490" y1="610" x2="490" y2="640" class="wire"/>
+<text x="400" y="652" text-anchor="middle" class="value">0.42 m</text>
+<text x="86" y="205" class="small">Canonical subject: stout terracotta body + bronze-green sealed lid.</text>
+<text x="520" y="285" class="label">Capacity</text><text x="520" y="322" class="value">45 L</text>
+<text x="520" y="385" class="label">Fired clay body</text><text x="520" y="422" class="value">22.0 kg</text>
+<text x="520" y="485" class="label">Lid + fittings</text><text x="520" y="522" class="value">1.2 kg</text>
+<text x="520" y="585" class="label">Packed shipment</text><text x="520" y="622" class="value">50 kg</text>
+
+<g transform="translate(785 155)">
+<rect width="360" height="510" rx="18" class="panel"/>
+<text x="28" y="47" class="eyebrow">PROCESS BASIS</text>
+<text x="28" y="100" class="label">Kiln intensity</text><text x="28" y="138" class="value">1.28 kWh/kg</text>
+<text x="28" y="165" class="small">CORDIS DREAM benchmark</text>
+<line x1="28" y1="190" x2="332" y2="190" stroke="#234557" stroke-width="2"/>
+<text x="28" y="235" class="label">Kiln natural gas</text><text x="28" y="273" class="value">28.16 kWh</text>
+<text x="28" y="300" class="small">22 kg × 1.28</text>
+<line x1="28" y1="325" x2="332" y2="325" stroke="#234557" stroke-width="2"/>
+<text x="28" y="370" class="label">Road freight</text><text x="28" y="408" class="value">50.0 t·km</text>
+<text x="28" y="435" class="small">0.050 t × 1,000 km</text>
+<line x1="28" y1="460" x2="332" y2="460" stroke="#234557" stroke-width="2"/>
+<text x="28" y="500" class="small">Cut-off event: first opening.</text>
+</g>
+<text x="60" y="714" class="small">Process sequence: prepare clay → form and dry → fire in kiln → fit lid → seal and release.</text>
+</svg>

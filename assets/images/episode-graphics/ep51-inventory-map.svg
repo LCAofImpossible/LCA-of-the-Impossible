@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Pandora's Jar inventory map</title>
+<desc id="desc">Seven physical inventory flows feeding one sealed 45 litre pithos delivered and opened once, with non-physical contents explicitly outside the boundary.</desc>
+<defs>
+<style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#d0a563;stroke-width:3}
+.line{stroke:#6de7ff;stroke-width:3;fill:none}.goldline{stroke:#d0a563;stroke-width:3;fill:none}
+.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}
+.label{fill:#eef7fb;font:700 23px Arial,sans-serif}.value{fill:#c4f7ff;font:700 21px Arial,sans-serif}
+.small{fill:#9ab0bc;font:18px Arial,sans-serif}.gold{fill:#d0a563}
+</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+<marker id="arrowGold" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#d0a563"/></marker>
+</defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #51 · INVENTORY MAP</text>
+<text x="60" y="105" class="head">A physical container. A declared cut-off.</text>
+<text x="60" y="138" class="small">The model stops when the sealed vessel is opened.</text>
+
+<g transform="translate(55 195)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Fired terracotta</text><text x="24" y="64" class="value">22.0 kg</text><text x="24" y="84" class="small">jar body</text></g>
+<g transform="translate(55 307)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Metal closure</text><text x="24" y="64" class="value">1.2 kg</text><text x="24" y="84" class="small">lid + fittings</text></g>
+<g transform="translate(55 419)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Packing</text><text x="24" y="64" class="value">8.0 kg</text><text x="24" y="84" class="small">wood / straw crate</text></g>
+<g transform="translate(55 531)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Wax / resin seal</text><text x="24" y="64" class="value">0.08 kg</text><text x="24" y="84" class="small">physical seal</text></g>
+
+<g transform="translate(845 195)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Kiln natural gas</text><text x="24" y="64" class="value">28.16 kWh</text><text x="24" y="84" class="small">1.28 kWh/kg fired clay</text></g>
+<g transform="translate(845 307)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Workshop electricity</text><text x="24" y="64" class="value">4.0 kWh</text><text x="24" y="84" class="small">small workshop estimate</text></g>
+<g transform="translate(845 419)"><rect width="300" height="92" rx="12" class="panel"/><text x="24" y="34" class="label">Road freight</text><text x="24" y="64" class="value">50.0 t·km</text><text x="24" y="84" class="small">0.050 t × 1,000 km</text></g>
+
+<rect x="425" y="270" width="350" height="270" rx="20" class="core"/>
+<text x="600" y="316" text-anchor="middle" class="eyebrow" fill="#d0a563">FUNCTIONAL UNIT</text>
+<text x="600" y="364" text-anchor="middle" class="label">One sealed 45 L pithos</text>
+<text x="600" y="399" text-anchor="middle" class="label">delivered and opened once</text>
+<line x1="485" y1="430" x2="715" y2="430" stroke="#234557" stroke-width="2"/>
+<text x="600" y="468" text-anchor="middle" class="small">Creation → first opening</text>
+<text x="600" y="498" text-anchor="middle" class="small">Packed shipment: 50 kg</text>
+
+<path d="M355 241 C395 241 400 320 425 332" class="goldline" marker-end="url(#arrowGold)"/>
+<path d="M355 353 C395 353 402 370 425 375" class="line" marker-end="url(#arrow)"/>
+<path d="M355 465 C395 465 402 430 425 425" class="line" marker-end="url(#arrow)"/>
+<path d="M355 577 C395 577 405 490 425 478" class="line" marker-end="url(#arrow)"/>
+<path d="M845 241 C805 241 800 320 775 332" class="goldline" marker-end="url(#arrowGold)"/>
+<path d="M845 353 C805 353 798 370 775 375" class="line" marker-end="url(#arrow)"/>
+<path d="M845 465 C805 465 798 430 775 425" class="line" marker-end="url(#arrow)"/>
+
+<rect x="425" y="585" width="350" height="92" rx="12" class="panel"/>
+<text x="600" y="618" text-anchor="middle" class="label">Explicitly outside inventory</text>
+<text x="600" y="648" text-anchor="middle" class="small">evils · disease · sorrow · hope</text>
+<text x="600" y="671" text-anchor="middle" class="small">behavioural consequences · reuse after first delivery</text>
+<text x="60" y="720" class="small">All modeled flows are physical. Narrative content is disclosed as cut off, not converted into hidden mass or energy.</text>
+</svg>
