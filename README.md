@@ -1130,7 +1130,7 @@ The Epic Passport uses the registered episode cover and the existing registry fi
 
 No visual element may introduce an unregistered system boundary, factor list, allocation rule, assumption or numerical value. The Passport remains a transparency summary, not a verification statement or formal data-quality rating.
 
-The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry.
+The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies to all currently published and future episode pages. `scripts/epic_passport_sync.py` propagates the current versioned assets, removes legacy PDF download CTAs and removes legacy `pdf` fields from the public registry. `assets/passport-cleanup.js` is a defensive runtime safeguard: if stale or legacy markup injects a source-PDF CTA or raw-text control, it removes it from the rendered episode page.
 
 ### Epic Passport QA
 
@@ -1142,6 +1142,7 @@ The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies 
 - [ ] No raw-text Passport export is exposed.
 - [ ] No episode page or episode template exposes a source-PDF download link.
 - [ ] `episodes.json` contains no public `pdf` field.
+- [ ] Every episode loads `assets/passport-cleanup.js` as a defensive safeguard against stale/legacy export controls.
 - [ ] Mobile Passport remains readable with no unintended page overflow.
 
 <!-- EPIC-PASSPORT-RULES:END -->
