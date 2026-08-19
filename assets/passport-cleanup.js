@@ -1,6 +1,24 @@
 (() => {
   'use strict';
 
+  const allowedPassportActions = new Set([
+    'view epic passport →',
+    'print / save as pdf',
+  ]);
+
+  const enforcePassportOnlyActions = (root = document) => {
+    const rows = [];
+    if (root.matches?.('.passport-actions')) rows.push(root);
+    root.querySelectorAll?.('.passport-actions').forEach((row) => rows.push(row));
+
+    rows.forEach((row) => {
+      Array.from(row.children).forEach((node) => {
+        const label = (node.textContent || '').trim().toLowerCase();
+        if (!allowedPassportActions.has(label)) node.remove();
+      });
+    });
+  };
+
   const removeLegacyEpisodeExports = (root = document) => {
     root.querySelectorAll?.('.episode-pdf-action-static').forEach((node) => node.remove());
 
@@ -16,6 +34,8 @@
       const label = (node.textContent || '').trim().toLowerCase();
       if (label.includes('download episode pdf') || label.includes('raw text')) node.remove();
     });
+
+    enforcePassportOnlyActions(root);
   };
 
   removeLegacyEpisodeExports();
