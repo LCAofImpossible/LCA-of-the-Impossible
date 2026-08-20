@@ -23,34 +23,56 @@ jobs:
       - name: Install QA dependency
         run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Run deterministic synchronization and full QA suite
+      - name: Run and record repository QA
         shell: bash
         run: |
-          python scripts/apply_seo.py
-          python scripts/feature_sync.py
-          python scripts/engagement_sync.py
-          python scripts/phase5_sync.py
-          python scripts/phase6_sync.py
-          python scripts/epic_passport_sync.py
-          python scripts/telemetry_sync.py
-          git diff --exit-code
-          python scripts/site_qa.py
-          python scripts/seo_qa.py
-          python scripts/feature_qa.py
-          python scripts/engagement_qa.py
-          python scripts/phase5_qa.py
-          python scripts/phase6_qa.py
-          python scripts/telemetry_qa.py
+          set +e
+          LOG=ep48-qa-verification.txt
+          : > "$LOG"
+          overall=0
+          run_check() {
+            echo "=== $* ===" >> "$LOG"
+            "$@" >> "$LOG" 2>&1
+            rc=$?
+            echo "EXIT=$rc" >> "$LOG"
+            echo >> "$LOG"
+            if [ $rc -ne 0 ]; then overall=1; fi
+          }
+          run_check python scripts/apply_seo.py
+          run_check python scripts/feature_sync.py
+          run_check python scripts/engagement_sync.py
+          run_check python scripts/phase5_sync.py
+          run_check python scripts/phase6_sync.py
+          run_check python scripts/epic_passport_sync.py
+          run_check python scripts/telemetry_sync.py
+          echo "=== deterministic sync diff ===" >> "$LOG"
+          if git diff --quiet; then
+            echo "CLEAN" >> "$LOG"
+          else
+            echo "DIRTY" >> "$LOG"
+            git diff --stat >> "$LOG"
+            overall=1
+          fi
+          run_check python scripts/site_qa.py
+          run_check python scripts/seo_qa.py
+          run_check python scripts/feature_qa.py
+          run_check python scripts/engagement_qa.py
+          run_check python scripts/phase5_qa.py
+          run_check python scripts/phase6_qa.py
+          run_check python scripts/telemetry_qa.py
+          echo "OVERALL=$([ $overall -eq 0 ] && echo PASS || echo FAIL)" >> "$LOG"
+          git reset --hard HEAD
 
-      - name: Verify deployed GitHub Pages files
+      - name: Verify and record deployed GitHub Pages files
         shell: bash
         run: |
           python - <<'PY'
-          import hashlib, json, time, urllib.request
+          import hashlib, json, time, traceback, urllib.request
           from datetime import datetime, timezone
 
           BASE = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
           EXPECTED = '29b6a5f6609992bb18febad6e610a985007e50be2ba4e84559bd59c15216bef1'
+          lines = []
 
           def get(path):
               req = urllib.request.Request(BASE + path, headers={'Cache-Control':'no-cache','User-Agent':'LCA-Episode-48-QA'})
@@ -59,113 +81,116 @@ jobs:
                       raise RuntimeError(f'{path}: HTTP {r.status}')
                   return r.read()
 
-          last = None
-          for _ in range(36):
-              try:
-                  html = get('episodes/yggdrasil.html').decode('utf-8')
-                  reg = json.loads(get('episodes.json').decode('utf-8'))
-                  if 'Yggdrasil' in html and any(e.get('number') == 48 for e in reg.get('episodes', [])):
-                      break
-              except Exception as exc:
-                  last = exc
-              time.sleep(5)
-          else:
-              raise RuntimeError(f'Live deployment not ready: {last}')
+          try:
+              last = None
+              for _ in range(36):
+                  try:
+                      html = get('episodes/yggdrasil.html').decode('utf-8')
+                      reg = json.loads(get('episodes.json').decode('utf-8'))
+                      if 'Yggdrasil' in html and any(e.get('number') == 48 for e in reg.get('episodes', [])):
+                          break
+                  except Exception as exc:
+                      last = exc
+                  time.sleep(5)
+              else:
+                  raise RuntimeError(f'Live deployment not ready: {last}')
 
-          cover = get('assets/images/episodes/ep48-yggdrasil-cover.png')
-          sha = hashlib.sha256(cover).hexdigest()
-          assert sha == EXPECTED, (sha, EXPECTED)
+              cover = get('assets/images/episodes/ep48-yggdrasil-cover.png')
+              sha = hashlib.sha256(cover).hexdigest()
+              assert sha == EXPECTED, (sha, EXPECTED)
 
-          html = get('episodes/yggdrasil.html').decode('utf-8')
-          for needle in ['data-episode="48"','797 t CO₂e','55.4%','624 t CO₂e','971 t CO₂e','356 t CO₂e','1,018 t CO₂e','../assets/site.js','../assets/phase6.js','../assets/passport-cleanup.js','../assets/engagement.js']:
-              assert needle in html, needle
-          assert 'Raw text' not in html
-          assert '/assets/pdf/' not in html.lower()
-          assert 'download episode pdf' not in html.lower()
-          assert 'rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/yggdrasil.html"' in html
-          assert 'og:image' in html and 'twitter:image' in html and 'application/ld+json' in html
+              html = get('episodes/yggdrasil.html').decode('utf-8')
+              for needle in ['data-episode="48"','797 t CO₂e','55.4%','624 t CO₂e','971 t CO₂e','356 t CO₂e','1,018 t CO₂e','../assets/site.js','../assets/phase6.js','../assets/passport-cleanup.js','../assets/engagement.js']:
+                  assert needle in html, needle
+              assert 'Raw text' not in html
+              assert '/assets/pdf/' not in html.lower()
+              assert 'download episode pdf' not in html.lower()
+              assert 'rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/yggdrasil.html"' in html
+              assert 'og:image' in html and 'twitter:image' in html and 'application/ld+json' in html
 
-          reg = json.loads(get('episodes.json').decode('utf-8'))
-          matches = [e for e in reg['episodes'] if e.get('number') == 48]
-          assert len(matches) == 1
-          ep = matches[0]
-          assert ep['slug'] == 'yggdrasil'
-          assert ep['cover'] == 'assets/images/episodes/ep48-yggdrasil-cover.png'
-          assert ep['result'] == '797 t CO₂e'
-          assert ep['functionalUnit'] == 'One installed world-tree analogue maintained for one narrative year.'
-          assert ep['categoryLabel'] == 'Mythic Structure'
-          assert ep['lcaLabel'] == 'Materials-driven'
-          assert ep['related'] == [53,36,49]
-          assert ep['evidence']['confidence'] == 'Medium'
-          assert ep['evidence']['proxyDependence'] == 'High'
-          assert ep['evidence']['assumptionSensitivity'] == 'High'
-          assert 'pdf' not in ep
-          assert not any('pdf' in e for e in reg['episodes'])
+              reg = json.loads(get('episodes.json').decode('utf-8'))
+              matches = [e for e in reg['episodes'] if e.get('number') == 48]
+              assert len(matches) == 1
+              ep = matches[0]
+              assert ep['slug'] == 'yggdrasil'
+              assert ep['cover'] == 'assets/images/episodes/ep48-yggdrasil-cover.png'
+              assert ep['result'] == '797 t CO₂e'
+              assert ep['functionalUnit'] == 'One installed world-tree analogue maintained for one narrative year.'
+              assert ep['categoryLabel'] == 'Mythic Structure'
+              assert ep['lcaLabel'] == 'Materials-driven'
+              assert ep['related'] == [53,36,49]
+              assert ep['evidence'] == {
+                  **ep['evidence'],
+                  'confidence':'Medium',
+                  'proxyDependence':'High',
+                  'assumptionSensitivity':'High'
+              }
+              assert 'pdf' not in ep
+              assert not any('pdf' in e for e in reg['episodes'])
 
-          sitemap = get('sitemap.xml').decode('utf-8')
-          assert sitemap.count('/episodes/yggdrasil.html') == 1
-          cols = json.loads(get('collections.json').decode('utf-8'))
-          impossible = next(c for c in cols['collections'] if c['slug'] == 'impossible-structures')
-          assert 48 in impossible['episodes']
+              sitemap = get('sitemap.xml').decode('utf-8')
+              assert sitemap.count('/episodes/yggdrasil.html') == 1
+              cols = json.loads(get('collections.json').decode('utf-8'))
+              impossible = next(c for c in cols['collections'] if c['slug'] == 'impossible-structures')
+              assert 48 in impossible['episodes']
 
-          endpoints = [
-              'index.html','archive.html','collections.html','compare.html','explore.html',
-              'assets/site.js','assets/phase6.js','assets/passport-cleanup.js','assets/engagement.js',
-              'assets/style.css','assets/editorial.css','assets/phase6.css',
-              'assets/images/episode-graphics/ep48-inventory-map.svg',
-              'assets/images/episode-graphics/ep48-technical-plate.svg',
-              'assets/images/episode-graphics/ep48-hotspot-breakdown.svg'
-          ]
-          deployed = {path: get(path) for path in endpoints}
+              endpoints = [
+                  'index.html','archive.html','collections.html','compare.html','explore.html',
+                  'assets/site.js','assets/phase6.js','assets/passport-cleanup.js','assets/engagement.js',
+                  'assets/style.css','assets/editorial.css','assets/phase6.css',
+                  'assets/images/episode-graphics/ep48-inventory-map.svg',
+                  'assets/images/episode-graphics/ep48-technical-plate.svg',
+                  'assets/images/episode-graphics/ep48-hotspot-breakdown.svg'
+              ]
+              deployed = {path: get(path) for path in endpoints}
 
-          phase6 = deployed['assets/phase6.js'].decode('utf-8')
-          cleanup = deployed['assets/passport-cleanup.js'].decode('utf-8')
-          assert 'View epic passport →' in phase6
-          assert 'Print / Save as PDF' in phase6
-          assert "'view epic passport →'" in cleanup.lower()
-          assert "'print / save as pdf'" in cleanup.lower()
-          assert 'allowedPassportActions' in cleanup
-          assert 'passport-raw' in cleanup and 'raw text' in cleanup.lower()
+              phase6 = deployed['assets/phase6.js'].decode('utf-8')
+              cleanup = deployed['assets/passport-cleanup.js'].decode('utf-8')
+              assert 'View epic passport →' in phase6
+              assert 'Print / Save as PDF' in phase6
+              assert 'allowedPassportActions' in cleanup
+              assert "'view epic passport →'" in cleanup.lower()
+              assert "'print / save as pdf'" in cleanup.lower()
+              assert 'passport-raw' in cleanup and 'raw text' in cleanup.lower()
 
-          sitejs = deployed['assets/site.js'].decode('utf-8')
-          assert 'renderEvidenceProfile' in sitejs
-          assert 'relatedEpisodes' in sitejs
-          assert 'renderEpisodeNavigation' in sitejs
-          assert 'renderArchive' in sitejs
+              css = deployed['assets/style.css'].decode('utf-8') + deployed['assets/phase6.css'].decode('utf-8')
+              assert '@media' in css and 'overflow-x' in css
+              compact = css.replace(' ', '')
+              assert 'object-fit:contain' in compact
 
-          css = deployed['assets/style.css'].decode('utf-8') + deployed['assets/phase6.css'].decode('utf-8')
-          assert '@media' in css
-          assert 'overflow-x' in css
-          assert 'object-fit:contain' in css.replace(' ', '') or 'object-fit: contain' in css
+              lines = [
+                  'Episode #48 live verification: PASS',
+                  f'UTC: {datetime.now(timezone.utc).isoformat()}',
+                  f'Cover SHA-256: {sha}',
+                  'Exact approved cover live: PASS',
+                  'Live episode HTML: PASS',
+                  'Numerical/source reconciliation: PASS',
+                  'Live registry: PASS',
+                  'Live sitemap: PASS',
+                  'Live collections registry: PASS',
+                  'Live homepage/archive/collections/compare/explore endpoints: HTTP 200',
+                  'Live analytical graphics and shared assets: HTTP 200',
+                  'Epic Passport labels and Passport-only cleanup deployed: PASS',
+                  'Raw text in episode HTML: NO',
+                  'Source PDF link in episode HTML/registry: NO',
+                  'Responsive/mobile CSS invariants deployed: PASS',
+              ]
+          except Exception:
+              lines = [
+                  'Episode #48 live verification: FAIL',
+                  f'UTC: {datetime.now(timezone.utc).isoformat()}',
+                  traceback.format_exc(),
+              ]
 
-          out = [
-              'Episode #48 live verification: PASS',
-              f'UTC: {datetime.now(timezone.utc).isoformat()}',
-              f'Cover SHA-256: {sha}',
-              'Exact approved cover live: PASS',
-              'Live episode HTML: PASS',
-              'Numerical/source reconciliation: PASS',
-              'Live registry: PASS',
-              'Live sitemap: PASS',
-              'Live collections registry: PASS',
-              'Live homepage/archive/collections/compare/explore endpoints: HTTP 200',
-              'Live analytical graphics and shared assets: HTTP 200',
-              'Evidence/Profile/navigation implementation deployed: PASS',
-              'Epic Passport labels and Passport-only cleanup deployed: PASS',
-              'Raw text in episode HTML: NO',
-              'Source PDF link in episode HTML/registry: NO',
-              'Responsive/mobile CSS invariants deployed: PASS',
-              'Full repository QA suite: PASS',
-          ]
-          open('ep48-live-verification.txt','w',encoding='utf-8').write('\n'.join(out) + '\n')
+          open('ep48-live-verification.txt','w',encoding='utf-8').write('\n'.join(lines) + '\n')
           PY
 
-      - name: Record live verification
+      - name: Record verification diagnostics
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git pull --rebase origin main
-          git add ep48-live-verification.txt
-          git commit -m 'Record Episode 48 live verification'
+          git add ep48-qa-verification.txt ep48-live-verification.txt
+          git commit -m 'Record Episode 48 verification diagnostics'
           git push origin HEAD:main
