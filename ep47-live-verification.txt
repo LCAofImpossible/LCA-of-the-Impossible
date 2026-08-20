@@ -1,0 +1,12 @@
+Episode #47 live verification: PASS
+UTC: 2026-08-20T21:40:20.578268+00:00
+Cover SHA-256: b4670ac34cb1e45055c159ee879fd2f239118733071a336b277b5db041ce21f0
+Exact approved cover live: PASS
+Live episode HTML and registry: PASS
+Live sitemap and collections: PASS
+Homepage/archive/collections/compare/explore endpoints: HTTP 200
+Analytical graphics and shared assets: HTTP 200
+Epic Passport labels and Passport-only cleanup deployed: PASS
+Raw text in episode/Passport implementation: NO
+Source PDF link in episode HTML/registry: NO
+Responsive/mobile CSS invariants deployed: PASS
