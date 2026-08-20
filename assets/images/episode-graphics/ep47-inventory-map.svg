@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Draupnir inventory map</title><desc id="desc">Five modeled inputs feed a four-stage sequence from gold supply to forge, replication and delivery.</desc>
+<rect width="1200" height="760" rx="26" fill="#071019"/>
+<style>.t{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#f2eadc}.m{fill:#b8a98e}.g{fill:#d7ad4a}.line{stroke:#8e7b58;stroke-width:3}.box{fill:#101c26;stroke:#8e7b58;stroke-width:2}</style>
+<text x="60" y="72" class="t" font-size="24" font-weight="700" letter-spacing="4">INVENTORY MAP · EPISODE #47</text>
+<text x="60" y="112" class="m" font-size="19">One complete nine-night replication event · 9 rings · 4.05 kg gold</text>
+<g transform="translate(60,170)">
+  <rect class="box" x="0" y="0" width="310" height="82" rx="12"/><text class="t" x="22" y="32" font-size="19" font-weight="700">S1 · PRIMARY GOLD</text><text class="m" x="22" y="59" font-size="17">4.05 kg · 22,409 kg CO₂e/kg · proxy</text>
+  <rect class="box" x="0" y="104" width="310" height="82" rx="12"/><text class="t" x="22" y="136" font-size="19" font-weight="700">S2 · ELECTRICITY</text><text class="m" x="22" y="163" font-size="17">18 kWh · 0.18436 kg CO₂e/kWh</text>
+  <rect class="box" x="0" y="208" width="310" height="82" rx="12"/><text class="t" x="22" y="240" font-size="19" font-weight="700">S3 · HGV FREIGHT</text><text class="m" x="22" y="267" font-size="17">2.03 t-km · 500 km movement</text>
+  <rect class="box" x="0" y="312" width="310" height="82" rx="12"/><text class="t" x="22" y="344" font-size="19" font-weight="700">S4 · WOOD BOX</text><text class="m" x="22" y="371" font-size="17">0.30 kg · DEFRA 2026 wood proxy</text>
+  <rect class="box" x="0" y="416" width="310" height="82" rx="12"/><text class="t" x="22" y="448" font-size="19" font-weight="700">S5 · LOST-WAX MOLD</text><text class="m" x="22" y="475" font-size="17">1.20 kg · construction proxy</text>
+</g>
+<path class="line" d="M390 420 H505"/><path fill="#8e7b58" d="M505 420 l-14 -8 v16z"/>
+<g transform="translate(525,270)">
+  <circle cx="80" cy="150" r="66" fill="#152631" stroke="#d7ad4a" stroke-width="3"/><text class="t" x="80" y="145" text-anchor="middle" font-size="20" font-weight="700">GOLD</text><text class="m" x="80" y="172" text-anchor="middle" font-size="16">supply</text>
+  <line class="line" x1="146" y1="150" x2="236" y2="150"/><path fill="#8e7b58" d="M236 150 l-14 -8 v16z"/>
+  <circle cx="306" cy="150" r="66" fill="#152631" stroke="#8e7b58" stroke-width="3"/><text class="t" x="306" y="145" text-anchor="middle" font-size="20" font-weight="700">FORGE</text><text class="m" x="306" y="172" text-anchor="middle" font-size="16">cast + finish</text>
+  <line class="line" x1="372" y1="150" x2="462" y2="150"/><path fill="#8e7b58" d="M462 150 l-14 -8 v16z"/>
+  <circle cx="532" cy="150" r="66" fill="#2b2417" stroke="#d7ad4a" stroke-width="4"/><text class="g" x="532" y="145" text-anchor="middle" font-size="20" font-weight="800">REPLICATE</text><text class="m" x="532" y="172" text-anchor="middle" font-size="16">+8 equal rings</text>
+  <line class="line" x1="598" y1="150" x2="688" y2="150"/><path fill="#8e7b58" d="M688 150 l-14 -8 v16z"/>
+  <circle cx="758" cy="150" r="66" fill="#152631" stroke="#8e7b58" stroke-width="3"/><text class="t" x="758" y="145" text-anchor="middle" font-size="20" font-weight="700">DELIVER</text><text class="m" x="758" y="172" text-anchor="middle" font-size="16">cut-off</text>
+</g>
+<g transform="translate(525,535)"><rect class="box" width="610" height="130" rx="14"/><text class="g" x="24" y="38" font-size="18" font-family="system-ui" font-weight="800">BOUNDARY</text><text class="t" x="24" y="72" font-size="17" font-family="system-ui">Included: gold supply · casting/finishing · replication · local freight · packaging/mold</text><text class="m" x="24" y="104" font-size="16" font-family="system-ui">Excluded: divine labour · ownership effects · use-phase prestige · end-of-life recycling credit</text></g>
+</svg>
