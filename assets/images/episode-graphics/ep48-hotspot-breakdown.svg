@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Yggdrasil hotspot breakdown</title>
+<desc id="desc">Contribution chart for the 797 tonne carbon dioxide equivalent baseline: 55.4 percent ash-like wood, 21.6 percent metal supports, 17.3 percent road freight and 5.8 percent other operations.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.pale{fill:#7f9bab}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:22px Arial,sans-serif}.value{fill:#eef7fb;font:700 22px Arial,sans-serif}.big{fill:#d0a563;font:700 50px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.note{fill:#c4f7ff;font:700 22px Arial,sans-serif}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #48 · HOTSPOT BREAKDOWN</text>
+<text x="60" y="105" class="head">797 t CO₂e. Mass wins.</text>
+<rect x="60" y="145" width="1080" height="115" rx="16" class="panel"/>
+<text x="90" y="200" class="big">797 t CO₂e</text><text x="405" y="192" class="note">one installed world-tree analogue · one year</text><text x="405" y="224" class="small">The model reports the constructed footprint and does not subtract biogenic storage.</text>
+
+<g transform="translate(60 315)">
+<text x="0" y="25" class="label">Ash-like wood body</text><rect x="300" y="5" width="700" height="30" rx="5" class="track"/><rect x="300" y="5" width="700" height="30" rx="5" class="gold"/><text x="1025" y="26" class="value">441.5 t · 55.4%</text>
+<text x="0" y="100" class="label">Metal supports</text><rect x="300" y="80" width="700" height="30" rx="5" class="track"/><rect x="300" y="80" width="273" height="30" rx="5" class="cyan"/><text x="1025" y="101" class="value">172.0 t · 21.6%</text>
+<text x="0" y="175" class="label">Road freight</text><rect x="300" y="155" width="700" height="30" rx="5" class="track"/><rect x="300" y="155" width="219" height="30" rx="5" class="pale"/><text x="1025" y="176" class="value">138.0 t · 17.3%</text>
+<text x="0" y="250" class="label">Other operations</text><rect x="300" y="230" width="700" height="30" rx="5" class="track"/><rect x="300" y="230" width="73" height="30" rx="5" fill="#c4f7ff"/><text x="1025" y="251" class="value">46.0 t · 5.8%</text>
+</g>
+
+<rect x="60" y="610" width="1080" height="78" rx="14" class="panel"/>
+<text x="90" y="642" class="note">HOTSPOT · 55.4% FROM ASH-LIKE WOOD</text>
+<text x="90" y="670" class="small">Support metal and freight together contribute another 38.9% of the approved baseline.</text>
+<text x="60" y="725" class="small">Rounded presentation values follow the approved baseline page. Detailed inventory contributions remain available in the episode table.</text>
+</svg>

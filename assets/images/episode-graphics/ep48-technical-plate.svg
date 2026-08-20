@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Yggdrasil technical reconstruction</title>
+<desc id="desc">Technical plate showing the 90 metre height, 6 metre trunk diameter, 45 percent void fraction, 680 kilogram per cubic metre ash density and 1,638 tonne modeled wood mass.</desc>
+<defs><style>
+.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.wire{fill:none;stroke:#6de7ff;stroke-width:2}.goldwire{fill:none;stroke:#d0a563;stroke-width:3}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.6;stroke-dasharray:7 6}.head{fill:#eef7fb;font:700 34px Arial,sans-serif}.eyebrow{fill:#6de7ff;font:700 18px Arial,sans-serif;letter-spacing:3px}.label{fill:#eef7fb;font:700 23px Arial,sans-serif}.value{fill:#d0a563;font:700 30px Arial,sans-serif}.small{fill:#9ab0bc;font:18px Arial,sans-serif}.micro{fill:#9ab0bc;font:16px Arial,sans-serif}
+</style></defs>
+<rect width="1200" height="760" class="bg"/>
+<text x="60" y="58" class="eyebrow">EPISODE #48 · TECHNICAL PLATE</text>
+<text x="60" y="105" class="head">A hollow trunk, not infinity.</text>
+
+<rect x="55" y="150" width="690" height="520" rx="18" class="panel"/>
+<line x1="110" y1="600" x2="690" y2="600" class="dim"/>
+<path d="M350 560 C330 510 340 465 352 420 C362 380 360 325 372 260 L428 260 C440 325 438 380 448 420 C460 465 470 510 450 560 Z" fill="#112232" stroke="#d0a563" stroke-width="4"/>
+<path d="M372 260 C315 245 270 210 245 175 C300 188 347 185 400 155 C453 185 500 188 555 175 C530 210 485 245 428 260" fill="#112232" stroke="#6de7ff" stroke-width="3"/>
+<path d="M350 540 C300 548 250 575 205 620 M365 548 C320 585 300 618 282 642 M435 548 C480 585 500 618 518 642 M450 540 C500 548 550 575 595 620" class="goldwire"/>
+<path d="M387 282 C376 350 378 440 388 520 L412 520 C422 440 424 350 413 282 Z" fill="#071019" stroke="#6de7ff" stroke-width="2" stroke-dasharray="8 7"/>
+<rect x="349" y="370" width="102" height="14" rx="6" fill="#d0a563" opacity=".9"/><rect x="345" y="455" width="110" height="14" rx="6" fill="#d0a563" opacity=".9"/>
+<line x1="145" y1="165" x2="145" y2="600" class="wire"/><line x1="132" y1="165" x2="158" y2="165" class="wire"/><line x1="132" y1="600" x2="158" y2="600" class="wire"/><text x="125" y="390" text-anchor="middle" class="value" transform="rotate(-90 125 390)">90 m</text>
+<line x1="350" y1="585" x2="450" y2="585" class="wire"/><line x1="350" y1="573" x2="350" y2="597" class="wire"/><line x1="450" y1="573" x2="450" y2="597" class="wire"/><text x="400" y="575" text-anchor="middle" class="small">Ø 6.0 m trunk</text>
+<line x1="412" y1="365" x2="620" y2="315" class="goldwire"/><text x="625" y="310" class="label">45% void</text><text x="625" y="335" class="micro">hollow-body fraction</text>
+<line x1="450" y1="463" x2="625" y2="475" class="wire"/><text x="630" y="482" class="small">metal support bands</text>
+<text x="90" y="645" class="micro">crown equivalent + three modeled roots are added to the trunk geometry</text>
+
+<g transform="translate(785 150)">
+<rect width="360" height="520" rx="18" class="panel"/>
+<text x="28" y="47" class="eyebrow">RECONSTRUCTION</text>
+<text x="28" y="100" class="label">Ash density</text><text x="28" y="138" class="value">680 kg/m³</text>
+<line x1="28" y1="165" x2="332" y2="165" stroke="#234557" stroke-width="2"/>
+<text x="28" y="215" class="label">Modeled wood mass</text><text x="28" y="253" class="value">1,638 t</text>
+<line x1="28" y1="280" x2="332" y2="280" stroke="#234557" stroke-width="2"/>
+<text x="28" y="330" class="label">Geometry rule</text>
+<text x="28" y="365" class="small">Trunk cylinder × solid fraction</text><text x="28" y="392" class="small">+ crown equivalent</text><text x="28" y="419" class="small">+ three modeled roots</text>
+<line x1="28" y1="448" x2="332" y2="448" stroke="#234557" stroke-width="2"/>
+<text x="28" y="490" class="label">Evidence status</text><text x="28" y="522" class="small">Density: literature-supported proxy</text><text x="28" y="549" class="small">Scale: engineering proxy</text>
+</g>
+<text x="60" y="718" class="small">The impossible dimension is bounded before it is counted. Height sensitivity: 60 m → 624 t · 90 m → 797 t · 120 m → 971 t CO₂e.</text>
+</svg>
