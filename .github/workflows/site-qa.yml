@@ -43,6 +43,9 @@ jobs:
       - name: Build deterministic Epic Passport presentation in QA workspace
         run: python scripts/epic_passport_sync.py
 
+      - name: Build deterministic visitor telemetry in QA workspace
+        run: python scripts/telemetry_sync.py
+
       - name: Run structural site QA
         run: python scripts/site_qa.py
 
@@ -60,3 +63,6 @@ jobs:
 
       - name: Run Phase 6 model transparency QA
         run: python scripts/phase6_qa.py
+
+      - name: Run visitor telemetry QA
+        run: python scripts/telemetry_qa.py
