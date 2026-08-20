@@ -1109,3 +1109,64 @@ The shared implementation in `assets/phase6.js` and `assets/phase6.css` applies 
 - [ ] Mobile Passport remains readable with no unintended page overflow.
 
 <!-- EPIC-PASSPORT-RULES:END -->
+
+---
+
+<!-- TELEMETRY-RULES:START -->
+
+## 31. Visitor telemetry — mandatory
+
+The public site includes a lightweight visitor counter presented as technical telemetry rather than as a decorative hit counter.
+
+### 31.1 Canonical implementation
+
+Canonical files:
+
+- `assets/telemetry.js` — privacy-light counter client and rendering logic;
+- `assets/telemetry.css` — visual integration with the existing dark technical system;
+- `scripts/telemetry_sync.py` — deterministic asset propagation and README synchronization;
+- `scripts/telemetry_qa.py` — integration and privacy guardrails.
+
+All public root pages and all published episode pages load the versioned telemetry CSS and JavaScript. `episodes/template.html` remains free of live tracking; newly instantiated episode pages receive telemetry through synchronization.
+
+### 31.2 Counter semantics
+
+Telemetry uses the public CounterAPI endpoint under the fixed namespace `lcaofimpossible.github.io` and requests `unique=true` so the displayed values represent provider-filtered unique visitors rather than raw pageview events.
+
+Two counters are maintained:
+
+1. `site-total` — shared across all public pages and displayed in the site footer as `SITE TELEMETRY`;
+2. `episode-NN` — one counter per published episode, displayed adjacent to the Model Passport as `CASE TELEMETRY`.
+
+Counts begin from telemetry activation. Do not invent, estimate or backfill historical traffic unless an independently verified legacy count is explicitly supplied.
+
+### 31.3 Privacy and dependency rules
+
+The integration must not use cookies, `localStorage`, `sessionStorage`, fingerprinting code or persistent identifiers implemented by this site. Requests use `credentials: omit` and `referrerPolicy: no-referrer`. No third-party JavaScript library is loaded: the site calls the counter API directly.
+
+Counter failure must never block page rendering. When telemetry cannot be reached, the UI falls back to `LIVE ONLY` rather than presenting a fabricated zero.
+
+The telemetry provider may be replaced in future, but the visible contract — site total in the footer, case total beside the Passport, no intrusive tracking — should remain stable unless explicitly changed.
+
+### 31.4 Visual rules
+
+Telemetry is deliberately subordinate to episode content:
+
+- compact uppercase technical labels;
+- restrained gold for the telemetry code and light cyan for the number;
+- no animation, badge branding, oversized numerals or gamified treatment;
+- responsive wrapping on mobile;
+- semantic text remains accessible to assistive technology.
+
+### Visitor telemetry QA
+
+- [ ] Every public root page loads current versioned telemetry CSS and JavaScript.
+- [ ] Every published episode loads current versioned telemetry CSS and JavaScript.
+- [ ] The site-wide counter uses the `site-total` key.
+- [ ] Episode counters use the `episode-NN` key derived from `data-episode`.
+- [ ] Counter requests use `unique=true`, `credentials: omit` and `referrerPolicy: no-referrer`.
+- [ ] The telemetry client contains no cookie, localStorage or sessionStorage logic.
+- [ ] Counter failure falls back without blocking or altering analytical content.
+- [ ] `episodes/template.html` is not directly tracked.
+
+<!-- TELEMETRY-RULES:END -->

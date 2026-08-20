@@ -37,6 +37,7 @@
   <title>LCA Glossary — LCA of the Impossible</title>
   <link rel="stylesheet" href="assets/style.css?v=20260816-cardfix1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
+  <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="glossary">
   <a class="skip-link" href="#main-content">Skip to content</a>
@@ -109,5 +110,6 @@
   <script>
   (()=>{const input=document.getElementById('glossary-search');const entries=[...document.querySelectorAll('.glossary-entry')];const empty=document.getElementById('glossary-empty');if(!input)return;const apply=()=>{const q=input.value.trim().toLowerCase();let shown=0;entries.forEach(entry=>{const match=!q||entry.textContent.toLowerCase().includes(q);entry.hidden=!match;if(match)shown+=1;});empty.hidden=shown!==0;};input.addEventListener('input',apply);})();
   </script>
+  <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>
