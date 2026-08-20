@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Draupnir hotspot breakdown</title><desc id="desc">Primary gold contributes 99.996 percent of the baseline; all minor modeled flows total 3.7 kilograms carbon dioxide equivalent.</desc>
+<rect width="1200" height="700" rx="26" fill="#071019"/>
+<style>.t{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#f2eadc}.m{fill:#b8a98e}.g{fill:#d7ad4a}</style>
+<text x="60" y="72" class="t" font-size="24" font-weight="700" letter-spacing="4">HOTSPOT BREAKDOWN · BASELINE</text>
+<text x="60" y="112" class="m" font-size="19">90.8 t CO₂e per complete nine-ring replication event</text>
+<g transform="translate(80,190)">
+  <rect x="0" y="0" width="1040" height="104" rx="14" fill="#18232b"/>
+  <rect x="0" y="0" width="1039" height="104" rx="14" fill="#b88a2f"/>
+  <text x="28" y="44" class="t" font-size="23" font-weight="800">PRIMARY GOLD</text>
+  <text x="28" y="78" class="t" font-size="20">90,756.7 kg CO₂e · 99.996%</text>
+</g>
+<g transform="translate(80,338)">
+  <rect x="0" y="0" width="1040" height="124" rx="14" fill="#101c26" stroke="#8e7b58" stroke-width="2"/>
+  <circle cx="38" cy="62" r="10" fill="#b8a98e"/>
+  <text x="68" y="50" class="t" font-size="22" font-weight="750">ALL MINOR MODELED FLOWS</text>
+  <text x="68" y="84" class="m" font-size="19">3.7 kg CO₂e before rounding · workshop electricity + freight + wood box + mold proxy</text>
+</g>
+<g transform="translate(80,520)">
+  <text class="g" x="0" y="0" font-size="24" font-family="system-ui" font-weight="800">THE MODEL DRIVER</text>
+  <text class="t" x="0" y="42" font-size="20" font-family="system-ui">The replicated product is almost entirely precious metal.</text>
+  <text class="m" x="0" y="78" font-size="18" font-family="system-ui">The footprint is not in the magic. It is in the mass multiplied by the factor.</text>
+</g>
+</svg>
