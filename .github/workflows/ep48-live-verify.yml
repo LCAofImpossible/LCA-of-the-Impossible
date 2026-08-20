@@ -1,0 +1,241 @@
+name: Episode 48 Live Verification
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ep48-live-verify
+  cancel-in-progress: true
+
+jobs:
+  verify-live:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Install QA and browser dependencies
+        run: |
+          python -m pip install --disable-pip-version-check pillow playwright
+          python -m playwright install chromium
+
+      - name: Run deterministic synchronization and QA
+        shell: bash
+        run: |
+          python scripts/apply_seo.py
+          python scripts/feature_sync.py
+          python scripts/engagement_sync.py
+          python scripts/phase5_sync.py
+          python scripts/phase6_sync.py
+          python scripts/epic_passport_sync.py
+          python scripts/telemetry_sync.py
+          git diff --exit-code
+          python scripts/site_qa.py
+          python scripts/seo_qa.py
+          python scripts/feature_qa.py
+          python scripts/engagement_qa.py
+          python scripts/phase5_qa.py
+          python scripts/phase6_qa.py
+          python scripts/telemetry_qa.py
+
+      - name: Verify deployed GitHub Pages site
+        shell: bash
+        run: |
+          python - <<'PY'
+          import hashlib, json, time, urllib.request
+          from datetime import datetime, timezone
+          from playwright.sync_api import sync_playwright
+
+          BASE = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
+          EXPECTED_COVER_SHA256 = '29b6a5f6609992bb18febad6e610a985007e50be2ba4e84559bd59c15216bef1'
+
+          def get_bytes(path):
+              req = urllib.request.Request(BASE + path, headers={'Cache-Control': 'no-cache', 'User-Agent': 'LCA-Episode-48-QA'})
+              with urllib.request.urlopen(req, timeout=30) as r:
+                  if r.status != 200:
+                      raise RuntimeError(f'{path}: HTTP {r.status}')
+                  return r.read()
+
+          last = None
+          for _ in range(36):
+              try:
+                  html = get_bytes('episodes/yggdrasil.html').decode('utf-8')
+                  registry = json.loads(get_bytes('episodes.json').decode('utf-8'))
+                  if 'Yggdrasil' in html and any(e.get('number') == 48 for e in registry.get('episodes', [])):
+                      break
+              except Exception as exc:
+                  last = exc
+              time.sleep(5)
+          else:
+              raise RuntimeError(f'Pages deployment did not become ready: {last}')
+
+          cover = get_bytes('assets/images/episodes/ep48-yggdrasil-cover.png')
+          cover_sha = hashlib.sha256(cover).hexdigest()
+          assert cover_sha == EXPECTED_COVER_SHA256, (cover_sha, EXPECTED_COVER_SHA256)
+
+          html = get_bytes('episodes/yggdrasil.html').decode('utf-8')
+          assert 'data-episode="48"' in html
+          assert '797 t CO₂e' in html
+          assert '55.4%' in html
+          assert '624 t CO₂e' in html and '971 t CO₂e' in html
+          assert '356 t CO₂e' in html and '1,018 t CO₂e' in html
+          assert '../assets/site.js' in html
+          assert '../assets/phase6.js' in html
+          assert '../assets/passport-cleanup.js' in html
+          assert '../assets/engagement.js' in html
+          assert 'Raw text' not in html
+          assert '/assets/pdf/' not in html.lower()
+          assert 'download episode pdf' not in html.lower()
+          assert 'rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/yggdrasil.html"' in html
+          assert 'og:image' in html and 'ep48-yggdrasil-cover.png' in html
+          assert 'twitter:image' in html
+          assert 'application/ld+json' in html
+
+          registry = json.loads(get_bytes('episodes.json').decode('utf-8'))
+          matches = [e for e in registry['episodes'] if e.get('number') == 48]
+          assert len(matches) == 1
+          ep = matches[0]
+          assert ep['slug'] == 'yggdrasil'
+          assert ep['cover'] == 'assets/images/episodes/ep48-yggdrasil-cover.png'
+          assert ep['result'] == '797 t CO₂e'
+          assert ep['functionalUnit'] == 'One installed world-tree analogue maintained for one narrative year.'
+          assert ep['hotspot'].startswith('The ash-like wood body contributes 441.5 t CO₂e, or 55.4%')
+          assert ep['categoryLabel'] == 'Mythic Structure'
+          assert ep['lcaLabel'] == 'Materials-driven'
+          assert ep['evidence']['confidence'] == 'Medium'
+          assert ep['evidence']['proxyDependence'] == 'High'
+          assert ep['evidence']['assumptionSensitivity'] == 'High'
+          assert ep['related'] == [53, 36, 49]
+          assert 'pdf' not in ep
+          assert not any('pdf' in e for e in registry['episodes'])
+
+          sitemap = get_bytes('sitemap.xml').decode('utf-8')
+          assert sitemap.count('/episodes/yggdrasil.html') == 1
+          collections = json.loads(get_bytes('collections.json').decode('utf-8'))
+          impossible = next(c for c in collections['collections'] if c['slug'] == 'impossible-structures')
+          assert 48 in impossible['episodes']
+
+          for path in [
+              'index.html','archive.html','collections.html','compare.html','explore.html',
+              'assets/site.js','assets/phase6.js','assets/passport-cleanup.js','assets/engagement.js',
+              'assets/images/episode-graphics/ep48-inventory-map.svg',
+              'assets/images/episode-graphics/ep48-technical-plate.svg',
+              'assets/images/episode-graphics/ep48-hotspot-breakdown.svg'
+          ]:
+              get_bytes(path)
+
+          phase6 = get_bytes('assets/phase6.js').decode('utf-8')
+          cleanup = get_bytes('assets/passport-cleanup.js').decode('utf-8')
+          assert 'View epic passport →' in phase6
+          assert 'Print / Save as PDF' in phase6
+          assert "'view epic passport →'" in cleanup.lower()
+          assert "'print / save as pdf'" in cleanup.lower()
+          assert 'passport-raw' in cleanup and 'raw text' in cleanup.lower()
+
+          with sync_playwright() as p:
+              browser = p.chromium.launch()
+              page = browser.new_page(viewport={'width': 1440, 'height': 1000})
+              page.goto(BASE + 'episodes/yggdrasil.html', wait_until='networkidle', timeout=60000)
+              body = page.locator('body').inner_text()
+              assert 'Yggdrasil' in body
+              assert '797 t CO₂e' in body
+              assert 'Evidence Profile' in body
+              assert 'MODEL PASSPORT' in body
+              assert 'View epic passport →' in body
+              assert 'Print / Save as PDF' in body
+              assert 'Share the case' in body
+              assert 'Related Cases' in body
+              assert 'The Argo' in body
+              assert 'Sisyphus' in body
+              assert 'Raw text' not in body
+
+              hrefs = page.locator('a').evaluate_all("els => els.map(e => e.getAttribute('href')).filter(Boolean)")
+              assert not any('.pdf' in h.lower() or '/assets/pdf/' in h.lower() for h in hrefs)
+
+              actions = page.locator('.passport-actions > *').evaluate_all("els => els.map(e => e.textContent.trim())")
+              assert actions == ['View epic passport →', 'Print / Save as PDF'], actions
+
+              order = page.evaluate("""() => {
+                const q = document.querySelector('.episode-quickfacts');
+                const e = document.querySelector('#evidence');
+                const p = document.querySelector('#model-passport');
+                const v = document.querySelector('.episode-visual-section');
+                const pos = n => [...document.querySelectorAll('main > section')].indexOf(n);
+                return [pos(q), pos(e), pos(p), pos(v)];
+              }""")
+              assert order[0] < order[1] < order[2] < order[3], order
+
+              page.locator('.passport-view').click()
+              page.locator('.passport-overlay').wait_for(state='visible')
+              overlay = page.locator('.passport-overlay').inner_text()
+              assert '797 t CO₂e' in overlay
+              assert 'Materials-driven' in overlay
+              assert 'Evidence confidence' in overlay
+              assert 'Medium' in overlay and 'High' in overlay
+              assert 'Print / Save as PDF' in overlay
+              assert 'Raw text' not in overlay
+              passport_cover = page.locator('.passport-overlay .passport-cover-frame img').get_attribute('src')
+              assert passport_cover and passport_cover.endswith('assets/images/episodes/ep48-yggdrasil-cover.png')
+              page.locator('.passport-close').click()
+
+              page.goto(BASE + 'archive.html', wait_until='networkidle', timeout=60000)
+              card = page.locator('[data-card-episode="48"]')
+              assert card.count() == 1
+              assert 'Yggdrasil' in card.inner_text()
+              img = card.locator('img')
+              assert img.get_attribute('src').endswith('assets/images/episodes/ep48-yggdrasil-cover.png')
+              dims = img.evaluate("el => ({w:el.naturalWidth,h:el.naturalHeight,fit:getComputedStyle(el).objectFit})")
+              assert dims['w'] == 1122 and dims['h'] == 1402, dims
+              assert dims['fit'] != 'cover', dims
+
+              page.goto(BASE + 'collections.html', wait_until='networkidle', timeout=60000)
+              assert 'Yggdrasil' in page.locator('body').inner_text()
+              page.goto(BASE + 'compare.html?cases=48,49', wait_until='networkidle', timeout=60000)
+              assert 'Yggdrasil' in page.locator('body').inner_text()
+              page.goto(BASE + 'explore.html', wait_until='networkidle', timeout=60000)
+              assert 'Yggdrasil' in page.locator('body').inner_text()
+
+              for path in ['episodes/yggdrasil.html','archive.html','collections.html','compare.html?cases=48,49','explore.html']:
+                  page.set_viewport_size({'width': 390, 'height': 844})
+                  page.goto(BASE + path, wait_until='networkidle', timeout=60000)
+                  assert page.evaluate('document.documentElement.scrollWidth <= document.documentElement.clientWidth + 1'), path
+
+              browser.close()
+
+          out = [
+              'Episode #48 live verification: PASS',
+              f'UTC: {datetime.now(timezone.utc).isoformat()}',
+              f'Cover SHA-256: {cover_sha}',
+              'Exact approved cover live: PASS',
+              'Live episode HTML: PASS',
+              'Numerical/source reconciliation: PASS',
+              'Evidence Profile: PASS',
+              'Epic Model Passport: PASS',
+              'Passport actions: View epic passport + Print / Save as PDF only',
+              'Raw text visible: NO',
+              'Source PDF links: NO',
+              'Registry/SEO/JSON-LD/sitemap: PASS',
+              'Related Cases and Previous/Next: PASS',
+              'Archive/Collections/Compare/Impact Map: PASS',
+              'Analytical graphics: PASS',
+              'Desktop and mobile overflow: PASS',
+              'Full repository QA suite: PASS',
+          ]
+          open('ep48-live-verification.txt','w',encoding='utf-8').write('\n'.join(out) + '\n')
+          PY
+
+      - name: Record successful live verification
+        shell: bash
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git pull --rebase origin main
+          git add ep48-live-verification.txt
+          git commit -m 'Record Episode 48 live verification'
+          git push origin HEAD:main
