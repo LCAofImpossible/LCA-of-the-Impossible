@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">The Argo technical reconstruction plate</title>
+  <desc id="desc">Blueprint-style technical plate for the Argo showing 28.5 metre overall length, 4.20 metre beam, 1.95 metre external height, 8 metre mast, fifty 4.75 metre oars, 55 square metre sail, 16.50 tonne wood reconstruction and 17.49 tonne total modeled materials.</desc>
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L8 3z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.grid{stroke:#112232;stroke-width:1}.line{fill:none;stroke:#6de7ff;stroke-width:2}.goldline{fill:none;stroke:#d0a563;stroke-width:2}.hull{fill:#0d1b27;stroke:#d0a563;stroke-width:3}.sail{fill:#132330;stroke:#6de7ff;stroke-width:2}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.5;marker-start:url(#arr);marker-end:url(#arr)}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 34px Georgia,serif}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.value{font:700 25px Arial,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <g opacity=".7">
+    <path d="M60 170H1140M60 250H1140M60 330H1140M60 410H1140M60 490H1140M60 570H1140" class="grid"/>
+    <path d="M140 140V650M300 140V650M460 140V650M620 140V650M780 140V650M940 140V650M1100 140V650" class="grid"/>
+  </g>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="76" class="gold label">EPISODE #49 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white title">Frozen design basis before inventory</text>
+
+  <g transform="translate(265 165)">
+    <path d="M80 355 C155 400 480 408 660 350 L705 305 C650 335 575 345 500 344 L180 344 C138 343 101 337 80 325 Z" class="hull"/>
+    <path d="M80 325 C60 294 58 254 75 217 C82 260 93 288 118 315" class="goldline"/>
+    <path d="M660 350 C704 334 731 301 742 259 C751 300 743 344 714 383" class="goldline"/>
+    <path d="M385 344V110" class="line"/>
+    <path d="M235 142H565" class="goldline"/>
+    <path d="M255 151 C300 132 487 130 545 153 L512 294 C447 315 332 313 270 292 Z" class="sail"/>
+    <path d="M255 151L385 110L545 153M270 292L385 110L512 294" stroke="#234557" fill="none" stroke-width="1.2"/>
+    <g stroke="#6de7ff" stroke-width="2">
+      <path d="M150 344L85 405"/><path d="M175 345L108 414"/><path d="M200 346L132 420"/><path d="M225 347L156 426"/><path d="M250 348L182 431"/><path d="M275 349L207 435"/><path d="M300 350L233 439"/><path d="M325 351L259 442"/><path d="M350 352L285 445"/><path d="M375 353L312 448"/><path d="M400 354L340 449"/><path d="M425 355L368 449"/><path d="M450 355L396 448"/><path d="M475 356L425 445"/><path d="M500 356L455 442"/><path d="M525 355L486 437"/><path d="M550 354L517 431"/><path d="M575 352L548 423"/><path d="M600 350L580 414"/><path d="M625 347L613 403"/>
+    </g>
+  </g>
+
+  <line x1="330" y1="642" x2="990" y2="642" class="dim"/>
+  <line x1="330" y1="620" x2="330" y2="655" class="line"/><line x1="990" y1="620" x2="990" y2="655" class="line"/>
+  <text x="660" y="629" text-anchor="middle" class="cyan label">28.5 m OVERALL LENGTH</text>
+  <line x1="650" y1="200" x2="650" y2="520" class="dim"/>
+  <text x="669" y="365" class="cyan label" transform="rotate(90 669 365)">8 m MAST</text>
+
+  <g transform="translate(70 190)">
+    <rect width="220" height="330" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">FROZEN BASIS</text>
+    <text x="20" y="78" class="white value">4.20 m</text><text x="20" y="101" class="muted tiny">beam · documented</text>
+    <text x="20" y="143" class="white value">1.95 m</text><text x="20" y="166" class="muted tiny">external height · documented</text>
+    <text x="20" y="208" class="white value">50 × 4.75 m</text><text x="20" y="231" class="muted tiny">oars · derived midpoint</text>
+    <text x="20" y="273" class="white value">55 m²</text><text x="20" y="296" class="muted tiny">sail · documented</text>
+  </g>
+
+  <g transform="translate(930 190)">
+    <rect width="200" height="330" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">MASS MODEL</text>
+    <text x="20" y="82" class="white value">16.50 t</text><text x="20" y="106" class="muted tiny">wood reconstruction</text>
+    <text x="20" y="154" class="white value">17.49 t</text><text x="20" y="178" class="muted tiny">total materials</text>
+    <path d="M20 205H180" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="240" class="gold small">Build logic</text>
+    <text x="20" y="267" class="white tiny">select &amp; shape timber</text>
+    <text x="20" y="289" class="white tiny">join shell · rig vessel</text>
+    <text x="20" y="311" class="white tiny">equip &amp; launch</text>
+  </g>
+
+  <text x="70" y="584" class="gold label">CONSTRUCTION MODEL</text>
+  <text x="70" y="610" class="muted small">Material procurement + inbound freight · hand assembly adds no purchased energy</text>
+  <text x="70" y="700" class="muted tiny">Sources: approved Episode #49 · Argonautes 2008; wood-mass reconstruction A-04 benchmarked against Olympias literature; construction logic also cites Mark 1991.</text>
+</svg>
