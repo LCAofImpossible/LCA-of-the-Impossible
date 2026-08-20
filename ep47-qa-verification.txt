@@ -1,0 +1,12 @@
+Episode #47 repository QA: PASS
+Approved cover SHA-256: b4670ac34cb1e45055c159ee879fd2f239118733071a336b277b5db041ce21f0
+Approved cover Git blob: 5e6b59b3a306be9b5214930933ecbcb8d3b80bdb
+Exact approved cover preserved: PASS
+PDF source/registry exposure: NONE
+Raw text export: NONE
+Source numerical reconciliation: PASS
+Evidence Profile registry data: PASS
+Epic Passport registry basis: PASS
+Related Cases and Collections: PASS
+SEO / Open Graph / Twitter / JSON-LD / sitemap: PASS
+Structural / feature / engagement / Phase 5 / Phase 6 / telemetry QA: PASS

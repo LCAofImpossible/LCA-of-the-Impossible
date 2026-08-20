@@ -29,6 +29,7 @@
         51,
         50,
         49,
+        47,
         42,
         41,
         38,
@@ -68,6 +69,17 @@
       "episodes": [
         55,
         52
+      ]
+    },
+    {
+      "slug": "gold-driven-cases",
+      "title": "Gold-Driven Cases",
+      "eyebrow": "PRECIOUS METAL & MATERIAL INTENSITY",
+      "description": "Cases where gold intensity overwhelms much larger energy, logistics or base-material flows, making the precious-metal assumption the decisive model driver.",
+      "episodes": [
+        55,
+        52,
+        47
       ]
     }
   ]

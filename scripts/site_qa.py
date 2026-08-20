@@ -49,7 +49,7 @@ def check_exists(label: str, value: str) -> Path | None:
     return path
 
 
-def check_cover(number: int, value: str) -> None:
+def check_cover(number: int, value: str, aspect_policy: str | None = None) -> None:
     path = check_exists(f"Episode #{number} cover", value)
     if not path:
         return
@@ -69,7 +69,13 @@ def check_cover(number: int, value: str) -> None:
         return
     ratio = width / height
     if abs(ratio - 0.8) > 0.012:
-        fail(f"Episode #{number} cover: expected portrait 4:5, found {width}x{height} (ratio {ratio:.4f})")
+        if aspect_policy == "approved-native":
+            if not (0.5 < ratio < 1.0):
+                fail(f"Episode #{number} cover: approved-native asset must remain portrait, found {width}x{height} (ratio {ratio:.4f})")
+            else:
+                warn(f"Episode #{number} cover: using explicitly approved native aspect ratio {width}x{height}; exact-file rule overrides 4:5 target")
+        else:
+            fail(f"Episode #{number} cover: expected portrait 4:5, found {width}x{height} (ratio {ratio:.4f})")
 
 
 class PageParser(HTMLParser):
@@ -197,7 +203,7 @@ def main() -> int:
 
             cover = episode.get("cover", "")
             if isinstance(cover, str):
-                check_cover(number, cover)
+                check_cover(number, cover, episode.get("coverAspectPolicy"))
             else:
                 fail(f"Episode #{number}: cover must be a string")
 

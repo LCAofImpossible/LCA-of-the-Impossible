@@ -177,6 +177,8 @@ For every new episode:
 
 When a cover is replaced after publication, use a cache-safe new filename/revision, update `episodes.json`, deploy, and verify what GitHub Pages actually serves before considering the replacement complete. **Never solve a cache or transfer problem by regenerating the artwork.**
 
+**Explicit approved-native cover exception:** if the user explicitly approves a specific raster and simultaneously requires byte-for-byte reuse, the exact-file rule prevails over the canonical 4:5 production target. Record `coverAspectPolicy: "approved-native"` for that episode, preserve the approved blob unchanged, and render it uncropped with the catalogue's contain behaviour. This is a controlled exception for an explicitly approved exact asset, not permission to generate new covers outside the canonical 4:5 family.
+
 ### 4.4 Where covers are allowed
 
 Covers may appear only in:
