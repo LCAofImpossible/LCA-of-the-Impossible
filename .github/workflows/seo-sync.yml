@@ -44,11 +44,14 @@ jobs:
       - name: Propagate Epic Passport presentation
         run: python scripts/epic_passport_sync.py
 
+      - name: Propagate visitor telemetry
+        run: python scripts/telemetry_sync.py
+
       - name: Commit synchronized metadata
         shell: bash
         run: |
           if git diff --quiet; then
-            echo "SEO and feature metadata already synchronized."
+            echo "SEO, features and telemetry already synchronized."
             exit 0
           fi
           git config user.name "github-actions[bot]"
