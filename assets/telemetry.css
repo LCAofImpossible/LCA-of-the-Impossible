@@ -1,0 +1,54 @@
+.site-telemetry,
+.case-telemetry{
+  display:inline-flex;
+  align-items:baseline;
+  gap:8px;
+  color:var(--muted);
+  font-size:.72rem;
+  letter-spacing:.1em;
+  text-transform:uppercase;
+}
+.site-telemetry{
+  margin-left:auto;
+  padding-left:18px;
+  border-left:1px solid var(--line);
+}
+.site-telemetry strong,
+.case-telemetry strong{
+  color:var(--accent2);
+  font-size:.92rem;
+  letter-spacing:.03em;
+}
+.telemetry-code{
+  color:var(--gold);
+  font-weight:800;
+  letter-spacing:.16em;
+}
+.telemetry-unit{color:var(--muted)}
+.case-telemetry{
+  width:100%;
+  margin:18px 0 2px;
+  padding:13px 15px;
+  border-top:1px solid rgba(109,231,255,.16);
+  border-bottom:1px solid rgba(109,231,255,.16);
+  background:linear-gradient(90deg,rgba(109,231,255,.035),transparent 70%);
+}
+.case-telemetry::before{
+  content:'//';
+  color:var(--accent);
+  font-weight:800;
+}
+@media(max-width:760px){
+  .site-telemetry{
+    width:100%;
+    margin-left:0;
+    padding:14px 0 0;
+    border-left:0;
+    border-top:1px solid var(--line);
+  }
+  .site-telemetry,
+  .case-telemetry{
+    flex-wrap:wrap;
+    gap:6px 8px;
+  }
+}
