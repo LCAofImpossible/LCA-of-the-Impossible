@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Draupnir technical reconstruction plate</title><desc id="desc">An idealized torus reconstruction with the episode's frozen physical parameters.</desc>
+<rect width="1200" height="760" rx="26" fill="#071019"/>
+<style>.t{font-family:system-ui,-apple-system,Segoe UI,sans-serif;fill:#f2eadc}.m{fill:#b8a98e}.g{fill:#d7ad4a}.line{stroke:#8e7b58;stroke-width:2}.fine{stroke:#52616b;stroke-width:1.5;fill:none}</style>
+<text x="60" y="72" class="t" font-size="24" font-weight="700" letter-spacing="4">TECHNICAL PLATE · DRAUPNIR</text>
+<text x="60" y="112" class="m" font-size="19">Geometry is idealized for plausibility; mass is the controlling parameter.</text>
+<g transform="translate(110,180)">
+  <circle class="fine" cx="310" cy="260" r="230"/><circle class="fine" cx="310" cy="260" r="175"/>
+  <circle cx="310" cy="260" r="200" fill="none" stroke="#d7ad4a" stroke-width="62"/>
+  <circle cx="310" cy="260" r="200" fill="none" stroke="#7f6228" stroke-width="3"/>
+  <line class="fine" x1="20" y1="260" x2="600" y2="260"/><line class="fine" x1="310" y1="-30" x2="310" y2="550"/>
+  <line class="line" x1="80" y1="535" x2="540" y2="535"/><path fill="#8e7b58" d="M80 535 l14 -8 v16zM540 535 l-14 -8 v16z"/>
+  <text class="g" x="310" y="570" text-anchor="middle" font-size="18" font-family="system-ui" font-weight="700">OUTER DIAMETER · 9.1 cm</text>
+</g>
+<g transform="translate(700,185)">
+  <rect x="0" y="0" width="410" height="390" rx="14" fill="#101c26" stroke="#8e7b58" stroke-width="2"/>
+  <text class="g" x="28" y="48" font-size="19" font-family="system-ui" font-weight="800">PROPERTY CARD</text>
+  <text class="t" x="28" y="92" font-size="19" font-family="system-ui">Material</text><text class="m" x="382" y="92" text-anchor="end" font-size="19" font-family="system-ui">fine gold</text>
+  <text class="t" x="28" y="136" font-size="19" font-family="system-ui">Density</text><text class="m" x="382" y="136" text-anchor="end" font-size="19" font-family="system-ui">19.32 g/cm³</text>
+  <text class="t" x="28" y="180" font-size="19" font-family="system-ui">Mass / ring</text><text class="m" x="382" y="180" text-anchor="end" font-size="19" font-family="system-ui">0.45 kg</text>
+  <text class="t" x="28" y="224" font-size="19" font-family="system-ui">Total rings</text><text class="m" x="382" y="224" text-anchor="end" font-size="19" font-family="system-ui">9</text>
+  <text class="t" x="28" y="268" font-size="19" font-family="system-ui">Total gold</text><text class="m" x="382" y="268" text-anchor="end" font-size="19" font-family="system-ui">4.05 kg</text>
+  <text class="t" x="28" y="312" font-size="19" font-family="system-ui">Geometry</text><text class="m" x="382" y="312" text-anchor="end" font-size="19" font-family="system-ui">idealized torus</text>
+  <line x1="28" y1="338" x2="382" y2="338" stroke="#52616b"/>
+  <text class="m" x="28" y="370" font-size="15" font-family="system-ui">Reference flow: original Draupnir + eight equal-weight copies</text>
+</g>
+<text x="700" y="632" class="t" font-size="18">Tolerance: dimensions are engineered for plausibility.</text><text x="700" y="666" class="g" font-size="18" font-weight="700">Mass is locked before results or sensitivities are calculated.</text>
+</svg>
