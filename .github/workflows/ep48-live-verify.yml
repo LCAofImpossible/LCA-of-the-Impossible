@@ -129,7 +129,7 @@ jobs:
 
           sitejs = deployed['assets/site.js'].decode('utf-8')
           assert 'renderEvidenceProfile' in sitejs
-          assert 'renderRelatedCases' in sitejs
+          assert 'relatedEpisodes' in sitejs
           assert 'renderEpisodeNavigation' in sitejs
           assert 'renderArchive' in sitejs
 
