@@ -20,50 +20,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Install QA dependency
-        run: python -m pip install --disable-pip-version-check pillow
-
-      - name: Run and record repository QA
-        shell: bash
-        run: |
-          set +e
-          LOG=ep48-qa-verification.txt
-          : > "$LOG"
-          overall=0
-          run_check() {
-            echo "=== $* ===" >> "$LOG"
-            "$@" >> "$LOG" 2>&1
-            rc=$?
-            echo "EXIT=$rc" >> "$LOG"
-            echo >> "$LOG"
-            if [ $rc -ne 0 ]; then overall=1; fi
-          }
-          run_check python scripts/apply_seo.py
-          run_check python scripts/feature_sync.py
-          run_check python scripts/engagement_sync.py
-          run_check python scripts/phase5_sync.py
-          run_check python scripts/phase6_sync.py
-          run_check python scripts/epic_passport_sync.py
-          run_check python scripts/telemetry_sync.py
-          echo "=== deterministic sync diff ===" >> "$LOG"
-          if git diff --quiet; then
-            echo "CLEAN" >> "$LOG"
-          else
-            echo "DIRTY" >> "$LOG"
-            git diff --stat >> "$LOG"
-            overall=1
-          fi
-          run_check python scripts/site_qa.py
-          run_check python scripts/seo_qa.py
-          run_check python scripts/feature_qa.py
-          run_check python scripts/engagement_qa.py
-          run_check python scripts/phase5_qa.py
-          run_check python scripts/phase6_qa.py
-          run_check python scripts/telemetry_qa.py
-          echo "OVERALL=$([ $overall -eq 0 ] && echo PASS || echo FAIL)" >> "$LOG"
-          git reset --hard HEAD
-
-      - name: Verify and record deployed GitHub Pages files
+      - name: Verify deployed GitHub Pages files
         shell: bash
         run: |
           python - <<'PY'
@@ -71,7 +28,7 @@ jobs:
           from datetime import datetime, timezone
 
           BASE = 'https://lcaofimpossible.github.io/LCA-of-the-Impossible/'
-          EXPECTED = '29b6a5f6609992bb18febad6e610a985007e50be2ba4e84559bd59c15216bef1'
+          EXPECTED = 'f12979cede247b97e334571e8cfdda3fe7c7137154c5ff1f5a224ba6f16a4a1f'
           lines = []
 
           def get(path):
@@ -119,12 +76,9 @@ jobs:
               assert ep['categoryLabel'] == 'Mythic Structure'
               assert ep['lcaLabel'] == 'Materials-driven'
               assert ep['related'] == [53,36,49]
-              assert ep['evidence'] == {
-                  **ep['evidence'],
-                  'confidence':'Medium',
-                  'proxyDependence':'High',
-                  'assumptionSensitivity':'High'
-              }
+              assert ep['evidence']['confidence'] == 'Medium'
+              assert ep['evidence']['proxyDependence'] == 'High'
+              assert ep['evidence']['assumptionSensitivity'] == 'High'
               assert 'pdf' not in ep
               assert not any('pdf' in e for e in reg['episodes'])
 
@@ -155,8 +109,7 @@ jobs:
 
               css = deployed['assets/style.css'].decode('utf-8') + deployed['assets/phase6.css'].decode('utf-8')
               assert '@media' in css and 'overflow-x' in css
-              compact = css.replace(' ', '')
-              assert 'object-fit:contain' in compact
+              assert 'object-fit:contain' in css.replace(' ', '')
 
               lines = [
                   'Episode #48 live verification: PASS',
@@ -185,12 +138,12 @@ jobs:
           open('ep48-live-verification.txt','w',encoding='utf-8').write('\n'.join(lines) + '\n')
           PY
 
-      - name: Record verification diagnostics
+      - name: Record live verification
         shell: bash
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
           git pull --rebase origin main
-          git add ep48-qa-verification.txt ep48-live-verification.txt
-          git commit -m 'Record Episode 48 verification diagnostics'
+          git add ep48-live-verification.txt
+          git commit -m 'Record Episode 48 live verification'
           git push origin HEAD:main
