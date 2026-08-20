@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">The Argo inventory map</title>
+  <desc id="desc">Inventory map for one Argo-class vessel and one expedition, showing primary timber, sail and rigging, minor metals, stone anchors, inbound freight and the boundary-specific zero for purchased direct-propulsion fuel.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.excluded{fill:#0b1622;stroke:#70414b;stroke-width:1.5}.gold{fill:#d0a563}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.red{fill:#d47575}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.title{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #49 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white title">Count the ship. Not the gods.</text>
+  <text x="64" y="149" class="muted small">Functional unit: one Argo-class build + one Pagasae–Colchis–Pagasae expedition</text>
+
+  <g transform="translate(60 190)">
+    <rect width="265" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">PRIMARY TIMBER</text><text x="20" y="63" class="white value">16.50 t</text><text x="120" y="63" class="muted tiny">structure + oars + mast</text>
+  </g>
+  <g transform="translate(60 298)">
+    <rect width="265" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">SAIL + RIGGING</text><text x="20" y="63" class="white value">0.24 t</text><text x="110" y="63" class="muted tiny">natural fibre</text>
+  </g>
+  <g transform="translate(60 406)">
+    <rect width="265" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">MINOR METALS</text><text x="20" y="63" class="white value">0.15 t</text><text x="110" y="63" class="muted tiny">non-structural</text>
+  </g>
+  <g transform="translate(60 514)">
+    <rect width="265" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">STONE ANCHORS</text><text x="20" y="63" class="white value">0.60 t</text><text x="110" y="63" class="muted tiny">2 × 0.30 t</text>
+  </g>
+
+  <rect x="385" y="210" width="430" height="336" rx="18" class="core"/>
+  <text x="600" y="250" text-anchor="middle" class="gold label">ARGO-CLASS VESSEL</text>
+  <text x="600" y="291" text-anchor="middle" class="white value">17.49 t modeled materials</text>
+  <text x="600" y="320" text-anchor="middle" class="muted small">28.5 m · 50 oars · 8 m mast · 55 m² sail</text>
+
+  <g transform="translate(430 354)">
+    <rect width="340" height="72" rx="10" fill="#071019" stroke="#d0a563" stroke-width="1.5"/>
+    <text x="170" y="29" text-anchor="middle" class="gold label">INBOUND FREIGHT</text>
+    <text x="170" y="56" text-anchor="middle" class="white value">1,399.2 t·km</text>
+  </g>
+  <g transform="translate(430 449)">
+    <rect width="340" height="72" rx="10" fill="#071019" stroke="#6de7ff" stroke-width="1.5"/>
+    <text x="170" y="29" text-anchor="middle" class="cyan label">VOYAGE PROPULSION</text>
+    <text x="170" y="56" text-anchor="middle" class="white value">0 purchased fuel</text>
+  </g>
+
+  <g transform="translate(875 190)">
+    <rect width="265" height="416" rx="12" class="excluded"/>
+    <text x="20" y="34" class="red label">EXCLUDED / NOT QUANTIFIED</text>
+    <text x="20" y="84" class="white small">Crew food &amp; metabolism</text>
+    <path d="M20 104H245" stroke="#422b33"/>
+    <text x="20" y="144" class="white small">Shipyard tools &amp;</text><text x="20" y="167" class="white small">infrastructure</text>
+    <path d="M20 188H245" stroke="#422b33"/>
+    <text x="20" y="228" class="white small">Maintenance &amp; end-of-life</text>
+    <path d="M20 248H245" stroke="#422b33"/>
+    <text x="20" y="288" class="white small">Supernatural interventions</text>
+    <path d="M20 308H245" stroke="#422b33"/>
+    <text x="20" y="350" class="red small">Zero direct fuel ≠</text>
+    <text x="20" y="375" class="white small">zero-impact journey</text>
+  </g>
+
+  <path d="M325 236 C352 236 354 285 385 285" class="line"/>
+  <path d="M325 344 C350 344 355 330 385 330" class="line"/>
+  <path d="M325 452 C350 452 355 375 385 375" class="line"/>
+  <path d="M325 560 C350 560 355 420 385 420" class="line"/>
+
+  <rect x="360" y="622" width="480" height="62" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="648" text-anchor="middle" class="gold label">ROUTE PROXY · 4,400 km ROUND TRIP</text>
+  <text x="600" y="671" text-anchor="middle" class="muted tiny">Narrative proxy; not a route reconstruction</text>
+  <path d="M600 546V622" class="line"/>
+  <text x="60" y="704" class="muted tiny">Source: approved Episode #49. Only declared included flows, exclusions and boundary-specific zero are shown.</text>
+</svg>
