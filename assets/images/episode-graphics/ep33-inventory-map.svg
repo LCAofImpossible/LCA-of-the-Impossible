@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">Brahmastra inventory map</title>
+<desc id="desc">Inventory map for one non-functional ceremonial Brahmastra-inspired relic showing material inputs, workshop fabrication, finishing water, road freight and the delivery cut-off before supernatural invocation.</desc>
+<defs>
+<style>.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.txt{fill:#eef7fb;font:600 22px Arial,sans-serif}.muted{fill:#9ab0bc;font:17px Arial,sans-serif}.small{fill:#9ab0bc;font:15px Arial,sans-serif}.ey{fill:#6de7ff;font:700 15px Arial;letter-spacing:2px}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:3;fill:none}.dash{stroke:#d0a563;stroke-width:2;stroke-dasharray:8 9;fill:none}</style>
+<marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L9,3 L0,6 Z" fill="#6de7ff"/></marker>
+</defs>
+<rect class="bg" width="1200" height="780"/>
+<text class="ey" x="60" y="58">EP33 · INVENTORY MAP · PER FUNCTIONAL UNIT</text>
+<text class="txt" x="60" y="98">One 2.40 m non-functional ceremonial relic · delivered ready for one display / ritual use</text>
+
+<rect class="panel" x="60" y="150" width="285" height="115" rx="10"/><text class="gold" x="85" y="184" style="font:700 16px Arial">PRIMARY MATERIAL</text><text class="txt" x="85" y="220">Metals · 20.00 kg</text><text class="small" x="85" y="247">tube · head · collars · fittings</text>
+<rect class="panel" x="60" y="290" width="285" height="105" rx="10"/><text class="cyan" x="85" y="324" style="font:700 16px Arial">STABILIZERS</text><text class="txt" x="85" y="360">Hardwood · 1.80 kg</text>
+<rect class="panel" x="60" y="420" width="285" height="105" rx="10"/><text class="cyan" x="85" y="454" style="font:700 16px Arial">ORNAMENT PROXY</text><text class="txt" x="85" y="490">Glass / mineral · 0.65 kg</text>
+<rect class="panel" x="60" y="550" width="285" height="105" rx="10"/><text class="cyan" x="85" y="584" style="font:700 16px Arial">UTILITIES</text><text class="txt" x="85" y="620">18.0 kWh electricity</text><text class="small" x="85" y="646">0.05 m³ mains water</text>
+
+<rect class="panel" x="445" y="220" width="300" height="330" rx="12"/><text class="gold" x="475" y="260" style="font:700 17px Arial">FIVE MAKING STAGES</text>
+<text class="txt" x="475" y="307">01 · FORM</text><text class="muted" x="475" y="334">hollow body + head shell</text>
+<text class="txt" x="475" y="378">02 · ASSEMBLE</text><text class="muted" x="475" y="405">collars · bands · finial · fittings</text>
+<text class="txt" x="475" y="449">03 · SHAPE</text><text class="muted" x="475" y="476">hardwood stabilizers</text>
+<text class="txt" x="475" y="520">04 · SET · 05 · FINISH</text><text class="muted" x="475" y="547">ornament · clean · inspect · prepare</text>
+
+<path class="line" marker-end="url(#arrow)" d="M345 208 C395 208 400 285 445 292"/><path class="line" marker-end="url(#arrow)" d="M345 342 L445 360"/><path class="line" marker-end="url(#arrow)" d="M345 472 L445 435"/><path class="line" marker-end="url(#arrow)" d="M345 602 C390 602 405 530 445 510"/>
+
+<rect class="panel" x="840" y="225" width="300" height="150" rx="10"/><text class="cyan" x="870" y="260" style="font:700 16px Arial">DELIVERY</text><text class="txt" x="870" y="300">22.45 kg · 600 km</text><text class="txt" x="870" y="337">13.47 t·km road freight</text><path class="line" marker-end="url(#arrow)" d="M745 355 C790 355 800 315 840 307"/>
+<rect class="panel" x="840" y="430" width="300" height="120" rx="10"/><text class="gold" x="870" y="466" style="font:700 16px Arial">CUT-OFF</text><text class="txt" x="870" y="505">Completed relic delivered</text><text class="small" x="870" y="532">before invocation or use-phase effect</text><path class="line" marker-end="url(#arrow)" d="M990 375 L990 430"/>
+
+<path class="dash" d="M840 620 H1140"/><text class="small" x="840" y="655">EXCLUDED · supernatural energy / invocation</text><text class="small" x="840" y="682">battlefield effects · human/animal labour</text><text class="small" x="840" y="709">capital goods · minor cord / packaging</text>
+<text class="small" x="60" y="735">BOUNDARY · primary materials → workshop fabrication → cleaning / finishing → road delivery</text>
+<text class="small" x="60" y="762">FACTOR BASIS · UK Government GHG Conversion Factors 2026 · declared proxies remain explicit</text>
+</svg>
