@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 780" role="img" aria-labelledby="title desc">
+<title id="title">Brahmastra technical plate</title>
+<desc id="desc">Engineering reconstruction of the ceremonial Brahmastra-inspired relic showing 2.40 metre overall length, 1.45 metre tube, 110 millimetre outside diameter, 3 millimetre baseline wall thickness, 20 kilogram metal mass and 22.45 kilogram reference mass.</desc>
+<defs><style>.bg{fill:#071019}.grid{stroke:#142c3b;stroke-width:1}.line{stroke:#6de7ff;stroke-width:3;fill:none}.thin{stroke:#d0a563;stroke-width:2;fill:none}.body{fill:#0d1b27;stroke:#d0a563;stroke-width:3}.wood{fill:#112232;stroke:#6de7ff;stroke-width:2}.gem{fill:#6de7ff;stroke:#eef7fb;stroke-width:2}.txt{fill:#eef7fb;font:600 22px Arial,sans-serif}.muted{fill:#9ab0bc;font:17px Arial,sans-serif}.ey{fill:#6de7ff;font:700 15px Arial;letter-spacing:2px}.dim{fill:#d0a563;font:700 17px Arial}.small{fill:#9ab0bc;font:15px Arial,sans-serif}</style></defs>
+<rect class="bg" width="1200" height="780"/><g opacity=".52">
+<path class="grid" d="M60 120 V710 M110 120 V710 M160 120 V710 M210 120 V710 M260 120 V710 M310 120 V710 M360 120 V710 M410 120 V710 M460 120 V710 M510 120 V710 M560 120 V710 M610 120 V710 M660 120 V710 M710 120 V710 M760 120 V710 M810 120 V710 M860 120 V710 M910 120 V710 M960 120 V710 M1010 120 V710 M1060 120 V710 M1110 120 V710 M1160 120 V710"/>
+<path class="grid" d="M60 120 H1160 M60 170 H1160 M60 220 H1160 M60 270 H1160 M60 320 H1160 M60 370 H1160 M60 420 H1160 M60 470 H1160 M60 520 H1160 M60 570 H1160 M60 620 H1160 M60 670 H1160"/></g>
+<text class="ey" x="60" y="55">EP33 · TECHNICAL PLATE · ENGINEERED RECONSTRUCTION</text><text class="txt" x="60" y="92">Brahmastra · frozen geometry before inventory</text>
+
+<!-- central elevation -->
+<path class="body" d="M135 390 L245 345 L785 345 L890 315 L1020 355 L1080 390 L1020 425 L890 465 L785 435 L245 435 Z"/>
+<path class="thin" d="M245 355 V425 M300 352 V428 M720 352 V428 M780 352 V428"/>
+<path class="wood" d="M790 342 L885 290 L925 315 L850 367 Z M790 438 L885 490 L925 465 L850 413 Z"/>
+<circle class="gem" cx="405" cy="390" r="34"/><circle class="thin" cx="405" cy="390" r="49"/><path class="thin" d="M370 390 H440 M405 355 V425"/>
+<path class="thin" d="M130 500 H1085 M130 485 V515 M1085 485 V515"/><text class="dim" x="535" y="535">2.40 m overall length</text>
+<path class="line" d="M245 570 H785 M245 555 V585 M785 555 V585"/><text class="dim" x="445" y="605">1.45 m tube</text>
+
+<!-- cross-section -->
+<circle class="line" cx="985" cy="165" r="58"/><circle class="thin" cx="985" cy="165" r="51"/><path class="thin" d="M905 165 H1065 M985 85 V245"/><text class="dim" x="870" y="265">OD 110 mm · wall 3.0 mm</text>
+
+<!-- specification blocks -->
+<rect class="body" x="60" y="135" width="250" height="165" rx="8"/><text class="ey" x="85" y="170">REFERENCE FLOW</text><text class="txt" x="85" y="207">1 completed relic</text><text class="muted" x="85" y="240">non-functional</text><text class="muted" x="85" y="268">ceremonial display / ritual use</text>
+<rect class="body" x="60" y="610" width="325" height="115" rx="8"/><text class="ey" x="85" y="646">MASS ACCOUNT</text><text class="txt" x="85" y="685">20.00 kg metal</text><text class="muted" x="85" y="712">22.45 kg total reference mass</text>
+<rect class="body" x="425" y="625" width="305" height="100" rx="8"/><text class="ey" x="450" y="660">SECONDARY MATERIALS</text><text class="txt" x="450" y="698">1.80 kg wood · 0.65 kg proxy</text>
+<rect class="body" x="770" y="610" width="370" height="115" rx="8"/><text class="ey" x="795" y="646">MODEL STATUS</text><text class="txt" x="795" y="684">3.0 mm wall = baseline</text><text class="muted" x="795" y="712">geometry and materials are engineered assumptions</text>
+<text class="small" x="60" y="758">The episode states that mythic texts provide no measurable geometry or material specification.</text>
+</svg>
