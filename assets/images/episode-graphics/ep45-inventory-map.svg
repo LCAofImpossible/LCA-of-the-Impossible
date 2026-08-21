@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Episode 45 King Midas inventory map</title>
+<desc id="desc">Primary gold, wooden substrate, workshop electricity, protective wooden case, road freight and process water flow into one touch-converted ceremonial goblet, ending at the palace boundary.</desc>
+<rect width="1200" height="760" fill="#071019"/>
+<g fill="none" stroke="#234557" stroke-width="2"><path d="M40 40H1160V720H40Z"/><path d="M70 80H1130"/><path d="M600 125V650" stroke-dasharray="6 10" opacity=".45"/></g>
+<text x="70" y="70" fill="#d0a563" font-family="Georgia,serif" font-size="22" letter-spacing="4">EPISODE #45 · INVENTORY MAP</text>
+<text x="70" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="34" font-weight="700">THE CURSE BECOMES A SYSTEM</text>
+<g font-family="Arial,sans-serif">
+  <g transform="translate(70 170)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#6de7ff"/><text x="22" y="32" fill="#6de7ff" font-size="15" font-weight="700">PRIMARY GOLD</text><text x="22" y="64" fill="#eef7fb" font-size="24">0.622 kg Au</text></g>
+  <g transform="translate(70 286)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#234557"/><text x="22" y="32" fill="#9ab0bc" font-size="15" font-weight="700">WOOD SUBSTRATE</text><text x="22" y="64" fill="#eef7fb" font-size="24">0.040 kg</text></g>
+  <g transform="translate(70 402)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#234557"/><text x="22" y="32" fill="#9ab0bc" font-size="15" font-weight="700">WORKSHOP ELECTRICITY</text><text x="22" y="64" fill="#eef7fb" font-size="24">3.20 kWh</text></g>
+  <g transform="translate(70 518)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#234557"/><text x="22" y="32" fill="#9ab0bc" font-size="15" font-weight="700">PROCESS WATER</text><text x="22" y="64" fill="#eef7fb" font-size="24">0.020 m³</text></g>
+  <g transform="translate(800 170)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#234557"/><text x="22" y="32" fill="#9ab0bc" font-size="15" font-weight="700">PROTECTIVE WOOD CASE</text><text x="22" y="64" fill="#eef7fb" font-size="24">1.20 kg</text></g>
+  <g transform="translate(800 286)"><rect width="330" height="92" rx="8" fill="#0d1b27" stroke="#234557"/><text x="22" y="32" fill="#9ab0bc" font-size="15" font-weight="700">ROAD FREIGHT</text><text x="22" y="64" fill="#eef7fb" font-size="24">0.109 t·km</text></g>
+  <g transform="translate(468 300)"><rect width="264" height="180" rx="12" fill="#112232" stroke="#d0a563" stroke-width="3"/><text x="132" y="45" fill="#d0a563" font-size="15" text-anchor="middle" font-weight="700">REFERENCE FLOW</text><text x="132" y="82" fill="#eef7fb" font-size="26" text-anchor="middle" font-weight="700">ONE GOLDEN</text><text x="132" y="115" fill="#eef7fb" font-size="26" text-anchor="middle" font-weight="700">GOBLET</text><text x="132" y="148" fill="#9ab0bc" font-size="16" text-anchor="middle">one conversion event</text></g>
+  <g fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"><path d="M400 216H468"/><path d="M400 332H468"/><path d="M400 448H468"/><path d="M400 564H520V480"/><path d="M800 216H732"/><path d="M800 332H732"/></g>
+  <g transform="translate(470 548)"><rect width="260" height="78" rx="8" fill="#0d1b27" stroke="#234557"/><text x="130" y="30" fill="#9ab0bc" font-size="14" text-anchor="middle">CUT-OFF</text><text x="130" y="56" fill="#eef7fb" font-size="19" text-anchor="middle">PALACE BOUNDARY</text></g>
+  <path d="M600 480V548" stroke="#d0a563" stroke-width="3" marker-end="url(#arrowGold)"/>
+  <text x="70" y="682" fill="#9ab0bc" font-size="15">Excluded: divine intervention · palace use · gemstones below cut-off · end-of-life / treasure storage</text>
+</g>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#6de7ff"/></marker><marker id="arrowGold" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#d0a563"/></marker></defs>
+</svg>
