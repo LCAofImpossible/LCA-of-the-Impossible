@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Nautilus baseline hotspot breakdown</title>
+  <desc id="desc">Machinery metals 55.5 percent, hull steel 27.9 percent, battery stack 8.1 percent, energy 4.9 percent, logistics 3.1 percent and interiors 0.6 percent of the 4.69 kilotonne carbon dioxide equivalent baseline.</desc>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="18" fill="none" stroke="#a9843e" stroke-width="2"/>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif">
+    <text x="70" y="88" font-size="22" letter-spacing="4" fill="#c9a557">HOTSPOT BREAKDOWN · 4.69 kt CO₂e</text>
+    <text x="70" y="132" font-size="36" font-weight="700" fill="#f3ead6">THE NAUTILUS IS A METAL STORY FIRST</text>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="18">
+    <g transform="translate(70 190)">
+      <text y="20" fill="#f3ead6" font-weight="700">Machinery metals</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">2,599 t · 55.5%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="566" height="28" rx="8" fill="#2aa58a"/>
+    </g>
+    <g transform="translate(70 274)">
+      <text y="20" fill="#f3ead6" font-weight="700">Hull steel</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">1,308 t · 27.9%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="285" height="28" rx="8" fill="#5a8ea2"/>
+    </g>
+    <g transform="translate(70 358)">
+      <text y="20" fill="#f3ead6" font-weight="700">Battery stack</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">378 t · 8.1%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="83" height="28" rx="8" fill="#c9a557"/>
+    </g>
+    <g transform="translate(70 442)">
+      <text y="20" fill="#f3ead6" font-weight="700">Energy</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">228 t · 4.9%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="50" height="28" rx="8" fill="#b47a45"/>
+    </g>
+    <g transform="translate(70 526)">
+      <text y="20" fill="#f3ead6" font-weight="700">Logistics</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">146 t · 3.1%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="32" height="28" rx="8" fill="#8068a8"/>
+    </g>
+    <g transform="translate(70 610)">
+      <text y="20" fill="#f3ead6" font-weight="700">Interiors</text><text x="1020" y="20" text-anchor="end" fill="#9fe6d5">28 t · 0.6%</text><rect y="38" width="1020" height="28" rx="8" fill="#13232e"/><rect y="38" width="8" height="28" rx="4" fill="#8b9298"/>
+    </g>
+  </g>
+</svg>

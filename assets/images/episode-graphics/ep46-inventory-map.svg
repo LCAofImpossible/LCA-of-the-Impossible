@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Nautilus cradle-to-launch inventory map</title>
+  <desc id="desc">Primary steel, machinery metals, battery stack, interiors, assembly electricity, marine gas oil, road freight and sea freight feed one launch-ready Nautilus. Use phase and end of life are excluded.</desc>
+  <rect width="1200" height="760" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="704" rx="18" fill="none" stroke="#a9843e" stroke-width="2"/>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif" fill="#f3ead6">
+    <text x="70" y="88" font-size="22" letter-spacing="4" fill="#c9a557">INVENTORY MAP · EPISODE #46</text>
+    <text x="70" y="132" font-size="36" font-weight="700">DISTRIBUTED SUPPLY → HIDDEN ISLAND → LAUNCH</text>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="18">
+    <g fill="#0d1b26" stroke="#2aa58a" stroke-width="2">
+      <rect x="70" y="190" width="300" height="82" rx="12"/><rect x="70" y="294" width="300" height="82" rx="12"/><rect x="70" y="398" width="300" height="82" rx="12"/><rect x="70" y="502" width="300" height="82" rx="12"/>
+    </g>
+    <g fill="#f3ead6">
+      <text x="92" y="222" font-weight="700">PRIMARY METALS</text><text x="92" y="250">456.96 t hull/keel + 680.00 t machinery</text>
+      <text x="92" y="326" font-weight="700">ELECTRIC STORAGE + INTERIORS</text><text x="92" y="354">60.00 t battery + 24.00 t glass/timber/seals</text>
+      <text x="92" y="430" font-weight="700">ASSEMBLY ENERGY</text><text x="92" y="458">627,072 kWh + 45.00 t marine gas oil</text>
+      <text x="92" y="534" font-weight="700">COMPONENT FREIGHT</text><text x="92" y="562">793,000 road + 3.05M sea t·km</text>
+    </g>
+  </g>
+  <g stroke="#c9a557" stroke-width="3" fill="none">
+    <path d="M390 231 H520"/><path d="M390 335 H520"/><path d="M390 439 H520"/><path d="M390 543 H520"/>
+    <path d="M505 219 l20 12 -20 12"/><path d="M505 323 l20 12 -20 12"/><path d="M505 427 l20 12 -20 12"/><path d="M505 531 l20 12 -20 12"/>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif">
+    <rect x="535" y="220" width="300" height="330" rx="24" fill="#111f2a" stroke="#c9a557" stroke-width="3"/>
+    <text x="685" y="280" text-anchor="middle" fill="#c9a557" font-size="20" letter-spacing="3">HIDDEN ISLAND</text>
+    <text x="685" y="330" text-anchor="middle" fill="#f3ead6" font-size="40" font-weight="700">NAUTILUS</text>
+    <text x="685" y="374" text-anchor="middle" fill="#f3ead6" font-size="20">1 launch-ready vessel</text>
+    <text x="685" y="408" text-anchor="middle" fill="#f3ead6" font-size="20">70 m × 8 m</text>
+    <text x="685" y="442" text-anchor="middle" fill="#f3ead6" font-size="20">1,356.48 t dry</text>
+    <line x1="585" y1="474" x2="785" y2="474" stroke="#2aa58a" stroke-width="2"/>
+    <text x="685" y="516" text-anchor="middle" fill="#9fe6d5" font-size="18">CRADLE-TO-LAUNCH</text>
+  </g>
+  <g stroke="#c9a557" stroke-width="3" fill="none"><path d="M855 385 H1005"/><path d="M990 373 l20 12 -20 12"/></g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif">
+    <rect x="900" y="258" width="240" height="250" rx="18" fill="#0d1b26" stroke="#a9843e" stroke-width="2"/>
+    <text x="1020" y="305" text-anchor="middle" fill="#c9a557" font-size="18" letter-spacing="2">CUT-OFF</text>
+    <text x="1020" y="350" text-anchor="middle" fill="#f3ead6" font-size="24" font-weight="700">FIRST OCEAN TRIAL</text>
+    <text x="1020" y="395" text-anchor="middle" fill="#d6dce1" font-size="17">Vessel assembled, equipped</text>
+    <text x="1020" y="423" text-anchor="middle" fill="#d6dce1" font-size="17">and able to leave the cradle.</text>
+    <text x="1020" y="470" text-anchor="middle" fill="#e08d8d" font-size="15">Use · maintenance · EoL excluded</text>
+  </g>
+  <text x="70" y="682" fill="#9fe6d5" font-family="system-ui,Segoe UI,Arial,sans-serif" font-size="18">The hidden island is not impact-free; secrecy moves part of the burden into logistics.</text>
+</svg>

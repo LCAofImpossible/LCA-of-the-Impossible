@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Nautilus technical reconstruction plate</title>
+  <desc id="desc">Technical silhouette and callouts for the Nautilus: 70 metre length, 8 metre breadth, 1,356.48 tonne dry mass, 1,507.2 tonne submerged mass, 394.96 tonnes hull steel, 62 tonnes keel steel and 961.52 tonnes residual engine, ballast and interiors.</desc>
+  <rect width="1200" height="760" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="704" rx="18" fill="none" stroke="#a9843e" stroke-width="2"/>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif">
+    <text x="70" y="88" font-size="22" letter-spacing="4" fill="#c9a557">TECHNICAL PLATE · VERNE GEOMETRY</text>
+    <text x="70" y="132" font-size="36" font-weight="700" fill="#f3ead6">A CIGAR-SHAPED STEEL ANIMAL</text>
+  </g>
+  <g transform="translate(150 245)">
+    <path d="M0 135 C120 35 300 5 470 8 C650 10 790 52 900 135 C790 218 650 260 470 262 C300 265 120 235 0 135 Z" fill="#172630" stroke="#d3b274" stroke-width="4"/>
+    <path d="M105 135 C230 88 390 72 555 75 C670 78 760 98 835 135 C760 172 670 192 555 195 C390 198 230 182 105 135 Z" fill="none" stroke="#456879" stroke-width="2" stroke-dasharray="8 8"/>
+    <rect x="410" y="0" width="120" height="48" rx="10" fill="#172630" stroke="#d3b274" stroke-width="3"/>
+    <circle cx="455" cy="128" r="10" fill="#c9a557"/><circle cx="495" cy="128" r="10" fill="#c9a557"/><circle cx="535" cy="128" r="10" fill="#c9a557"/>
+  </g>
+  <g stroke="#2aa58a" fill="none" stroke-width="2">
+    <line x1="150" y1="570" x2="1050" y2="570"/><line x1="150" y1="558" x2="150" y2="582"/><line x1="1050" y1="558" x2="1050" y2="582"/>
+    <line x1="1080" y1="253" x2="1080" y2="507"/><line x1="1068" y1="253" x2="1092" y2="253"/><line x1="1068" y1="507" x2="1092" y2="507"/>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif" fill="#9fe6d5">
+    <text x="600" y="610" text-anchor="middle" font-size="20">70 m documented length</text>
+    <text x="1105" y="390" font-size="20" transform="rotate(90 1105 390)">8 m max breadth</text>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif">
+    <rect x="70" y="625" width="250" height="70" rx="10" fill="#0d1b26" stroke="#a9843e"/><rect x="340" y="625" width="250" height="70" rx="10" fill="#0d1b26" stroke="#a9843e"/><rect x="610" y="625" width="250" height="70" rx="10" fill="#0d1b26" stroke="#a9843e"/><rect x="880" y="625" width="250" height="70" rx="10" fill="#0d1b26" stroke="#a9843e"/>
+    <text x="90" y="651" fill="#c9a557" font-size="16" font-weight="700">HULL</text><text x="90" y="680" fill="#f3ead6" font-size="18">394.96 t steel plating</text>
+    <text x="360" y="651" fill="#c9a557" font-size="16" font-weight="700">KEEL</text><text x="360" y="680" fill="#f3ead6" font-size="18">62.00 t steel envelope</text>
+    <text x="630" y="651" fill="#c9a557" font-size="16" font-weight="700">RESIDUAL</text><text x="630" y="680" fill="#f3ead6" font-size="18">961.52 t engine, ballast, interiors</text>
+    <text x="900" y="651" fill="#c9a557" font-size="16" font-weight="700">DIVE MASS</text><text x="900" y="680" fill="#f3ead6" font-size="18">1,507.2 t submerged</text>
+  </g>
+  <g font-family="system-ui,Segoe UI,Arial,sans-serif" fill="#d6dce1">
+    <text x="70" y="185" font-size="18">Dry mass · 1,356.48 t</text>
+    <text x="70" y="215" font-size="18">System · cradle-to-launch</text>
+    <text x="70" y="245" font-size="18">Status · narrative proxy</text>
+  </g>
+</svg>
