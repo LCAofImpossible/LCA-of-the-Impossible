@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Episode 44 Icarus inventory map</title>
+  <desc id="desc">Material inputs, freight and workshop electricity feeding one launch-ready wing pair and one kilometre zero-fuel glide.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.panel2{fill:#112232;stroke:#234557;stroke-width:2}.line{stroke:#6de7ff;stroke-width:3;fill:none}.thin{stroke:#234557;stroke-width:1.5;fill:none}.gold{stroke:#d0a563;stroke-width:2;fill:none}.t{font-family:Arial,Helvetica,sans-serif;fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.goldt{fill:#d0a563}.h{font-weight:700;letter-spacing:2px}.small{font-size:20px}.med{font-size:26px}.big{font-size:34px;font-weight:700}.mono{font-family:Consolas,Menlo,monospace}
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="26"/>
+  <rect x="28" y="28" width="1144" height="704" rx="20" class="thin"/>
+  <text x="70" y="82" class="t small h">EPISODE #44 · INVENTORY MAP</text>
+  <text x="70" y="126" class="t big">THE ESCAPE BECOMES A FLOW</text>
+  <text x="70" y="160" class="muted small">Reference flow: one 19.4 kg wing pair · one launch · at least 1 km unpowered glide</text>
+
+  <rect x="70" y="220" width="280" height="390" rx="18" class="panel"/>
+  <text x="95" y="262" class="cy an"/>
+  <text x="95" y="262" class="cyan small h">MATERIAL INPUTS</text>
+  <text x="95" y="310" class="t med h">ASH / WILLOW</text><text x="310" y="310" text-anchor="end" class="goldt med mono">10.5 kg</text>
+  <line x1="95" y1="326" x2="325" y2="326" class="thin"/>
+  <text x="95" y="365" class="t med h">FEATHERS</text><text x="310" y="365" text-anchor="end" class="goldt med mono">3.0 kg</text>
+  <line x1="95" y1="381" x2="325" y2="381" class="thin"/>
+  <text x="95" y="420" class="t med h">BEESWAX</text><text x="310" y="420" text-anchor="end" class="goldt med mono">2.4 kg</text>
+  <line x1="95" y1="436" x2="325" y2="436" class="thin"/>
+  <text x="95" y="475" class="t med h">LINEN</text><text x="310" y="475" text-anchor="end" class="goldt med mono">0.8 kg</text>
+  <line x1="95" y1="491" x2="325" y2="491" class="thin"/>
+  <text x="95" y="530" class="t med h">LEATHER</text><text x="310" y="530" text-anchor="end" class="goldt med mono">2.0 kg</text>
+  <line x1="95" y1="546" x2="325" y2="546" class="thin"/>
+  <text x="95" y="585" class="t med h">BRONZE</text><text x="310" y="585" text-anchor="end" class="goldt med mono">0.7 kg</text>
+
+  <rect x="430" y="220" width="290" height="170" rx="18" class="panel2"/>
+  <text x="455" y="260" class="cyan small h">INBOUND SEA FREIGHT</text>
+  <text x="455" y="312" class="t big mono">300 km</text>
+  <text x="455" y="350" class="goldt med mono">5.82 t·km</text>
+
+  <rect x="430" y="440" width="290" height="170" rx="18" class="panel2"/>
+  <text x="455" y="480" class="cyan small h">WORKSHOP EQUIVALENT</text>
+  <text x="455" y="532" class="t big mono">4.50 kWh</text>
+  <text x="455" y="570" class="muted small">generation + T&amp;D + WTT</text>
+
+  <rect x="810" y="255" width="300" height="150" rx="18" class="panel"/>
+  <text x="960" y="300" text-anchor="middle" class="goldt small h">LAUNCH-READY</text>
+  <text x="960" y="345" text-anchor="middle" class="t big">WING PAIR</text>
+  <text x="960" y="380" text-anchor="middle" class="cyan med mono">19.4 kg</text>
+
+  <rect x="810" y="470" width="300" height="140" rx="18" class="panel2"/>
+  <text x="960" y="514" text-anchor="middle" class="goldt small h">USE PHASE</text>
+  <text x="960" y="556" text-anchor="middle" class="t med h">ZERO-FUEL GLIDE</text>
+  <text x="960" y="590" text-anchor="middle" class="cyan med mono">1 km</text>
+
+  <path d="M350 415H390V305H430" class="line" marker-end="url(#arrow)"/>
+  <path d="M350 415H390V525H430" class="line" marker-end="url(#arrow)"/>
+  <path d="M720 305H770V330H810" class="line" marker-end="url(#arrow)"/>
+  <path d="M720 525H770V330H810" class="line" marker-end="url(#arrow)"/>
+  <path d="M960 405V470" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="70" y="655" width="1040" height="52" rx="10" fill="#0b1622" stroke="#d0a563"/>
+  <text x="95" y="688" class="goldt small h">CUT-OFF</text>
+  <text x="225" y="688" class="t small">After the first glide or impact with the sea · no second attempt enters the functional unit.</text>
+</svg>
