@@ -1,0 +1,5 @@
+Episode #32 — Pegasus · final live verification
+Date: 2026-08-21
+Approved cover SHA-256: 48ca70217d868843ddf8386155fb59fa4a137c5a603564325085a20548ec92aa
+Verified live: exact cover bytes; Episode #32 registry entry; no public pdf fields; Impossible Flight collection; episode SEO/Open Graph/Twitter/JSON-LD; sitemap; live Phase 6 Passport action contract; no Raw text; no source-PDF link. Rendered DOM check is executed when Chrome is available on the GitHub runner.
+Status: PASS
