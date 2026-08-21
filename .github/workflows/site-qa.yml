@@ -25,9 +25,6 @@ jobs:
       - name: Install QA dependencies
         run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Register Episode 46 in QA workspace
-        run: python scripts/publish_ep46.py
-
       - name: Build deterministic SEO metadata in QA workspace
         run: python scripts/apply_seo.py
 
