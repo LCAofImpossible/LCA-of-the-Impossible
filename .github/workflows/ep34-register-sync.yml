@@ -1,0 +1,186 @@
+name: Episode 34 Register and QA
+
+on:
+  push:
+    branches: [ep34-solar-chariot]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ep34-register-sync
+  cancel-in-progress: true
+
+jobs:
+  register-sync-qa:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout branch
+        uses: actions/checkout@v4
+        with:
+          ref: ep34-solar-chariot
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify immutable approved cover
+        shell: bash
+        run: |
+          test -f assets/images/episodes/ep34-solar-chariot-of-elios-cover.png
+          ACTUAL="$(git hash-object assets/images/episodes/ep34-solar-chariot-of-elios-cover.png)"
+          EXPECTED="b60bafd6ba6494a521721158ac470a53b39b0592"
+          echo "Approved cover blob: $ACTUAL"
+          test "$ACTUAL" = "$EXPECTED"
+
+      - name: Register Episode 34 and collections
+        shell: bash
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          registry_path = Path('episodes.json')
+          registry = json.loads(registry_path.read_text(encoding='utf-8'))
+          episodes = registry['episodes']
+
+          episode34 = {
+            "number": 34,
+            "slug": "solar-chariot-of-elios",
+            "title": "Solar Chariot of Elios",
+            "url": "episodes/solar-chariot-of-elios.html",
+            "cover": "assets/images/episodes/ep34-solar-chariot-of-elios-cover.png",
+            "categoryLabel": "Myth & Legend",
+            "categories": ["mythology", "legends"],
+            "lcaLabel": "Materials-driven",
+            "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+            "result": "3,125 t CO₂e",
+            "hotspot": "Gold plating and radiant panels contribute 3,086.5 t CO₂e, or 98.8% of the modeled footprint.",
+            "featuredDescription": "One 4.95 t Solar Chariot reconstructed for 365 dawn-to-dusk journeys: 3,125 t CO₂e per operational year, with 120 kg of gold plating contributing 98.8% while electricity and base metals remain secondary.",
+            "functionalUnit": "One operational year of the Solar Chariot of Elios: 365 dawn-to-dusk celestial journeys carrying the solar orb across the sky.",
+            "evidence": {
+              "confidence": "Medium",
+              "proxyDependence": "High",
+              "assumptionSensitivity": "High",
+              "basis": "The approved episode reconstructs the Solar Chariot as a 6.0 m × 3.2 m, 4.95 t ceremonial transport platform with 120 kg of radiant gold plating, a 12 h/day active cycle and a separately modeled 32.0 kW stabilization load. DEFRA 2026 factors are used where representative, while primary gold uses the episode's separately disclosed 2024 global mine-intensity proxy.",
+              "uncertainty": "Gold mass and gold intensity dominate interpretation. The approved physical sensitivity moves the result from 810 to 6,212 t CO₂e as gold changes from 30 to 240 kg, while the gold-intensity sensitivity spans 1,041 to 10,664 t CO₂e."
+            },
+            "keywords": [
+              "solar chariot",
+              "elios",
+              "celestial chariot",
+              "gold plating",
+              "primary gold",
+              "radiant panels",
+              "365 journeys",
+              "dawn-to-dusk",
+              "control load",
+              "DEFRA 2026",
+              "gold intensity",
+              "mythology"
+            ],
+            "related": [55, 52, 45]
+          }
+
+          episodes = [e for e in episodes if e.get('number') != 34]
+          episodes.append(episode34)
+          episodes.sort(key=lambda e: e['number'], reverse=True)
+          registry['episodes'] = episodes
+
+          # Public registry must remain Passport-only with no source-PDF field.
+          for episode in episodes:
+              if 'pdf' in episode:
+                  raise SystemExit(f"Legacy pdf field present in Episode {episode.get('number')}")
+
+          registry_path.write_text(json.dumps(registry, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+
+          collections_path = Path('collections.json')
+          collections = json.loads(collections_path.read_text(encoding='utf-8'))
+          memberships = {
+              'legendary-engineering',
+              'gilded-hotspots',
+              'gold-driven-cases',
+          }
+          for collection in collections['collections']:
+              if collection['slug'] in memberships:
+                  nums = [n for n in collection['episodes'] if n != 34]
+                  nums.append(34)
+                  collection['episodes'] = nums
+          collections_path.write_text(json.dumps(collections, ensure_ascii=False, indent=2) + '\n', encoding='utf-8')
+          PY
+
+      - name: Install QA dependencies
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Synchronize static SEO metadata
+        run: python scripts/apply_seo.py
+
+      - name: Synchronize Phase 3 metadata
+        run: python scripts/feature_sync.py
+
+      - name: Synchronize Phase 4 engagement metadata
+        run: python scripts/engagement_sync.py
+
+      - name: Synchronize Phase 5 editorial infrastructure
+        run: python scripts/phase5_sync.py
+
+      - name: Synchronize Phase 6 model transparency
+        run: python scripts/phase6_sync.py
+
+      - name: Propagate Epic Passport presentation
+        run: python scripts/epic_passport_sync.py
+
+      - name: Propagate visitor telemetry
+        run: python scripts/telemetry_sync.py
+
+      - name: Run structural site QA
+        run: python scripts/site_qa.py
+
+      - name: Run SEO and social QA
+        run: python scripts/seo_qa.py
+
+      - name: Run Phase 3 feature QA
+        run: python scripts/feature_qa.py
+
+      - name: Run Phase 4 engagement QA
+        run: python scripts/engagement_qa.py
+
+      - name: Run Phase 5 editorial QA
+        run: python scripts/phase5_qa.py
+
+      - name: Run Phase 6 model transparency QA
+        run: python scripts/phase6_qa.py
+
+      - name: Run visitor telemetry QA
+        run: python scripts/telemetry_qa.py
+
+      - name: Enforce Passport-only and cover integrity
+        shell: bash
+        run: |
+          ACTUAL="$(git hash-object assets/images/episodes/ep34-solar-chariot-of-elios-cover.png)"
+          test "$ACTUAL" = "b60bafd6ba6494a521721158ac470a53b39b0592"
+          ! grep -Eiq 'Raw text|Download (source )?PDF|assets/pdf/episodes/.*\.pdf' episodes/solar-chariot-of-elios.html
+          python - <<'PY'
+          import json
+          data=json.load(open('episodes.json', encoding='utf-8'))
+          ep=[e for e in data['episodes'] if e['number']==34]
+          assert len(ep)==1
+          assert ep[0]['cover']=='assets/images/episodes/ep34-solar-chariot-of-elios-cover.png'
+          assert 'pdf' not in ep[0]
+          assert ep[0]['result']=='3,125 t CO₂e'
+          assert ep[0]['functionalUnit'].startswith('One operational year')
+          print('Episode 34 registry guardrails: PASS')
+          PY
+
+      - name: Remove one-time workflow and commit synchronized branch
+        shell: bash
+        run: |
+          rm .github/workflows/ep34-register-sync.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Register and synchronize Episode 34 Solar Chariot of Elios"
+          git push origin HEAD:ep34-solar-chariot
