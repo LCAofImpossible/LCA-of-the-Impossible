@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+<title id="title">Episode 45 King Midas technical plate</title>
+<desc id="desc">Hollow goblet reconstruction with an 8 centimetre rim diameter, 1.2 millimetre wall proxy, 32.2 cubic centimetres gold volume, 19.32 grams per cubic centimetre density and 0.622 kilogram gold mass.</desc>
+<rect width="1200" height="760" fill="#071019"/>
+<g fill="none" stroke="#234557" stroke-width="2"><rect x="40" y="40" width="1120" height="680"/><circle cx="460" cy="382" r="255" opacity=".32"/><circle cx="460" cy="382" r="180" opacity=".24"/><path d="M160 382H770M460 120V650" stroke-dasharray="6 10" opacity=".45"/></g>
+<text x="70" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="22" letter-spacing="4">EPISODE #45 · TECHNICAL PLATE</text>
+<text x="70" y="126" fill="#eef7fb" font-family="Arial,sans-serif" font-size="34" font-weight="700">GEOMETRY BEFORE GOLD</text>
+<g transform="translate(270 195)" fill="none" stroke="#d0a563" stroke-width="5">
+  <path d="M70 20H310C303 86 281 151 249 199C230 228 211 246 204 277V350C204 372 223 389 246 389H267V425H113V389H134C157 389 176 372 176 350V277C169 246 150 228 131 199C99 151 77 86 70 20Z"/>
+  <path d="M86 40H294C286 98 266 149 239 190C218 221 197 240 190 273V350M170 350V273C163 240 142 221 121 190C94 149 74 98 66 40" stroke="#6de7ff" stroke-width="2" stroke-dasharray="8 7"/>
+  <path d="M62 20H318M62 5V35M318 5V35" stroke="#6de7ff" stroke-width="2"/>
+  <text x="190" y="0" fill="#c4f7ff" stroke="none" font-family="Arial,sans-serif" font-size="18" text-anchor="middle">8.0 cm rim diameter</text>
+  <path d="M304 98L270 116" stroke="#6de7ff" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="320" y="92" fill="#c4f7ff" stroke="none" font-family="Arial,sans-serif" font-size="18">1.2 mm wall proxy</text>
+</g>
+<g font-family="Arial,sans-serif" transform="translate(790 185)">
+  <text x="0" y="0" fill="#6de7ff" font-size="16" font-weight="700">RECONSTRUCTED MASS</text>
+  <g transform="translate(0 35)"><rect width="330" height="84" rx="8" fill="#0d1b27" stroke="#234557"/><text x="20" y="30" fill="#9ab0bc" font-size="14">GOLD VOLUME</text><text x="20" y="61" fill="#eef7fb" font-size="24">32.2 cm³</text></g>
+  <g transform="translate(0 135)"><rect width="330" height="84" rx="8" fill="#0d1b27" stroke="#234557"/><text x="20" y="30" fill="#9ab0bc" font-size="14">DENSITY</text><text x="20" y="61" fill="#eef7fb" font-size="24">19.32 g/cm³</text></g>
+  <g transform="translate(0 235)"><rect width="330" height="84" rx="8" fill="#112232" stroke="#d0a563"/><text x="20" y="30" fill="#d0a563" font-size="14">GOLD MASS</text><text x="20" y="61" fill="#eef7fb" font-size="28" font-weight="700">0.622 kg Au</text></g>
+  <g transform="translate(0 335)"><rect width="330" height="84" rx="8" fill="#0d1b27" stroke="#234557"/><text x="20" y="30" fill="#9ab0bc" font-size="14">SHAPE</text><text x="20" y="61" fill="#eef7fb" font-size="24">hollow goblet</text></g>
+</g>
+<g font-family="Arial,sans-serif"><text x="70" y="675" fill="#9ab0bc" font-size="17">Baseline freezes a hollow material volume. Surface-skin and solid-object readings remain sensitivities, not hidden alternatives.</text></g>
+<defs><marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0L10 5L0 10Z" fill="#6de7ff"/></marker></defs>
+</svg>
