@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Episode 45 King Midas hotspot breakdown</title>
+<desc id="desc">Gold feedstock contributes 99.996 percent of the 22.7 tonne carbon dioxide equivalent baseline. Workshop electricity, packaging, transport and water or substrate are each below 0.01 percent.</desc>
+<rect width="1200" height="720" fill="#071019"/>
+<rect x="40" y="40" width="1120" height="640" fill="none" stroke="#234557" stroke-width="2"/>
+<text x="70" y="80" fill="#d0a563" font-family="Georgia,serif" font-size="22" letter-spacing="4">EPISODE #45 · HOTSPOT BREAKDOWN</text>
+<text x="70" y="128" fill="#eef7fb" font-family="Arial,sans-serif" font-size="34" font-weight="700">ONE GOBLET. 22.7 t CO₂e.</text>
+<g font-family="Arial,sans-serif">
+  <text x="70" y="195" fill="#9ab0bc" font-size="16">BASELINE SHARE</text>
+  <rect x="70" y="225" width="960" height="92" rx="8" fill="#112232" stroke="#234557"/>
+  <rect x="70" y="225" width="959.96" height="92" rx="8" fill="#d0a563"/>
+  <text x="92" y="282" fill="#071019" font-size="26" font-weight="700">GOLD FEEDSTOCK · 99.996%</text>
+  <text x="1048" y="282" fill="#c4f7ff" font-size="18">minor flows</text>
+  <line x1="1029" y1="216" x2="1029" y2="330" stroke="#6de7ff" stroke-width="2"/>
+  <g transform="translate(70 370)"><rect width="235" height="98" rx="8" fill="#0d1b27" stroke="#234557"/><text x="18" y="34" fill="#9ab0bc" font-size="14">WORKSHOP ELECTRICITY</text><text x="18" y="68" fill="#eef7fb" font-size="24">&lt;0.01%</text></g>
+  <g transform="translate(325 370)"><rect width="235" height="98" rx="8" fill="#0d1b27" stroke="#234557"/><text x="18" y="34" fill="#9ab0bc" font-size="14">PACKAGING</text><text x="18" y="68" fill="#eef7fb" font-size="24">&lt;0.01%</text></g>
+  <g transform="translate(580 370)"><rect width="235" height="98" rx="8" fill="#0d1b27" stroke="#234557"/><text x="18" y="34" fill="#9ab0bc" font-size="14">TRANSPORT</text><text x="18" y="68" fill="#eef7fb" font-size="24">&lt;0.01%</text></g>
+  <g transform="translate(835 370)"><rect width="235" height="98" rx="8" fill="#0d1b27" stroke="#234557"/><text x="18" y="34" fill="#9ab0bc" font-size="14">WATER / SUBSTRATE</text><text x="18" y="68" fill="#eef7fb" font-size="24">&lt;0.01%</text></g>
+  <g transform="translate(70 520)"><rect width="460" height="105" rx="10" fill="#112232" stroke="#d0a563"/><text x="24" y="36" fill="#d0a563" font-size="16" font-weight="700">PRIMARY GOLD PROXY</text><text x="24" y="72" fill="#eef7fb" font-size="26">36,415 kg CO₂e/kg Au</text></g>
+  <text x="570" y="558" fill="#eef7fb" font-size="23" font-weight="700">Material selection determines the order of magnitude.</text>
+  <text x="570" y="592" fill="#9ab0bc" font-size="17">The supporting flows remain disclosed, but gold is the modeled driver in every source-factor case.</text>
+</g>
+</svg>
