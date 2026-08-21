@@ -8,9 +8,15 @@
       "url": "episodes/hydra-of-lerna.html",
       "cover": "assets/images/episodes/ep56-hydra-of-lerna-cover.png",
       "categoryLabel": "Mythology",
-      "categories": ["mythology"],
+      "categories": [
+        "mythology"
+      ],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven", "energy-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "operation-driven",
+        "energy-driven",
+        "proxy-sensitive"
+      ],
       "result": "1.35 t CO₂e",
       "hotspot": "Field heat and energy contribute 44.5% of the baseline footprint.",
       "featuredDescription": "A 3.2 t, nine-headed Hydra reconstructed as a hazardous field-control event: cutting is only the first step, while cauterisation, logistics and containment create a 1.35 t CO₂e footprint.",
@@ -22,8 +28,24 @@
         "basis": "The canonical nine-headed Hydra and its regeneration problem define the intervention logic. The approved episode uses an 11 m, 3.2 t semi-aquatic reconstruction and models neutralisation as cutting, thermal cauterisation and controlled containment with modern field-response flows and emission-factor proxies.",
         "uncertainty": "Body mass scales fuel, lime, sheeting and freight and moves the result from 1.01 to 1.88 t CO₂e; the quicklime emission factor is a secondary proxy sensitivity that does not change the hotspot story."
       },
-      "keywords": ["hydra", "lerna", "regeneration", "cauterisation", "propane", "diesel", "quicklime", "LDPE", "containment", "field response", "freight"],
-      "related": [42, 41, 40]
+      "keywords": [
+        "hydra",
+        "lerna",
+        "regeneration",
+        "cauterisation",
+        "propane",
+        "diesel",
+        "quicklime",
+        "LDPE",
+        "containment",
+        "field response",
+        "freight"
+      ],
+      "related": [
+        42,
+        41,
+        40
+      ]
     },
     {
       "number": 55,
@@ -32,9 +54,15 @@
       "url": "episodes/garden-of-the-hesperides.html",
       "cover": "assets/images/episodes/ep55-garden-of-the-hesperides-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "336 kg CO₂e",
       "hotspot": "The 10 µm gold gilding layer contributes 296.4 kg CO₂e, or 88.2% of the modeled total.",
       "featuredDescription": "Three golden apples reconstructed as one annual guarded orchard service: a 10 µm gold skin is enough to make primary gold dominate the 336 kg CO₂e baseline while water, electricity and freight remain minor.",
@@ -46,8 +74,24 @@
         "basis": "The documented myth constrains the guarded golden fruit and Ladon. The approved episode reconstructs three 80 mm apples, a 10 µm gold surface and one year of western Mediterranean orchard support using literature benchmarks, engineering assumptions, DEFRA 2026 factors and a separately disclosed primary-gold proxy.",
         "uncertainty": "Gold thickness and gold-source intensity dominate interpretation: the physical sensitivity spans 188–781 kg CO₂e and the gold-factor sensitivity spans 139–484 kg CO₂e."
       },
-      "keywords": ["hesperides", "garden of the hesperides", "golden apples", "ladon", "gold gilding", "gold", "orchard", "surface treatment", "DEFRA 2026", "sensitivity", "mythology"],
-      "related": [56, 40, 38]
+      "keywords": [
+        "hesperides",
+        "garden of the hesperides",
+        "golden apples",
+        "ladon",
+        "gold gilding",
+        "gold",
+        "orchard",
+        "surface treatment",
+        "DEFRA 2026",
+        "sensitivity",
+        "mythology"
+      ],
+      "related": [
+        56,
+        40,
+        38
+      ]
     },
     {
       "number": 54,
@@ -56,9 +100,15 @@
       "url": "episodes/santas-sleigh.html",
       "cover": "assets/images/episodes/ep54-santas-sleigh-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["legends"],
+      "categories": [
+        "legends"
+      ],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven", "proxy-sensitive", "lifetime-sensitive"],
+      "lcaCharacteristics": [
+        "operation-driven",
+        "proxy-sensitive",
+        "lifetime-sensitive"
+      ],
       "result": "267 kg CO₂e",
       "hotspot": "Reindeer forage contributes 177.7 kg CO₂e, or 67% of the baseline footprint.",
       "featuredDescription": "A reusable 4.2 m sleigh reconstructed as a one-night delivery system: 267 kg CO₂e per Christmas Eve mission, with reindeer forage dominating the baseline and feeding-rate and harness assumptions controlling the main sensitivities.",
@@ -70,8 +120,26 @@
         "basis": "The approved episode uses a canonical eight-reindeer motive team and reconstructs one 4.2 m reusable sleigh with a 160 kg laminated-wood body, 40 kg steel runners and brackets, a 30 kg leather/textile harness and a twelve-mission lifetime. DEFRA 2026 is prioritized for physical material, forage and logistics flows, with declared modern proxies where no dedicated factor exists.",
         "uncertainty": "Feeding rate moves the total from 208 to 326 kg CO₂e, while changing the harness factor moves it from 211 to 351 kg CO₂e. Magic flight energy remains excluded rather than receiving an invented emission factor."
       },
-      "keywords": ["santa", "santa's sleigh", "christmas eve", "sleigh", "reindeer", "forage", "harness", "wood", "steel", "biological motive system", "DEFRA 2026", "proxy", "lifetime allocation"],
-      "related": [35, 42, 41]
+      "keywords": [
+        "santa",
+        "santa's sleigh",
+        "christmas eve",
+        "sleigh",
+        "reindeer",
+        "forage",
+        "harness",
+        "wood",
+        "steel",
+        "biological motive system",
+        "DEFRA 2026",
+        "proxy",
+        "lifetime allocation"
+      ],
+      "related": [
+        35,
+        42,
+        41
+      ]
     },
     {
       "number": 53,
@@ -80,9 +148,16 @@
       "url": "episodes/baba-yagas-hut.html",
       "cover": "assets/images/episodes/ep53-baba-yagas-hut-cover.png",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology", "legends", "structures"],
+      "categories": [
+        "mythology",
+        "legends",
+        "structures"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "3.73 t CO₂e",
       "hotspot": "Metal hardware and leg bracing contribute 1.72 t CO₂e, or 46.1% of the baseline footprint.",
       "featuredDescription": "A 5.87 t Slavic walking forest hut reconstructed from logs, metal bracing, chimney, glazing and commissioning flows: the 3.73 t CO₂e baseline is driven by the structure that lets the cabin stand on legs, not by magic.",
@@ -94,8 +169,27 @@
         "basis": "Slavic folklore supplies the walking-hut form while the approved episode supplies an explicit engineering reconstruction: a 3.6 × 3.0 m log-cabin envelope, 5.87 t modeled mass, two structural bird-leg supports, workshop electricity, freight and installation. DEFRA 2026 is prioritized for the disclosed physical flows and modern proxies are declared where exact factors do not exist.",
         "uncertainty": "Physical scaling is the largest uncertainty: the mass sensitivity moves the result from 2.77 to 5.55 t CO₂e. Material origin is also consequential, shifting the modeled footprint from 1.62 t CO₂e with reused timber and recycled metal to 4.20 t CO₂e in the high-material-intensity case."
       },
-      "keywords": ["baba yaga", "baba yaga's hut", "walking hut", "slavic folklore", "log cabin", "bird legs", "metal bracing", "timber", "forest", "DEFRA 2026", "materials", "reuse", "recycled metal", "structural footprint"],
-      "related": [42, 36, 40]
+      "keywords": [
+        "baba yaga",
+        "baba yaga's hut",
+        "walking hut",
+        "slavic folklore",
+        "log cabin",
+        "bird legs",
+        "metal bracing",
+        "timber",
+        "forest",
+        "DEFRA 2026",
+        "materials",
+        "reuse",
+        "recycled metal",
+        "structural footprint"
+      ],
+      "related": [
+        42,
+        36,
+        40
+      ]
     },
     {
       "number": 52,
@@ -104,9 +198,15 @@
       "url": "episodes/hermes-sandals.html",
       "cover": "assets/images/episodes/ep52-hermes-sandals-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "63.5 kg CO₂e",
       "hotspot": "Gold leaf contributes 80.2% of the baseline with only 0.3% of product mass.",
       "featuredDescription": "One 0.682 kg pair of winged talaria reconstructed as engineered footwear: 63.5 kg CO₂e cradle-to-delivered-gate, with two grams of gold leaf driving 80.2% of the footprint.",
@@ -118,8 +218,25 @@
         "basis": "The Greek myth constrains the winged courier footwear. The approved episode reconstructs one 0.682 kg pair with leather, bronze/brass wing frames, feather/textile vanes, a 2.0 g gold-leaf finish, workshop utilities, packaging and road/sea freight, prioritising DEFRA 2026 and declaring an external primary-gold proxy.",
         "uncertainty": "Gold intensity and gilding mass control the baseline: changing gold from 0.5 g to 5.0 g moves the total from 25.3 to 139.9 kg CO₂e. Leather-factor choice is the second material uncertainty, moving the modeled total from 59.3 to 136.0 kg CO₂e."
       },
-      "keywords": ["hermes", "talaria", "winged sandals", "gold leaf", "leather", "bronze", "feathers", "courier", "DEFRA 2026", "gilding", "proxy", "mythology"],
-      "related": [44, 55, 37]
+      "keywords": [
+        "hermes",
+        "talaria",
+        "winged sandals",
+        "gold leaf",
+        "leather",
+        "bronze",
+        "feathers",
+        "courier",
+        "DEFRA 2026",
+        "gilding",
+        "proxy",
+        "mythology"
+      ],
+      "related": [
+        44,
+        55,
+        37
+      ]
     },
     {
       "number": 51,
@@ -128,9 +245,16 @@
       "url": "episodes/pandoras-jar.html",
       "cover": "assets/images/episodes/ep51-pandoras-jar-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Process-energy-driven",
-      "lcaCharacteristics": ["process-energy-driven", "mobility-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "process-energy-driven",
+        "mobility-driven",
+        "proxy-sensitive"
+      ],
       "result": "26.0 kg CO₂e",
       "hotspot": "Kiln energy and freight together account for 49.9% of the baseline footprint.",
       "featuredDescription": "One 45 L sealed pithos reconstructed as clay, metal, seal, workshop energy, packing and freight: 26.0 kg CO₂e from creation to first opening, with kiln energy and transport jointly driving 49.9% of the baseline.",
@@ -142,8 +266,27 @@
         "basis": "The approved episode constrains the subject as a 0.55 m high, 0.42 m diameter, 45 L sealed terracotta pithos with 22.0 kg fired clay, 1.2 kg metal lid and fittings, a wax/resin seal, workshop energy, packing and road freight. Physical emission factors are disclosed as DEFRA 2026 proxies, while kiln intensity uses the CORDIS DREAM ceramic-sector benchmark.",
         "uncertainty": "Kiln intensity is the principal model risk: the reported efficient and high craft-kiln cases move the total from 23.6 to 40.1 kg CO₂e. Freight distance is also material, with the reported long-delivery case reaching 32.4 kg CO₂e."
       },
-      "keywords": ["pandora", "pandora's jar", "pithos", "terracotta", "ceramic", "kiln", "natural gas", "road freight", "DEFRA 2026", "CORDIS DREAM", "system boundary", "cut-off", "mythology", "proxy"],
-      "related": [36, 56, 52]
+      "keywords": [
+        "pandora",
+        "pandora's jar",
+        "pithos",
+        "terracotta",
+        "ceramic",
+        "kiln",
+        "natural gas",
+        "road freight",
+        "DEFRA 2026",
+        "CORDIS DREAM",
+        "system boundary",
+        "cut-off",
+        "mythology",
+        "proxy"
+      ],
+      "related": [
+        36,
+        56,
+        52
+      ]
     },
     {
       "number": 50,
@@ -152,9 +295,17 @@
       "url": "episodes/bifrost.html",
       "cover": "assets/images/episodes/ep50-bifrost-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends", "structures"],
+      "categories": [
+        "mythology",
+        "legends",
+        "structures"
+      ],
       "lcaLabel": "Energy-driven",
-      "lcaCharacteristics": ["energy-driven", "operation-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "energy-driven",
+        "operation-driven",
+        "proxy-sensitive"
+      ],
       "result": "120.3 kg CO₂e",
       "hotspot": "Electricity contributes 95.2% of the baseline footprint; the red fire-guard is the largest single modeled flow at 73.7 kg CO₂e.",
       "featuredDescription": "One 10-minute Bifrost crossing window reconstructed as a reusable two-gate light bridge: 120.3 kg CO₂e per activation, with electricity at 95.2% and the red fire-guard the largest modeled flow.",
@@ -166,8 +317,28 @@
         "basis": "The approved episode models Bifrost as a reusable two-gate light-bridge apparatus with a 1,200 m visible corridor, 3.0 m walkable band, basalt plinths, bronze rings, emerald prism lenses, three translucent corridor bands and a red-orange thermal exclusion strand. DEFRA 2026 is the priority factor set; dimensions, mass, power and duration are engineering assumptions, and the red fire-guard is declared as a narrative proxy.",
         "uncertainty": "The red fire-guard is the main physical uncertainty: the cooler and hotter strand cases move the result to 83.4 and 194.0 kg CO₂e. Electricity carbon intensity is the main data lever, with the reported grid cases spanning 28.7 to 177.5 kg CO₂e."
       },
-      "keywords": ["bifrost", "light bridge", "gate pylons", "basalt", "bronze", "emerald prism lenses", "fire-guard", "electricity", "DEFRA 2026", "carbon intensity", "maintenance freight", "mythology", "energy-driven", "sensitivity", "system boundary"],
-      "related": [41, 42, 51]
+      "keywords": [
+        "bifrost",
+        "light bridge",
+        "gate pylons",
+        "basalt",
+        "bronze",
+        "emerald prism lenses",
+        "fire-guard",
+        "electricity",
+        "DEFRA 2026",
+        "carbon intensity",
+        "maintenance freight",
+        "mythology",
+        "energy-driven",
+        "sensitivity",
+        "system boundary"
+      ],
+      "related": [
+        41,
+        42,
+        51
+      ]
     },
     {
       "number": 49,
@@ -176,9 +347,15 @@
       "url": "episodes/the-argo.html",
       "cover": "assets/images/episodes/ep49-the-argo-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "10.66 t CO₂e",
       "hotspot": "Sail + rigging contributes 50.2% of the baseline footprint; wood procurement contributes 41.7%.",
       "featuredDescription": "One 28.5 m Argo-class fifty-oared vessel and one Pagasae–Colchis–Pagasae expedition: 10.66 t CO₂e per build-and-voyage functional unit, with a conservative sail-and-rigging proxy dominating while direct propulsion uses no purchased fuel.",
@@ -190,8 +367,28 @@
         "basis": "Argonautes 2008 provides the principal technical reconstruction for the 28.5 m vessel, 50 oars, 8 m mast and 55 m² sail. The approved episode freezes a 16.50 t wood reconstruction plus declared sail/rigging, minor-metal, stone-anchor and inbound-freight assumptions, then applies UK Government GHG Conversion Factors 2026 exact rows to the modeled physical flows.",
         "uncertainty": "The DEFRA Clothing factor used for woven sailcloth and natural-fibre rigging is explicitly the highest-uncertainty factor and drives 50.2% of baseline GWP. The reported wood-mass sensitivity spans 9.94–11.37 t CO₂e and the HGV-factor sensitivity spans 10.55–11.13 t CO₂e without overturning the hotspot story."
       },
-      "keywords": ["argo", "argonauts", "argo-class vessel", "galley", "timber", "wood", "sail", "rigging", "oars", "Pagasae", "Colchis", "DEFRA 2026", "textile proxy", "freight", "mythology"],
-      "related": [35, 38, 36]
+      "keywords": [
+        "argo",
+        "argonauts",
+        "argo-class vessel",
+        "galley",
+        "timber",
+        "wood",
+        "sail",
+        "rigging",
+        "oars",
+        "Pagasae",
+        "Colchis",
+        "DEFRA 2026",
+        "textile proxy",
+        "freight",
+        "mythology"
+      ],
+      "related": [
+        35,
+        38,
+        36
+      ]
     },
     {
       "number": 48,
@@ -200,9 +397,15 @@
       "url": "episodes/yggdrasil.html",
       "cover": "assets/images/episodes/ep48-yggdrasil-cover.png",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology", "structures"],
+      "categories": [
+        "mythology",
+        "structures"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "797 t CO₂e",
       "hotspot": "The ash-like wood body contributes 441.5 t CO₂e, or 55.4% of the baseline footprint.",
       "featuredDescription": "Yggdrasil reconstructed as one monumental ash-tree analogue installed and maintained for one narrative year: 797 t CO₂e, with the ash-like wood body contributing 55.4% while metal supports and road freight form the next major burdens.",
@@ -214,8 +417,27 @@
         "basis": "The approved episode constrains Yggdrasil as a mythic Norse world-tree reconstruction and models it as a terrestrial monumental ash-tree analogue. The physical model uses a 90 m height, 6.0 m trunk diameter, 45% void fraction and 1,638 t ash-like body plus metal supports, concrete anchors, compost and first-year services. DEFRA 2026 factors are used for the disclosed physical flows; tree size, hollow fraction, water and assembly energy are engineering assumptions, while ash density and water-use behaviour are literature-supported physical proxies.",
         "uncertainty": "Physical scale and the wood emission factor materially control interpretation. The height sensitivity spans 624–971 t CO₂e, while the wood-factor sensitivity spans 356–1,018 t CO₂e with all other activities held fixed."
       },
-      "keywords": ["yggdrasil", "world tree", "ash tree", "norse mythology", "monumental tree", "wood", "metal supports", "concrete anchors", "irrigation", "road freight", "DEFRA 2026", "materials", "proxy", "sensitivity"],
-      "related": [53, 36, 49]
+      "keywords": [
+        "yggdrasil",
+        "world tree",
+        "ash tree",
+        "norse mythology",
+        "monumental tree",
+        "wood",
+        "metal supports",
+        "concrete anchors",
+        "irrigation",
+        "road freight",
+        "DEFRA 2026",
+        "materials",
+        "proxy",
+        "sensitivity"
+      ],
+      "related": [
+        53,
+        36,
+        49
+      ]
     },
     {
       "number": 47,
@@ -225,9 +447,15 @@
       "cover": "assets/images/episodes/ep47-draupnir-cover.png",
       "coverAspectPolicy": "approved-native",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "90.8 t CO₂e",
       "hotspot": "Primary gold contributes 90,756.7 kg CO₂e, or 99.996% of the baseline result.",
       "featuredDescription": "One nine-night Draupnir replication event reconstructed as nine equal 0.45 kg fine-gold rings: 90.8 t CO₂e, with primary gold carrying 99.996% of the footprint while minor modeled flows total only 3.7 kg CO₂e.",
@@ -239,8 +467,26 @@
         "basis": "The approved episode defines one nine-night replication event as nine equal 0.45 kg fine-gold rings (4.05 kg total), with an idealized torus reconstruction, workshop electricity, local freight, a wood box and a lost-wax mold. DEFRA 2026 is used where representative; primary gold uses a separately disclosed external mine-intensity proxy because DEFRA does not provide a gold mining factor.",
         "uncertainty": "Ring mass and the primary-gold intensity proxy control interpretation. The reported mass sensitivity spans 50.4–151.3 t CO₂e, while changing only the gold-intensity proxy spans 49.4–132.4 t CO₂e."
       },
-      "keywords": ["draupnir", "norse mythology", "gold ring", "gold", "replication", "material replication", "fine gold", "nine-night cycle", "DEFRA 2026", "primary gold", "gold mining proxy", "materials-driven", "proxy sensitivity"],
-      "related": [55, 52, 41]
+      "keywords": [
+        "draupnir",
+        "norse mythology",
+        "gold ring",
+        "gold",
+        "replication",
+        "material replication",
+        "fine gold",
+        "nine-night cycle",
+        "DEFRA 2026",
+        "primary gold",
+        "gold mining proxy",
+        "materials-driven",
+        "proxy sensitivity"
+      ],
+      "related": [
+        55,
+        52,
+        41
+      ]
     },
     {
       "number": 46,
@@ -250,9 +496,14 @@
       "cover": "assets/images/episodes/ep46-nautilus-cover.png",
       "coverAspectPolicy": "approved-native",
       "categoryLabel": "Science Fiction",
-      "categories": ["science-fiction"],
+      "categories": [
+        "science-fiction"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "4.69 kt CO₂e",
       "hotspot": "Machinery metals contribute 2,599 t CO₂e (55.5%); hull, machinery and battery together represent 91.5% of the baseline footprint.",
       "featuredDescription": "Captain Nemo’s 70 m Nautilus reconstructed cradle-to-launch: 4.69 kt CO₂e before the voyage begins, with hull, machinery and battery blocks contributing 91.5% of the baseline and material origin controlling the main sensitivity.",
@@ -264,8 +515,28 @@
         "basis": "Verne supplies the 70 m × 8 m geometry and 1,356.48 t dry displacement used by the approved episode. The reconstruction translates that narrative vessel into a modern cradle-to-launch inventory of primary metals, electric storage, interiors, shipyard energy, auxiliary marine gas oil and component freight using declared DEFRA 2026 proxies.",
         "uncertainty": "The unknown allocation inside the residual 961.52 t materially affects the result: the mass sensitivity spans 4.04–5.54 kt CO₂e. Material origin is also decisive, with the approved routes spanning 2.63–5.76 kt CO₂e."
       },
-      "keywords": ["nautilus", "captain nemo", "twenty thousand leagues under the seas", "submarine", "steel", "machinery metals", "battery stack", "shipyard electricity", "marine gas oil", "sea freight", "road freight", "DEFRA 2026", "cradle-to-launch", "materials-driven", "science fiction"],
-      "related": [49, 42, 35]
+      "keywords": [
+        "nautilus",
+        "captain nemo",
+        "twenty thousand leagues under the seas",
+        "submarine",
+        "steel",
+        "machinery metals",
+        "battery stack",
+        "shipyard electricity",
+        "marine gas oil",
+        "sea freight",
+        "road freight",
+        "DEFRA 2026",
+        "cradle-to-launch",
+        "materials-driven",
+        "science fiction"
+      ],
+      "related": [
+        49,
+        42,
+        35
+      ]
     },
     {
       "number": 45,
@@ -274,9 +545,15 @@
       "url": "episodes/king-midas.html",
       "cover": "assets/images/episodes/ep45-king-midas-cover.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "22.7 t CO₂e",
       "hotspot": "Gold feedstock contributes 99.996% of the baseline footprint.",
       "featuredDescription": "One touch-converted ceremonial goblet reconstructed as 0.622 kg of primary gold equivalent: 22.7 t CO₂e per conversion event, with gold feedstock contributing 99.996% of the baseline while electricity, packaging, freight, water and substrate remain individually below 0.01%.",
@@ -288,8 +565,25 @@
         "basis": "The approved episode models a small hollow ceremonial goblet as the physical consequence of the golden touch. Geometry is reconstructed with an 8.0 cm rim diameter, 1.2 mm wall proxy, 32.2 cm³ gold volume and 19.32 g/cm³ density, giving 0.622 kg Au. Supporting electricity, wood, freight and water use UK Government 2026 factors, while primary gold uses a separately declared production proxy.",
         "uncertainty": "Physical interpretation dominates the model: the reported shape sensitivity spans 0.020 t CO₂e for a surface-skin reading to 184.3 t CO₂e for a solid-object reading, versus the 22.7 t CO₂e hollow-body baseline. Gold-source intensity is the second major lever, moving the total from 0.932 to 34.2 t CO₂e."
       },
-      "keywords": ["king midas", "midas touch", "golden touch", "gold", "ceremonial goblet", "chalice", "primary gold", "DEFRA 2026", "UK Government 2026", "materials-driven", "proxy sensitivity", "mythology"],
-      "related": [55, 52, 47]
+      "keywords": [
+        "king midas",
+        "midas touch",
+        "golden touch",
+        "gold",
+        "ceremonial goblet",
+        "chalice",
+        "primary gold",
+        "DEFRA 2026",
+        "UK Government 2026",
+        "materials-driven",
+        "proxy sensitivity",
+        "mythology"
+      ],
+      "related": [
+        55,
+        52,
+        47
+      ]
     },
     {
       "number": 44,
@@ -298,9 +592,15 @@
       "url": "episodes/wings-of-icarus.html",
       "cover": "assets/images/episodes/ep44-wings-of-icarus-cover-20260821.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "70.4 kg CO₂e",
       "hotspot": "Bindings + harness contribute 62.5 kg CO₂e, or 88.8% of the baseline footprint.",
       "featuredDescription": "One 19.4 kg launch-ready pair of Icarus wings for at least 1 km of unpowered gliding flight: 70.4 kg CO₂e, with only 2.8 kg of linen bindings and leather harness contributing 88.8% of the baseline while the beeswax contributes 1.4%.",
@@ -312,8 +612,28 @@
         "basis": "The approved episode uses the Icarus narrative as the recipe for feathers and wax, then reconstructs a fixed gliding wing pair with a 12 m span, 22 m² area, 19.4 kg mass and 7.36 m/s modeled minimum speed. The inventory includes ash/willow, recovered feathers, beeswax, linen, leather, bronze, workshop electricity and inbound sea freight, using DEFRA 2026 where available and disclosed proxies where it is not.",
         "uncertainty": "The primary-clothing proxy applied to 2.8 kg of linen bindings and leather harness is decision-driving: changing only that factor moves the result from 8.32 to 89.1 kg CO₂e. Wing mass is the second reported sensitivity, moving the baseline from 53.0 to 91.2 kg CO₂e across the light-to-heavy range."
       },
-      "keywords": ["icarus", "wings of icarus", "daedalus", "glider", "feathers", "beeswax", "linen", "leather harness", "bronze", "Crete", "DEFRA 2026", "materials-driven", "proxy sensitivity", "mythology"],
-      "related": [52, 38, 37]
+      "keywords": [
+        "icarus",
+        "wings of icarus",
+        "daedalus",
+        "glider",
+        "feathers",
+        "beeswax",
+        "linen",
+        "leather harness",
+        "bronze",
+        "Crete",
+        "DEFRA 2026",
+        "materials-driven",
+        "proxy sensitivity",
+        "mythology"
+      ],
+      "related": [
+        52,
+        38,
+        37
+      ],
+      "coverAspectPolicy": "approved-native"
     },
     {
       "number": 43,
@@ -322,9 +642,15 @@
       "url": "episodes/sisyphus.html",
       "cover": "assets/images/episodes/ep43-sisyphus-cover-20260816.png",
       "categoryLabel": "Mythology",
-      "categories": ["mythology"],
+      "categories": [
+        "mythology"
+      ],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven", "energy-driven", "repetition-sensitive"],
+      "lcaCharacteristics": [
+        "operation-driven",
+        "energy-driven",
+        "repetition-sensitive"
+      ],
       "result": "1.418 t CO₂e",
       "hotspot": "Repetition drives 97.25% of the footprint.",
       "featuredDescription": "A finite slice of an eternal punishment: one reusable 5.0 t limestone boulder, a 500 m slope, 1,000 ascent-return cycles and a material loop that closes while the energy loop does not.",
@@ -336,8 +662,20 @@
         "basis": "The Homeric punishment loop defines the repeated function. Boulder geometry, slope mechanics and conversion efficiency are explicit reconstructions; DEFRA 2026 aggregate and electricity-equivalent factors provide the physical accounting proxies.",
         "uncertainty": "The finite cycle count, 20% conversion efficiency and electricity-equivalent energy proxy control interpretation of an otherwise unbounded punishment."
       },
-      "keywords": ["boulder", "limestone", "eternal punishment", "repetition", "reuse", "energy", "hades"],
-      "related": [42, 40, 41]
+      "keywords": [
+        "boulder",
+        "limestone",
+        "eternal punishment",
+        "repetition",
+        "reuse",
+        "energy",
+        "hades"
+      ],
+      "related": [
+        42,
+        40,
+        41
+      ]
     },
     {
       "number": 42,
@@ -346,9 +684,15 @@
       "url": "episodes/talos.html",
       "cover": "assets/images/episodes/ep42-talos-cover-20260816.png",
       "categoryLabel": "Mythology",
-      "categories": ["mythology"],
+      "categories": [
+        "mythology"
+      ],
       "lcaLabel": "Operation-driven",
-      "lcaCharacteristics": ["operation-driven", "energy-driven", "mobility-driven"],
+      "lcaCharacteristics": [
+        "operation-driven",
+        "energy-driven",
+        "mobility-driven"
+      ],
       "result": "453.324 kt CO₂e",
       "hotspot": "Patrol drives 99.62% of the footprint.",
       "featuredDescription": "A 25 m bronze guardian reconstructed as a mobility system: manufacture is significant, but three daily circuits of Crete make patrol energy the overwhelming life-cycle hotspot.",
@@ -360,8 +704,20 @@
         "basis": "Apollonius Rhodius and Pseudo-Apollodorus define the guardian behaviours. Height, shell thickness, coastline route, locomotion energy and service life are explicit engineering assumptions; modern DEFRA factors are used as proxies.",
         "uncertainty": "The patrol-energy proxy, assumed 1,046 km circuit and 30-year duty cycle dominate the model because operation overwhelms manufacture."
       },
-      "keywords": ["bronze", "automaton", "crete", "patrol", "guardian", "mobility", "boulder"],
-      "related": [40, 41, 43]
+      "keywords": [
+        "bronze",
+        "automaton",
+        "crete",
+        "patrol",
+        "guardian",
+        "mobility",
+        "boulder"
+      ],
+      "related": [
+        40,
+        41,
+        43
+      ]
     },
     {
       "number": 41,
@@ -370,9 +726,15 @@
       "url": "episodes/mjolnir.html",
       "cover": "assets/images/episodes/ep41-mjolnir-cover-20260816.png",
       "categoryLabel": "Mythology",
-      "categories": ["mythology"],
+      "categories": [
+        "mythology"
+      ],
       "lcaLabel": "Energy-driven",
-      "lcaCharacteristics": ["energy-driven", "operation-driven", "repetition-sensitive"],
+      "lcaCharacteristics": [
+        "energy-driven",
+        "operation-driven",
+        "repetition-sensitive"
+      ],
       "result": "51.50 t CO₂e",
       "hotspot": "Lightning-equivalent discharge contributes 99.43% of the footprint.",
       "featuredDescription": "A reusable 46.7 kg iron hammer becomes an energy system once a 1 GJ thunder-equivalent event is repeated over 1,000 combat cycles: discharge energy overwhelms manufacture and flight.",
@@ -384,8 +746,24 @@
         "basis": "Skáldskaparmál §43 defines the iron head, short haft, return behaviour and durability. Dimensions, flight speed, return efficiency and the thunder-equivalent discharge are explicit modelling assumptions.",
         "uncertainty": "The 1 GJ discharge scenario is not specified by the cited literary passage and contributes almost the entire headline footprint."
       },
-      "keywords": ["mjolnir", "hammer", "thor", "thunder", "lightning", "iron", "return", "flight", "discharge", "snorri", "asgard"],
-      "related": [42, 43, 36]
+      "keywords": [
+        "mjolnir",
+        "hammer",
+        "thor",
+        "thunder",
+        "lightning",
+        "iron",
+        "return",
+        "flight",
+        "discharge",
+        "snorri",
+        "asgard"
+      ],
+      "related": [
+        42,
+        43,
+        36
+      ]
     },
     {
       "number": 40,
@@ -394,9 +772,15 @@
       "url": "episodes/minotaur-labyrinth.html",
       "cover": "assets/images/episodes/ep40-minotaur-labyrinth-cover-20260816.png",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology", "structures"],
+      "categories": [
+        "mythology",
+        "structures"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "18.595 kt CO₂e",
       "hotspot": "Worked stone contributes 75.1% of lifecycle GWP; initial construction is 92.4%.",
       "featuredDescription": "A Knossos-scale two-level maze reconstructed as a navigation-denial system: 18.595 kt CO₂e over 30 years, while a 24 kg thread defeats the material system by preserving the way back.",
@@ -408,8 +792,25 @@
         "basis": "Pseudo-Apollodorus and Diodorus define the navigation-denial function. The Palace of Knossos provides the 22,000 m² scale benchmark; levels, routes, wall geometry and material quantities are reconstructed.",
         "uncertainty": "Maze geometry, passage-network length and worked-stone quantities are the principal reconstruction choices behind the materials-dominated result."
       },
-      "keywords": ["minotaur", "labyrinth", "maze", "daedalus", "ariadne", "thread", "knossos", "crete", "worked stone", "navigation", "memory", "uncertainty"],
-      "related": [36, 42, 35]
+      "keywords": [
+        "minotaur",
+        "labyrinth",
+        "maze",
+        "daedalus",
+        "ariadne",
+        "thread",
+        "knossos",
+        "crete",
+        "worked stone",
+        "navigation",
+        "memory",
+        "uncertainty"
+      ],
+      "related": [
+        36,
+        42,
+        35
+      ]
     },
     {
       "number": 39,
@@ -418,9 +819,17 @@
       "url": "episodes/atlantis.html",
       "cover": "assets/images/episodes/ep39-atlantis-cover-final.png",
       "categoryLabel": "Mythic City",
-      "categories": ["mythology", "structures"],
+      "categories": [
+        "mythology",
+        "structures"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "operation-driven", "lifetime-sensitive", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "operation-driven",
+        "lifetime-sensitive",
+        "proxy-sensitive"
+      ],
       "result": "3.618 Mt CO₂e",
       "hotspot": "Initial construction contributes 58.4% of lifecycle GWP; water supply and treatment add 27.4%.",
       "featuredDescription": "Plato's concentric royal-harbor core reconstructed as a 100-year urban system: 8.41 km² of buildable land, 7.57 Mm² GFA and 500,000 residents, with the result dominated by construction and highly sensitive to where the city boundary is drawn.",
@@ -432,8 +841,24 @@
         "basis": "Plato's Critias constrains the concentric urban geometry. Density, material quantities, population, service life and modern emission-factor proxies are explicit reconstruction assumptions.",
         "uncertainty": "The spatial system boundary is dominant: alternative readings move the result from 1.94 Mt to 3.62 Mt to 33.04 Mt CO₂e."
       },
-      "keywords": ["atlantis", "plato", "critias", "concentric", "harbor", "city", "worked stone", "water", "system boundary", "urban", "orichalcum"],
-      "related": [40, 36, 42]
+      "keywords": [
+        "atlantis",
+        "plato",
+        "critias",
+        "concentric",
+        "harbor",
+        "city",
+        "worked stone",
+        "water",
+        "system boundary",
+        "urban",
+        "orichalcum"
+      ],
+      "related": [
+        40,
+        36,
+        42
+      ]
     },
     {
       "number": 38,
@@ -442,9 +867,15 @@
       "url": "episodes/trojan-horse.html",
       "cover": "assets/images/episodes/ep38-trojan-horse-cover-final.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
       "result": "8.4 t CO₂e",
       "hotspot": "Primary timber contributes 45.2%; timber + rope together account for 77.2% of the main result.",
       "featuredDescription": "A one-use hollow timber machine reconstructed around a 50-warrior payload: 25 m³ of finished timber, 16.52 t rolling mass and a footprint driven far more by materials than by the human-powered entry into Troy.",
@@ -456,8 +887,25 @@
         "basis": "Ancient sources constrain timber origin, hollow form, 50-warrior capacity, wheels, ropes and build logic. Dimensions, timber volumes, fasteners and regional freight are explicit engineering assumptions.",
         "uncertainty": "Rope mass and the reconstructed timber bill of materials materially influence the result; the published rope sensitivity spans 7.0–9.7 t CO₂e."
       },
-      "keywords": ["trojan horse", "troy", "mount ida", "timber", "hemp rope", "wheels", "virgil", "homer", "payload", "infiltration", "system boundaries", "proxy"],
-      "related": [40, 36, 35]
+      "keywords": [
+        "trojan horse",
+        "troy",
+        "mount ida",
+        "timber",
+        "hemp rope",
+        "wheels",
+        "virgil",
+        "homer",
+        "payload",
+        "infiltration",
+        "system boundaries",
+        "proxy"
+      ],
+      "related": [
+        40,
+        36,
+        35
+      ]
     },
     {
       "number": 37,
@@ -466,9 +914,17 @@
       "url": "episodes/excalibur.html",
       "cover": "assets/images/episodes/ep37-excalibur-cover-20260816.png",
       "categoryLabel": "Myth & Legend",
-      "categories": ["mythology", "legends"],
+      "categories": [
+        "mythology",
+        "legends"
+      ],
       "lcaLabel": "Process-energy-driven",
-      "lcaCharacteristics": ["process-energy-driven", "materials-driven", "lifetime-sensitive", "proxy-sensitive"],
+      "lcaCharacteristics": [
+        "process-energy-driven",
+        "materials-driven",
+        "lifetime-sensitive",
+        "proxy-sensitive"
+      ],
       "result": "73 kg CO₂e",
       "hotspot": "The charcoal route contributes 52.2 kg CO₂e, or 71.0% of the forty-year result.",
       "featuredDescription": "Arthur's lake-born blade reconstructed as a 1.71 kg late-medieval sword with scabbard over 40 years: the object is light, but bloomery ironmaking and inefficient charcoal production place 517 kg of dry-wood equivalent behind its steel.",
@@ -480,8 +936,25 @@
         "basis": "Malory provides the narrative constraints; the Royal Armouries supplies a measurable late-medieval sword analogue; bloomery ironmaking is reconstructed from an experimental analogue.",
         "uncertainty": "Charcoal yield controls the upstream wood demand and the process-energy hotspot, making the ironmaking reconstruction the principal sensitivity."
       },
-      "keywords": ["excalibur", "arthur", "sword", "scabbard", "bloomery", "charcoal", "iron", "leather", "malory", "lady of the lake", "royal armouries", "biogenic carbon"],
-      "related": [41, 38, 35]
+      "keywords": [
+        "excalibur",
+        "arthur",
+        "sword",
+        "scabbard",
+        "bloomery",
+        "charcoal",
+        "iron",
+        "leather",
+        "malory",
+        "lady of the lake",
+        "royal armouries",
+        "biogenic carbon"
+      ],
+      "related": [
+        41,
+        38,
+        35
+      ]
     },
     {
       "number": 36,
@@ -490,9 +963,16 @@
       "url": "episodes/tower-of-babel.html",
       "cover": "assets/images/episodes/ep36-tower-of-babel-cover-20260816.png",
       "categoryLabel": "Mythic Structure",
-      "categories": ["mythology", "structures"],
+      "categories": [
+        "mythology",
+        "structures"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "process-energy-driven", "lifetime-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "process-energy-driven",
+        "lifetime-sensitive"
+      ],
       "result": "22,491 t CO₂e",
       "hotspot": "Fired-brick facing contributes 95.4% of the footprint.",
       "featuredDescription": "A 90 m ziggurat reconstructed from Etemenanki: most of the masonry is sun-dried earth, yet the fired-brick skin carries almost the entire climate burden.",
@@ -504,8 +984,20 @@
         "basis": "Etemenanki supplies the physical analogue for the completed 90 m ziggurat. Upper tiers, shell thickness, stair volume and material split remain explicit engineering assumptions.",
         "uncertainty": "The fired-brick shell geometry and process intensity dominate the result because fired masonry contributes 95.4% of the footprint."
       },
-      "keywords": ["babel", "ziggurat", "brick", "fired brick", "mudbrick", "construction", "architecture"],
-      "related": [40, 35, 42]
+      "keywords": [
+        "babel",
+        "ziggurat",
+        "brick",
+        "fired brick",
+        "mudbrick",
+        "construction",
+        "architecture"
+      ],
+      "related": [
+        40,
+        35,
+        42
+      ]
     },
     {
       "number": 35,
@@ -514,9 +1006,14 @@
       "url": "episodes/flying-dutchman.html",
       "cover": "assets/images/episodes/ep35-flying-dutchman-cover-20260816.png",
       "categoryLabel": "Legends",
-      "categories": ["legends"],
+      "categories": [
+        "legends"
+      ],
       "lcaLabel": "Materials-driven",
-      "lcaCharacteristics": ["materials-driven", "lifetime-sensitive"],
+      "lcaCharacteristics": [
+        "materials-driven",
+        "lifetime-sensitive"
+      ],
       "result": "528.2 t CO₂e",
       "hotspot": "Construction represents 97.4% of the one-year footprint.",
       "featuredDescription": "A cursed East Indiaman that sails forever without fuel: the operational year is light, while metal armament, fittings and the vessel itself carry the carbon burden.",
@@ -528,8 +1025,20 @@
         "basis": "Batavia provides the main physical analogue and Vasa a contemporary scale check. The curse belongs to the narrative while vessel geometry and material reconstruction are anchored in historical evidence.",
         "uncertainty": "Charging the full construction burden to the first year strongly affects the headline result; a 25-year allocation sensitivity is therefore material to interpretation."
       },
-      "keywords": ["ship", "legend", "sailing", "timber", "metal", "maritime", "curse"],
-      "related": [36, 40, 42]
+      "keywords": [
+        "ship",
+        "legend",
+        "sailing",
+        "timber",
+        "metal",
+        "maritime",
+        "curse"
+      ],
+      "related": [
+        36,
+        40,
+        42
+      ]
     }
   ]
 }
