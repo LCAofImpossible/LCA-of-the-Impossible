@@ -1,0 +1,27 @@
+Episode 33 — Brahmastra — final live verification
+UTC timestamp: 2026-08-21T11:08:43Z
+Verified source commit: 1cbf4ed1f85937691a1cf92eaa1f32db68e172c1
+Live base URL: https://lcaofimpossible.github.io/LCA-of-the-Impossible
+
+Deterministic synchronization + full repository QA: PASS
+Live homepage HTTP 200: PASS
+Live archive HTTP 200: PASS
+Live collections HTTP 200: PASS
+Live compare HTTP 200: PASS
+Live impact map HTTP 200: PASS
+Live Episode 33 HTTP 200 and canonical metadata: PASS
+Live Episode 33 registry entry and Evidence Profile data: PASS
+Live Related Cases targets exist: PASS
+Live Legendary Engineering collection membership: PASS
+Live sitemap Episode 33 entry exactly once: PASS
+Live analytical graphics (Inventory Map / Technical Plate / Hotspot Breakdown): PASS
+Live approved cover SHA256 expected: 10ef642b723c118419c9dc0a34a01f58372d37de890a62edc62680f48698309d
+Live approved cover SHA256 actual:   10ef642b723c118419c9dc0a34a01f58372d37de890a62edc62680f48698309d
+Exact approved cover identity: PASS
+Public episodes.json contains no pdf key: PASS
+Episode page source-PDF control absent: PASS
+Raw text control absent: PASS
+Epic Passport actions are exactly View epic passport + Print / Save as PDF: PASS
+Defensive passport cleanup asset live: PASS
+
+OVERALL: PASS
