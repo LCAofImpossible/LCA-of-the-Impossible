@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 650" role="img" aria-labelledby="title desc">
+<title id="title">Brahmastra hotspot breakdown</title>
+<desc id="desc">Contribution breakdown for the 82.9 kilogram carbon dioxide equivalent baseline: primary metals 92.2 percent, workshop electricity 4.0 percent, road freight 2.1 percent, glass or mineral proxy 1.1 percent, wood 0.6 percent and water approximately zero.</desc>
+<defs><style>.bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.gold{fill:#d0a563}.cyan{fill:#6de7ff}.soft{fill:#9ab0bc}.txt{fill:#eef7fb;font:600 22px Arial,sans-serif}.big{fill:#eef7fb;font:700 64px Arial,sans-serif}.muted{fill:#9ab0bc;font:17px Arial,sans-serif}.ey{fill:#6de7ff;font:700 15px Arial;letter-spacing:2px}.line{stroke:#234557;stroke-width:2}</style></defs>
+<rect class="bg" width="1200" height="650"/>
+<text class="ey" x="60" y="58">EP33 · HOTSPOT BREAKDOWN · BASELINE</text><text class="txt" x="60" y="98">82.9 kg CO₂e per delivered relic</text>
+<rect class="panel" x="60" y="140" width="1080" height="105" rx="12"/>
+<rect class="gold" x="85" y="174" width="931" height="38" rx="7"/><rect class="cyan" x="1016" y="174" width="40" height="38"/><rect class="soft" x="1056" y="174" width="59" height="38" rx="4"/>
+<text class="muted" x="85" y="235">Primary metals 92.2%</text><text class="muted" x="865" y="235">All other flows 7.8%</text>
+
+<text class="big" x="60" y="355">92.2%</text><text class="txt" x="340" y="325">PRIMARY METALS</text><text class="muted" x="340" y="360">20.00 kg material · 76.44 kg CO₂e</text><text class="muted" x="340" y="397">The generic primary-metals proxy makes the ordinary material bill the decisive hotspot.</text>
+<line class="line" x1="60" y1="440" x2="1140" y2="440"/>
+<text class="txt" x="60" y="485">Other published contributions</text>
+<text class="muted" x="60" y="527">Workshop electricity · 3.32 kg · 4.0%</text><text class="muted" x="455" y="527">Road freight · 1.71 kg · 2.1%</text><text class="muted" x="800" y="527">Glass / mineral · 0.91 kg · 1.1%</text>
+<text class="muted" x="60" y="565">Wood · 0.49 kg · 0.6%</text><text class="muted" x="455" y="565">Water · 0.010 kg · 0.0%</text>
+<text class="muted" x="60" y="615">Interpretation · geometry matters, but metal-factor proxy selection moves the answer further than the 600 km delivery assumption.</text>
+</svg>
