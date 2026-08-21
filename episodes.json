@@ -1039,6 +1039,53 @@
         40,
         42
       ]
+    },
+    {
+      "number": 34,
+      "slug": "solar-chariot-of-elios",
+      "title": "Solar Chariot of Elios",
+      "url": "episodes/solar-chariot-of-elios.html",
+      "cover": "assets/images/episodes/ep34-solar-chariot-of-elios-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
+      "result": "3,125 t CO₂e",
+      "hotspot": "Gold plating and radiant panels contribute 3,086.5 t CO₂e, or 98.8% of the modeled footprint.",
+      "featuredDescription": "One 4.95 t Solar Chariot reconstructed for 365 dawn-to-dusk journeys: 3,125 t CO₂e per operational year, with 120 kg of gold plating contributing 98.8% while electricity and base metals remain secondary.",
+      "functionalUnit": "One operational year of the Solar Chariot of Elios: 365 dawn-to-dusk celestial journeys carrying the solar orb across the sky.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode reconstructs the Solar Chariot as a 6.0 m × 3.2 m, 4.95 t ceremonial transport platform with 120 kg of radiant gold plating, a 12 h/day active cycle and a separately modeled 32.0 kW stabilization load. DEFRA 2026 factors are used where representative, while primary gold uses the episode's separately disclosed 2024 global mine-intensity proxy.",
+        "uncertainty": "Gold mass and gold intensity dominate interpretation. The approved physical sensitivity moves the result from 810 to 6,212 t CO₂e as gold changes from 30 to 240 kg, while the gold-intensity sensitivity spans 1,041 to 10,664 t CO₂e."
+      },
+      "keywords": [
+        "solar chariot",
+        "elios",
+        "celestial chariot",
+        "gold plating",
+        "primary gold",
+        "radiant panels",
+        "365 journeys",
+        "dawn-to-dusk",
+        "control load",
+        "DEFRA 2026",
+        "gold intensity",
+        "mythology"
+      ],
+      "related": [
+        55,
+        52,
+        45
+      ]
     }
   ]
 }
