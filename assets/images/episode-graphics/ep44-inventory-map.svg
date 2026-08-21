@@ -14,7 +14,6 @@
   <text x="70" y="160" class="muted small">Reference flow: one 19.4 kg wing pair · one launch · at least 1 km unpowered glide</text>
 
   <rect x="70" y="220" width="280" height="390" rx="18" class="panel"/>
-  <text x="95" y="262" class="cy an"/>
   <text x="95" y="262" class="cyan small h">MATERIAL INPUTS</text>
   <text x="95" y="310" class="t med h">ASH / WILLOW</text><text x="310" y="310" text-anchor="end" class="goldt med mono">10.5 kg</text>
   <line x1="95" y1="326" x2="325" y2="326" class="thin"/>
