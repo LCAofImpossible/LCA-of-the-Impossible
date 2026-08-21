@@ -1,0 +1,237 @@
+name: Episode 33 Live Verification
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ep33-live-verification
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout final main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install QA dependencies
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Run deterministic synchronization and full QA
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/apply_seo.py
+          python scripts/feature_sync.py
+          python scripts/engagement_sync.py
+          python scripts/phase5_sync.py
+          python scripts/phase6_sync.py
+          python scripts/epic_passport_sync.py
+          python scripts/telemetry_sync.py
+          python scripts/site_qa.py
+          python scripts/seo_qa.py
+          python scripts/feature_qa.py
+          python scripts/engagement_qa.py
+          python scripts/phase5_qa.py
+          python scripts/phase6_qa.py
+          python scripts/telemetry_qa.py
+          git diff --exit-code
+
+      - name: Verify live GitHub Pages release
+        shell: bash
+        env:
+          SITE: https://lcaofimpossible.github.io/LCA-of-the-Impossible
+          EXPECTED_COVER_SHA256: 10ef642b723c118419c9dc0a34a01f58372d37de890a62edc62680f48698309d
+        run: |
+          set -euo pipefail
+          mkdir -p /tmp/ep33-live
+
+          ready=0
+          for attempt in $(seq 1 24); do
+            echo "Live verification attempt ${attempt}/24"
+            if curl -fsSL --retry 2 --retry-delay 2 "${SITE}/episodes/brahmastra.html?verify=${GITHUB_SHA}" -o /tmp/ep33-live/episode.html \
+              && curl -fsSL --retry 2 --retry-delay 2 "${SITE}/episodes.json?verify=${GITHUB_SHA}" -o /tmp/ep33-live/episodes.json \
+              && curl -fsSL --retry 2 --retry-delay 2 "${SITE}/assets/phase6.js?verify=${GITHUB_SHA}" -o /tmp/ep33-live/phase6.js \
+              && grep -Fq 'data-episode="33"' /tmp/ep33-live/episode.html \
+              && grep -Fq 'Brahmastra' /tmp/ep33-live/episode.html \
+              && grep -Fq '82.9 kg CO₂e' /tmp/ep33-live/episode.html \
+              && grep -Fq 'View epic passport →' /tmp/ep33-live/phase6.js; then
+              ready=1
+              break
+            fi
+            sleep 15
+          done
+          test "$ready" = 1
+
+          for path in \
+            index.html \
+            archive.html \
+            collections.html \
+            compare.html \
+            explore.html \
+            episodes/brahmastra.html \
+            episodes.json \
+            collections.json \
+            sitemap.xml \
+            assets/images/episodes/ep33-brahmastra-cover.png \
+            assets/images/episode-graphics/ep33-inventory-map.svg \
+            assets/images/episode-graphics/ep33-technical-plate.svg \
+            assets/images/episode-graphics/ep33-hotspot-breakdown.svg \
+            assets/phase6.js \
+            assets/passport-cleanup.js; do
+            code=$(curl -LsS -o "/tmp/ep33-live/$(echo "$path" | tr '/' '_')" -w '%{http_code}' "${SITE}/${path}?verify=${GITHUB_SHA}")
+            test "$code" = 200 || { echo "FAIL: ${path} returned ${code}"; exit 1; }
+          done
+
+          cp /tmp/ep33-live/episodes.json /tmp/ep33-live/live-episodes.json
+          cp /tmp/ep33-live/phase6.js /tmp/ep33-live/live-phase6.js
+          cp /tmp/ep33-live/episodes_brahmastra.html /tmp/ep33-live/live-episode.html
+          cp /tmp/ep33-live/collections.json /tmp/ep33-live/live-collections.json
+          cp /tmp/ep33-live/sitemap.xml /tmp/ep33-live/live-sitemap.xml
+          cp /tmp/ep33-live/assets_passport-cleanup.js /tmp/ep33-live/live-cleanup.js
+
+          actual_cover_sha=$(sha256sum /tmp/ep33-live/assets_images_episodes_ep33-brahmastra-cover.png | awk '{print $1}')
+          echo "Expected cover SHA256: ${EXPECTED_COVER_SHA256}"
+          echo "Actual live cover SHA256: ${actual_cover_sha}"
+          test "$actual_cover_sha" = "$EXPECTED_COVER_SHA256"
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          root = Path('/tmp/ep33-live')
+          episodes = json.loads((root / 'live-episodes.json').read_text(encoding='utf-8'))
+          items = episodes.get('episodes', [])
+          ep33 = [item for item in items if item.get('number') == 33]
+          assert len(ep33) == 1, f'Expected exactly one Episode 33, got {len(ep33)}'
+          ep = ep33[0]
+          assert ep['slug'] == 'brahmastra'
+          assert ep['title'] == 'Brahmastra'
+          assert ep['url'] == 'episodes/brahmastra.html'
+          assert ep['cover'] == 'assets/images/episodes/ep33-brahmastra-cover.png'
+          assert ep['functionalUnit'] == 'One non-functional Brahmastra-inspired ceremonial astral relic, 2.40 m long, delivered ready for one display/ritual use.'
+          assert ep['result'] == '82.9 kg CO₂e'
+          assert ep['hotspot'] == 'Primary metals contribute 76.44 kg CO₂e, or 92.2% of the baseline footprint.'
+          assert ep['evidence']['confidence'] == 'Low'
+          assert ep['evidence']['proxyDependence'] == 'High'
+          assert ep['evidence']['assumptionSensitivity'] == 'High'
+          assert ep.get('coverAspectPolicy') == 'approved-native'
+          assert ep['related'] == [37, 41, 44]
+          published = {item.get('number') for item in items}
+          assert all(number in published for number in ep['related'])
+
+          def has_pdf_key(value):
+              if isinstance(value, dict):
+                  if 'pdf' in value:
+                      return True
+                  return any(has_pdf_key(v) for v in value.values())
+              if isinstance(value, list):
+                  return any(has_pdf_key(v) for v in value)
+              return False
+          assert not has_pdf_key(episodes), 'Public episodes.json contains a pdf key'
+
+          collections = json.loads((root / 'live-collections.json').read_text(encoding='utf-8'))
+          legendary = [c for c in collections.get('collections', []) if c.get('slug') == 'legendary-engineering']
+          assert len(legendary) == 1
+          assert 33 in legendary[0].get('episodes', [])
+
+          episode_html = (root / 'live-episode.html').read_text(encoding='utf-8')
+          required_html = [
+              'data-episode="33"',
+              '82.9 kg CO₂e',
+              '../assets/images/episode-graphics/ep33-inventory-map.svg',
+              '../assets/images/episode-graphics/ep33-technical-plate.svg',
+              '../assets/images/episode-graphics/ep33-hotspot-breakdown.svg',
+              '../assets/site.js',
+              '../assets/phase6.js',
+              '../assets/passport-cleanup.js',
+              '../assets/engagement.js',
+              '../assets/telemetry.js',
+              'https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/brahmastra.html',
+              'https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep33-brahmastra-cover.png',
+          ]
+          for token in required_html:
+              assert token in episode_html, f'Missing live episode token: {token}'
+          lower_html = episode_html.lower()
+          assert 'assets/pdf/episodes/' not in lower_html
+          assert 'raw text' not in lower_html
+          assert 'episode-pdf-action-static' not in lower_html
+
+          phase6 = (root / 'live-phase6.js').read_text(encoding='utf-8')
+          assert 'View epic passport →' in phase6
+          assert 'Print / Save as PDF' in phase6
+          assert 'Raw text' not in phase6
+          marker = '<div class="passport-actions">'
+          start = phase6.index(marker)
+          end = phase6.index('</div>', start)
+          action_block = phase6[start:end]
+          assert action_block.count('<button') == 2, action_block
+          assert '<a ' not in action_block, action_block
+          assert 'method.html' not in action_block and 'sources.html' not in action_block
+
+          cleanup = (root / 'live-cleanup.js').read_text(encoding='utf-8').lower()
+          assert 'raw text' in cleanup
+          assert 'assets/pdf/episodes/' in cleanup
+          assert 'episode-pdf-action-static' in cleanup
+
+          sitemap = (root / 'live-sitemap.xml').read_text(encoding='utf-8')
+          assert sitemap.count('episodes/brahmastra.html') == 1
+          PY
+
+          ! grep -Eqi 'assets/pdf/episodes/|episode-pdf-action-static|Raw text' /tmp/ep33-live/live-episode.html
+          grep -Fq 'View epic passport →' /tmp/ep33-live/live-phase6.js
+          grep -Fq 'Print / Save as PDF' /tmp/ep33-live/live-phase6.js
+          ! grep -Fq 'Raw text' /tmp/ep33-live/live-phase6.js
+
+          cat > ep33-live-verification.txt <<EOF
+          Episode 33 — Brahmastra — final live verification
+          UTC timestamp: $(date -u +'%Y-%m-%dT%H:%M:%SZ')
+          Verified source commit: ${GITHUB_SHA}
+          Live base URL: ${SITE}
+
+          Deterministic synchronization + full repository QA: PASS
+          Live homepage HTTP 200: PASS
+          Live archive HTTP 200: PASS
+          Live collections HTTP 200: PASS
+          Live compare HTTP 200: PASS
+          Live impact map HTTP 200: PASS
+          Live Episode 33 HTTP 200 and canonical metadata: PASS
+          Live Episode 33 registry entry and Evidence Profile data: PASS
+          Live Related Cases targets exist: PASS
+          Live Legendary Engineering collection membership: PASS
+          Live sitemap Episode 33 entry exactly once: PASS
+          Live analytical graphics (Inventory Map / Technical Plate / Hotspot Breakdown): PASS
+          Live approved cover SHA256 expected: ${EXPECTED_COVER_SHA256}
+          Live approved cover SHA256 actual:   ${actual_cover_sha}
+          Exact approved cover identity: PASS
+          Public episodes.json contains no pdf key: PASS
+          Episode page source-PDF control absent: PASS
+          Raw text control absent: PASS
+          Epic Passport actions are exactly View epic passport + Print / Save as PDF: PASS
+          Defensive passport cleanup asset live: PASS
+
+          OVERALL: PASS
+          EOF
+
+      - name: Record final live verification
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add ep33-live-verification.txt
+          git commit -m "Record Episode 33 final live verification"
+          git pull --rebase origin main
+          git push origin HEAD:main
