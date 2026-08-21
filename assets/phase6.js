@@ -195,8 +195,6 @@
       <div class="passport-actions">
         <button class="button passport-view" type="button">View epic passport →</button>
         <button class="button secondary passport-print-direct" type="button">Print / Save as PDF</button>
-        <a class="button secondary" href="${prefix}method.html">Method →</a>
-        <a class="button secondary" href="${prefix}sources.html">Sources & data →</a>
       </div>
       <p class="passport-note">The visual passport is generated only from registered episode metadata. No unregistered boundary, factor list or assumption is added for presentation.</p>`;
     const anchor = document.getElementById('evidence') || quickFacts;
