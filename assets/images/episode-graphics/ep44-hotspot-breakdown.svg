@@ -1,0 +1,44 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Episode 44 Icarus hotspot breakdown</title>
+  <desc id="desc">Baseline climate contribution: bindings and harness 88.8 percent, structure and bronze 7.8 percent, beeswax 1.4 percent, energy and logistics 1.3 percent and recovered feathers 0.6 percent, totaling 70.4 kilograms carbon dioxide equivalent.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.hot{fill:#6de7ff}.gold{fill:#d0a563}.ivory{fill:#c4f7ff}.mutedbar{fill:#6f8794}.faint{fill:#3c5968}.t{font-family:Arial,Helvetica,sans-serif;fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.goldt{fill:#d0a563}.h{font-weight:700;letter-spacing:2px}.small{font-size:20px}.med{font-size:27px}.big{font-size:34px;font-weight:700}.huge{font-size:64px;font-weight:700}.mono{font-family:Consolas,Menlo,monospace}.thin{stroke:#234557;stroke-width:1.5;fill:none;stroke-dasharray:7 7}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="26" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="20" class="thin"/>
+  <text x="70" y="82" class="t small h">EPISODE #44 · HOTSPOT BREAKDOWN</text>
+  <text x="70" y="126" class="t big">THE WAX ENDS THE STORY. THE BINDINGS DOMINATE THE MODEL.</text>
+
+  <rect x="70" y="185" width="330" height="480" rx="18" class="panel"/>
+  <text x="100" y="235" class="muted small h">BASELINE</text>
+  <text x="100" y="325" class="goldt huge mono">70.4</text>
+  <text x="100" y="365" class="t med mono">kg CO₂e</text>
+  <line x1="100" y1="405" x2="370" y2="405" stroke="#234557" stroke-width="2"/>
+  <text x="100" y="455" class="cyan small h">HOTSPOT</text>
+  <text x="100" y="515" class="t big mono">62.5 kg CO₂e</text>
+  <text x="100" y="555" class="goldt med mono">88.8%</text>
+  <text x="100" y="602" class="muted small">2.8 kg linen bindings</text>
+  <text x="100" y="630" class="muted small">+ leather harness</text>
+
+  <g transform="translate(470,205)">
+    <text x="0" y="20" class="t med h">BINDINGS + HARNESS</text><text x="650" y="20" text-anchor="end" class="cyan med mono">88.8%</text>
+    <rect x="0" y="42" width="650" height="44" rx="10" class="track"/><rect x="0" y="42" width="577" height="44" rx="10" class="hot"/>
+
+    <text x="0" y="145" class="t med h">STRUCTURE + BRONZE</text><text x="650" y="145" text-anchor="end" class="goldt med mono">7.8%</text>
+    <rect x="0" y="167" width="650" height="32" rx="8" class="track"/><rect x="0" y="167" width="51" height="32" rx="8" class="gold"/>
+
+    <text x="0" y="258" class="t med h">BEESWAX</text><text x="650" y="258" text-anchor="end" class="ivory med mono">1.4%</text>
+    <rect x="0" y="280" width="650" height="28" rx="7" class="track"/><rect x="0" y="280" width="9" height="28" rx="7" class="ivory"/>
+
+    <text x="0" y="367" class="t med h">ENERGY + LOGISTICS</text><text x="650" y="367" text-anchor="end" class="muted med mono">1.3%</text>
+    <rect x="0" y="389" width="650" height="28" rx="7" class="track"/><rect x="0" y="389" width="8" height="28" rx="7" class="mutedbar"/>
+
+    <text x="0" y="476" class="t med h">RECOVERED FEATHERS</text><text x="650" y="476" text-anchor="end" class="muted med mono">0.6%</text>
+    <rect x="0" y="498" width="650" height="28" rx="7" class="track"/><rect x="0" y="498" width="4" height="28" rx="7" class="faint"/>
+  </g>
+
+  <text x="470" y="688" class="goldt small h">INTERPRETATION</text>
+  <text x="650" y="688" class="t small">The true data priority is better linen and leather data.</text>
+</svg>
