@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Episode 44 Icarus technical plate</title>
+  <desc id="desc">Technical schematic of the reconstructed Icarus glider with 12 metre span, 22 square metre area, 19.4 kilogram mass, 6.55 aspect ratio and 7.36 metre per second modeled minimum speed.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.line{stroke:#6de7ff;stroke-width:3;fill:none}.dim{stroke:#d0a563;stroke-width:2;fill:none}.thin{stroke:#234557;stroke-width:1.5;fill:none;stroke-dasharray:7 7}.wing{fill:#112232;stroke:#eef7fb;stroke-width:3}.rib{stroke:#d0a563;stroke-width:1.5;fill:none;opacity:.8}.t{font-family:Arial,Helvetica,sans-serif;fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.goldt{fill:#d0a563}.h{font-weight:700;letter-spacing:2px}.small{font-size:20px}.med{font-size:27px}.big{font-size:34px;font-weight:700}.mono{font-family:Consolas,Menlo,monospace}
+    </style>
+    <marker id="dimArrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 5L10 0L10 10Z" fill="#d0a563"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="26" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="20" class="thin"/>
+  <text x="70" y="82" class="t small h">EPISODE #44 · TECHNICAL PLATE</text>
+  <text x="70" y="126" class="t big">A BIRD'S SHAPE. AN ENGINEERED COMPROMISE.</text>
+
+  <line x1="90" y1="380" x2="820" y2="380" class="thin"/>
+  <line x1="455" y1="190" x2="455" y2="590" class="thin"/>
+
+  <path class="wing" d="M455 332 C390 285 320 245 245 230 C180 218 125 235 95 275 C160 275 220 295 275 325 C330 355 380 380 455 395 Z"/>
+  <path class="wing" d="M455 332 C520 285 590 245 665 230 C730 218 785 235 815 275 C750 275 690 295 635 325 C580 355 530 380 455 395 Z"/>
+  <path d="M430 315 L455 285 L480 315 L490 415 L420 415 Z" fill="#0b1622" stroke="#d0a563" stroke-width="3"/>
+  <path d="M438 340H472M435 365H475M432 390H478" class="rib"/>
+
+  <path d="M120 270 C180 295 230 320 285 350" class="rib"/>
+  <path d="M160 245 C220 280 275 315 330 365" class="rib"/>
+  <path d="M210 235 C265 275 325 325 380 385" class="rib"/>
+  <path d="M790 270 C730 295 680 320 625 350" class="rib"/>
+  <path d="M750 245 C690 280 635 315 580 365" class="rib"/>
+  <path d="M700 235 C645 275 585 325 530 385" class="rib"/>
+
+  <line x1="95" y1="175" x2="815" y2="175" class="dim" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <line x1="95" y1="185" x2="95" y2="235" class="dim"/>
+  <line x1="815" y1="185" x2="815" y2="235" class="dim"/>
+  <text x="455" y="160" text-anchor="middle" class="goldt med mono">SPAN 12 m</text>
+
+  <line x1="845" y1="230" x2="845" y2="415" class="dim" marker-start="url(#dimArrow)" marker-end="url(#dimArrow)"/>
+  <text x="875" y="332" class="goldt small h">PLANFORM</text>
+  <text x="875" y="360" class="t med mono">22 m²</text>
+
+  <rect x="895" y="185" width="240" height="390" rx="18" class="panel"/>
+  <text x="920" y="225" class="cyan small h">FROZEN MODEL</text>
+  <text x="920" y="280" class="muted small">WING PAIR</text><text x="920" y="316" class="t med mono">19.4 kg</text>
+  <line x1="920" y1="335" x2="1110" y2="335" class="thin"/>
+  <text x="920" y="380" class="muted small">ASPECT RATIO</text><text x="920" y="416" class="t med mono">6.55</text>
+  <line x1="920" y1="435" x2="1110" y2="435" class="thin"/>
+  <text x="920" y="480" class="muted small">MIN SPEED</text><text x="920" y="516" class="t med mono">7.36 m/s</text>
+
+  <rect x="95" y="615" width="1020" height="82" rx="12" fill="#0b1622" stroke="#d0a563"/>
+  <text x="120" y="650" class="goldt small h">ENGINEERING NOTE</text>
+  <text x="120" y="680" class="t small">The approved model fixes the feathers to a gliding wing: plausible as a glide, not plausible as a bird.</text>
+</svg>
