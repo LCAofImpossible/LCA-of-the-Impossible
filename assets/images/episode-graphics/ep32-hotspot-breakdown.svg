@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pegasus hotspot breakdown</title>
+  <desc id="desc">Contribution chart with feed 2.68 kilograms carbon dioxide equivalent, biological emissions 1.43, equipment wear 0.56, logistics 0.45 and stable operations 0.39, for a total of 5.51.</desc>
+  <rect width="1200" height="760" fill="#071019"/>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="70" y="72" font-size="22" letter-spacing="4" fill="#6de7ff">EPISODE #32 · HOTSPOT BREAKDOWN</text>
+    <text x="70" y="118" font-size="38" font-weight="700" fill="#eef7fb">THE FOOTPRINT FOLLOWS THE RATION.</text>
+    <text x="70" y="158" font-size="20" fill="#9ab0bc">Baseline · 5.51 kg CO₂e / mission</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" fill="#eef7fb">
+    <text x="90" y="255">Feed</text>
+    <text x="90" y="345">Biological emissions</text>
+    <text x="90" y="435">Equipment wear</text>
+    <text x="90" y="525">Logistics</text>
+    <text x="90" y="615">Stable operations</text>
+  </g>
+  <g fill="#112232"><rect x="350" y="222" width="650" height="46" rx="8"/><rect x="350" y="312" width="650" height="46" rx="8"/><rect x="350" y="402" width="650" height="46" rx="8"/><rect x="350" y="492" width="650" height="46" rx="8"/><rect x="350" y="582" width="650" height="46" rx="8"/></g>
+  <g>
+    <rect x="350" y="222" width="632" height="46" rx="8" fill="#6de7ff"/>
+    <rect x="350" y="312" width="337" height="46" rx="8" fill="#d0a563"/>
+    <rect x="350" y="402" width="132" height="46" rx="8" fill="#c4f7ff"/>
+    <rect x="350" y="492" width="106" height="46" rx="8" fill="#9ab0bc"/>
+    <rect x="350" y="582" width="92" height="46" rx="8" fill="#7d929d"/>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#eef7fb">
+    <text x="1025" y="255">2.68 kg</text>
+    <text x="1025" y="345">1.43 kg</text>
+    <text x="1025" y="435">0.56 kg</text>
+    <text x="1025" y="525">0.45 kg</text>
+    <text x="1025" y="615">0.39 kg</text>
+  </g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <rect x="70" y="670" width="1060" height="58" rx="12" fill="#0b1622" stroke="#234557"/>
+    <text x="120" y="706" font-size="20" fill="#d0a563">FEED 48.6%</text>
+    <text x="470" y="706" font-size="20" fill="#d0a563">BIOLOGY 26.0%</text>
+    <text x="820" y="706" font-size="20" fill="#d0a563">OTHER 25.4% COMBINED</text>
+  </g>
+</svg>

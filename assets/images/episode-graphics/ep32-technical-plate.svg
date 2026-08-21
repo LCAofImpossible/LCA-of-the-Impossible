@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Pegasus technical reconstruction plate</title>
+  <desc id="desc">Technical reconstruction with 650 kilogram body mass, approximately 3 metre body length and approximately 9 metre wingspan proxy.</desc>
+  <rect width="1200" height="760" fill="#071019"/>
+  <g font-family="Arial, Helvetica, sans-serif" fill="#eef7fb">
+    <text x="70" y="72" font-size="22" letter-spacing="4" fill="#6de7ff">EPISODE #32 · TECHNICAL PLATE</text>
+    <text x="70" y="116" font-size="38" font-weight="700">A HORSE BODY. AN AVIATION PROBLEM.</text>
+  </g>
+  <g stroke="#234557" stroke-width="2" fill="none" opacity="0.8">
+    <circle cx="610" cy="405" r="220"/>
+    <circle cx="610" cy="405" r="150"/>
+    <line x1="160" y1="405" x2="1060" y2="405"/>
+    <line x1="610" y1="175" x2="610" y2="640"/>
+  </g>
+  <g stroke="#d0a563" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M425 420 C475 360, 545 335, 625 350 C710 365, 760 420, 750 475 C730 535, 645 555, 555 535 C485 520, 438 480, 425 420 Z"/>
+    <path d="M690 360 C730 300, 770 265, 815 245"/>
+    <path d="M815 245 C846 235, 870 245, 886 270"/>
+    <path d="M480 500 L450 610 M550 525 L530 630 M680 520 L700 630 M730 490 L770 605"/>
+    <path d="M520 375 C390 260, 270 210, 120 195"/>
+    <path d="M550 395 C380 335, 245 320, 90 335"/>
+    <path d="M675 375 C820 255, 955 210, 1090 195"/>
+    <path d="M660 395 C835 335, 965 320, 1120 335"/>
+  </g>
+  <g fill="#d0a563"><circle cx="520" cy="375" r="10"/><circle cx="675" cy="375" r="10"/></g>
+  <g font-family="Arial, Helvetica, sans-serif">
+    <text x="610" y="690" text-anchor="middle" fill="#9ab0bc" font-size="18">Schematic reconstruction · analytical geometry only</text>
+    <text x="115" y="165" fill="#6de7ff" font-size="18" letter-spacing="2">WINGSPAN</text>
+    <text x="115" y="190" fill="#eef7fb" font-size="28" font-weight="700">~9 m proxy</text>
+    <text x="850" y="520" fill="#6de7ff" font-size="18" letter-spacing="2">BODY MASS</text>
+    <text x="850" y="552" fill="#eef7fb" font-size="30" font-weight="700">650 kg</text>
+    <text x="850" y="600" fill="#6de7ff" font-size="18" letter-spacing="2">MATERIAL</text>
+    <text x="850" y="632" fill="#eef7fb" font-size="24" font-weight="700">Biological tissue</text>
+    <text x="95" y="520" fill="#6de7ff" font-size="18" letter-spacing="2">BODY LENGTH</text>
+    <text x="95" y="552" fill="#eef7fb" font-size="30" font-weight="700">~3.0 m</text>
+    <text x="95" y="600" fill="#6de7ff" font-size="18" letter-spacing="2">STRUCTURE</text>
+    <text x="95" y="632" fill="#eef7fb" font-size="22" font-weight="700">Extended thoracic wing root</text>
+  </g>
+  <g stroke="#6de7ff" stroke-width="2" fill="none">
+    <line x1="105" y1="225" x2="1095" y2="225"/>
+    <line x1="105" y1="215" x2="105" y2="235"/><line x1="1095" y1="215" x2="1095" y2="235"/>
+    <line x1="430" y1="570" x2="750" y2="570"/>
+    <line x1="430" y1="560" x2="430" y2="580"/><line x1="750" y1="560" x2="750" y2="580"/>
+  </g>
+</svg>
