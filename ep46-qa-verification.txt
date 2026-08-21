@@ -1,0 +1,27 @@
+Episode #46 repository QA: PASS
+Commit: 5d14af4997bd20d2057d1ca83d6334a4a2a315fa
+Deterministic synchronization: PASS
+Structural site QA: PASS
+SEO/social QA: PASS
+Phase 3 feature QA: PASS
+Phase 4 engagement QA: PASS
+Phase 5 editorial QA: PASS
+Phase 6 / Epic Passport QA: PASS
+Visitor telemetry QA: PASS
+
+SEO updated: sitemap.xml
+Phase 3 updated: sitemap.xml
+Phase 4 updated: sitemap.xml
+Phase 5 updated: sitemap.xml
+Phase 6 model transparency is synchronized.
+Epic Passport is synchronized.
+Visitor telemetry is synchronized.
+WARNING: Episode #47 cover: using explicitly approved native aspect ratio 922x1536; exact-file rule overrides 4:5 target
+WARNING: Episode #46 cover: using explicitly approved native aspect ratio 1003x1568; exact-file rule overrides 4:5 target
+QA passed with 2 warning(s).
+SEO QA passed for 29 public pages.
+Phase 3 QA passed.
+Phase 4 QA passed for 6 collections and 20 episodes.
+Phase 5 QA passed.
+Phase 6 Epic Model Passport QA passed.
+Visitor telemetry QA passed.

@@ -1,0 +1,17 @@
+Episode #46 live verification: PASS
+UTC: 2026-08-21T06:41:02.600488+00:00
+Cover SHA-256: 774759c90c73790a3e5a0e21a94110ba22597e3d0e429b230934f3465d69cb0a
+Cover dimensions: 1003x1568
+Exact approved cover live at canonical path: PASS
+Temporary upload filename removed: PASS
+Live episode HTML: PASS
+Numerical/source reconciliation: PASS
+Live registry: PASS
+Live sitemap: PASS
+Live collections registry: PASS
+Homepage/archive/collections/compare/explore endpoints: HTTP 200
+Analytical graphics and shared assets: HTTP 200
+Epic Passport labels and Passport-only cleanup deployed: PASS
+Raw text in episode HTML: NO
+Source PDF link in episode HTML/registry: NO
+Responsive/mobile CSS invariants deployed: PASS
