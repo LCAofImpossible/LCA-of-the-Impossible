@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Phoenix technical reconstruction plate</title>
+  <desc id="desc">Blueprint-style technical plate for the approved Phoenix reconstruction, showing a 12 kilogram adult bird, 3 metre analogue wingspan, 1.25 metre standing height, 2.3 metre tail train, 80 kilogram hardwood nest, 5 kilogram resin load, 300 kilowatt-hours of auxiliary heat, 12 kilowatt-hours of controls power and 21.25 tonne-kilometres of freight.</desc>
+  <defs>
+    <marker id="dim" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse"><path d="M1 5L9 1V9Z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.grid{stroke:#112232;stroke-width:1}.line{fill:none;stroke:#6de7ff;stroke-width:2}.dimline{fill:none;stroke:#6de7ff;stroke-width:1.8;marker-start:url(#dim);marker-end:url(#dim)}.goldline{fill:none;stroke:#d0a563;stroke-width:2}.fine{fill:none;stroke:#4d7384;stroke-width:1.4}.body{fill:#112232;stroke:#6de7ff;stroke-width:3}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.titleText{font:700 34px Georgia,serif}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.value{font:700 25px Arial,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <g opacity=".7">
+    <path d="M60 170H1140M60 250H1140M60 330H1140M60 410H1140M60 490H1140M60 570H1140" class="grid"/>
+    <path d="M140 140V650M300 140V650M460 140V650M620 140V650M780 140V650M940 140V650M1100 140V650" class="grid"/>
+  </g>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="76" class="gold label">EPISODE #60 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white titleText">One engineering body, one controlled chamber</text>
+
+  <g transform="translate(390 100)">
+    <ellipse cx="210" cy="475" rx="178" ry="40" fill="#0b1622" stroke="#d0a563" stroke-width="3"/>
+    <path d="M45 465Q95 420 145 459M270 459Q325 416 380 465M82 478Q128 445 174 476M247 476Q294 443 342 478" class="goldline"/>
+    <path d="M201 397 C157 350 148 279 183 227 C208 191 236 160 229 115 C225 89 238 65 266 57 C286 51 307 60 319 76 L347 82 L320 95 C302 109 283 110 269 105 C264 154 242 187 226 222 C271 235 316 278 338 338 C303 325 273 308 246 286 C274 343 279 405 247 451 C230 468 192 466 172 449 C137 420 110 381 92 330 C129 342 160 357 184 378 C163 320 156 260 177 215 C143 238 113 271 83 314 C87 253 112 199 161 169 C174 161 189 154 203 149 C202 128 201 111 201 93" class="body"/>
+    <path d="M219 448 C221 490 205 515 188 536 C220 525 242 506 252 482 C258 512 249 533 235 550 C264 536 283 510 282 468" class="goldline"/>
+    <path d="M176 446L157 479M205 456L198 489" class="line"/>
+    <path d="M146 485L174 480M186 494L211 488" class="fine"/>
+    <path d="M229 116Q259 120 281 105M211 182Q240 188 263 177M176 261Q211 275 247 266M155 339Q202 354 250 343" class="fine"/>
+    <circle cx="286" cy="73" r="4" fill="#d0a563"/>
+  </g>
+
+  <path d="M458 166H742" class="dimline"/>
+  <text x="600" y="154" text-anchor="middle" class="cyan label">3.0 m ANALOGUE WINGSPAN</text>
+  <path d="M420 156V615" class="dimline"/>
+  <text x="404" y="386" transform="rotate(-90 404 386)" text-anchor="middle" class="cyan label">1.25 m TO CREST</text>
+  <path d="M664 528V648" class="dimline"/>
+  <text x="830" y="600" text-anchor="end" class="cyan label">2.3 m TAIL TRAIN</text>
+
+  <g transform="translate(70 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">BODY CARD</text>
+    <text x="20" y="81" class="white value">12 kg</text><text x="20" y="106" class="muted small">adult bird mass</text>
+    <text x="20" y="155" class="white value">3.0 m</text><text x="20" y="180" class="muted small">analogue wingspan</text>
+    <text x="20" y="229" class="white value">1.25 m</text><text x="20" y="254" class="muted small">standing height</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">2.3 m ornamental plume</text>
+    <text x="20" y="341" class="muted tiny">eagle-like hooked beak</text>
+    <text x="20" y="367" class="muted tiny">long neck · dark talons</text>
+  </g>
+
+  <g transform="translate(860 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">PROCESS CARD</text>
+    <text x="20" y="81" class="white value">80 + 5 kg</text><text x="20" y="106" class="muted small">wood + resin load</text>
+    <text x="20" y="155" class="white value">300 kWh</text><text x="20" y="180" class="muted small">gross CV heat</text>
+    <text x="20" y="229" class="white value">12 kWh</text><text x="20" y="254" class="muted small">controls + ventilation</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">21.25 t·km freight</text>
+    <text x="20" y="341" class="muted tiny">1,600 °F chamber proxy</text>
+    <text x="20" y="367" class="muted tiny">complete-oxidation analogue</text>
+  </g>
+
+  <rect x="385" y="668" width="450" height="34" rx="8" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="610" y="691" text-anchor="middle" class="white small">Geometry is frozen before the inventory is calculated.</text>
+  <text x="70" y="718" class="muted tiny">Source: approved Episode #60 reconstruction. The schematic introduces no additional dimensions or process values.</text>
+</svg>

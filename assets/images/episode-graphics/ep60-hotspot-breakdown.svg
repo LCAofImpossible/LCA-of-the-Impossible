@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Phoenix hotspot breakdown</title>
+  <desc id="desc">Hotspot breakdown for the 156.9 kilogram baseline: auxiliary heat contributes 63.8 kilograms or 40.6 percent, regenerated body 44.4 kilograms or 28.3 percent, nest and resins 40.1 kilograms or 25.5 percent, wood combustion 3.90 kilograms or 2.5 percent, freight 2.53 kilograms or 1.6 percent and electricity 2.21 kilograms or 1.4 percent.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.titleText{font:700 36px Georgia,serif}.label{font:700 19px Arial,sans-serif}.value{font:700 27px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.base{fill:#112232}.heat{fill:#d0a563}.bodybar{fill:#6de7ff}.nest{fill:#4d8c78}.minor{fill:#4d7384}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="78" class="gold label">EPISODE #60 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="126" class="white titleText">The controlled heat system leads</text>
+  <text x="64" y="160" class="muted small">Approved baseline · one controlled Phoenix rebirth cycle</text>
+
+  <g transform="translate(64 190)">
+    <rect width="1072" height="92" rx="14" class="panel"/>
+    <text x="28" y="36" class="gold label">BASELINE TOTAL</text>
+    <text x="28" y="72" class="white value">156.9 kg CO₂e</text>
+    <text x="280" y="70" class="muted small">reported as 157 kg CO₂e</text>
+    <text x="1040" y="58" text-anchor="end" class="cyan label">HEAT · BIOLOGY · NEST</text>
+  </g>
+
+  <g transform="translate(64 318)">
+    <text x="0" y="18" class="white label">Auxiliary heat</text><text x="1070" y="18" text-anchor="end" class="white value">40.6% · 63.8 kg</text>
+    <rect x="0" y="30" width="1072" height="28" rx="6" class="base"/><rect x="0" y="30" width="1072" height="28" rx="6" class="heat"/>
+
+    <text x="0" y="91" class="white label">Regenerated body</text><text x="1070" y="91" text-anchor="end" class="white value">28.3% · 44.4 kg</text>
+    <rect x="0" y="103" width="1072" height="28" rx="6" class="base"/><rect x="0" y="103" width="747" height="28" rx="6" class="bodybar"/>
+
+    <text x="0" y="164" class="white label">Nest + resins</text><text x="1070" y="164" text-anchor="end" class="white value">25.5% · 40.1 kg</text>
+    <rect x="0" y="176" width="1072" height="28" rx="6" class="base"/><rect x="0" y="176" width="673" height="28" rx="6" class="nest"/>
+  </g>
+
+  <g transform="translate(64 555)">
+    <rect width="340" height="102" rx="12" class="panel"/>
+    <text x="18" y="32" class="cyan label">WOOD CH₄/N₂O</text>
+    <text x="18" y="68" class="white value">2.5% · 3.90 kg</text>
+  </g>
+  <g transform="translate(430 555)">
+    <rect width="340" height="102" rx="12" class="panel"/>
+    <text x="18" y="32" class="cyan label">FREIGHT</text>
+    <text x="18" y="68" class="white value">1.6% · 2.53 kg</text>
+  </g>
+  <g transform="translate(796 555)">
+    <rect width="340" height="102" rx="12" class="panel"/>
+    <text x="18" y="32" class="cyan label">ELECTRICITY</text>
+    <text x="18" y="68" class="white value">1.4% · 2.21 kg</text>
+  </g>
+
+  <rect x="64" y="676" width="1072" height="36" rx="8" fill="#0b1622" stroke="#d0a563" stroke-width="1.5"/>
+  <text x="600" y="700" text-anchor="middle" class="white small">Displayed shares are rounded; the seven approved contributions reconcile to 156.9 kg CO₂e.</text>
+  <text x="64" y="728" class="muted tiny">Wood-log biogenic CO₂ is disclosed outside the total; only combustion CH₄/N₂O remains inside.</text>
+</svg>

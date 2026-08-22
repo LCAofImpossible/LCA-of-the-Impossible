@@ -2,6 +2,57 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 60,
+      "slug": "phoenix",
+      "title": "The Phoenix",
+      "url": "episodes/phoenix.html",
+      "cover": "assets/images/episodes/ep60-phoenix-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "process-energy-driven",
+        "proxy-sensitive"
+      ],
+      "result": "157 kg CO₂e",
+      "hotspot": "Auxiliary heat contributes 63.8 kg CO₂e, or 40.6% of the approved baseline footprint.",
+      "featuredDescription": "One controlled Phoenix rebirth cycle reconstructed as a 12 kg bird, a hardwood-resin nest and a controlled heat system: 157 kg CO₂e, with auxiliary heat contributing 40.6% of the approved baseline.",
+      "functionalUnit": "One controlled Phoenix rebirth cycle: mature bird enters the pyre and a viable juvenile emerges after cooling.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "Medium",
+        "basis": "The approved episode defines one controlled rebirth event and freezes a 12 kg bird with a 3.0 m analogue wingspan, 1.25 m standing height, 2.3 m tail, 80 kg air-dried hardwood nest, 5 kg aromatic resin/spice proxy, 300 kWh of auxiliary heat, 12 kWh of controls power and declared road freight. DEFRA 2026 factors provide the modern process proxies; food and drink represents regenerated biological matter and the resin/spice load.",
+        "uncertainty": "The regenerated-body mass and the proxy selected for controlled heat are the reported sensitivities. Body mass moves the result from 142.1 to 179.1 kg CO₂e, while the heat-factor cases span 148.4 to 164.9 kg CO₂e; neither changes the interpretation that heat and biological regeneration drive the event."
+      },
+      "keywords": [
+        "phoenix",
+        "rebirth",
+        "regeneration",
+        "hardwood nest",
+        "resin",
+        "spices",
+        "auxiliary heat",
+        "natural gas",
+        "wood combustion",
+        "biogenic CO2",
+        "food and drink proxy",
+        "DEFRA 2026",
+        "energy-driven",
+        "mythology",
+        "first flight"
+      ],
+      "related": [
+        56,
+        58,
+        44
+      ]
+    },
+    {
       "number": 59,
       "slug": "golden-fleece",
       "title": "The Golden Fleece",

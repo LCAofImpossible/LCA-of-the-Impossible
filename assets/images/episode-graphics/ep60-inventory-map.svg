@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Phoenix inventory map</title>
+  <desc id="desc">Inventory map for one controlled Phoenix rebirth, showing regenerated body medium, hardwood nest, resin and spice proxy, wood combustion, auxiliary heat, controls power and road freight entering a five-step process that ends at viable juvenile emergence.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 24px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #60 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white titleText">One rebirth becomes a physical process</text>
+  <text x="64" y="149" class="muted small">Functional unit: one controlled cycle from mature bird entering the pyre to viable juvenile emergence</text>
+
+  <g transform="translate(60 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">BODY MEDIUM</text><text x="20" y="63" class="white value">12 kg</text><text x="126" y="63" class="muted tiny">tissue proxy</text>
+  </g>
+  <g transform="translate(60 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">HARDWOOD NEST</text><text x="20" y="63" class="white value">80 kg</text><text x="126" y="63" class="muted tiny">air-dried logs</text>
+  </g>
+  <g transform="translate(60 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">RESIN / SPICE</text><text x="20" y="63" class="white value">5 kg</text><text x="112" y="63" class="muted tiny">aromatic nest load</text>
+  </g>
+
+  <g transform="translate(862 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">WOOD COMBUSTION</text><text x="20" y="63" class="white value">0.080 t</text><text x="150" y="63" class="muted tiny">CH₄/N₂O only</text>
+  </g>
+  <g transform="translate(862 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">AUXILIARY HEAT</text><text x="20" y="63" class="white value">300 kWh</text><text x="168" y="63" class="muted tiny">gross CV gas</text>
+  </g>
+  <g transform="translate(862 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">CONTROLS POWER</text><text x="20" y="63" class="white value">12 kWh</text><text x="142" y="63" class="muted tiny">grid electricity</text>
+  </g>
+  <g transform="translate(862 512)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">ROAD FREIGHT</text><text x="20" y="63" class="white value">21.25 t·km</text><text x="190" y="63" class="muted tiny">85 kg × 250 km</text>
+  </g>
+
+  <rect x="382" y="194" width="436" height="410" rx="18" class="core"/>
+  <text x="600" y="235" text-anchor="middle" class="gold label">ONE CONTROLLED REBIRTH</text>
+  <text x="600" y="270" text-anchor="middle" class="white value">Mature bird → viable juvenile</text>
+  <text x="600" y="298" text-anchor="middle" class="muted small">The service is one event, not immortality</text>
+
+  <g class="small" text-anchor="middle">
+    <circle cx="423" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="423" y="389" class="white">01</text>
+    <circle cx="511" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="511" y="389" class="white">02</text>
+    <circle cx="600" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="600" y="389" class="white">03</text>
+    <circle cx="689" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="689" y="389" class="white">04</text>
+    <circle cx="777" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="777" y="389" class="white">05</text>
+    <text x="423" y="432" class="cyan">Gather</text><text x="511" y="432" class="cyan">Prepare</text><text x="600" y="432" class="gold">Heat</text><text x="689" y="432" class="gold">Ash</text><text x="777" y="432" class="cyan">Regenerate</text>
+  </g>
+  <path d="M450 383H484M538 383H573M627 383H662M716 383H750" class="line"/>
+
+  <rect x="418" y="475" width="364" height="82" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="506" text-anchor="middle" class="gold label">BOUNDARY RULE</text>
+  <text x="600" y="533" text-anchor="middle" class="white small">The cycle ends at first flight</text>
+
+  <path d="M338 240 C360 240 360 322 382 322" class="line"/>
+  <path d="M338 346 C360 346 360 352 382 352" class="line"/>
+  <path d="M338 452 C360 452 360 445 382 445" class="line"/>
+  <path d="M862 240 C840 240 840 322 818 322" class="line"/>
+  <path d="M862 346 C840 346 840 352 818 352" class="line"/>
+  <path d="M862 452 C840 452 840 445 818 445" class="line"/>
+  <path d="M862 558 C840 558 840 475 818 475" class="line"/>
+
+  <rect x="360" y="630" width="480" height="60" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="654" text-anchor="middle" class="gold label">CUT-OFF EVENT</text>
+  <text x="600" y="679" text-anchor="middle" class="white small">Viable juvenile leaves the ash bed</text>
+  <path d="M600 604V630" class="line"/>
+  <text x="60" y="716" class="muted tiny">Source: approved Episode #60 carousel. Later life, repeated centuries, temple construction and mythic solar energy are excluded.</text>
+</svg>
