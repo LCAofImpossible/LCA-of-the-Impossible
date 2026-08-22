@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sleipnir technical reconstruction plate</title>
+  <desc id="desc">Technical reconstruction of one 720 kilogram steel-gray horse-like body with a 2.6 metre body length, 1.8 metre shoulder height, four paired leg modules and exactly eight hooves.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:2;fill:none}.goldline{stroke:#d0a563;stroke-width:2;fill:none}.thin{stroke:#234557;stroke-width:1.5;fill:none}.dash{stroke-dasharray:8 8}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #62 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white titleText">Four paired leg modules, one locked subject</text>
+  <text x="64" y="149" class="muted small">Horse-like body and locomotion geometry are fixed before the ride-day inventory is modeled</text>
+
+  <g transform="translate(70 202)">
+    <rect width="690" height="442" rx="16" class="panel"/>
+    <text x="28" y="39" class="cyan label">SIDE RECONSTRUCTION · EIGHT HOOVES</text>
+    <ellipse cx="330" cy="194" rx="208" ry="92" class="goldline"/>
+    <path d="M500 168 C540 108 574 93 604 116 C632 137 619 183 577 195 C546 204 526 195 500 183" class="goldline"/>
+    <path d="M536 112 L548 76 L560 116 M584 111 L605 80 L601 126" class="line"/>
+    <path d="M124 178 C77 154 76 113 101 78" class="goldline"/>
+    <path d="M160 242 L145 356 L122 404 L163 404 L184 360 L198 244" class="line"/>
+    <path d="M220 258 L212 365 L198 404 L239 404 L252 367 L258 258" class="line"/>
+    <path d="M290 273 L286 368 L278 404 L319 404 L324 368 L329 270" class="line"/>
+    <path d="M352 274 L356 368 L350 404 L391 404 L394 367 L391 268" class="line"/>
+    <path d="M416 258 L430 362 L423 404 L464 404 L468 359 L454 250" class="line"/>
+    <path d="M474 244 L497 354 L493 404 L534 404 L537 349 L514 226" class="line"/>
+    <path d="M520 219 L560 340 L563 404 L604 404 L600 333 L555 202" class="line"/>
+    <path d="M558 196 L617 322 L626 404 L667 404 L658 314 L596 183" class="line"/>
+    <g class="goldline">
+      <path d="M120 404 H165"/><path d="M197 404 H240"/><path d="M277 404 H320"/><path d="M349 404 H392"/>
+      <path d="M422 404 H465"/><path d="M492 404 H535"/><path d="M562 404 H605"/><path d="M625 404 H668"/>
+    </g>
+    <path d="M122 78 H538" class="thin dash"/><path d="M122 64 V92 M538 64 V92" class="goldline"/>
+    <text x="330" y="69" text-anchor="middle" class="gold label">2.6 m BODY LENGTH</text>
+    <path d="M92 116 V404" class="thin dash"/><path d="M78 116 H106 M78 404 H106" class="goldline"/>
+    <text x="65" y="270" transform="rotate(-90 65 270)" text-anchor="middle" class="cyan label">1.8 m SHOULDER HEIGHT</text>
+    <text x="330" y="427" text-anchor="middle" class="muted tiny">Eight continuous leg paths · eight distinct hooves</text>
+  </g>
+
+  <g transform="translate(796 202)">
+    <rect width="334" height="442" rx="16" class="panel"/>
+    <text x="24" y="39" class="gold label">LOCKED PROPERTIES</text>
+    <line x1="24" y1="57" x2="310" y2="57" class="thin"/>
+    <text x="24" y="94" class="muted small">LIVE WEIGHT</text><text x="310" y="94" text-anchor="end" class="white value">720 kg</text>
+    <text x="24" y="145" class="muted small">LEG MODULES</text><text x="310" y="145" text-anchor="end" class="cyan value">4 paired</text>
+    <text x="24" y="196" class="muted small">HOOVES</text><text x="310" y="196" text-anchor="end" class="white value">8</text>
+    <text x="24" y="247" class="muted small">COAT</text><text x="310" y="247" text-anchor="end" class="white value">gray</text>
+    <text x="24" y="298" class="muted small">TACK</text><text x="310" y="298" text-anchor="end" class="white value">leather + bronze</text>
+    <line x1="24" y1="324" x2="310" y2="324" class="thin"/>
+    <text x="24" y="356" class="gold label">REPORTING BASIS</text>
+    <text x="24" y="384" class="muted tiny">One 100 km reconnaissance ride</text>
+    <text x="24" y="405" class="muted tiny">within one modeled ride-day.</text>
+  </g>
+  <text x="70" y="690" class="muted tiny">More legs change the anatomy; the body-mass assumption changes the model.</text>
+</svg>

@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sleipnir inventory map</title>
+  <desc id="desc">Inventory map for one 100 kilometre reconnaissance ride-day, showing the daily ration, stable electricity and water, feed delivery, enteric methane, the delivered ride service and post-ride manure handling.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #62 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white titleText">Ordinary flows prepare an impossible ride</text>
+  <text x="64" y="149" class="muted small">Functional unit: one 100 km reconnaissance ride carrying one rider-equivalent within one ride-day</text>
+
+  <g transform="translate(60 196)">
+    <rect width="264" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">DAILY RATION</text><text x="20" y="64" class="white value">9.86 + 5.33 kg</text><text x="20" y="84" class="muted tiny">forage + concentrate</text>
+  </g>
+  <g transform="translate(60 308)">
+    <rect width="264" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">STABLE SUPPORT</text><text x="20" y="64" class="white value">2.00 kWh · 45 L</text><text x="20" y="84" class="muted tiny">electricity · water</text>
+  </g>
+  <g transform="translate(60 420)">
+    <rect width="264" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">FEED DELIVERY</text><text x="20" y="66" class="white value">0.614 t·km</text>
+  </g>
+  <g transform="translate(60 532)">
+    <rect width="264" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">TACK</text><text x="20" y="66" class="white value">leather + bronze</text>
+  </g>
+
+  <path d="M324 244 H370" class="line"/><path d="M324 356 H370" class="line"/><path d="M324 468 H370" class="line"/><path d="M324 580 H370" class="line"/>
+
+  <rect x="372" y="196" width="768" height="432" rx="18" class="core"/>
+  <text x="756" y="236" text-anchor="middle" class="gold label">ONE BIOLOGICAL RIDE-DAY</text>
+  <text x="756" y="272" text-anchor="middle" class="white value">720 kg Sleipnir · 100 km service</text>
+  <text x="756" y="300" text-anchor="middle" class="muted small">Magic excluded; feed, methane, manure and support flows counted</text>
+
+  <path d="M450 408 H584 M634 408 H768 M818 408 H952" class="line"/>
+  <g text-anchor="middle">
+    <circle cx="424" cy="408" r="34" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="424" y="414" class="white label">01</text>
+    <circle cx="608" cy="408" r="34" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="608" y="414" class="white label">02</text>
+    <circle cx="792" cy="408" r="34" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="792" y="414" class="white label">03</text>
+    <circle cx="976" cy="408" r="34" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="976" y="414" class="white label">04</text>
+    <text x="424" y="468" class="cyan label">DELIVER</text><text x="424" y="492" class="muted tiny">feed reaches stable</text>
+    <text x="608" y="468" class="cyan label">MAINTAIN</text><text x="608" y="492" class="muted tiny">feed · water · energy</text>
+    <text x="792" y="468" class="gold label">RIDE</text><text x="792" y="492" class="muted tiny">100 km service</text>
+    <text x="976" y="468" class="gold label">HANDLE</text><text x="976" y="492" class="muted tiny">post-ride manure</text>
+  </g>
+
+  <rect x="402" y="536" width="708" height="66" rx="10" class="panel"/>
+  <text x="424" y="565" class="gold label">DIRECT BIOLOGICAL FLOWS</text>
+  <text x="424" y="588" class="muted small">0.0657 kg CH₄ enteric · 0.00229 kg N₂O manure</text>
+  <text x="64" y="686" class="muted tiny">Excluded: horse breeding · stable construction · rider equipment · Yggdrasil infrastructure</text>
+</svg>

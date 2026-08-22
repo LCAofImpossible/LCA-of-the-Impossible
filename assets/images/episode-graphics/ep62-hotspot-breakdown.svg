@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Sleipnir hotspot breakdown</title>
+  <desc id="desc">Contribution chart showing feed at 67.5 percent, enteric methane at 15.2 percent, manure at 6.7 percent, logistics at 3.5 percent, stable energy at 3.2 percent and tack at 3.0 percent of the approved 11.7 kilogram carbon dioxide equivalent baseline.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.bar{fill:#6de7ff}.bar2{fill:#d0a563}.bar3{fill:#527d8d}.bar4{fill:#315466}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 17px Arial,sans-serif;letter-spacing:1px}.value{font:700 23px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #62 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="118" class="white titleText">The ride runs on forage</text>
+  <text x="64" y="149" class="muted small">Approved baseline: 11.7 kg CO₂e per one 100 km reconnaissance ride within one ride-day</text>
+
+  <g transform="translate(64 186)">
+    <text x="0" y="22" class="white label">FEED PRODUCTION</text><text x="1048" y="22" text-anchor="end" class="cyan value">67.5%</text>
+    <rect x="0" y="34" width="1048" height="40" rx="8" class="track"/><rect x="0" y="34" width="900" height="40" rx="8" class="bar"/>
+  </g>
+  <g transform="translate(64 276)">
+    <text x="0" y="22" class="white label">ENTERIC METHANE</text><text x="1048" y="22" text-anchor="end" class="gold value">15.2%</text>
+    <rect x="0" y="34" width="1048" height="36" rx="8" class="track"/><rect x="0" y="34" width="203" height="36" rx="8" class="bar2"/>
+  </g>
+  <g transform="translate(64 362)">
+    <text x="0" y="22" class="white label">MANURE</text><text x="1048" y="22" text-anchor="end" class="white value">6.7%</text>
+    <rect x="0" y="34" width="1048" height="30" rx="8" class="track"/><rect x="0" y="34" width="89" height="30" rx="8" class="bar3"/>
+  </g>
+  <g transform="translate(64 442)">
+    <text x="0" y="22" class="white label">LOGISTICS</text><text x="1048" y="22" text-anchor="end" class="white value">3.5%</text>
+    <rect x="0" y="34" width="1048" height="26" rx="8" class="track"/><rect x="0" y="34" width="47" height="26" rx="8" class="bar4"/>
+  </g>
+  <g transform="translate(64 516)">
+    <text x="0" y="22" class="white label">STABLE ENERGY</text><text x="1048" y="22" text-anchor="end" class="white value">3.2%</text>
+    <rect x="0" y="34" width="1048" height="26" rx="8" class="track"/><rect x="0" y="34" width="43" height="26" rx="8" class="bar4"/>
+  </g>
+  <g transform="translate(64 590)">
+    <text x="0" y="22" class="white label">TACK</text><text x="1048" y="22" text-anchor="end" class="white value">3.0%</text>
+    <rect x="0" y="34" width="1048" height="26" rx="8" class="track"/><rect x="0" y="34" width="40" height="26" rx="8" class="bar4"/>
+  </g>
+
+  <rect x="64" y="668" width="1048" height="42" rx="10" class="panel"/>
+  <text x="86" y="695" class="muted tiny">The six published rounded shares total 99.1%; water is quantified at 45 L but has no separately published share.</text>
+</svg>

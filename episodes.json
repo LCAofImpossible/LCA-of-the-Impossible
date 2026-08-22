@@ -2,6 +2,59 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 62,
+      "slug": "sleipnir",
+      "title": "Sleipnir",
+      "url": "episodes/sleipnir.html",
+      "cover": "assets/images/episodes/ep62-sleipnir-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Biology-driven",
+      "lcaCharacteristics": [
+        "biology-driven",
+        "operation-driven",
+        "proxy-sensitive",
+        "mass-sensitive"
+      ],
+      "result": "11.7 kg CO₂e",
+      "hotspot": "Feed production contributes about 67.5% of the approved ride-day footprint.",
+      "featuredDescription": "One 100 km reconnaissance ride by a 720 kg eight-legged horse: 11.7 kg CO₂e, with feed production contributing 67.5% and enteric methane 15.2% of the approved ride-day footprint.",
+      "functionalUnit": "One 100 km reconnaissance ride carrying one rider-equivalent within one ride-day.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode freezes one steel-gray 720 kg horse-like subject with a 2.6 m body length, 1.8 m shoulder height, four paired leg modules, eight hooves and leather-and-bronze tack. The ride-day inventory uses the declared scaled horse-feed study, IPCC-style livestock physiology and AR6 characterization proxies, and DEFRA 2026 factor families for stable support, material proxies and feed freight.",
+        "uncertainty": "Body mass and feed-production intensity are the published physical and factor sensitivities. The approved mass cases span 9.7 to 13.8 kg CO₂e, while the ±25% feed-factor cases span 9.71 to 13.7 kg CO₂e. A short-horizon methane case is recorded in the workbook but is not used as the published baseline."
+      },
+      "keywords": [
+        "Sleipnir",
+        "eight-legged horse",
+        "Odin",
+        "reconnaissance ride",
+        "ride-day",
+        "horse feed",
+        "forage",
+        "concentrate",
+        "enteric methane",
+        "manure",
+        "stable electricity",
+        "feed freight",
+        "DEFRA 2026",
+        "IPCC",
+        "biology-driven",
+        "mass sensitivity"
+      ],
+      "related": [
+        32,
+        54,
+        56
+      ]
+    },
+    {
       "number": 61,
       "slug": "ice-palace",
       "title": "The Ice Palace",
