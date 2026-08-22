@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Ice Palace inventory map</title>
+  <desc id="desc">Inventory map for one freestanding ceremonial ice palace displayed for 30 winter nights, showing water, freezing electricity, freight and lighting across ice formation, transport, assembly, display and melting.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #61 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white titleText">Water becomes a 30-night frozen service</text>
+  <text x="64" y="149" class="muted small">Functional unit: one freestanding ceremonial ice palace displayed for 30 winter nights</text>
+
+  <g transform="translate(60 196)">
+    <rect width="258" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">MAINS WATER</text><text x="20" y="66" class="white value">730 m³</text><text x="132" y="66" class="muted tiny">incl. purge</text>
+  </g>
+  <g transform="translate(60 308)">
+    <rect width="258" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">FREEZING POWER</text><text x="20" y="66" class="white value">76,144 kWh</text>
+  </g>
+  <g transform="translate(60 420)">
+    <rect width="258" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">ICE FREIGHT</text><text x="20" y="66" class="white value">31,727 t·km</text>
+  </g>
+  <g transform="translate(60 532)">
+    <rect width="258" height="96" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">DISPLAY POWER</text><text x="20" y="66" class="white value">1,200 kWh</text>
+  </g>
+
+  <path d="M318 244 H370" class="line"/><path d="M318 356 H370" class="line"/><path d="M318 468 H370" class="line"/><path d="M318 580 H370" class="line"/>
+
+  <rect x="372" y="196" width="768" height="432" rx="18" class="core"/>
+  <text x="756" y="238" text-anchor="middle" class="gold label">ONE TEMPORARY PALACE SERVICE</text>
+  <text x="756" y="274" text-anchor="middle" class="white value">635 t ice · 30 winter nights</text>
+  <text x="756" y="301" text-anchor="middle" class="muted small">Display only; no hotel operations</text>
+
+  <path d="M449 404 H615 M665 404 H831 M881 404 H1047" class="line"/>
+  <g text-anchor="middle">
+    <circle cx="423" cy="404" r="34" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="423" y="410" class="white label">01</text>
+    <circle cx="639" cy="404" r="34" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="639" y="410" class="white label">02</text>
+    <circle cx="855" cy="404" r="34" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="855" y="410" class="white label">03</text>
+    <circle cx="1071" cy="404" r="34" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="1071" y="410" class="white label">04</text>
+    <text x="423" y="464" class="cyan label">FREEZE</text><text x="423" y="488" class="muted tiny">form ice blocks</text>
+    <text x="639" y="464" class="cyan label">TRANSPORT</text><text x="639" y="488" class="muted tiny">50 km by HGV</text>
+    <text x="855" y="464" class="gold label">ASSEMBLE</text><text x="855" y="488" class="muted tiny">trimming in mass</text>
+    <text x="1071" y="464" class="gold label">DISPLAY</text><text x="1071" y="488" class="muted tiny">5 kW × 240 h</text>
+  </g>
+
+  <rect x="402" y="538" width="708" height="62" rx="10" class="panel"/>
+  <text x="424" y="565" class="gold label">CUT-OFF</text>
+  <text x="424" y="588" class="muted small">Physical melting; water returns to drains or ground. No avoided burden is credited.</text>
+
+  <text x="64" y="686" class="muted tiny">Excluded: visitor travel · food and hospitality · reusable machinery manufacture · permanent site infrastructure</text>
+</svg>

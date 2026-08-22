@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Ice Palace technical reconstruction plate</title>
+  <desc id="desc">Technical plate showing the regular-octagonal reconstruction with a 1000 square metre floor area, 4 metre wall height, 0.45 metre wall thickness, 693 cubic metre net ice volume, 916.2 kilogram per cubic metre ice density and 634.5 tonne reference flow.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.line{stroke:#6de7ff;stroke-width:2;fill:none}.goldline{stroke:#d0a563;stroke-width:2;fill:none}.thin{stroke:#234557;stroke-width:1.5;fill:none}.dash{stroke-dasharray:8 8}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #61 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white titleText">Mass gives the palace gravity</text>
+  <text x="64" y="149" class="muted small">A regular octagon is the simplest physical reconstruction; dome, turrets, stairs and carving losses are explicit allowances</text>
+
+  <g transform="translate(70 202)">
+    <rect width="680" height="442" rx="16" class="panel"/>
+    <text x="28" y="39" class="cyan label">PLAN · REGULAR OCTAGON</text>
+    <polygon points="340,82 486,143 547,289 486,435 340,496 194,435 133,289 194,143" transform="translate(0 -25)" class="goldline"/>
+    <polygon points="340,109 467,162 520,289 467,416 340,469 213,416 160,289 213,162" transform="translate(0 -25)" class="line"/>
+    <circle cx="340" cy="264" r="116" class="thin dash"/>
+    <line x1="133" y1="264" x2="547" y2="264" class="thin dash"/>
+    <line x1="340" y1="57" x2="340" y2="471" class="thin dash"/>
+    <circle cx="340" cy="264" r="62" class="goldline"/>
+    <path d="M290 264 A50 50 0 0 0 390 264" class="line"/>
+    <text x="340" y="258" text-anchor="middle" class="white value">1,000 m²</text>
+    <text x="340" y="284" text-anchor="middle" class="muted tiny">floor area</text>
+    <path d="M488 92 H606" class="goldline"/><text x="612" y="98" class="gold label">0.45 m</text><text x="612" y="120" class="muted tiny">wall thickness</text>
+    <path d="M500 415 H606" class="line"/><text x="612" y="421" class="cyan label">693 m³</text><text x="612" y="443" class="muted tiny">net ice volume</text>
+  </g>
+
+  <g transform="translate(786 202)">
+    <rect width="344" height="442" rx="16" class="panel"/>
+    <text x="24" y="39" class="gold label">LOCKED PROPERTIES</text>
+    <line x1="24" y1="57" x2="320" y2="57" class="thin"/>
+    <text x="24" y="92" class="muted small">WALL HEIGHT</text><text x="320" y="92" text-anchor="end" class="white value">4.0 m</text>
+    <text x="24" y="143" class="muted small">ICE DENSITY</text><text x="320" y="143" text-anchor="end" class="white value">916.2 kg/m³</text>
+    <text x="24" y="194" class="muted small">REFERENCE FLOW</text><text x="320" y="194" text-anchor="end" class="cyan value">634.5 t</text>
+    <text x="24" y="245" class="muted small">DISPLAY PERIOD</text><text x="320" y="245" text-anchor="end" class="white value">30 days</text>
+    <text x="24" y="296" class="muted small">LIGHTING DUTY</text><text x="320" y="296" text-anchor="end" class="white value">5 kW · 240 h</text>
+    <line x1="24" y1="324" x2="320" y2="324" class="thin"/>
+    <text x="24" y="356" class="gold label">RECONSTRUCTION RULE</text>
+    <text x="24" y="384" class="muted tiny">Geometry and density are locked</text>
+    <text x="24" y="405" class="muted tiny">before the inventory is calculated.</text>
+  </g>
+
+  <text x="70" y="690" class="muted tiny">The reference flow is reported as 635 t on the episode summary; inventory calculations use 634.5 t.</text>
+</svg>

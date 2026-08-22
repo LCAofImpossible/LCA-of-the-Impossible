@@ -2,6 +2,58 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 61,
+      "slug": "ice-palace",
+      "title": "The Ice Palace",
+      "url": "episodes/ice-palace.html",
+      "cover": "assets/images/episodes/ep61-ice-palace-cover.png",
+      "categoryLabel": "Mythic Structure",
+      "categories": [
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "process-energy-driven",
+        "proxy-sensitive"
+      ],
+      "result": "15.4 t CO₂e",
+      "hotspot": "Artificial ice freezing contributes 11.0 t CO₂e, or 71.0% of the approved baseline footprint.",
+      "featuredDescription": "One freestanding ceremonial ice palace displayed for 30 winter nights: 15.4 t CO₂e, with artificial ice freezing contributing 71.0% of the approved baseline and ice-block freight a further 26.1%.",
+      "functionalUnit": "One freestanding ceremonial ice palace displayed for 30 winter nights.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one temporary winter exhibition structure and reconstructs a regular-octagonal palace with a 1,000 m² floor area, 4.0 m wall height, 0.45 m wall thickness, 693 m³ net ice volume and 634.5 t reference ice flow. The inventory uses declared water, commercial ice-maker freezing intensity, 50 km HGV freight and 30-night display lighting, with DEFRA 2026 factors for UK electricity, water services and freight.",
+        "uncertainty": "The approved sensitivities isolate the two principal modelling uncertainties. Scaling ice mass from 80% to 120% moves the result from 12.4 to 18.5 t CO₂e, while changing freezing intensity from 90 to 180 kWh/t moves it from 12.7 to 20.9 t CO₂e."
+      },
+      "keywords": [
+        "ice palace",
+        "artificial ice",
+        "winter exhibition",
+        "temporary structure",
+        "ice blocks",
+        "freezing electricity",
+        "commercial ice maker",
+        "HGV freight",
+        "mains water",
+        "water treatment",
+        "exhibition lighting",
+        "DEFRA 2026",
+        "energy-driven",
+        "mythic structure",
+        "sensitivity"
+      ],
+      "related": [
+        36,
+        39,
+        53
+      ]
+    },
+    {
       "number": 60,
       "slug": "phoenix",
       "title": "The Phoenix",

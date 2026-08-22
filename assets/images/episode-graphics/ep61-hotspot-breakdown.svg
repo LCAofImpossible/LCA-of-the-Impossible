@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Ice Palace hotspot breakdown</title>
+  <desc id="desc">Contribution chart showing artificial ice freezing at 71 percent, ice-block freight at 26.1 percent, mains water and treatment at 1.7 percent and exhibition lighting at 1.1 percent of the approved 15.4 tonne carbon dioxide equivalent baseline.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.track{fill:#112232}.bar{fill:#6de7ff}.bar2{fill:#d0a563}.bar3{fill:#527d8d}.bar4{fill:#315466}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #61 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="118" class="white titleText">The cold has a footprint</text>
+  <text x="64" y="149" class="muted small">Approved baseline: 15.4 t CO₂e per one freestanding ceremonial ice palace displayed for 30 winter nights</text>
+
+  <g transform="translate(64 194)">
+    <text x="0" y="24" class="white label">ARTIFICIAL ICE FREEZING</text><text x="1048" y="24" text-anchor="end" class="cyan value">11.0 t · 71.0%</text>
+    <rect x="0" y="42" width="1048" height="46" rx="8" class="track"/><rect x="0" y="42" width="744" height="46" rx="8" class="bar"/>
+  </g>
+  <g transform="translate(64 310)">
+    <text x="0" y="24" class="white label">ICE-BLOCK FREIGHT</text><text x="1048" y="24" text-anchor="end" class="gold value">4.0 t · 26.1%</text>
+    <rect x="0" y="42" width="1048" height="46" rx="8" class="track"/><rect x="0" y="42" width="274" height="46" rx="8" class="bar2"/>
+  </g>
+  <g transform="translate(64 426)">
+    <text x="0" y="24" class="white label">MAINS WATER + TREATMENT</text><text x="1048" y="24" text-anchor="end" class="white value">0.3 t · 1.7%</text>
+    <rect x="0" y="42" width="1048" height="34" rx="8" class="track"/><rect x="0" y="42" width="18" height="34" rx="8" class="bar3"/>
+  </g>
+  <g transform="translate(64 528)">
+    <text x="0" y="24" class="white label">EXHIBITION LIGHTING</text><text x="1048" y="24" text-anchor="end" class="white value">0.2 t · 1.1%</text>
+    <rect x="0" y="42" width="1048" height="34" rx="8" class="track"/><rect x="0" y="42" width="12" height="34" rx="8" class="bar4"/>
+  </g>
+
+  <rect x="64" y="642" width="1048" height="58" rx="10" class="panel"/>
+  <text x="86" y="678" class="gold label">HOTSPOT</text><text x="226" y="678" class="white small">Freezing electricity contributes 71.0%; displayed values and shares are rounded as approved.</text>
+</svg>
