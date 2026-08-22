@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Philosopher's Stone hotspot breakdown</title>
+  <desc id="desc">Published contribution breakdown for the 23.5 kilogram carbon footprint: furnace heat 69.8 percent, lead proxy 12.2 percent, stone and vessel 9.7 percent, electricity 6.7 percent, and logistics plus ancillary flows 1.7 percent.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 36px Georgia,serif}.label{font:700 19px Arial,sans-serif}.value{font:700 27px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.base{fill:#112232}.bar1{fill:#d0a563}.bar2{fill:#6de7ff}.bar3{fill:#4da9bd}.bar4{fill:#7f98a5}.bar5{fill:#516a78}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="78" class="gold label">EPISODE #58 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="126" class="white title">The furnace outweighs the road</text>
+  <text x="64" y="160" class="muted small">Approved baseline contribution labels · one successful projection event</text>
+
+  <g transform="translate(64 195)">
+    <rect width="1072" height="104" rx="14" class="panel"/>
+    <text x="28" y="38" class="gold label">BASELINE TOTAL</text>
+    <text x="28" y="80" class="white value">23.5 kg CO₂e</text>
+    <text x="260" y="78" class="muted small">per projection</text>
+    <text x="1040" y="65" text-anchor="end" class="cyan label">HEAT IS THE OPERATIONAL DRIVER</text>
+  </g>
+
+  <g transform="translate(64 335)">
+    <text x="0" y="20" class="white label">Natural-gas furnace heat</text><text x="1070" y="20" text-anchor="end" class="white value">69.8%</text>
+    <rect x="0" y="29" width="1072" height="23" rx="6" class="base"/><rect x="0" y="29" width="748" height="23" rx="6" class="bar1"/>
+
+    <text x="0" y="91" class="white label">Lead proxy</text><text x="1070" y="91" text-anchor="end" class="white value">12.2%</text>
+    <rect x="0" y="100" width="1072" height="23" rx="6" class="base"/><rect x="0" y="100" width="131" height="23" rx="6" class="bar2"/>
+
+    <text x="0" y="162" class="white label">Stone + vessel</text><text x="1070" y="162" text-anchor="end" class="white value">9.7%</text>
+    <rect x="0" y="171" width="1072" height="23" rx="6" class="base"/><rect x="0" y="171" width="104" height="23" rx="6" class="bar3"/>
+
+    <text x="0" y="233" class="white label">UK grid electricity</text><text x="1070" y="233" text-anchor="end" class="white value">6.7%</text>
+    <rect x="0" y="242" width="1072" height="23" rx="6" class="base"/><rect x="0" y="242" width="72" height="23" rx="6" class="bar4"/>
+
+    <text x="0" y="304" class="white label">Logistics + ancillary</text><text x="1070" y="304" text-anchor="end" class="white value">1.7%</text>
+    <rect x="0" y="313" width="1072" height="23" rx="6" class="base"/><rect x="0" y="313" width="18" height="23" rx="6" class="bar5"/>
+  </g>
+
+  <rect x="64" y="696" width="1072" height="38" rx="8" fill="#0b1622"/>
+  <text x="82" y="720" class="muted tiny">Displayed one-decimal labels total 100.1% through rounding; the approved source states that calculated unrounded shares total 100.0%.</text>
+</svg>

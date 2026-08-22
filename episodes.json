@@ -2,6 +2,55 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 58,
+      "slug": "philosophers-stone",
+      "title": "The Philosopher's Stone",
+      "url": "episodes/philosophers-stone.html",
+      "cover": "assets/images/episodes/ep58-philosophers-stone-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "process-energy-driven",
+        "proxy-sensitive"
+      ],
+      "result": "23.5 kg CO₂e",
+      "hotspot": "Natural-gas furnace heat contributes 69.8% of the approved baseline; avoided-gold credits remain separate accounting views.",
+      "featuredDescription": "One successful projection event transforms 1.00 kg of lead into a 1.00 kg gold-equivalent ingot: 23.5 kg CO₂e at bench gate, with furnace heat driving 69.8% of the baseline and avoided-gold credits reported separately.",
+      "functionalUnit": "One successful laboratory projection event transforming 1.00 kg of lead into one 1.00 kg gold-equivalent ingot at the bench gate.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one successful projection event and reconstructs a 0.50 kg, 75 mm mineral-stone seed with a 0.08 kg brass retaining band, 1.00 kg lead charge, 0.60 kg ceramic vessel, furnace heat, electricity, water, packaging and inbound freight. DEFRA 2026 is used where a representative factor exists; glass, steel and metal proxies are explicitly declared.",
+        "uncertainty": "Within the baseline, furnace heat demand moves the result from 18.1 to 32.6 kg CO₂e. The larger interpretive uncertainty is the boundary choice: separately subtracting avoided mined-gold benchmarks changes the sign and yields -25.4 or -32.7 t CO₂e, overwhelming every physical flow."
+      },
+      "keywords": [
+        "philosopher's stone",
+        "alchemy",
+        "transmutation",
+        "projection event",
+        "lead",
+        "gold-equivalent ingot",
+        "furnace heat",
+        "natural gas",
+        "DEFRA 2026",
+        "avoided gold credit",
+        "boundary choice",
+        "energy-driven",
+        "mythology"
+      ],
+      "related": [
+        45,
+        55,
+        51
+      ]
+    },
+    {
       "number": 57,
       "slug": "seven-league-boots",
       "title": "Seven-League Boots",
@@ -135,9 +184,9 @@
         "mythology"
       ],
       "related": [
-        56,
-        40,
-        38
+        58,
+        45,
+        52
       ]
     },
     {
@@ -330,9 +379,9 @@
         "proxy"
       ],
       "related": [
+        58,
         36,
-        56,
-        52
+        56
       ]
     },
     {
@@ -627,9 +676,9 @@
         "mythology"
       ],
       "related": [
+        58,
         55,
-        52,
-        47
+        52
       ]
     },
     {

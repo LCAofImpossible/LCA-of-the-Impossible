@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Philosopher's Stone inventory map</title>
+  <desc id="desc">Inventory map for one projection event, showing stone, lead, brass, ceramic vessel, furnace heat, electricity, water, crate and road freight entering a five-step laboratory batch that produces one gold-equivalent ingot at the bench gate.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.gold{fill:#d0a563}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 24px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.title{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #58 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white title">One projection event becomes physical flows</text>
+  <text x="64" y="149" class="muted small">Functional unit: one 1.00 kg lead charge transformed into one 1.00 kg gold-equivalent ingot</text>
+
+  <g transform="translate(60 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">STONE SEED</text><text x="20" y="63" class="white value">0.50 kg</text><text x="150" y="63" class="muted tiny">75 mm proxy</text>
+  </g>
+  <g transform="translate(60 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">LEAD CHARGE</text><text x="20" y="63" class="white value">1.00 kg</text><text x="150" y="63" class="muted tiny">reference input</text>
+  </g>
+  <g transform="translate(60 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">BRASS BAND</text><text x="20" y="63" class="white value">0.08 kg</text><text x="150" y="63" class="muted tiny">ring + rivets</text>
+  </g>
+  <g transform="translate(60 512)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">CERAMIC VESSEL</text><text x="20" y="63" class="white value">0.60 kg</text><text x="150" y="63" class="muted tiny">crucible + dish</text>
+  </g>
+
+  <g transform="translate(862 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">FURNACE HEAT</text><text x="20" y="63" class="white value">90.0 kWh</text><text x="168" y="63" class="muted tiny">natural gas</text>
+  </g>
+  <g transform="translate(862 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">ELECTRICITY</text><text x="20" y="63" class="white value">12.0 kWh</text><text x="168" y="63" class="muted tiny">UK grid</text>
+  </g>
+  <g transform="translate(862 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">WATER</text><text x="20" y="63" class="white value">0.20 m³</text><text x="150" y="63" class="muted tiny">quench</text>
+  </g>
+  <g transform="translate(862 512)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">CRATE + FREIGHT</text><text x="20" y="63" class="white value">1.00 kg</text><text x="143" y="63" class="muted tiny">+ 0.636 t·km</text>
+  </g>
+
+  <rect x="382" y="194" width="436" height="410" rx="18" class="core"/>
+  <text x="600" y="235" text-anchor="middle" class="gold label">ONE LABORATORY BATCH</text>
+  <text x="600" y="273" text-anchor="middle" class="white value">1.00 kg gold-equivalent ingot</text>
+  <text x="600" y="300" text-anchor="middle" class="muted small">output at bench gate</text>
+
+  <g class="small" text-anchor="middle">
+    <circle cx="423" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="423" y="389" class="white">01</text>
+    <circle cx="511" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="511" y="389" class="white">02</text>
+    <circle cx="600" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="600" y="389" class="white">03</text>
+    <circle cx="689" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="689" y="389" class="white">04</text>
+    <circle cx="777" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="777" y="389" class="white">05</text>
+    <text x="423" y="432" class="cyan">Crush</text><text x="511" y="432" class="cyan">Bind</text><text x="600" y="432" class="gold">Heat</text><text x="689" y="432" class="gold">Project</text><text x="777" y="432" class="cyan">Cool</text>
+  </g>
+  <path d="M450 383H484M538 383H573M627 383H662M716 383H750" class="line"/>
+
+  <rect x="418" y="475" width="364" height="82" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="506" text-anchor="middle" class="gold label">BOUNDARY RULE</text>
+  <text x="600" y="533" text-anchor="middle" class="white small">Avoided mined gold is outside the baseline</text>
+
+  <path d="M338 240 C360 240 360 322 382 322" class="line"/>
+  <path d="M338 346 C360 346 360 352 382 352" class="line"/>
+  <path d="M338 452 C360 452 360 445 382 445" class="line"/>
+  <path d="M338 558 C360 558 360 475 382 475" class="line"/>
+  <path d="M862 240 C840 240 840 322 818 322" class="line"/>
+  <path d="M862 346 C840 346 840 352 818 352" class="line"/>
+  <path d="M862 452 C840 452 840 445 818 445" class="line"/>
+  <path d="M862 558 C840 558 840 475 818 475" class="line"/>
+
+  <rect x="360" y="630" width="480" height="60" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="654" text-anchor="middle" class="gold label">CUT-OFF EVENT</text>
+  <text x="600" y="679" text-anchor="middle" class="white small">Gold-equivalent ingot leaves the bench</text>
+  <path d="M600 604V630" class="line"/>
+  <text x="60" y="716" class="muted tiny">Source: approved Episode #58 carousel. Laboratory building, tools, lifetime benefits, medicine and avoided-gold credit are excluded.</text>
+</svg>

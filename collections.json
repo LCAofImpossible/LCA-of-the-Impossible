@@ -23,6 +23,7 @@
       "eyebrow": "WEAPONS, MACHINES & DECEPTION",
       "description": "Objects that behave like engineered systems: legendary vehicles, forged weapons, autonomous guardians and machines built to solve impossible tasks.",
       "episodes": [
+        58,
         57,
         54,
         53,
@@ -94,11 +95,22 @@
       "eyebrow": "PRECIOUS METAL & MATERIAL INTENSITY",
       "description": "Cases where gold intensity overwhelms much larger energy, logistics or base-material flows, making the precious-metal assumption the decisive model driver.",
       "episodes": [
+        58,
         55,
         52,
         47,
         45,
         34
+      ]
+    },
+    {
+      "slug": "alchemy-and-transmutation",
+      "title": "Alchemy & Transmutation",
+      "eyebrow": "CONVERSION, GOLD & ACCOUNTING BOUNDARIES",
+      "description": "Cases where an impossible conversion into gold turns physical reconstruction, material intensity and the accounting boundary into the real analytical problem.",
+      "episodes": [
+        58,
+        45
       ]
     },
     {

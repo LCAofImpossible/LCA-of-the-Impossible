@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Philosopher's Stone technical reconstruction plate</title>
+  <desc id="desc">Blueprint-style technical plate for a 75 millimetre, 0.50 kilogram irregular mineral stone with a 0.08 kilogram brass band and 0.60 kilogram ceramic vessel, used with a 1.00 kilogram lead charge, 90 kilowatt-hours of heat and 12 kilowatt-hours of electricity.</desc>
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L8 3z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.grid{stroke:#112232;stroke-width:1}.line{fill:none;stroke:#6de7ff;stroke-width:2}.goldline{fill:none;stroke:#d0a563;stroke-width:2}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.5;marker-start:url(#arr);marker-end:url(#arr)}.stone{fill:#112232;stroke:#6de7ff;stroke-width:3}.facet{fill:none;stroke:#4da9bd;stroke-width:2}.band{fill:none;stroke:#d0a563;stroke-width:18;stroke-linecap:round;stroke-linejoin:round}.dish{fill:#0d1b27;stroke:#d0a563;stroke-width:3}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 34px Georgia,serif}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.value{font:700 25px Arial,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <g opacity=".7">
+    <path d="M60 170H1140M60 250H1140M60 330H1140M60 410H1140M60 490H1140M60 570H1140" class="grid"/>
+    <path d="M140 140V650M300 140V650M460 140V650M620 140V650M780 140V650M940 140V650M1100 140V650" class="grid"/>
+  </g>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="76" class="gold label">EPISODE #58 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white title">The stone as matter before myth</text>
+
+  <g transform="translate(405 165)">
+    <path d="M98 115 L155 50 L247 34 L330 78 L374 157 L350 260 L285 329 L176 344 L86 297 L49 208Z" class="stone"/>
+    <path d="M98 115L177 165L155 50M177 165L247 34M177 165L260 234L330 78M260 234L374 157M260 234L285 329M260 234L176 344M177 165L86 297M177 165L49 208" class="facet"/>
+    <path d="M60 235 L125 302 L269 319 L354 259" class="band"/>
+    <circle cx="124" cy="302" r="9" fill="#071019" stroke="#eef7fb" stroke-width="2"/>
+    <circle cx="269" cy="319" r="9" fill="#071019" stroke="#eef7fb" stroke-width="2"/>
+    <path d="M29 336 Q211 414 395 336 L368 398 Q212 455 57 398Z" class="dish"/>
+  </g>
+
+  <line x1="465" y1="148" x2="776" y2="148" class="dim"/>
+  <line x1="465" y1="134" x2="465" y2="165" class="line"/><line x1="776" y1="134" x2="776" y2="165" class="line"/>
+  <text x="620" y="137" text-anchor="middle" class="cyan label">75 mm MAX DIAMETER</text>
+
+  <g transform="translate(70 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">PROPERTY CARD</text>
+    <text x="20" y="81" class="white value">0.50 kg</text><text x="20" y="106" class="muted small">mineral stone seed</text>
+    <text x="20" y="155" class="white value">0.08 kg</text><text x="20" y="180" class="muted small">brass band + rivets</text>
+    <text x="20" y="229" class="white value">0.60 kg</text><text x="20" y="254" class="muted small">ceramic vessel</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">Irregular mineral lump</text>
+    <text x="20" y="341" class="muted tiny">single-use seed · geometry proxy</text>
+    <text x="20" y="367" class="muted tiny">stone mass: engineering basis</text>
+  </g>
+
+  <g transform="translate(860 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">BATCH CARD</text>
+    <text x="20" y="81" class="white value">1.00 kg</text><text x="20" y="106" class="muted small">lead reference flow</text>
+    <text x="20" y="155" class="white value">90.0 kWh</text><text x="20" y="180" class="muted small">natural-gas heat</text>
+    <text x="20" y="229" class="white value">12.0 kWh</text><text x="20" y="254" class="muted small">UK electricity</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">1.00 kg ingot output</text>
+    <text x="20" y="341" class="muted tiny">one successful projection</text>
+    <text x="20" y="367" class="muted tiny">boundary: bench gate</text>
+  </g>
+
+  <rect x="385" y="620" width="450" height="78" rx="10" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="610" y="650" text-anchor="middle" class="gold label">RECONSTRUCTION RULE</text>
+  <text x="610" y="676" text-anchor="middle" class="white small">Geometry and masses are frozen before sensitivities.</text>
+  <text x="70" y="718" class="muted tiny">Source: approved Episode #58 reconstruction. Drawing is schematic; the plate introduces no additional dimensions or flows.</text>
+</svg>
