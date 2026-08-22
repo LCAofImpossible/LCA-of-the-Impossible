@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Seven-League Boots inventory map</title>
+  <desc id="desc">Inventory map for one finished pair of Seven-League Boots, showing material production, making and calibration, packaging, final road freight and delivery to the court user.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.gold{fill:#d0a563}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 25px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.title{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #57 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white title">One legendary pair becomes ordinary flows</text>
+  <text x="64" y="149" class="muted small">Functional unit: one wearable knee-high leather boot pair, packed and delivered</text>
+
+  <g transform="translate(60 204)">
+    <rect width="270" height="94" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">LEATHER</text><text x="20" y="65" class="white value">0.86 m²</text><text x="148" y="65" class="muted tiny">upper / body</text>
+  </g>
+  <g transform="translate(60 314)">
+    <rect width="270" height="94" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">TEXTILE</text><text x="20" y="65" class="white value">0.23 kg</text><text x="148" y="65" class="muted tiny">lining / thread</text>
+  </g>
+  <g transform="translate(60 424)">
+    <rect width="270" height="94" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">SOLE</text><text x="20" y="65" class="white value">0.72 kg</text><text x="148" y="65" class="muted tiny">rubberized</text>
+  </g>
+  <g transform="translate(60 534)">
+    <rect width="270" height="94" rx="12" class="panel"/>
+    <text x="20" y="31" class="cyan label">HARDWARE</text><text x="20" y="65" class="white value">0.32 kg</text><text x="148" y="65" class="muted tiny">metal</text>
+  </g>
+
+  <g transform="translate(870 204)">
+    <rect width="270" height="94" rx="12" class="panel"/>
+    <text x="20" y="31" class="gold label">ELECTRICITY</text><text x="20" y="65" class="white value">6.00 kWh</text><text x="166" y="65" class="muted tiny">making</text>
+  </g>
+  <g transform="translate(870 330)">
+    <rect width="270" height="112" rx="12" class="panel"/>
+    <text x="20" y="31" class="gold label">PACKAGING</text><text x="20" y="65" class="white value">0.45 kg</text><text x="20" y="92" class="muted tiny">packed mass: 3.43 kg</text>
+  </g>
+  <g transform="translate(870 474)">
+    <rect width="270" height="132" rx="12" class="panel"/>
+    <text x="20" y="31" class="gold label">ROAD DELIVERY</text><text x="20" y="65" class="white value">500 km</text><text x="20" y="95" class="white value">1.715 t·km</text><text x="20" y="118" class="muted tiny">3.43 kg × 500 km / 1,000</text>
+  </g>
+
+  <rect x="382" y="205" width="436" height="361" rx="18" class="core"/>
+  <text x="600" y="247" text-anchor="middle" class="gold label">CRADLE-TO-COURT CHAIN</text>
+  <text x="600" y="289" text-anchor="middle" class="white value">1 × finished boot pair</text>
+  <text x="600" y="318" text-anchor="middle" class="muted small">2.98 kg active mass · 3.43 kg packed</text>
+  <g class="small" text-anchor="middle">
+    <circle cx="430" cy="394" r="29" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="430" y="400" class="white">01</text>
+    <circle cx="543" cy="394" r="29" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="543" y="400" class="white">02</text>
+    <circle cx="657" cy="394" r="29" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="657" y="400" class="white">03</text>
+    <circle cx="770" cy="394" r="29" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="770" y="400" class="white">04</text>
+    <text x="430" y="451" class="cyan">Materials</text><text x="543" y="451" class="cyan">Making</text><text x="657" y="451" class="gold">Packing</text><text x="770" y="451" class="gold">Delivery</text>
+  </g>
+  <path d="M459 394H514M572 394H628M686 394H741" class="line"/>
+  <text x="600" y="500" text-anchor="middle" class="white small">The magical stride is a service attribute, not an inventory flow.</text>
+  <text x="600" y="530" text-anchor="middle" class="muted tiny">0 kg magic energy modeled</text>
+
+  <path d="M330 251 C355 251 355 325 382 325" class="line"/>
+  <path d="M330 361 C355 361 355 355 382 355" class="line"/>
+  <path d="M330 471 C355 471 355 425 382 425" class="line"/>
+  <path d="M330 581 C355 581 355 455 382 455" class="line"/>
+  <path d="M870 251 C845 251 845 350 818 350" class="line"/>
+  <path d="M870 386 C845 386 845 430 818 430" class="line"/>
+  <path d="M870 540 C845 540 845 475 818 475" class="line"/>
+
+  <rect x="360" y="610" width="480" height="78" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="640" text-anchor="middle" class="gold label">CUT-OFF EVENT</text>
+  <text x="600" y="667" text-anchor="middle" class="white small">Finished packed pair reaches the court user</text>
+  <path d="M600 566V610" class="line"/>
+  <text x="60" y="710" class="muted tiny">Source: approved Episode #57 carousel. Use-phase magic, metabolism, maintenance, repair and end of life are excluded.</text>
+</svg>

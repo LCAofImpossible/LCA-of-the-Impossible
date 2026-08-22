@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Seven-League Boots technical reconstruction plate</title>
+  <desc id="desc">Blueprint-style technical plate for a tall boot pair with 55 centimetre shaft height, 32 centimetre sole length, 0.86 square metres of leather, 2.98 kilogram active mass and 3.43 kilogram packed mass.</desc>
+  <defs>
+    <marker id="arr" markerWidth="9" markerHeight="9" refX="8" refY="3" orient="auto"><path d="M0 0L0 6L8 3z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.grid{stroke:#112232;stroke-width:1}.line{fill:none;stroke:#6de7ff;stroke-width:2}.goldline{fill:none;stroke:#d0a563;stroke-width:2}.dim{fill:none;stroke:#9ab0bc;stroke-width:1.5;marker-start:url(#arr);marker-end:url(#arr)}.boot{fill:#0d1b27;stroke:#6de7ff;stroke-width:3}.sole{fill:#112232;stroke:#d0a563;stroke-width:3}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 34px Georgia,serif}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.value{font:700 26px Arial,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <g opacity=".7">
+    <path d="M60 170H1140M60 250H1140M60 330H1140M60 410H1140M60 490H1140M60 570H1140" class="grid"/>
+    <path d="M140 140V650M300 140V650M460 140V650M620 140V650M780 140V650M940 140V650M1100 140V650" class="grid"/>
+  </g>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="76" class="gold label">EPISODE #57 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white title">Engineering the legendary pair</text>
+
+  <g transform="translate(410 140) scale(.78)">
+    <path d="M112 35 C175 24 241 30 290 49 L285 342 C283 386 303 422 346 446 C378 464 403 483 412 505 C420 526 403 544 374 550 L87 550 C60 550 42 536 44 516 C48 489 78 470 124 452 C157 439 173 410 170 369 L151 78 C148 54 135 42 112 35Z" class="boot"/>
+    <path d="M50 512 C118 510 190 510 257 512 C313 513 365 504 408 492 L429 510 C439 520 435 542 421 553 C399 571 357 579 305 579 L73 579 C42 579 23 566 22 546 C20 531 31 519 50 512Z" class="sole"/>
+    <path d="M134 110 C182 96 231 96 278 109M148 222 C195 212 239 212 282 224M158 330 C201 323 242 325 282 337" class="goldline"/>
+    <rect x="235" y="200" width="67" height="31" rx="5" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <circle cx="266" cy="216" r="7" fill="#6de7ff"/>
+    <path d="M181 366 C216 356 250 359 282 371M169 402 C205 392 238 395 273 407" class="line"/>
+  </g>
+
+  <line x1="365" y1="166" x2="365" y2="592" class="dim"/>
+  <line x1="347" y1="166" x2="389" y2="166" class="line"/><line x1="347" y1="592" x2="389" y2="592" class="line"/>
+  <text x="343" y="379" transform="rotate(-90 343 379)" text-anchor="middle" class="cyan label">55 cm SHAFT HEIGHT</text>
+
+  <line x1="410" y1="620" x2="745" y2="620" class="dim"/>
+  <line x1="410" y1="601" x2="410" y2="636" class="line"/><line x1="745" y1="601" x2="745" y2="636" class="line"/>
+  <text x="578" y="608" text-anchor="middle" class="cyan label">32 cm SOLE LENGTH</text>
+
+  <g transform="translate(70 190)">
+    <rect width="245" height="350" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">PROPERTY CARD</text>
+    <text x="20" y="82" class="white value">0.86 m²</text><text x="20" y="108" class="muted small">finished leather</text>
+    <text x="20" y="158" class="white value">2.98 kg</text><text x="20" y="184" class="muted small">active pair</text>
+    <text x="20" y="234" class="white value">3.43 kg</text><text x="20" y="260" class="muted small">packed mass</text>
+    <text x="20" y="309" class="cyan small">Tall boot pair</text><text x="20" y="333" class="muted tiny">one finished reference flow</text>
+  </g>
+
+  <g transform="translate(870 190)">
+    <rect width="260" height="350" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">MODEL RULES</text>
+    <text x="20" y="80" class="white value">33.8 km</text><text x="20" y="106" class="muted small">proxy stride</text>
+    <text x="20" y="156" class="white value">6.00 kWh</text><text x="20" y="182" class="muted small">assembly / calibration</text>
+    <text x="20" y="232" class="white value">1.715 t·km</text><text x="20" y="258" class="muted small">final freight</text>
+    <path d="M20 282H240" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="313" class="white small">Lifetime not allocated</text><text x="20" y="338" class="muted tiny">across uses</text>
+  </g>
+
+  <rect x="385" y="648" width="440" height="54" rx="10" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="605" y="671" text-anchor="middle" class="gold label">RECONSTRUCTION RULE</text>
+  <text x="605" y="692" text-anchor="middle" class="white tiny">Mass, surface and freight are frozen before results and sensitivities.</text>
+  <text x="70" y="718" class="muted tiny">Geometry and modelling rules reproduced from the approved Episode #57 reconstruction; drawing is schematic.</text>
+</svg>

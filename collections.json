@@ -23,6 +23,7 @@
       "eyebrow": "WEAPONS, MACHINES & DECEPTION",
       "description": "Objects that behave like engineered systems: legendary vehicles, forged weapons, autonomous guardians and machines built to solve impossible tasks.",
       "episodes": [
+        57,
         54,
         53,
         52,
@@ -38,6 +39,17 @@
         37,
         34,
         33
+      ]
+    },
+    {
+      "slug": "impossible-wearables",
+      "title": "Impossible Wearables",
+      "eyebrow": "LEGENDARY GEAR & MATERIAL SYSTEMS",
+      "description": "Wearable mythical systems where leather, metal, feathers and other physical materials carry the footprint while impossible movement remains an explicitly bounded service claim.",
+      "episodes": [
+        57,
+        52,
+        44
       ]
     },
     {

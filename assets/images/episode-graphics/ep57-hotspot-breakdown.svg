@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Seven-League Boots hotspot breakdown</title>
+  <desc id="desc">Published contribution breakdown for the 32.1 kilogram carbon footprint: leather 65.9 percent, textile 16.0 percent, sole 7.5 percent, hardware 3.8 percent, electricity 3.4 percent and other supporting flows 3.4 percent.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.title{font:700 36px Georgia,serif}.label{font:700 19px Arial,sans-serif}.value{font:700 27px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.base{fill:#112232}.bar1{fill:#d0a563}.bar2{fill:#6de7ff}.bar3{fill:#4da9bd}.bar4{fill:#7f98a5}.bar5{fill:#516a78}.bar6{fill:#354b58}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="78" class="gold label">EPISODE #57 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="126" class="white title">The footprint follows the leather</text>
+  <text x="64" y="160" class="muted small">Published baseline contribution shares · one finished pair packed and delivered</text>
+
+  <g transform="translate(64 195)">
+    <rect width="1072" height="104" rx="14" class="panel"/>
+    <text x="28" y="38" class="gold label">BASELINE TOTAL</text>
+    <text x="28" y="80" class="white value">32.1 kg CO₂e</text>
+    <text x="267" y="78" class="muted small">per delivered pair</text>
+    <text x="1040" y="65" text-anchor="end" class="cyan label">MATERIAL CHOICE DOMINATES</text>
+  </g>
+
+  <g transform="translate(64 330)">
+    <text x="0" y="20" class="white label">Leather upper / body</text><text x="1070" y="20" text-anchor="end" class="white value">65.9%</text>
+    <rect x="0" y="29" width="1072" height="22" rx="6" class="base"/><rect x="0" y="29" width="706" height="22" rx="6" class="bar1"/>
+
+    <text x="0" y="79" class="white label">Textile lining / thread</text><text x="1070" y="79" text-anchor="end" class="white value">16.0%</text>
+    <rect x="0" y="88" width="1072" height="22" rx="6" class="base"/><rect x="0" y="88" width="172" height="22" rx="6" class="bar2"/>
+
+    <text x="0" y="138" class="white label">Rubberized sole</text><text x="1070" y="138" text-anchor="end" class="white value">7.5%</text>
+    <rect x="0" y="147" width="1072" height="22" rx="6" class="base"/><rect x="0" y="147" width="80" height="22" rx="6" class="bar3"/>
+
+    <text x="0" y="197" class="white label">Metal hardware</text><text x="1070" y="197" text-anchor="end" class="white value">3.8%</text>
+    <rect x="0" y="206" width="1072" height="22" rx="6" class="base"/><rect x="0" y="206" width="41" height="22" rx="6" class="bar4"/>
+
+    <text x="0" y="256" class="white label">Electricity</text><text x="1070" y="256" text-anchor="end" class="white value">3.4%</text>
+    <rect x="0" y="265" width="1072" height="22" rx="6" class="base"/><rect x="0" y="265" width="36" height="22" rx="6" class="bar5"/>
+
+    <text x="0" y="315" class="white label">Other supporting flows</text><text x="1070" y="315" text-anchor="end" class="white value">3.4%</text>
+    <rect x="0" y="324" width="1072" height="22" rx="6" class="base"/><rect x="0" y="324" width="36" height="22" rx="6" class="bar6"/>
+  </g>
+
+  <rect x="64" y="700" width="1072" height="34" rx="8" fill="#0b1622"/>
+  <text x="82" y="722" class="muted tiny">Shares reproduce the approved Episode #57 contribution chart and total 100.0%.</text>
+</svg>

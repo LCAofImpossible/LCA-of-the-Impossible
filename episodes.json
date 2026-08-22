@@ -2,6 +2,53 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 57,
+      "slug": "seven-league-boots",
+      "title": "Seven-League Boots",
+      "url": "episodes/seven-league-boots.html",
+      "cover": "assets/images/episodes/ep57-seven-league-boots-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
+      "result": "32.1 kg CO₂e",
+      "hotspot": "Finished leather contributes 21.16 kg CO₂e, or 65.9% of the approved baseline footprint.",
+      "featuredDescription": "One pair of Seven-League Boots reconstructed as a 2.98 kg leather artifact: 32.1 kg CO₂e cradle-to-court, with finished leather driving 65.9% of the footprint while magical displacement remains outside the boundary.",
+      "functionalUnit": "One wearable pair capable of the legendary long-distance stride, modelled as one finished knee-high leather boot pair, packed and delivered to the court user.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The fairy-tale service claim constrains one pair capable of a seven-league stride. The approved episode reconstructs that claim as a 33.8 km proxy stride and one 2.98 kg knee-high leather boot pair with defined surface, supporting materials, assembly electricity, packaging and final road freight.",
+        "uncertainty": "Finished-leather attribution is the dominant modelling uncertainty, moving the total from 17.6 to 57.1 kg CO₂e across the approved factor range. Material mass also changes the result from 26.0 to 42.7 kg CO₂e."
+      },
+      "keywords": [
+        "seven-league boots",
+        "enchanted boots",
+        "legendary footwear",
+        "leather",
+        "textile lining",
+        "rubberized sole",
+        "metal hardware",
+        "road freight",
+        "DEFRA 2026",
+        "materials-driven",
+        "proxy sensitivity",
+        "mythology"
+      ],
+      "related": [
+        52,
+        44,
+        54
+      ]
+    },
+    {
       "number": 56,
       "slug": "hydra-of-lerna",
       "title": "Hydra of Lerna",
