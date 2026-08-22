@@ -2,6 +2,53 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 59,
+      "slug": "golden-fleece",
+      "title": "The Golden Fleece",
+      "url": "episodes/golden-fleece.html",
+      "cover": "assets/images/episodes/ep59-golden-fleece-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "proxy-sensitive"
+      ],
+      "result": "6.42 t CO₂e",
+      "hotspot": "The 0.25 kg gold coating contributes 99.21% of the approved baseline footprint.",
+      "featuredDescription": "One gold-coated ram fleece prepared for ceremonial display and delivered as the retrieved object: 6.42 t CO₂e, with the 0.25 kg gold coating driving 99.21% of the approved baseline.",
+      "functionalUnit": "One gold-coated ram fleece prepared for ceremonial display and delivered as the retrieved object.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one delivered ceremonial artifact and reconstructs it as a 1.80 kg processed-wool substrate with 0.25 kg of gold leaf, dust and filaments, 0.40 kg of metal hardware, a 12.0 kg wooden crate, workshop utilities and declared road and sea freight. DEFRA 2026 is used first for ordinary flows; the gold coating uses a separately declared S&P 2024 mine-intensity proxy.",
+        "uncertainty": "Gold mass and mine intensity dominate the interpretation. The approved coating-mass sensitivity spans 2.60 to 15.33 t CO₂e, while the approved mine-intensity sensitivity spans 2.18 to 9.70 t CO₂e; the gold proxy represents mine Scope 1+2 intensity and may understate a full cradle-to-gate burden."
+      },
+      "keywords": [
+        "golden fleece",
+        "ram fleece",
+        "wool",
+        "gold coating",
+        "gold leaf",
+        "precious metal",
+        "mine intensity",
+        "road freight",
+        "sea freight",
+        "DEFRA 2026",
+        "materials-driven",
+        "mythology"
+      ],
+      "related": [
+        45,
+        55,
+        52
+      ]
+    },
+    {
       "number": 58,
       "slug": "philosophers-stone",
       "title": "The Philosopher's Stone",

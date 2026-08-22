@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Golden Fleece technical reconstruction plate</title>
+  <desc id="desc">Blueprint-style technical plate for a ceremonial ram fleece reconstructed from 1.80 kilograms of processed wool, 0.25 kilograms of gold coating and 0.40 kilograms of metal hardware, packed with a 12 kilogram wooden crate for a 30 kilogram freight load.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.grid{stroke:#112232;stroke-width:1}.line{fill:none;stroke:#6de7ff;stroke-width:2}.goldline{fill:none;stroke:#d0a563;stroke-width:2}.fine{fill:none;stroke:#4d7384;stroke-width:1.4}.fleece{fill:#112232;stroke:#6de7ff;stroke-width:3}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.titleText{font:700 34px Georgia,serif}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.value{font:700 25px Arial,sans-serif}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <g opacity=".7">
+    <path d="M60 170H1140M60 250H1140M60 330H1140M60 410H1140M60 490H1140M60 570H1140" class="grid"/>
+    <path d="M140 140V650M300 140V650M460 140V650M620 140V650M780 140V650M940 140V650M1100 140V650" class="grid"/>
+  </g>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="76" class="gold label">EPISODE #59 · TECHNICAL PLATE</text>
+  <text x="64" y="118" class="white titleText">A large hide, not a coin</text>
+
+  <g transform="translate(390 165)">
+    <path d="M110 95 C70 50 22 63 18 112 C15 154 57 176 87 148 C108 128 101 99 78 86 C50 71 30 95 38 119 C44 137 66 143 78 130" class="goldline" stroke-width="12"/>
+    <path d="M310 95 C350 50 398 63 402 112 C405 154 363 176 333 148 C312 128 319 99 342 86 C370 71 390 95 382 119 C376 137 354 143 342 130" class="goldline" stroke-width="12"/>
+    <path d="M100 91 Q210 42 320 91 L342 158 Q332 234 349 330 Q337 413 286 442 Q210 470 134 442 Q83 413 71 330 Q88 234 78 158Z" class="fleece"/>
+    <path d="M118 119 C155 97 171 132 151 153 C131 173 148 203 179 191 C209 179 225 214 201 238 C176 263 195 296 226 282 C258 268 273 305 250 331 C229 354 246 389 279 379" class="goldline"/>
+    <path d="M196 101 C230 88 250 122 228 148 C207 174 229 202 258 190 C289 177 305 213 282 238 C258 264 278 296 309 281" class="goldline"/>
+    <path d="M104 228 C133 212 153 239 137 263 C121 286 143 311 168 300 C195 288 211 319 190 343 C168 367 188 400 217 386" class="fine"/>
+    <path d="M266 117 C295 101 315 128 299 152 C283 175 305 200 330 189" class="fine"/>
+    <path d="M89 168H331" class="goldline" stroke-dasharray="8 8"/>
+    <circle cx="106" cy="168" r="8" fill="#071019" stroke="#eef7fb" stroke-width="2"/>
+    <circle cx="314" cy="168" r="8" fill="#071019" stroke="#eef7fb" stroke-width="2"/>
+  </g>
+
+  <path d="M468 154H732" class="line"/>
+  <path d="M468 142V166M732 142V166" class="line"/>
+  <text x="600" y="145" text-anchor="middle" class="cyan label">CEREMONIAL HIDE · THICK CURLED WOOL</text>
+
+  <g transform="translate(70 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">OBJECT CARD</text>
+    <text x="20" y="81" class="white value">1.80 kg</text><text x="20" y="106" class="muted small">processed wool fleece</text>
+    <text x="20" y="155" class="white value">0.25 kg</text><text x="20" y="180" class="muted small">gold coating</text>
+    <text x="20" y="229" class="white value">0.40 kg</text><text x="20" y="254" class="muted small">rings + fasteners</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">2.45 kg visible artifact</text>
+    <text x="20" y="341" class="muted tiny">leaf · dust · filaments</text>
+    <text x="20" y="367" class="muted tiny">gold follows the wool surface</text>
+  </g>
+
+  <g transform="translate(860 184)">
+    <rect width="270" height="390" rx="12" fill="#0b1622" stroke="#234557" stroke-width="2"/>
+    <text x="20" y="34" class="gold label">DELIVERY CARD</text>
+    <text x="20" y="81" class="white value">12.0 kg</text><text x="20" y="106" class="muted small">wooden crate</text>
+    <text x="20" y="155" class="white value">30 kg</text><text x="20" y="180" class="muted small">freight load</text>
+    <text x="20" y="229" class="white value">120 km</text><text x="20" y="254" class="muted small">road to port</text>
+    <path d="M20 280H250" stroke="#234557" stroke-width="1.5"/>
+    <text x="20" y="314" class="cyan small">2,500 km sea route</text>
+    <text x="20" y="341" class="muted tiny">3.6 t·km road</text>
+    <text x="20" y="367" class="muted tiny">75.0 t·km sea</text>
+  </g>
+
+  <rect x="385" y="620" width="450" height="78" rx="10" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="610" y="650" text-anchor="middle" class="gold label">RECONSTRUCTION RULE</text>
+  <text x="610" y="676" text-anchor="middle" class="white small">A thin gold layer is enough to control the result.</text>
+  <text x="70" y="718" class="muted tiny">Source: approved Episode #59 reconstruction. Drawing is schematic and introduces no unreported dimensions.</text>
+</svg>

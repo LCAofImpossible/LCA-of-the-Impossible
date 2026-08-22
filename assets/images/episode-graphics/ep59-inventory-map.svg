@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Golden Fleece inventory map</title>
+  <desc id="desc">Inventory map for one delivered Golden Fleece, showing processed wool, gold coating, metal hardware, wooden crate, workshop electricity, water, road freight and sea freight entering the prepared ceremonial artifact.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#6de7ff"/></marker>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.core{fill:#112232;stroke:#6de7ff;stroke-width:2}.gold{fill:#d0a563}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.line{stroke:#6de7ff;stroke-width:2;fill:none;marker-end:url(#arrow)}.thin{stroke:#234557;stroke-width:1.5;fill:none}.label{font:700 18px Arial,sans-serif;letter-spacing:1px}.value{font:700 24px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.titleText{font:700 34px Georgia,serif;letter-spacing:1px}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760" rx="20"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" class="thin"/>
+  <text x="64" y="76" class="gold label">EPISODE #59 · INVENTORY MAP</text>
+  <text x="64" y="118" class="white titleText">A mythic prize becomes ordinary flows</text>
+  <text x="64" y="149" class="muted small">Functional unit: one gold-coated ram fleece prepared for display and delivered as the retrieved object</text>
+
+  <g transform="translate(60 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">WOOL SUBSTRATE</text><text x="20" y="63" class="white value">1.80 kg</text><text x="150" y="63" class="muted tiny">processed fleece</text>
+  </g>
+  <g transform="translate(60 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">GOLD COATING</text><text x="20" y="63" class="white value">0.25 kg</text><text x="150" y="63" class="muted tiny">leaf · dust · filaments</text>
+  </g>
+  <g transform="translate(60 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">METAL HARDWARE</text><text x="20" y="63" class="white value">0.40 kg</text><text x="150" y="63" class="muted tiny">rings + fasteners</text>
+  </g>
+  <g transform="translate(60 512)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="cyan label">WOODEN CRATE</text><text x="20" y="63" class="white value">12.0 kg</text><text x="150" y="63" class="muted tiny">display packaging</text>
+  </g>
+
+  <g transform="translate(862 194)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">ELECTRICITY</text><text x="20" y="63" class="white value">24.0 kWh</text><text x="172" y="63" class="muted tiny">workshop</text>
+  </g>
+  <g transform="translate(862 300)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">WATER</text><text x="20" y="63" class="white value">0.35 m³</text><text x="150" y="63" class="muted tiny">supply + treatment</text>
+  </g>
+  <g transform="translate(862 406)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">ROAD FREIGHT</text><text x="20" y="63" class="white value">3.6 t·km</text><text x="160" y="63" class="muted tiny">120 km route</text>
+  </g>
+  <g transform="translate(862 512)">
+    <rect width="278" height="92" rx="12" class="panel"/>
+    <text x="20" y="30" class="gold label">SEA FREIGHT</text><text x="20" y="63" class="white value">75.0 t·km</text><text x="172" y="63" class="muted tiny">2,500 km route</text>
+  </g>
+
+  <rect x="382" y="194" width="436" height="410" rx="18" class="core"/>
+  <text x="600" y="235" text-anchor="middle" class="gold label">ONE CEREMONIAL ARTIFACT</text>
+  <text x="600" y="273" text-anchor="middle" class="white value">2.45 kg visible object</text>
+  <text x="600" y="300" text-anchor="middle" class="muted small">30 kg load mass with crate</text>
+
+  <g class="small" text-anchor="middle">
+    <circle cx="423" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="423" y="389" class="white">01</text>
+    <circle cx="511" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="511" y="389" class="white">02</text>
+    <circle cx="600" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="600" y="389" class="white">03</text>
+    <circle cx="689" cy="383" r="27" fill="#071019" stroke="#d0a563" stroke-width="2"/><text x="689" y="389" class="white">04</text>
+    <circle cx="777" cy="383" r="27" fill="#071019" stroke="#6de7ff" stroke-width="2"/><text x="777" y="389" class="white">05</text>
+    <text x="423" y="432" class="cyan">Prepare</text><text x="511" y="432" class="cyan">Bind</text><text x="600" y="432" class="gold">Gild</text><text x="689" y="432" class="gold">Cure</text><text x="777" y="432" class="cyan">Pack</text>
+  </g>
+  <path d="M450 383H484M538 383H573M627 383H662M716 383H750" class="line"/>
+
+  <rect x="418" y="475" width="364" height="82" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="506" text-anchor="middle" class="gold label">BOUNDARY RULE</text>
+  <text x="600" y="533" text-anchor="middle" class="white small">The boundary follows the object</text>
+
+  <path d="M338 240 C360 240 360 322 382 322" class="line"/>
+  <path d="M338 346 C360 346 360 352 382 352" class="line"/>
+  <path d="M338 452 C360 452 360 445 382 445" class="line"/>
+  <path d="M338 558 C360 558 360 475 382 475" class="line"/>
+  <path d="M862 240 C840 240 840 322 818 322" class="line"/>
+  <path d="M862 346 C840 346 840 352 818 352" class="line"/>
+  <path d="M862 452 C840 452 840 445 818 445" class="line"/>
+  <path d="M862 558 C840 558 840 475 818 475" class="line"/>
+
+  <rect x="360" y="630" width="480" height="60" rx="12" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="654" text-anchor="middle" class="gold label">CUT-OFF EVENT</text>
+  <text x="600" y="679" text-anchor="middle" class="white small">Prepared and packed fleece is delivered once</text>
+  <path d="M600 604V630" class="line"/>
+  <text x="60" y="716" class="muted tiny">Source: approved Episode #59 carousel. Divine origin, dragon sedation, crew travel, magical radiance and end of life are excluded.</text>
+</svg>

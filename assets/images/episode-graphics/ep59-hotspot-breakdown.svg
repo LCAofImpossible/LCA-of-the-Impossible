@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Golden Fleece hotspot breakdown</title>
+  <desc id="desc">Hotspot breakdown for the 6.42 tonne carbon footprint: the 0.25 kilogram gold coating contributes 99.21 percent, or about 6.37 tonnes of carbon dioxide equivalent, while all non-gold flows total 50.8 kilograms.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.panel{fill:#0d1b27;stroke:#234557;stroke-width:2}.white{fill:#eef7fb}.muted{fill:#9ab0bc}.cyan{fill:#6de7ff}.gold{fill:#d0a563}.titleText{font:700 36px Georgia,serif}.label{font:700 19px Arial,sans-serif}.value{font:700 27px Arial,sans-serif}.small{font:16px Arial,sans-serif}.tiny{font:14px Arial,sans-serif}.base{fill:#112232}.goldbar{fill:#d0a563}.cyanbar{fill:#6de7ff}
+    </style>
+  </defs>
+  <rect width="1200" height="760" rx="20" class="bg"/>
+  <rect x="28" y="28" width="1144" height="704" rx="16" fill="none" stroke="#234557" stroke-width="1.5"/>
+  <text x="64" y="78" class="gold label">EPISODE #59 · HOTSPOT BREAKDOWN</text>
+  <text x="64" y="126" class="white titleText">The gold dominates</text>
+  <text x="64" y="160" class="muted small">Approved baseline · one gold-coated fleece prepared, packed and delivered</text>
+
+  <g transform="translate(64 195)">
+    <rect width="1072" height="104" rx="14" class="panel"/>
+    <text x="28" y="38" class="gold label">BASELINE TOTAL</text>
+    <text x="28" y="80" class="white value">6.42 t CO₂e</text>
+    <text x="242" y="78" class="muted small">per Golden Fleece</text>
+    <text x="1040" y="65" text-anchor="end" class="cyan label">MATERIAL ORIGIN CONTROLS THE STORY</text>
+  </g>
+
+  <g transform="translate(64 335)">
+    <text x="0" y="20" class="white label">Gold coating · 0.25 kg Au</text><text x="1070" y="20" text-anchor="end" class="white value">99.21% · 6.37 t</text>
+    <rect x="0" y="33" width="1072" height="34" rx="7" class="base"/>
+    <rect x="0" y="33" width="1064" height="34" rx="7" class="goldbar"/>
+    <rect x="1064" y="33" width="8" height="34" rx="3" class="cyanbar"/>
+    <text x="0" y="96" class="muted small">All non-gold flows</text><text x="1070" y="96" text-anchor="end" class="cyan label">0.79% · 50.8 kg CO₂e</text>
+  </g>
+
+  <g transform="translate(64 462)">
+    <rect width="252" height="136" rx="12" class="panel"/>
+    <text x="18" y="34" class="cyan label">WOOL</text>
+    <text x="18" y="76" class="white value">40.16 kg</text>
+    <text x="18" y="108" class="muted small">1.80 kg substrate</text>
+  </g>
+  <g transform="translate(337 462)">
+    <rect width="252" height="136" rx="12" class="panel"/>
+    <text x="18" y="34" class="cyan label">WOOD + METAL</text>
+    <text x="18" y="76" class="white value">4.76 kg</text>
+    <text x="18" y="108" class="muted small">crate + hardware</text>
+  </g>
+  <g transform="translate(610 462)">
+    <rect width="252" height="136" rx="12" class="panel"/>
+    <text x="18" y="34" class="cyan label">UTILITIES</text>
+    <text x="18" y="76" class="white value">4.55 kg</text>
+    <text x="18" y="108" class="muted small">electricity + water</text>
+  </g>
+  <g transform="translate(883 462)">
+    <rect width="252" height="136" rx="12" class="panel"/>
+    <text x="18" y="34" class="cyan label">LOGISTICS</text>
+    <text x="18" y="76" class="white value">1.36 kg</text>
+    <text x="18" y="108" class="muted small">road + sea freight</text>
+  </g>
+
+  <rect x="64" y="634" width="1072" height="70" rx="10" fill="#0b1622" stroke="#d0a563" stroke-width="2"/>
+  <text x="600" y="663" text-anchor="middle" class="gold label">INTERPRETATION</text>
+  <text x="600" y="688" text-anchor="middle" class="white small">The object behaves less like a textile and more like a small precious-metal system.</text>
+  <text x="64" y="726" class="muted tiny">Minor-flow groups are arithmetic sums of the approved locked inventory and do not add new inventory flows.</text>
+</svg>
