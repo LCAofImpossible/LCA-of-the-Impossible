@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Forge of Hephaestus hotspot breakdown</title>
+  <desc id="desc">Contribution analysis for the one hundred ninety-six kilogram carbon dioxide equivalent baseline: copper eighty-two point three percent, tin thirteen point two percent, biomass two point eight percent, refractory clay one point zero percent and other flows zero point seven percent. Copper and tin together contribute ninety-five point five percent.</desc>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">HOTSPOT BREAKDOWN · EPISODE #65</text>
+  <text x="62" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="40" font-weight="700">The flame is not the hotspot.</text>
+  <text x="62" y="154" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="19">196 kg CO₂e per one shield at the forge gate</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(70 205)">
+      <text x="0" y="25" fill="#eef7fb" font-size="21" font-weight="700">Copper</text>
+      <rect x="220" y="4" width="700" height="30" rx="5" fill="#112232"/><rect x="220" y="4" width="576" height="30" rx="5" fill="#6de7ff"/>
+      <text x="945" y="27" fill="#6de7ff" font-size="23" font-weight="700">82.3%</text><text x="1055" y="27" fill="#c4f7ff" font-size="18">161 kg</text>
+    </g>
+    <g transform="translate(70 285)">
+      <text x="0" y="25" fill="#eef7fb" font-size="21" font-weight="700">Tin</text>
+      <rect x="220" y="4" width="700" height="30" rx="5" fill="#112232"/><rect x="220" y="4" width="92" height="30" rx="5" fill="#d0a563"/>
+      <text x="945" y="27" fill="#d0a563" font-size="23" font-weight="700">13.2%</text><text x="1055" y="27" fill="#c4f7ff" font-size="18">25.8 kg</text>
+    </g>
+    <g transform="translate(70 365)">
+      <text x="0" y="25" fill="#eef7fb" font-size="21" font-weight="700">Biomass heat</text>
+      <rect x="220" y="4" width="700" height="30" rx="5" fill="#112232"/><rect x="220" y="4" width="20" height="30" rx="4" fill="#7f9078"/>
+      <text x="945" y="27" fill="#c4f7ff" font-size="23" font-weight="700">2.8%</text><text x="1055" y="27" fill="#c4f7ff" font-size="18">5.55 kg</text>
+    </g>
+    <g transform="translate(70 445)">
+      <text x="0" y="25" fill="#eef7fb" font-size="21" font-weight="700">Refractory clay</text>
+      <rect x="220" y="4" width="700" height="30" rx="5" fill="#112232"/><rect x="220" y="4" width="7" height="30" rx="3" fill="#55778b"/>
+      <text x="945" y="27" fill="#c4f7ff" font-size="23" font-weight="700">1.0%</text><text x="1055" y="27" fill="#c4f7ff" font-size="18">1.93 kg</text>
+    </g>
+    <g transform="translate(70 525)">
+      <text x="0" y="25" fill="#eef7fb" font-size="21" font-weight="700">Water + freight</text>
+      <rect x="220" y="4" width="700" height="30" rx="5" fill="#112232"/><rect x="220" y="4" width="5" height="30" rx="2" fill="#eef7fb"/>
+      <text x="945" y="27" fill="#c4f7ff" font-size="23" font-weight="700">0.7%</text><text x="1055" y="27" fill="#c4f7ff" font-size="18">1.31 kg</text>
+    </g>
+  </g>
+
+  <g transform="translate(70 612)" font-family="Arial,sans-serif">
+    <rect width="1060" height="56" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="36" fill="#eef7fb" font-size="20"><tspan fill="#6de7ff" font-weight="700">95.5%</tspan> of the approved baseline comes from copper and tin. Biogenic CO₂: <tspan fill="#d0a563" font-weight="700">79.0 kg</tspan> reported separately.</text>
+  </g>
+</svg>

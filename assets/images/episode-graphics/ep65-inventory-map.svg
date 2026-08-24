@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Forge of Hephaestus inventory map</title>
+  <desc id="desc">Seven modelled flows - copper, tin, biomass heat, refractory clay, water, sea freight and road freight - enter one twelve-hour forge campaign and produce one thirty-five kilogram shield at the forge gate.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">INVENTORY MAP · EPISODE #65</text>
+  <text x="62" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="40" font-weight="700">Fire in. Shield out.</text>
+  <text x="62" y="152" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="18">Cradle-to-forge-gate · seven flows · one complete volcanic-island campaign</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(62 190)">
+      <rect width="235" height="58" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="23" fill="#eef7fb" font-size="16" font-weight="700">COPPER</text>
+      <text x="18" y="46" fill="#9ab0bc" font-size="14">literature</text><text x="217" y="46" text-anchor="end" fill="#6de7ff" font-size="15">35.000 kg</text>
+    </g>
+    <g transform="translate(62 260)">
+      <rect width="235" height="58" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="23" fill="#eef7fb" font-size="16" font-weight="700">TIN</text>
+      <text x="18" y="46" fill="#9ab0bc" font-size="14">literature</text><text x="217" y="46" text-anchor="end" fill="#6de7ff" font-size="15">3.889 kg</text>
+    </g>
+    <g transform="translate(62 330)">
+      <rect width="235" height="58" rx="8" fill="#0d1b27" stroke="#234557"/>
+      <text x="18" y="23" fill="#eef7fb" font-size="16" font-weight="700">BIOMASS HEAT</text>
+      <text x="18" y="46" fill="#9ab0bc" font-size="14">assumption</text><text x="217" y="46" text-anchor="end" fill="#c4f7ff" font-size="15">55.000 kg</text>
+    </g>
+    <g transform="translate(62 400)">
+      <rect width="235" height="58" rx="8" fill="#0d1b27" stroke="#234557"/>
+      <text x="18" y="23" fill="#eef7fb" font-size="16" font-weight="700">REFRACTORY CLAY</text>
+      <text x="18" y="46" fill="#9ab0bc" font-size="14">assumption</text><text x="217" y="46" text-anchor="end" fill="#c4f7ff" font-size="15">8.000 kg</text>
+    </g>
+    <g transform="translate(62 470)">
+      <rect width="235" height="58" rx="8" fill="#0d1b27" stroke="#234557"/>
+      <text x="18" y="23" fill="#eef7fb" font-size="16" font-weight="700">WATER</text>
+      <text x="18" y="46" fill="#9ab0bc" font-size="14">assumption</text><text x="217" y="46" text-anchor="end" fill="#c4f7ff" font-size="15">0.150 m³</text>
+    </g>
+  </g>
+
+  <g stroke="#6de7ff" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M297 219 C360 219 380 268 442 300"/>
+    <path d="M297 289 C360 289 382 305 442 322"/>
+    <path d="M297 359 C360 359 382 350 442 342"/>
+    <path d="M297 429 C360 429 382 388 442 363"/>
+    <path d="M297 499 C360 499 382 418 442 382"/>
+  </g>
+
+  <g transform="translate(442 215)" font-family="Arial,sans-serif">
+    <rect width="330" height="250" rx="16" fill="#112232" stroke="#6de7ff" stroke-width="2"/>
+    <circle cx="165" cy="125" r="82" fill="none" stroke="#234557" stroke-width="2"/>
+    <circle cx="165" cy="125" r="54" fill="none" stroke="#d0a563" stroke-width="3"/>
+    <text x="165" y="62" text-anchor="middle" fill="#9ab0bc" font-size="14" letter-spacing="2">FORGE CAMPAIGN</text>
+    <text x="165" y="111" text-anchor="middle" fill="#eef7fb" font-size="27" font-weight="700">CHARGE · MELT</text>
+    <text x="165" y="143" text-anchor="middle" fill="#eef7fb" font-size="27" font-weight="700">FORM · FINISH</text>
+    <text x="165" y="196" text-anchor="middle" fill="#6de7ff" font-size="19">12 h · 20 bellows documented</text>
+    <text x="165" y="222" text-anchor="middle" fill="#9ab0bc" font-size="15">campaign energy assumed</text>
+  </g>
+
+  <path d="M772 340 H847" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+  <g transform="translate(847 235)" font-family="Arial,sans-serif">
+    <rect width="290" height="210" rx="14" fill="#0d1b27" stroke="#d0a563" stroke-width="2"/>
+    <circle cx="145" cy="88" r="55" fill="none" stroke="#d0a563" stroke-width="5"/>
+    <circle cx="145" cy="88" r="38" fill="none" stroke="#c4f7ff" stroke-width="2"/>
+    <circle cx="145" cy="88" r="12" fill="#d0a563"/>
+    <text x="145" y="164" text-anchor="middle" fill="#eef7fb" font-size="25" font-weight="700">ONE SHIELD</text>
+    <text x="145" y="191" text-anchor="middle" fill="#6de7ff" font-size="18">35 kg · forge gate</text>
+  </g>
+
+  <g transform="translate(335 510)" font-family="Arial,sans-serif">
+    <rect width="205" height="70" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <text x="16" y="24" fill="#eef7fb" font-size="15" font-weight="700">SEA FREIGHT</text>
+    <text x="16" y="51" fill="#9ab0bc" font-size="13">narrative proxy</text><text x="189" y="51" text-anchor="end" fill="#c4f7ff" font-size="14">46.667 t·km</text>
+  </g>
+  <g transform="translate(560 510)" font-family="Arial,sans-serif">
+    <rect width="205" height="70" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <text x="16" y="24" fill="#eef7fb" font-size="15" font-weight="700">ROAD FREIGHT</text>
+    <text x="16" y="51" fill="#9ab0bc" font-size="13">narrative proxy</text><text x="189" y="51" text-anchor="end" fill="#c4f7ff" font-size="14">4.466 t·km</text>
+  </g>
+  <path d="M438 510 C438 485 500 478 500 465" stroke="#6de7ff" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+  <path d="M662 510 C662 485 610 478 610 465" stroke="#6de7ff" stroke-width="3" fill="none" marker-end="url(#arrow)"/>
+
+  <g transform="translate(62 620)" font-family="Arial,sans-serif">
+    <rect width="1075" height="46" rx="7" fill="#0b1622" stroke="#234557"/>
+    <text x="18" y="29" fill="#9ab0bc" font-size="15"><tspan fill="#d0a563" font-weight="700">EXCLUDED · </tspan>workshop construction · bellows manufacture · divine labor · use · maintenance · end-of-life</text>
+  </g>
+</svg>

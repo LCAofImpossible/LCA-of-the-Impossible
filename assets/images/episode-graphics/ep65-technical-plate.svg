@@ -1,0 +1,58 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Forge of Hephaestus technical reconstruction plate</title>
+  <desc id="desc">Engineering schematic of a zero point ninety-five metre, five-layer bronze shield with a thirty-five kilogram finished mass, thirty-eight point nine kilogram metal charge, ninety percent process yield, ninety-ten copper-tin alloy, five point sixty-one millimetre equivalent thickness and twelve-hour campaign.</desc>
+  <defs>
+    <marker id="dim" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 0 L0 4 L8 8" fill="none" stroke="#6de7ff" stroke-width="1.5"/></marker>
+    <radialGradient id="bronze" cx="42%" cy="35%" r="70%"><stop offset="0" stop-color="#d0a563"/><stop offset="0.48" stop-color="#886c3f"/><stop offset="1" stop-color="#3e3022"/></radialGradient>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">TECHNICAL PLATE · EPISODE #65</text>
+  <text x="62" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="40" font-weight="700">Five layers. One heavy shield.</text>
+
+  <g transform="translate(55 142)">
+    <circle cx="330" cy="250" r="222" fill="none" stroke="#112232" stroke-width="2"/>
+    <circle cx="330" cy="250" r="172" fill="none" stroke="#112232"/>
+    <line x1="70" y1="250" x2="590" y2="250" stroke="#234557" stroke-dasharray="6 8"/>
+    <line x1="330" y1="20" x2="330" y2="485" stroke="#234557" stroke-dasharray="6 8"/>
+
+    <circle cx="330" cy="250" r="190" fill="url(#bronze)" stroke="#d0a563" stroke-width="5"/>
+    <circle cx="330" cy="250" r="156" fill="none" stroke="#c4f7ff" stroke-opacity="0.45" stroke-width="2"/>
+    <circle cx="330" cy="250" r="119" fill="none" stroke="#c4f7ff" stroke-opacity="0.35" stroke-width="2"/>
+    <circle cx="330" cy="250" r="78" fill="url(#bronze)" stroke="#d0a563" stroke-width="4"/>
+    <circle cx="330" cy="250" r="49" fill="#5f492f" stroke="#d0a563" stroke-width="3"/>
+    <g fill="#d0a563">
+      <circle cx="330" cy="74" r="6"/><circle cx="330" cy="426" r="6"/><circle cx="154" cy="250" r="6"/><circle cx="506" cy="250" r="6"/>
+      <circle cx="205" cy="125" r="5"/><circle cx="455" cy="125" r="5"/><circle cx="205" cy="375" r="5"/><circle cx="455" cy="375" r="5"/>
+    </g>
+
+    <line x1="140" y1="460" x2="520" y2="460" stroke="#6de7ff" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <line x1="140" y1="440" x2="140" y2="480" stroke="#6de7ff"/><line x1="520" y1="440" x2="520" y2="480" stroke="#6de7ff"/>
+    <text x="330" y="500" text-anchor="middle" fill="#c4f7ff" font-family="Arial,sans-serif" font-size="19">DIAMETER · 0.95 m</text>
+  </g>
+
+  <g transform="translate(690 150)" font-family="Arial,sans-serif">
+    <text x="0" y="18" fill="#d0a563" font-size="15" letter-spacing="2">FIVE-LAYER SECTION</text>
+    <rect x="0" y="40" width="440" height="126" rx="9" fill="#0d1b27" stroke="#234557"/>
+    <g transform="translate(28 65)">
+      <rect x="0" y="0" width="245" height="12" rx="3" fill="#d0a563"/><rect x="0" y="17" width="245" height="12" rx="3" fill="#b78f52"/>
+      <rect x="0" y="34" width="245" height="12" rx="3" fill="#9e7944"/><rect x="0" y="51" width="245" height="12" rx="3" fill="#856437"/>
+      <rect x="0" y="68" width="245" height="12" rx="3" fill="#6d512e"/>
+    </g>
+    <line x1="300" y1="65" x2="300" y2="145" stroke="#6de7ff" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <text x="322" y="103" fill="#c4f7ff" font-size="18">5.61 mm</text><text x="322" y="126" fill="#9ab0bc" font-size="14">equivalent</text>
+
+    <rect x="0" y="190" width="440" height="364" rx="10" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="226" fill="#d0a563" font-size="15" letter-spacing="2">PHYSICAL MODEL</text>
+    <line x1="24" y1="244" x2="416" y2="244" stroke="#234557"/>
+    <text x="24" y="282" fill="#9ab0bc" font-size="17">Finished shield</text><text x="416" y="282" text-anchor="end" fill="#eef7fb" font-size="22" font-weight="700">35.0 kg</text>
+    <text x="24" y="326" fill="#9ab0bc" font-size="17">Metal charge</text><text x="416" y="326" text-anchor="end" fill="#eef7fb" font-size="22" font-weight="700">38.9 kg</text>
+    <text x="24" y="370" fill="#9ab0bc" font-size="17">Process yield</text><text x="416" y="370" text-anchor="end" fill="#eef7fb" font-size="22" font-weight="700">90%</text>
+    <text x="24" y="414" fill="#9ab0bc" font-size="17">Alloy</text><text x="416" y="414" text-anchor="end" fill="#eef7fb" font-size="22" font-weight="700">90% Cu · 10% Sn</text>
+    <text x="24" y="458" fill="#9ab0bc" font-size="17">Forge campaign</text><text x="416" y="458" text-anchor="end" fill="#eef7fb" font-size="22" font-weight="700">12 h</text>
+    <rect x="20" y="486" width="400" height="48" rx="6" fill="#112232" stroke="#6de7ff"/>
+    <text x="220" y="517" text-anchor="middle" fill="#c4f7ff" font-size="17">20 bellows documented · energy assumed</text>
+  </g>
+
+  <text x="62" y="674" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="15">Five stacked bronze layers modelled as one equivalent section · narrative reconstruction, not an archaeological claim.</text>
+</svg>

@@ -2,6 +2,60 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 65,
+      "slug": "forge-of-hephaestus",
+      "title": "The Forge of Hephaestus",
+      "url": "episodes/forge-of-hephaestus.html",
+      "cover": "assets/images/episodes/ep65-forge-of-hephaestus-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "196 kg CO₂e",
+      "hotspot": "Copper and tin contribute 95.5% of the approved baseline, with copper alone accounting for 82.3%.",
+      "featuredDescription": "One 35 kg, five-layer Achilles-class bronze shield at the forge gate: 196 kg CO₂e, with copper and tin contributing 95.5% and copper alone 82.3% of the approved baseline.",
+      "functionalUnit": "One 35 kg, five-layer, Achilles-class bronze shield manufactured and delivered at the forge gate during one complete volcanic-island campaign.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "Medium",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode locks one 0.95 m, 35 kg, five-layer Achilles-class bronze shield and a 12-hour forge campaign. Twenty bellows are documented, while the physical geometry, 38.9 kg metal charge, 90% process yield, biomass heat, refractory clay, water and freight quantities form the declared reconstruction. Copper and tin use the episode's ICA and ITA / Aurubis LCA factors; DEFRA 2026 supplies the declared factors or proxies for the remaining flows.",
+        "uncertainty": "Shield mass and metal-supply intensity are the published sensitivity levers. Changing shield mass from 20 to 50 kg moves the result from 112 to 279 kg CO₂e, while the approved metal-supply cases span 69.8 to 224 kg CO₂e without changing the shield or forge campaign."
+      },
+      "keywords": [
+        "Forge of Hephaestus",
+        "Hephaestus",
+        "Achilles",
+        "bronze shield",
+        "five-layer shield",
+        "copper",
+        "tin",
+        "biomass heat",
+        "refractory clay",
+        "forge campaign",
+        "sea freight",
+        "road freight",
+        "ICA LCA",
+        "ITA Aurubis",
+        "DEFRA 2026",
+        "materials-driven",
+        "shield mass",
+        "metal supply"
+      ],
+      "related": [
+        63,
+        41,
+        37
+      ]
+    },
+    {
       "number": 64,
       "slug": "ship-of-theseus",
       "title": "The Ship of Theseus",
