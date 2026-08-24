@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Gungnir inventory map</title>
+  <desc id="desc">Five contributing flows—iron, ash, forge heat, finishing electricity and road freight—feed one Gungnir-class spear manufacturing and delivery event. Decorative cord and finish are explicitly cut off below two percent of mass.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">INVENTORY MAP · EPISODE #63</text>
+  <text x="62" y="116" fill="#eef7fb" font-family="Arial,sans-serif" font-size="38" font-weight="700">One spear. One manufacture-and-delivery event.</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(70 170)">
+      <rect width="235" height="96" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="30" fill="#9ab0bc" font-size="14" letter-spacing="2">MATERIAL</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="22" font-weight="700">Iron spearhead</text>
+      <text x="18" y="82" fill="#c4f7ff" font-size="17">0.322 kg</text>
+    </g>
+    <g transform="translate(70 290)">
+      <rect width="235" height="96" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="30" fill="#9ab0bc" font-size="14" letter-spacing="2">MATERIAL</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="22" font-weight="700">European ash shaft</text>
+      <text x="18" y="82" fill="#c4f7ff" font-size="17">0.976 kg</text>
+    </g>
+    <g transform="translate(70 410)">
+      <rect width="235" height="96" rx="8" fill="#0d1b27" stroke="#6de7ff"/>
+      <text x="18" y="30" fill="#9ab0bc" font-size="14" letter-spacing="2">PROCESS ENERGY</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="22" font-weight="700">Forge heat</text>
+      <text x="18" y="82" fill="#6de7ff" font-size="17">6.00 kWh propane-eq.</text>
+    </g>
+    <g transform="translate(70 530)">
+      <rect width="235" height="96" rx="8" fill="#0d1b27" stroke="#234557"/>
+      <text x="18" y="30" fill="#9ab0bc" font-size="14" letter-spacing="2">FINISHING</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="22" font-weight="700">Electricity</text>
+      <text x="18" y="82" fill="#c4f7ff" font-size="17">1.00 kWh UK composite</text>
+    </g>
+  </g>
+
+  <g stroke="#6de7ff" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M305 218 C390 218 420 245 470 285"/>
+    <path d="M305 338 C390 338 420 325 470 305"/>
+    <path d="M305 458 C390 458 425 395 480 340"/>
+    <path d="M305 578 C410 578 440 420 500 360"/>
+  </g>
+
+  <g transform="translate(475 225)" font-family="Arial,sans-serif">
+    <rect width="290" height="195" rx="12" fill="#112232" stroke="#6de7ff" stroke-width="2"/>
+    <text x="145" y="40" text-anchor="middle" fill="#9ab0bc" font-size="14" letter-spacing="2">MANUFACTURE</text>
+    <path d="M145 62 L182 104 L164 104 L164 150 L126 150 L126 104 L108 104 Z" fill="none" stroke="#d0a563" stroke-width="3"/>
+    <text x="145" y="177" text-anchor="middle" fill="#eef7fb" font-size="24" font-weight="700">1.30 kg spear</text>
+  </g>
+
+  <path d="M765 323 H870" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(870 225)" font-family="Arial,sans-serif">
+    <rect width="260" height="195" rx="12" fill="#0d1b27" stroke="#d0a563"/>
+    <text x="130" y="38" text-anchor="middle" fill="#9ab0bc" font-size="14" letter-spacing="2">DELIVERY</text>
+    <path d="M65 86 H154 L184 112 H213 V147 H195 A22 22 0 0 1 151 147 H111 A22 22 0 0 1 67 147 H47 V102 H65 Z" fill="none" stroke="#c4f7ff" stroke-width="3"/>
+    <circle cx="89" cy="147" r="18" fill="#071019" stroke="#c4f7ff" stroke-width="3"/>
+    <circle cx="173" cy="147" r="18" fill="#071019" stroke="#c4f7ff" stroke-width="3"/>
+    <text x="130" y="180" text-anchor="middle" fill="#eef7fb" font-size="20" font-weight="700">500 km · 0.649 t·km</text>
+  </g>
+
+  <g transform="translate(475 470)" font-family="Arial,sans-serif">
+    <rect width="655" height="95" rx="10" fill="#0b1622" stroke="#234557"/>
+    <text x="25" y="34" fill="#d0a563" font-size="14" letter-spacing="2">FUNCTIONAL UNIT</text>
+    <text x="25" y="65" fill="#eef7fb" font-size="20">One durable Gungnir-class spear, delivered ready for repeated use.</text>
+    <text x="25" y="86" fill="#9ab0bc" font-size="15">Use and end-of-life remain outside the boundary.</text>
+  </g>
+
+  <g transform="translate(475 590)" font-family="Arial,sans-serif">
+    <line x1="0" y1="0" x2="655" y2="0" stroke="#234557"/>
+    <text x="0" y="32" fill="#9ab0bc" font-size="15">EXPLICIT CUT-OFF</text>
+    <text x="160" y="32" fill="#eef7fb" font-size="15">Decorative cord / finish · &lt;2% mass · nonstructural</text>
+    <text x="0" y="59" fill="#9ab0bc" font-size="15">NO MAGIC CREDIT</text>
+    <text x="160" y="59" fill="#eef7fb" font-size="15">“Unstoppable thrust” creates no modeled flow or avoided burden.</text>
+  </g>
+</svg>
