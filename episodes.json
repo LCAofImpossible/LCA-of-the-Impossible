@@ -2,6 +2,57 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 63,
+      "slug": "gungnir",
+      "title": "Gungnir",
+      "url": "episodes/gungnir.html",
+      "cover": "assets/images/episodes/ep63-gungnir-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "process-energy-driven",
+        "proxy-sensitive"
+      ],
+      "result": "3.01 kg CO₂e",
+      "hotspot": "Forge heat contributes 51.8% of the approved baseline footprint, more than the iron head at 30.6%.",
+      "featuredDescription": "One 2.40 m Gungnir-class spear, manufactured and delivered once: 3.01 kg CO₂e, with forge heat contributing 51.8% and the iron head 30.6% of the approved baseline.",
+      "functionalUnit": "Provide one durable Gungnir-class spear, delivered ready for repeated ceremonial and combat use. The model covers one manufacturing-and-delivery event; use and end-of-life remain outside the boundary.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode freezes a 2.40 m, 1.30 kg Gungnir-class spear before inventory, with a 0.370 m / 0.322 kg iron head anchored to British Museum object 1868,0128.2 and a 0.976 kg European ash shaft reconstructed from geometry and density. The five contributing flows use declared 2026 UK Government GHG factor families for a primary ferrous-material proxy, primary wood, propane plus WTT, UK electricity plus T&D and WTT, and average HGV freight plus WTT.",
+        "uncertainty": "The 6 kWh forge-heat demand is an engineering assumption and the 500 km delivery distance is a narrative proxy. The published forge-heat sensitivity moves the total from 2.23 to 4.57 kg CO₂e, while the ferrous-material factor sensitivity spans 2.68 to 3.32 kg CO₂e; the heat-demand assumption is the larger uncertainty lever."
+      },
+      "keywords": [
+        "Gungnir",
+        "Odin",
+        "spear",
+        "Norse mythology",
+        "Viking spear",
+        "iron spearhead",
+        "ash shaft",
+        "forge heat",
+        "propane",
+        "road freight",
+        "British Museum 1868,0128.2",
+        "DEFRA 2026",
+        "energy-driven",
+        "process-energy-driven",
+        "proxy sensitivity"
+      ],
+      "related": [
+        41,
+        37,
+        47
+      ]
+    },
+    {
       "number": 62,
       "slug": "sleipnir",
       "title": "Sleipnir",
