@@ -1,0 +1,17 @@
+Episode #63 — Gungnir live verification
+Verified at: 2026-08-24T08:44:48Z
+Source commit: fbdf934ef13b5de7d188a7ab491a34157c0dd6ec
+Live episode: HTTP 200 and registry-backed Episode #63
+Live result: 3.01 kg CO2e
+Live cover SHA-256: 6c0b37dfb93204ab4cbc37971207d89b15e67b67bca824bf55b4beef9c74b648
+Cover identity: PASS — byte-identical to approved raster
+Homepage rendered integration: PASS
+Archive rendered integration: PASS
+Collections rendered integration: PASS
+Compare rendered integration: PASS
+Impact Map rendered integration: PASS
+SEO/Open Graph/Twitter/JSON-LD: PASS
+Sitemap: PASS
+Epic Model Passport rendered actions: View epic passport / Print-Save as PDF only
+Source PDF download: ABSENT
+Raw text export: ABSENT
