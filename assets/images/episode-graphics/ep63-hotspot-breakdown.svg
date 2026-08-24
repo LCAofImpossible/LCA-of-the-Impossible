@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Gungnir hotspot breakdown</title>
+  <desc id="desc">Contribution analysis for the 3.01 kilogram carbon dioxide equivalent Gungnir baseline: forge heat 51.8 percent, iron head 30.6 percent, ash shaft 8.7 percent, electricity 6.1 percent and road freight 2.7 percent.</desc>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">HOTSPOT BREAKDOWN · EPISODE #63</text>
+  <text x="62" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="40" font-weight="700">The forge wins.</text>
+  <text x="62" y="154" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="19">3.01 kg CO₂e per one complete spear manufactured and delivered once</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(70 205)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Forge heat</text>
+      <rect x="215" y="4" width="700" height="30" rx="5" fill="#112232"/>
+      <rect x="215" y="4" width="362.6" height="30" rx="5" fill="#6de7ff"/>
+      <text x="940" y="26" fill="#6de7ff" font-size="22" font-weight="700">51.8%</text>
+      <text x="1035" y="26" fill="#c4f7ff" font-size="17">1.560 kg</text>
+    </g>
+    <g transform="translate(70 285)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Iron head</text>
+      <rect x="215" y="4" width="700" height="30" rx="5" fill="#112232"/>
+      <rect x="215" y="4" width="214.2" height="30" rx="5" fill="#d0a563"/>
+      <text x="940" y="26" fill="#d0a563" font-size="22" font-weight="700">30.6%</text>
+      <text x="1035" y="26" fill="#c4f7ff" font-size="17">0.921 kg</text>
+    </g>
+    <g transform="translate(70 365)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Ash shaft</text>
+      <rect x="215" y="4" width="700" height="30" rx="5" fill="#112232"/>
+      <rect x="215" y="4" width="60.9" height="30" rx="5" fill="#5c7c6b"/>
+      <text x="940" y="26" fill="#c4f7ff" font-size="22" font-weight="700">8.7%</text>
+      <text x="1035" y="26" fill="#c4f7ff" font-size="17">0.263 kg</text>
+    </g>
+    <g transform="translate(70 445)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Electricity</text>
+      <rect x="215" y="4" width="700" height="30" rx="5" fill="#112232"/>
+      <rect x="215" y="4" width="42.7" height="30" rx="5" fill="#55778b"/>
+      <text x="940" y="26" fill="#c4f7ff" font-size="22" font-weight="700">6.1%</text>
+      <text x="1035" y="26" fill="#c4f7ff" font-size="17">0.184 kg</text>
+    </g>
+    <g transform="translate(70 525)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Road freight</text>
+      <rect x="215" y="4" width="700" height="30" rx="5" fill="#112232"/>
+      <rect x="215" y="4" width="18.9" height="30" rx="5" fill="#3e596b"/>
+      <text x="940" y="26" fill="#c4f7ff" font-size="22" font-weight="700">2.7%</text>
+      <text x="1035" y="26" fill="#c4f7ff" font-size="17">0.083 kg</text>
+    </g>
+  </g>
+
+  <g transform="translate(70 610)" font-family="Arial,sans-serif">
+    <rect width="1060" height="55" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="34" fill="#eef7fb" font-size="18"><tspan fill="#6de7ff" font-weight="700">51.8%</tspan> of the baseline comes from modeled forge heat—more than the iron itself.</text>
+  </g>
+</svg>
