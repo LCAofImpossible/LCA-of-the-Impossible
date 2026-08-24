@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Gungnir technical reconstruction plate</title>
+  <desc id="desc">Engineering schematic for a 2.40 metre Gungnir-class spear with a 0.370 metre iron head, a 30 millimetre ash shaft, 0.322 kilogram iron head, 0.976 kilogram ash shaft and 1.30 kilogram total mass.</desc>
+  <defs>
+    <marker id="a" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 0 L0 4 L8 8" fill="none" stroke="#6de7ff" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">TECHNICAL PLATE · EPISODE #63</text>
+  <text x="62" y="116" fill="#eef7fb" font-family="Arial,sans-serif" font-size="38" font-weight="700">Geometry frozen before inventory</text>
+
+  <g transform="translate(80 155)">
+    <circle cx="380" cy="250" r="220" fill="none" stroke="#112232" stroke-width="2"/>
+    <circle cx="380" cy="250" r="150" fill="none" stroke="#112232"/>
+    <line x1="70" y1="250" x2="690" y2="250" stroke="#234557" stroke-dasharray="6 8"/>
+    <line x1="380" y1="25" x2="380" y2="475" stroke="#234557" stroke-dasharray="6 8"/>
+
+    <!-- spear -->
+    <g transform="translate(90 235)">
+      <rect x="125" y="5" width="430" height="20" rx="9" fill="#6b533a" stroke="#d0a563" stroke-width="2"/>
+      <polygon points="555,15 620,-3 672,15 620,33" fill="#8b9096" stroke="#c4f7ff" stroke-width="2"/>
+      <line x1="555" y1="15" x2="672" y2="15" stroke="#d0a563"/>
+      <circle cx="125" cy="15" r="12" fill="#4a3828" stroke="#d0a563"/>
+    </g>
+
+    <line x1="215" y1="520" x2="762" y2="520" stroke="#6de7ff" marker-start="url(#a)" marker-end="url(#a)"/>
+    <line x1="215" y1="500" x2="215" y2="540" stroke="#6de7ff"/>
+    <line x1="762" y1="500" x2="762" y2="540" stroke="#6de7ff"/>
+    <text x="488" y="553" text-anchor="middle" fill="#c4f7ff" font-family="Arial,sans-serif" font-size="18">OVERALL LENGTH · 2.40 m</text>
+
+    <line x1="645" y1="105" x2="762" y2="105" stroke="#d0a563" marker-start="url(#a)" marker-end="url(#a)"/>
+    <line x1="645" y1="95" x2="645" y2="125" stroke="#d0a563"/>
+    <line x1="762" y1="95" x2="762" y2="125" stroke="#d0a563"/>
+    <text x="704" y="86" text-anchor="middle" fill="#d0a563" font-family="Arial,sans-serif" font-size="16">HEAD · 0.370 m</text>
+  </g>
+
+  <g transform="translate(820 155)" font-family="Arial,sans-serif">
+    <rect width="300" height="370" rx="10" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="38" fill="#d0a563" font-size="15" letter-spacing="2">PHYSICAL MODEL</text>
+    <line x1="24" y1="55" x2="276" y2="55" stroke="#234557"/>
+    <text x="24" y="91" fill="#9ab0bc" font-size="16">Overall length</text><text x="276" y="91" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">2.40 m</text>
+    <text x="24" y="137" fill="#9ab0bc" font-size="16">Head length</text><text x="276" y="137" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">0.370 m</text>
+    <text x="24" y="183" fill="#9ab0bc" font-size="16">Shaft diameter</text><text x="276" y="183" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">30 mm</text>
+    <text x="24" y="229" fill="#9ab0bc" font-size="16">Iron head</text><text x="276" y="229" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">0.322 kg</text>
+    <text x="24" y="275" fill="#9ab0bc" font-size="16">Ash shaft</text><text x="276" y="275" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">0.976 kg</text>
+    <rect x="18" y="300" width="264" height="52" rx="6" fill="#112232" stroke="#6de7ff"/>
+    <text x="34" y="332" fill="#c4f7ff" font-size="16">TOTAL MASS</text><text x="266" y="332" text-anchor="end" fill="#6de7ff" font-size="22" font-weight="700">1.30 kg</text>
+  </g>
+
+  <g transform="translate(820 548)" font-family="Arial,sans-serif">
+    <text x="0" y="0" fill="#d0a563" font-size="15" letter-spacing="2">EVIDENCE ANCHOR</text>
+    <text x="0" y="30" fill="#eef7fb" font-size="17">British Museum object 1868,0128.2</text>
+    <text x="0" y="56" fill="#9ab0bc" font-size="15">370 mm / 322 g iron spearhead analogue</text>
+    <text x="0" y="90" fill="#d0a563" font-size="15" letter-spacing="2">REFERENCE RANGE</text>
+    <text x="0" y="118" fill="#eef7fb" font-size="17">2–3 m Viking-Age spear length</text>
+  </g>
+
+  <text x="62" y="664" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="15">Shaft mass basis: π × (0.030 / 2)² × 2.03 × 680 · reconstruction parameters reproduced from the approved episode.</text>
+</svg>
