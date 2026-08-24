@@ -6,6 +6,7 @@ import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+UPLOADED_COVER = ROOT / "assets/images/episodes/file_00000000a5f481f4b8d4e1adeb1c66d2.png"
 COVER = ROOT / "assets/images/episodes/ep63-gungnir-cover.png"
 EXPECTED_SHA256 = "6c0b37dfb93204ab4cbc37971207d89b15e67b67bca824bf55b4beef9c74b648"
 
@@ -51,12 +52,33 @@ EPISODE = {
 }
 
 
+def sha256(path: Path) -> str:
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
 def require_exact_cover() -> None:
-    if not COVER.exists():
-        raise SystemExit(f"Missing exact approved cover: {COVER.relative_to(ROOT)}")
-    digest = hashlib.sha256(COVER.read_bytes()).hexdigest()
-    if digest != EXPECTED_SHA256:
-        raise SystemExit(f"Approved-cover identity failure: expected {EXPECTED_SHA256}, got {digest}")
+    if COVER.exists():
+        digest = sha256(COVER)
+        if digest != EXPECTED_SHA256:
+            raise SystemExit(f"Approved-cover identity failure at canonical path: expected {EXPECTED_SHA256}, got {digest}")
+        if UPLOADED_COVER.exists():
+            if sha256(UPLOADED_COVER) != EXPECTED_SHA256:
+                raise SystemExit("Unexpected non-approved upload remains beside canonical cover")
+            UPLOADED_COVER.unlink()
+        return
+
+    if not UPLOADED_COVER.exists():
+        raise SystemExit(f"Missing exact approved uploaded cover: {UPLOADED_COVER.relative_to(ROOT)}")
+
+    uploaded_digest = sha256(UPLOADED_COVER)
+    if uploaded_digest != EXPECTED_SHA256:
+        raise SystemExit(f"Approved-cover identity failure: expected {EXPECTED_SHA256}, got {uploaded_digest}")
+
+    # Byte-preserving filesystem rename: no decoding, re-encoding, recompression or image modification.
+    UPLOADED_COVER.replace(COVER)
+    canonical_digest = sha256(COVER)
+    if canonical_digest != EXPECTED_SHA256:
+        raise SystemExit(f"Canonical cover changed during rename: expected {EXPECTED_SHA256}, got {canonical_digest}")
 
 
 def update_registry() -> None:
