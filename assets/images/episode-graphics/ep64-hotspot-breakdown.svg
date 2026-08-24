@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ship of Theseus hotspot breakdown</title>
+  <desc id="desc">Contribution analysis for the 23.6 tonne carbon dioxide equivalent baseline: structural wood 45.6 percent, metal fasteners 20.2 percent, pitch 19.6 percent, road freight 9.2 percent, workshop electricity 4.7 percent and routed waste 0.7 percent. Eighty-two point five percent occurs after the original launch.</desc>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">HOTSPOT BREAKDOWN · EPISODE #64</text>
+  <text x="62" y="118" fill="#eef7fb" font-family="Arial,sans-serif" font-size="40" font-weight="700">Wood leads. Maintenance decides.</text>
+  <text x="62" y="154" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="19">23.6 t CO₂e per one 100-year functional unit</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(70 193)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Structural wood</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="282.7" height="28" rx="5" fill="#6de7ff"/>
+      <text x="895" y="25" fill="#6de7ff" font-size="22" font-weight="700">45.6%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">10.780 t</text>
+    </g>
+    <g transform="translate(70 260)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Metal fasteners</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="125.2" height="28" rx="5" fill="#d0a563"/>
+      <text x="895" y="25" fill="#d0a563" font-size="22" font-weight="700">20.2%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">4.777 t</text>
+    </g>
+    <g transform="translate(70 327)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Pitch / sealant</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="121.5" height="28" rx="5" fill="#b49649"/>
+      <text x="895" y="25" fill="#d0a563" font-size="22" font-weight="700">19.6%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">4.623 t</text>
+    </g>
+    <g transform="translate(70 394)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Road freight</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="57.0" height="28" rx="5" fill="#7f9078"/>
+      <text x="895" y="25" fill="#c4f7ff" font-size="22" font-weight="700">9.2%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">2.163 t</text>
+    </g>
+    <g transform="translate(70 461)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Workshop electricity</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="29.1" height="28" rx="5" fill="#55778b"/>
+      <text x="895" y="25" fill="#c4f7ff" font-size="22" font-weight="700">4.7%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">1.106 t</text>
+    </g>
+    <g transform="translate(70 528)">
+      <text x="0" y="24" fill="#eef7fb" font-size="20" font-weight="700">Routed waste</text>
+      <rect x="250" y="4" width="620" height="28" rx="5" fill="#112232"/><rect x="250" y="4" width="4.3" height="28" rx="2" fill="#eef7fb"/>
+      <text x="895" y="25" fill="#c4f7ff" font-size="22" font-weight="700">0.7%</text><text x="1010" y="25" fill="#c4f7ff" font-size="17">0.168 t</text>
+    </g>
+  </g>
+
+  <g transform="translate(70 607)" font-family="Arial,sans-serif">
+    <rect width="1060" height="58" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="37" fill="#eef7fb" font-size="19"><tspan fill="#6de7ff" font-weight="700">82.5%</tspan> of the approved baseline happens after the original launch.</text>
+  </g>
+</svg>

@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ship of Theseus inventory map</title>
+  <desc id="desc">Structural wood, metal fasteners, pitch, workshop electricity and inbound road freight feed one hundred years of hull maintenance. The process contains the original hull plus four full-equivalent replacements and routes removed fabric to collection without avoided-production credit.</desc>
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0 0 L10 5 L0 10 z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">INVENTORY MAP · EPISODE #64</text>
+  <text x="62" y="116" fill="#eef7fb" font-family="Arial,sans-serif" font-size="38" font-weight="700">One ship. One century of renewal.</text>
+
+  <g font-family="Arial,sans-serif">
+    <g transform="translate(60 165)">
+      <rect width="250" height="94" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="29" fill="#9ab0bc" font-size="14" letter-spacing="2">STRUCTURAL WOOD</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="24" font-weight="700">40,000 kg</text>
+      <text x="18" y="80" fill="#c4f7ff" font-size="16">initial + four equivalents</text>
+    </g>
+    <g transform="translate(60 282)">
+      <rect width="250" height="94" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="29" fill="#9ab0bc" font-size="14" letter-spacing="2">METAL FASTENERS</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="24" font-weight="700">1,250 kg</text>
+      <text x="18" y="80" fill="#c4f7ff" font-size="16">initial + four equivalents</text>
+    </g>
+    <g transform="translate(60 399)">
+      <rect width="250" height="94" rx="8" fill="#0d1b27" stroke="#d0a563"/>
+      <text x="18" y="29" fill="#9ab0bc" font-size="14" letter-spacing="2">PITCH / SEALANT</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="24" font-weight="700">3,300 kg</text>
+      <text x="18" y="80" fill="#c4f7ff" font-size="16">initial + ten renewals</text>
+    </g>
+    <g transform="translate(60 540)">
+      <rect width="250" height="96" rx="8" fill="#0d1b27" stroke="#6de7ff"/>
+      <text x="18" y="29" fill="#9ab0bc" font-size="14" letter-spacing="2">WORKSHOP</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="23" font-weight="700">6,000 kWh</text>
+      <text x="18" y="81" fill="#6de7ff" font-size="16">build + repairs</text>
+    </g>
+    <g transform="translate(335 540)">
+      <rect width="250" height="96" rx="8" fill="#0d1b27" stroke="#234557"/>
+      <text x="18" y="29" fill="#9ab0bc" font-size="14" letter-spacing="2">INBOUND FREIGHT</text>
+      <text x="18" y="58" fill="#eef7fb" font-size="23" font-weight="700">8,910 t·km</text>
+      <text x="18" y="81" fill="#c4f7ff" font-size="16">44.55 t × 200 km</text>
+    </g>
+  </g>
+
+  <g stroke="#6de7ff" stroke-width="3" fill="none" marker-end="url(#arrow)">
+    <path d="M310 212 C385 212 400 250 470 275"/>
+    <path d="M310 329 C390 329 420 320 470 310"/>
+    <path d="M310 446 C390 446 420 390 480 345"/>
+    <path d="M310 588 C405 588 430 440 500 382"/>
+    <path d="M585 588 C650 560 670 462 655 410"/>
+  </g>
+
+  <g transform="translate(470 205)" font-family="Arial,sans-serif">
+    <rect width="350" height="225" rx="12" fill="#112232" stroke="#6de7ff" stroke-width="2"/>
+    <text x="175" y="35" text-anchor="middle" fill="#9ab0bc" font-size="14" letter-spacing="2">IDENTITY MAINTENANCE</text>
+    <path d="M70 112 Q100 150 175 155 Q250 150 280 112 L265 168 Q175 195 85 168 Z" fill="none" stroke="#d0a563" stroke-width="3"/>
+    <line x1="175" y1="70" x2="175" y2="155" stroke="#c4f7ff" stroke-width="2"/>
+    <line x1="128" y1="95" x2="222" y2="95" stroke="#c4f7ff" stroke-width="2"/>
+    <path d="M125 196 A55 22 0 0 0 225 196" fill="none" stroke="#6de7ff" stroke-width="2" stroke-dasharray="6 6"/>
+    <text x="175" y="205" text-anchor="middle" fill="#eef7fb" font-size="20" font-weight="700">original + 4 full equivalents</text>
+  </g>
+
+  <path d="M820 318 H890" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <g transform="translate(890 235)" font-family="Arial,sans-serif">
+    <rect width="250" height="190" rx="12" fill="#0d1b27" stroke="#d0a563"/>
+    <text x="125" y="34" text-anchor="middle" fill="#9ab0bc" font-size="14" letter-spacing="2">COLLECTION BOUNDARY</text>
+    <path d="M58 87 H192 M78 72 L96 87 L78 102 M122 72 L140 87 L122 102 M166 72 L184 87 L166 102" fill="none" stroke="#c4f7ff" stroke-width="3"/>
+    <text x="125" y="132" text-anchor="middle" fill="#eef7fb" font-size="24" font-weight="700">36,000 kg</text>
+    <text x="125" y="158" text-anchor="middle" fill="#c4f7ff" font-size="16">removed fabric routed</text>
+    <text x="125" y="180" text-anchor="middle" fill="#9ab0bc" font-size="14">no avoided credit</text>
+  </g>
+
+  <g transform="translate(620 500)" font-family="Arial,sans-serif">
+    <rect width="520" height="136" rx="10" fill="#0b1622" stroke="#234557"/>
+    <text x="24" y="33" fill="#d0a563" font-size="14" letter-spacing="2">FUNCTIONAL UNIT</text>
+    <text x="24" y="64" fill="#eef7fb" font-size="18">Maintain one 30-oared ceremonial hull in</text>
+    <text x="24" y="89" fill="#eef7fb" font-size="18">structurally seaworthy condition at Piraeus</text>
+    <text x="24" y="114" fill="#eef7fb" font-size="18">for 100 years.</text>
+  </g>
+</svg>

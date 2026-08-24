@@ -2,6 +2,60 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 64,
+      "slug": "ship-of-theseus",
+      "title": "The Ship of Theseus",
+      "url": "episodes/ship-of-theseus.html",
+      "cover": "assets/images/episodes/ep64-ship-of-theseus-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "repetition-sensitive",
+        "lifetime-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "23.6 t CO₂e",
+      "hotspot": "Structural wood contributes 45.6% of the approved baseline, while 82.5% of the footprint occurs after the original launch.",
+      "featuredDescription": "Maintain one 30-oared ceremonial hull at Piraeus for 100 years: 23.6 t CO₂e, with structural wood contributing 45.6% and 82.5% of the footprint occurring after launch.",
+      "functionalUnit": "Maintain one 30-oared ceremonial hull in structurally seaworthy condition at Piraeus for 100 years.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one 30-oared ceremonial hull at Piraeus and freezes an engineering reconstruction at 20 m overall length, 3.4 m beam, 1.1 m moulded depth, 8.00 t of initial structural wood, 0.25 t of initial metal fasteners and 0.30 t of pitch. The geometry is explicitly not an archaeological claim. DEFRA 2026 material, electricity, freight and waste-routing factors are used as declared modern proxies.",
+        "uncertainty": "The 25-year full-equivalent structural replacement interval drives every replacement-linked flow. The approved physical sensitivity moves the result from 17.9 to 33.7 t CO₂e across 40- to 15-year intervals, while changing only the timber factor moves it from 14.4 to 29.0 t CO₂e."
+      },
+      "keywords": [
+        "Ship of Theseus",
+        "Theseus",
+        "identity",
+        "ceremonial hull",
+        "Piraeus",
+        "ship maintenance",
+        "structural wood",
+        "seasoned pine",
+        "metal fasteners",
+        "pitch",
+        "road freight",
+        "routed waste",
+        "DEFRA 2026",
+        "materials-driven",
+        "replacement interval",
+        "timber factor",
+        "lifetime"
+      ],
+      "related": [
+        49,
+        35,
+        43
+      ]
+    },
+    {
       "number": 63,
       "slug": "gungnir",
       "title": "Gungnir",

@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Ship of Theseus technical reconstruction plate</title>
+  <desc id="desc">Engineering schematic of a twenty metre ceremonial hull with a 3.4 metre beam, 1.1 metre moulded depth, 15.4 cubic metres of structural wood at 520 kilograms per cubic metre, 8,000 kilograms of initial structural wood, 250 kilograms of metal fasteners and 300 kilograms of pitch.</desc>
+  <defs>
+    <marker id="dim" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M8 0 L0 4 L8 8" fill="none" stroke="#6de7ff" stroke-width="1.5"/></marker>
+  </defs>
+  <rect width="1200" height="720" fill="#071019"/>
+  <rect x="28" y="28" width="1144" height="664" rx="10" fill="none" stroke="#234557" stroke-width="2"/>
+  <text x="62" y="78" fill="#d0a563" font-family="Georgia,serif" font-size="24" letter-spacing="4">TECHNICAL PLATE · EPISODE #64</text>
+  <text x="62" y="116" fill="#eef7fb" font-family="Arial,sans-serif" font-size="38" font-weight="700">Twenty metres. Eight tonnes of wood.</text>
+
+  <g transform="translate(55 145)">
+    <circle cx="355" cy="245" r="215" fill="none" stroke="#112232" stroke-width="2"/>
+    <circle cx="355" cy="245" r="145" fill="none" stroke="#112232"/>
+    <line x1="45" y1="245" x2="700" y2="245" stroke="#234557" stroke-dasharray="6 8"/>
+    <line x1="355" y1="30" x2="355" y2="470" stroke="#234557" stroke-dasharray="6 8"/>
+
+    <path d="M70 305 Q105 354 195 368 Q390 394 650 342 L675 286 Q640 321 545 329 L180 329 Q110 326 70 305 Z" fill="#6b533a" fill-opacity="0.72" stroke="#d0a563" stroke-width="3"/>
+    <path d="M76 304 Q101 250 128 210 Q135 273 180 329" fill="#6b533a" fill-opacity="0.72" stroke="#d0a563" stroke-width="3"/>
+    <path d="M650 342 Q682 304 690 252 Q657 271 620 330" fill="#6b533a" fill-opacity="0.72" stroke="#d0a563" stroke-width="3"/>
+    <path d="M95 316 Q300 354 658 318 M108 335 Q320 374 650 337" fill="none" stroke="#c4f7ff" stroke-width="1.5" opacity="0.65"/>
+
+    <line x1="355" y1="90" x2="355" y2="342" stroke="#d0a563" stroke-width="4"/>
+    <line x1="248" y1="155" x2="475" y2="155" stroke="#d0a563" stroke-width="3"/>
+    <path d="M248 155 Q355 178 475 155" fill="none" stroke="#c4f7ff" stroke-width="4"/>
+    <g stroke="#c4f7ff" stroke-width="2" opacity="0.8">
+      <line x1="210" y1="337" x2="175" y2="430"/><line x1="242" y1="341" x2="218" y2="438"/>
+      <line x1="274" y1="344" x2="262" y2="444"/><line x1="306" y1="348" x2="305" y2="447"/>
+      <line x1="338" y1="350" x2="348" y2="448"/><line x1="370" y1="351" x2="392" y2="446"/>
+      <line x1="402" y1="350" x2="436" y2="440"/><line x1="434" y1="348" x2="480" y2="434"/>
+      <line x1="466" y1="345" x2="524" y2="426"/><line x1="498" y1="342" x2="568" y2="416"/>
+      <line x1="530" y1="338" x2="610" y2="404"/><line x1="562" y1="334" x2="650" y2="392"/>
+    </g>
+
+    <line x1="70" y1="470" x2="690" y2="470" stroke="#6de7ff" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <line x1="70" y1="450" x2="70" y2="490" stroke="#6de7ff"/><line x1="690" y1="450" x2="690" y2="490" stroke="#6de7ff"/>
+    <text x="380" y="500" text-anchor="middle" fill="#c4f7ff" font-family="Arial,sans-serif" font-size="18">OVERALL LENGTH · 20 m</text>
+  </g>
+
+  <g transform="translate(820 145)" font-family="Arial,sans-serif">
+    <text x="0" y="18" fill="#d0a563" font-size="15" letter-spacing="2">PLAN REFERENCE</text>
+    <rect x="0" y="40" width="300" height="112" rx="8" fill="#0d1b27" stroke="#234557"/>
+    <path d="M24 96 Q66 60 150 58 Q234 60 276 96 Q234 132 150 134 Q66 132 24 96 Z" fill="none" stroke="#c4f7ff" stroke-width="2"/>
+    <line x1="24" y1="96" x2="276" y2="96" stroke="#234557" stroke-dasharray="5 6"/>
+    <line x1="150" y1="58" x2="150" y2="134" stroke="#6de7ff" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <text x="162" y="103" fill="#6de7ff" font-size="16">3.4 m beam</text>
+
+    <rect x="0" y="178" width="300" height="350" rx="10" fill="#0d1b27" stroke="#234557"/>
+    <text x="24" y="214" fill="#d0a563" font-size="15" letter-spacing="2">PHYSICAL MODEL</text>
+    <line x1="24" y1="232" x2="276" y2="232" stroke="#234557"/>
+    <text x="24" y="267" fill="#9ab0bc" font-size="16">Overall length</text><text x="276" y="267" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">20 m</text>
+    <text x="24" y="307" fill="#9ab0bc" font-size="16">Beam</text><text x="276" y="307" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">3.4 m</text>
+    <text x="24" y="347" fill="#9ab0bc" font-size="16">Moulded depth</text><text x="276" y="347" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">1.1 m</text>
+    <text x="24" y="387" fill="#9ab0bc" font-size="16">Wood volume</text><text x="276" y="387" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">15.4 m³</text>
+    <text x="24" y="427" fill="#9ab0bc" font-size="16">Pine density</text><text x="276" y="427" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">520 kg/m³</text>
+    <rect x="18" y="452" width="264" height="56" rx="6" fill="#112232" stroke="#6de7ff"/>
+    <text x="34" y="486" fill="#c4f7ff" font-size="15">INITIAL WOOD</text><text x="266" y="486" text-anchor="end" fill="#6de7ff" font-size="22" font-weight="700">8,000 kg</text>
+  </g>
+
+  <text x="62" y="675" fill="#9ab0bc" font-family="Arial,sans-serif" font-size="15">Initial additional fabric · 0.25 t metal fasteners · 0.30 t pitch · engineering reconstruction, not an archaeological claim.</text>
+</svg>
