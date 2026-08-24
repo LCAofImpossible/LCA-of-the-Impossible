@@ -1,0 +1,15 @@
+Episode 67 live verification: PASS
+Episode URL: https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/augean-stables.html
+Cover URL: https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep67-augean-stables-cover.png
+Exact approved cover SHA-256: e9f835644931056778e42fd9458fdc3e67d875f08bc4d413aab7aec3141cbef1
+Main result: 181 t CO₂e
+Source-PDF download exposed: NO
+Raw text exposed in static episode HTML: NO
+Passport cleanup loaded: YES
+Sitemap includes Episode 67: YES
+Homepage reachable: YES
+Archive reachable: YES
+Collections reachable: YES
+Compare reachable: YES
+Impact Map reachable: YES
+Repository QA suite: PASS
