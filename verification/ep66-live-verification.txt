@@ -1,0 +1,19 @@
+Episode #66 — The Cornucopia live verification
+Verified at: 2026-08-24T12:22:29Z
+Source commit: 24b5f0c8cae514cea901737db9f39cac116e7805
+Repository QA suite: PASS
+Live episode: HTTP 200 and registry-backed Episode #66
+Live result: 3.74 t CO2e
+Live cover SHA-256: cbcbd4eae1233750e64a2d8545e42b67f23215dff632596e4da77262cf120402
+Cover identity: PASS — byte-identical to approved raster
+Homepage rendered integration: PASS
+Archive rendered integration: PASS
+Collections rendered integration: PASS
+Compare rendered integration: PASS
+Impact Map rendered integration: PASS
+Related Cases / Previous navigation rendered: PASS
+SEO/Open Graph/Twitter/JSON-LD: PASS
+Sitemap: PASS
+Epic Model Passport rendered actions: View epic passport / Print-Save as PDF only
+Source PDF download: ABSENT
+Raw text export: ABSENT
