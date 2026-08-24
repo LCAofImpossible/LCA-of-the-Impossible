@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Cornucopia technical plate</title>
+<desc id="desc">Engineering reconstruction of the Cornucopia vessel: 1.20 metre curved centerline, 0.48 metre mouth, 0.05 metre tip, 8 millimetre wall, 1280 kilograms per cubic metre density, 11.7 kilogram shell and 13.5 kilogram total mass, allocated over 100 uses.</desc>
+<rect width="1200" height="820" fill="#071019"/>
+<rect x="24" y="24" width="1152" height="772" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g stroke="#6d5c36" stroke-width="1" opacity="0.65" fill="none">
+  <circle cx="545" cy="420" r="260"/><circle cx="545" cy="420" r="190"/><line x1="170" y1="420" x2="920" y2="420"/><line x1="545" y1="150" x2="545" y2="690"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="82" fill="#d8b34f" font-size="22" font-weight="700" letter-spacing="4">EP66 // TECHNICAL PLATE</text>
+  <text x="70" y="128" fill="#f5f0e6" font-size="42" font-weight="800">A BULL'S HORN, ENGINEERED TO LAST</text>
+</g>
+<g fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M270 470 C390 300 650 300 850 430 C925 478 950 390 942 318" stroke="#c7953f" stroke-width="94"/>
+  <path d="M270 470 C390 300 650 300 850 430 C925 478 950 390 942 318" stroke="#e4c27a" stroke-width="72"/>
+  <path d="M270 470 C390 300 650 300 850 430 C925 478 950 390 942 318" stroke="#9e6e2b" stroke-width="2"/>
+  <ellipse cx="270" cy="470" rx="80" ry="118" stroke="#d6b15d" stroke-width="16" fill="#211a11"/>
+</g>
+<g stroke="#6fbc91" stroke-width="3" fill="none">
+  <line x1="226" y1="250" x2="935" y2="250"/><line x1="226" y1="235" x2="226" y2="265"/><line x1="935" y1="235" x2="935" y2="265"/>
+  <line x1="165" y1="352" x2="165" y2="588"/><line x1="150" y1="352" x2="180" y2="352"/><line x1="150" y1="588" x2="180" y2="588"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700">
+  <text x="580" y="233" text-anchor="middle" fill="#8fd0a9" font-size="20">1.20 m CURVED CENTERLINE</text>
+  <text x="125" y="475" text-anchor="middle" fill="#8fd0a9" font-size="20" transform="rotate(-90 125 475)">0.48 m MOUTH</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="72" y="626" width="780" height="112" rx="12" fill="#101b21" stroke="#34444a"/>
+  <text x="96" y="660" fill="#d8b34f" font-size="16" font-weight="700">GEOMETRY BASIS</text>
+  <text x="96" y="697" fill="#fff" font-size="22" font-weight="700">A ≈ π × (r1 + r2) × s</text>
+  <text x="440" y="697" fill="#fff" font-size="22" font-weight="700">m = A × t × ρ × 1.10</text>
+  <text x="96" y="727" fill="#9fa9a3" font-size="15">Engineering assumption; Ovid provides no dimensions.</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="895" y="166" width="235" height="500" rx="14" fill="#0c151a" stroke="#a58b47"/>
+  <text x="920" y="207" fill="#d8b34f" font-size="18" font-weight="700">PROPERTY CARD</text>
+  <g fill="#fff" font-size="17"><text x="920" y="253">MOUTH</text><text x="1097" y="253" text-anchor="end" font-weight="700">0.48 m</text><text x="920" y="303">TIP</text><text x="1097" y="303" text-anchor="end" font-weight="700">0.05 m</text><text x="920" y="353">WALL</text><text x="1097" y="353" text-anchor="end" font-weight="700">8 mm</text><text x="920" y="403">DENSITY</text><text x="1097" y="403" text-anchor="end" font-weight="700">1,280 kg/m³</text><text x="920" y="453">SHELL</text><text x="1097" y="453" text-anchor="end" font-weight="700">11.7 kg</text></g>
+  <line x1="920" y1="478" x2="1097" y2="478" stroke="#7c6a3e"/>
+  <text x="920" y="518" fill="#fff" font-size="18" font-weight="700">TOTAL</text><text x="1097" y="518" text-anchor="end" fill="#d8b34f" font-size="24" font-weight="800">13.5 kg</text>
+  <text x="920" y="568" fill="#8fd0a9" font-size="16" font-weight="700">REUSE</text><text x="1097" y="568" text-anchor="end" fill="#fff" font-size="19" font-weight="700">100 uses</text>
+  <text x="920" y="608" fill="#9fa9a3" font-size="14">Straight-line allocation</text>
+</g>
+</svg>
