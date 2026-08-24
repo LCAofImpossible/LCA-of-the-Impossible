@@ -2,6 +2,62 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 66,
+      "slug": "cornucopia",
+      "title": "The Cornucopia",
+      "url": "episodes/cornucopia.html",
+      "cover": "assets/images/episodes/ep66-cornucopia-cover.png",
+      "coverAspectPolicy": "approved-native",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "3.74 t CO₂e",
+      "hotspot": "Food production contributes 99.1% of the approved baseline; food-waste treatment contributes 0.9%, while vessel, utilities and delivery together remain below 0.01%.",
+      "featuredDescription": "One 24-hour Cornucopia service presenting 1.00 t of mixed food: 3.74 t CO₂e, with food production contributing 99.1% while vessel, utilities and delivery remain below 0.01%.",
+      "functionalUnit": "One 24-hour cornucopia service presenting 1,000 kg of mixed food at the point of use, including treatment of 5% residual food waste.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one 24-hour cornucopia service at the Achelous sanctuary presenting 1.00 t of mixed food and treating 50 kg of residual food waste. It reconstructs a 1.20 m curved horn with a 0.48 m mouth, 8 mm wall, 11.7 kg shell and 13.5 kg total mass, allocated across 100 uses. The broken horn enters at zero burden; bronze, workshop electricity, water, road freight and residual treatment use the episode's declared UK Government 2026 factor families. The food-and-drink factor is explicitly a generic material-use proxy, not a product-specific agricultural LCA.",
+        "uncertainty": "The magical mechanism has no assigned flow and is explicitly treated as uncertainty rather than zero impact. The published physical sensitivity moves the result from 1.87 to 7.47 t CO₂e as output changes from 0.50 to 2.00 t, while the published menu-composition cases span 1.11 to 13.4 t CO₂e per service at the same one-tonne output."
+      },
+      "keywords": [
+        "Cornucopia",
+        "horn of plenty",
+        "Achelous",
+        "mixed food and drink",
+        "food production",
+        "food waste",
+        "landfill",
+        "broken horn",
+        "bronze bands",
+        "workshop electricity",
+        "water supply",
+        "road freight",
+        "DEFRA 2026",
+        "UK Government 2026",
+        "materials-driven",
+        "mass sensitivity",
+        "menu composition",
+        "proxy sensitivity",
+        "abundance"
+      ],
+      "related": [
+        62,
+        60,
+        64
+      ]
+    },
+    {
       "number": 65,
       "slug": "forge-of-hephaestus",
       "title": "The Forge of Hephaestus",
