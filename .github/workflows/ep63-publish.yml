@@ -1,0 +1,92 @@
+name: Publish Episode 63 Gungnir
+
+on:
+  push:
+    branches: [main]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: ep63-gungnir-publish-main
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout release candidate
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install QA dependencies
+        run: python -m pip install --disable-pip-version-check pillow
+
+      - name: Verify exact approved cover and register Episode 63
+        run: python scripts/publish_ep63_once.py
+
+      - name: Synchronize SEO metadata
+        run: python scripts/apply_seo.py
+
+      - name: Synchronize Phase 3 features
+        run: python scripts/feature_sync.py
+
+      - name: Synchronize Phase 4 engagement
+        run: python scripts/engagement_sync.py
+
+      - name: Synchronize Phase 5 editorial infrastructure
+        run: python scripts/phase5_sync.py
+
+      - name: Synchronize Phase 6 model transparency
+        run: python scripts/phase6_sync.py
+
+      - name: Synchronize Epic Passport presentation
+        run: python scripts/epic_passport_sync.py
+
+      - name: Synchronize visitor telemetry
+        run: python scripts/telemetry_sync.py
+
+      - name: Structural QA
+        run: python scripts/site_qa.py
+
+      - name: SEO and social QA
+        run: python scripts/seo_qa.py
+
+      - name: Phase 3 feature QA
+        run: python scripts/feature_qa.py
+
+      - name: Phase 4 engagement QA
+        run: python scripts/engagement_qa.py
+
+      - name: Phase 5 editorial QA
+        run: python scripts/phase5_qa.py
+
+      - name: Phase 6 model transparency QA
+        run: python scripts/phase6_qa.py
+
+      - name: Visitor telemetry QA
+        run: python scripts/telemetry_qa.py
+
+      - name: Remove one-time publishing machinery
+        run: rm -f scripts/publish_ep63_once.py .github/workflows/ep63-publish.yml
+
+      - name: Commit synchronized Episode 63 release
+        shell: bash
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          if git diff --cached --quiet; then
+            echo "No synchronized changes to commit."
+            exit 0
+          fi
+          git commit -m "Publish Episode 63 Gungnir"
+          git pull --rebase origin main
+          git push origin HEAD:main
