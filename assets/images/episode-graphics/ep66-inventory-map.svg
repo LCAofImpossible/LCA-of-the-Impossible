@@ -1,0 +1,41 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Cornucopia inventory map</title>
+<desc id="desc">Six quantified factor families surround one 24-hour Cornucopia service. The magical mechanism is explicitly excluded and treated as uncertainty, not zero impact.</desc>
+<rect width="1200" height="820" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="776" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#071019">
+  <text x="70" y="82" font-size="22" font-weight="700" letter-spacing="4">EP66 // INVENTORY MAP</text>
+  <text x="70" y="128" font-size="42" font-weight="800">ONE DAY OF PLENTY</text>
+  <text x="70" y="162" font-size="18" fill="#4d5b53">One 24-hour service · 1.00 t mixed bounty · 5% residual food waste</text>
+</g>
+<g stroke="#0b6b47" stroke-width="3" fill="none">
+  <path d="M330 276 H505"/><path d="M330 382 H505"/><path d="M330 488 H505"/>
+  <path d="M870 276 H695"/><path d="M870 382 H695"/><path d="M870 488 H695"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="505" y="245" width="190" height="300" rx="95" fill="#071019"/>
+  <text x="600" y="335" text-anchor="middle" fill="#d8b34f" font-size="18" font-weight="700">CORNUCOPIA</text>
+  <text x="600" y="372" text-anchor="middle" fill="#fff" font-size="42" font-weight="800">24 h</text>
+  <text x="600" y="408" text-anchor="middle" fill="#fff" font-size="20">SERVICE</text>
+  <text x="600" y="455" text-anchor="middle" fill="#8fd0a9" font-size="18">1.00 t bounty</text>
+  <text x="600" y="487" text-anchor="middle" fill="#8fd0a9" font-size="18">50 kg residue</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#071019">
+  <g><rect x="70" y="225" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="257" fill="#0b6b47" font-weight="700">S1 · OUTPUT</text><text x="92" y="288" font-weight="700">Mixed food + drink</text><text x="92" y="313">1.000 t / service</text></g>
+  <g><rect x="70" y="331" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="363" fill="#0b6b47" font-weight="700">S2 · RESIDUAL</text><text x="92" y="394" font-weight="700">Food waste · landfill</text><text x="92" y="419">0.050 t / service</text></g>
+  <g><rect x="70" y="437" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="469" fill="#0b6b47" font-weight="700">S3 · VESSEL</text><text x="92" y="500" font-weight="700">Bronze bands</text><text x="92" y="525">0.000018 t / service</text></g>
+  <g><rect x="870" y="225" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="257" fill="#0b6b47" font-weight="700">S4 · WORKSHOP</text><text x="892" y="288" font-weight="700">Electricity</text><text x="892" y="313">0.200 kWh / service</text></g>
+  <g><rect x="870" y="331" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="363" fill="#0b6b47" font-weight="700">S5 · CLEANING</text><text x="892" y="394" font-weight="700">Water supply</text><text x="892" y="419">0.0025 m³ / service</text></g>
+  <g><rect x="870" y="437" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="469" fill="#0b6b47" font-weight="700">S6 · DELIVERY</text><text x="892" y="500" font-weight="700">Road freight</text><text x="892" y="525">0.0405 t·km / service</text></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="600" width="675" height="120" rx="14" fill="#e7ece5" stroke="#aeb9a9"/>
+  <text x="96" y="635" fill="#0b6b47" font-size="17" font-weight="700">ZERO-BURDEN PHYSICAL ENTRY</text>
+  <text x="96" y="672" fill="#071019" font-size="22" font-weight="700">Broken horn shell · 11.7 kg / 100 uses</text>
+  <text x="96" y="704" fill="#4d5b53" font-size="17">The horn is inside the boundary; no burden is assigned to its narrative entry.</text>
+  <rect x="770" y="600" width="360" height="120" rx="14" fill="#071019"/>
+  <text x="796" y="635" fill="#d8b34f" font-size="17" font-weight="700">EXPLICIT BLIND SPOT</text>
+  <text x="796" y="672" fill="#fff" font-size="22" font-weight="700">MAGICAL MECHANISM</text>
+  <text x="796" y="704" fill="#d9ddd8" font-size="16">Excluded = uncertainty, not zero impact.</text>
+</g>
+</svg>
