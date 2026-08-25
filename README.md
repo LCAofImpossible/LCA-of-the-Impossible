@@ -1179,8 +1179,8 @@ Telemetry is deliberately subordinate to episode content:
 
 The canonical automated live check is `.github/workflows/live-site-qa.yml`, backed by `scripts/live_site_qa.py`.
 
-- It runs only after a successful GitHub Pages build, with an optional manual dispatch for recovery or audit.
-- It checks out the exact deployed revision and waits until the live `episodes.json` matches that revision before evaluating the site.
+- It runs after the repository `Site QA` workflow succeeds, with an optional manual dispatch for recovery or audit; this trigger is stable even though the GitHub-managed Pages workflow is dynamic.
+- It checks out the exact revision that passed QA, waits until the live `episodes.json` matches that revision, then retries the full live comparison while a Pages deployment is still converging.
 - It compares the live bytes of all registered episode pages, covers, analytical graphics, catalogue/discovery pages, registries, sitemap and shared runtime assets with the checked-out publication.
 - It enforces the Passport-only contract: no `pdf` registry field, no source-PDF link/control, no Raw text action, and the canonical Passport labels must remain deployed.
 - It uses `contents: read`, writes only to the GitHub Actions job summary and never commits verification reports or status files to `main`.

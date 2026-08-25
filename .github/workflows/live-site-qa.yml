@@ -2,7 +2,7 @@ name: Live Site QA
 
 on:
   workflow_run:
-    workflows: ["pages build and deployment"]
+    workflows: ["Site QA"]
     branches: [main]
     types: [completed]
   workflow_dispatch:

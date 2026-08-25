@@ -256,6 +256,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--cache-key", default="")
     parser.add_argument("--attempts", type=int, default=24)
     parser.add_argument("--delay", type=float, default=5.0)
+    parser.add_argument("--verify-attempts", type=int, default=6)
+    parser.add_argument("--verify-delay", type=float, default=10.0)
     parser.add_argument("--timeout", type=float, default=30.0)
     parser.add_argument("--workers", type=int, default=8)
     return parser.parse_args()
@@ -288,14 +290,21 @@ def main() -> int:
         return 1
 
     paths = expected_paths(episodes)
-    downloaded, fetch_errors = fetch_all(
-        base_url,
-        paths,
-        args.cache_key,
-        args.timeout,
-        max(1, args.workers),
-    )
-    errors = fetch_errors + validate(episodes, downloaded, paths)
+    errors: list[str] = []
+    for attempt in range(1, max(1, args.verify_attempts) + 1):
+        downloaded, fetch_errors = fetch_all(
+            base_url,
+            paths,
+            args.cache_key,
+            args.timeout,
+            max(1, args.workers),
+        )
+        errors = fetch_errors + validate(episodes, downloaded, paths)
+        if not errors:
+            break
+        if attempt < max(1, args.verify_attempts):
+            time.sleep(args.verify_delay)
+
     if errors:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
