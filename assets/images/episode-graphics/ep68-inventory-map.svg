@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Jars of the Danaids inventory map</title>
+<desc id="desc">Seven emitting flows feed one reconstructed operating year: managed water supply, water treatment, terracotta hydriae, stone basin, timber staging, repair electricity and road freight.</desc>
+<rect width="1200" height="820" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="776" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#071019">
+  <text x="70" y="82" font-size="22" font-weight="700" letter-spacing="4">EP68 // INVENTORY MAP</text>
+  <text x="70" y="128" font-size="42" font-weight="800">SEVEN FLOWS ENTER THE YEAR</text>
+  <text x="70" y="162" font-size="18" fill="#4d5b53">One reconstructed operating year · 50 hydriae · 3,650 m³ managed water</text>
+</g>
+<g stroke="#0b6b47" stroke-width="3" fill="none">
+  <path d="M330 248 H492"/><path d="M330 362 H492"/><path d="M330 476 H492"/>
+  <path d="M870 248 H708"/><path d="M870 362 H708"/><path d="M870 476 H708"/>
+  <path d="M600 642 V570"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="492" y="216" width="216" height="354" rx="36" fill="#071019"/>
+  <text x="600" y="267" text-anchor="middle" fill="#d8b34f" font-size="17" font-weight="700">DANAIDS</text>
+  <text x="600" y="318" text-anchor="middle" fill="#fff" font-size="44" font-weight="800">1 YEAR</text>
+  <path d="M548 382 C548 344 652 344 652 382 L668 492 C672 524 648 545 600 545 C552 545 528 524 532 492 Z" fill="#9a5a32" stroke="#d8b34f" stroke-width="3"/>
+  <path d="M548 404 C514 392 510 446 536 454 M652 404 C686 392 690 446 664 454" fill="none" stroke="#d8b34f" stroke-width="5"/>
+  <circle cx="557" cy="503" r="5" fill="#071019"/><circle cx="579" cy="511" r="5" fill="#071019"/><circle cx="621" cy="511" r="5" fill="#071019"/><circle cx="643" cy="503" r="5" fill="#071019"/>
+  <text x="600" y="594" text-anchor="middle" fill="#0b6b47" font-size="17" font-weight="700">80% JAR LOSS</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#071019">
+  <g><rect x="70" y="197" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="229" fill="#0b6b47" font-weight="700">S1 · WATER SUPPLY</text><text x="92" y="260" font-weight="700">Managed water</text><text x="92" y="285">3,650 m³</text></g>
+  <g><rect x="70" y="311" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="343" fill="#0b6b47" font-weight="700">S2 · TREATMENT</text><text x="92" y="374" font-weight="700">Water discharge</text><text x="92" y="399">3,650 m³</text></g>
+  <g><rect x="70" y="425" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="457" fill="#0b6b47" font-weight="700">S3 · VESSELS</text><text x="92" y="488" font-weight="700">Terracotta hydriae</text><text x="92" y="513">0.053 t annualized</text></g>
+  <g><rect x="870" y="197" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="229" fill="#0b6b47" font-weight="700">S4 · BASIN</text><text x="892" y="260" font-weight="700">Stone</text><text x="892" y="285">0.120 t</text></g>
+  <g><rect x="870" y="311" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="343" fill="#0b6b47" font-weight="700">S5 · STAGING</text><text x="892" y="374" font-weight="700">Timber</text><text x="892" y="399">0.027 t</text></g>
+  <g><rect x="870" y="425" width="260" height="102" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="457" fill="#0b6b47" font-weight="700">S7 · LOGISTICS</text><text x="892" y="488" font-weight="700">Road freight</text><text x="892" y="513">16 t·km</text></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="350" y="642" width="500" height="106" rx="14" fill="#071019"/>
+  <text x="376" y="680" fill="#d8b34f" font-size="17" font-weight="700">S6 · REPAIR ENERGY</text>
+  <text x="376" y="718" fill="#fff" font-size="27" font-weight="800">60 kWh electricity</text>
+  <text x="824" y="718" text-anchor="end" fill="#8fd0a9" font-size="17">annual operating flow</text>
+</g>
+</svg>

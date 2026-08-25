@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Jars of the Danaids technical plate</title>
+<desc id="desc">Frozen vessel reconstruction showing an ovoid three-handled hydria, 0.54 metre assumed height, 3.2 kilogram dry mass, 50-vessel set, three-year life and the 80 percent jar-loss relationship between 3,650 cubic metres per year of managed water and a 730 cubic metre target attempt.</desc>
+<rect width="1200" height="820" fill="#071019"/>
+<rect x="24" y="24" width="1152" height="772" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="82" fill="#d8b34f" font-size="22" font-weight="700" letter-spacing="4">EP68 // TECHNICAL PLATE</text>
+  <text x="70" y="128" fill="#f5f0e6" font-size="42" font-weight="800">THE VESSEL IS THE MACHINE</text>
+</g>
+<g stroke="#6d5c36" stroke-width="1" opacity="0.65" fill="none">
+  <circle cx="610" cy="445" r="272"/><circle cx="610" cy="445" r="205"/>
+  <line x1="300" y1="445" x2="930" y2="445"/><line x1="610" y1="175" x2="610" y2="715"/>
+</g>
+<g transform="translate(410 196)">
+  <path d="M139 90 C139 58 141 38 154 22 H246 C259 38 261 58 261 90 C261 134 307 170 321 259 C335 350 290 425 200 425 C110 425 65 350 79 259 C93 170 139 134 139 90 Z" fill="#9a5a32" stroke="#d8b34f" stroke-width="5"/>
+  <ellipse cx="200" cy="22" rx="55" ry="14" fill="#654126" stroke="#d8b34f" stroke-width="4"/>
+  <path d="M147 85 C105 64 94 138 132 156 M253 85 C295 64 306 138 268 156" fill="none" stroke="#d8b34f" stroke-width="9"/>
+  <path d="M171 19 C120 -35 103 84 143 113" fill="none" stroke="#d8b34f" stroke-width="10"/>
+  <g fill="#071019" stroke="#8fd0a9" stroke-width="2"><circle cx="126" cy="337" r="7"/><circle cx="157" cy="352" r="7"/><circle cx="200" cy="358" r="7"/><circle cx="243" cy="352" r="7"/><circle cx="274" cy="337" r="7"/></g>
+  <g stroke="#6de7ff" stroke-width="4" fill="none"><path d="M126 346 V403"/><path d="M157 361 V419"/><path d="M200 367 V430"/><path d="M243 361 V419"/><path d="M274 346 V403"/></g>
+</g>
+<g stroke="#6fbc91" stroke-width="3" fill="none">
+  <line x1="360" y1="218" x2="360" y2="621"/><line x1="345" y1="218" x2="375" y2="218"/><line x1="345" y1="621" x2="375" y2="621"/>
+  <line x1="420" y1="670" x2="800" y2="670"/><line x1="420" y1="655" x2="420" y2="685"/><line x1="800" y1="655" x2="800" y2="685"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700">
+  <text x="326" y="428" text-anchor="middle" transform="rotate(-90 326 428)" fill="#8fd0a9" font-size="20">0.54 m ASSUMED HEIGHT</text>
+  <text x="610" y="702" text-anchor="middle" fill="#8fd0a9" font-size="20">OVOID CERAMIC HYDRIA · THREE HANDLES</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="190" width="235" height="354" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="226" fill="#d8b34f" font-size="17" font-weight="700">FROZEN SET</text>
+  <text x="94" y="270" fill="#9fa9a3" font-size="14">DRY MASS</text><text x="94" y="299" fill="#fff" font-size="24" font-weight="700">3.2 kg each</text>
+  <text x="94" y="348" fill="#9fa9a3" font-size="14">SET SIZE</text><text x="94" y="377" fill="#fff" font-size="24" font-weight="700">50 vessels</text>
+  <text x="94" y="426" fill="#9fa9a3" font-size="14">LIFETIME</text><text x="94" y="455" fill="#fff" font-size="24" font-weight="700">3 years</text>
+  <text x="94" y="504" fill="#9fa9a3" font-size="14">MATERIAL PROXY</text><text x="94" y="533" fill="#fff" font-size="20" font-weight="700">Fired clay / bricks</text>
+  <rect x="870" y="190" width="260" height="354" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="894" y="226" fill="#d8b34f" font-size="17" font-weight="700">LEAKAGE LOGIC</text>
+  <text x="894" y="273" fill="#9fa9a3" font-size="14">MANAGED THROUGHPUT</text><text x="894" y="304" fill="#fff" font-size="24" font-weight="700">3,650 m³/y</text>
+  <path d="M894 340 H1088" stroke="#6fbc91" stroke-width="5"/><polygon points="1088,340 1070,330 1070,350" fill="#6fbc91"/>
+  <text x="894" y="385" fill="#9fa9a3" font-size="14">JAR LOSS</text><text x="894" y="416" fill="#6de7ff" font-size="30" font-weight="800">80%</text>
+  <path d="M894 449 H1088" stroke="#d8b34f" stroke-width="5"/><polygon points="1088,449 1070,439 1070,459" fill="#d8b34f"/>
+  <text x="894" y="494" fill="#9fa9a3" font-size="14">TARGET ATTEMPT</text><text x="894" y="525" fill="#fff" font-size="24" font-weight="700">730 m³/y</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="724" width="1060" height="48" rx="10" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="755" fill="#f5f0e6" font-size="18">SPRING → JAR → BASIN → DRAIN</text>
+  <text x="1106" y="755" text-anchor="end" fill="#8fd0a9" font-size="18">NO INVISIBLE RECYCLING CREDITED</text>
+</g>
+</svg>

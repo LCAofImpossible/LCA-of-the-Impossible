@@ -2,6 +2,64 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 68,
+      "slug": "jars-of-the-danaids",
+      "title": "The Jars of the Danaids",
+      "url": "episodes/jars-of-the-danaids.html",
+      "cover": "assets/images/episodes/ep68-jars-of-the-danaids-cover.png",
+      "categoryLabel": "Myth & Legend",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Operation-driven",
+      "lcaCharacteristics": [
+        "operation-driven",
+        "repetition-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "1.36 t CO₂e/year",
+      "hotspot": "Managed water supply and treatment contribute 96.9% of the approved baseline; the annualized hydriae contribute 0.9%.",
+      "featuredDescription": "One reconstructed operating year of the Danaids’ punishment: 1.36 t CO₂e, with managed water supply and treatment contributing 96.9% of the approved baseline.",
+      "functionalUnit": "One reconstructed operating year of the Danaids’ punishment.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines one reconstructed operating year for 50 Danaids using 50 perforated hydriae. Museum hydria evidence anchors the ovoid form; the 0.54 m height, 3.2 kg dry mass, three-year vessel life, 3,650 m³/y managed-water flow, 730 m³/y target attempt, 80% jar loss, 0.120 t stone basin, 0.027 t timber staging, 60 kWh repair electricity and 16 t·km freight are declared reconstruction inputs. Fired clay is modelled with the 2026 UK Government bricks proxy; the remaining emitting flows use the episode’s declared 2026 UK Government factors.",
+        "uncertainty": "Leakage rate and water-source model are the published sensitivity levers. Changing only jar leakage from 65% to 90% moves the result from 0.798 to 2.687 t CO₂e/year. Changing only the water-source model moves it from 0.043 t CO₂e/year for a zero-emission mythic spring to 2.349 t CO₂e/year for the desalinated-water proxy."
+      },
+      "keywords": [
+        "Jars of the Danaids",
+        "Danaids",
+        "Danaïdes",
+        "hydria",
+        "perforated jars",
+        "bottomless cistern",
+        "managed water",
+        "water supply",
+        "water treatment",
+        "jar leakage",
+        "terracotta",
+        "fired clay",
+        "bricks proxy",
+        "stone basin",
+        "timber staging",
+        "repair electricity",
+        "road freight",
+        "DEFRA 2026",
+        "UK Government 2026",
+        "operation-driven",
+        "repetition-sensitive",
+        "water-source sensitivity"
+      ],
+      "related": [
+        43,
+        67,
+        51
+      ]
+    },
+    {
       "number": 67,
       "slug": "augean-stables",
       "title": "The Augean Stables",
