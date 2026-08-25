@@ -1,0 +1,42 @@
+name: Live Site QA
+
+on:
+  workflow_run:
+    workflows: ["pages build and deployment"]
+    branches: [main]
+    types: [completed]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-site-qa-main
+  cancel-in-progress: true
+
+jobs:
+  verify-live:
+    name: Verify deployed static archive
+    if: >-
+      github.event_name == 'workflow_dispatch' ||
+      github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Checkout deployed revision
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.workflow_run.head_sha || github.sha }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Verify live GitHub Pages state
+        shell: bash
+        env:
+          LIVE_QA_CACHE_KEY: ${{ github.event.workflow_run.head_sha || github.sha }}
+        run: |
+          set -o pipefail
+          python scripts/live_site_qa.py --cache-key "$LIVE_QA_CACHE_KEY" | tee -a "$GITHUB_STEP_SUMMARY"
