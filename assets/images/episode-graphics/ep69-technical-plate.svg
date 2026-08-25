@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Valhalla technical plate</title>
+<desc id="desc">Frozen circular-hall reconstruction showing 540 gates, 800 warriors per gate, 520 metre clear gate width, 308,880 metre perimeter, 98.3 kilometre equivalent diameter, 7.41 million square metre floor area, 9.64 million square metre sloped roof area and 2.08 million tonnes material mass.</desc>
+<rect width="1200" height="820" fill="#071019"/>
+<rect x="24" y="24" width="1152" height="772" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="82" fill="#d8b34f" font-size="22" font-weight="700" letter-spacing="4">EP69 // TECHNICAL PLATE</text>
+  <text x="70" y="128" fill="#f5f0e6" font-size="42" font-weight="800">A HALL SCALED BY GATES</text>
+</g>
+<g transform="translate(600 440)" fill="none">
+  <circle r="252" stroke="#6d5c36" stroke-width="2"/>
+  <circle r="210" stroke="#a58b47" stroke-width="3"/>
+  <circle r="154" stroke="#6d5c36" stroke-width="2" stroke-dasharray="8 10"/>
+  <circle r="96" stroke="#6de7ff" stroke-width="3"/>
+  <path d="M-252 0 H252 M0 -252 V252" stroke="#6d5c36" stroke-width="1"/>
+  <path d="M-178 -178 L178 178 M178 -178 L-178 178" stroke="#6d5c36" stroke-width="1"/>
+  <circle r="230" stroke="#8fd0a9" stroke-width="13" stroke-dasharray="3 7" opacity="0.65"/>
+  <path d="M-210 0 H210" stroke="#6de7ff" stroke-width="4"/>
+  <path d="M-210 -12 V12 M210 -12 V12" stroke="#6de7ff" stroke-width="4"/>
+  <path d="M-70 104 V38 Q0 -40 70 38 V104 Z" fill="#0d1b27" stroke="#d8b34f" stroke-width="4"/>
+  <path d="M-42 104 V52 Q0 6 42 52 V104" stroke="#d8b34f" stroke-width="3"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700">
+  <text x="600" y="188" text-anchor="middle" fill="#8fd0a9" font-size="18">540 GATE MODULES AROUND ONE CIRCULAR PERIMETER</text>
+  <text x="600" y="726" text-anchor="middle" fill="#6de7ff" font-size="20">98.3 km EQUIVALENT DIAMETER</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="188" width="256" height="444" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="226" fill="#d8b34f" font-size="17" font-weight="700">FROZEN GEOMETRY</text>
+  <text x="94" y="273" fill="#9fa9a3" font-size="14">PERIMETER</text><text x="94" y="304" fill="#fff" font-size="24" font-weight="700">308,880 m</text>
+  <text x="94" y="351" fill="#9fa9a3" font-size="14">ROOFED FLOOR</text><text x="94" y="382" fill="#fff" font-size="24" font-weight="700">7.41 million m²</text>
+  <text x="94" y="429" fill="#9fa9a3" font-size="14">SLOPED ROOF</text><text x="94" y="460" fill="#fff" font-size="24" font-weight="700">9.64 million m²</text>
+  <text x="94" y="507" fill="#9fa9a3" font-size="14">MATERIAL MASS</text><text x="94" y="538" fill="#fff" font-size="24" font-weight="700">2.08 million t</text>
+  <text x="94" y="585" fill="#9fa9a3" font-size="14">GEOMETRY PROXY</text><text x="94" y="614" fill="#8fd0a9" font-size="18" font-weight="700">Circular hall</text>
+  <rect x="874" y="188" width="256" height="444" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="898" y="226" fill="#d8b34f" font-size="17" font-weight="700">SCALING RULE</text>
+  <text x="898" y="273" fill="#9fa9a3" font-size="14">CAPACITY</text><text x="898" y="304" fill="#fff" font-size="24" font-weight="700">800 per gate</text>
+  <text x="898" y="351" fill="#9fa9a3" font-size="14">WARRIOR PITCH</text><text x="898" y="382" fill="#fff" font-size="24" font-weight="700">0.65 m</text>
+  <path d="M898 420 H1106" stroke="#6fbc91" stroke-width="5"/><polygon points="1106,420 1088,410 1088,430" fill="#6fbc91"/>
+  <text x="898" y="468" fill="#9fa9a3" font-size="14">CLEAR GATE WIDTH</text><text x="898" y="504" fill="#6de7ff" font-size="34" font-weight="800">520 m</text>
+  <text x="898" y="552" fill="#9fa9a3" font-size="14">FIRST MUSTER</text><text x="898" y="583" fill="#fff" font-size="22" font-weight="700">432,000 warriors</text>
+  <text x="898" y="614" fill="#8fd0a9" font-size="16">before structural margins</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="744" width="1060" height="36" rx="8" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="768" fill="#f5f0e6" font-size="17">800 × 0.65 m = 520 m CLEAR SPAN</text>
+  <text x="1106" y="768" text-anchor="end" fill="#8fd0a9" font-size="17">MYTHIC COUNT → REGIONAL INFRASTRUCTURE</text>
+</g>
+</svg>

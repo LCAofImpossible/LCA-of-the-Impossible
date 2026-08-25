@@ -1,0 +1,33 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">Valhalla hotspot breakdown</title>
+<desc id="desc">Wood and timber products contribute 74.3 percent, iron and steel 13.5 percent, material freight 8.7 percent, construction electricity 2.7 percent, stone aggregate 0.5 percent and the commissioning feast 0.3 percent of the approved baseline.</desc>
+<rect width="1200" height="700" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="656" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="84" fill="#0b6b47" font-size="20" font-weight="700" letter-spacing="4">EP69 // HOTSPOT BREAKDOWN</text>
+  <text x="70" y="134" fill="#071019" font-size="42" font-weight="800">THE TIMBER BODY CONTROLS THE RESULT</text>
+  <text x="70" y="172" fill="#4d5b53" font-size="18">Approved baseline · 607.8 kt CO₂e per first-muster-ready structural shell</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="72" y="220" width="1056" height="94" rx="10" fill="#d9ddd8"/>
+  <rect x="72" y="220" width="785" height="94" rx="10" fill="#0b6b47"/>
+  <rect x="857" y="220" width="143" height="94" fill="#9d7a3e"/>
+  <rect x="1000" y="220" width="92" height="94" fill="#4f8c79"/>
+  <rect x="1092" y="220" width="29" height="94" fill="#6d9eaa"/>
+  <rect x="1121" y="220" width="7" height="94" rx="3" fill="#b9b6a8"/>
+  <text x="100" y="277" fill="#fff" font-size="29" font-weight="800">74.3% WOOD &amp; TIMBER</text>
+  <rect x="72" y="344" width="1056" height="64" rx="10" fill="#071019"/>
+  <text x="96" y="385" fill="#d8b34f" font-size="19" font-weight="700">STRUCTURAL MATERIALS</text>
+  <text x="365" y="385" fill="#fff" font-size="22" font-weight="800">87.8%</text>
+  <text x="455" y="385" fill="#d9ddd8" font-size="18">wood and timber + iron and steel</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#071019">
+  <g transform="translate(72 452)"><circle cx="12" cy="12" r="12" fill="#0b6b47"/><text x="42" y="19" font-weight="700">Wood and timber products</text><text x="470" y="19" text-anchor="end" font-weight="700">74.3%</text></g>
+  <g transform="translate(72 504)"><circle cx="12" cy="12" r="12" fill="#9d7a3e"/><text x="42" y="19" font-weight="700">Iron and steel artefacts</text><text x="470" y="19" text-anchor="end" font-weight="700">13.5%</text></g>
+  <g transform="translate(72 556)"><circle cx="12" cy="12" r="12" fill="#4f8c79"/><text x="42" y="19" font-weight="700">Material freight</text><text x="470" y="19" text-anchor="end" font-weight="700">8.7%</text></g>
+  <g transform="translate(620 452)"><circle cx="12" cy="12" r="12" fill="#6d9eaa"/><text x="42" y="19" font-weight="700">Construction electricity</text><text x="470" y="19" text-anchor="end" font-weight="700">2.7%</text></g>
+  <g transform="translate(620 504)"><circle cx="12" cy="12" r="12" fill="#b9b6a8"/><text x="42" y="19" font-weight="700">Stone aggregate foundation</text><text x="470" y="19" text-anchor="end" font-weight="700">0.5%</text></g>
+  <g transform="translate(620 556)"><circle cx="12" cy="12" r="12" fill="#d8b34f"/><text x="42" y="19" font-weight="700">Commissioning feast</text><text x="470" y="19" text-anchor="end" font-weight="700">0.3%</text></g>
+</g>
+<text x="72" y="640" fill="#4d5b53" font-family="Arial,Helvetica,sans-serif" font-size="17">The feast is visible but not decisive: gate-driven timber scale remains the hotspot.</text>
+</svg>

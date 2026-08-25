@@ -2,6 +2,65 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 69,
+      "slug": "valhalla",
+      "title": "Valhalla",
+      "url": "episodes/valhalla.html",
+      "cover": "assets/images/episodes/ep69-valhalla-cover.png",
+      "categoryLabel": "Mythic Structure",
+      "categories": [
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "607.8 kt CO₂e",
+      "hotspot": "Wood and timber products contribute 74.3% of the approved baseline; iron and steel contribute 13.5%, and material freight 8.7%.",
+      "featuredDescription": "One reconstructed Valhalla structural shell sized for the first muster of 432,000 einherjar: 607.8 kt CO₂e, with wood and timber products contributing 74.3% of the approved baseline.",
+      "functionalUnit": "One reconstructed Valhalla structural shell sized to stage 432,000 einherjar through 540 gates for the first muster.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode defines the first muster of 432,000 einherjar through 540 gates, with 800 armed warriors passing abreast through each gate. A 0.65 m warrior pitch sets a 520 m clear gate width; the declared circular-hall proxy then gives a 308,880 m perimeter, 98.3 km equivalent diameter, 7.41 million m² roofed floor area, 9.64 million m² sloped roof area and 2.08 million t material mass. The inventory includes the timber shell, steel artefacts, stone base, construction electricity, material freight and one commissioning feast, using the episode’s declared 2026 UK Government factors and proxies.",
+        "uncertainty": "Warrior pitch and steel proxy choice are the published sensitivity levers. Changing only warrior pitch from 0.55 m to 0.75 m moves the result from 517.2 to 698.3 kt CO₂e around the 607.8 kt baseline. Changing only the steel proxy from 1,822 to 3,822 kg CO₂e/t moves the result from 577.9 to 635.3 kt CO₂e, without displacing timber as the hotspot."
+      },
+      "keywords": [
+        "Valhalla",
+        "Odin",
+        "einherjar",
+        "first muster",
+        "540 gates",
+        "800 warriors per gate",
+        "432000 warriors",
+        "circular timber hall",
+        "shield roof",
+        "spear wall",
+        "mail-covered benches",
+        "wood and timber products",
+        "iron and steel artefacts",
+        "stone aggregate foundation",
+        "commissioning feast",
+        "construction electricity",
+        "material freight",
+        "DEFRA 2026",
+        "UK Government 2026",
+        "materials-driven",
+        "warrior pitch sensitivity",
+        "steel proxy sensitivity"
+      ],
+      "related": [
+        36,
+        61,
+        64
+      ]
+    },
+    {
       "number": 68,
       "slug": "jars-of-the-danaids",
       "title": "The Jars of the Danaids",
