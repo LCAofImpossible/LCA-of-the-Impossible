@@ -252,9 +252,9 @@ def main() -> int:
                         if season_label not in page_upper and season_title not in page_upper:
                             fail(f"Episode #{number}: page does not display registered season identity")
                         season_number = episode.get("seasonNumber")
-                        for other_number, marker in ((1, "SEASON I"), (2, "SEASON II")):
+                        for other_number, marker in ((1, "SEASON I —"), (2, "SEASON II —")):
                             if season_number != other_number and marker in page_upper:
-                                fail(f"Episode #{number}: conflicting {marker} identity found in page")
+                                fail(f"Episode #{number}: conflicting {marker.rstrip(' —')} identity found in page")
 
             if "pdf" in episode:
                 fail(f"Episode #{number}: public registry must not expose a pdf field")
