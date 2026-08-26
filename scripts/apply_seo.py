@@ -297,13 +297,12 @@ def main() -> int:
         canonical = BASE_URL + episode["url"]
         image = BASE_URL + episode["cover"]
         season_label = str(episode.get("seasonLabel") or "").strip()
-        season_title = str(episode.get("seasonTitle") or "").strip()
         description = episode["featuredDescription"]
         if season_label:
             description = f"{season_label}. {description}"
         social_title = (
-            f"{episode['title']} — Episode #{episode['number']} | Season I: {season_title}"
-            if season_label and episode.get("seasonNumber") == 1
+            f"{episode['title']} — Episode #{episode['number']} | {season_label}"
+            if season_label
             else f"{episode['title']} — Episode #{episode['number']} | LCA of the Impossible"
         )
         website_ld = {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL}

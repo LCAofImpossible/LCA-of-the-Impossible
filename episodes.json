@@ -56,6 +56,25 @@
         59,
         45,
         58
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "gold-driven-cases"
       ]
     },
     {
@@ -115,6 +134,27 @@
         36,
         61,
         64
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "legendary-engineering"
       ]
     },
     {
@@ -173,6 +213,26 @@
         43,
         67,
         51
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "systems-that-never-stop"
       ]
     },
     {
@@ -232,6 +292,27 @@
         43,
         40,
         64
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "legendary-engineering"
       ]
     },
     {
@@ -288,6 +369,25 @@
         62,
         60,
         64
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "systems-that-never-stop"
       ]
     },
     {
@@ -342,6 +442,25 @@
         63,
         41,
         37
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -396,6 +515,26 @@
         49,
         35,
         43
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "systems-that-never-stop"
       ]
     },
     {
@@ -447,6 +586,25 @@
         41,
         37,
         47
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -500,6 +658,25 @@
         32,
         54,
         56
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "mythic-biology"
       ]
     },
     {
@@ -552,6 +729,27 @@
         36,
         39,
         53
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "legendary-engineering"
       ]
     },
     {
@@ -603,6 +801,26 @@
         56,
         58,
         44
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "mythic-biology",
+        "impossible-flight"
       ]
     },
     {
@@ -650,6 +868,27 @@
         45,
         55,
         52
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "gilded-hotspots",
+        "gold-driven-cases"
       ]
     },
     {
@@ -699,6 +938,27 @@
         45,
         55,
         51
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "gold-driven-cases",
+        "alchemy-and-transmutation"
       ]
     },
     {
@@ -746,6 +1006,26 @@
         52,
         44,
         54
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "impossible-wearables"
       ]
     },
     {
@@ -792,6 +1072,25 @@
         42,
         41,
         40
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology"
+      ],
+      "collectionSlugs": [
+        "mythic-threat-control",
+        "mythic-biology"
       ]
     },
     {
@@ -838,6 +1137,27 @@
         58,
         45,
         52
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "mythic-threat-control",
+        "gilded-hotspots",
+        "gold-driven-cases"
       ]
     },
     {
@@ -886,6 +1206,25 @@
         35,
         42,
         41
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "impossible-flight"
       ]
     },
     {
@@ -936,6 +1275,27 @@
         42,
         36,
         40
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "legendary-engineering"
       ]
     },
     {
@@ -983,6 +1343,29 @@
         44,
         55,
         37
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "impossible-wearables",
+        "gilded-hotspots",
+        "gold-driven-cases",
+        "impossible-flight"
       ]
     },
     {
@@ -1033,6 +1416,26 @@
         58,
         36,
         56
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "mythic-threat-control"
       ]
     },
     {
@@ -1085,6 +1488,26 @@
         41,
         42,
         51
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -1135,6 +1558,25 @@
         35,
         38,
         36
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -1184,6 +1626,25 @@
         53,
         36,
         49
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures"
       ]
     },
     {
@@ -1233,6 +1694,26 @@
         55,
         52,
         41
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "gold-driven-cases"
       ]
     },
     {
@@ -1283,6 +1764,24 @@
         49,
         42,
         35
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "science-fiction"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -1330,6 +1829,26 @@
         58,
         55,
         52
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "gold-driven-cases",
+        "alchemy-and-transmutation"
       ]
     },
     {
@@ -1380,7 +1899,28 @@
         38,
         37
       ],
-      "coverAspectPolicy": "approved-native"
+      "coverAspectPolicy": "approved-native",
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "impossible-wearables",
+        "impossible-flight"
+      ]
     },
     {
       "number": 43,
@@ -1422,6 +1962,24 @@
         42,
         40,
         41
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology"
+      ],
+      "collectionSlugs": [
+        "systems-that-never-stop"
       ]
     },
     {
@@ -1464,6 +2022,26 @@
         40,
         41,
         43
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "systems-that-never-stop",
+        "mythic-threat-control"
       ]
     },
     {
@@ -1510,6 +2088,25 @@
         42,
         43,
         36
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "systems-that-never-stop"
       ]
     },
     {
@@ -1557,6 +2154,26 @@
         36,
         42,
         35
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "mythic-threat-control"
       ]
     },
     {
@@ -1605,6 +2222,25 @@
         40,
         36,
         42
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures"
       ]
     },
     {
@@ -1652,6 +2288,25 @@
         40,
         36,
         35
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -1701,6 +2356,25 @@
         41,
         38,
         35
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
       ]
     },
     {
@@ -1744,6 +2418,25 @@
         40,
         35,
         42
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "structures"
+      ],
+      "collectionSlugs": [
+        "impossible-structures"
       ]
     },
     {
@@ -1785,6 +2478,24 @@
         36,
         40,
         42
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "systems-that-never-stop"
       ]
     },
     {
@@ -1832,6 +2543,27 @@
         55,
         52,
         45
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering",
+        "gilded-hotspots",
+        "gold-driven-cases"
       ]
     },
     {
@@ -1882,7 +2614,26 @@
         41,
         44
       ],
-      "coverAspectPolicy": "approved-native"
+      "coverAspectPolicy": "approved-native",
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ]
     },
     {
       "number": 32,
@@ -1938,6 +2689,26 @@
         54,
         52,
         44
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        70
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "legends"
+      ],
+      "collectionSlugs": [
+        "mythic-biology",
+        "impossible-flight"
       ]
     },
     {

@@ -169,7 +169,7 @@
         <img src="${escapeHtml(assetUrl(latest.cover))}" alt="${escapeHtml(latest.title)} cover" width="1200" height="1500">
       </div>
       <div class="featured-copy">
-        <p class="eyebrow">LATEST CASE · EPISODE #${latest.number}</p>
+        <p class="eyebrow">LATEST CASE · EPISODE #${latest.number}${seasonLabel(latest) ? ` · ${escapeHtml(seasonLabel(latest))}` : ''}</p>
         <h3>${escapeHtml(latest.title)}</h3>
         <p>${escapeHtml(latest.featuredDescription)}</p>
         <div class="badge-row">
@@ -238,7 +238,12 @@
     const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics || []))];
     const seasons = [...new Map(episodes
       .filter((episode) => episode.seasonId && episode.seasonLabel)
-      .map((episode) => [episode.seasonId, episode.seasonLabel])).entries()];
+      .map((episode) => [episode.seasonId, {
+        id: episode.seasonId,
+        label: episode.seasonLabel,
+        number: Number.isFinite(episode.seasonNumber) ? episode.seasonNumber : Number.MAX_SAFE_INTEGER
+      }])).values()]
+      .sort((a, b) => a.number - b.number || a.label.localeCompare(b.label));
     let activeCategory = 'all';
     let activeLca = 'all';
     let activeSeason = 'all';
@@ -253,7 +258,7 @@
 
     categoryFilters.innerHTML = makeButtons(categories, 'category', 'All subjects');
     lcaFilters.innerHTML = makeButtons(lcaCharacteristics, 'lca', 'All LCA lenses');
-    seasonFilters.innerHTML = `<button class="filter-button active" type="button" data-group="season" data-filter="all" aria-pressed="true">All seasons</button>${seasons.map(([id, label]) => `<button class="filter-button" type="button" data-group="season" data-filter="${escapeHtml(id)}" aria-pressed="false">${escapeHtml(label)}</button>`).join('')}`;
+    seasonFilters.innerHTML = `<button class="filter-button active" type="button" data-group="season" data-filter="all" aria-pressed="true">All seasons</button>${seasons.map(({ id, label }) => `<button class="filter-button" type="button" data-group="season" data-filter="${escapeHtml(id)}" aria-pressed="false">${escapeHtml(label)}</button>`).join('')}`;
 
     const searchableText = (episode) => [
       episode.title,
@@ -419,6 +424,11 @@
     const header = document.querySelector('.site-header');
     const main = document.querySelector('main');
     if (!header || !main) return;
+
+    const heroEyebrow = main.querySelector('.episode-title .eyebrow');
+    if (heroEyebrow && current.seasonLabel) {
+      heroEyebrow.textContent = `EPISODE #${current.number} · ${String(current.seasonLabel).toUpperCase()}`;
+    }
 
     const subject = main.querySelector(':scope > .split');
     const evidence = document.getElementById('evidence');

@@ -138,6 +138,7 @@ def main() -> int:
         if episode.get("seasonLabel"):
             text = read(ROOT / episode["url"])
             label = f"Episode #{episode['number']} season metadata"
+            season_label = episode["seasonLabel"]
             for kind, key in [
                 ("property", "og:title"),
                 ("property", "og:description"),
@@ -145,17 +146,15 @@ def main() -> int:
                 ("name", "twitter:description"),
             ]:
                 value = html.unescape(meta_content(text, kind, key, label) or "")
-                if "Season I" not in value or "Machines & Worlds" not in value:
-                    fail(f"{label}: {key} does not identify Season I — Machines & Worlds")
-            json_matches = re.findall(r'<script\s+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, flags=re.I | re.S)
+                if season_label not in value:
+                    fail(f"{label}: {key} does not identify {season_label}")
+            json_matches = re.findall(r'<script\s+type=["\\']application/ld\+json["\\'][^>]*>(.*?)</script>', text, flags=re.I | re.S)
             if len(json_matches) == 1:
                 structured = json.loads(json_matches[0])
-                if structured.get("isPartOf", {}).get("name") != episode["seasonLabel"]:
+                if structured.get("isPartOf", {}).get("name") != season_label:
                     fail(f"{label}: JSON-LD isPartOf does not match registered season")
                 if structured.get("datePublished") != episode.get("datePublished"):
                     fail(f"{label}: JSON-LD publication date does not match registry")
-            if "SEASON II" in text.upper() or "MYTHS & LEGENDS" in text.upper():
-                fail(f"{label}: conflicting season identity found in published HTML")
 
     template = read(ROOT / "episodes/template.html")
     if template:

@@ -246,10 +246,15 @@ def main() -> int:
                     season_page = ROOT / url
                     if season_page.is_file():
                         page_text = season_page.read_text(encoding="utf-8")
-                        if episode.get("seasonLabel", "").upper() not in page_text.upper():
-                            fail(f"Episode #{number}: page does not display registered season label")
-                        if "SEASON II" in page_text.upper() or "MYTHS & LEGENDS" in page_text.upper():
-                            fail(f"Episode #{number}: conflicting season identity found in page")
+                        page_upper = page_text.upper()
+                        season_label = episode.get("seasonLabel", "").upper()
+                        season_title = episode.get("seasonTitle", "").upper()
+                        if season_label not in page_upper and season_title not in page_upper:
+                            fail(f"Episode #{number}: page does not display registered season identity")
+                        season_number = episode.get("seasonNumber")
+                        for other_number, marker in ((1, "SEASON I"), (2, "SEASON II")):
+                            if season_number != other_number and marker in page_upper:
+                                fail(f"Episode #{number}: conflicting {marker} identity found in page")
 
             if "pdf" in episode:
                 fail(f"Episode #{number}: public registry must not expose a pdf field")

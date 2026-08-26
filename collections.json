@@ -18,6 +18,59 @@
       "episodes": [
         1
       ]
+    },
+    {
+      "id": "season-ii",
+      "number": 2,
+      "label": "Season II — Myths & Legends",
+      "title": "Myths & Legends",
+      "descriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "episodeRange": [
+        30,
+        70
+      ],
+      "episodes": [
+        70,
+        69,
+        68,
+        67,
+        66,
+        65,
+        64,
+        63,
+        62,
+        61,
+        60,
+        59,
+        58,
+        57,
+        56,
+        55,
+        54,
+        53,
+        52,
+        51,
+        50,
+        49,
+        48,
+        47,
+        46,
+        45,
+        44,
+        43,
+        42,
+        41,
+        40,
+        39,
+        38,
+        37,
+        36,
+        35,
+        34,
+        33,
+        32
+      ]
     }
   ],
   "collections": [

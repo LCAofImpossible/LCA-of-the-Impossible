@@ -63,6 +63,13 @@ def main() -> int:
             for number in numbers:
                 if number not in published:
                     fail(f"Season {season_id!r}: episode #{number} is not published")
+            registered_numbers = {
+                episode.get("number")
+                for episode in episodes
+                if episode.get("seasonId") == season_id
+            }
+            if set(numbers) != registered_numbers:
+                fail(f"Season {season_id!r}: listed episodes do not match registry season metadata")
     collections = collection_data.get("collections")
     if not isinstance(collections, list) or not collections:
         fail("collections.json: collections must be a non-empty array")

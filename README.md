@@ -1216,6 +1216,13 @@ For every episode that belongs to a defined season, `episodes.json` must registe
 - Controlled range: Episodes `#1–29`.
 - Scope: science-fiction and speculative vehicles, robots, machines, devices, infrastructure, habitats, artificial systems and megastructures.
 
+### Season II — Myths & Legends
+
+- Descriptor: `Myths and legends, reconstructed through life-cycle logic.`
+- Recurring editorial descriptor: `Impossible stories, reconstructed as traceable systems.`
+- Controlled range: Episodes `#30–70`.
+- Scope: myths, legends, folklore, legendary beings, places, objects, rites, punishments and supernatural systems reconstructed through physical analogues and explicit life-cycle assumptions.
+
 Season identity must remain visible in the episode hero, registry-driven homepage route, Archive filter and search, Collections season route, Compare, Impact Map, Related Cases when the classified episode appears, Epic Model Passport and static SEO/social/JSON-LD metadata.
 
 Existing episodes without explicit season metadata remain unchanged. Adding a new classified episode must not infer, overwrite or backfill season fields on other registry records.
