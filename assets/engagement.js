@@ -70,7 +70,7 @@
   const textCaseCard = (episode) => `
     <a class="engagement-case-card" href="${escapeHtml(pageUrl(episode.url))}">
       <div>
-        <p>${escapeHtml(episode.categoryLabel)} · ${escapeHtml(episode.lcaLabel)}</p>
+        <p>${episode.seasonLabel ? `${escapeHtml(episode.seasonLabel)} · ` : ''}${escapeHtml(episode.categoryLabel)} · ${escapeHtml(episode.lcaLabel)}</p>
         <h3>#${episode.number} · ${escapeHtml(episode.title)}</h3>
       </div>
       <div class="engagement-case-meta">
@@ -79,6 +79,31 @@
       </div>
       <b>Open case →</b>
     </a>`;
+
+  const renderSeasons = (episodes, seasons) => {
+    if (body.dataset.page !== 'collections') return;
+    const list = document.getElementById('season-list');
+    if (!list) return;
+    list.innerHTML = seasons.map((season) => {
+      const cases = (season.episodes || [])
+        .map((number) => episodes.find((episode) => episode.number === number))
+        .filter(Boolean);
+      const range = Array.isArray(season.episodeRange) && season.episodeRange.length === 2
+        ? `Episodes #${season.episodeRange[0]}–${season.episodeRange[1]}`
+        : 'Controlled episode range';
+      return `<section class="collection-block season-collection" id="${escapeHtml(season.id)}">
+        <div class="collection-heading">
+          <div>
+            <p class="eyebrow">${escapeHtml(range)}</p>
+            <h2>${escapeHtml(season.label)}</h2>
+            <p class="section-note">${escapeHtml(season.descriptor)}</p>
+            <p class="section-note">${escapeHtml(season.editorialDescriptor)}</p>
+          </div>
+        </div>
+        <div class="engagement-case-grid">${cases.map(textCaseCard).join('')}</div>
+      </section>`;
+    }).join('');
+  };
 
   const renderHomeEngagement = (episodes, collections, linkedinUrl) => {
     if (body.dataset.page !== 'home' || document.getElementById('discover-paths')) return;
@@ -154,6 +179,7 @@
 
   const episodeShareCaption = (episode, url) => [
     `LCA of the Impossible #${episode.number} — ${episode.title}`,
+    episode.seasonLabel || '',
     '',
     episode.featuredDescription,
     '',
@@ -162,7 +188,7 @@
     url,
     '',
     '#LCA #LifeCycleAssessment #Sustainability'
-  ].join('\n');
+  ].filter((line, index, lines) => line || lines[index - 1] !== '').join('\n');
 
   const placeEpisodeShare = (episode, linkedinUrl) => {
     if (!isEpisode || document.getElementById('share-case')) return;
@@ -227,7 +253,7 @@
       }
       try {
         await navigator.share({
-          title: `${episode.title} — LCA of the Impossible #${episode.number}`,
+          title: `${episode.title} — LCA of the Impossible #${episode.number}${episode.seasonLabel ? ` | ${episode.seasonLabel}` : ''}`,
           text: episode.featuredDescription,
           url
         });
@@ -259,12 +285,14 @@
     .then(([episodeData, collectionData]) => {
       const episodes = [...episodeData.episodes].sort((a, b) => b.number - a.number);
       const collections = Array.isArray(collectionData.collections) ? collectionData.collections : [];
+      const seasons = Array.isArray(collectionData.seasons) ? collectionData.seasons : [];
       const linkedinUrl = typeof collectionData.socialLinks?.linkedin === 'string'
         ? collectionData.socialLinks.linkedin.trim()
         : '';
 
       renderHomeEngagement(episodes, collections, linkedinUrl);
       augmentArchive(linkedinUrl);
+      renderSeasons(episodes, seasons);
       renderCollections(episodes, collections);
       addCollectionNavLink();
 

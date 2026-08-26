@@ -56,6 +56,7 @@ def check_phase6_js() -> None:
         "MODEL PASSPORT", "View epic passport", "Print / Save as PDF",
         "passport-sheet", "passport-overlay", "window.print", "episode.cover",
         "functionalUnit", "result", "lcaLabel", "hotspot", "categoryLabel",
+        "seasonLabel",
         "proxyDependence", "assumptionSensitivity", "basis", "uncertainty",
         "MutationObserver",
     ]

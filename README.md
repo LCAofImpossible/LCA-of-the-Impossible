@@ -1188,3 +1188,44 @@ The canonical automated live check is `.github/workflows/live-site-qa.yml`, back
 Do not create episode-specific live workflows. Historical one-off probes become stale, race the Pages deployment and obscure the status of the canonical QA. Episode-specific immutable asset expectations belong in the registry/local QA inputs; live verification must remain generic and cover every published episode.
 
 Automated live byte checks complement, but do not replace, the final visual inspection of the latest cover, responsive layout and interactive Epic Passport.
+
+---
+
+## 33. Season identity and taxonomy — mandatory
+
+Season metadata is explicit episode metadata. It must never be inferred from episode number alone and must never silently reclassify already published cases.
+
+For every episode that belongs to a defined season, `episodes.json` must register:
+
+- `seasonId` — stable lowercase identifier;
+- `seasonNumber` — numerical season identifier;
+- `seasonLabel` and `seasonTitle` — canonical public naming;
+- `seasonDescriptor` — the season-level editorial description;
+- `editorialDescriptor` — the recurring season line;
+- `seasonEpisodeRange` — the approved inclusive episode-number interval;
+- `taxonomy` — meaningful discovery tokens;
+- `collectionSlugs` — only collections with a real editorial relationship;
+- `coverSha256` — immutable checksum when an explicitly approved exact cover must be protected.
+
+`collections.json` maintains season routes separately from thematic collections. A season may contain a single published episode while it is being republished; thematic collections still require at least two published cases.
+
+### Season I — Machines & Worlds
+
+- Descriptor: `Science fiction, reconstructed through life-cycle logic.`
+- Recurring editorial descriptor: `Impossible technologies, reconstructed as traceable systems.`
+- Controlled range: Episodes `#1–29`.
+- Scope: science-fiction and speculative vehicles, robots, machines, devices, infrastructure, habitats, artificial systems and megastructures.
+
+Season identity must remain visible in the episode hero, registry-driven homepage route, Archive filter and search, Collections season route, Compare, Impact Map, Related Cases when the classified episode appears, Epic Model Passport and static SEO/social/JSON-LD metadata.
+
+Existing episodes without explicit season metadata remain unchanged. Adding a new classified episode must not infer, overwrite or backfill season fields on other registry records.
+
+### Season identity QA
+
+- [ ] The episode number is inside the registered inclusive range.
+- [ ] Season fields are complete, mutually consistent and searchable.
+- [ ] Homepage and Collections expose the registered season route.
+- [ ] Archive filtering, Compare, Impact Map and Epic Passport display the registered season label.
+- [ ] Open Graph, Twitter/X and JSON-LD identify the registered season and exact approved cover.
+- [ ] The approved cover checksum matches the repository asset.
+- [ ] No unrelated existing episode is reclassified.

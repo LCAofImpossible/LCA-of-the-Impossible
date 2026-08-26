@@ -1939,6 +1939,86 @@
         52,
         44
       ]
+    },
+    {
+      "number": 1,
+      "slug": "ufo-robot",
+      "title": "UFO Robot",
+      "url": "episodes/ufo-robot.html",
+      "cover": "assets/images/episodes/ep01-ufo-robot-cover.png",
+      "coverSha256": "4b26f3226b380b5f6aec8eea63404b82e438b51039250f76bf803f97a0c132c3",
+      "seasonId": "season-i",
+      "seasonNumber": 1,
+      "seasonLabel": "Season I — Machines & Worlds",
+      "seasonTitle": "Machines & Worlds",
+      "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        1,
+        29
+      ],
+      "categoryLabel": "Science Fiction Machine",
+      "categories": [
+        "science-fiction",
+        "machines"
+      ],
+      "lcaLabel": "Operation-driven",
+      "lcaCharacteristics": [
+        "operation-driven",
+        "energy-driven",
+        "mobility-driven",
+        "proxy-sensitive"
+      ],
+      "result": "73.8 t CO₂e",
+      "hotspot": "Mission electricity contributes 65.651 t CO₂e, or 88.9% of the approved baseline.",
+      "datePublished": "2026-08-26",
+      "dateModified": "2026-08-26",
+      "featuredDescription": "One 600 km round-trip planetary-defence interception by a 480 t robot–Spazer system: 73.8 t CO₂e per mission, with electricity contributing 88.9% and supply choice moving the result from 12.1 to 183.2 t CO₂e.",
+      "functionalUnit": "Complete one 600 km round-trip planetary-defence interception by one pilot, including launch, transit, interception readiness, return and post-mission reset, from an Earth-equivalent underground base.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode documents a 30 m, 280 t robot and reconstructs a 34 m, 200 t Spazer, producing a 480 t reference system. Craft, base, mission energy, maintenance, consumables and end-of-life are translated into explicit physical flows; impossible propulsion is represented through a declared service-energy proxy rather than a fictional emission factor.",
+        "uncertainty": "Lift-to-drag choice moves the result from 43.1 to 136.7 t CO₂e, while electricity supply moves it from 12.1 to 183.2 t CO₂e. These two declared sensitivities dominate interpretation of the mission-energy system."
+      },
+      "taxonomy": [
+        "season-i",
+        "machines-worlds",
+        "science-fiction",
+        "giant-robot",
+        "planetary-defence",
+        "airborne-system",
+        "energy-system"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ],
+      "keywords": [
+        "UFO Robot",
+        "Season I",
+        "Machines & Worlds",
+        "science fiction",
+        "giant robot",
+        "Spazer",
+        "planetary defence",
+        "underground base",
+        "600 km mission",
+        "480 t combined mass",
+        "flight energy",
+        "lift-to-drag",
+        "electricity sensitivity",
+        "UK Government 2026",
+        "DEFRA 2026",
+        "operation-driven",
+        "energy-driven",
+        "mobility-driven"
+      ],
+      "related": [
+        42,
+        46,
+        41
+      ]
     }
   ]
 }

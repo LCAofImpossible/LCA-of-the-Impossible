@@ -296,8 +296,33 @@ def main() -> int:
     for episode in episodes:
         canonical = BASE_URL + episode["url"]
         image = BASE_URL + episode["cover"]
+        season_label = str(episode.get("seasonLabel") or "").strip()
+        season_title = str(episode.get("seasonTitle") or "").strip()
         description = episode["featuredDescription"]
-        social_title = f"{episode['title']} — Episode #{episode['number']} | LCA of the Impossible"
+        if season_label:
+            description = f"{season_label}. {description}"
+        social_title = (
+            f"{episode['title']} — Episode #{episode['number']} | Season I: {season_title}"
+            if season_label and episode.get("seasonNumber") == 1
+            else f"{episode['title']} — Episode #{episode['number']} | LCA of the Impossible"
+        )
+        website_ld = {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL}
+        series_ld = (
+            {
+                "@type": "CreativeWorkSeries",
+                "name": season_label,
+                "description": episode.get("seasonDescriptor", ""),
+                "isPartOf": website_ld,
+            }
+            if season_label
+            else website_ld
+        )
+        about = [
+            {"@type": "Thing", "name": episode["lcaLabel"]},
+            {"@type": "Thing", "name": episode["categoryLabel"]},
+        ]
+        if season_label:
+            about.insert(0, {"@type": "Thing", "name": season_label})
         episode_ld = {
             "@context": "https://schema.org",
             "@type": "Article",
@@ -307,26 +332,31 @@ def main() -> int:
             "mainEntityOfPage": canonical,
             "image": image,
             "identifier": f"Episode #{episode['number']}",
-            "articleSection": episode["categoryLabel"],
+            "articleSection": season_label or episode["categoryLabel"],
             "keywords": episode.get("keywords", []),
             "inLanguage": "en",
             "author": {"@type": "Organization", "name": "LCA of the Impossible"},
-            "isPartOf": {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL},
-            "about": [
-                {"@type": "Thing", "name": episode["lcaLabel"]},
-                {"@type": "Thing", "name": episode["categoryLabel"]}
-            ]
+            "isPartOf": series_ld,
+            "about": about,
         }
+        if episode.get("datePublished"):
+            episode_ld["datePublished"] = episode["datePublished"]
+        if episode.get("dateModified"):
+            episode_ld["dateModified"] = episode["dateModified"]
         block = seo_block(
             title=social_title,
             description=description,
             canonical=canonical,
             image=image,
-            image_alt=f"{episode['title']} — LCA of the Impossible Episode #{episode['number']} cover",
+            image_alt=(
+                f"{episode['title']} — {season_label} Episode #{episode['number']} cover"
+                if season_label
+                else f"{episode['title']} — LCA of the Impossible Episode #{episode['number']} cover"
+            ),
             page_type="article",
             prefix="../",
             json_ld=episode_ld,
-            article_section=episode["categoryLabel"],
+            article_section=season_label or episode["categoryLabel"],
         )
         apply_page(ROOT / episode["url"], block, args.check, changed)
 

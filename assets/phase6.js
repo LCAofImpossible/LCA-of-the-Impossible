@@ -26,6 +26,8 @@
 
   const canonicalEpisode = (episode) => `https://lcaofimpossible.github.io/LCA-of-the-Impossible/${episode.url}`;
 
+  const seasonLabel = (episode, fallback = '') => safeText(episode?.seasonLabel, fallback);
+
   const passportSheetMarkup = (episode) => {
     const evidence = episode.evidence || {};
     return `
@@ -36,6 +38,7 @@
             <p class="passport-kicker">LCA OF THE IMPOSSIBLE // MODEL PASSPORT</p>
             <div class="passport-record-line">
               <span>EP-${String(episode.number).padStart(3, '0')}</span>
+              ${episode.seasonLabel ? `<span>${escapeHtml(episode.seasonLabel)}</span>` : ''}
               <span>${escapeHtml(safeText(episode.categoryLabel, 'Unclassified'))}</span>
               <span>${escapeHtml(safeText(episode.lcaLabel, 'LCA case'))}</span>
             </div>
@@ -177,6 +180,7 @@
       <div class="passport-preview-frame">
         <div class="passport-preview-copy">
           <p class="passport-kicker">EP-${String(episode.number).padStart(3, '0')} // TECHNICAL RECORD</p>
+          ${episode.seasonLabel ? `<p class="eyebrow">${escapeHtml(episode.seasonLabel)}</p>` : ''}
           <p class="eyebrow">MODEL PASSPORT</p>
           <h2>${escapeHtml(episode.title)}</h2>
           <p class="passport-preview-line">${escapeHtml(safeText(episode.functionalUnit))}</p>
@@ -225,6 +229,7 @@
         details.innerHTML = `
           <summary>Technical context</summary>
           <div class="impact-detail-grid">
+            ${episode.seasonLabel ? `<div><span>Season</span><p>${escapeHtml(seasonLabel(episode))}</p></div>` : ''}
             <div><span>Functional unit</span><p>${escapeHtml(safeText(episode.functionalUnit))}</p></div>
             <div><span>Main hotspot</span><p>${escapeHtml(safeText(episode.hotspot))}</p></div>
             <div><span>Evidence profile</span><p>${escapeHtml(safeText(evidence.confidence, 'Not rated'))} evidence · ${escapeHtml(safeText(evidence.proxyDependence, 'Not rated'))} proxy dependence · ${escapeHtml(safeText(evidence.assumptionSensitivity, 'Not rated'))} assumption sensitivity</p></div>

@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import html
 import re
 import sys
 import xml.etree.ElementTree as ET
@@ -134,6 +135,27 @@ def main() -> int:
         canonical = BASE_URL + episode["url"]
         image = BASE_URL + episode["cover"]
         check_public_page(ROOT / episode["url"], canonical, image, "article", "Article")
+        if episode.get("seasonLabel"):
+            text = read(ROOT / episode["url"])
+            label = f"Episode #{episode['number']} season metadata"
+            for kind, key in [
+                ("property", "og:title"),
+                ("property", "og:description"),
+                ("name", "twitter:title"),
+                ("name", "twitter:description"),
+            ]:
+                value = html.unescape(meta_content(text, kind, key, label) or "")
+                if "Season I" not in value or "Machines & Worlds" not in value:
+                    fail(f"{label}: {key} does not identify Season I — Machines & Worlds")
+            json_matches = re.findall(r'<script\s+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', text, flags=re.I | re.S)
+            if len(json_matches) == 1:
+                structured = json.loads(json_matches[0])
+                if structured.get("isPartOf", {}).get("name") != episode["seasonLabel"]:
+                    fail(f"{label}: JSON-LD isPartOf does not match registered season")
+                if structured.get("datePublished") != episode.get("datePublished"):
+                    fail(f"{label}: JSON-LD publication date does not match registry")
+            if "SEASON II" in text.upper() or "MYTHS & LEGENDS" in text.upper():
+                fail(f"{label}: conflicting season identity found in published HTML")
 
     template = read(ROOT / "episodes/template.html")
     if template:

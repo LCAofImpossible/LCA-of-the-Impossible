@@ -3,6 +3,23 @@
   "socialLinks": {
     "linkedin": null
   },
+  "seasons": [
+    {
+      "id": "season-i",
+      "number": 1,
+      "label": "Season I — Machines & Worlds",
+      "title": "Machines & Worlds",
+      "descriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "episodeRange": [
+        1,
+        29
+      ],
+      "episodes": [
+        1
+      ]
+    }
+  ],
   "collections": [
     {
       "slug": "impossible-structures",
@@ -50,7 +67,8 @@
         38,
         37,
         34,
-        33
+        33,
+        1
       ]
     },
     {

@@ -37,6 +37,32 @@ def main() -> int:
     published = {episode.get("number") for episode in episodes if isinstance(episode, dict)}
 
     collection_data = json.loads(collection_path.read_text(encoding="utf-8")) if collection_path.is_file() else {}
+    seasons = collection_data.get("seasons", [])
+    if not isinstance(seasons, list):
+        fail("collections.json: seasons must be an array")
+        seasons = []
+    seen_seasons: set[str] = set()
+    for season in seasons:
+        season_id = season.get("id")
+        if not isinstance(season_id, str) or not SLUG.fullmatch(season_id):
+            fail(f"Invalid season id: {season_id!r}")
+        elif season_id in seen_seasons:
+            fail(f"Duplicate season id: {season_id}")
+        else:
+            seen_seasons.add(season_id)
+        for field in ("label", "title", "descriptor", "editorialDescriptor"):
+            if not isinstance(season.get(field), str) or len(season.get(field, "").strip()) < 5:
+                fail(f"Season {season_id!r}: missing meaningful {field}")
+        episode_range = season.get("episodeRange")
+        if not isinstance(episode_range, list) or len(episode_range) != 2 or not all(isinstance(value, int) for value in episode_range):
+            fail(f"Season {season_id!r}: episodeRange must contain two integers")
+        numbers = season.get("episodes")
+        if not isinstance(numbers, list) or not numbers:
+            fail(f"Season {season_id!r}: at least one published episode is required")
+        else:
+            for number in numbers:
+                if number not in published:
+                    fail(f"Season {season_id!r}: episode #{number} is not published")
     collections = collection_data.get("collections")
     if not isinstance(collections, list) or not collections:
         fail("collections.json: collections must be a non-empty array")
@@ -67,6 +93,15 @@ def main() -> int:
             if number not in published:
                 fail(f"Collection {slug!r}: episode #{number} is not published")
 
+    by_slug = {item.get("slug"): item for item in collections if isinstance(item, dict)}
+    for episode in episodes:
+        for slug in episode.get("collectionSlugs", []):
+            collection = by_slug.get(slug)
+            if not collection:
+                fail(f"Episode #{episode.get('number')}: collectionSlugs references unknown collection {slug!r}")
+            elif episode.get("number") not in collection.get("episodes", []):
+                fail(f"Episode #{episode.get('number')}: collection membership is not reciprocal for {slug!r}")
+
     linkedin = collection_data.get("socialLinks", {}).get("linkedin")
     if linkedin is not None:
         if not isinstance(linkedin, str) or not linkedin.startswith("https://www.linkedin.com/"):
@@ -76,6 +111,7 @@ def main() -> int:
         text = engagement_js.read_text(encoding="utf-8")
         for token in (
             "renderCollections",
+            "renderSeasons",
             "randomCase",
             "data-copy-linkedin-caption",
             "data-random-collection",
@@ -95,6 +131,8 @@ def main() -> int:
             fail("collections.html: Phase 4 SEO block missing")
         if 'data-page="collections"' not in text:
             fail("collections.html: data-page=collections missing")
+        if 'id="season-list"' not in text:
+            fail("collections.html: season route container missing")
         if re.search(r'<img\b[^>]*assets/images/episodes/', text, flags=re.I):
             fail("collections.html must remain text-only and must not render episode cover images")
 
@@ -129,7 +167,7 @@ def main() -> int:
         print(f"\nPhase 4 QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
 
-    print(f"Phase 4 QA passed for {len(collections)} collections and {len(episodes)} episodes.")
+    print(f"Phase 4 QA passed for {len(seasons)} seasons, {len(collections)} collections and {len(episodes)} episodes.")
     return 0
 
 

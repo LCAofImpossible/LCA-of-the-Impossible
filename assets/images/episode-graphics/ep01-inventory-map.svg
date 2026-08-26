@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">UFO Robot life-cycle inventory map</title>
+  <desc id="desc">Craft, underground base, operation, maintenance, consumables and end-of-life assigned to one 600 kilometre round-trip mission.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".35"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP01 / INVENTORY MAP</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">One mission. One allocated system.</text>
+  <text x="70" y="170" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="18">Functional unit: one completed 600 km round-trip planetary-defence interception</text>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(70 232)">
+      <rect width="245" height="132" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="22" y="34" fill="#6de7ff" font-size="15" letter-spacing="2">CRAFT · 1/900</text>
+      <text x="22" y="68" fill="#eef7fb" font-size="25" font-weight="700">480 t materials</text>
+      <text x="22" y="96" fill="#9ab0bc" font-size="16">960 MWh · 240,000 t·km</text>
+    </g>
+    <g transform="translate(70 400)">
+      <rect width="245" height="132" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="22" y="34" fill="#6de7ff" font-size="15" letter-spacing="2">BASE · 1/900</text>
+      <text x="22" y="68" fill="#eef7fb" font-size="25" font-weight="700">7,000 t structure</text>
+      <text x="22" y="96" fill="#9ab0bc" font-size="16">500 MWh · 350,000 t·km</text>
+    </g>
+    <g transform="translate(70 568)">
+      <rect width="245" height="108" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="22" y="34" fill="#6de7ff" font-size="15" letter-spacing="2">MAINTENANCE · 1/900</text>
+      <text x="22" y="69" fill="#eef7fb" font-size="22" font-weight="700">72 t replacements</text>
+      <text x="22" y="94" fill="#9ab0bc" font-size="15">144 MWh · 36,000 t·km</text>
+    </g>
+
+    <path d="M335 298H480" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M335 466H430Q460 466 460 430V386Q460 350 490 350" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M335 622H430Q460 622 460 586V520Q460 486 490 486" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(500 252)">
+      <circle cx="180" cy="145" r="142" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+      <circle cx="180" cy="145" r="116" fill="none" stroke="#234557" stroke-width="2" stroke-dasharray="7 9"/>
+      <path d="M72 150Q180 52 288 150Q180 238 72 150Z" fill="#0d1b27" stroke="#6de7ff" stroke-width="3"/>
+      <path d="M132 142V78H228V142M150 78L180 48L210 78" fill="#112232" stroke="#eef7fb" stroke-width="3"/>
+      <path d="M155 110H205M180 78V186" stroke="#d0a563" stroke-width="3"/>
+      <text x="180" y="330" text-anchor="middle" fill="#eef7fb" font-size="27" font-weight="700">ONE COMPLETED MISSION</text>
+      <text x="180" y="360" text-anchor="middle" fill="#6de7ff" font-size="18">600 km round trip · 1 pilot</text>
+      <text x="180" y="390" text-anchor="middle" fill="#9ab0bc" font-size="16">launch · transit · ready · return · reset</text>
+    </g>
+
+    <path d="M870 332H1000" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M870 450H970Q995 450 995 486V522" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(930 232)">
+      <rect width="205" height="148" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="34" fill="#6de7ff" font-size="15" letter-spacing="2">OPERATION · PER FU</text>
+      <text x="20" y="76" fill="#eef7fb" font-size="27" font-weight="700">356.101 MWh</text>
+      <text x="20" y="106" fill="#9ab0bc" font-size="16">flight + mission support</text>
+      <text x="20" y="132" fill="#d0a563" font-size="15">88.9% OF BASELINE</text>
+    </g>
+    <g transform="translate(930 548)">
+      <rect width="205" height="128" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="34" fill="#6de7ff" font-size="14" letter-spacing="1.5">CONSUMABLES + EOL</text>
+      <text x="20" y="68" fill="#eef7fb" font-size="21" font-weight="700">0.2 t oil / mission</text>
+      <text x="20" y="95" fill="#9ab0bc" font-size="15">480 t craft treatment</text>
+      <text x="20" y="117" fill="#9ab0bc" font-size="14">EOL allocated 1/900</text>
+    </g>
+  </g>
+  <text x="600" y="708" text-anchor="middle" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="15">INTERSTELLAR DELIVERY · WEAPONS DISCHARGE · BATTLE DAMAGE · AVOIDED DESTRUCTION · BASE DEMOLITION — EXCLUDED</text>
+</svg>

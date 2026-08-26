@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">UFO Robot technical reconstruction plate</title>
+  <desc id="desc">A technical schematic of the 30 metre robot, 34 metre Spazer, combined 480 tonne mass and 356.1 megawatt-hour baseline mission energy.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0b1622"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#234557" stroke-width="1" opacity=".34"/></pattern>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP01 / TECHNICAL PLATE</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">Thirty metres becomes 480 tonnes.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="17">Original 1975 Toei TV-era configuration · physical service reconstruction</text>
+
+  <g transform="translate(88 204)" fill="none" stroke-linejoin="round">
+    <path d="M170 48L205 76L192 105H148L135 76Z" fill="#112232" stroke="#eef7fb" stroke-width="3"/>
+    <path d="M135 76L90 54M205 76L250 54" stroke="#d0a563" stroke-width="9"/>
+    <path d="M120 112L220 112L246 250L205 333H135L94 250Z" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <path d="M120 128L170 190L220 128" fill="#7d2e2e" stroke="#d0a563" stroke-width="3"/>
+    <path d="M95 138L45 190L70 360L110 350L105 220" fill="#112232" stroke="#eef7fb" stroke-width="4"/>
+    <path d="M245 138L295 190L270 360L230 350L235 220" fill="#112232" stroke="#eef7fb" stroke-width="4"/>
+    <path d="M140 333L115 520H165L176 350M200 333L225 520H175L164 350" fill="#112232" stroke="#eef7fb" stroke-width="4"/>
+    <path d="M38 542H302" stroke="#d0a563" stroke-width="2"/>
+    <path d="M330 48V520M320 48H340M320 520H340" stroke="#6de7ff" stroke-width="2"/>
+    <text x="352" y="276" fill="#6de7ff" stroke="none" font-family="Arial, sans-serif" font-size="22">30 m</text>
+    <text x="352" y="303" fill="#9ab0bc" stroke="none" font-family="Arial, sans-serif" font-size="15">ROBOT HEIGHT</text>
+  </g>
+
+  <g transform="translate(520 230)" fill="none">
+    <ellipse cx="270" cy="230" rx="245" ry="88" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <ellipse cx="270" cy="230" rx="172" ry="54" fill="#112232" stroke="#6de7ff" stroke-width="3"/>
+    <path d="M98 230Q270 96 442 230Q270 335 98 230Z" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+    <path d="M25 360H515M25 350V370M515 350V370" stroke="#6de7ff" stroke-width="2"/>
+    <text x="270" y="405" text-anchor="middle" fill="#6de7ff" font-family="Arial, sans-serif" font-size="22">34 m SPAZER DIAMETER</text>
+    <path d="M270 74V332M190 90H350" stroke="#234557" stroke-width="2" stroke-dasharray="7 8"/>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(70 620)">
+      <rect width="310" height="80" rx="10" fill="#112232" stroke="#234557"/>
+      <text x="20" y="28" fill="#9ab0bc" font-size="14" letter-spacing="2">REFERENCE MASS</text>
+      <text x="20" y="61" fill="#eef7fb" font-size="27" font-weight="700">280 t + 200 t = 480 t</text>
+    </g>
+    <g transform="translate(410 620)">
+      <rect width="330" height="80" rx="10" fill="#112232" stroke="#234557"/>
+      <text x="20" y="28" fill="#9ab0bc" font-size="14" letter-spacing="2">ENERGY PROXY</text>
+      <text x="20" y="61" fill="#eef7fb" font-size="27" font-weight="700">E = m × g × d ÷ (L/D)</text>
+    </g>
+    <g transform="translate(770 620)">
+      <rect width="360" height="80" rx="10" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="28" fill="#6de7ff" font-size="14" letter-spacing="2">BASELINE MISSION</text>
+      <text x="20" y="61" fill="#eef7fb" font-size="27" font-weight="700">600 km · L/D 2.30 · 356.1 MWh</text>
+    </g>
+  </g>
+</svg>

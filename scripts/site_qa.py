@@ -2,6 +2,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import re
 import sys
 from html.parser import HTMLParser
@@ -204,18 +205,54 @@ def main() -> int:
             cover = episode.get("cover", "")
             if isinstance(cover, str):
                 check_cover(number, cover, episode.get("coverAspectPolicy"))
+                cover_sha = episode.get("coverSha256")
+                if cover_sha:
+                    cover_path = local_path(cover)
+                    if not isinstance(cover_sha, str) or not re.fullmatch(r"[0-9a-f]{64}", cover_sha):
+                        fail(f"Episode #{number}: coverSha256 must be a lowercase SHA-256 digest")
+                    elif cover_path and cover_path.is_file():
+                        actual_sha = hashlib.sha256(cover_path.read_bytes()).hexdigest()
+                        if actual_sha != cover_sha:
+                            fail(f"Episode #{number}: approved cover checksum mismatch")
             else:
                 fail(f"Episode #{number}: cover must be a string")
 
             if isinstance(url, str):
                 check_episode_page(number, url)
 
-            pdf = episode.get("pdf")
-            if pdf is not None:
-                if not isinstance(pdf, str) or not pdf.startswith("assets/pdf/episodes/") or not pdf.endswith(".pdf"):
-                    fail(f"Episode #{number}: invalid pdf path {pdf!r}")
-                else:
-                    check_exists(f"Episode #{number} PDF", pdf)
+            season_keys = {
+                "seasonId", "seasonNumber", "seasonLabel", "seasonTitle",
+                "seasonDescriptor", "editorialDescriptor", "seasonEpisodeRange",
+                "taxonomy", "collectionSlugs",
+            }
+            if season_keys.intersection(episode):
+                missing_season = sorted(season_keys - episode.keys())
+                if missing_season:
+                    fail(f"Episode #{number}: incomplete season metadata: {', '.join(missing_season)}")
+                season_range = episode.get("seasonEpisodeRange")
+                if not isinstance(season_range, list) or len(season_range) != 2 or not all(isinstance(value, int) for value in season_range):
+                    fail(f"Episode #{number}: seasonEpisodeRange must contain two integers")
+                elif not season_range[0] <= number <= season_range[1]:
+                    fail(f"Episode #{number}: number is outside registered season range {season_range}")
+                if not isinstance(episode.get("seasonId"), str) or not re.fullmatch(r"[a-z0-9]+(?:-[a-z0-9]+)*", episode.get("seasonId", "")):
+                    fail(f"Episode #{number}: invalid seasonId")
+                for key in ("seasonLabel", "seasonTitle", "seasonDescriptor", "editorialDescriptor"):
+                    if not isinstance(episode.get(key), str) or len(episode.get(key, "").strip()) < 5:
+                        fail(f"Episode #{number}: missing meaningful {key}")
+                for key in ("taxonomy", "collectionSlugs"):
+                    if not isinstance(episode.get(key), list):
+                        fail(f"Episode #{number}: {key} must be an array")
+                if isinstance(url, str):
+                    season_page = ROOT / url
+                    if season_page.is_file():
+                        page_text = season_page.read_text(encoding="utf-8")
+                        if episode.get("seasonLabel", "").upper() not in page_text.upper():
+                            fail(f"Episode #{number}: page does not display registered season label")
+                        if "SEASON II" in page_text.upper() or "MYTHS & LEGENDS" in page_text.upper():
+                            fail(f"Episode #{number}: conflicting season identity found in page")
+
+            if "pdf" in episode:
+                fail(f"Episode #{number}: public registry must not expose a pdf field")
 
             related = episode.get("related", [])
             if not isinstance(related, list):

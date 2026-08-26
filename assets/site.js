@@ -47,6 +47,7 @@
     legends: 'Legends',
     structures: 'Structures',
     'science-fiction': 'Science Fiction',
+    machines: 'Machines',
     fantasy: 'Fantasy',
     'operation-driven': 'Operation-driven',
     'materials-driven': 'Materials-driven',
@@ -75,6 +76,8 @@
     return `${rootPrefix}${stringValue}`;
   };
 
+  const seasonLabel = (episode, fallback = '') => String(episode?.seasonLabel || fallback).trim();
+
   const loadCompareSelection = () => {
     try {
       const parsed = JSON.parse(sessionStorage.getItem(compareStorageKey) || '[]');
@@ -99,12 +102,13 @@
     const selected = options.selected instanceof Set ? options.selected.has(episode.number) : false;
     const category = escapeHtml(episode.categoryLabel);
     const lca = escapeHtml(episode.lcaLabel);
+    const season = seasonLabel(episode);
     const coverMarkup = showCover
       ? `<img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} cover" loading="lazy" decoding="async" width="1200" height="1500">`
       : '';
     const copyMarkup = `
         <div class="card-copy">
-          <p>${category} · ${lca}</p>
+          <p>${season ? `<span class="card-season">${escapeHtml(season)}</span><br>` : ''}${category} · ${lca}</p>
           <h3>${escapeHtml(episode.title)}</h3>
           <div class="card-meta">
             <span>Episode #${episode.number}</span>
@@ -181,6 +185,35 @@
       .join('');
   };
 
+  const renderSeasonSpotlight = (episodes) => {
+    const target = document.getElementById('season-i-episodes');
+    if (!target) return;
+    const seasonEpisodes = episodes
+      .filter((episode) => episode.seasonId === 'season-i')
+      .sort((a, b) => b.number - a.number);
+    const episode = seasonEpisodes[0];
+    if (!episode) {
+      target.innerHTML = '<p class="section-note">Season I cases are being prepared.</p>';
+      return;
+    }
+    target.innerHTML = `
+      <div class="featured-cover">
+        <img src="${escapeHtml(assetUrl(episode.cover))}" alt="${escapeHtml(episode.title)} — ${escapeHtml(episode.seasonLabel)} cover" width="1200" height="1500">
+      </div>
+      <div class="featured-copy">
+        <p class="eyebrow">${escapeHtml(episode.seasonLabel)} · EPISODE #${episode.number}</p>
+        <h3>${escapeHtml(episode.title)}</h3>
+        <p>${escapeHtml(episode.seasonDescriptor)}</p>
+        <p>${escapeHtml(episode.featuredDescription)}</p>
+        <div class="badge-row">
+          <span class="badge">${escapeHtml(episode.result)}</span>
+          <span class="badge">${escapeHtml(episode.lcaLabel)}</span>
+          <span class="badge">${escapeHtml(episode.categoryLabel)}</span>
+        </div>
+        <a class="button" href="${escapeHtml(pageUrl(episode.url))}">Enter Season I →</a>
+      </div>`;
+  };
+
   const renderArchive = (episodes) => {
     const grid = document.getElementById('episode-grid');
     const search = document.getElementById('episode-search');
@@ -189,7 +222,8 @@
     const loadMore = document.getElementById('load-more');
     const categoryFilters = document.getElementById('category-filters');
     const lcaFilters = document.getElementById('lca-filters');
-    if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters) return;
+    const seasonFilters = document.getElementById('season-filters');
+    if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters || !seasonFilters) return;
 
     const toolbar = document.querySelector('.archive-toolbar');
     if (toolbar && !document.querySelector('.archive-feature-entrypoints')) {
@@ -202,8 +236,12 @@
 
     const categories = [...new Set(episodes.flatMap((episode) => episode.categories || []))];
     const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics || []))];
+    const seasons = [...new Map(episodes
+      .filter((episode) => episode.seasonId && episode.seasonLabel)
+      .map((episode) => [episode.seasonId, episode.seasonLabel])).entries()];
     let activeCategory = 'all';
     let activeLca = 'all';
+    let activeSeason = 'all';
     let visibleLimit = 9;
     const selected = loadCompareSelection();
 
@@ -215,6 +253,7 @@
 
     categoryFilters.innerHTML = makeButtons(categories, 'category', 'All subjects');
     lcaFilters.innerHTML = makeButtons(lcaCharacteristics, 'lca', 'All LCA lenses');
+    seasonFilters.innerHTML = `<button class="filter-button active" type="button" data-group="season" data-filter="all" aria-pressed="true">All seasons</button>${seasons.map(([id, label]) => `<button class="filter-button" type="button" data-group="season" data-filter="${escapeHtml(id)}" aria-pressed="false">${escapeHtml(label)}</button>`).join('')}`;
 
     const searchableText = (episode) => [
       episode.title,
@@ -227,8 +266,15 @@
       episode.evidence?.uncertainty,
       episode.categoryLabel,
       episode.lcaLabel,
+      episode.seasonId,
+      episode.seasonLabel,
+      episode.seasonTitle,
+      episode.seasonDescriptor,
+      episode.editorialDescriptor,
       ...(episode.categories || []),
       ...(episode.lcaCharacteristics || []),
+      ...(episode.taxonomy || []),
+      ...(episode.collectionSlugs || []),
       ...(episode.keywords || [])
     ].join(' ').toLowerCase();
 
@@ -269,8 +315,9 @@
       const matches = episodes.filter((episode) => {
         const categoryMatch = activeCategory === 'all' || (episode.categories || []).includes(activeCategory);
         const lcaMatch = activeLca === 'all' || (episode.lcaCharacteristics || []).includes(activeLca);
+        const seasonMatch = activeSeason === 'all' || episode.seasonId === activeSeason;
         const textMatch = !query || searchableText(episode).includes(query);
-        return categoryMatch && lcaMatch && textMatch;
+        return categoryMatch && lcaMatch && seasonMatch && textMatch;
       });
 
       grid.innerHTML = matches.slice(0, visibleLimit)
@@ -285,7 +332,7 @@
     const selectFilter = (button) => {
       const group = button.dataset.group;
       const value = button.dataset.filter;
-      const container = group === 'category' ? categoryFilters : lcaFilters;
+      const container = group === 'category' ? categoryFilters : group === 'lca' ? lcaFilters : seasonFilters;
       container.querySelectorAll('.filter-button').forEach((item) => {
         const isSelected = item === button;
         item.classList.toggle('active', isSelected);
@@ -293,11 +340,12 @@
       });
       if (group === 'category') activeCategory = value;
       if (group === 'lca') activeLca = value;
+      if (group === 'season') activeSeason = value;
       visibleLimit = 9;
       applyArchive();
     };
 
-    [categoryFilters, lcaFilters].forEach((container) => {
+    [seasonFilters, categoryFilters, lcaFilters].forEach((container) => {
       container.addEventListener('click', (event) => {
         const button = event.target.closest('.filter-button');
         if (button) selectFilter(button);
@@ -423,7 +471,7 @@
     pager.setAttribute('aria-label', 'Episode navigation');
     pager.innerHTML = `
       ${older ? `<a class="pager-link pager-prev" href="${escapeHtml(pageUrl(older.url))}"><span>← Previous episode</span><strong>#${older.number} · ${escapeHtml(older.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}
-      <a class="pager-archive" href="${rootPrefix}archive.html">Full archive</a>
+      <a class="pager-archive" href="${rootPrefix}archive.html">Full archive${current.seasonLabel ? `<span class="pager-archive-season">${escapeHtml(current.seasonLabel)}</span>` : ''}</a>
       ${newer ? `<a class="pager-link pager-next" href="${escapeHtml(pageUrl(newer.url))}"><span>Next episode →</span><strong>#${newer.number} · ${escapeHtml(newer.title)}</strong></a>` : '<span class="pager-link pager-placeholder"></span>'}`;
     main.appendChild(pager);
   };
@@ -473,6 +521,7 @@
       }
 
       const rows = [
+        ['Season / collection', (episode) => seasonLabel(episode, 'Not registered')],
         ['Functional unit / reporting basis', (episode) => episode.functionalUnit || 'Not registered'],
         ['Headline result', (episode) => episode.result],
         ['Narrative category', (episode) => episode.categoryLabel],
@@ -553,7 +602,7 @@
           const log = Math.log10(episode.resultKg);
           const pos = Math.max(0, Math.min(100, ((log - minLog) / (maxLog - minLog)) * 100));
           return `<article class="impact-row">
-            <div class="impact-row-label"><a href="${escapeHtml(episode.url)}"><strong>#${episode.number} · ${escapeHtml(episode.title)}</strong></a><span>${escapeHtml(episode.lcaLabel)}</span></div>
+            <div class="impact-row-label"><a href="${escapeHtml(episode.url)}"><strong>#${episode.number} · ${escapeHtml(episode.title)}</strong></a><span>${episode.seasonLabel ? `${escapeHtml(episode.seasonLabel)} · ` : ''}${escapeHtml(episode.lcaLabel)}</span></div>
             <div class="impact-track">
               <a class="impact-point" style="--impact-pos:${pos}%" href="${escapeHtml(episode.url)}" aria-label="${escapeHtml(episode.title)}: ${escapeHtml(episode.result)}"><span>${escapeHtml(episode.result)}</span></a>
             </div>
@@ -584,6 +633,7 @@
     .then((data) => {
       const episodes = [...data.episodes].sort((a, b) => b.number - a.number);
       if (body.dataset.page === 'home') renderHome(episodes);
+      if (body.dataset.page === 'home') renderSeasonSpotlight(episodes);
       if (body.dataset.page === 'archive') renderArchive(episodes);
       if (body.dataset.page === 'compare') renderCompare(episodes);
       if (body.dataset.page === 'explore') renderExplore(episodes);

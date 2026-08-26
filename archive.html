@@ -38,7 +38,7 @@
   },
   "mainEntity": {
     "@type": "ItemList",
-    "numberOfItems": 39,
+    "numberOfItems": 40,
     "itemListElement": [
       {
         "@type": "ListItem",
@@ -273,6 +273,12 @@
         "position": 39,
         "name": "Pegasus",
         "url": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pegasus.html"
+      },
+      {
+        "@type": "ListItem",
+        "position": 40,
+        "name": "UFO Robot",
+        "url": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ufo-robot.html"
       }
     ]
   }
@@ -323,6 +329,10 @@
 
       <div class="archive-toolbar archive-toolbar-stacked" aria-label="Episode archive controls">
         <div class="filter-group">
+          <span class="filter-label">Season</span>
+          <div id="season-filters" class="filter-row" aria-label="Filter episodes by season"></div>
+        </div>
+        <div class="filter-group">
           <span class="filter-label">Subject</span>
           <div id="category-filters" class="filter-row" aria-label="Filter episodes by subject category"></div>
         </div>
@@ -332,7 +342,7 @@
         </div>
         <label class="archive-search archive-search-wide">
           <span class="sr-only">Search episodes</span>
-          <input id="episode-search" type="search" placeholder="Search title, episode, result, material, hotspot…" autocomplete="off">
+          <input id="episode-search" type="search" placeholder="Search title, episode, season, result, material, hotspot…" autocomplete="off">
         </label>
       </div>
 

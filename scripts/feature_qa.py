@@ -54,9 +54,13 @@ def main() -> int:
 
     if site_js.is_file():
         text = site_js.read_text(encoding="utf-8")
-        for token in ("renderCompare", "renderExplore", "renderEvidenceProfile", "compareStorageKey"):
+        for token in ("renderCompare", "renderExplore", "renderEvidenceProfile", "compareStorageKey", "season-filters", "seasonLabel", "renderSeasonSpotlight"):
             if token not in text:
                 fail(f"assets/site.js missing Phase 3 function/token: {token}")
+
+    archive = require_file("archive.html")
+    if archive.is_file() and 'id="season-filters"' not in archive.read_text(encoding="utf-8"):
+        fail("archive.html: season filter container missing")
 
     for path, canonical, page_name in (
         (compare, BASE_URL + "compare.html", "compare.html"),
