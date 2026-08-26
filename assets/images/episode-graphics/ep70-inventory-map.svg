@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">El Dorado inventory map</title>
+<desc id="desc">Seven declared inventory flows feed one staged investiture rite at Lake Guatavita: primary gold, a softwood raft, textiles and cords, workshop electricity, site diesel, road freight and washdown water. The model stops at ceremonial launch and assigns no recovery credit to the gold.</desc>
+<rect width="1200" height="820" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="776" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#071019">
+  <text x="70" y="82" font-size="22" font-weight="700" letter-spacing="4">EP70 // INVENTORY MAP</text>
+  <text x="70" y="128" font-size="42" font-weight="800">ONE RITE · SEVEN DECLARED FLOWS</text>
+  <text x="70" y="162" font-size="18" fill="#4d5b53">Material supply to ceremonial launch · 50.5 kg primary gold · no recovery credit</text>
+</g>
+<g stroke="#0b6b47" stroke-width="3" fill="none">
+  <path d="M330 226 H474"/><path d="M330 332 H474"/><path d="M330 438 H474"/><path d="M330 544 H474"/>
+  <path d="M870 250 H726"/><path d="M870 380 H726"/><path d="M870 510 H726"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="474" y="202" width="252" height="382" rx="34" fill="#071019"/>
+  <text x="600" y="250" text-anchor="middle" fill="#d8b34f" font-size="17" font-weight="700">LAKE GUATAVITA</text>
+  <text x="600" y="300" text-anchor="middle" fill="#fff" font-size="34" font-weight="800">STAGED RITE</text>
+  <g transform="translate(508 340)" fill="none">
+    <rect x="0" y="42" width="184" height="112" rx="16" fill="#13241f" stroke="#d8b34f" stroke-width="4"/>
+    <path d="M16 58 H168 M16 78 H168 M16 98 H168 M16 118 H168 M16 138 H168" stroke="#9d7a3e" stroke-width="8" stroke-linecap="round"/>
+    <circle cx="92" cy="76" r="18" fill="#d8b34f" stroke="#f2efe6" stroke-width="3"/>
+    <path d="M92 94 V130 M70 110 H114" stroke="#f2efe6" stroke-width="4"/>
+    <ellipse cx="92" cy="168" rx="88" ry="16" stroke="#6de7ff" stroke-width="2" opacity="0.7"/>
+  </g>
+  <text x="600" y="548" text-anchor="middle" fill="#8fd0a9" font-size="18" font-weight="700">1,287 t CO₂e</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="17" fill="#071019">
+  <g><rect x="70" y="184" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="216" fill="#0b6b47" font-weight="700">01 · PRIMARY GOLD</text><text x="92" y="247" font-weight="700">50.5 kg · unrecovered</text></g>
+  <g><rect x="70" y="290" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="322" fill="#0b6b47" font-weight="700">02 · RAFT BODY</text><text x="92" y="353" font-weight="700">0.8 t softwood</text></g>
+  <g><rect x="70" y="396" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="428" fill="#0b6b47" font-weight="700">03 · DRESSING</text><text x="92" y="459" font-weight="700">0.02 t textiles &amp; cords</text></g>
+  <g><rect x="70" y="502" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="534" fill="#0b6b47" font-weight="700">04 · WORKSHOP</text><text x="92" y="565" font-weight="700">120 kWh electricity</text></g>
+  <g><rect x="870" y="208" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="240" fill="#0b6b47" font-weight="700">05 · SITE SUPPORT</text><text x="892" y="271" font-weight="700">60 L diesel</text></g>
+  <g><rect x="870" y="338" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="370" fill="#0b6b47" font-weight="700">06 · LOGISTICS</text><text x="892" y="401" font-weight="700">168 t·km road freight</text></g>
+  <g><rect x="870" y="468" width="260" height="84" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="500" fill="#0b6b47" font-weight="700">07 · WASHDOWN</text><text x="892" y="531" font-weight="700">2 m³ mains water</text></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="634" width="1060" height="104" rx="14" fill="#071019"/>
+  <text x="96" y="674" fill="#d8b34f" font-size="17" font-weight="700">CRADLE-TO-LAUNCH BOUNDARY</text>
+  <text x="96" y="711" fill="#fff" font-size="22" font-weight="800">SUPPLY → PREPARE → ASSEMBLE → DRESS → LAUNCH</text>
+  <text x="1104" y="711" text-anchor="end" fill="#8fd0a9" font-size="17">post-ritual recovery excluded</text>
+</g>
+</svg>

@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">El Dorado hotspot breakdown</title>
+<desc id="desc">Primary gold contributes 99.93 percent of the approved 1,287 tonne carbon-dioxide-equivalent baseline, while all other modeled flows contribute 0.07 percent combined. The approved result table separately shows timber at 0.02 percent, textiles at 0.03 percent and diesel at 0.01 percent.</desc>
+<rect width="1200" height="700" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="656" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="84" fill="#0b6b47" font-size="20" font-weight="700" letter-spacing="4">EP70 // HOTSPOT BREAKDOWN</text>
+  <text x="70" y="134" fill="#071019" font-size="42" font-weight="800">GOLD CONTROLS THE RITE</text>
+  <text x="70" y="172" fill="#4d5b53" font-size="18">Approved baseline · 1,287 t CO₂e per reconstructed ceremony</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="72" y="220" width="1056" height="104" rx="10" fill="#0b6b47"/>
+  <rect x="1127" y="220" width="1" height="104" fill="#d8b34f"/>
+  <text x="100" y="282" fill="#fff" font-size="31" font-weight="800">99.93% PRIMARY GOLD</text>
+  <text x="1100" y="282" text-anchor="end" fill="#d6efe2" font-size="18">50.5 kg Au</text>
+  <rect x="72" y="354" width="1056" height="72" rx="10" fill="#071019"/>
+  <text x="96" y="399" fill="#d8b34f" font-size="19" font-weight="700">ALL OTHER MODELED FLOWS</text>
+  <text x="1104" y="399" text-anchor="end" fill="#fff" font-size="28" font-weight="800">0.07% COMBINED</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" fill="#071019">
+  <g transform="translate(72 470)"><rect width="322" height="92" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="22" y="34" fill="#0b6b47" font-size="16" font-weight="700">TIMBER</text><text x="22" y="70" font-size="27" font-weight="800">0.02%</text></g>
+  <g transform="translate(439 470)"><rect width="322" height="92" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="22" y="34" fill="#0b6b47" font-size="16" font-weight="700">TEXTILE PROXY</text><text x="22" y="70" font-size="27" font-weight="800">0.03%</text></g>
+  <g transform="translate(806 470)"><rect width="322" height="92" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="22" y="34" fill="#0b6b47" font-size="16" font-weight="700">DIESEL</text><text x="22" y="70" font-size="27" font-weight="800">0.01%</text></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="72" y="608" fill="#4d5b53" font-size="17">Electricity, freight and water remain visible in the inventory; the approved result table does not display separate rounded shares for them.</text>
+  <text x="72" y="642" fill="#0b6b47" font-size="19" font-weight="700">The gold line is the hotspot; logistics cannot change the conclusion at baseline.</text>
+</g>
+</svg>

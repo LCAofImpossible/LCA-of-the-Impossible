@@ -2,6 +2,63 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 70,
+      "slug": "el-dorado",
+      "title": "El Dorado",
+      "url": "episodes/el-dorado.html",
+      "cover": "assets/images/episodes/ep70-el-dorado-cover.png",
+      "categoryLabel": "Mythic Rite",
+      "categories": [
+        "mythology",
+        "legends"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "1,287 t CO₂e",
+      "hotspot": "Primary gold contributes 99.93% of the approved baseline; all other modeled flows contribute 0.07% combined.",
+      "featuredDescription": "One staged investiture rite at Lake Guatavita: 1,287 t CO₂e, with 50.5 kg of primary gold contributing 99.93% of the approved baseline.",
+      "functionalUnit": "One staged investiture rite at Lake Guatavita, modeled from material supply to ceremonial launch, with 50.5 kg of primary gold assigned as unrecovered ceremonial use.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode models one staged investiture rite at Lake Guatavita, anchored to the Muisca raft tradition rather than a literal city of gold. The declared reconstruction uses a 6.0 × 3.0 m, 800 kg softwood raft; 50.5 kg of primary gold dust and offerings; 0.02 t of textiles and cords; 120 kWh workshop electricity; 60 L site diesel; 168 t·km road freight; and 2 m³ washdown water. The boundary stops at ceremonial launch, and the gold is treated as unrecovered use with no recovery, recycling or salvage credit.",
+        "uncertainty": "Gold mass and primary-gold emissions intensity are the published sensitivity levers. Changing only gold mass moves the total from 268 t CO₂e for 10.5 kg to 2,560 t CO₂e for 100.5 kg around the 50.5 kg baseline. Changing only the gold factor moves the total from 132 to 1,608 t CO₂e around the 1,287 t baseline; timber, energy, freight and water remain fixed in those scenarios."
+      },
+      "keywords": [
+        "El Dorado",
+        "Lake Guatavita",
+        "Muisca raft tradition",
+        "investiture rite",
+        "ceremonial launch",
+        "primary gold",
+        "gold dust",
+        "gold offerings",
+        "unrecovered ceremonial use",
+        "softwood raft",
+        "textiles and cords",
+        "workshop electricity",
+        "site diesel",
+        "road freight",
+        "washdown water",
+        "S&P Global 2024",
+        "DEFRA 2026",
+        "materials-driven",
+        "gold mass sensitivity",
+        "gold factor sensitivity",
+        "no recovery credit"
+      ],
+      "related": [
+        59,
+        45,
+        58
+      ]
+    },
+    {
       "number": 69,
       "slug": "valhalla",
       "title": "Valhalla",
