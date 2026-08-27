@@ -13,6 +13,20 @@ SEO_START = "<!-- SEO:START -->"
 SEO_END = "<!-- SEO:END -->"
 README_START = "<!-- SEO-RULES:START -->"
 README_END = "<!-- SEO-RULES:END -->"
+SEASON_PAGES = (
+    {
+        "id": "season-i",
+        "page": "season-i.html",
+        "label": "Season I — Machines & Worlds",
+        "description": "Season I — Machines & Worlds: science-fiction technologies reconstructed as traceable life-cycle systems across Episodes #1–29.",
+    },
+    {
+        "id": "season-ii",
+        "page": "season-ii.html",
+        "label": "Season II — Myths & Legends",
+        "description": "Season II — Myths & Legends: myths, legends and folklore reconstructed as traceable life-cycle systems across Episodes #30–71.",
+    },
+)
 
 
 def write_if_changed(path: Path, content: str, check: bool, changed: list[Path]) -> None:
@@ -118,7 +132,13 @@ def apply_template(check: bool, changed: list[Path]) -> None:
 
 
 def build_sitemap(episodes: list[dict]) -> str:
-    urls = [BASE_URL, BASE_URL + "archive.html", BASE_URL + "method.html"] + [BASE_URL + e["url"] for e in episodes]
+    urls = [
+        BASE_URL,
+        BASE_URL + "archive.html",
+        BASE_URL + "method.html",
+        *[BASE_URL + season["page"] for season in SEASON_PAGES],
+        *[BASE_URL + e["url"] for e in episodes],
+    ]
     body = "\n".join(f"  <url><loc>{html.escape(url)}</loc></url>" for url in urls)
     return f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{body}\n</urlset>\n'
 
@@ -162,19 +182,19 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, `method.html` and every published episode page:
+Required on `index.html`, `archive.html`, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
 - `robots` set to `index,follow,max-image-preview:large`;
 - Open Graph metadata: `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, `og:image`, `og:image:alt`, `og:locale`;
 - Twitter/X card metadata using `summary_large_image`, with title, description, image and image alt text;
-- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive, `WebPage` for the Method page and `Article` for episode pages;
+- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive and season pages, `WebPage` for the Method page and `Article` for episode pages;
 - shared favicon and web manifest links.
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -292,6 +312,46 @@ def main() -> int:
         json_ld=method_ld,
     )
     apply_page(ROOT / "method.html", method_block, args.check, changed)
+
+    for season in SEASON_PAGES:
+        season_episodes = [episode for episode in episodes if episode.get("seasonId") == season["id"]]
+        if not season_episodes:
+            raise RuntimeError(f"Cannot build {season['page']}: no registered episodes for {season['id']}")
+        season_latest = season_episodes[0]
+        season_url = BASE_URL + season["page"]
+        season_ld = {
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            "name": season["label"],
+            "url": season_url,
+            "description": season["description"],
+            "inLanguage": "en",
+            "isPartOf": {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL},
+            "mainEntity": {
+                "@type": "ItemList",
+                "numberOfItems": len(season_episodes),
+                "itemListElement": [
+                    {
+                        "@type": "ListItem",
+                        "position": index,
+                        "name": episode["title"],
+                        "url": BASE_URL + episode["url"],
+                    }
+                    for index, episode in enumerate(season_episodes, start=1)
+                ],
+            },
+        }
+        season_block = seo_block(
+            title=f"{season['label']} | LCA of the Impossible",
+            description=season["description"],
+            canonical=season_url,
+            image=BASE_URL + season_latest["cover"],
+            image_alt=f"{season_latest['title']} — latest published {season['label']} cover",
+            page_type="website",
+            prefix="",
+            json_ld=season_ld,
+        )
+        apply_page(ROOT / season["page"], season_block, args.check, changed)
 
     for episode in episodes:
         canonical = BASE_URL + episode["url"]

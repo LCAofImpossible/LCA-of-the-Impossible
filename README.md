@@ -608,19 +608,19 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, `method.html` and every published episode page:
+Required on `index.html`, `archive.html`, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
 - `robots` set to `index,follow,max-image-preview:large`;
 - Open Graph metadata: `og:site_name`, `og:type`, `og:title`, `og:description`, `og:url`, `og:image`, `og:image:alt`, `og:locale`;
 - Twitter/X card metadata using `summary_large_image`, with title, description, image and image alt text;
-- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive, `WebPage` for the Method page and `Article` for episode pages;
+- one parseable JSON-LD block. Use `WebSite` for the homepage, `CollectionPage` for the Archive and season pages, `WebPage` for the Method page and `Article` for episode pages;
 - shared favicon and web manifest links.
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1258,6 +1258,22 @@ Season identity must remain visible in the episode hero, registry-driven homepag
 
 Existing episodes without explicit season metadata remain unchanged. Adding a new classified episode must not infer, overwrite or backfill season fields on other registry records.
 
+### 33.1 Dedicated season introduction pages
+
+`season-i.html` and `season-ii.html` are the canonical editorial introductions to the two controlled season ranges. They explain the season scope and reconstruction grammar before presenting the published catalogue; they are not replacements for the Archive filters.
+
+Canonical implementation:
+
+- `assets/seasons.css` provides the shared text-first season layout and responsive route cards;
+- `assets/seasons.js` reads `episodes.json`, filters by the page `data-season-id`, sorts by episode number descending and progressively reveals nine cases at a time;
+- published counts, covers, titles, result labels and hotspots must come only from `episodes.json` and must never be duplicated in the page HTML;
+- the Season I page must distinguish the controlled range `#1–29` from the smaller catalogue currently republished;
+- homepage and Collections link statically to both introductions while preserving the existing filtered Archive routes;
+- each season page publishes canonical/social metadata and a JSON-LD `CollectionPage` whose `ItemList` exactly matches the currently registered season episodes;
+- `scripts/season_pages_qa.py` verifies editorial identity, entry points, registry-driven rendering, SEO membership, responsive assets and publication integration.
+
+These pages do not authorize episode reclassification, registry backfill, cover changes or new episode claims.
+
 ### Season identity QA
 
 - [ ] The episode number is inside the registered inclusive range.
@@ -1269,6 +1285,9 @@ Existing episodes without explicit season metadata remain unchanged. Adding a ne
 - [ ] Open Graph, Twitter/X and JSON-LD identify the registered season and exact approved cover.
 - [ ] The approved cover checksum matches the repository asset.
 - [ ] No unrelated existing episode is reclassified.
+- [ ] Both dedicated season introductions are linked from homepage and Collections.
+- [ ] Each season page distinguishes the controlled range from the live published count.
+- [ ] Season-page catalogues and JSON-LD ItemLists match `episodes.json` exactly.
 
 ---
 

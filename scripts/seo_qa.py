@@ -131,6 +131,19 @@ def main() -> int:
     check_public_page(ROOT / "about.html", BASE_URL + "about.html", latest_image, "website", "AboutPage")
     check_public_page(ROOT / "glossary.html", BASE_URL + "glossary.html", latest_image, "website", "DefinedTermSet")
 
+    for season_id, filename in [("season-i", "season-i.html"), ("season-ii", "season-ii.html")]:
+        season_episodes = [episode for episode in episodes if episode.get("seasonId") == season_id]
+        if not season_episodes:
+            fail(f"{filename}: no registered episodes for {season_id}")
+            continue
+        check_public_page(
+            ROOT / filename,
+            BASE_URL + filename,
+            BASE_URL + season_episodes[0]["cover"],
+            "website",
+            "CollectionPage",
+        )
+
     for episode in episodes:
         canonical = BASE_URL + episode["url"]
         image = BASE_URL + episode["cover"]
@@ -175,6 +188,8 @@ def main() -> int:
         BASE_URL + "sources.html",
         BASE_URL + "about.html",
         BASE_URL + "glossary.html",
+        BASE_URL + "season-i.html",
+        BASE_URL + "season-ii.html",
         *[BASE_URL + e["url"] for e in episodes],
     }
     if sitemap_text:
@@ -224,7 +239,7 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"\nSEO QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
-    print(f"SEO QA passed for {len(episodes) + 9} public pages.")
+    print(f"SEO QA passed for {len(episodes) + 11} public pages.")
     return 0
 
 

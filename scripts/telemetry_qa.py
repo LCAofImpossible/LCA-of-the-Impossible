@@ -9,7 +9,7 @@ ASSET_VERSION = "20260820-telemetry1"
 errors: list[str] = []
 ROOT_PAGES = [
     "index.html", "archive.html", "compare.html", "explore.html", "collections.html",
-    "method.html", "sources.html", "about.html", "glossary.html",
+    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html",
 ]
 
 
