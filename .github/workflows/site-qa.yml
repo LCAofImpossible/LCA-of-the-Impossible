@@ -5,9 +5,14 @@ on:
     branches: [main]
   pull_request:
     branches: [main]
+  workflow_dispatch:
 
 permissions:
   contents: read
+
+concurrency:
+  group: site-qa-${{ github.ref }}
+  cancel-in-progress: true
 
 jobs:
   validate:
@@ -25,44 +30,8 @@ jobs:
       - name: Install QA dependencies
         run: python -m pip install --disable-pip-version-check pillow
 
-      - name: Build deterministic SEO metadata in QA workspace
-        run: python scripts/apply_seo.py
-
-      - name: Build deterministic Phase 3 metadata in QA workspace
-        run: python scripts/feature_sync.py
-
-      - name: Build deterministic Phase 4 metadata in QA workspace
-        run: python scripts/engagement_sync.py
-
-      - name: Build deterministic Phase 5 editorial infrastructure in QA workspace
-        run: python scripts/phase5_sync.py
-
-      - name: Build deterministic Phase 6 model transparency in QA workspace
-        run: python scripts/phase6_sync.py
-
-      - name: Build deterministic Epic Passport presentation in QA workspace
-        run: python scripts/epic_passport_sync.py
-
-      - name: Build deterministic visitor telemetry in QA workspace
-        run: python scripts/telemetry_sync.py
-
-      - name: Run structural site QA
-        run: python scripts/site_qa.py
-
-      - name: Run SEO and social QA
-        run: python scripts/seo_qa.py
-
-      - name: Run Phase 3 feature QA
-        run: python scripts/feature_qa.py
-
-      - name: Run Phase 4 engagement QA
-        run: python scripts/engagement_qa.py
-
-      - name: Run Phase 5 editorial QA
-        run: python scripts/phase5_qa.py
-
-      - name: Run Phase 6 model transparency QA
-        run: python scripts/phase6_qa.py
-
-      - name: Run visitor telemetry QA
-        run: python scripts/telemetry_qa.py
+      - name: Run read-only pre-publication gate
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/publication_qa.py | tee -a "$GITHUB_STEP_SUMMARY"

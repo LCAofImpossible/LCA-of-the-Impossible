@@ -1236,3 +1236,32 @@ Existing episodes without explicit season metadata remain unchanged. Adding a ne
 - [ ] Open Graph, Twitter/X and JSON-LD identify the registered season and exact approved cover.
 - [ ] The approved cover checksum matches the repository asset.
 - [ ] No unrelated existing episode is reclassified.
+
+---
+
+## 34. Pre-publication quality gate — mandatory
+
+The canonical pre-publication command is:
+
+```bash
+python scripts/publication_qa.py
+```
+
+The command is read-only. It copies the current working tree to a temporary directory, runs the complete deterministic synchronization chain there, compares the final generated publication with the source tree and then executes every structural, SEO/social, feature, engagement, editorial, model-transparency and telemetry QA suite.
+
+Publication fails when generated files are stale, even if they could be corrected automatically in the temporary QA workspace. This prevents a green check from concealing an incomplete commit. To synchronize deliberately, run `python scripts/publication_qa.py --fix`, review the resulting diff and then rerun the read-only command before committing.
+
+`.github/workflows/site-qa.yml` runs this single gate on pushes to `main`, pull requests and manual dispatch. It has read-only repository permissions. The existing `Live Site QA` remains a separate post-deployment verification and runs only after this gate succeeds.
+
+The gate also enforces:
+
+- valid and unique episode numbers, slugs, URLs and catalogue-cover paths;
+- complete meaningful registry fields and canonical Season I / Season II identity;
+- exact 4:5 raster covers unless an explicit approved-native exception is registered;
+- immutable cover checksums when `coverSha256` is present;
+- readable canonical analytical SVGs and no missing or unregistered episode pages;
+- text-only episode heroes, working local links and non-empty image alternative text;
+- no public source-PDF registry field, link or download control;
+- synchronized canonical/social metadata, JSON-LD, sitemap, collections, Passport and shared assets.
+
+Warnings for explicitly approved native cover proportions remain visible but do not fail publication. Any error returns a non-zero exit code and blocks the QA workflow.

@@ -8,6 +8,7 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 from urllib.parse import unquote, urlparse
+from xml.etree import ElementTree
 
 from PIL import Image, UnidentifiedImageError
 
@@ -19,6 +20,26 @@ REQUIRED_GRAPHICS = (
     "ep{number:02d}-technical-plate.svg",
     "ep{number:02d}-hotspot-breakdown.svg",
 )
+CANONICAL_SEASONS = {
+    1: {
+        "seasonId": "season-i",
+        "seasonNumber": 1,
+        "seasonLabel": "Season I — Machines & Worlds",
+        "seasonTitle": "Machines & Worlds",
+        "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+        "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+        "seasonEpisodeRange": [1, 29],
+    },
+    2: {
+        "seasonId": "season-ii",
+        "seasonNumber": 2,
+        "seasonLabel": "Season II — Myths & Legends",
+        "seasonTitle": "Myths & Legends",
+        "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+        "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+        "seasonEpisodeRange": [30, 71],
+    },
+}
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -30,6 +51,21 @@ def fail(message: str) -> None:
 
 def warn(message: str) -> None:
     warnings.append(message)
+
+
+def check_meaningful_string(number: int, key: str, value: object, minimum: int = 2) -> None:
+    if not isinstance(value, str) or len(value.strip()) < minimum:
+        fail(f"Episode #{number}: {key} must be a meaningful string")
+
+
+def check_string_list(number: int, key: str, value: object) -> None:
+    if not isinstance(value, list) or not value:
+        fail(f"Episode #{number}: {key} must be a non-empty array")
+        return
+    if any(not isinstance(item, str) or not item.strip() for item in value):
+        fail(f"Episode #{number}: {key} must contain only non-empty strings")
+    if len(value) != len(set(value)):
+        fail(f"Episode #{number}: {key} contains duplicate values")
 
 
 def local_path(value: str) -> Path | None:
@@ -77,6 +113,19 @@ def check_cover(number: int, value: str, aspect_policy: str | None = None) -> No
                 warn(f"Episode #{number} cover: using explicitly approved native aspect ratio {width}x{height}; exact-file rule overrides 4:5 target")
         else:
             fail(f"Episode #{number} cover: expected portrait 4:5, found {width}x{height} (ratio {ratio:.4f})")
+
+
+def check_graphic(number: int, path: Path) -> None:
+    if not path.is_file():
+        fail(f"Episode #{number}: missing required graphic {path.relative_to(ROOT)}")
+        return
+    try:
+        root = ElementTree.parse(path).getroot()
+    except (ElementTree.ParseError, OSError) as exc:
+        fail(f"Episode #{number}: unreadable SVG {path.relative_to(ROOT)} ({exc})")
+        return
+    if root.tag.rsplit("}", 1)[-1].lower() != "svg":
+        fail(f"Episode #{number}: analytical graphic is not an SVG: {path.relative_to(ROOT)}")
 
 
 class PageParser(HTMLParser):
@@ -142,6 +191,13 @@ def check_episode_page(number: int, url: str) -> None:
         fail(f"Episode #{number} page: missing ../assets/site.js")
     if "cover-frame" in text:
         fail(f"Episode #{number} page: legacy cover-frame markup still present")
+    cover_image = re.search(
+        r"<img\b[^>]*\bsrc=[\"'][^\"']*assets/images/episodes/[^\"']+[\"']",
+        text,
+        flags=re.I,
+    )
+    if cover_image:
+        fail(f"Episode #{number} page: catalogue cover must not be rendered in the page body")
     check_html_references(path)
 
 
@@ -156,6 +212,8 @@ def main() -> int:
             data = {}
 
         episodes = data.get("episodes")
+        if data.get("schemaVersion") != 2:
+            fail("episodes.json: schemaVersion must be exactly 2")
         if not isinstance(episodes, list):
             fail("episodes.json: 'episodes' must be an array")
             episodes = []
@@ -163,6 +221,8 @@ def main() -> int:
         seen_numbers: set[int] = set()
         seen_slugs: set[str] = set()
         seen_urls: set[str] = set()
+        seen_covers: set[str] = set()
+        registered_pages: set[Path] = set()
 
         required_fields = {
             "number", "slug", "title", "url", "cover", "categoryLabel", "categories",
@@ -200,10 +260,29 @@ def main() -> int:
                 fail(f"Episode #{number}: invalid url {url!r}")
             elif url in seen_urls:
                 fail(f"Episode #{number}: duplicate url {url}")
+            elif url != f"episodes/{slug}.html":
+                fail(f"Episode #{number}: url must match the registered slug")
+            else:
+                registered_pages.add((ROOT / url).resolve())
             seen_urls.add(url)
+
+            for key in (
+                "title", "categoryLabel", "lcaLabel", "result", "hotspot",
+                "featuredDescription",
+            ):
+                check_meaningful_string(number, key, episode.get(key), minimum=3)
+            for key in ("categories", "lcaCharacteristics", "keywords"):
+                check_string_list(number, key, episode.get(key))
 
             cover = episode.get("cover", "")
             if isinstance(cover, str):
+                if not cover.startswith("assets/images/episodes/"):
+                    fail(f"Episode #{number}: cover must be stored under assets/images/episodes/")
+                if not Path(cover).name.startswith(f"ep{number:02d}-"):
+                    fail(f"Episode #{number}: cover filename must start with ep{number:02d}-")
+                if cover in seen_covers:
+                    fail(f"Episode #{number}: cover path is already used by another episode")
+                seen_covers.add(cover)
                 check_cover(number, cover, episode.get("coverAspectPolicy"))
                 cover_sha = episode.get("coverSha256")
                 if cover_sha:
@@ -240,8 +319,20 @@ def main() -> int:
                     if not isinstance(episode.get(key), str) or len(episode.get(key, "").strip()) < 5:
                         fail(f"Episode #{number}: missing meaningful {key}")
                 for key in ("taxonomy", "collectionSlugs"):
-                    if not isinstance(episode.get(key), list):
-                        fail(f"Episode #{number}: {key} must be an array")
+                    check_string_list(number, key, episode.get(key))
+                season_number = episode.get("seasonNumber")
+                canonical = CANONICAL_SEASONS.get(season_number)
+                if canonical is None:
+                    fail(f"Episode #{number}: unsupported seasonNumber {season_number!r}")
+                else:
+                    for key, expected in canonical.items():
+                        if episode.get(key) != expected:
+                            fail(
+                                f"Episode #{number}: {key} conflicts with canonical "
+                                f"Season {season_number} identity"
+                            )
+                    if episode.get("seasonId") not in episode.get("taxonomy", []):
+                        fail(f"Episode #{number}: taxonomy must include the registered seasonId")
                 if isinstance(url, str):
                     season_page = ROOT / url
                     if season_page.is_file():
@@ -251,7 +342,6 @@ def main() -> int:
                         season_title = episode.get("seasonTitle", "").upper()
                         if season_label not in page_upper and season_title not in page_upper:
                             fail(f"Episode #{number}: page does not display registered season identity")
-                        season_number = episode.get("seasonNumber")
                         for other_number, marker in ((1, "SEASON I —"), (2, "SEASON II —")):
                             if season_number != other_number and marker in page_upper:
                                 fail(f"Episode #{number}: conflicting {marker.rstrip(' —')} identity found in page")
@@ -265,7 +355,12 @@ def main() -> int:
             else:
                 if len(related) > 3:
                     warn(f"Episode #{number}: more than 3 related cases")
+                if len(related) != len(set(related)):
+                    fail(f"Episode #{number}: related contains duplicate episode numbers")
                 for related_number in related:
+                    if not isinstance(related_number, int):
+                        fail(f"Episode #{number}: related values must be episode numbers")
+                        continue
                     if related_number == number:
                         fail(f"Episode #{number}: cannot relate to itself")
                     elif related_number not in numbers:
@@ -274,15 +369,24 @@ def main() -> int:
             graphics_dir = ROOT / "assets/images/episode-graphics"
             for pattern in REQUIRED_GRAPHICS:
                 graphic = graphics_dir / pattern.format(number=number)
-                if not graphic.is_file():
-                    fail(f"Episode #{number}: missing required graphic {graphic.relative_to(ROOT)}")
+                check_graphic(number, graphic)
+
+        actual_pages = {
+            path.resolve()
+            for path in (ROOT / "episodes").glob("*.html")
+            if path.name != "template.html"
+        }
+        for path in sorted(actual_pages - registered_pages):
+            fail(f"Unregistered episode page: {path.relative_to(ROOT)}")
+        for path in sorted(registered_pages - actual_pages):
+            fail(f"Registered episode page is missing: {path.relative_to(ROOT)}")
 
     core_html = (ROOT / "index.html", ROOT / "archive.html")
     for path in (*core_html, ROOT / "assets/style.css", ROOT / "assets/site.js"):
         if not path.is_file():
             fail(f"Missing core file: {path.relative_to(ROOT)}")
 
-    for path in core_html:
+    for path in sorted(ROOT.glob("*.html")):
         if path.is_file():
             check_html_references(path)
 
