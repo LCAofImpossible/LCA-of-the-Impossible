@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">The Cosmic Turtle inventory map</title>
+<desc id="desc">Nine construction flows feed one commissioned world-bearing habitat: primary metals, closed-loop metals, concrete, glass, electrical systems, habitat finishes, soil and water, orbital-yard electricity and additional bulk freight.</desc>
+<rect width="1200" height="820" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="776" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#071019">
+  <text x="70" y="82" font-size="22" font-weight="700" letter-spacing="4">EP71 // INVENTORY MAP</text>
+  <text x="70" y="128" font-size="42" font-weight="800">NINE FLOWS COMMISSION ONE ARK</text>
+  <text x="70" y="162" font-size="18" fill="#4d5b53">One 360 m world-bearing habitat · 1.268 Mt commissioned mass · construction only</text>
+</g>
+<g stroke="#0b6b47" stroke-width="3" fill="none">
+  <path d="M330 228 H458"/><path d="M330 328 H458"/><path d="M330 428 H458"/><path d="M330 528 H458"/>
+  <path d="M870 228 H742"/><path d="M870 328 H742"/><path d="M870 428 H742"/><path d="M870 528 H742"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="458" y="194" width="284" height="378" rx="34" fill="#071019"/>
+  <text x="600" y="232" text-anchor="middle" fill="#d8b34f" font-size="17" font-weight="700">THE COSMIC TURTLE</text>
+  <text x="600" y="272" text-anchor="middle" fill="#fff" font-size="28" font-weight="800">COMMISSIONED ARK</text>
+  <g transform="translate(600 397)" fill="none">
+    <ellipse rx="96" ry="70" stroke="#d8b34f" stroke-width="5"/>
+    <ellipse rx="62" ry="44" stroke="#6de7ff" stroke-width="3"/>
+    <circle cx="-126" cy="0" r="24" stroke="#d8b34f" stroke-width="4"/>
+    <path d="M-76 -48 L-122 -88 L-42 -68 M76 -48 L122 -88 L42 -68 M-76 48 L-122 88 L-42 68 M76 48 L122 88 L42 68" stroke="#8fd0a9" stroke-width="4"/>
+    <path d="M0 -44 V-94 M-12 -94 H12 M-38 0 H38 M0 -36 V36" stroke="#6de7ff" stroke-width="3"/>
+  </g>
+  <text x="600" y="518" text-anchor="middle" fill="#8fd0a9" font-size="18" font-weight="700">999,590 t CO₂e</text>
+  <text x="600" y="546" text-anchor="middle" fill="#fff" font-size="16">cradle-to-commissioning</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="16" fill="#071019">
+  <g><rect x="70" y="187" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="216" fill="#0b6b47" font-weight="700">01 · PRIMARY METALS</text><text x="92" y="247" font-weight="700">118,000 t</text></g>
+  <g><rect x="70" y="287" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="316" fill="#0b6b47" font-weight="700">02 · CLOSED-LOOP METALS</text><text x="92" y="347" font-weight="700">97,000 t</text></g>
+  <g><rect x="70" y="387" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="416" fill="#0b6b47" font-weight="700">03 · CONCRETE + GLASS</text><text x="92" y="447" font-weight="700">420,000 t + 12,000 t</text></g>
+  <g><rect x="70" y="487" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="92" y="516" fill="#0b6b47" font-weight="700">04 · ELECTRICAL SYSTEMS</text><text x="92" y="547" font-weight="700">26,000 t · batteries included</text></g>
+  <g><rect x="870" y="187" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="216" fill="#0b6b47" font-weight="700">05 · HABITAT FINISHES</text><text x="892" y="247" font-weight="700">45,000 t · plastics + wood</text></g>
+  <g><rect x="870" y="287" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="316" fill="#0b6b47" font-weight="700">06 · SOIL + WATER</text><text x="892" y="347" font-weight="700">550,000 t initial charge</text></g>
+  <g><rect x="870" y="387" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="416" fill="#0b6b47" font-weight="700">07 · ASSEMBLY ENERGY</text><text x="892" y="447" font-weight="700">650 GWh orbital yard</text></g>
+  <g><rect x="870" y="487" width="260" height="82" rx="12" fill="#fff" stroke="#b9b6a8"/><text x="892" y="516" fill="#0b6b47" font-weight="700">08–09 · BULK FREIGHT</text><text x="892" y="547" font-weight="700">693,000 t × 3,000 km</text></g>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="626" width="1060" height="112" rx="14" fill="#071019"/>
+  <text x="96" y="658" fill="#d8b34f" font-size="17" font-weight="700">BOUNDARY</text>
+  <text x="96" y="694" fill="#fff" font-size="22" font-weight="800">CRADLE TO COMMISSIONING · ORBITAL SHIPYARD GATE</text>
+  <text x="96" y="722" fill="#8fd0a9" font-size="16">launch, operation, maintenance and end-of-life excluded</text>
+</g>
+</svg>

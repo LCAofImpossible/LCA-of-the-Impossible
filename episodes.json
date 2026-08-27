@@ -2,6 +2,90 @@
   "schemaVersion": 2,
   "episodes": [
     {
+      "number": 71,
+      "slug": "cosmic-turtle",
+      "title": "The Cosmic Turtle",
+      "url": "episodes/cosmic-turtle.html",
+      "cover": "assets/images/episodes/ep71-cosmic-turtle-cover.png",
+      "coverSha256": "1e00782c7247144d23e4f895c76fd25a37894f5ad210a9fe309a05244d4535c4",
+      "categoryLabel": "Mythic Megastructure",
+      "categories": [
+        "mythology",
+        "structures"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "1.00 Mt CO₂e",
+      "hotspot": "Metals carry 61.0% of the approved cradle-to-commissioning baseline.",
+      "featuredDescription": "One 360 m world-bearing habitat commissioned at an orbital shipyard gate: 1.00 Mt CO₂e before operation, with metals carrying 61.0% of the approved baseline.",
+      "functionalUnit": "Build and commission one 360 m world-bearing habitat at an orbital shipyard gate, designed for 10,000 residents and a 100-year service life. Construction burdens only.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode reconstructs one 360 m world-bearing habitat with a 220 m habitat disc, a 260 × 210 m shell plan and a commissioned mass of 1.268 Mt. The declared cradle-to-commissioning inventory includes 215,000 t of structural metal, 420,000 t of concrete, glass, electrical systems, habitat finishes, a 550,000 t initial soil-and-water charge, 650 GWh of orbital-yard electricity and 2.079 billion t·km of additional freight. All quantities are explicit engineering assumptions for a non-existent orbital supply chain.",
+        "uncertainty": "Structural-metal mass and metal origin are the published sensitivity levers. Changing only metal mass moves the result from 0.878 to 1.120 Mt CO₂e around the 1.00 Mt baseline; changing only the closed-loop share moves it from 1.21 Mt at 0% closed-loop metal to 0.836 Mt at 80%."
+      },
+      "keywords": [
+        "The Cosmic Turtle",
+        "world-bearing habitat",
+        "orbital ark",
+        "mythic megastructure",
+        "360 m overall length",
+        "220 m habitat disc",
+        "10000 residents",
+        "100-year service life",
+        "1.268 Mt commissioned mass",
+        "primary metals",
+        "closed-loop metals",
+        "concrete deck",
+        "electrical systems",
+        "habitat finishes",
+        "soil and water charge",
+        "650 GWh assembly electricity",
+        "2.079 billion tonne-kilometres",
+        "DEFRA 2026",
+        "UK Government 2026",
+        "cradle-to-commissioning",
+        "construction only",
+        "materials-driven",
+        "metal mass sensitivity",
+        "recycled metal sensitivity"
+      ],
+      "related": [
+        48,
+        39,
+        69
+      ],
+      "seasonId": "season-ii",
+      "seasonNumber": 2,
+      "seasonLabel": "Season II — Myths & Legends",
+      "seasonTitle": "Myths & Legends",
+      "seasonDescriptor": "Myths and legends, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        30,
+        71
+      ],
+      "taxonomy": [
+        "season-ii",
+        "myths-and-legends",
+        "mythology",
+        "structures",
+        "world-bearing-ark",
+        "megastructure",
+        "materials-driven"
+      ],
+      "collectionSlugs": [
+        "impossible-structures",
+        "legendary-engineering"
+      ]
+    },
+    {
       "number": 70,
       "slug": "el-dorado",
       "title": "El Dorado",
@@ -65,7 +149,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -143,7 +227,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -222,7 +306,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -301,7 +385,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -378,7 +462,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -451,7 +535,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -524,7 +608,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -595,7 +679,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -667,7 +751,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -738,7 +822,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -810,7 +894,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -877,7 +961,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -947,7 +1031,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1015,7 +1099,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1081,7 +1165,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1146,7 +1230,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1215,7 +1299,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1284,7 +1368,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1352,7 +1436,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1425,7 +1509,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1497,7 +1581,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1567,7 +1651,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1635,7 +1719,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1703,7 +1787,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1773,7 +1857,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1838,7 +1922,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1908,7 +1992,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -1971,7 +2055,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2031,7 +2115,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2097,7 +2181,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2163,7 +2247,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2231,7 +2315,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2297,7 +2381,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2365,7 +2449,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2427,7 +2511,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2487,7 +2571,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2552,7 +2636,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2623,7 +2707,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",
@@ -2698,7 +2782,7 @@
       "editorialDescriptor": "Impossible stories, reconstructed as traceable systems.",
       "seasonEpisodeRange": [
         30,
-        70
+        71
       ],
       "taxonomy": [
         "season-ii",

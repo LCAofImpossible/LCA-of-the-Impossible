@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">The Cosmic Turtle technical plate</title>
+<desc id="desc">Declared world-bearing habitat reconstruction showing 360 metre overall length, 220 metre habitat disc, 260 by 210 metre shell plan, 215,000 tonnes of structural metal, 1.268 million tonnes commissioned mass, 10,000 residents and a 100-year design life.</desc>
+<rect width="1200" height="820" fill="#071019"/>
+<rect x="24" y="24" width="1152" height="772" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="82" fill="#d8b34f" font-size="22" font-weight="700" letter-spacing="4">EP71 // TECHNICAL PLATE</text>
+  <text x="70" y="128" fill="#f5f0e6" font-size="42" font-weight="800">A TURTLE REBUILT AS A MEGASTRUCTURE</text>
+</g>
+<g transform="translate(600 414)" fill="none">
+  <ellipse rx="232" ry="176" stroke="#6d5c36" stroke-width="2"/>
+  <ellipse rx="184" ry="132" stroke="#a58b47" stroke-width="4"/>
+  <ellipse rx="132" ry="92" stroke="#6de7ff" stroke-width="3" stroke-dasharray="10 9"/>
+  <circle cx="-270" cy="0" r="44" stroke="#d8b34f" stroke-width="4"/>
+  <path d="M-156 -110 L-250 -174 L-116 -150 M156 -110 L250 -174 L116 -150 M-156 110 L-250 174 L-116 150 M156 110 L250 174 L116 150" stroke="#8fd0a9" stroke-width="5"/>
+  <path d="M0 -92 V-168 M-20 -168 H20 M-232 0 H232 M0 -176 V176" stroke="#6d5c36" stroke-width="2"/>
+  <path d="M-270 -26 V26 M-270 0 H-232" stroke="#d8b34f" stroke-width="3"/>
+  <path d="M-270 222 H232 M-270 210 V234 M232 210 V234" stroke="#6de7ff" stroke-width="4"/>
+  <path d="M-110 -205 H110 M-110 -217 V-193 M110 -217 V-193" stroke="#8fd0a9" stroke-width="4"/>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-weight="700">
+  <text x="581" y="660" text-anchor="middle" fill="#6de7ff" font-size="20">360 m OVERALL LENGTH</text>
+  <text x="600" y="188" text-anchor="middle" fill="#8fd0a9" font-size="18">220 m HABITAT DISC</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="188" width="250" height="430" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="226" fill="#d8b34f" font-size="17" font-weight="700">FROZEN GEOMETRY</text>
+  <text x="94" y="273" fill="#9fa9a3" font-size="14">SHELL PLAN</text><text x="94" y="304" fill="#fff" font-size="24" font-weight="700">260 × 210 m</text>
+  <text x="94" y="351" fill="#9fa9a3" font-size="14">SHELL SURFACE PROXY</text><text x="94" y="382" fill="#fff" font-size="24" font-weight="700">90,000 m²</text>
+  <text x="94" y="429" fill="#9fa9a3" font-size="14">METAL VOLUME</text><text x="94" y="460" fill="#fff" font-size="24" font-weight="700">35,900 m³</text>
+  <text x="94" y="507" fill="#9fa9a3" font-size="14">SOLID-EQUIVALENT</text><text x="94" y="538" fill="#fff" font-size="24" font-weight="700">0.399 m</text>
+  <text x="94" y="585" fill="#8fd0a9" font-size="16" font-weight="700">declared engineering assumptions</text>
+  <rect x="880" y="188" width="250" height="430" rx="14" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="904" y="226" fill="#d8b34f" font-size="17" font-weight="700">SERVICE + MASS</text>
+  <text x="904" y="273" fill="#9fa9a3" font-size="14">STRUCTURAL METAL</text><text x="904" y="304" fill="#fff" font-size="24" font-weight="700">215,000 t</text>
+  <text x="904" y="351" fill="#9fa9a3" font-size="14">COMMISSIONED MASS</text><text x="904" y="382" fill="#fff" font-size="24" font-weight="700">1.268 Mt</text>
+  <text x="904" y="429" fill="#9fa9a3" font-size="14">RESIDENTS</text><text x="904" y="460" fill="#6de7ff" font-size="30" font-weight="800">10,000</text>
+  <text x="904" y="507" fill="#9fa9a3" font-size="14">DESIGN LIFE</text><text x="904" y="538" fill="#fff" font-size="24" font-weight="700">100 years</text>
+  <text x="904" y="585" fill="#8fd0a9" font-size="16" font-weight="700">construction burdens only</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="70" y="716" width="1060" height="64" rx="8" fill="#0d1b27" stroke="#6d5c36"/>
+  <text x="94" y="756" fill="#f5f0e6" font-size="18">CONCRETE DECK · 175,000 m³ AT 2,400 kg/m³</text>
+  <text x="1106" y="756" text-anchor="end" fill="#8fd0a9" font-size="18">REFERENCE FLOW · ONE COMPLETE ARK</text>
+</g>
+</svg>

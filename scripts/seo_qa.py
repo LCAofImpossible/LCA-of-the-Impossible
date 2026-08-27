@@ -148,7 +148,7 @@ def main() -> int:
                 value = html.unescape(meta_content(text, kind, key, label) or "")
                 if season_label not in value:
                     fail(f"{label}: {key} does not identify {season_label}")
-            json_matches = re.findall(r'<script\s+type=["\\']application/ld\+json["\\'][^>]*>(.*?)</script>', text, flags=re.I | re.S)
+            json_matches = re.findall(r"<script\s+type=[\"']application/ld\+json[\"'][^>]*>(.*?)</script>", text, flags=re.I | re.S)
             if len(json_matches) == 1:
                 structured = json.loads(json_matches[0])
                 if structured.get("isPartOf", {}).get("name") != season_label:

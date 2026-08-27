@@ -1220,7 +1220,7 @@ For every episode that belongs to a defined season, `episodes.json` must registe
 
 - Descriptor: `Myths and legends, reconstructed through life-cycle logic.`
 - Recurring editorial descriptor: `Impossible stories, reconstructed as traceable systems.`
-- Controlled range: Episodes `#30–70`.
+- Controlled range: Episodes `#30–71`.
 - Scope: myths, legends, folklore, legendary beings, places, objects, rites, punishments and supernatural systems reconstructed through physical analogues and explicit life-cycle assumptions.
 
 Season identity must remain visible in the episode hero, registry-driven homepage route, Archive filter and search, Collections season route, Compare, Impact Map, Related Cases when the classified episode appears, Epic Model Passport and static SEO/social/JSON-LD metadata.

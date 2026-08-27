@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 700" role="img" aria-labelledby="title desc">
+<title id="title">The Cosmic Turtle hotspot breakdown</title>
+<desc id="desc">Metals contribute 61.0 percent, habitat materials 15.2 percent, assembly electricity 12.0 percent, electrical systems 10.9 percent and additional freight 0.90 percent of the approved cradle-to-commissioning baseline.</desc>
+<rect width="1200" height="700" fill="#f2efe6"/>
+<rect x="22" y="22" width="1156" height="656" rx="18" fill="none" stroke="#a58b47" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif">
+  <text x="70" y="84" fill="#0b6b47" font-size="20" font-weight="700" letter-spacing="4">EP71 // HOTSPOT BREAKDOWN</text>
+  <text x="70" y="134" fill="#071019" font-size="42" font-weight="800">THE SHELL IS THE FOOTPRINT</text>
+  <text x="70" y="172" fill="#4d5b53" font-size="18">Approved baseline · 999,590 t CO₂e · cradle-to-commissioning</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif">
+  <rect x="72" y="220" width="1056" height="94" rx="10" fill="#d9ddd8"/>
+  <rect x="72" y="220" width="644" height="94" rx="10" fill="#0b6b47"/>
+  <rect x="716" y="220" width="161" height="94" fill="#9d7a3e"/>
+  <rect x="877" y="220" width="127" height="94" fill="#4f8c79"/>
+  <rect x="1004" y="220" width="115" height="94" fill="#6d9eaa"/>
+  <rect x="1119" y="220" width="9" height="94" rx="3" fill="#b9b6a8"/>
+  <text x="100" y="277" fill="#fff" font-size="30" font-weight="800">61.0% METALS</text>
+  <rect x="72" y="344" width="1056" height="64" rx="10" fill="#071019"/>
+  <text x="96" y="385" fill="#d8b34f" font-size="19" font-weight="700">MASS IS NOT IMPACT</text>
+  <text x="320" y="385" fill="#fff" font-size="18">soil + water: 43.4% of mass</text>
+  <text x="1104" y="385" text-anchor="end" fill="#8fd0a9" font-size="22" font-weight="800">0.04% of footprint</text>
+</g>
+<g font-family="Arial,Helvetica,sans-serif" font-size="18" fill="#071019">
+  <g transform="translate(72 460)"><circle cx="12" cy="12" r="12" fill="#0b6b47"/><text x="42" y="19" font-weight="700">Metals</text><text x="470" y="19" text-anchor="end" font-weight="700">61.0%</text></g>
+  <g transform="translate(72 520)"><circle cx="12" cy="12" r="12" fill="#9d7a3e"/><text x="42" y="19" font-weight="700">Habitat materials</text><text x="470" y="19" text-anchor="end" font-weight="700">15.2%</text></g>
+  <g transform="translate(72 580)"><circle cx="12" cy="12" r="12" fill="#4f8c79"/><text x="42" y="19" font-weight="700">Assembly electricity</text><text x="470" y="19" text-anchor="end" font-weight="700">12.0%</text></g>
+  <g transform="translate(620 460)"><circle cx="12" cy="12" r="12" fill="#6d9eaa"/><text x="42" y="19" font-weight="700">Electrical systems</text><text x="470" y="19" text-anchor="end" font-weight="700">10.9%</text></g>
+  <g transform="translate(620 520)"><circle cx="12" cy="12" r="12" fill="#b9b6a8"/><text x="42" y="19" font-weight="700">Additional freight</text><text x="470" y="19" text-anchor="end" font-weight="700">0.90%</text></g>
+</g>
+<text x="72" y="646" fill="#4d5b53" font-family="Arial,Helvetica,sans-serif" font-size="17">Structural metal is 17.0% of commissioned mass and creates 61.0% of emissions.</text>
+</svg>
