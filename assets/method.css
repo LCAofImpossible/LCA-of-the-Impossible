@@ -19,6 +19,7 @@
 .method-hero h1{font-size:clamp(3.4rem,8.5vw,7.2rem);line-height:.91;letter-spacing:-.067em;margin:18px 0 28px;max-width:980px}
 .method-hero h1 span{color:var(--accent2)}
 .method-hero .intro{max-width:820px;font-size:clamp(1.05rem,2vw,1.28rem)}
+.method-hero-actions{display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:28px}
 .method-manifesto{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-top:40px}
 .method-manifesto article{border-top:1px solid var(--gold);padding:18px 0 0}
 .method-manifesto strong{display:block;margin-bottom:7px;font-size:1rem}
@@ -29,6 +30,40 @@
 .method-section-heading h2{font-size:clamp(2.2rem,5vw,4.8rem);line-height:.96;letter-spacing:-.055em;margin:6px 0 0}
 .method-section-heading .prose{max-width:720px;justify-self:end}
 .method-note{color:var(--muted);line-height:1.7;font-size:.94rem}
+
+.method-jumpnav{display:flex;gap:0;padding:0 6vw;border-bottom:1px solid var(--line);background:rgba(7,16,25,.96)}
+.method-jumpnav a{padding:17px 18px;border-left:1px solid var(--line-soft);color:var(--muted);font-size:.72rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.method-jumpnav a:last-child{border-right:1px solid var(--line-soft)}
+.method-jumpnav a:hover{color:var(--accent2);background:rgba(109,231,255,.035)}
+
+.reading-guide{background:linear-gradient(180deg,rgba(109,231,255,.025),transparent 38%)}
+.reading-equation{display:grid;grid-template-columns:minmax(145px,1fr) auto minmax(145px,1fr) auto minmax(145px,1fr) auto minmax(145px,1fr);align-items:stretch;border:1px solid var(--line);background:rgba(255,255,255,.014);overflow-x:auto}
+.reading-equation>div{min-width:145px;padding:20px 18px}
+.reading-equation span:not(.reading-operator){display:block;color:var(--muted);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;margin-bottom:20px}
+.reading-equation strong{display:block;color:var(--accent2);font-size:1rem}
+.reading-operator{display:grid;place-items:center;min-width:42px;color:var(--gold);font-size:1.15rem;border-left:1px solid var(--line-soft);border-right:1px solid var(--line-soft)}
+.reading-routes{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px}
+.reading-routes article{border:1px solid var(--line);padding:24px;background:linear-gradient(145deg,rgba(13,27,39,.72),rgba(7,16,25,.9))}
+.reading-routes .method-kicker{color:var(--gold)}
+.reading-routes h3{margin:26px 0 10px;font-size:1.12rem}
+.reading-routes p{margin:0;color:var(--muted);font-size:.9rem;line-height:1.6}
+.reader-sequence{margin-top:34px;border-top:1px solid var(--line)}
+.reader-step{display:grid;grid-template-columns:70px minmax(0,1.25fr) minmax(220px,.55fr);gap:28px;align-items:start;padding:30px 0;border-bottom:1px solid var(--line)}
+.reader-step-number{color:var(--gold);font-size:.76rem;font-weight:900;letter-spacing:.16em;padding-top:3px}
+.reader-step .method-kicker{margin:0 0 12px}
+.reader-step h3{margin:0 0 10px;font-size:clamp(1.25rem,2.2vw,1.75rem);letter-spacing:-.025em}
+.reader-step>div>p:not(.method-kicker,.reader-links){margin:0;color:var(--muted);font-size:.93rem;line-height:1.68}
+.reader-check{border-left:2px solid var(--gold);padding:2px 0 2px 17px}
+.reader-check span{display:block;color:var(--gold);font-size:.63rem;font-weight:900;letter-spacing:.14em;margin-bottom:10px}
+.reader-check p{margin:0;color:var(--muted);font-size:.82rem;line-height:1.55}
+.reader-links{display:flex;gap:18px;flex-wrap:wrap;margin:16px 0 0}
+.reader-links a{color:var(--accent);font-size:.8rem;font-weight:800}
+.reader-links a:hover{color:var(--accent2)}
+.passport-guide{display:grid;grid-template-columns:minmax(220px,.7fr) minmax(0,1.3fr);gap:34px;align-items:center;margin-top:34px;padding:28px;border:1px solid rgba(208,165,99,.42);background:linear-gradient(120deg,rgba(208,165,99,.07),rgba(109,231,255,.025))}
+.passport-guide h3{margin:14px 0 0;font-size:clamp(1.45rem,3vw,2.35rem);line-height:1.05;letter-spacing:-.035em}
+.passport-guide>p{margin:0;color:var(--muted);font-size:.94rem;line-height:1.72}
+.reading-caution{margin:18px 0 0;padding:17px 20px;border:1px solid var(--line);border-left:3px solid var(--accent);color:var(--muted);font-size:.9rem;line-height:1.65;background:rgba(109,231,255,.025)}
+.reading-caution strong{color:var(--text)}
 
 .method-pipeline{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));border:1px solid var(--line);background:rgba(255,255,255,.014)}
 .method-stage{position:relative;min-height:246px;padding:20px 17px;border-right:1px solid var(--line)}
@@ -119,11 +154,21 @@
   .evidence-profile-demo{grid-template-columns:1fr}
   .hierarchy-card:nth-child(2)::after{display:none}
   .hierarchy-card:last-child{grid-column:1/-1}
+  .reader-step{grid-template-columns:54px minmax(0,1fr)}
+  .reader-check{grid-column:2}
 }
 @media(max-width:700px){
   .method-hero,.method-section,.method-closing{padding-left:5vw;padding-right:5vw}
   .method-hero{padding-top:92px;min-height:auto}
   .method-hero::after{display:none}
+  .method-jumpnav{padding:0 5vw;display:grid;grid-template-columns:1fr 1fr}
+  .method-jumpnav a{border-bottom:1px solid var(--line-soft)}
+  .method-jumpnav a:nth-child(even){border-right:1px solid var(--line-soft)}
+  .method-jumpnav a:last-child{grid-column:1/-1}
+  .reading-equation{grid-template-columns:1fr}
+  .reading-equation>div{min-width:0}
+  .reading-operator{min-height:38px;border:0;border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft)}
+  .reading-routes,.passport-guide{grid-template-columns:1fr}
   .method-preview-flow,.method-manifesto,.evidence-layout,.hierarchy,.meaning-grid{grid-template-columns:1fr}
   .method-preview-step{border-right:0;border-bottom:1px solid var(--line)}
   .method-preview-step:last-child{border-bottom:0}
@@ -148,6 +193,9 @@
   .audit-link:nth-child(even)::after{display:none}
 }
 @media(max-width:460px){
+  .method-hero-actions{align-items:flex-start;flex-direction:column}
+  .reader-step{grid-template-columns:1fr;gap:14px}
+  .reader-check{grid-column:1}
   .boundary-track,.audit-chain{grid-template-columns:1fr}
   .boundary-stage{border-right:0!important;border-bottom:1px solid var(--line)!important}
   .boundary-stage:last-child{border-bottom:0!important}

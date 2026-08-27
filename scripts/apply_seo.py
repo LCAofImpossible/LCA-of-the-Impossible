@@ -270,19 +270,19 @@ def main() -> int:
     )
     apply_page(ROOT / "archive.html", archive_block, args.check, changed)
 
-    method_description = "The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation."
+    method_description = "How to read an LCA of the Impossible episode: reporting basis, reconstruction, boundaries, inventories, factors, hotspots, sensitivity, evidence and interpretation."
     method_url = BASE_URL + "method.html"
     method_ld = {
         "@context": "https://schema.org",
         "@type": "WebPage",
-        "name": "Method — LCA of the Impossible",
+        "name": "Method & Reading Guide — LCA of the Impossible",
         "url": method_url,
         "description": method_description,
         "inLanguage": "en",
         "isPartOf": {"@type": "WebSite", "name": "LCA of the Impossible", "url": BASE_URL},
     }
     method_block = seo_block(
-        title="Method — LCA of the Impossible",
+        title="Method & Reading Guide — LCA of the Impossible",
         description=method_description,
         canonical=method_url,
         image=latest_image,

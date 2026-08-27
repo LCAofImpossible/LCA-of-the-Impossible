@@ -41,6 +41,7 @@ QA_SCRIPTS = (
     "phase6_qa.py",
     "telemetry_qa.py",
     "season_filter_qa.py",
+    "method_guide_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- SEO:START -->
-  <meta name="description" content="The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation.">
+  <meta name="description" content="How to read an LCA of the Impossible episode: reporting basis, reconstruction, boundaries, inventories, factors, hotspots, sensitivity, evidence and interpretation.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#071019">
   <link rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/method.html">
@@ -12,24 +12,24 @@
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:site_name" content="LCA of the Impossible">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Method — LCA of the Impossible">
-  <meta property="og:description" content="The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation.">
+  <meta property="og:title" content="Method &amp; Reading Guide — LCA of the Impossible">
+  <meta property="og:description" content="How to read an LCA of the Impossible episode: reporting basis, reconstruction, boundaries, inventories, factors, hotspots, sensitivity, evidence and interpretation.">
   <meta property="og:url" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/method.html">
   <meta property="og:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta property="og:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Method — LCA of the Impossible">
-  <meta name="twitter:description" content="The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation.">
+  <meta name="twitter:title" content="Method &amp; Reading Guide — LCA of the Impossible">
+  <meta name="twitter:description" content="How to read an LCA of the Impossible episode: reporting basis, reconstruction, boundaries, inventories, factors, hotspots, sensitivity, evidence and interpretation.">
   <meta name="twitter:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta name="twitter:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "WebPage",
-  "name": "Method — LCA of the Impossible",
+  "name": "Method & Reading Guide — LCA of the Impossible",
   "url": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/method.html",
-  "description": "The methodology behind LCA of the Impossible: evidence, functional units, engineering reconstruction, inventories, emission factors, uncertainty and interpretation.",
+  "description": "How to read an LCA of the Impossible episode: reporting basis, reconstruction, boundaries, inventories, factors, hotspots, sensitivity, evidence and interpretation.",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -39,10 +39,10 @@
 }
   </script>
 <!-- SEO:END -->
-<title>Method — LCA of the Impossible</title>
+<title>Method &amp; Reading Guide — LCA of the Impossible</title>
   <link rel="stylesheet" href="assets/style.css?v=20260816-cardfix1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/method.css?v=20260819-method1">
+  <link rel="stylesheet" href="assets/method.css?v=20260827-reading-guide1">
   <link rel="stylesheet" href="assets/phase6.css?v=20260819-epic-passport3">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
@@ -75,6 +75,10 @@
         <p class="intro">
           LCA of the Impossible does not try to make impossible subjects physically real. It makes them sufficiently defined to ask a real life-cycle question: what service is being delivered, what must exist for that service to happen, and where would the climate-change burden plausibly land?
         </p>
+        <div class="method-hero-actions">
+          <a class="button" href="#read-an-episode">How to read an episode ↓</a>
+          <a class="text-link" href="#pipeline">See the seven-stage method →</a>
+        </div>
         <div class="method-manifesto" aria-label="Method principles">
           <article>
             <strong>Make the assumptions visible.</strong>
@@ -90,6 +94,123 @@
           </article>
         </div>
       </div>
+    </section>
+
+    <nav class="method-jumpnav" aria-label="Method page sections">
+      <a href="#read-an-episode">Read an episode</a>
+      <a href="#pipeline">Seven-stage method</a>
+      <a href="#evidence">Evidence</a>
+      <a href="#boundary">Boundary</a>
+      <a href="#meaning">Interpretation</a>
+    </nav>
+
+    <section class="method-section reading-guide" id="read-an-episode">
+      <div class="method-section-heading">
+        <div>
+          <p class="eyebrow">HOW TO READ AN EPISODE</p>
+          <h2>Start with the basis.<br>Then read the number.</h2>
+        </div>
+        <div class="prose">
+          <p>A headline footprint is never self-explanatory. Read it as the output of a declared reporting basis, a reconstructed system and a defined boundary. The sequence below shows where to look and what each part can — and cannot — tell you.</p>
+          <p class="method-note">The exact layout varies by case, but the analytical order remains the same.</p>
+        </div>
+      </div>
+
+      <div class="reading-equation" aria-label="Calculation chain: activity data multiplied by an emission factor equals a contribution; contributions sum to the baseline total">
+        <div><span>Quantity or activity</span><strong>Activity data</strong></div>
+        <span class="reading-operator" aria-hidden="true">×</span>
+        <div><span>Climate intensity</span><strong>Emission factor</strong></div>
+        <span class="reading-operator" aria-hidden="true">=</span>
+        <div><span>One inventory flow</span><strong>Contribution</strong></div>
+        <span class="reading-operator" aria-hidden="true">Σ</span>
+        <div><span>Included flows</span><strong>Baseline total</strong></div>
+      </div>
+
+      <div class="reading-routes" aria-label="Two ways to read an episode">
+        <article>
+          <span class="method-kicker">TWO-MINUTE ORIENTATION</span>
+          <h3>Basis → Passport → Hotspot → Sensitivity</h3>
+          <p>Use the functional unit or reporting basis to understand the headline, scan the Model Passport, then check what dominates and what makes the result move.</p>
+        </article>
+        <article>
+          <span class="method-kicker">FULL AUDIT ROUTE</span>
+          <h3>Question → Model → Inventory → Factors → Result → Tests</h3>
+          <p>Follow the complete calculation path, including included and excluded processes, cut-off choices, allocations, proxies and source context.</p>
+        </article>
+      </div>
+
+      <div class="reader-sequence" aria-label="Six-step episode reading sequence">
+        <article class="reader-step" data-reading-step="1">
+          <span class="reader-step-number">01</span>
+          <div>
+            <p class="method-kicker">HEADLINE &amp; REPORTING BASIS</p>
+            <h3>Ask what one result represents.</h3>
+            <p>Read the climate result together with the functional unit or reporting basis: the service, quantity, quality, delivery condition and timeframe. The reference flow states what must be supplied to deliver that unit.</p>
+          </div>
+          <div class="reader-check"><span>READ TOGETHER</span><p>Result, unit, functional unit or reporting basis, reference flow and timeframe.</p></div>
+        </article>
+
+        <article class="reader-step" data-reading-step="2">
+          <span class="reader-step-number">02</span>
+          <div>
+            <p class="method-kicker">SUBJECT &amp; RECONSTRUCTION</p>
+            <h3>See which version became the model.</h3>
+            <p>Check the chosen narrative version and the geometry, mass, materials, lifetime and operating pattern used to make it quantifiable. Separate sourced facts from reconstruction, inference and declared assumptions.</p>
+          </div>
+          <div class="reader-check"><span>LOOK FOR</span><p>Dimensions, material choices, lifetime, use pattern and the evidence status behind them.</p></div>
+        </article>
+
+        <article class="reader-step" data-reading-step="3">
+          <span class="reader-step-number">03</span>
+          <div>
+            <p class="method-kicker">INVENTORY &amp; SYSTEM BOUNDARY</p>
+            <h3>Find what is counted — and what is not.</h3>
+            <p>The inventory lists the quantified flows. Boundary notes identify included and excluded processes, the cut-off event and any lifetime allocation, reuse, recycling or avoided-production treatment.</p>
+          </div>
+          <div class="reader-check"><span>CHECK CONSISTENCY</span><p>Every counted flow should have a quantity, unit, modelling basis and declared treatment.</p></div>
+        </article>
+
+        <article class="reader-step" data-reading-step="4">
+          <span class="reader-step-number">04</span>
+          <div>
+            <p class="method-kicker">EMISSION FACTORS &amp; PROXIES</p>
+            <h3>Trace each quantity to its climate intensity.</h3>
+            <p>Check that factor units match activity units and that source, year, geography and technology are relevant. When an impossible process needs an analogue, the proxy and its rationale should remain visible.</p>
+            <p class="reader-links"><a href="sources.html">How sources and factors are selected →</a><a href="glossary.html">Open the LCA glossary →</a></p>
+          </div>
+          <div class="reader-check"><span>FOLLOW THE MATH</span><p>Activity data × emission factor = contribution. Contributions must reconcile to the total.</p></div>
+        </article>
+
+        <article class="reader-step" data-reading-step="5">
+          <span class="reader-step-number">05</span>
+          <div>
+            <p class="method-kicker">BASELINE, CONTRIBUTIONS &amp; HOTSPOT</p>
+            <h3>Read the total first, then its structure.</h3>
+            <p>The baseline is the result for the declared scenario. Contribution shares show where that total comes from; the hotspot is the flow, stage or assumption that most strongly controls the result.</p>
+          </div>
+          <div class="reader-check"><span>RECONCILE</span><p>Displayed contributions should add to the baseline within the stated rounding precision.</p></div>
+        </article>
+
+        <article class="reader-step" data-reading-step="6">
+          <span class="reader-step-number">06</span>
+          <div>
+            <p class="method-kicker">SENSITIVITY &amp; INTERPRETATION</p>
+            <h3>Test what changes the conclusion.</h3>
+            <p>Compare the baseline with low and high cases that change one physical or data/model parameter at a time. Use the Evidence Profile to understand evidence confidence, proxy dependence and assumption sensitivity; then judge whether the final interpretation stays within those limits.</p>
+          </div>
+          <div class="reader-check"><span>DO NOT READ AS A SCORE</span><p>Low, Medium and High are qualitative transparency indicators, not formal data-quality ratings or uncertainty distributions.</p></div>
+        </article>
+      </div>
+
+      <aside class="passport-guide" aria-labelledby="passport-guide-title">
+        <div>
+          <p class="method-kicker">MODEL PASSPORT</p>
+          <h3 id="passport-guide-title">A map of the case, not the whole territory.</h3>
+        </div>
+        <p>The Passport is a quick orientation layer: it gathers the registered reporting basis, headline result, hotspot, Evidence Profile and uncertainty note. It does not replace the detailed inventory, boundary notes, factor ledger or source trail, and it is not a verification statement.</p>
+      </aside>
+
+      <p class="reading-caution"><strong>Before comparing two episodes:</strong> align the functional units or reporting bases, system boundaries, timeframes and geographic or technological contexts. A larger headline number may simply describe a larger service.</p>
     </section>
 
     <section class="method-section" id="pipeline">
