@@ -231,8 +231,9 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .filter-button{
   appearance:none;border:1px solid var(--line);background:transparent;color:var(--muted);
   padding:10px 13px;font:inherit;font-size:.78rem;font-weight:760;letter-spacing:.05em;
-  cursor:pointer;transition:.2s
+  cursor:pointer;transition:.2s;display:inline-flex;align-items:center;gap:8px
 }
+.filter-count{display:inline-grid;place-items:center;min-width:24px;height:20px;padding:0 6px;border:1px solid currentColor;font-size:.68rem;line-height:1}
 .filter-button:hover,.filter-button.active{border-color:var(--accent);color:var(--accent);background:rgba(109,231,255,.06)}
 .filter-button:focus-visible,.archive-search input:focus-visible,.load-more:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
 .archive-search{display:block;min-width:min(100%,280px)}

@@ -391,7 +391,9 @@ Canonical sequence:
 
 Each card contains the canonical catalogue cover, Category · LCA lens, title, episode number, result, hotspot cue and `Explore the LCA →`.
 
-Subject and LCA filters are generated from registry tokens and combine with AND logic. Search covers title, episode number, labels, tokens and keywords. Initial display is up to 9 matches with Load More in batches of 9.
+Season, subject and LCA filters are generated from registry tokens and combine with AND logic. Season controls always display the live number of published cases. Search covers title, episode number, labels, tokens and keywords. Initial display is up to 9 matches with Load More in batches of 9.
+
+Season filters have supported shareable routes: `archive.html?season=season-i` and `archive.html?season=season-ii`. Selecting a season updates the browser URL without reloading the page; Back and Forward restore the corresponding filter. Unknown season parameters fall back to `All seasons` and are removed from the browser state. The page-level SEO canonical remains `archive.html`.
 
 ---
 
@@ -1233,6 +1235,8 @@ Existing episodes without explicit season metadata remain unchanged. Adding a ne
 - [ ] Season fields are complete, mutually consistent and searchable.
 - [ ] Homepage and Collections expose the registered season route.
 - [ ] Archive filtering, Compare, Impact Map and Epic Passport display the registered season label.
+- [ ] Archive exposes `All seasons`, Season I and Season II with live episode counts.
+- [ ] `?season=season-i` and `?season=season-ii` open the correct filtered catalogue and browser history restores the selected state.
 - [ ] Open Graph, Twitter/X and JSON-LD identify the registered season and exact approved cover.
 - [ ] The approved cover checksum matches the repository asset.
 - [ ] No unrelated existing episode is reclassified.

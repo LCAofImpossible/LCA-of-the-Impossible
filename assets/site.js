@@ -210,7 +210,10 @@
           <span class="badge">${escapeHtml(episode.lcaLabel)}</span>
           <span class="badge">${escapeHtml(episode.categoryLabel)}</span>
         </div>
-        <a class="button" href="${escapeHtml(pageUrl(episode.url))}">Enter Season I →</a>
+        <div class="cta-row">
+          <a class="button" href="${escapeHtml(pageUrl(episode.url))}">Explore episode →</a>
+          <a class="button secondary" href="${escapeHtml(pageUrl('archive.html?season=season-i'))}">Browse Season I →</a>
+        </div>
       </div>`;
   };
 
@@ -244,9 +247,18 @@
         number: Number.isFinite(episode.seasonNumber) ? episode.seasonNumber : Number.MAX_SAFE_INTEGER
       }])).values()]
       .sort((a, b) => a.number - b.number || a.label.localeCompare(b.label));
+    const knownSeasonIds = new Set(seasons.map((season) => season.id));
+    const seasonCounts = new Map(seasons.map((season) => [
+      season.id,
+      episodes.filter((episode) => episode.seasonId === season.id).length
+    ]));
+    const seasonFromUrl = () => {
+      const requested = new URLSearchParams(window.location.search).get('season');
+      return requested && knownSeasonIds.has(requested) ? requested : 'all';
+    };
     let activeCategory = 'all';
     let activeLca = 'all';
-    let activeSeason = 'all';
+    let activeSeason = seasonFromUrl();
     let visibleLimit = 9;
     const selected = loadCompareSelection();
 
@@ -258,7 +270,33 @@
 
     categoryFilters.innerHTML = makeButtons(categories, 'category', 'All subjects');
     lcaFilters.innerHTML = makeButtons(lcaCharacteristics, 'lca', 'All LCA lenses');
-    seasonFilters.innerHTML = `<button class="filter-button active" type="button" data-group="season" data-filter="all" aria-pressed="true">All seasons</button>${seasons.map(({ id, label }) => `<button class="filter-button" type="button" data-group="season" data-filter="${escapeHtml(id)}" aria-pressed="false">${escapeHtml(label)}</button>`).join('')}`;
+    const countLabel = (value) => `${value} ${value === 1 ? 'episode' : 'episodes'}`;
+    const seasonButton = (id, label, total) => {
+      const isActive = activeSeason === id;
+      return `<button class="filter-button${isActive ? ' active' : ''}" type="button" data-group="season" data-filter="${escapeHtml(id)}" aria-pressed="${isActive ? 'true' : 'false'}" aria-label="${escapeHtml(label)}, ${countLabel(total)}">${escapeHtml(label)} <span class="filter-count" aria-hidden="true">${total}</span></button>`;
+    };
+    seasonFilters.innerHTML = seasonButton('all', 'All seasons', episodes.length)
+      + seasons.map(({ id, label }) => seasonButton(id, label, seasonCounts.get(id) || 0)).join('');
+
+    const writeSeasonToUrl = (mode = 'push') => {
+      const url = new URL(window.location.href);
+      if (activeSeason === 'all') url.searchParams.delete('season');
+      else url.searchParams.set('season', activeSeason);
+      if (url.href === window.location.href) return;
+      const method = mode === 'replace' ? 'replaceState' : 'pushState';
+      window.history[method]({ season: activeSeason }, '', `${url.pathname}${url.search}${url.hash}`);
+    };
+
+    const syncSeasonButtons = () => {
+      seasonFilters.querySelectorAll('.filter-button').forEach((item) => {
+        const isSelected = item.dataset.filter === activeSeason;
+        item.classList.toggle('active', isSelected);
+        item.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
+      });
+    };
+
+    const requestedSeason = new URLSearchParams(window.location.search).get('season');
+    if (requestedSeason && !knownSeasonIds.has(requestedSeason)) writeSeasonToUrl('replace');
 
     const searchableText = (episode) => [
       episode.title,
@@ -328,7 +366,8 @@
       grid.innerHTML = matches.slice(0, visibleLimit)
         .map((episode) => episodeCard(episode, { showCover: true, compareEnabled: true, selected }))
         .join('');
-      count.textContent = `${matches.length} ${matches.length === 1 ? 'episode' : 'episodes'}`;
+      const selectedSeason = seasons.find((season) => season.id === activeSeason);
+      count.textContent = `${countLabel(matches.length)}${selectedSeason ? ` · ${selectedSeason.label}` : ''}`;
       empty.hidden = matches.length !== 0;
       loadMore.hidden = matches.length <= visibleLimit;
       updateCompareBar();
@@ -345,7 +384,10 @@
       });
       if (group === 'category') activeCategory = value;
       if (group === 'lca') activeLca = value;
-      if (group === 'season') activeSeason = value;
+      if (group === 'season') {
+        activeSeason = value;
+        writeSeasonToUrl();
+      }
       visibleLimit = 9;
       applyArchive();
     };
@@ -375,6 +417,13 @@
     });
 
     search.addEventListener('input', () => {
+      visibleLimit = 9;
+      applyArchive();
+    });
+
+    window.addEventListener('popstate', () => {
+      activeSeason = seasonFromUrl();
+      syncSeasonButtons();
       visibleLimit = 9;
       applyArchive();
     });
