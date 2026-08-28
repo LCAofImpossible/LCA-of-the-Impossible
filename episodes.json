@@ -2266,6 +2266,56 @@
       "slug": "atlantis",
       "title": "Atlantis",
       "url": "episodes/atlantis.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "place",
+          "scaleClass": "landscape",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "Plato's Critias"
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "One concentric Atlantean royal-harbor core over 100 years.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "A 100-year urban product system.",
+          "geographicContext": "The concentric Atlantean royal-harbor core described in Plato's Critias.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": 100,
+          "cutoffSummary": "The model ends after 100 years of material maintenance and water service; submergence and its consequences are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.618,
+          "unit": "Mt CO₂e",
+          "normalizedKgCO2e": 3618000000,
+          "hotspotStage": "construction",
+          "hotspotSharePercent": 58.4
+        },
+        "model": {
+          "archetype": "integrated-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "operation"
+          ],
+          "repetitionClass": "lifetime"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 39,
+          "missingApprovedFields": []
+        }
+      },
       "cover": "assets/images/episodes/ep39-atlantis-cover-final.png",
       "categoryLabel": "Mythic City",
       "categories": [
@@ -2333,6 +2383,55 @@
       "slug": "trojan-horse",
       "title": "Trojan Horse",
       "url": "episodes/trojan-horse.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "vehicle",
+          "scaleClass": "building",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Homer, Pseudo-Apollodorus, Virgil and Quintus Smyrnaeus"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "One full-scale wooden horse and one 50-warrior infiltration mission.",
+          "boundaryType": "cradle-to-grave",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation",
+            "end-of-life"
+          ],
+          "excludedStages": [],
+          "temporalContext": "A three-day build followed by one night of use.",
+          "geographicContext": "Regional material supply from Mount Ida and one-way entry into Troy.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The main case ends with assumed combustion of the finished timber during the sack of Troy."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 8.4,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 8400,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 45.2
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 38,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep38-trojan-horse-cover-final.png",
       "categoryLabel": "Myth & Legend",
       "categories": [
@@ -2399,6 +2498,57 @@
       "slug": "excalibur",
       "title": "Excalibur",
       "url": "episodes/excalibur.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "legend",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Arthurian legend in Malory"
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "One complete Excalibur sword and scabbard set over 40 years of Arthurian rule.",
+          "boundaryType": "cradle-to-grave",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "excludedStages": [],
+          "temporalContext": "A 40-year functional unit covering manufacture, use, maintenance and one replacement scabbard.",
+          "geographicContext": "Late-medieval European sword proxy context.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": 40,
+          "cutoffSummary": "The model ends with the sword's return to the lake, without active treatment, recovery credit or avoided-treatment credit."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 73,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 73,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 71
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "process-energy",
+          "secondaryDrivers": [
+            "materials"
+          ],
+          "repetitionClass": "lifetime"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 37,
+          "missingApprovedFields": []
+        }
+      },
       "cover": "assets/images/episodes/ep37-excalibur-cover-20260816.png",
       "categoryLabel": "Myth & Legend",
       "categories": [
@@ -2467,6 +2617,60 @@
       "slug": "tower-of-babel",
       "title": "The Tower of Babel",
       "url": "episodes/tower-of-babel.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "structure",
+          "scaleClass": "building",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "The Tower of Babel narrative reconstructed through the Etemenanki analogue"
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One completed 90 m Tower of Babel including full construction and one year of operation.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "Full construction followed by one year of repairs and ceremonial fires.",
+          "geographicContext": "Babylon, using Etemenanki as the physical analogue.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The main functional unit ends after one year of repairs and ceremonial fires; active end of life is excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 22491,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 22491000,
+          "hotspotStage": "manufacturing",
+          "hotspotSharePercent": 95.4
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "process-energy"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 36,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep36-tower-of-babel-cover-20260816.png",
       "categoryLabel": "Mythic Structure",
       "categories": [
@@ -2529,6 +2733,57 @@
       "slug": "flying-dutchman",
       "title": "The Flying Dutchman",
       "url": "episodes/flying-dutchman.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "legend",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Maritime legend"
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One reconstructed early-17th-century Dutch East Indiaman including construction and one year of continuous navigation.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "Full construction charged to one year of continuous cursed navigation.",
+          "geographicContext": "Dutch maritime proxy context using Batavia and Vasa as physical analogues.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model ends after one year of maintenance and auxiliary use; end of life is excluded because the vessel has no final disposal."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 528.2,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 528200,
+          "hotspotStage": "construction",
+          "hotspotSharePercent": 97.4
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "continuous"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 35,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep35-flying-dutchman-cover-20260816.png",
       "categoryLabel": "Legends",
       "categories": [
@@ -2588,6 +2843,60 @@
       "slug": "solar-chariot-of-elios",
       "title": "Solar Chariot of Elios",
       "url": "episodes/solar-chariot-of-elios.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One 4.95 t solar chariot completing 365 dawn-to-dusk journeys and annual refurbishment.",
+          "boundaryType": "custom",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "One operational year comprising 365 dawn-to-dusk celestial journeys.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": 1,
+          "cutoffSummary": "The model stops after the 365th celestial journey and annual refurbishment."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3125,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 3125000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 98.8
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "energy"
+          ],
+          "repetitionClass": "cyclic"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 34,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "subject.narrativeOrigin"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep34-solar-chariot-of-elios-cover.png",
       "categoryLabel": "Myth & Legend",
       "categories": [
@@ -2656,6 +2965,58 @@
       "slug": "brahmastra",
       "title": "Brahmastra",
       "url": "episodes/brahmastra.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "not-applicable",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "One completed ceremonial astral relic delivered ready for one display or ritual use.",
+          "boundaryType": "custom",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "end-of-life"
+          ],
+          "temporalContext": "One delivered display or ritual use.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at completed relic delivery, before supernatural invocation or any use-phase effect."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 82.9,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 82.9,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 92.2
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 33,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep33-brahmastra-cover.png",
       "categoryLabel": "Myth & Legend",
       "categories": [
@@ -2725,6 +3086,59 @@
       "slug": "pegasus",
       "title": "Pegasus",
       "url": "episodes/pegasus.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "being",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Ancient Greek mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "One Pegasus service day completing one 300 km courier flight.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "construction",
+            "end-of-life"
+          ],
+          "temporalContext": "One flight day with no lifetime credit.",
+          "geographicContext": "A 300 km direct flight in an Ancient Greek proxy context.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the rider lands and the courier service is complete."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 5.51,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 5.51,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 48.6
+        },
+        "model": {
+          "archetype": "biological-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "biology"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 32,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      },
       "cover": "assets/images/episodes/ep32-pegasus-cover.png",
       "categoryLabel": "Myth & Legend",
       "categories": [

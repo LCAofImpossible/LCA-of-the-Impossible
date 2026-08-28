@@ -17,17 +17,8 @@
         30,
         39
       ],
-      "status": "pending",
-      "remainingEpisodeNumbers": [
-        32,
-        33,
-        34,
-        35,
-        36,
-        37,
-        38,
-        39
-      ]
+      "status": "complete",
+      "remainingEpisodeNumbers": []
     },
     {
       "id": "season-ii-40-49",
@@ -94,14 +85,6 @@
   ],
   "allowedMissingEpisodeNumbers": [
     1,
-    32,
-    33,
-    34,
-    35,
-    36,
-    37,
-    38,
-    39,
     40,
     41,
     42,
