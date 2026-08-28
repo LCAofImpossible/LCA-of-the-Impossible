@@ -974,7 +974,57 @@
         "legendary-engineering",
         "gilded-hotspots",
         "gold-driven-cases"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "The myth of the Argonauts"
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "One gold-coated ram fleece prepared for ceremonial display and delivered as the retrieved object.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "end-of-life"
+          ],
+          "temporalContext": "One prepared ceremonial artifact delivered once, with no repeated-use allocation.",
+          "geographicContext": "Road delivery to port and sea freight across the Black Sea.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the prepared Golden Fleece is delivered; the adventure, magical radiance and end of life remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 6.42,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 6420,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 99.21
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 59,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 58,
@@ -1044,7 +1094,61 @@
         "legendary-engineering",
         "gold-driven-cases",
         "alchemy-and-transmutation"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "legend",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "European alchemical tradition"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One successful laboratory projection event transforming 1.00 kg of lead into one 1.00 kg gold-equivalent ingot at the bench gate.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "construction",
+            "operation",
+            "recycling-credit"
+          ],
+          "temporalContext": "One successful laboratory projection batch.",
+          "geographicContext": "A European alchemical laboratory using UK electricity and declared proxy factors.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The boundary ends when the gold-equivalent ingot leaves the bench; lifetime uses and avoided mined-gold credits remain separate."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 23.5,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 23.5,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 69.8
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "process-energy",
+            "materials"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 58,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 57,
@@ -1111,7 +1215,61 @@
       "collectionSlugs": [
         "legendary-engineering",
         "impossible-wearables"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "folklore",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Fairy-tale tradition"
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "One wearable pair capable of the legendary long-distance stride, modelled as one finished knee-high leather boot pair, packed and delivered to the court user.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One finished pair produced, packed and delivered once; the 33.8 km stride remains a service claim outside the physical inventory.",
+          "geographicContext": null,
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the packed pair reaches the court user; magical displacement, maintenance and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 32.1,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 32.1,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 65.9
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "process-energy"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 57,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 56,
@@ -1176,7 +1334,61 @@
       "collectionSlugs": [
         "mythic-threat-control",
         "mythic-biology"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "being",
+          "scaleClass": "building",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "The myth of the Hydra of Lerna"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One Hydra neutralisation and containment event, modelled as one field response cycle from arrival to the immortal head sealed under the boulder and the containment pit closed.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One field-response cycle from arrival through neutralisation and closed containment.",
+          "geographicContext": "Lerna, using UK emission-factor proxies for the modern response system.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops once the immortal head is sealed under the boulder and the containment pit is closed; long-term remediation is excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 1.35,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 1350,
+          "hotspotStage": "operation",
+          "hotspotSharePercent": 44.5
+        },
+        "model": {
+          "archetype": "operational-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "energy",
+            "transport",
+            "materials"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 56,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 55,
@@ -1243,7 +1455,58 @@
         "mythic-threat-control",
         "gilded-hotspots",
         "gold-driven-cases"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "place",
+          "scaleClass": "landscape",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "The myth of the Hesperides"
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One annual guarded presentation of three golden apples from the Hesperidean orchard gate.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [],
+          "temporalContext": "One annual guarded-service cycle.",
+          "geographicContext": "A reconstructed western Mediterranean sacred orchard.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The boundary stops at the orchard gate; downstream eating, divine magic and minor ritual objects below the declared 1% cut-off remain outside the model."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 336,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 336,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 88.2
+        },
+        "model": {
+          "archetype": "integrated-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "operation"
+          ],
+          "repetitionClass": "cyclic"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 55,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 54,
@@ -1310,7 +1573,61 @@
       "collectionSlugs": [
         "legendary-engineering",
         "impossible-flight"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "legend",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Santa Claus legend"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "One reusable airborne gift-delivery sleigh completing one Christmas Eve mission.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "construction"
+          ],
+          "temporalContext": "One Christmas Eve mission with the reusable sleigh allocated across twelve Christmas missions.",
+          "geographicContext": null,
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the mission-ready sleigh leaves staging; gifts, workshop construction and magic flight energy remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 267,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 267,
+          "hotspotStage": "operation",
+          "hotspotSharePercent": 67
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "biology",
+            "materials"
+          ],
+          "repetitionClass": "repeated"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 54,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 53,
@@ -1381,7 +1698,60 @@
       "collectionSlugs": [
         "impossible-structures",
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "folklore",
+          "entityType": "structure",
+          "scaleClass": "building",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Slavic folklore"
+        },
+        "assessment": {
+          "reportingBasisType": "construction-and-commissioning",
+          "referenceFlow": "One reconstructed walking hut, delivered and commissioned once (reference flow: one cabin; 30-year service context).",
+          "boundaryType": "cradle-to-commissioning",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "installation"
+          ],
+          "excludedStages": [
+            "operation",
+            "end-of-life"
+          ],
+          "temporalContext": "One delivery and commissioning event within a 30-year service context.",
+          "geographicContext": "A forest clearing in a Slavic folklore context.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": 30,
+          "cutoffSummary": "The model stops after assembly and commissioning; magic propulsion, visitor use and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.73,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 3730,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 46.1
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "process-energy",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 53,
+          "missingApprovedFields": []
+        }
+      }
     },
     {
       "number": 52,
@@ -1451,7 +1821,59 @@
         "gilded-hotspots",
         "gold-driven-cases",
         "impossible-flight"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Greek mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "One pair of winged talaria enabling one courier mission.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One single build delivered to the mythic gate; no operational fuel is modeled.",
+          "geographicContext": null,
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The system ends when the packed sandals reach the mythic delivery gate; wear, repair, divine propulsion and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 63.5,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 63.5,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 80.2
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 52,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 51,
@@ -1521,7 +1943,61 @@
       "collectionSlugs": [
         "legendary-engineering",
         "mythic-threat-control"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "The myth of Pandora"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One sealed 45 L ceramic pithos delivered to a household and opened once, covering creation to first opening, with the non-physical payload explicitly cut off.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "One creation-and-delivery event ending at the first opening.",
+          "geographicContext": null,
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The cut-off event is the first opening; the non-physical payload, behavioural consequences and subsequent reuse remain outside the model."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 26,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 26,
+          "hotspotStage": "mixed",
+          "hotspotSharePercent": 49.9
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "process-energy",
+          "secondaryDrivers": [
+            "transport",
+            "materials"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 51,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 50,
@@ -1593,7 +2069,60 @@
       ],
       "collectionSlugs": [
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "infrastructure",
+          "scaleClass": "infrastructure",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "Norse mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One controlled Bifrost activation enabling a 10-minute crossing window for one expedition transfer.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "One 10-minute activation within a reusable gate system designed for 10,000 activations.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model covers one controlled activation and excludes realm creation, magic distance and Ragnarok collapse; minor flows below the declared 1% threshold are cut off when no factor exists."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 120.3,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 120.3,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 95.2
+        },
+        "model": {
+          "archetype": "operational-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "operation"
+          ],
+          "repetitionClass": "repeated"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 50,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 49,

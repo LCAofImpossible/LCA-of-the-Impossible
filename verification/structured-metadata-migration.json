@@ -35,19 +35,8 @@
         50,
         59
       ],
-      "status": "pending",
-      "remainingEpisodeNumbers": [
-        50,
-        51,
-        52,
-        53,
-        54,
-        55,
-        56,
-        57,
-        58,
-        59
-      ]
+      "status": "complete",
+      "remainingEpisodeNumbers": []
     },
     {
       "id": "season-ii-60-71",
@@ -74,16 +63,6 @@
   ],
   "allowedMissingEpisodeNumbers": [
     1,
-    50,
-    51,
-    52,
-    53,
-    54,
-    55,
-    56,
-    57,
-    58,
-    59,
     60,
     61,
     62,
