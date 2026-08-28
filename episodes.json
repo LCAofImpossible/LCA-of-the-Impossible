@@ -1662,7 +1662,60 @@
       ],
       "collectionSlugs": [
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "The myth of the Argonauts"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "Build and equip one Argo-class fifty-oared vessel and complete one Pagasae-Colchis-Pagasae expedition under oar and sail.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One round-trip expedition represented by a 4,400 km narrative route proxy.",
+          "geographicContext": "Pagasae-Colchis-Pagasae expedition route.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model ends when the build-and-voyage mission is complete; maintenance and end of life remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 10.66,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 10660,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 50.2
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 49,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 48,
@@ -1730,7 +1783,64 @@
       ],
       "collectionSlugs": [
         "impossible-structures"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "structure",
+          "scaleClass": "landscape",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "Norse mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One installed world-tree analogue maintained for one narrative year.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "transport",
+            "installation",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "Installation and first-year services over one narrative year.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops with the installed tree analogue operating at the end of year one; end of life, reuse and biogenic storage credit remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 797,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 797000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 55.4
+        },
+        "model": {
+          "archetype": "integrated-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "transport",
+            "operation"
+          ],
+          "repetitionClass": "continuous"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 48,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 47,
@@ -1799,7 +1909,59 @@
       "collectionSlugs": [
         "legendary-engineering",
         "gold-driven-cases"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Norse mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One complete Draupnir replication event: one original gold arm-ring plus eight equal rings delivered over a nine-night cycle.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "One nine-night replication event producing nine equal rings.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the ninth ring is available for use; use-phase prestige and end-of-life recycling credit are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 90.8,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 90800,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 99.996
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "cyclic"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 47,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 46,
@@ -1867,7 +2029,64 @@
       ],
       "collectionSlugs": [
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "science-fiction",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Jules Verne's Nautilus"
+        },
+        "assessment": {
+          "reportingBasisType": "construction-and-commissioning",
+          "referenceFlow": "One launch-ready Nautilus, 70 m long and 8 m wide, at the first ocean-trial condition; cradle-to-launch construction only.",
+          "boundaryType": "cradle-to-commissioning",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "Cradle-to-launch construction ending at the first ocean-trial condition.",
+          "geographicContext": "Distributed component supply to assembly and launch at the hidden island.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The boundary closes when the assembled vessel can leave the hidden island cradle for its first ocean trial."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 4.69,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 4690000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 55.5
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "process-energy",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 46,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 45,
@@ -1934,7 +2153,57 @@
       "collectionSlugs": [
         "gold-driven-cases",
         "alchemy-and-transmutation"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "The myth of King Midas"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One touch-converted ceremonial goblet, reconstructed as 0.622 kg of primary gold equivalent and delivered inside the palace boundary in one conversion event.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "end-of-life"
+          ],
+          "temporalContext": "One conversion event ending with delivery inside the palace boundary.",
+          "geographicContext": "Inside the palace boundary.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops when the converted object reaches the palace; palace use and end of life remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 22.7,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 22700,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 99.996
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 45,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 44,
@@ -2005,7 +2274,59 @@
         "legendary-engineering",
         "impossible-wearables",
         "impossible-flight"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "The myth of Icarus and Daedalus"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "One launch-ready wing pair on Crete, capable of carrying a 70 kg pilot through at least 1 km of unpowered gliding flight; one pair, one launch, no second attempt.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "end-of-life"
+          ],
+          "temporalContext": "One launch and at least 1 km of unpowered glide in a single escape attempt.",
+          "geographicContext": "Crete, with inbound sea freight to the workshop.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops after the first glide or impact with the sea; no second attempt or disposal enters the functional unit."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 70.4,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 70.4,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 88.8
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 44,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 43,
@@ -2065,7 +2386,59 @@
       ],
       "collectionSlugs": [
         "systems-that-never-stop"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "system",
+          "scaleClass": "infrastructure",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Homer's Odyssey 11.593-600"
+        },
+        "assessment": {
+          "reportingBasisType": "time-slice",
+          "referenceFlow": "Construction and execution of 1,000 complete punishment cycles using one reusable 5.0 t limestone boulder on a 500 m slope with 100 m vertical rise.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "operation"
+          ],
+          "excludedStages": [
+            "transport",
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "A finite reporting slice of 1,000 ascent-return cycles.",
+          "geographicContext": "Hades, represented by one fixed 500 m slope with 100 m vertical rise.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The reporting slice ends after the 1,000th uncontrolled return; hill construction, maintenance, transport and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 1.418,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 1418,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 97.25
+        },
+        "model": {
+          "archetype": "repeated-action",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "energy"
+          ],
+          "repetitionClass": "repeated"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 43,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 42,
@@ -2127,7 +2500,60 @@
         "legendary-engineering",
         "systems-that-never-stop",
         "mythic-threat-control"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "machine",
+          "scaleClass": "building",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Apollonius Rhodius and Pseudo-Apollodorus"
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "Manufacture and 30 years of operation of one 25 m bronze Talos providing continuous coastal defence for Crete: three 1,046 km patrol circuits per day, one 2 t boulder throw per circuit and one red-heat deterrence event per month.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "operation"
+          ],
+          "excludedStages": [
+            "transport",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "temporalContext": "Thirty years with three 1,046 km patrol circuits per day and declared defence-event frequencies.",
+          "geographicContext": "Crete, using a 1,046 km modern-coastline route benchmark.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": 30,
+          "cutoffSummary": "The model ends after 30 years of operation; maintenance, replacement, recovery and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 453.324,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 453324000,
+          "hotspotStage": "operation",
+          "hotspotSharePercent": 99.62
+        },
+        "model": {
+          "archetype": "operational-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "energy",
+            "materials"
+          ],
+          "repetitionClass": "lifetime"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 42,
+          "missingApprovedFields": []
+        }
+      }
     },
     {
       "number": 41,
@@ -2192,7 +2618,60 @@
       "collectionSlugs": [
         "legendary-engineering",
         "systems-that-never-stop"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Snorri Sturluson's Skáldskaparmál §43"
+        },
+        "assessment": {
+          "reportingBasisType": "custom",
+          "referenceFlow": "Manufacture and deployment of one reusable Mjölnir-class iron hammer over 1,000 combat cycles, each with a 50 m outbound flight, a 50 m powered return and one 1 GJ lightning-equivalent discharge.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "operation",
+            "replacement"
+          ],
+          "excludedStages": [
+            "transport",
+            "end-of-life"
+          ],
+          "temporalContext": "One thousand combat cycles with one modeled discharge per cycle.",
+          "geographicContext": "Asgard, represented with modern emission-factor proxies.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model ends after 1,000 combat cycles; recovery and end of life are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 51.5,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 51500,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 99.43
+        },
+        "model": {
+          "archetype": "repeated-action",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "operation"
+          ],
+          "repetitionClass": "repeated"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 41,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 40,
@@ -2259,7 +2738,57 @@
       "collectionSlugs": [
         "impossible-structures",
         "mythic-threat-control"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "structure",
+          "scaleClass": "building",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": "Pseudo-Apollodorus and Diodorus Siculus"
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "Construction and 30 years of material maintenance for one two-level, Knossos-scale Labyrinth with a 22,000 m² plan footprint, designed to confine one Minotaur and defeat unaided navigation; Ariadne's thread is quantified separately.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "maintenance",
+            "replacement"
+          ],
+          "excludedStages": [
+            "transport",
+            "operation",
+            "end-of-life"
+          ],
+          "temporalContext": "Construction and modeled material replacements over 30 years.",
+          "geographicContext": "Crete, using the Palace of Knossos only as a 22,000 m² scale benchmark.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": 30,
+          "cutoffSummary": "The model ends after 30 years of material maintenance; demolition, collapse, abandonment and archaeological excavation are excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 18.595,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 18595000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 75.1
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [],
+          "repetitionClass": "lifetime"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 40,
+          "missingApprovedFields": []
+        }
+      }
     },
     {
       "number": 39,
