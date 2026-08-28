@@ -200,6 +200,40 @@ def validate(
         errors.append(f"Live sitemap.xml is unavailable or invalid: {exc}")
         sitemap = ""
 
+    advanced_archive_contract = {
+        "archive.html": (
+            'id="subject-filter"',
+            'id="hotspot-filter"',
+            'id="boundary-filter"',
+            'id="evidence-confidence-filter"',
+            'id="clear-filters"',
+            "data-clear-archive",
+            "20260829-advanced-archive1",
+        ),
+        "assets/site.js": (
+            "archiveStateFromUrl",
+            "writeArchiveToUrl",
+            "activeSubject",
+            "activeHotspot",
+            "activeBoundary",
+            "activeConfidence",
+            "activeProxy",
+            "activeSensitivity",
+            "visibleLimit += 9",
+            "resetArchive",
+        ),
+        "assets/style.css": (
+            ".advanced-filter-grid",
+            ".archive-search-row",
+            ".archive-active-filters",
+        ),
+    }
+    for path, required_tokens in advanced_archive_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Advanced archive live contract is missing {token!r} from {path}")
+
     for episode in episodes:
         number = int(episode["number"])
         url = str(episode["url"])
@@ -323,6 +357,7 @@ def main() -> int:
     print(f"- Exact deployed paths verified: **{len(paths)}**")
     print(f"- Exact cover assets verified: **{len(episodes)}**")
     print("- Registry, collections, sitemap, SEO pages and analytical graphics: **PASS**")
+    print("- Advanced archive search, combined filters and URL-state contract: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

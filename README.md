@@ -391,9 +391,11 @@ Canonical sequence:
 
 Each card contains the canonical catalogue cover, Category · LCA lens, title, episode number, result, hotspot cue and `Explore the LCA →`.
 
-Season, subject and LCA filters are generated from registry tokens and combine with AND logic. Season controls always display the live number of published cases. Search covers title, episode number, labels, tokens and keywords. Initial display is up to 9 matches with Load More in batches of 9.
+Season, category and LCA-lens controls are generated from registry tokens. The advanced panel is generated from the canonical `structuredMetadata` and Evidence Profile fields and exposes subject type, hotspot stage, system boundary, evidence confidence, proxy dependence and assumption sensitivity. Filters combine with AND logic; each group permits one active value, while an episode with a documented `null` structured field remains visible under `All` and is not silently assigned to another class. Season controls always display the live number of published cases.
 
-Season filters have supported shareable routes: `archive.html?season=season-i` and `archive.html?season=season-ii`. Selecting a season updates the browser URL without reloading the page; Back and Forward restore the corresponding filter. Unknown season parameters fall back to `All seasons` and are removed from the browser state. The page-level SEO canonical remains `archive.html`.
+Search covers subject, title, episode number (including `#NN`), category, season, result, hotspot, registry keywords, structured assessment fields and Evidence Profile values. Search is case-insensitive and accent-insensitive. The archive reports both the number of matches and the number currently shown, exposes a clear no-results state and reveals at most 9 additional matches per Load More action.
+
+Every archive state is shareable. Supported query parameters are `q`, `season`, `category`, `lca`, `subject`, `hotspot`, `boundary`, `confidence`, `proxy` and `sensitivity`; for example, `archive.html?season=season-ii&hotspot=materials&confidence=medium`. Selecting a filter updates the browser URL without reloading the page, search updates the current history entry, and Back and Forward restore the complete combined state. Unknown values for controlled parameters fall back to `All` and are removed from browser state. Reset clears the complete controlled state. The page-level SEO canonical remains `archive.html`.
 
 ---
 

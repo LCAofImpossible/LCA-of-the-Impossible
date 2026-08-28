@@ -72,12 +72,12 @@ def main() -> int:
         archive = archive_path.read_text(encoding="utf-8")
         require_token(archive, 'id="season-filters"', "archive.html")
         require_token(archive, 'aria-label="Filter episodes by season"', "archive.html")
-        require_token(archive, 'assets/site.js?v=20260827-season-filters', "archive.html")
+        require_token(archive, 'assets/site.js?v=20260829-advanced-archive1', "archive.html")
 
     if index_path.is_file():
         index = index_path.read_text(encoding="utf-8")
         require_token(index, 'href="archive.html?season=season-i"', "index.html")
-        require_token(index, 'assets/site.js?v=20260827-season-filters', "index.html")
+        require_token(index, 'assets/site.js?v=20260829-advanced-archive1', "index.html")
 
     if script_path.is_file():
         site_js = script_path.read_text(encoding="utf-8")

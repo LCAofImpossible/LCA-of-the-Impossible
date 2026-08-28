@@ -292,7 +292,7 @@
   </script>
 <!-- SEO:END -->
 <title>Episode Archive — LCA of the Impossible</title>
-  <link rel="stylesheet" href="assets/style.css?v=20260816-cardfix1">
+  <link rel="stylesheet" href="assets/style.css?v=20260829-advanced-archive1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
@@ -347,11 +347,27 @@
           <span class="filter-label">LCA lens</span>
           <div id="lca-filters" class="filter-row" aria-label="Filter episodes by LCA characteristic"></div>
         </div>
-        <label class="archive-search archive-search-wide">
-          <span class="sr-only">Search episodes</span>
-          <input id="episode-search" type="search" placeholder="Search title, episode, season, result, material, hotspot…" autocomplete="off">
-        </label>
+        <div class="filter-group filter-group-advanced">
+          <span class="filter-label">Advanced</span>
+          <div class="advanced-filter-grid" aria-label="Advanced episode filters">
+            <label class="filter-select-label" for="subject-filter"><span>Subject type</span><select id="subject-filter"></select></label>
+            <label class="filter-select-label" for="hotspot-filter"><span>Hotspot stage</span><select id="hotspot-filter"></select></label>
+            <label class="filter-select-label" for="boundary-filter"><span>System boundary</span><select id="boundary-filter"></select></label>
+            <label class="filter-select-label" for="evidence-confidence-filter"><span>Evidence confidence</span><select id="evidence-confidence-filter"></select></label>
+            <label class="filter-select-label" for="proxy-dependence-filter"><span>Proxy dependence</span><select id="proxy-dependence-filter"></select></label>
+            <label class="filter-select-label" for="assumption-sensitivity-filter"><span>Assumption sensitivity</span><select id="assumption-sensitivity-filter"></select></label>
+          </div>
+        </div>
+        <div class="archive-search-row">
+          <label class="archive-search archive-search-wide">
+            <span class="sr-only">Search episodes</span>
+            <input id="episode-search" type="search" placeholder="Search subject, title, episode number, category or keyword…" autocomplete="off" spellcheck="false">
+          </label>
+          <button class="button secondary archive-reset" id="clear-filters" type="button" hidden>Reset filters</button>
+        </div>
       </div>
+
+      <p class="archive-active-filters" id="active-filters" aria-live="polite">No filters active · newest episodes first</p>
 
       <div class="archive-meta">
         <span id="archive-count" aria-live="polite" data-registry-status>Loading episodes…</span>
@@ -359,7 +375,11 @@
       </div>
 
       <div class="cards square-previews episode-grid" id="episode-grid"></div>
-      <p class="archive-empty" id="archive-empty" hidden>No episodes match the selected filters.</p>
+      <div class="archive-empty" id="archive-empty" hidden>
+        <strong>No episodes match this combination.</strong>
+        <span>Try a broader search or reset the active filters.</span>
+        <button class="button secondary" type="button" data-clear-archive>Reset filters</button>
+      </div>
       <div class="load-more-row">
         <button class="button load-more" id="load-more" type="button" hidden>Load more episodes ↓</button>
       </div>
@@ -371,7 +391,7 @@
     <a href="index.html">Back to home ↑</a>
   </footer>
 
-  <script src="assets/site.js?v=20260827-season-filters"></script>
+  <script src="assets/site.js?v=20260829-advanced-archive1"></script>
 <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
   <script src="assets/engagement.js?v=20260816-phase4"></script>
 </body>

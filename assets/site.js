@@ -226,7 +226,17 @@
     const categoryFilters = document.getElementById('category-filters');
     const lcaFilters = document.getElementById('lca-filters');
     const seasonFilters = document.getElementById('season-filters');
-    if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters || !seasonFilters) return;
+    const subjectFilter = document.getElementById('subject-filter');
+    const hotspotFilter = document.getElementById('hotspot-filter');
+    const boundaryFilter = document.getElementById('boundary-filter');
+    const confidenceFilter = document.getElementById('evidence-confidence-filter');
+    const proxyFilter = document.getElementById('proxy-dependence-filter');
+    const sensitivityFilter = document.getElementById('assumption-sensitivity-filter');
+    const clearFilters = document.getElementById('clear-filters');
+    const activeFilters = document.getElementById('active-filters');
+    if (!grid || !search || !count || !empty || !loadMore || !categoryFilters || !lcaFilters || !seasonFilters
+      || !subjectFilter || !hotspotFilter || !boundaryFilter || !confidenceFilter || !proxyFilter
+      || !sensitivityFilter || !clearFilters || !activeFilters) return;
 
     const toolbar = document.querySelector('.archive-toolbar');
     if (toolbar && !document.querySelector('.archive-feature-entrypoints')) {
@@ -237,8 +247,19 @@
         </div>`);
     }
 
-    const categories = [...new Set(episodes.flatMap((episode) => episode.categories || []))];
-    const lcaCharacteristics = [...new Set(episodes.flatMap((episode) => episode.lcaCharacteristics || []))];
+    const byLabel = (a, b) => labelFor(a).localeCompare(labelFor(b));
+    const uniqueValues = (values) => [...new Set(values.filter(Boolean))].sort(byLabel);
+    const metadataFor = (episode) => episode.structuredMetadata || {};
+    const categories = uniqueValues(episodes.flatMap((episode) => episode.categories || []));
+    const lcaCharacteristics = uniqueValues(episodes.flatMap((episode) => episode.lcaCharacteristics || []));
+    const subjectTypes = uniqueValues(episodes.map((episode) => metadataFor(episode).subject?.entityType));
+    const hotspotStages = uniqueValues(episodes.map((episode) => metadataFor(episode).impact?.hotspotStage));
+    const boundaryTypes = uniqueValues(episodes.map((episode) => metadataFor(episode).assessment?.boundaryType));
+    const evidenceOrder = ['High', 'Medium', 'Low'];
+    const evidenceValues = (field) => evidenceOrder.filter((value) => episodes.some((episode) => episode.evidence?.[field] === value));
+    const confidenceValues = evidenceValues('confidence');
+    const proxyValues = evidenceValues('proxyDependence');
+    const sensitivityValues = evidenceValues('assumptionSensitivity');
     const seasons = [...new Map(episodes
       .filter((episode) => episode.seasonId && episode.seasonLabel)
       .map((episode) => [episode.seasonId, {
@@ -252,24 +273,71 @@
       season.id,
       episodes.filter((episode) => episode.seasonId === season.id).length
     ]));
-    const seasonFromUrl = () => {
-      const requested = new URLSearchParams(window.location.search).get('season');
-      return requested && knownSeasonIds.has(requested) ? requested : 'all';
+    const knownValues = {
+      category: new Set(categories),
+      lca: new Set(lcaCharacteristics),
+      subject: new Set(subjectTypes),
+      hotspot: new Set(hotspotStages),
+      boundary: new Set(boundaryTypes),
+      confidence: new Set(confidenceValues),
+      proxy: new Set(proxyValues),
+      sensitivity: new Set(sensitivityValues)
     };
-    let activeCategory = 'all';
-    let activeLca = 'all';
-    let activeSeason = seasonFromUrl();
+    const supportedValue = (params, key, values) => {
+      const requested = params.get(key);
+      return requested && values.has(requested) ? requested : 'all';
+    };
+    const archiveStateFromUrl = () => {
+      const params = new URLSearchParams(window.location.search);
+      const requestedSeason = params.get('season');
+      return {
+        query: String(params.get('q') || '').trim().slice(0, 160),
+        season: requestedSeason && knownSeasonIds.has(requestedSeason) ? requestedSeason : 'all',
+        category: supportedValue(params, 'category', knownValues.category),
+        lca: supportedValue(params, 'lca', knownValues.lca),
+        subject: supportedValue(params, 'subject', knownValues.subject),
+        hotspot: supportedValue(params, 'hotspot', knownValues.hotspot),
+        boundary: supportedValue(params, 'boundary', knownValues.boundary),
+        confidence: supportedValue(params, 'confidence', knownValues.confidence),
+        proxy: supportedValue(params, 'proxy', knownValues.proxy),
+        sensitivity: supportedValue(params, 'sensitivity', knownValues.sensitivity)
+      };
+    };
+    const initialState = archiveStateFromUrl();
+    let activeQuery = initialState.query;
+    let activeCategory = initialState.category;
+    let activeLca = initialState.lca;
+    let activeSeason = initialState.season;
+    let activeSubject = initialState.subject;
+    let activeHotspot = initialState.hotspot;
+    let activeBoundary = initialState.boundary;
+    let activeConfidence = initialState.confidence;
+    let activeProxy = initialState.proxy;
+    let activeSensitivity = initialState.sensitivity;
     let visibleLimit = 9;
     const selected = loadCompareSelection();
 
-    const makeButtons = (tokens, group, allLabel) => {
-      const all = `<button class="filter-button active" type="button" data-group="${group}" data-filter="all" aria-pressed="true">${allLabel}</button>`;
-      const rest = tokens.map((token) => `<button class="filter-button" type="button" data-group="${group}" data-filter="${escapeHtml(token)}" aria-pressed="false">${escapeHtml(labelFor(token))}</button>`).join('');
+    const makeButtons = (tokens, group, allLabel, activeValue) => {
+      const allSelected = activeValue === 'all';
+      const all = `<button class="filter-button${allSelected ? ' active' : ''}" type="button" data-group="${group}" data-filter="all" aria-pressed="${allSelected ? 'true' : 'false'}">${allLabel}</button>`;
+      const rest = tokens.map((token) => {
+        const isSelected = activeValue === token;
+        return `<button class="filter-button${isSelected ? ' active' : ''}" type="button" data-group="${group}" data-filter="${escapeHtml(token)}" aria-pressed="${isSelected ? 'true' : 'false'}">${escapeHtml(labelFor(token))}</button>`;
+      }).join('');
       return all + rest;
     };
 
-    categoryFilters.innerHTML = makeButtons(categories, 'category', 'All subjects');
-    lcaFilters.innerHTML = makeButtons(lcaCharacteristics, 'lca', 'All LCA lenses');
+    const makeOptions = (tokens, allLabel) => `<option value="all">${escapeHtml(allLabel)}</option>`
+      + tokens.map((token) => `<option value="${escapeHtml(token)}">${escapeHtml(labelFor(token))}</option>`).join('');
+
+    categoryFilters.innerHTML = makeButtons(categories, 'category', 'All categories', activeCategory);
+    lcaFilters.innerHTML = makeButtons(lcaCharacteristics, 'lca', 'All LCA lenses', activeLca);
+    subjectFilter.innerHTML = makeOptions(subjectTypes, 'All subject types');
+    hotspotFilter.innerHTML = makeOptions(hotspotStages, 'All hotspot stages');
+    boundaryFilter.innerHTML = makeOptions(boundaryTypes, 'All boundaries');
+    confidenceFilter.innerHTML = makeOptions(confidenceValues, 'Any confidence');
+    proxyFilter.innerHTML = makeOptions(proxyValues, 'Any proxy dependence');
+    sensitivityFilter.innerHTML = makeOptions(sensitivityValues, 'Any assumption sensitivity');
     const countLabel = (value) => `${value} ${value === 1 ? 'episode' : 'episodes'}`;
     const seasonButton = (id, label, total) => {
       const isActive = activeSeason === id;
@@ -278,29 +346,73 @@
     seasonFilters.innerHTML = seasonButton('all', 'All seasons', episodes.length)
       + seasons.map(({ id, label }) => seasonButton(id, label, seasonCounts.get(id) || 0)).join('');
 
-    const writeSeasonToUrl = (mode = 'push') => {
+    const writeArchiveToUrl = (mode = 'push') => {
       const url = new URL(window.location.href);
       if (activeSeason === 'all') url.searchParams.delete('season');
       else url.searchParams.set('season', activeSeason);
+      const setOrDelete = (key, value) => {
+        if (!value || value === 'all') url.searchParams.delete(key);
+        else url.searchParams.set(key, value);
+      };
+      setOrDelete('q', activeQuery);
+      setOrDelete('category', activeCategory);
+      setOrDelete('lca', activeLca);
+      setOrDelete('subject', activeSubject);
+      setOrDelete('hotspot', activeHotspot);
+      setOrDelete('boundary', activeBoundary);
+      setOrDelete('confidence', activeConfidence);
+      setOrDelete('proxy', activeProxy);
+      setOrDelete('sensitivity', activeSensitivity);
       if (url.href === window.location.href) return;
       const method = mode === 'replace' ? 'replaceState' : 'pushState';
-      window.history[method]({ season: activeSeason }, '', `${url.pathname}${url.search}${url.hash}`);
+      window.history[method]({
+        q: activeQuery,
+        season: activeSeason,
+        category: activeCategory,
+        lca: activeLca,
+        subject: activeSubject,
+        hotspot: activeHotspot,
+        boundary: activeBoundary,
+        confidence: activeConfidence,
+        proxy: activeProxy,
+        sensitivity: activeSensitivity
+      }, '', `${url.pathname}${url.search}${url.hash}`);
     };
 
-    const syncSeasonButtons = () => {
-      seasonFilters.querySelectorAll('.filter-button').forEach((item) => {
-        const isSelected = item.dataset.filter === activeSeason;
+    const syncButtons = (container, activeValue) => {
+      container.querySelectorAll('.filter-button').forEach((item) => {
+        const isSelected = item.dataset.filter === activeValue;
         item.classList.toggle('active', isSelected);
         item.setAttribute('aria-pressed', isSelected ? 'true' : 'false');
       });
     };
 
-    const requestedSeason = new URLSearchParams(window.location.search).get('season');
-    if (requestedSeason && !knownSeasonIds.has(requestedSeason)) writeSeasonToUrl('replace');
+    const syncControls = () => {
+      search.value = activeQuery;
+      subjectFilter.value = activeSubject;
+      hotspotFilter.value = activeHotspot;
+      boundaryFilter.value = activeBoundary;
+      confidenceFilter.value = activeConfidence;
+      proxyFilter.value = activeProxy;
+      sensitivityFilter.value = activeSensitivity;
+      syncButtons(seasonFilters, activeSeason);
+      syncButtons(categoryFilters, activeCategory);
+      syncButtons(lcaFilters, activeLca);
+    };
 
-    const searchableText = (episode) => [
+    syncControls();
+    writeArchiveToUrl('replace');
+
+    const normalizeSearch = (value) => String(value || '')
+      .normalize('NFKD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .toLowerCase();
+    const searchableText = (episode) => {
+      const metadata = metadataFor(episode);
+      return normalizeSearch([
       episode.title,
       `episode ${episode.number}`,
+      `#${episode.number}`,
       episode.result,
       episode.hotspot,
       episode.featuredDescription,
@@ -314,12 +426,30 @@
       episode.seasonTitle,
       episode.seasonDescriptor,
       episode.editorialDescriptor,
+      metadata.subject?.narrativeDomain,
+      metadata.subject?.entityType,
+      metadata.subject?.narrativeOrigin,
+      metadata.assessment?.reportingBasisType,
+      metadata.assessment?.referenceFlow,
+      metadata.assessment?.boundaryType,
+      metadata.assessment?.geographicContext,
+      metadata.assessment?.technologyContext,
+      ...(metadata.assessment?.includedStages || []),
+      ...(metadata.assessment?.excludedStages || []),
+      metadata.impact?.hotspotStage,
+      metadata.model?.archetype,
+      metadata.model?.primaryDriver,
+      ...(metadata.model?.secondaryDrivers || []),
+      episode.evidence?.confidence,
+      episode.evidence?.proxyDependence,
+      episode.evidence?.assumptionSensitivity,
       ...(episode.categories || []),
       ...(episode.lcaCharacteristics || []),
       ...(episode.taxonomy || []),
       ...(episode.collectionSlugs || []),
       ...(episode.keywords || [])
-    ].join(' ').toLowerCase();
+      ].join(' '));
+    };
 
     const compareBar = document.createElement('div');
     compareBar.className = 'compare-bar';
@@ -354,22 +484,53 @@
     };
 
     const applyArchive = () => {
-      const query = search.value.trim().toLowerCase();
+      const query = normalizeSearch(activeQuery);
       const matches = episodes.filter((episode) => {
+        const metadata = metadataFor(episode);
         const categoryMatch = activeCategory === 'all' || (episode.categories || []).includes(activeCategory);
         const lcaMatch = activeLca === 'all' || (episode.lcaCharacteristics || []).includes(activeLca);
         const seasonMatch = activeSeason === 'all' || episode.seasonId === activeSeason;
+        const subjectMatch = activeSubject === 'all' || metadata.subject?.entityType === activeSubject;
+        const hotspotMatch = activeHotspot === 'all' || metadata.impact?.hotspotStage === activeHotspot;
+        const boundaryMatch = activeBoundary === 'all' || metadata.assessment?.boundaryType === activeBoundary;
+        const confidenceMatch = activeConfidence === 'all' || episode.evidence?.confidence === activeConfidence;
+        const proxyMatch = activeProxy === 'all' || episode.evidence?.proxyDependence === activeProxy;
+        const sensitivityMatch = activeSensitivity === 'all' || episode.evidence?.assumptionSensitivity === activeSensitivity;
         const textMatch = !query || searchableText(episode).includes(query);
-        return categoryMatch && lcaMatch && seasonMatch && textMatch;
+        return categoryMatch && lcaMatch && seasonMatch && subjectMatch && hotspotMatch && boundaryMatch
+          && confidenceMatch && proxyMatch && sensitivityMatch && textMatch;
       });
 
       grid.innerHTML = matches.slice(0, visibleLimit)
         .map((episode) => episodeCard(episode, { showCover: true, compareEnabled: true, selected }))
         .join('');
+      const shown = Math.min(matches.length, visibleLimit);
       const selectedSeason = seasons.find((season) => season.id === activeSeason);
-      count.textContent = `${countLabel(matches.length)}${selectedSeason ? ` · ${selectedSeason.label}` : ''}`;
+      count.textContent = matches.length
+        ? `Showing ${shown} of ${countLabel(matches.length)}${selectedSeason ? ` · ${selectedSeason.label}` : ''}`
+        : '0 episodes found';
       empty.hidden = matches.length !== 0;
       loadMore.hidden = matches.length <= visibleLimit;
+      if (!loadMore.hidden) {
+        const nextBatch = Math.min(9, matches.length - visibleLimit);
+        loadMore.textContent = `Load ${nextBatch} more ${nextBatch === 1 ? 'episode' : 'episodes'} ↓`;
+        loadMore.setAttribute('aria-label', `Load ${nextBatch} more episodes; ${matches.length - visibleLimit} remain`);
+      }
+      const summary = [];
+      if (activeQuery) summary.push(`Search: “${activeQuery}”`);
+      if (selectedSeason) summary.push(selectedSeason.label);
+      if (activeCategory !== 'all') summary.push(`Category: ${labelFor(activeCategory)}`);
+      if (activeLca !== 'all') summary.push(`LCA lens: ${labelFor(activeLca)}`);
+      if (activeSubject !== 'all') summary.push(`Subject: ${labelFor(activeSubject)}`);
+      if (activeHotspot !== 'all') summary.push(`Hotspot: ${labelFor(activeHotspot)}`);
+      if (activeBoundary !== 'all') summary.push(`Boundary: ${labelFor(activeBoundary)}`);
+      if (activeConfidence !== 'all') summary.push(`Confidence: ${activeConfidence}`);
+      if (activeProxy !== 'all') summary.push(`Proxy dependence: ${activeProxy}`);
+      if (activeSensitivity !== 'all') summary.push(`Assumption sensitivity: ${activeSensitivity}`);
+      activeFilters.textContent = summary.length
+        ? `Active filters · ${summary.join(' · ')}`
+        : 'No filters active · newest episodes first';
+      clearFilters.hidden = summary.length === 0;
       updateCompareBar();
     };
 
@@ -384,11 +545,9 @@
       });
       if (group === 'category') activeCategory = value;
       if (group === 'lca') activeLca = value;
-      if (group === 'season') {
-        activeSeason = value;
-        writeSeasonToUrl();
-      }
+      if (group === 'season') activeSeason = value;
       visibleLimit = 9;
+      writeArchiveToUrl();
       applyArchive();
     };
 
@@ -417,14 +576,64 @@
     });
 
     search.addEventListener('input', () => {
+      activeQuery = search.value.trim().slice(0, 160);
       visibleLimit = 9;
+      writeArchiveToUrl('replace');
       applyArchive();
     });
 
-    window.addEventListener('popstate', () => {
-      activeSeason = seasonFromUrl();
-      syncSeasonButtons();
+    [
+      [subjectFilter, (value) => { activeSubject = value; }],
+      [hotspotFilter, (value) => { activeHotspot = value; }],
+      [boundaryFilter, (value) => { activeBoundary = value; }],
+      [confidenceFilter, (value) => { activeConfidence = value; }],
+      [proxyFilter, (value) => { activeProxy = value; }],
+      [sensitivityFilter, (value) => { activeSensitivity = value; }]
+    ].forEach(([control, update]) => {
+      control.addEventListener('change', () => {
+        update(control.value);
+        visibleLimit = 9;
+        writeArchiveToUrl();
+        applyArchive();
+      });
+    });
+
+    const resetArchive = () => {
+      activeQuery = '';
+      activeCategory = 'all';
+      activeLca = 'all';
+      activeSeason = 'all';
+      activeSubject = 'all';
+      activeHotspot = 'all';
+      activeBoundary = 'all';
+      activeConfidence = 'all';
+      activeProxy = 'all';
+      activeSensitivity = 'all';
       visibleLimit = 9;
+      syncControls();
+      writeArchiveToUrl();
+      applyArchive();
+    };
+
+    clearFilters.addEventListener('click', resetArchive);
+    empty.addEventListener('click', (event) => {
+      if (event.target.closest('[data-clear-archive]')) resetArchive();
+    });
+
+    window.addEventListener('popstate', () => {
+      const state = archiveStateFromUrl();
+      activeQuery = state.query;
+      activeSeason = state.season;
+      activeCategory = state.category;
+      activeLca = state.lca;
+      activeSubject = state.subject;
+      activeHotspot = state.hotspot;
+      activeBoundary = state.boundary;
+      activeConfidence = state.confidence;
+      activeProxy = state.proxy;
+      activeSensitivity = state.sensitivity;
+      visibleLimit = 9;
+      syncControls();
       applyArchive();
     });
 
