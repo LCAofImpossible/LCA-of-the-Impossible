@@ -12,10 +12,10 @@ errors: list[str] = []
 
 ROOT_PAGES = [
     "index.html", "archive.html", "compare.html", "explore.html", "collections.html",
-    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html",
+    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
 ]
 NAV_LABELS = ["Episodes", "Explore", "Method", "About"]
-EXPLORE_LINKS = ["collections.html", "compare.html", "explore.html", "sources.html", "glossary.html"]
+EXPLORE_LINKS = ["collections.html", "compare.html", "explore.html", "statistics.html", "sources.html", "glossary.html"]
 
 
 def fail(message: str) -> None:
@@ -118,7 +118,7 @@ def check_home() -> None:
     text = read(ROOT / "index.html")
     if "PROJECT INFRASTRUCTURE" not in text:
         fail("index.html: Project Infrastructure block missing")
-    for href in ["method.html", "sources.html", "glossary.html", "about.html"]:
+    for href in ["method.html", "sources.html", "glossary.html", "statistics.html", "about.html"]:
         if f'href="{href}"' not in text:
             fail(f"index.html: Project Infrastructure link missing: {href}")
 

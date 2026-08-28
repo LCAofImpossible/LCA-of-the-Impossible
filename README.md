@@ -645,7 +645,7 @@ SEO metadata, sitemap, robots, favicon and manifest are maintained deterministic
 
 <!-- PHASE3-RULES:START -->
 
-## 25. Interactive exploration, comparison and evidence profiles — mandatory
+## 25. Interactive exploration, catalogue statistics, comparison and evidence profiles — mandatory
 
 Phase 3 adds analytical exploration without turning unlike functional units into comparative environmental claims.
 
@@ -682,19 +682,27 @@ The map must:
 - display a persistent explanation that scale position is descriptive, not a ranking;
 - remain usable on mobile without horizontal page overflow.
 
-### 25.4 Episode Evidence Profile
+### 25.4 Catalogue Statistics
+
+`statistics.html` describes the composition of the published registry: seasons, principal LCA lenses, recurring model characteristics, subject coverage and Evidence Profile levels. Every value is calculated client-side from `episodes.json` by `assets/statistics.js`.
+
+The page must not sum headline footprints, calculate an average result, normalize unlike functional units into a common performance score or present a better/worse ranking. Subject tags and model characteristics are non-exclusive and must be labelled as such.
+
+### 25.5 Episode Evidence Profile
 
 Every episode receives an Evidence Profile immediately after Quick Facts and before the Visual Model. It displays Evidence confidence, Proxy dependence and Assumption sensitivity plus expandable Evidence basis and Main modelling uncertainty notes.
 
 The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do not duplicate these values manually inside individual episode HTML. The episode jump navigation must include `Evidence` when the profile is present.
 
-### 25.5 Phase 3 files and QA
+### 25.6 Phase 3 files and QA
 
 Canonical Phase 3 files:
 
 - `compare.html` — side-by-side technical comparison;
 - `explore.html` — logarithmic impact-scale exploration;
+- `statistics.html` — descriptive, registry-driven catalogue statistics;
 - `assets/features.css` — styles for comparison, impact map and evidence profiles;
+- `assets/statistics.css` and `assets/statistics.js` — statistics presentation and registry projection;
 - `scripts/feature_sync.py` — synchronizes Phase 3 metadata, sitemap entries and these README rules;
 - `scripts/feature_qa.py` — validates registry evidence fields and Phase 3 page integrity.
 
@@ -709,6 +717,7 @@ Canonical Phase 3 files:
 - [ ] Archive compare selection is capped at three cases.
 - [ ] Impact map uses a logarithmic magnitude scale and retains original published result labels.
 - [ ] Both interactive pages contain the functional-unit/non-comparability warning.
+- [ ] Statistics are generated from `episodes.json` and never aggregate or average headline footprints.
 - [ ] Every episode renders its Evidence Profile before the Visual Model.
 - [ ] `compare.html` and `explore.html` are present exactly once in `sitemap.xml`.
 - [ ] Phase 3 pages carry canonical/social metadata and remain responsive.
@@ -956,6 +965,7 @@ Every public page and every episode page uses the same primary navigation:
 - `Collections`;
 - `Compare`;
 - `Impact map`;
+- `Statistics`;
 - `Sources & data`;
 - `Glossary`.
 
@@ -1000,6 +1010,7 @@ The homepage includes a compact `PROJECT INFRASTRUCTURE` block linking to:
 - Method;
 - Sources & Data;
 - LCA Glossary;
+- Statistics;
 - About.
 
 This block is text-only and must not compete visually with Latest Case or Recent Cases.
@@ -1021,12 +1032,12 @@ Phase 5 canonical files:
 
 - [ ] Every public root page uses the canonical global navigation.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
-- [ ] `Explore` links to Collections, Compare, Impact map, Sources & Data and Glossary.
+- [ ] `Explore` links to Collections, Compare, Impact map, Statistics, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
 - [ ] All three pages contain complete static canonical/social metadata.
 - [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.
 - [ ] Glossary contains at least 20 meaningful project terms and remains usable without the search enhancement.
-- [ ] Homepage exposes the four Project Infrastructure links.
+- [ ] Homepage exposes the five Project Infrastructure links.
 - [ ] `method.html`, `sources.html`, `about.html` and `glossary.html` each appear exactly once in `sitemap.xml`.
 - [ ] Phase 5 pages load `assets/editorial.css` and have no broken local references.
 
@@ -1291,7 +1302,54 @@ These pages do not authorize episode reclassification, registry backfill, cover 
 
 ---
 
-## 34. Pre-publication quality gate — mandatory
+## 34. Catalogue Statistics — mandatory
+
+`statistics.html` is the canonical descriptive view of the published episode registry. It answers how the archive is composed without turning unlike LCA results into a league table.
+
+### 34.1 Registry-driven measures
+
+Every displayed value is calculated at runtime from `episodes.json` by `assets/statistics.js`. The page may show:
+
+- number of published episode records and represented seasons;
+- distribution by canonical season and principal `lcaLabel`;
+- recurring `lcaCharacteristics` and non-exclusive subject `categories`;
+- distribution of Evidence confidence, Proxy dependence and Assumption sensitivity levels;
+- the latest registered episode number and most recent registry date.
+
+Counts must not be duplicated manually in `statistics.html`. An update to `episodes.json` must therefore update the page without a separate statistics edit.
+
+### 34.2 Interpretation guardrails
+
+Statistics describe catalogue composition, not comparative environmental performance. The page must retain all three prohibitions:
+
+1. **No summed footprint** across unlike reporting bases.
+2. **No average result** across missions, structures, lifetimes or repeated acts.
+3. **No performance ranking** between different functional units, boundaries and assumptions.
+
+Subject categories and model characteristics are non-exclusive. Evidence levels are editorial transparency indicators, not ISO data-quality ratings, uncertainty scores or verification statements.
+
+### 34.3 Canonical files and QA
+
+- `statistics.html` — static semantic page and interpretation guardrails;
+- `assets/statistics.js` — deterministic projection of `episodes.json` into descriptive counts;
+- `assets/statistics.css` — responsive technical presentation;
+- `scripts/statistics_qa.py` — registry, non-comparability, SEO, integration and responsive-asset checks.
+
+The page must be linked from the global `Explore` menu and Homepage Project Infrastructure, appear exactly once in `sitemap.xml`, load visitor telemetry and be included in live-site byte verification.
+
+### Statistics QA
+
+- [ ] Summary values are not hard-coded in page HTML.
+- [ ] Season, lens, signal, subject and Evidence Profile counts derive only from `episodes.json`.
+- [ ] No result string is parsed, summed, averaged or ranked.
+- [ ] Non-exclusive classifications are labelled accurately.
+- [ ] All three interpretation prohibitions remain visible in static HTML.
+- [ ] Canonical/social/JSON-LD metadata and sitemap entry are complete.
+- [ ] Empty or failed registry requests never produce fabricated zero values.
+
+---
+
+## 35. Pre-publication quality gate — mandatory
 
 The canonical pre-publication command is:
 

@@ -11,7 +11,7 @@ START = "<!-- TELEMETRY-RULES:START -->"
 END = "<!-- TELEMETRY-RULES:END -->"
 ROOT_PAGES = [
     "index.html", "archive.html", "compare.html", "explore.html", "collections.html",
-    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html",
+    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
 ]
 
 

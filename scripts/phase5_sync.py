@@ -17,9 +17,9 @@ PHASE5_SEO_START = "<!-- PHASE5-SEO:START -->"
 PHASE5_SEO_END = "<!-- PHASE5-SEO:END -->"
 ROOT_PAGES = [
     "index.html", "archive.html", "compare.html", "explore.html", "collections.html",
-    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html",
+    "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
 ]
-EXPLORE_PAGES = {"compare.html", "explore.html", "collections.html", "sources.html", "glossary.html"}
+EXPLORE_PAGES = {"compare.html", "explore.html", "collections.html", "sources.html", "glossary.html", "statistics.html"}
 
 
 def write_if_changed(path: Path, content: str, check: bool, changed: list[Path]) -> None:
@@ -59,6 +59,7 @@ def nav_html(prefix: str, current: str) -> str:
         f'          {explore_link("collections.html", "Collections")}',
         f'          {explore_link("compare.html", "Compare")}',
         f'          {explore_link("explore.html", "Impact map")}',
+        f'          {explore_link("statistics.html", "Statistics")}',
         f'          {explore_link("sources.html", "Sources & data")}',
         f'          {explore_link("glossary.html", "Glossary")}',
         '        </div>',
@@ -105,6 +106,7 @@ def home_block() -> str:
         <a class="knowledge-link" href="method.html"><span>Method</span><strong>How the impossible becomes a model.</strong><small>Evidence → functional unit → reconstruction → inventory → interpretation.</small></a>
         <a class="knowledge-link" href="sources.html"><span>Sources & data</span><strong>Where the numbers come from.</strong><small>Source hierarchy, factor selection, proxies and dataset versioning.</small></a>
         <a class="knowledge-link" href="glossary.html"><span>LCA glossary</span><strong>Technical language without the fog.</strong><small>Functional unit, boundary, hotspot, WTT, proxy and other project terms.</small></a>
+        <a class="knowledge-link" href="statistics.html"><span>Statistics</span><strong>What the archive is made of.</strong><small>Seasons, subjects, LCA lenses, model signals and evidence profiles.</small></a>
         <a class="knowledge-link" href="about.html"><span>About</span><strong>Why this project exists.</strong><small>Purpose, limits, independence and the thinking behind the series.</small></a>
       </div>
     </section>
@@ -237,6 +239,7 @@ Every public page and every episode page uses the same primary navigation:
 - `Collections`;
 - `Compare`;
 - `Impact map`;
+- `Statistics`;
 - `Sources & data`;
 - `Glossary`.
 
@@ -281,6 +284,7 @@ The homepage includes a compact `PROJECT INFRASTRUCTURE` block linking to:
 - Method;
 - Sources & Data;
 - LCA Glossary;
+- Statistics;
 - About.
 
 This block is text-only and must not compete visually with Latest Case or Recent Cases.
@@ -302,12 +306,12 @@ Phase 5 canonical files:
 
 - [ ] Every public root page uses the canonical global navigation.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
-- [ ] `Explore` links to Collections, Compare, Impact map, Sources & Data and Glossary.
+- [ ] `Explore` links to Collections, Compare, Impact map, Statistics, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
 - [ ] All three pages contain complete static canonical/social metadata.
 - [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.
 - [ ] Glossary contains at least 20 meaningful project terms and remains usable without the search enhancement.
-- [ ] Homepage exposes the four Project Infrastructure links.
+- [ ] Homepage exposes the five Project Infrastructure links.
 - [ ] `method.html`, `sources.html`, `about.html` and `glossary.html` each appear exactly once in `sitemap.xml`.
 - [ ] Phase 5 pages load `assets/editorial.css` and have no broken local references.
 

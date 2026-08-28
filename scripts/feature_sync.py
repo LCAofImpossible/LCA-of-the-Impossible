@@ -82,7 +82,7 @@ def update_feature_page(path: Path, block: str, check: bool, changed: list[Path]
 def update_sitemap(check: bool, changed: list[Path]) -> None:
     path = ROOT / "sitemap.xml"
     text = path.read_text(encoding="utf-8")
-    required = [BASE_URL + "compare.html", BASE_URL + "explore.html"]
+    required = [BASE_URL + "compare.html", BASE_URL + "explore.html", BASE_URL + "statistics.html"]
     lines = []
     for url in required:
         if url not in text:
@@ -98,7 +98,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
     text = path.read_text(encoding="utf-8")
     section = f'''{README_START}
 
-## 25. Interactive exploration, comparison and evidence profiles — mandatory
+## 25. Interactive exploration, catalogue statistics, comparison and evidence profiles — mandatory
 
 Phase 3 adds analytical exploration without turning unlike functional units into comparative environmental claims.
 
@@ -135,19 +135,27 @@ The map must:
 - display a persistent explanation that scale position is descriptive, not a ranking;
 - remain usable on mobile without horizontal page overflow.
 
-### 25.4 Episode Evidence Profile
+### 25.4 Catalogue Statistics
+
+`statistics.html` describes the composition of the published registry: seasons, principal LCA lenses, recurring model characteristics, subject coverage and Evidence Profile levels. Every value is calculated client-side from `episodes.json` by `assets/statistics.js`.
+
+The page must not sum headline footprints, calculate an average result, normalize unlike functional units into a common performance score or present a better/worse ranking. Subject tags and model characteristics are non-exclusive and must be labelled as such.
+
+### 25.5 Episode Evidence Profile
 
 Every episode receives an Evidence Profile immediately after Quick Facts and before the Visual Model. It displays Evidence confidence, Proxy dependence and Assumption sensitivity plus expandable Evidence basis and Main modelling uncertainty notes.
 
 The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do not duplicate these values manually inside individual episode HTML. The episode jump navigation must include `Evidence` when the profile is present.
 
-### 25.5 Phase 3 files and QA
+### 25.6 Phase 3 files and QA
 
 Canonical Phase 3 files:
 
 - `compare.html` — side-by-side technical comparison;
 - `explore.html` — logarithmic impact-scale exploration;
+- `statistics.html` — descriptive, registry-driven catalogue statistics;
 - `assets/features.css` — styles for comparison, impact map and evidence profiles;
+- `assets/statistics.css` and `assets/statistics.js` — statistics presentation and registry projection;
 - `scripts/feature_sync.py` — synchronizes Phase 3 metadata, sitemap entries and these README rules;
 - `scripts/feature_qa.py` — validates registry evidence fields and Phase 3 page integrity.
 
@@ -162,6 +170,7 @@ Canonical Phase 3 files:
 - [ ] Archive compare selection is capped at three cases.
 - [ ] Impact map uses a logarithmic magnitude scale and retains original published result labels.
 - [ ] Both interactive pages contain the functional-unit/non-comparability warning.
+- [ ] Statistics are generated from `episodes.json` and never aggregate or average headline footprints.
 - [ ] Every episode renders its Evidence Profile before the Visual Model.
 - [ ] `compare.html` and `explore.html` are present exactly once in `sitemap.xml`.
 - [ ] Phase 3 pages carry canonical/social metadata and remain responsive.
@@ -208,6 +217,21 @@ def main() -> int:
             title="Explore the Impossible — LCA impact scale",
             description=explore_description,
             canonical=BASE_URL + "explore.html",
+            image=latest_image,
+            image_alt=f"{latest['title']} — latest LCA of the Impossible episode cover",
+            page_type="CollectionPage",
+        ),
+        args.check,
+        changed,
+    )
+
+    statistics_description = "Registry-driven statistics for LCA of the Impossible: published cases by season, subject family, principal LCA lens, recurring model signal and evidence profile."
+    update_feature_page(
+        ROOT / "statistics.html",
+        feature_block(
+            title="Catalogue Statistics — LCA of the Impossible",
+            description=statistics_description,
+            canonical=BASE_URL + "statistics.html",
             image=latest_image,
             image_alt=f"{latest['title']} — latest LCA of the Impossible episode cover",
             page_type="CollectionPage",

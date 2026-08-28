@@ -62,7 +62,7 @@
 .glossary-empty{color:var(--muted);padding:28px 0}
 abbr.lca-term{text-decoration:none;border-bottom:1px dotted var(--accent);cursor:help;color:inherit}
 
-.knowledge-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin-top:32px}
+.knowledge-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin-top:32px}
 .knowledge-link{display:flex;flex-direction:column;min-height:190px;padding:22px;border:1px solid var(--line);background:rgba(255,255,255,.018);transition:.2s}
 .knowledge-link:hover{border-color:var(--accent);transform:translateY(-3px)}
 .knowledge-link span{color:var(--accent);font-size:.68rem;font-weight:850;letter-spacing:.15em;text-transform:uppercase}

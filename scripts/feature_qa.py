@@ -29,6 +29,9 @@ def main() -> int:
     site_js = require_file("assets/site.js")
     compare = require_file("compare.html")
     explore = require_file("explore.html")
+    statistics = require_file("statistics.html")
+    statistics_js = require_file("assets/statistics.js")
+    require_file("assets/statistics.css")
     sitemap = require_file("sitemap.xml")
 
     if registry_path.is_file():
@@ -62,15 +65,16 @@ def main() -> int:
     if archive.is_file() and 'id="season-filters"' not in archive.read_text(encoding="utf-8"):
         fail("archive.html: season filter container missing")
 
-    for path, canonical, page_name in (
-        (compare, BASE_URL + "compare.html", "compare.html"),
-        (explore, BASE_URL + "explore.html", "explore.html"),
+    for path, canonical, page_name, script_name in (
+        (compare, BASE_URL + "compare.html", "compare.html", "assets/site.js"),
+        (explore, BASE_URL + "explore.html", "explore.html", "assets/site.js"),
+        (statistics, BASE_URL + "statistics.html", "statistics.html", "assets/statistics.js"),
     ):
         if not path.is_file():
             continue
         text = path.read_text(encoding="utf-8")
-        if '<script src="assets/site.js' not in text:
-            fail(f"{page_name}: missing assets/site.js")
+        if f'<script src="{script_name}' not in text:
+            fail(f"{page_name}: missing {script_name}")
         if canonical not in text:
             fail(f"{page_name}: canonical URL missing")
         if "<!-- FEATURE-SEO:START -->" not in text or "<!-- FEATURE-SEO:END -->" not in text:
@@ -78,9 +82,17 @@ def main() -> int:
         if 'name="robots" content="index,follow,max-image-preview:large"' not in text:
             fail(f"{page_name}: robots metadata missing")
 
+    if statistics_js.is_file():
+        text = statistics_js.read_text(encoding="utf-8")
+        for token in ("episodes.json", "lcaCharacteristics", "proxyDependence", "assumptionSensitivity", "subject-distribution"):
+            if token not in text:
+                fail(f"assets/statistics.js missing registry statistic token: {token}")
+        if "episode.result" in text:
+            fail("assets/statistics.js must not aggregate or rank headline results")
+
     if sitemap.is_file():
         text = sitemap.read_text(encoding="utf-8")
-        for url in (BASE_URL + "compare.html", BASE_URL + "explore.html"):
+        for url in (BASE_URL + "compare.html", BASE_URL + "explore.html", BASE_URL + "statistics.html"):
             if text.count(url) != 1:
                 fail(f"sitemap.xml must contain exactly one entry for {url}")
 
