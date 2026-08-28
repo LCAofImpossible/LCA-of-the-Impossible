@@ -44,36 +44,11 @@
         60,
         71
       ],
-      "status": "pending",
-      "remainingEpisodeNumbers": [
-        60,
-        61,
-        62,
-        63,
-        64,
-        65,
-        66,
-        67,
-        68,
-        69,
-        70,
-        71
-      ]
+      "status": "complete",
+      "remainingEpisodeNumbers": []
     }
   ],
   "allowedMissingEpisodeNumbers": [
-    1,
-    60,
-    61,
-    62,
-    63,
-    64,
-    65,
-    66,
-    67,
-    68,
-    69,
-    70,
-    71
+    1
   ]
 }

@@ -84,7 +84,65 @@
       "collectionSlugs": [
         "impossible-structures",
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "habitat",
+          "scaleClass": "infrastructure",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "construction-and-commissioning",
+          "referenceFlow": "Build and commission one 360 m world-bearing habitat at an orbital shipyard gate, designed for 10,000 residents and a 100-year service life. Construction burdens only.",
+          "boundaryType": "cradle-to-commissioning",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "installation"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "One construction-and-commissioning event for a habitat designed for a 100-year service life.",
+          "geographicContext": "An orbital shipyard gate in a non-existent orbital supply chain.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": 100,
+          "cutoffSummary": "The model stops when the complete ark is commissioned at the orbital shipyard gate; orbital lift, operation, propulsion, maintenance, replacements, end of life and credits remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 1,
+          "unit": "Mt CO₂e",
+          "normalizedKgCO2e": 1000000000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 61
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "energy",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 71,
+          "missingApprovedFields": [
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 70,
@@ -160,7 +218,61 @@
       ],
       "collectionSlugs": [
         "gold-driven-cases"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "legend",
+          "entityType": "rite",
+          "scaleClass": "vehicle",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Muisca raft tradition"
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One staged investiture rite at Lake Guatavita, modeled from material supply to ceremonial launch, with 50.5 kg of primary gold assigned as unrecovered ceremonial use.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "One staged investiture rite ending at ceremonial launch.",
+          "geographicContext": "Lake Guatavita, from material supply to the ceremonial launch point.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at completed ceremonial launch; post-ritual recovery, recycling and salvage credit remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 1287,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 1287000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 99.93
+        },
+        "model": {
+          "archetype": "integrated-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "operation",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 70,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 69,
@@ -240,7 +352,65 @@
       "collectionSlugs": [
         "impossible-structures",
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "structure",
+          "scaleClass": "landscape",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "construction-and-commissioning",
+          "referenceFlow": "One reconstructed Valhalla structural shell sized to stage 432,000 einherjar through 540 gates for the first muster.",
+          "boundaryType": "cradle-to-commissioning",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "installation"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "temporalContext": "One opening-day construction and commissioning allocation ending with a first-muster-ready hall and one commissioning feast.",
+          "geographicContext": "Valhalla in an Asgard narrative context.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at a physically built, first-muster-ready hall; recurrent use, combat, resurrection, maintenance and end of life remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 607.8,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 607800000,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 74.3
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "transport",
+            "process-energy"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 69,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 68,
@@ -318,7 +488,64 @@
       "collectionSlugs": [
         "legendary-engineering",
         "systems-that-never-stop"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "system",
+          "scaleClass": "infrastructure",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "annual-operation",
+          "referenceFlow": "One reconstructed operating year of the Danaids’ punishment.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "operation",
+            "maintenance",
+            "replacement"
+          ],
+          "excludedStages": [],
+          "temporalContext": "One reconstructed operating year, with fifty hydriae annualized across their declared three-year vessel life.",
+          "geographicContext": null,
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The service ends when water exits the bottomless cistern; human metabolism, divine infrastructure, lighting and land occupation remain outside the model."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 1.36,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 1360,
+          "hotspotStage": "operation",
+          "hotspotSharePercent": 96.9
+        },
+        "model": {
+          "archetype": "repeated-action",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "materials",
+            "energy",
+            "transport"
+          ],
+          "repetitionClass": "continuous"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 68,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 67,
@@ -398,7 +625,63 @@
       "collectionSlugs": [
         "impossible-structures",
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "event",
+          "scaleClass": "landscape",
+          "mobilityClass": "not-applicable",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One complete river-assisted clearing campaign removing the modelled inherited stock and returning the yard, temporary channels and ordinary river courses to serviceable condition within one daylight period at Elis, including an 8-hour wash.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "construction",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One daylight clearing campaign including an eight-hour river wash and restoration of the yard, channels and ordinary river courses.",
+          "geographicContext": "Elis, with UK 2026 factors used as declared proxies outside their native reporting context.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The campaign runs from equipment arrival at Elis until channels are backfilled and masonry and river courses are restored; downstream effects after the outlet remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 181,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 181000,
+          "hotspotStage": "operation",
+          "hotspotSharePercent": 71.7
+        },
+        "model": {
+          "archetype": "operational-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "process-energy",
+            "materials",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 67,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 66,
@@ -473,7 +756,63 @@
       ],
       "collectionSlugs": [
         "systems-that-never-stop"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "time-slice",
+          "referenceFlow": "One 24-hour cornucopia service presenting 1,000 kg of mixed food at the point of use, including treatment of 5% residual food waste.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation",
+            "end-of-life"
+          ],
+          "excludedStages": [
+            "construction",
+            "maintenance",
+            "recycling-credit"
+          ],
+          "temporalContext": "One 24-hour service, with the physical vessel and one-off delivery allocated straight-line across one hundred uses.",
+          "geographicContext": "The Achelous sanctuary at the point of use.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model covers one day of presentation and treatment of five percent residual food waste; the magical mechanism, feast infrastructure, cooking, refrigeration and avoided-system credits remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.74,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 3740,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 99.1
+        },
+        "model": {
+          "archetype": "integrated-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "operation"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 66,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 65,
@@ -546,7 +885,64 @@
       ],
       "collectionSlugs": [
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "One 35 kg, five-layer, Achilles-class bronze shield manufactured and delivered at the forge gate during one complete volcanic-island campaign.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "construction",
+            "operation",
+            "maintenance",
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "One twelve-hour forge campaign producing and delivering one shield at the forge gate.",
+          "geographicContext": "A volcanic-island forge context.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at the forge gate; workshop construction, bellows manufacture, use, maintenance and end of life remain excluded, and process scrap receives no recycling credit."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 196,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 196,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 95.5
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "process-energy",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 65,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 64,
@@ -620,7 +1016,63 @@
       "collectionSlugs": [
         "legendary-engineering",
         "systems-that-never-stop"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "Maintain one 30-oared ceremonial hull in structurally seaworthy condition at Piraeus for 100 years.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "excludedStages": [
+            "operation",
+            "recycling-credit"
+          ],
+          "temporalContext": "A 100-year maintenance service containing the original hull plus four full-equivalent structural replacements at 25-year intervals.",
+          "geographicContext": "Piraeus, using declared UK electricity and rigid-HGV factors as geography proxies.",
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": 100,
+          "cutoffSummary": "The model stops when removed fabric reaches collection for recycling or combustion; sailing operation, treatment after collection and avoided-production credit remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 23.6,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 23600,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 45.6
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "operation",
+            "transport"
+          ],
+          "repetitionClass": "lifetime"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 64,
+          "missingApprovedFields": [
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 63,
@@ -690,7 +1142,63 @@
       ],
       "collectionSlugs": [
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "object",
+          "scaleClass": "handheld",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": "Norse mythology"
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "Provide one durable Gungnir-class spear, delivered ready for repeated ceremonial and combat use. The model covers one manufacturing-and-delivery event; use and end-of-life remain outside the boundary.",
+          "boundaryType": "cradle-to-gate",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport"
+          ],
+          "excludedStages": [
+            "operation",
+            "maintenance",
+            "end-of-life"
+          ],
+          "temporalContext": "One manufacture-and-delivery event for a durable spear ready for repeated use.",
+          "geographicContext": null,
+          "technologyContext": "historical-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at delivery; mythic performance, use, maintenance, battle damage, end of life and avoided burdens remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.01,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 3.01,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 51.8
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "process-energy",
+            "materials",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 63,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears"
+          ]
+        }
+      }
     },
     {
       "number": 62,
@@ -762,7 +1270,63 @@
       ],
       "collectionSlugs": [
         "mythic-biology"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "being",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "distance-service",
+          "referenceFlow": "One 100 km reconnaissance ride carrying one rider-equivalent within one ride-day.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation",
+            "maintenance"
+          ],
+          "excludedStages": [
+            "construction",
+            "end-of-life"
+          ],
+          "temporalContext": "One 100 km reconnaissance ride completed within one modeled ride-day.",
+          "geographicContext": null,
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model ends when the ride-day is complete; horse breeding, stable construction, rider equipment, Yggdrasil infrastructure and end of life remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 11.7,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 11.7,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 67.5
+        },
+        "model": {
+          "archetype": "biological-system",
+          "primaryDriver": "biology",
+          "secondaryDrivers": [
+            "operation",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 62,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 61,
@@ -835,7 +1399,64 @@
       "collectionSlugs": [
         "impossible-structures",
         "legendary-engineering"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": null,
+          "entityType": "structure",
+          "scaleClass": "building",
+          "mobilityClass": "stationary",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "lifetime-service",
+          "referenceFlow": "One freestanding ceremonial ice palace displayed for 30 winter nights.",
+          "boundaryType": "cradle-to-grave",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "construction",
+            "transport",
+            "installation",
+            "operation",
+            "end-of-life"
+          ],
+          "excludedStages": [],
+          "temporalContext": "One 30-night winter display with 240 hours of lighting, ending when the palace melts.",
+          "geographicContext": null,
+          "technologyContext": "contemporary-analogue",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model begins with mains water and ends when the palace melts and its water returns to drains or ground; visitor travel, hospitality, reusable machinery and permanent infrastructure remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 15.4,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 15400,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 71
+        },
+        "model": {
+          "archetype": "construction-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "transport",
+            "materials"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 61,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears",
+            "subject.narrativeDomain",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 60,
@@ -906,7 +1527,66 @@
       "collectionSlugs": [
         "mythic-biology",
         "impossible-flight"
-      ]
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "myth",
+          "entityType": "being",
+          "scaleClass": "human",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "single-event",
+          "referenceFlow": "One controlled Phoenix rebirth cycle: mature bird enters the pyre and a viable juvenile emerges after cooling.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "construction",
+            "maintenance",
+            "end-of-life",
+            "recycling-credit"
+          ],
+          "temporalContext": "One controlled rebirth cycle from the mature bird entering the pyre to viable juvenile emergence after cooling.",
+          "geographicContext": null,
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The cycle stops when the new Phoenix leaves the ash bed as a viable juvenile; later life, flight, repeated centuries and immortality credit remain outside the model."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 157,
+          "unit": "kg CO₂e",
+          "normalizedKgCO2e": 157,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 40.6
+        },
+        "model": {
+          "archetype": "biological-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "process-energy",
+            "biology",
+            "materials",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 60,
+          "missingApprovedFields": [
+            "assessment.geographicContext",
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
     },
     {
       "number": 59,
