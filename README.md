@@ -1302,11 +1302,111 @@ These pages do not authorize episode reclassification, registry backfill, cover 
 
 ---
 
-## 34. Catalogue Statistics — mandatory
+## 34. Structured episode metadata — mandatory
+
+`episodes.json` declares `structuredMetadataSchemaVersion: 1`. The canonical
+contract for each future `structuredMetadata` object is
+`schemas/episode-structured-metadata.schema.json`.
+
+This change establishes the data model only. It does not alter episode pages,
+backfill legacy records or add short subject descriptions. Existing approved
+catalogue fields remain authoritative until their structured counterparts are
+populated through the controlled migration below.
+
+### 34.1 Field groups
+
+Every populated object must contain all six top-level groups:
+
+- `schemaVersion` — fixed schema identity;
+- `subject` — controlled narrative domain, entity, scale, mobility and origin;
+- `assessment` — reporting basis, reference flow, system boundary, included and
+  excluded stages, context, lifetime and cut-off summary;
+- `impact` — climate-change value, explicit unit, normalized kg CO₂e value and
+  hotspot classification;
+- `model` — analytical archetype, primary and secondary drivers and repetition
+  class;
+- `provenance` — approved episode identity and an exact register of fields that
+  could not be recovered from approved material.
+
+The existing `functionalUnit`, `result`, `hotspot`, Evidence Profile and
+taxonomy fields are not replaced. The structured object normalizes the parts
+needed by future search, Atlas and comparison interfaces while retaining those
+human-readable approved statements.
+
+### 34.2 No-invention and null semantics
+
+Structured values may be extracted only from the approved episode or an
+already-approved registry field. They must never be reconstructed from general
+knowledge, guessed from the subject or silently inferred to fill a gap.
+
+Every nullable field is still mandatory. When approved material does not state
+it, its value is `null` and its complete dotted path must appear in
+`provenance.missingApprovedFields`. The validator requires this list to match
+the null fields exactly. A missing value is therefore visible and auditable,
+not disguised as a generic category.
+
+`impact.normalizedKgCO2e` is a mechanical unit conversion of the approved
+headline value. The validator checks it against `kg CO₂e`, `t CO₂e`, `kt CO₂e`
+or `Mt CO₂e`; it is not permission to recalculate the LCA result.
+
+Short descriptions of analysed subjects remain a separate, lower-priority
+editorial task. They are deliberately excluded from this schema.
+
+### 34.3 Controlled migration
+
+`verification/structured-metadata-migration.json` is the sole temporary
+exception register. At schema introduction it permits the 41 currently
+published records to remain without `structuredMetadata`:
+
+- Season I: populate its current legacy record only when that episode is
+  re-published or substantively revised;
+- Season II batch 1: published episodes in `#30–39`;
+- Season II batch 2: published episodes in `#40–49`;
+- Season II batch 3: published episodes in `#50–59`;
+- Season II batch 4: published episodes in `#60–71`.
+
+Each Priority 6 batch must remove completed episode numbers from both its
+`remainingEpisodeNumbers` and `allowedMissingEpisodeNumbers`, then update its
+status to `partial` or `complete`. A newly published episode is not a legacy
+exception and must include valid structured metadata immediately.
+
+### 34.4 Canonical files and QA
+
+- `schemas/episode-structured-metadata.schema.json` — versioned JSON Schema
+  contract;
+- `verification/structured-metadata-migration.json` — explicit, shrinking
+  migration allowance;
+- `scripts/structured_metadata_qa.py` — schema, migration, provenance and
+  cross-field validator;
+- `scripts/publication_qa.py` — publication gate that always runs the metadata
+  validator;
+- `scripts/live_site_qa.py` — byte-level deployment check for both canonical
+  JSON files.
+
+The validator rejects unknown fields, unsupported controlled values, duplicate
+or overlapping life-cycle stages, inconsistent primary drivers, incorrect
+unit normalization, stale migration exemptions and any unapproved missing
+metadata record.
+
+### Structured metadata QA
+
+- [ ] The registry and every populated record declare schema version 1.
+- [ ] Every value is traceable to approved episode or registry material.
+- [ ] Nulls and `missingApprovedFields` match exactly.
+- [ ] Included and excluded stages do not overlap.
+- [ ] Normalized kg CO₂e equals the approved value converted from its unit.
+- [ ] `primaryDriver` agrees with the existing canonical `lcaLabel`.
+- [ ] No new episode is admitted without structured metadata.
+- [ ] Migration exemptions shrink as Priority 6 batches are completed.
+- [ ] Subject descriptions remain outside this schema.
+
+---
+
+## 35. Catalogue Statistics — mandatory
 
 `statistics.html` is the canonical descriptive view of the published episode registry. It answers how the archive is composed without turning unlike LCA results into a league table.
 
-### 34.1 Registry-driven measures
+### 35.1 Registry-driven measures
 
 Every displayed value is calculated at runtime from `episodes.json` by `assets/statistics.js`. The page may show:
 
@@ -1318,7 +1418,7 @@ Every displayed value is calculated at runtime from `episodes.json` by `assets/s
 
 Counts must not be duplicated manually in `statistics.html`. An update to `episodes.json` must therefore update the page without a separate statistics edit.
 
-### 34.2 Interpretation guardrails
+### 35.2 Interpretation guardrails
 
 Statistics describe catalogue composition, not comparative environmental performance. The page must retain all three prohibitions:
 
@@ -1328,7 +1428,7 @@ Statistics describe catalogue composition, not comparative environmental perform
 
 Subject categories and model characteristics are non-exclusive. Evidence levels are editorial transparency indicators, not ISO data-quality ratings, uncertainty scores or verification statements.
 
-### 34.3 Canonical files and QA
+### 35.3 Canonical files and QA
 
 - `statistics.html` — static semantic page and interpretation guardrails;
 - `assets/statistics.js` — deterministic projection of `episodes.json` into descriptive counts;
@@ -1349,7 +1449,7 @@ The page must be linked from the global `Explore` menu and Homepage Project Infr
 
 ---
 
-## 35. Pre-publication quality gate — mandatory
+## 36. Pre-publication quality gate — mandatory
 
 The canonical pre-publication command is:
 

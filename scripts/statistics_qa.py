@@ -185,7 +185,7 @@ def check_integration() -> None:
             fail("sitemap.xml: Statistics URL must appear exactly once")
 
     readme = read("README.md")
-    for token in ["## 34. Catalogue Statistics — mandatory", "scripts/statistics_qa.py", "No summed footprint"]:
+    for token in ["## 35. Catalogue Statistics — mandatory", "scripts/statistics_qa.py", "No summed footprint"]:
         if token not in readme:
             fail(f"README.md: Statistics contract missing: {token}")
 

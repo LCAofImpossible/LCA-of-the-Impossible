@@ -35,6 +35,8 @@ CORE_PATHS = {
     "statistics.html",
     "episodes.json",
     "collections.json",
+    "schemas/episode-structured-metadata.schema.json",
+    "verification/structured-metadata-migration.json",
     "sitemap.xml",
     "robots.txt",
     "site.webmanifest",

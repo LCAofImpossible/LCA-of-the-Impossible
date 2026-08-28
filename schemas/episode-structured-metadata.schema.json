@@ -1,0 +1,455 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/schemas/episode-structured-metadata.schema.json",
+  "title": "LCA of the Impossible — Episode Structured Metadata",
+  "description": "Versioned, migration-safe metadata for search, filtering, atlas and comparison features. Values may be extracted only from an approved episode or existing approved registry fields.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "subject",
+    "assessment",
+    "impact",
+    "model",
+    "provenance"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "subject": {
+      "$ref": "#/$defs/subject"
+    },
+    "assessment": {
+      "$ref": "#/$defs/assessment"
+    },
+    "impact": {
+      "$ref": "#/$defs/impact"
+    },
+    "model": {
+      "$ref": "#/$defs/model"
+    },
+    "provenance": {
+      "$ref": "#/$defs/provenance"
+    }
+  },
+  "$defs": {
+    "nullableNonEmptyString": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "minLength": 1
+    },
+    "subject": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "narrativeDomain",
+        "entityType",
+        "scaleClass",
+        "mobilityClass",
+        "narrativeOrigin"
+      ],
+      "properties": {
+        "narrativeDomain": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "myth",
+            "legend",
+            "folklore",
+            "science-fiction",
+            "speculative-technology",
+            "literary-fiction",
+            "popular-culture",
+            "composite",
+            "other",
+            null
+          ]
+        },
+        "entityType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "being",
+            "object",
+            "vehicle",
+            "machine",
+            "structure",
+            "place",
+            "habitat",
+            "infrastructure",
+            "rite",
+            "event",
+            "system",
+            "phenomenon",
+            "other",
+            null
+          ]
+        },
+        "scaleClass": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "handheld",
+            "human",
+            "vehicle",
+            "building",
+            "infrastructure",
+            "landscape",
+            "planetary",
+            "cosmic",
+            "variable",
+            null
+          ]
+        },
+        "mobilityClass": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "stationary",
+            "mobile",
+            "route-based",
+            "distributed",
+            "not-applicable",
+            null
+          ]
+        },
+        "narrativeOrigin": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        }
+      }
+    },
+    "assessment": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "reportingBasisType",
+        "referenceFlow",
+        "boundaryType",
+        "includedStages",
+        "excludedStages",
+        "temporalContext",
+        "geographicContext",
+        "technologyContext",
+        "lifetimeYears",
+        "cutoffSummary"
+      ],
+      "properties": {
+        "reportingBasisType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "single-object",
+            "single-event",
+            "mission",
+            "distance-service",
+            "time-slice",
+            "annual-operation",
+            "lifetime-service",
+            "construction-and-commissioning",
+            "mass-of-output",
+            "custom",
+            null
+          ]
+        },
+        "referenceFlow": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "boundaryType": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "cradle-to-gate",
+            "cradle-to-commissioning",
+            "cradle-to-grave",
+            "gate-to-gate",
+            "operation-only",
+            "construction-only",
+            "partial-life-cycle",
+            "custom",
+            null
+          ]
+        },
+        "includedStages": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/lifeCycleStages"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "excludedStages": {
+          "anyOf": [
+            {
+              "type": "array",
+              "uniqueItems": true,
+              "items": {
+                "type": "string",
+                "enum": [
+                  "raw-materials",
+                  "manufacturing",
+                  "construction",
+                  "transport",
+                  "installation",
+                  "operation",
+                  "maintenance",
+                  "replacement",
+                  "end-of-life",
+                  "recycling-credit",
+                  "other"
+                ]
+              }
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "temporalContext": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "geographicContext": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        },
+        "technologyContext": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "historical-analogue",
+            "contemporary-analogue",
+            "speculative-engineering",
+            "hybrid",
+            null
+          ]
+        },
+        "lifetimeYears": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0
+        },
+        "cutoffSummary": {
+          "$ref": "#/$defs/nullableNonEmptyString"
+        }
+      }
+    },
+    "lifeCycleStages": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "string",
+        "enum": [
+          "raw-materials",
+          "manufacturing",
+          "construction",
+          "transport",
+          "installation",
+          "operation",
+          "maintenance",
+          "replacement",
+          "end-of-life",
+          "recycling-credit",
+          "other"
+        ]
+      }
+    },
+    "impact": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "indicator",
+        "value",
+        "unit",
+        "normalizedKgCO2e",
+        "hotspotStage",
+        "hotspotSharePercent"
+      ],
+      "properties": {
+        "indicator": {
+          "const": "climate-change-total"
+        },
+        "value": {
+          "type": "number"
+        },
+        "unit": {
+          "type": "string",
+          "enum": [
+            "kg CO₂e",
+            "t CO₂e",
+            "kt CO₂e",
+            "Mt CO₂e"
+          ]
+        },
+        "normalizedKgCO2e": {
+          "type": "number"
+        },
+        "hotspotStage": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "materials",
+            "manufacturing",
+            "construction",
+            "energy",
+            "operation",
+            "transport",
+            "maintenance",
+            "end-of-life",
+            "biological-process",
+            "mixed",
+            "other",
+            null
+          ]
+        },
+        "hotspotSharePercent": {
+          "type": [
+            "number",
+            "null"
+          ],
+          "minimum": 0,
+          "maximum": 100
+        }
+      }
+    },
+    "model": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "archetype",
+        "primaryDriver",
+        "secondaryDrivers",
+        "repetitionClass"
+      ],
+      "properties": {
+        "archetype": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "product-system",
+            "construction-system",
+            "operational-system",
+            "transport-system",
+            "repeated-action",
+            "biological-system",
+            "integrated-system",
+            "custom",
+            null
+          ]
+        },
+        "primaryDriver": {
+          "type": "string",
+          "enum": [
+            "materials",
+            "operation",
+            "energy",
+            "process-energy",
+            "biology",
+            "transport",
+            "mixed"
+          ]
+        },
+        "secondaryDrivers": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "materials",
+              "operation",
+              "energy",
+              "process-energy",
+              "biology",
+              "transport",
+              "mixed"
+            ]
+          }
+        },
+        "repetitionClass": {
+          "type": [
+            "string",
+            "null"
+          ],
+          "enum": [
+            "single",
+            "repeated",
+            "continuous",
+            "cyclic",
+            "lifetime",
+            "not-applicable",
+            null
+          ]
+        }
+      }
+    },
+    "provenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "sourceStatus",
+        "approvedEpisodeNumber",
+        "missingApprovedFields"
+      ],
+      "properties": {
+        "sourceStatus": {
+          "const": "approved-episode-only"
+        },
+        "approvedEpisodeNumber": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "missingApprovedFields": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "enum": [
+              "subject.narrativeDomain",
+              "subject.entityType",
+              "subject.scaleClass",
+              "subject.mobilityClass",
+              "subject.narrativeOrigin",
+              "assessment.reportingBasisType",
+              "assessment.referenceFlow",
+              "assessment.boundaryType",
+              "assessment.includedStages",
+              "assessment.excludedStages",
+              "assessment.temporalContext",
+              "assessment.geographicContext",
+              "assessment.technologyContext",
+              "assessment.lifetimeYears",
+              "assessment.cutoffSummary",
+              "impact.hotspotStage",
+              "impact.hotspotSharePercent",
+              "model.archetype",
+              "model.repetitionClass"
+            ]
+          }
+        }
+      }
+    }
+  }
+}

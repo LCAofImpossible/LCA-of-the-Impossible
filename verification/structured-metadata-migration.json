@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "metadataField": "structuredMetadata",
+  "schemaPath": "schemas/episode-structured-metadata.schema.json",
+  "introducedOn": "2026-08-28",
+  "sourcePolicy": "approved-episode-only",
+  "seasonIPolicy": {
+    "mode": "populate-on-republication",
+    "currentLegacyExceptions": [
+      1
+    ]
+  },
+  "seasonIIBatches": [
+    {
+      "id": "season-ii-30-39",
+      "episodeRange": [
+        30,
+        39
+      ],
+      "status": "pending",
+      "remainingEpisodeNumbers": [
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39
+      ]
+    },
+    {
+      "id": "season-ii-40-49",
+      "episodeRange": [
+        40,
+        49
+      ],
+      "status": "pending",
+      "remainingEpisodeNumbers": [
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49
+      ]
+    },
+    {
+      "id": "season-ii-50-59",
+      "episodeRange": [
+        50,
+        59
+      ],
+      "status": "pending",
+      "remainingEpisodeNumbers": [
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59
+      ]
+    },
+    {
+      "id": "season-ii-60-71",
+      "episodeRange": [
+        60,
+        71
+      ],
+      "status": "pending",
+      "remainingEpisodeNumbers": [
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71
+      ]
+    }
+  ],
+  "allowedMissingEpisodeNumbers": [
+    1,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71
+  ]
+}
