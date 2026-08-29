@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- FEATURE-SEO:START -->
-  <meta name="description" content="Explore every LCA of the Impossible headline result on a logarithmic climate-impact scale while keeping different functional units, service lives and system boundaries explicit.">
+  <meta name="description" content="Navigate The Impossible Atlas by season, subject type, life-cycle hotspot and recurring model signal, then inspect headline magnitude without ranking unlike functional units.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#071019">
   <link rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/explore.html">
@@ -12,24 +12,24 @@
   <link rel="manifest" href="site.webmanifest">
   <meta property="og:site_name" content="LCA of the Impossible">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Explore the Impossible — LCA impact scale">
-  <meta property="og:description" content="Explore every LCA of the Impossible headline result on a logarithmic climate-impact scale while keeping different functional units, service lives and system boundaries explicit.">
+  <meta property="og:title" content="The Impossible Atlas — LCA of the Impossible">
+  <meta property="og:description" content="Navigate The Impossible Atlas by season, subject type, life-cycle hotspot and recurring model signal, then inspect headline magnitude without ranking unlike functional units.">
   <meta property="og:url" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/explore.html">
   <meta property="og:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta property="og:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Explore the Impossible — LCA impact scale">
-  <meta name="twitter:description" content="Explore every LCA of the Impossible headline result on a logarithmic climate-impact scale while keeping different functional units, service lives and system boundaries explicit.">
+  <meta name="twitter:title" content="The Impossible Atlas — LCA of the Impossible">
+  <meta name="twitter:description" content="Navigate The Impossible Atlas by season, subject type, life-cycle hotspot and recurring model signal, then inspect headline magnitude without ranking unlike functional units.">
   <meta name="twitter:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta name="twitter:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <script type="application/ld+json">
 {
   "@context": "https://schema.org",
   "@type": "CollectionPage",
-  "name": "Explore the Impossible — LCA impact scale",
+  "name": "The Impossible Atlas — LCA of the Impossible",
   "url": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/explore.html",
-  "description": "Explore every LCA of the Impossible headline result on a logarithmic climate-impact scale while keeping different functional units, service lives and system boundaries explicit.",
+  "description": "Navigate The Impossible Atlas by season, subject type, life-cycle hotspot and recurring model signal, then inspect headline magnitude without ranking unlike functional units.",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -39,9 +39,10 @@
 }
   </script>
 <!-- FEATURE-SEO:END -->
-  <title>Explore the Impossible — LCA of the Impossible</title>
+  <title>The Impossible Atlas — LCA of the Impossible</title>
   <link rel="stylesheet" href="assets/style.css?v=20260816-cardfix1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
+  <link rel="stylesheet" href="assets/atlas.css?v=20260829-atlas1">
   <link rel="stylesheet" href="assets/phase6.css?v=20260819-epic-passport3">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
@@ -56,7 +57,7 @@
         <div class="nav-popover">
           <a href="collections.html">Collections</a>
           <a href="compare.html">Compare</a>
-          <a href="explore.html" aria-current="page">Impact map</a>
+          <a href="explore.html" aria-current="page">Atlas</a>
           <a href="statistics.html">Statistics</a>
           <a href="sources.html">Sources & data</a>
           <a href="glossary.html">Glossary</a>
@@ -68,15 +69,61 @@
   </header>
 
   <main id="main-content" tabindex="-1">
-    <section class="section feature-page-hero" style="border-top:none;">
-      <p class="eyebrow">EXPLORE THE IMPOSSIBLE</p>
-      <h1>Nine orders of magnitude.<br>No false equivalence.</h1>
-      <p class="intro">The published headline results span from kilograms to millions of tonnes of CO₂e. This logarithmic view shows scale and hotspot type without pretending that different functional units can be ranked as like-for-like products.</p>
+    <section class="section feature-page-hero atlas-hero" style="border-top:none;">
+      <div class="atlas-hero-copy">
+        <p class="eyebrow">THE IMPOSSIBLE ATLAS</p>
+        <h1>One archive.<br>Multiple ways to read it.</h1>
+        <p class="intro">Navigate the published cases by season, subject type, life-cycle hotspot and recurring model signal. The Atlas maps how the archive is structured; it does not turn unlike functional units into a performance ranking.</p>
+      </div>
+      <aside class="atlas-rule" aria-label="Atlas interpretation rule">
+        <span>ATLAS RULE</span>
+        <strong>Compare the reasoning freely.</strong>
+        <p>Compare absolute footprints only with extreme caution: functional units, boundaries, service lives and assumptions remain case-specific.</p>
+      </aside>
     </section>
 
-    <section class="section feature-page-tools small-section-title">
+    <nav class="atlas-jump-nav" aria-label="Atlas sections">
+      <a href="#atlas-overview">Overview</a>
+      <a href="#atlas-routes">Archive routes</a>
+      <a href="#atlas-relationships">Relationship map</a>
+      <a href="#impact-scale">Impact scale</a>
+    </nav>
+
+    <section class="section atlas-section small-section-title" id="atlas-overview" aria-labelledby="atlas-overview-title">
       <div class="section-heading">
-        <div><p class="eyebrow">IMPACT SCALE</p><h2>Where each impossible case lands</h2></div>
+        <div><p class="eyebrow">ATLAS OVERVIEW</p><h2 id="atlas-overview-title">The current archive coordinates.</h2></div>
+        <p id="atlas-status" class="atlas-status" aria-live="polite">Loading the current registry…</p>
+      </div>
+      <div id="atlas-summary" class="atlas-summary-grid" data-atlas-status>
+        <p class="section-note">Loading Atlas coordinates…</p>
+      </div>
+      <p id="atlas-classification-note" class="atlas-classification-note" data-atlas-status></p>
+    </section>
+
+    <section class="section atlas-section small-section-title" id="atlas-routes" aria-labelledby="atlas-routes-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">ARCHIVE ROUTES</p><h2 id="atlas-routes-title">Enter through a system characteristic.</h2></div>
+        <p class="section-note">Every route opens the canonical archive with the corresponding filter already applied. Model signals are non-exclusive.</p>
+      </div>
+      <div class="atlas-route-grid">
+        <article class="atlas-route-panel"><div class="atlas-panel-heading"><span>01</span><div><h3>Seasons</h3><p>Editorial identity and numbering route.</p></div></div><div id="atlas-season-routes" class="atlas-bars" data-atlas-status></div></article>
+        <article class="atlas-route-panel"><div class="atlas-panel-heading"><span>02</span><div><h3>Subject types</h3><p>The kind of impossible system modelled.</p></div></div><div id="atlas-subject-routes" class="atlas-bars" data-atlas-status></div></article>
+        <article class="atlas-route-panel"><div class="atlas-panel-heading"><span>03</span><div><h3>Hotspot stages</h3><p>Where the dominant life-cycle pressure sits.</p></div></div><div id="atlas-hotspot-routes" class="atlas-bars" data-atlas-status></div></article>
+        <article class="atlas-route-panel"><div class="atlas-panel-heading"><span>04</span><div><h3>Model signals</h3><p>Recurring analytical traits across cases.</p></div></div><div id="atlas-lca-routes" class="atlas-bars" data-atlas-status></div></article>
+      </div>
+    </section>
+
+    <section class="section atlas-section small-section-title" id="atlas-relationships" aria-labelledby="atlas-relationships-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">RELATIONSHIP MAP</p><h2 id="atlas-relationships-title">Subject type × hotspot stage.</h2></div>
+        <p class="section-note">Cell values count registered intersections. They describe catalogue coverage, not environmental performance.</p>
+      </div>
+      <div id="atlas-matrix" class="atlas-matrix-wrap" data-atlas-status><p class="section-note">Loading relationship map…</p></div>
+    </section>
+
+    <section class="section feature-page-tools small-section-title" id="impact-scale" aria-labelledby="impact-scale-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">IMPACT SCALE</p><h2 id="impact-scale-title">Where each impossible case lands</h2></div>
         <p class="section-note">Position represents the published headline result converted to kg CO₂e only for logarithmic placement.</p>
       </div>
       <div class="comparison-warning impact-intro-note"><strong>Do not read this as a ranking</strong><p>Each point retains its own functional unit, service life, boundary and assumptions. Distance on the scale is descriptive of result magnitude, not comparative environmental performance.</p></div>
@@ -95,10 +142,11 @@
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="compare.html">Compare cases →</a>
+    <a href="archive.html">Browse the archive →</a>
   </footer>
 
-  <script src="assets/site.js?v=20260816-phase3"></script>
+  <script src="assets/site.js?v=20260829-atlas1"></script>
+  <script src="assets/atlas.js?v=20260829-atlas1"></script>
 <script src="assets/phase6.js?v=20260819-epic-passport3"></script>
 <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
   <script src="assets/engagement.js?v=20260816-phase4"></script>

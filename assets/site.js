@@ -9,7 +9,7 @@
 
   const featureStyles = document.createElement('link');
   featureStyles.rel = 'stylesheet';
-  featureStyles.href = `${rootPrefix}assets/features.css?v=20260816-phase3`;
+  featureStyles.href = `${rootPrefix}assets/features.css?v=20260829-atlas1`;
   document.head.appendChild(featureStyles);
 
   const ensureAccessibilityScaffold = () => {
@@ -144,14 +144,14 @@
       if (row && !row.querySelector('[data-phase3-link]')) {
         row.insertAdjacentHTML('beforeend', `
           <a class="button secondary" data-phase3-link href="compare.html">Compare cases →</a>
-          <a class="button secondary" data-phase3-link href="explore.html">Explore impact scale →</a>`);
+          <a class="button secondary" data-phase3-link href="explore.html">Open the Atlas →</a>`);
       }
     }
 
     if (isEpisode) {
       const nav = document.querySelector('.site-header nav');
       if (nav && !nav.querySelector('[data-phase3-link]')) {
-        nav.insertAdjacentHTML('beforeend', `<a data-phase3-link href="${rootPrefix}compare.html">Compare</a><a data-phase3-link href="${rootPrefix}explore.html">Impact map</a>`);
+        nav.insertAdjacentHTML('beforeend', `<a data-phase3-link href="${rootPrefix}compare.html">Compare</a><a data-phase3-link href="${rootPrefix}explore.html">Atlas</a>`);
       }
     }
   };
@@ -242,8 +242,8 @@
     if (toolbar && !document.querySelector('.archive-feature-entrypoints')) {
       toolbar.insertAdjacentHTML('beforebegin', `
         <div class="archive-feature-entrypoints">
-          <div><p class="eyebrow">EXPLORE THE SERIES</p><p class="section-note">Compare modelling choices side by side or place every headline result on a logarithmic impact scale.</p></div>
-          <div class="cta-row"><a class="button secondary" href="compare.html">Compare cases →</a><a class="button secondary" href="explore.html">Impact map →</a></div>
+          <div><p class="eyebrow">EXPLORE THE SERIES</p><p class="section-note">Compare modelling choices side by side or map the archive by season, subject, hotspot and model signal.</p></div>
+          <div class="cta-row"><a class="button secondary" href="compare.html">Compare cases →</a><a class="button secondary" href="explore.html">Open the Atlas →</a></div>
         </div>`);
     }
 

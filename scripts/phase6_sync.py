@@ -103,9 +103,9 @@ The passport must explicitly state that it introduces no additional assumptions.
 
 The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.
 
-### 29.2 Richer Impact Map
+### 29.2 Atlas impact-scale context
 
-`explore.html` retains the existing logarithmic positioning and non-comparability warning. Phase 6 adds expandable technical context for each plotted case using only registry fields:
+Within The Impossible Atlas, `explore.html` retains logarithmic positioning and the non-comparability warning. Phase 6 adds expandable technical context for each plotted case using only registry fields:
 
 - functional unit;
 - main hotspot;

@@ -58,7 +58,7 @@ def nav_html(prefix: str, current: str) -> str:
         '        <div class="nav-popover">',
         f'          {explore_link("collections.html", "Collections")}',
         f'          {explore_link("compare.html", "Compare")}',
-        f'          {explore_link("explore.html", "Impact map")}',
+        f'          {explore_link("explore.html", "Atlas")}',
         f'          {explore_link("statistics.html", "Statistics")}',
         f'          {explore_link("sources.html", "Sources & data")}',
         f'          {explore_link("glossary.html", "Glossary")}',
@@ -238,7 +238,7 @@ Every public page and every episode page uses the same primary navigation:
 
 - `Collections`;
 - `Compare`;
-- `Impact map`;
+- `Atlas`;
 - `Statistics`;
 - `Sources & data`;
 - `Glossary`.
@@ -306,7 +306,7 @@ Phase 5 canonical files:
 
 - [ ] Every public root page uses the canonical global navigation.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
-- [ ] `Explore` links to Collections, Compare, Impact map, Statistics, Sources & Data and Glossary.
+- [ ] `Explore` links to Collections, Compare, Atlas, Statistics, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
 - [ ] All three pages contain complete static canonical/social metadata.
 - [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.

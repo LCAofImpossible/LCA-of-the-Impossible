@@ -48,11 +48,13 @@ CORE_PATHS = {
     "assets/method.css",
     "assets/seasons.css",
     "assets/statistics.css",
+    "assets/atlas.css",
     "assets/phase6.css",
     "assets/telemetry.css",
     "assets/site.js",
     "assets/seasons.js",
     "assets/statistics.js",
+    "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
     "assets/passport-cleanup.js",
@@ -234,6 +236,39 @@ def validate(
             if token not in source:
                 errors.append(f"Advanced archive live contract is missing {token!r} from {path}")
 
+    atlas_contract = {
+        "explore.html": (
+            "THE IMPOSSIBLE ATLAS",
+            'id="atlas-overview"',
+            'id="atlas-routes"',
+            'id="atlas-relationships"',
+            'id="impact-scale"',
+            "assets/atlas.css?v=20260829-atlas1",
+            "assets/atlas.js?v=20260829-atlas1",
+            "Compare the reasoning freely.",
+        ),
+        "assets/atlas.js": (
+            "structuredMetadata",
+            "subject?.entityType",
+            "impact?.hotspotStage",
+            "lcaCharacteristics",
+            "archiveHref",
+            "URLSearchParams",
+            "renderMatrix",
+        ),
+        "assets/atlas.css": (
+            ".atlas-summary-grid",
+            ".atlas-route-grid",
+            ".atlas-matrix-wrap",
+            "overflow-x:auto",
+        ),
+    }
+    for path, required_tokens in atlas_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Impossible Atlas live contract is missing {token!r} from {path}")
+
     for episode in episodes:
         number = int(episode["number"])
         url = str(episode["url"])
@@ -358,6 +393,7 @@ def main() -> int:
     print(f"- Exact cover assets verified: **{len(episodes)}**")
     print("- Registry, collections, sitemap, SEO pages and analytical graphics: **PASS**")
     print("- Advanced archive search, combined filters and URL-state contract: **PASS**")
+    print("- Impossible Atlas routes, relationship map and impact-scale guardrail: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

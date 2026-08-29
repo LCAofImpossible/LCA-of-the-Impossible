@@ -46,6 +46,7 @@ QA_SCRIPTS = (
     "structured_metadata_qa.py",
     "statistics_qa.py",
     "advanced_archive_qa.py",
+    "atlas_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

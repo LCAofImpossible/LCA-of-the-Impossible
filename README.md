@@ -672,16 +672,23 @@ The comparison must always display an explicit warning that headline results hav
 
 The selected episode numbers may be encoded in the URL as `compare.html?cases=43,42,41` so a comparison can be shared. Archive cards may expose `+ Compare`; no more than three cases may be selected at once.
 
-### 25.3 Explore the Impossible / impact map
+### 25.3 The Impossible Atlas
 
-`explore.html` places published headline results on a logarithmic climate-impact scale. Result strings may be normalized internally to kg CO₂e **only to calculate position on the logarithmic axis**. This normalization does not harmonize functional units and must never be described as a like-for-like comparison.
+`explore.html` is the canonical first version of **The Impossible Atlas**. It provides a registry-driven transverse reading of the archive by season, structured subject type, structured hotspot stage and non-exclusive LCA model signal. Every route links to the matching state of `archive.html`; no separate catalogue, duplicate taxonomy or manually maintained classification is allowed.
 
-The map must:
+The Atlas includes a subject-type × hotspot-stage relationship matrix. Cell values count registered intersections and may be used only to describe catalogue coverage. Episodes without structured metadata remain visible in the complete archive and must be disclosed as unclassified rather than assigned an invented Atlas value.
 
+The existing logarithmic climate-impact scale remains part of the Atlas. Result strings may be normalized internally to kg CO₂e **only to calculate position on the logarithmic axis**. This normalization does not harmonize functional units and must never be described as a like-for-like comparison.
+
+The Atlas must:
+
+- calculate all counts and relationships client-side from `episodes.json`;
+- expose routes for season, subject type, hotspot stage and LCA model signal;
+- link matrix intersections to combined Archive filters;
 - retain the published result text beside each point;
 - link every point back to the episode;
 - allow filtering by principal LCA lens;
-- display a persistent explanation that scale position is descriptive, not a ranking;
+- display persistent explanations that counts and scale position are descriptive, not rankings;
 - remain usable on mobile without horizontal page overflow.
 
 ### 25.4 Catalogue Statistics
@@ -701,9 +708,10 @@ The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do n
 Canonical Phase 3 files:
 
 - `compare.html` — side-by-side technical comparison;
-- `explore.html` — logarithmic impact-scale exploration;
+- `explore.html` — The Impossible Atlas and logarithmic impact-scale exploration;
 - `statistics.html` — descriptive, registry-driven catalogue statistics;
-- `assets/features.css` — styles for comparison, impact map and evidence profiles;
+- `assets/atlas.css` and `assets/atlas.js` — Atlas routes, registry relationships and responsive presentation;
+- `assets/features.css` — styles for comparison, impact scale and evidence profiles;
 - `assets/statistics.css` and `assets/statistics.js` — statistics presentation and registry projection;
 - `scripts/feature_sync.py` — synchronizes Phase 3 metadata, sitemap entries and these README rules;
 - `scripts/feature_qa.py` — validates registry evidence fields and Phase 3 page integrity.
@@ -717,7 +725,10 @@ Canonical Phase 3 files:
 - [ ] Evidence levels use only `Low`, `Medium` or `High`.
 - [ ] Compare Cases accepts 2–3 unique cases and never presents a better/worse ranking.
 - [ ] Archive compare selection is capped at three cases.
-- [ ] Impact map uses a logarithmic magnitude scale and retains original published result labels.
+- [ ] The Atlas derives season, subject, hotspot and model-signal routes from `episodes.json`.
+- [ ] The relationship matrix links registered subject × hotspot intersections to combined Archive filters.
+- [ ] Unclassified cases remain in the archive and are disclosed without invented metadata.
+- [ ] The impact scale uses a logarithmic magnitude scale and retains original published result labels.
 - [ ] Both interactive pages contain the functional-unit/non-comparability warning.
 - [ ] Statistics are generated from `episodes.json` and never aggregate or average headline footprints.
 - [ ] Every episode renders its Evidence Profile before the Visual Model.
@@ -966,7 +977,7 @@ Every public page and every episode page uses the same primary navigation:
 
 - `Collections`;
 - `Compare`;
-- `Impact map`;
+- `Atlas`;
 - `Statistics`;
 - `Sources & data`;
 - `Glossary`.
@@ -1034,7 +1045,7 @@ Phase 5 canonical files:
 
 - [ ] Every public root page uses the canonical global navigation.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
-- [ ] `Explore` links to Collections, Compare, Impact map, Statistics, Sources & Data and Glossary.
+- [ ] `Explore` links to Collections, Compare, Atlas, Statistics, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
 - [ ] All three pages contain complete static canonical/social metadata.
 - [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.
@@ -1073,9 +1084,9 @@ The passport must explicitly state that it introduces no additional assumptions.
 
 The user-facing export is the visual Epic Passport through `Print / Save as PDF`. Raw-text export is retired, and the original episode PDF is not exposed as a website download.
 
-### 29.2 Richer Impact Map
+### 29.2 Atlas impact-scale context
 
-`explore.html` retains the existing logarithmic positioning and non-comparability warning. Phase 6 adds expandable technical context for each plotted case using only registry fields:
+Within The Impossible Atlas, `explore.html` retains logarithmic positioning and the non-comparability warning. Phase 6 adds expandable technical context for each plotted case using only registry fields:
 
 - functional unit;
 - main hotspot;
