@@ -37,6 +37,8 @@ def main() -> int:
     published = {episode.get("number") for episode in episodes if isinstance(episode, dict)}
 
     collection_data = json.loads(collection_path.read_text(encoding="utf-8")) if collection_path.is_file() else {}
+    if collection_data.get("schemaVersion") != 2:
+        fail("collections.json: schemaVersion must be exactly 2")
     seasons = collection_data.get("seasons", [])
     if not isinstance(seasons, list):
         fail("collections.json: seasons must be an array")
@@ -74,6 +76,10 @@ def main() -> int:
     if not isinstance(collections, list) or not collections:
         fail("collections.json: collections must be a non-empty array")
         collections = []
+    editorial_paths = collection_data.get("editorialPaths", [])
+    if not isinstance(editorial_paths, list) or not editorial_paths:
+        fail("collections.json: editorialPaths must be a non-empty array")
+        editorial_paths = []
 
     seen: set[str] = set()
     for item in collections:
@@ -119,6 +125,8 @@ def main() -> int:
         for token in (
             "renderCollections",
             "renderSeasons",
+            "renderEditorialPaths",
+            "placeEditorialPathNavigation",
             "randomCase",
             "data-copy-linkedin-caption",
             "data-random-collection",
@@ -140,6 +148,8 @@ def main() -> int:
             fail("collections.html: data-page=collections missing")
         if 'id="season-list"' not in text:
             fail("collections.html: season route container missing")
+        if 'id="editorial-path-index"' not in text or 'id="editorial-path-list"' not in text:
+            fail("collections.html: guided editorial path containers are missing")
         if re.search(r'<img\b[^>]*assets/images/episodes/', text, flags=re.I):
             fail("collections.html must remain text-only and must not render episode cover images")
 
@@ -174,7 +184,10 @@ def main() -> int:
         print(f"\nPhase 4 QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
 
-    print(f"Phase 4 QA passed for {len(seasons)} seasons, {len(collections)} collections and {len(episodes)} episodes.")
+    print(
+        f"Phase 4 QA passed for {len(seasons)} seasons, {len(collections)} collections, "
+        f"{len(editorial_paths)} guided paths and {len(episodes)} episodes."
+    )
     return 0
 
 

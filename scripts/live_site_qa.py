@@ -314,6 +314,48 @@ def validate(
             if token not in source:
                 errors.append(f"Comparison visual synthesis live contract is missing {token!r} from {path}")
 
+    editorial_paths_contract = {
+        "collections.json": (
+            '"schemaVersion": 2',
+            '"editorialPaths"',
+            '"scaling-the-impossible"',
+            '"when-time-becomes-inventory"',
+            '"following-the-gold-assumption"',
+            '"drawing-the-boundary-around-magic"',
+            '"relatedCollections"',
+            '"steps"',
+        ),
+        "collections.html": (
+            'id="editorial-paths"',
+            'id="editorial-path-index"',
+            'id="editorial-path-list"',
+            "GUIDED READING PATHS",
+            "assets/engagement.js?v=20260829-editorial-paths1",
+        ),
+        "assets/engagement.js": (
+            "renderEditorialPaths",
+            "placeEditorialPathNavigation",
+            "searchParams.get('path')",
+            "editorial-path-progress",
+            "data-copy-path",
+            "Path overview",
+            "assets/engagement.css?v=20260829-editorial-paths1",
+        ),
+        "assets/engagement.css": (
+            ".editorial-path-index",
+            ".editorial-path-steps",
+            ".editorial-path-step",
+            ".editorial-path-progress",
+            ".editorial-path-progress-track",
+            ".editorial-path-progress-nav",
+        ),
+    }
+    for path, required_tokens in editorial_paths_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Guided editorial paths live contract is missing {token!r} from {path}")
+
     for episode in episodes:
         number = int(episode["number"])
         url = str(episode["url"])
@@ -440,6 +482,7 @@ def main() -> int:
     print("- Advanced archive search, combined filters and URL-state contract: **PASS**")
     print("- Impossible Atlas routes, relationship map and impact-scale guardrail: **PASS**")
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
+    print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

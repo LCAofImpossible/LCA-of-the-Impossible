@@ -11,7 +11,7 @@
 
   const style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = `${rootPrefix}assets/engagement.css?v=20260816-phase4`;
+  style.href = `${rootPrefix}assets/engagement.css?v=20260829-editorial-paths1`;
   document.head.appendChild(style);
 
   const escapeHtml = (value = '') => String(value)
@@ -53,6 +53,11 @@
   };
 
   const canonicalEpisodeUrl = (episode) => new URL(pageUrl(episode.url), window.location.href).href;
+  const editorialPathEpisodeUrl = (episode, slug) => {
+    const url = new URL(pageUrl(episode.url), window.location.href);
+    url.searchParams.set('path', slug);
+    return url.href;
+  };
 
   const randomCase = (episodes, allowedNumbers = null) => {
     const currentNumber = Number(body.dataset.episode);
@@ -105,7 +110,7 @@
     }).join('');
   };
 
-  const renderHomeEngagement = (episodes, collections, linkedinUrl) => {
+  const renderHomeEngagement = (episodes, collections, editorialPaths, linkedinUrl) => {
     if (body.dataset.page !== 'home' || document.getElementById('discover-paths')) return;
     const recent = document.querySelector('.recent-section');
     if (!recent) return;
@@ -129,10 +134,81 @@
       </div>
       <div class="engagement-actions">
         <a class="button" href="collections.html">Browse collections →</a>
+        ${editorialPaths.length ? '<a class="button secondary" href="collections.html#editorial-paths">Guided reading paths →</a>' : ''}
         <button class="button secondary" type="button" data-random-case>Random impossible case ↻</button>
         ${linkedinUrl ? `<a class="button secondary" href="${escapeHtml(linkedinUrl)}" target="_blank" rel="noopener noreferrer">Follow on LinkedIn ↗</a>` : ''}
       </div>`;
     recent.insertAdjacentElement('afterend', section);
+  };
+
+  const renderEditorialPaths = (episodes, editorialPaths, collections) => {
+    if (body.dataset.page !== 'collections') return;
+    const index = document.getElementById('editorial-path-index');
+    const list = document.getElementById('editorial-path-list');
+    if (!index || !list) return;
+    if (!editorialPaths.length) {
+      index.innerHTML = '<span class="section-note">No guided paths are currently registered.</span>';
+      list.innerHTML = '';
+      return;
+    }
+
+    const collectionsBySlug = new Map(collections.map((collection) => [collection.slug, collection]));
+    index.innerHTML = editorialPaths.map((path) => `
+      <a href="#path-${escapeHtml(path.slug)}">${escapeHtml(path.title)} <span>${path.steps.length}</span></a>`).join('');
+
+    list.innerHTML = editorialPaths.map((path) => {
+      const steps = path.steps
+        .map((step) => ({ ...step, episodeData: episodes.find((episode) => episode.number === step.episode) }))
+        .filter((step) => step.episodeData);
+      const related = (path.relatedCollections || [])
+        .map((slug) => collectionsBySlug.get(slug))
+        .filter(Boolean);
+      return `<article class="editorial-path" id="path-${escapeHtml(path.slug)}">
+        <header class="editorial-path-heading">
+          <div><p class="eyebrow">${escapeHtml(path.eyebrow)}</p><h2>${escapeHtml(path.title)}</h2><strong>${escapeHtml(path.question)}</strong><p>${escapeHtml(path.description)}</p></div>
+          <div class="editorial-path-actions"><a class="button" href="${escapeHtml(editorialPathEpisodeUrl(steps[0].episodeData, path.slug))}">Start with #${steps[0].episodeData.number} →</a><button class="button secondary" type="button" data-copy-path="${escapeHtml(path.slug)}">Copy path link</button></div>
+        </header>
+        <div class="editorial-path-steps" role="list">${steps.map((step, stepIndex) => {
+          const episode = step.episodeData;
+          return `<a class="editorial-path-step" role="listitem" href="${escapeHtml(editorialPathEpisodeUrl(episode, path.slug))}">
+            <span class="editorial-path-number">${String(stepIndex + 1).padStart(2, '0')}</span>
+            <div><p>${escapeHtml(step.phase)}</p><h3>#${episode.number} · ${escapeHtml(episode.title)}</h3><span>${escapeHtml(step.note)}</span></div>
+            <div class="editorial-path-meta"><strong>${escapeHtml(episode.result)}</strong><span>${escapeHtml(episode.lcaLabel)} · ${escapeHtml(episode.hotspot)}</span></div>
+          </a>`;
+        }).join('')}</div>
+        ${related.length ? `<nav class="editorial-path-related" aria-label="Related collections"><span>Continue by collection</span>${related.map((collection) => `<a href="#${escapeHtml(collection.slug)}">${escapeHtml(collection.title)} →</a>`).join('')}</nav>` : ''}
+        <p class="collection-status" data-path-status="${escapeHtml(path.slug)}" aria-live="polite"></p>
+      </article>`;
+    }).join('');
+  };
+
+  const placeEditorialPathNavigation = (episode, episodes, editorialPaths) => {
+    if (!isEpisode || document.getElementById('editorial-path-progress')) return;
+    const slug = new URL(window.location.href).searchParams.get('path');
+    if (!slug) return;
+    const path = editorialPaths.find((item) => item.slug === slug);
+    if (!path || !Array.isArray(path.steps)) return;
+    const stepIndex = path.steps.findIndex((step) => step.episode === episode.number);
+    if (stepIndex < 0) return;
+    const previous = stepIndex > 0 ? path.steps[stepIndex - 1] : null;
+    const next = stepIndex + 1 < path.steps.length ? path.steps[stepIndex + 1] : null;
+    const previousEpisode = previous ? episodes.find((item) => item.number === previous.episode) : null;
+    const nextEpisode = next ? episodes.find((item) => item.number === next.episode) : null;
+    const section = document.createElement('section');
+    section.id = 'editorial-path-progress';
+    section.className = 'editorial-path-progress';
+    section.setAttribute('aria-labelledby', 'editorial-path-progress-title');
+    section.innerHTML = `<div class="editorial-path-progress-copy"><p class="eyebrow">GUIDED READING PATH · STEP ${stepIndex + 1} OF ${path.steps.length}</p><h2 id="editorial-path-progress-title">${escapeHtml(path.title)}</h2><p>${escapeHtml(path.question)}</p></div>
+      <div class="editorial-path-progress-track" role="img" aria-label="Step ${stepIndex + 1} of ${path.steps.length}">${path.steps.map((_, index) => `<span${index === stepIndex ? ' data-current="true"' : index < stepIndex ? ' data-complete="true"' : ''}></span>`).join('')}</div>
+      <nav class="editorial-path-progress-nav" aria-label="Guided path navigation">
+        ${previousEpisode ? `<a href="${escapeHtml(editorialPathEpisodeUrl(previousEpisode, path.slug))}">← #${previousEpisode.number} · ${escapeHtml(previousEpisode.title)}</a>` : '<span>Beginning of path</span>'}
+        <a href="${rootPrefix}collections.html#path-${escapeHtml(path.slug)}">Path overview</a>
+        ${nextEpisode ? `<a href="${escapeHtml(editorialPathEpisodeUrl(nextEpisode, path.slug))}">#${nextEpisode.number} · ${escapeHtml(nextEpisode.title)} →</a>` : '<span>End of path</span>'}
+      </nav>`;
+    const main = document.querySelector('main');
+    const pager = main?.querySelector('.episode-pager');
+    if (pager) pager.insertAdjacentElement('beforebegin', section);
+    else main?.appendChild(section);
   };
 
   const augmentArchive = (linkedinUrl) => {
@@ -286,20 +362,25 @@
       const episodes = [...episodeData.episodes].sort((a, b) => b.number - a.number);
       const collections = Array.isArray(collectionData.collections) ? collectionData.collections : [];
       const seasons = Array.isArray(collectionData.seasons) ? collectionData.seasons : [];
+      const editorialPaths = Array.isArray(collectionData.editorialPaths) ? collectionData.editorialPaths : [];
       const linkedinUrl = typeof collectionData.socialLinks?.linkedin === 'string'
         ? collectionData.socialLinks.linkedin.trim()
         : '';
 
-      renderHomeEngagement(episodes, collections, linkedinUrl);
+      renderHomeEngagement(episodes, collections, editorialPaths, linkedinUrl);
       augmentArchive(linkedinUrl);
       renderSeasons(episodes, seasons);
+      renderEditorialPaths(episodes, editorialPaths, collections);
       renderCollections(episodes, collections);
       addCollectionNavLink();
 
       if (isEpisode) {
         const current = episodes.find((episode) => episode.number === Number(body.dataset.episode));
         if (current) {
-          requestAnimationFrame(() => requestAnimationFrame(() => placeEpisodeShare(current, linkedinUrl)));
+          requestAnimationFrame(() => requestAnimationFrame(() => {
+            placeEpisodeShare(current, linkedinUrl);
+            placeEditorialPathNavigation(current, episodes, editorialPaths);
+          }));
         }
       }
 
@@ -326,6 +407,21 @@
           try {
             await copyText(link.href);
             if (status) status.textContent = 'Collection link copied.';
+          } catch (_) {
+            if (status) status.textContent = 'Unable to copy automatically.';
+          }
+          return;
+        }
+
+        const copyPath = event.target.closest('[data-copy-path]');
+        if (copyPath) {
+          const slug = copyPath.dataset.copyPath;
+          const status = document.querySelector(`[data-path-status="${CSS.escape(slug)}"]`);
+          const link = new URL(`${rootPrefix}collections.html`, window.location.href);
+          link.hash = `path-${slug}`;
+          try {
+            await copyText(link.href);
+            if (status) status.textContent = 'Guided path link copied.';
           } catch (_) {
             if (status) status.textContent = 'Unable to copy automatically.';
           }

@@ -1,5 +1,5 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "socialLinks": {
     "linkedin": null
   },
@@ -71,6 +71,141 @@
         34,
         33,
         32
+      ]
+    }
+  ],
+  "editorialPaths": [
+    {
+      "slug": "scaling-the-impossible",
+      "title": "Scaling the Impossible",
+      "eyebrow": "OBJECT → MACHINE → MEGASTRUCTURE → HABITAT",
+      "question": "What changes when one bounded object becomes an inhabited world?",
+      "description": "A four-case progression through the reconstruction problem: establish a physical bill of materials, scale it into a machine, translate occupancy into structure and finally define a world-bearing habitat without losing the functional unit.",
+      "relatedCollections": [
+        "legendary-engineering",
+        "impossible-structures"
+      ],
+      "steps": [
+        {
+          "episode": 65,
+          "phase": "01 · BOUNDED OBJECT",
+          "note": "Begin with one forged shield: a compact product system where mass, layers and primary materials can be traced directly."
+        },
+        {
+          "episode": 46,
+          "phase": "02 · COMPLEX MACHINE",
+          "note": "Scale the same reconstruction discipline to a launch-ready vessel with a larger material architecture and an explicit construction boundary."
+        },
+        {
+          "episode": 69,
+          "phase": "03 · MEGASTRUCTURE",
+          "note": "Turn narrative occupancy, gates and circulation into a structural shell sized for a defined first muster."
+        },
+        {
+          "episode": 71,
+          "phase": "04 · INHABITED WORLD",
+          "note": "End with a world-bearing habitat whose population, service life and construction gate must remain visible in the reporting basis."
+        }
+      ]
+    },
+    {
+      "slug": "when-time-becomes-inventory",
+      "title": "When Time Becomes Inventory",
+      "eyebrow": "CYCLE → REPETITION → DUTY → SERVICE LIFE",
+      "question": "When does duration matter more than the object itself?",
+      "description": "A route through four temporal models, moving from one rebirth cycle to repeated punishment, continuous defence and century-scale maintenance. Each step changes the reference flow before it changes the answer.",
+      "relatedCollections": [
+        "systems-that-never-stop",
+        "mythic-biology"
+      ],
+      "steps": [
+        {
+          "episode": 60,
+          "phase": "01 · ONE CYCLE",
+          "note": "Start with one Phoenix rebirth event and see how a single cycle establishes the service boundary."
+        },
+        {
+          "episode": 43,
+          "phase": "02 · 1,000 REPETITIONS",
+          "note": "Follow the same action through 1,000 complete punishment cycles, where repetition becomes the functional unit."
+        },
+        {
+          "episode": 42,
+          "phase": "03 · 30-YEAR DUTY",
+          "note": "Move to continuous coastal defence, where patrol frequency and operating life dominate the reconstructed system."
+        },
+        {
+          "episode": 64,
+          "phase": "04 · 100-YEAR SERVICE",
+          "note": "Finish with a century of seaworthiness and material replacement, making maintenance the identity of the object."
+        }
+      ]
+    },
+    {
+      "slug": "following-the-gold-assumption",
+      "title": "Following the Gold Assumption",
+      "eyebrow": "CONVERSION → TOUCH → REPLICATION → UNRECOVERED USE",
+      "question": "How can a small precious-metal assumption control the whole result?",
+      "description": "Four different gold narratives expose four different accounting problems: conversion energy, primary material assignment, replication and unrecovered ceremonial use. The route follows the modelling decision, not the size of the headline result.",
+      "relatedCollections": [
+        "gold-driven-cases",
+        "alchemy-and-transmutation",
+        "gilded-hotspots"
+      ],
+      "steps": [
+        {
+          "episode": 58,
+          "phase": "01 · CONVERSION",
+          "note": "Begin with a laboratory projection event where the declared conversion service makes energy the principal lens."
+        },
+        {
+          "episode": 45,
+          "phase": "02 · PRIMARY MATERIAL",
+          "note": "Assign a touch-converted goblet as primary gold equivalent and observe how the material boundary controls interpretation."
+        },
+        {
+          "episode": 47,
+          "phase": "03 · REPLICATION",
+          "note": "Extend the material claim across one original ring and eight equal replicas delivered over nine nights."
+        },
+        {
+          "episode": 70,
+          "phase": "04 · UNRECOVERED USE",
+          "note": "Close with a ceremonial rite where 50.5 kg of primary gold is explicitly assigned as unrecovered use."
+        }
+      ]
+    },
+    {
+      "slug": "drawing-the-boundary-around-magic",
+      "title": "Drawing the Boundary Around Magic",
+      "eyebrow": "SERVICE → CUT-OFF → EVENT → CONTAINMENT",
+      "question": "How do you model an impossible effect without inventing its mechanism?",
+      "description": "A guided sequence about disciplined omission. Each case defines a measurable physical service, isolates the impossible claim and keeps the cut-off visible rather than filling the gap with an invented process.",
+      "relatedCollections": [
+        "legendary-engineering",
+        "mythic-threat-control"
+      ],
+      "steps": [
+        {
+          "episode": 44,
+          "phase": "01 · DEFINE THE SERVICE",
+          "note": "Model one launch-ready wing pair and a minimum gliding service without supplying a fictional propulsion mechanism."
+        },
+        {
+          "episode": 51,
+          "phase": "02 · CUT OFF THE IMPOSSIBLE",
+          "note": "Keep the ceramic vessel physical and explicitly exclude its non-physical payload from the inventory."
+        },
+        {
+          "episode": 50,
+          "phase": "03 · BOUND THE EVENT",
+          "note": "Express Bifrost as one controlled activation and a ten-minute crossing window rather than an unbounded magical infrastructure."
+        },
+        {
+          "episode": 56,
+          "phase": "04 · CLOSE THE SYSTEM",
+          "note": "Define success as one neutralisation and containment event, ending only when the immortal head is sealed and the pit is closed."
+        }
       ]
     }
   ],
