@@ -48,6 +48,7 @@ QA_SCRIPTS = (
     "advanced_archive_qa.py",
     "atlas_qa.py",
     "comparison_foundation_qa.py",
+    "comparison_synthesis_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

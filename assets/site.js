@@ -806,6 +806,50 @@
       const missing = !hasValue(value);
       return `<td${missing ? ' class="comparison-value-missing"' : ''}>${escapeHtml(text)}</td>`;
     };
+    const magnitudeBand = (resultKg) => {
+      if (!Number.isFinite(resultKg) || resultKg <= 0) return 'Magnitude unavailable';
+      if (resultKg < 1e3) return 'Kilogram scale';
+      if (resultKg < 1e6) return 'Tonne scale';
+      if (resultKg < 1e9) return 'Kilotonne scale';
+      return 'Megatonne scale';
+    };
+    const evidenceSignal = (label, value) => {
+      const registered = ['Low', 'Medium', 'High'].includes(value) ? value : null;
+      const ariaLabel = registered ? `${label}: ${registered}` : `${label}: not rated`;
+      return `<div class="comparison-evidence-signal"><div><span>${escapeHtml(label)}</span><strong>${escapeHtml(registered || 'Not rated')}</strong></div><div class="comparison-level-scale" role="img" aria-label="${escapeHtml(ariaLabel)}">${['Low', 'Medium', 'High'].map((level) => `<span${level === registered ? ' data-selected="true"' : ''}>${level.charAt(0)}</span>`).join('')}</div></div>`;
+    };
+    const visualSummaryCard = (episode) => {
+      const resultKg = resultToKg(episode.result);
+      const minLog = 0;
+      const maxLog = 10;
+      const position = Number.isFinite(resultKg) && resultKg > 0
+        ? Math.max(0, Math.min(100, ((Math.log10(resultKg) - minLog) / (maxLog - minLog)) * 100))
+        : null;
+      const hotspotStage = metadataValue(episode, 'impact', 'hotspotStage');
+      const hotspotShare = metadataValue(episode, 'impact', 'hotspotSharePercent');
+      const registeredShare = Number.isFinite(hotspotShare);
+      const sharePosition = registeredShare ? Math.max(0, Math.min(100, hotspotShare)) : 0;
+      return `<article class="comparison-signal-card">
+        <header><span>CASE #${episode.number}</span><h4><a href="${escapeHtml(episode.url)}">${escapeHtml(episode.title)}</a></h4></header>
+        <div class="comparison-magnitude-block">
+          <div class="comparison-signal-heading"><span>Headline magnitude</span><strong>${escapeHtml(episode.result)}</strong></div>
+          <div class="comparison-magnitude-track" role="img" aria-label="${escapeHtml(`${episode.title}: ${episode.result}; ${magnitudeBand(resultKg)} on a fixed logarithmic scale from 1 kilogram to 10 megatonnes of carbon dioxide equivalent.`)}">${position === null ? '<span class="comparison-magnitude-missing">Not positionable</span>' : `<span class="comparison-magnitude-point" style="--comparison-position:${position.toFixed(3)}%" aria-hidden="true"></span>`}</div>
+          <p>${escapeHtml(magnitudeBand(resultKg))} · descriptive position only</p>
+          <details><summary>Case-specific reporting basis</summary><p>${escapeHtml(episode.functionalUnit || 'Not registered')}</p></details>
+        </div>
+        <div class="comparison-hotspot-block">
+          <div class="comparison-signal-heading"><span>Registered hotspot stage</span><strong>${escapeHtml(hotspotStage ? labelFor(hotspotStage) : 'Not structurally registered')}</strong></div>
+          <div class="comparison-hotspot-track${registeredShare ? '' : ' is-missing'}" role="img" aria-label="${escapeHtml(registeredShare ? `Registered hotspot share: ${hotspotShare}%` : 'Registered hotspot share unavailable')}"><span style="--hotspot-share:${sharePosition.toFixed(3)}%"></span></div>
+          <p>${registeredShare ? `${escapeHtml(hotspotShare)}% of this case’s registered headline result` : 'Share not structurally registered'}${episode.hotspot ? ` · ${escapeHtml(episode.hotspot)}` : ''}</p>
+        </div>
+        <div class="comparison-evidence-block">
+          <span class="comparison-block-label">Evidence signals · separate ordinal fields</span>
+          ${evidenceSignal('Confidence', episode.evidence?.confidence)}
+          ${evidenceSignal('Proxy dependence', episode.evidence?.proxyDependence)}
+          ${evidenceSignal('Assumption sensitivity', episode.evidence?.assumptionSensitivity)}
+        </div>
+      </article>`;
+    };
 
     const render = () => {
       picker.innerHTML = [0, 1, 2].map((index) => {
@@ -890,6 +934,12 @@
           <p class="comparison-basis-note">${escapeHtml(basisNote)}</p>
         </section>
         <div class="comparison-warning"><strong>Interpretation rule</strong><p>Compare the reasoning freely. Compare absolute footprints only with extreme caution. This view exposes registered scope, model structure and evidence; it calculates no ratios, rankings, winners or comparative environmental claims.</p></div>
+        <section class="comparison-visual-summary" aria-labelledby="comparison-visual-title">
+          <div class="comparison-visual-heading"><div><span>VISUAL SYNTHESIS</span><h3 id="comparison-visual-title">Magnitude, hotspot and evidence signals</h3></div><p>Three separate readings. No composite score.</p></div>
+          <div class="comparison-magnitude-axis" aria-hidden="true"><span style="--axis-position:0%">1 kg</span><span style="--axis-position:30%">1 t</span><span style="--axis-position:60%">1 kt</span><span style="--axis-position:90%">1 Mt</span><span style="--axis-position:100%">10 Mt</span></div>
+          <div class="comparison-signal-grid">${chosen.map(visualSummaryCard).join('')}</div>
+          <p class="comparison-visual-guardrail"><strong>How to read this synthesis.</strong> Unit prefixes are converted internally to kg CO₂e only to place each published headline result on the fixed logarithmic magnitude scale. Functional units, time horizons and boundaries are not harmonized. Hotspot shares remain within-case contributions. Evidence levels remain three independent editorial signals and are never combined into a score.</p>
+        </section>
         <div class="comparison-table-wrap">
           <table class="comparison-table">
             <caption>All values are projected from the current episode registry. Missing structured values are shown explicitly and are never inferred.</caption>

@@ -109,8 +109,8 @@ def main() -> int:
         "compare.html",
         (
             "METHODOLOGICAL VIEW",
-            "assets/compare.css?v=20260829-compare-foundation1",
-            "assets/site.js?v=20260829-compare-foundation1",
+            "assets/compare.css?v=20260829-compare-synthesis1",
+            "assets/site.js?v=20260829-compare-synthesis1",
             'id="compare-picker"',
             'id="comparison-output"',
             'aria-live="polite"',
@@ -151,7 +151,7 @@ def main() -> int:
             "Not structurally registered",
         ),
     )
-    for forbidden in ("normalizedKgCO2e", "resultToKg(", "Math.log10", "rankScore", "better case", "worse case"):
+    for forbidden in ("normalizedKgCO2e", "rankScore", "better case", "worse case", "chosen.sort("):
         if forbidden in compare_block:
             fail(f"assets/site.js renderCompare: prohibited comparison operation or claim {forbidden!r}")
 
@@ -176,7 +176,7 @@ def main() -> int:
         ("direct footprint comparison remains **Not established**", "assets/compare.css", "Missing structured fields"),
     )
     require_tokens(publication, "scripts/publication_qa.py", ('"comparison_foundation_qa.py"',))
-    require_tokens(live_qa, "scripts/live_site_qa.py", ("Comparison foundation", '"assets/compare.css"'))
+    require_tokens(live_qa, "scripts/live_site_qa.py", ("Comparison visual synthesis", '"assets/compare.css"'))
 
     syntax = subprocess.run(
         ["node", "--check", str(ROOT / "assets" / "site.js")],

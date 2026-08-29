@@ -273,8 +273,9 @@ def validate(
     comparison_contract = {
         "compare.html": (
             "METHODOLOGICAL VIEW",
-            "assets/compare.css?v=20260829-compare-foundation1",
-            "assets/site.js?v=20260829-compare-foundation1",
+            "visual synthesis adds headline magnitude",
+            "assets/compare.css?v=20260829-compare-synthesis1",
+            "assets/site.js?v=20260829-compare-synthesis1",
             'id="comparison-output"',
         ),
         "assets/site.js": (
@@ -288,10 +289,21 @@ def validate(
             "Cut-off summary",
             "MODEL ARCHITECTURE",
             "Missing approved fields",
+            "comparison-visual-summary",
+            "Magnitude, hotspot and evidence signals",
+            "comparison-magnitude-axis",
+            "comparison-hotspot-track",
+            "Evidence signals · separate ordinal fields",
+            "No composite score",
         ),
         "assets/compare.css": (
             ".comparison-basis",
             ".comparison-basis-grid",
+            ".comparison-visual-summary",
+            ".comparison-signal-grid",
+            ".comparison-magnitude-track",
+            ".comparison-hotspot-track",
+            ".comparison-level-scale",
             ".comparison-table-group",
             ".comparison-value-missing",
         ),
@@ -300,7 +312,7 @@ def validate(
         source = downloaded.get(path, b"").decode("utf-8", errors="replace")
         for token in required_tokens:
             if token not in source:
-                errors.append(f"Comparison foundation live contract is missing {token!r} from {path}")
+                errors.append(f"Comparison visual synthesis live contract is missing {token!r} from {path}")
 
     for episode in episodes:
         number = int(episode["number"])
@@ -427,7 +439,7 @@ def main() -> int:
     print("- Registry, collections, sitemap, SEO pages and analytical graphics: **PASS**")
     print("- Advanced archive search, combined filters and URL-state contract: **PASS**")
     print("- Impossible Atlas routes, relationship map and impact-scale guardrail: **PASS**")
-    print("- Comparison basis, grouped methodological fields and non-comparability verdict: **PASS**")
+    print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

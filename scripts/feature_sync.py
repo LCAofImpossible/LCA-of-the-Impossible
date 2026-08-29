@@ -127,7 +127,15 @@ These evidence fields are editorial transparency indicators. They are **not** a 
 
 Before the table, the page evaluates whether the selected functional-unit wording, reporting-basis type, boundary type and headline unit are matching, different or incomplete. The resulting verdict for direct footprint comparison remains **Not established**: matching registry labels alone never prove equivalent services, scenarios, boundaries or data quality.
 
-The comparison must always display an explicit warning that headline results remain case-specific. Do not normalize results, calculate ratios, rankings, winners/losers or comparative environmental claims between unlike cases. Missing structured fields must be displayed explicitly and must never be inferred.
+The visual synthesis gives every selected case three separate readings:
+
+- published headline magnitude on one fixed logarithmic axis from 1 kg to 10 Mt CO₂e;
+- registered hotspot stage and within-case hotspot share;
+- Evidence confidence, Proxy dependence and Assumption sensitivity as three independent ordinal fields.
+
+Unit prefixes may be converted internally to kg CO₂e **only to calculate position on the fixed magnitude axis**. The original published result and its case-specific functional unit must remain visible. Do not calculate case-to-case ratios, use a data-dependent axis, sort selected cases by result, aggregate Evidence Profile fields, calculate rankings, identify winners/losers or make comparative environmental claims between unlike cases. Hotspot shares remain contributions within their own cases and must not be treated as comparable performance indicators.
+
+The comparison must always display an explicit warning that headline results remain case-specific. Missing structured fields must be displayed explicitly and must never be inferred.
 
 The selected episode numbers may be encoded in the URL as `compare.html?cases=43,42,41` so a comparison can be shared. Archive cards may expose `+ Compare`; no more than three cases may be selected at once.
 
@@ -167,7 +175,7 @@ The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do n
 Canonical Phase 3 files:
 
 - `compare.html` — side-by-side technical comparison;
-- `assets/compare.css` — methodological comparison status, grouped table and responsive presentation;
+- `assets/compare.css` — methodological comparison status, visual synthesis, grouped table and responsive presentation;
 - `explore.html` — The Impossible Atlas and logarithmic impact-scale exploration;
 - `statistics.html` — descriptive, registry-driven catalogue statistics;
 - `assets/atlas.css` and `assets/atlas.js` — Atlas routes, registry relationships and responsive presentation;
@@ -186,6 +194,8 @@ Canonical Phase 3 files:
 - [ ] Compare Cases accepts 2–3 unique cases and never presents a better/worse ranking.
 - [ ] Compare Cases reports direct footprint comparability as `Not established` and exposes matching, different or incomplete basis labels.
 - [ ] Scope, boundary, model architecture and Evidence Profile values are registry-derived; missing structured fields are not inferred.
+- [ ] Visual magnitude uses a fixed logarithmic axis only for descriptive position and retains each published result and functional unit.
+- [ ] Hotspot shares remain within-case values; the three Evidence Profile levels remain separate and produce no composite score.
 - [ ] Archive compare selection is capped at three cases.
 - [ ] The Atlas derives season, subject, hotspot and model-signal routes from `episodes.json`.
 - [ ] The relationship matrix links registered subject × hotspot intersections to combined Archive filters.
@@ -217,7 +227,7 @@ def main() -> int:
     latest_image = BASE_URL + latest["cover"]
     changed: list[Path] = []
 
-    compare_description = "Inspect two or three LCA of the Impossible cases by functional unit, reference flow, system boundary, hotspot, model architecture and evidence without ranking unlike results."
+    compare_description = "Inspect two or three LCA of the Impossible cases by reporting basis, magnitude, hotspot, model architecture and separate evidence signals without ranking unlike results."
     update_feature_page(
         ROOT / "compare.html",
         feature_block(
