@@ -49,6 +49,7 @@ CORE_PATHS = {
     "assets/seasons.css",
     "assets/statistics.css",
     "assets/atlas.css",
+    "assets/compare.css",
     "assets/phase6.css",
     "assets/telemetry.css",
     "assets/site.js",
@@ -269,6 +270,38 @@ def validate(
             if token not in source:
                 errors.append(f"Impossible Atlas live contract is missing {token!r} from {path}")
 
+    comparison_contract = {
+        "compare.html": (
+            "METHODOLOGICAL VIEW",
+            "assets/compare.css?v=20260829-compare-foundation1",
+            "assets/site.js?v=20260829-compare-foundation1",
+            'id="comparison-output"',
+        ),
+        "assets/site.js": (
+            "comparisonStatus",
+            "comparison-basis-grid",
+            "Direct footprint comparison",
+            "Not established",
+            "Reference flow",
+            "Included stages",
+            "Excluded stages",
+            "Cut-off summary",
+            "MODEL ARCHITECTURE",
+            "Missing approved fields",
+        ),
+        "assets/compare.css": (
+            ".comparison-basis",
+            ".comparison-basis-grid",
+            ".comparison-table-group",
+            ".comparison-value-missing",
+        ),
+    }
+    for path, required_tokens in comparison_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Comparison foundation live contract is missing {token!r} from {path}")
+
     for episode in episodes:
         number = int(episode["number"])
         url = str(episode["url"])
@@ -394,6 +427,7 @@ def main() -> int:
     print("- Registry, collections, sitemap, SEO pages and analytical graphics: **PASS**")
     print("- Advanced archive search, combined filters and URL-state contract: **PASS**")
     print("- Impossible Atlas routes, relationship map and impact-scale guardrail: **PASS**")
+    print("- Comparison basis, grouped methodological fields and non-comparability verdict: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

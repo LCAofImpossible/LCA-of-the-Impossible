@@ -770,11 +770,49 @@
       saveCompareSelection(new Set(selectedNumbers));
     };
 
+    const metadataFor = (episode) => episode.structuredMetadata || {};
+    const metadataValue = (episode, ...path) => {
+      let value = metadataFor(episode);
+      for (const key of path) {
+        if (!value || typeof value !== 'object') return null;
+        value = value[key];
+      }
+      return value;
+    };
+    const hasValue = (value) => value !== null && value !== undefined && value !== '';
+    const formatList = (value) => Array.isArray(value)
+      ? (value.length ? value.map((item) => labelFor(String(item))).join(', ') : 'None registered')
+      : 'Not structurally registered';
+    const formatValue = (value, fallback = 'Not structurally registered') => {
+      if (Array.isArray(value)) return formatList(value);
+      if (typeof value === 'number' && Number.isFinite(value)) return String(value);
+      const text = String(value ?? '').trim();
+      return text || fallback;
+    };
+    const comparisonStatus = (chosen, label, resolver) => {
+      const values = chosen.map(resolver);
+      const present = values.filter(hasValue);
+      if (present.length !== chosen.length) {
+        return { label, state: 'incomplete', status: 'Incomplete record', note: 'At least one selected case has no registered value.' };
+      }
+      const normalized = new Set(present.map((value) => String(value).trim().toLowerCase()));
+      if (normalized.size === 1) {
+        return { label, state: 'aligned', status: 'Matching label', note: 'Matching wording does not establish equivalent service.' };
+      }
+      return { label, state: 'different', status: 'Different', note: 'The selected cases use different registered values.' };
+    };
+    const tableCell = (value, fallback = 'Not structurally registered') => {
+      const text = formatValue(value, fallback);
+      const missing = !hasValue(value);
+      return `<td${missing ? ' class="comparison-value-missing"' : ''}>${escapeHtml(text)}</td>`;
+    };
+
     const render = () => {
       picker.innerHTML = [0, 1, 2].map((index) => {
         const current = selectedNumbers[index] || '';
+        const selectedElsewhere = new Set(selectedNumbers.filter((_, selectedIndex) => selectedIndex !== index));
         const options = [`<option value="">${index === 2 ? 'Optional third case' : `Select case ${index + 1}`}</option>`]
-          .concat(episodes.map((episode) => `<option value="${episode.number}"${episode.number === current ? ' selected' : ''}>#${episode.number} · ${escapeHtml(episode.title)}</option>`))
+          .concat(episodes.map((episode) => `<option value="${episode.number}"${episode.number === current ? ' selected' : ''}${selectedElsewhere.has(episode.number) ? ' disabled' : ''}>#${episode.number} · ${escapeHtml(episode.title)}</option>`))
           .join('');
         return `<label class="compare-select"><span>Case ${index + 1}${index === 2 ? ' · optional' : ''}</span><select data-compare-slot="${index}">${options}</select></label>`;
       }).join('');
@@ -788,25 +826,75 @@
         return;
       }
 
-      const rows = [
-        ['Season / collection', (episode) => seasonLabel(episode, 'Not registered')],
-        ['Functional unit / reporting basis', (episode) => episode.functionalUnit || 'Not registered'],
-        ['Headline result', (episode) => episode.result],
-        ['Narrative category', (episode) => episode.categoryLabel],
-        ['Principal LCA lens', (episode) => episode.lcaLabel],
-        ['Main hotspot', (episode) => episode.hotspot],
-        ['Evidence confidence', (episode) => episode.evidence?.confidence || 'Not rated'],
-        ['Proxy dependence', (episode) => episode.evidence?.proxyDependence || 'Not rated'],
-        ['Assumption sensitivity', (episode) => episode.evidence?.assumptionSensitivity || 'Not rated'],
-        ['Main modelling uncertainty', (episode) => episode.evidence?.uncertainty || 'Not registered']
+      const basisStatuses = [
+        comparisonStatus(chosen, 'Functional unit', (episode) => episode.functionalUnit),
+        comparisonStatus(chosen, 'Reporting basis', (episode) => metadataValue(episode, 'assessment', 'reportingBasisType')),
+        comparisonStatus(chosen, 'Boundary type', (episode) => metadataValue(episode, 'assessment', 'boundaryType')),
+        comparisonStatus(chosen, 'Headline unit', (episode) => metadataValue(episode, 'impact', 'unit')),
+      ];
+      const differences = basisStatuses.filter((item) => item.state !== 'aligned').map((item) => item.label.toLowerCase());
+      const basisNote = differences.length
+        ? `Differences or gaps detected in ${differences.join(', ')}. Interpret the cases structurally and retain every result with its own reporting basis.`
+        : 'The registered labels match, but matching labels alone do not prove equivalent services, boundaries, scenarios or data quality.';
+
+      const groups = [
+        ['01 · CASE IDENTITY & REPORTING BASIS', [
+          ['Season', (episode) => seasonLabel(episode, 'Not registered'), 'Not registered'],
+          ['Narrative category', (episode) => episode.categoryLabel, 'Not registered'],
+          ['Structured subject type', (episode) => metadataValue(episode, 'subject', 'entityType') ? labelFor(metadataValue(episode, 'subject', 'entityType')) : null],
+          ['Narrative domain', (episode) => metadataValue(episode, 'subject', 'narrativeDomain') ? labelFor(metadataValue(episode, 'subject', 'narrativeDomain')) : null],
+          ['Functional unit', (episode) => episode.functionalUnit, 'Not registered'],
+          ['Reporting-basis type', (episode) => metadataValue(episode, 'assessment', 'reportingBasisType') ? labelFor(metadataValue(episode, 'assessment', 'reportingBasisType')) : null],
+          ['Reference flow', (episode) => metadataValue(episode, 'assessment', 'referenceFlow')],
+        ]],
+        ['02 · SCOPE & SYSTEM BOUNDARY', [
+          ['Boundary type', (episode) => metadataValue(episode, 'assessment', 'boundaryType') ? labelFor(metadataValue(episode, 'assessment', 'boundaryType')) : null],
+          ['Included stages', (episode) => metadataValue(episode, 'assessment', 'includedStages')],
+          ['Excluded stages', (episode) => metadataValue(episode, 'assessment', 'excludedStages')],
+          ['Temporal context', (episode) => metadataValue(episode, 'assessment', 'temporalContext')],
+          ['Geographic context', (episode) => metadataValue(episode, 'assessment', 'geographicContext')],
+          ['Technology context', (episode) => metadataValue(episode, 'assessment', 'technologyContext') ? labelFor(metadataValue(episode, 'assessment', 'technologyContext')) : null],
+          ['Registered lifetime', (episode) => Number.isFinite(metadataValue(episode, 'assessment', 'lifetimeYears')) ? `${metadataValue(episode, 'assessment', 'lifetimeYears')} years` : null],
+          ['Cut-off summary', (episode) => metadataValue(episode, 'assessment', 'cutoffSummary')],
+        ]],
+        ['03 · HEADLINE INTERPRETATION', [
+          ['Headline result', (episode) => episode.result, 'Not registered'],
+          ['Impact indicator', (episode) => metadataValue(episode, 'impact', 'indicator') ? labelFor(metadataValue(episode, 'impact', 'indicator')) : null],
+          ['Registered result unit', (episode) => metadataValue(episode, 'impact', 'unit')],
+          ['Principal LCA lens', (episode) => episode.lcaLabel, 'Not registered'],
+          ['Main hotspot', (episode) => episode.hotspot, 'Not registered'],
+          ['Hotspot stage', (episode) => metadataValue(episode, 'impact', 'hotspotStage') ? labelFor(metadataValue(episode, 'impact', 'hotspotStage')) : null],
+          ['Hotspot share', (episode) => Number.isFinite(metadataValue(episode, 'impact', 'hotspotSharePercent')) ? `${metadataValue(episode, 'impact', 'hotspotSharePercent')}%` : null],
+        ]],
+        ['04 · MODEL ARCHITECTURE', [
+          ['Model archetype', (episode) => metadataValue(episode, 'model', 'archetype') ? labelFor(metadataValue(episode, 'model', 'archetype')) : null],
+          ['Primary driver', (episode) => metadataValue(episode, 'model', 'primaryDriver') ? labelFor(metadataValue(episode, 'model', 'primaryDriver')) : null],
+          ['Secondary drivers', (episode) => metadataValue(episode, 'model', 'secondaryDrivers')],
+          ['Repetition class', (episode) => metadataValue(episode, 'model', 'repetitionClass') ? labelFor(metadataValue(episode, 'model', 'repetitionClass')) : null],
+        ]],
+        ['05 · EVIDENCE PROFILE', [
+          ['Evidence confidence', (episode) => episode.evidence?.confidence, 'Not rated'],
+          ['Proxy dependence', (episode) => episode.evidence?.proxyDependence, 'Not rated'],
+          ['Assumption sensitivity', (episode) => episode.evidence?.assumptionSensitivity, 'Not rated'],
+          ['Evidence basis', (episode) => episode.evidence?.basis, 'Not registered'],
+          ['Main modelling uncertainty', (episode) => episode.evidence?.uncertainty, 'Not registered'],
+          ['Structured metadata status', (episode) => metadataValue(episode, 'schemaVersion') ? `Registered · schema v${metadataValue(episode, 'schemaVersion')}` : null],
+          ['Missing approved fields', (episode) => metadataValue(episode, 'provenance', 'missingApprovedFields')],
+        ]],
       ];
 
       output.innerHTML = `
-        <div class="comparison-warning"><strong>Interpretation rule</strong><p>Headline footprints use different functional units and system boundaries. This table compares modelling structure and hotspot behaviour; it is not a comparative environmental claim and does not rank cases as better or worse.</p></div>
+        <section class="comparison-basis" aria-labelledby="comparison-basis-title">
+          <div class="comparison-basis-heading"><div><span>COMPARISON BASIS</span><h3 id="comparison-basis-title">Are these headline results directly comparable?</h3></div><div class="comparison-verdict"><span>Direct footprint comparison</span><strong>Not established</strong></div></div>
+          <div class="comparison-basis-grid">${basisStatuses.map((item) => `<article class="comparison-basis-card" data-state="${item.state}"><span>${escapeHtml(item.label)}</span><strong>${escapeHtml(item.status)}</strong><small>${escapeHtml(item.note)}</small></article>`).join('')}</div>
+          <p class="comparison-basis-note">${escapeHtml(basisNote)}</p>
+        </section>
+        <div class="comparison-warning"><strong>Interpretation rule</strong><p>Compare the reasoning freely. Compare absolute footprints only with extreme caution. This view exposes registered scope, model structure and evidence; it calculates no ratios, rankings, winners or comparative environmental claims.</p></div>
         <div class="comparison-table-wrap">
           <table class="comparison-table">
-            <thead><tr><th scope="col">Dimension</th>${chosen.map((episode) => `<th scope="col"><a href="${escapeHtml(episode.url)}">#${episode.number}<br>${escapeHtml(episode.title)}</a></th>`).join('')}</tr></thead>
-            <tbody>${rows.map(([label, value]) => `<tr><th scope="row">${escapeHtml(label)}</th>${chosen.map((episode) => `<td>${escapeHtml(value(episode))}</td>`).join('')}</tr>`).join('')}</tbody>
+            <caption>All values are projected from the current episode registry. Missing structured values are shown explicitly and are never inferred.</caption>
+            <thead><tr><th scope="col">Dimension</th>${chosen.map((episode) => `<th scope="col"><a href="${escapeHtml(episode.url)}">#${episode.number}<br>${escapeHtml(episode.title)}<small>${escapeHtml(seasonLabel(episode, 'Season not registered'))}</small></a></th>`).join('')}</tr></thead>
+            <tbody>${groups.map(([groupLabel, rows]) => `<tr class="comparison-table-group"><th scope="rowgroup" colspan="${chosen.length + 1}">${escapeHtml(groupLabel)}</th></tr>${rows.map(([label, value, fallback]) => `<tr><th scope="row">${escapeHtml(label)}</th>${chosen.map((episode) => tableCell(value(episode), fallback)).join('')}</tr>`).join('')}`).join('')}</tbody>
           </table>
         </div>
         <div class="compare-open-row">${chosen.map((episode) => `<a class="button secondary" href="${escapeHtml(episode.url)}">Open #${episode.number} →</a>`).join('')}</div>`;

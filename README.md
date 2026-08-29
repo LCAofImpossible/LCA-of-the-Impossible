@@ -666,9 +666,17 @@ These evidence fields are editorial transparency indicators. They are **not** a 
 
 ### 25.2 Compare Cases
 
-`compare.html` allows selection of two or three published episodes. The table may compare functional unit, headline result, narrative category, LCA lens, hotspot, evidence confidence, proxy dependence, assumption sensitivity and principal modelling uncertainty.
+`compare.html` allows selection of two or three published episodes. Its methodological foundation projects only registered fields and groups them as:
 
-The comparison must always display an explicit warning that headline results have different functional units and system boundaries. Do not calculate ratios, rankings, winners/losers or comparative environmental claims between unlike cases.
+- case identity and reporting basis;
+- scope and system boundary, including reference flow, included/excluded stages, contexts, lifetime and cut-off summary;
+- headline interpretation and hotspot stage;
+- model architecture;
+- Evidence Profile and structured-metadata coverage.
+
+Before the table, the page evaluates whether the selected functional-unit wording, reporting-basis type, boundary type and headline unit are matching, different or incomplete. The resulting verdict for direct footprint comparison remains **Not established**: matching registry labels alone never prove equivalent services, scenarios, boundaries or data quality.
+
+The comparison must always display an explicit warning that headline results remain case-specific. Do not normalize results, calculate ratios, rankings, winners/losers or comparative environmental claims between unlike cases. Missing structured fields must be displayed explicitly and must never be inferred.
 
 The selected episode numbers may be encoded in the URL as `compare.html?cases=43,42,41` so a comparison can be shared. Archive cards may expose `+ Compare`; no more than three cases may be selected at once.
 
@@ -708,6 +716,7 @@ The Evidence Profile is generated from `episodes.json` by `assets/site.js`; do n
 Canonical Phase 3 files:
 
 - `compare.html` — side-by-side technical comparison;
+- `assets/compare.css` — methodological comparison status, grouped table and responsive presentation;
 - `explore.html` — The Impossible Atlas and logarithmic impact-scale exploration;
 - `statistics.html` — descriptive, registry-driven catalogue statistics;
 - `assets/atlas.css` and `assets/atlas.js` — Atlas routes, registry relationships and responsive presentation;
@@ -724,6 +733,8 @@ Canonical Phase 3 files:
 - [ ] Every published episode has all five `evidence` fields.
 - [ ] Evidence levels use only `Low`, `Medium` or `High`.
 - [ ] Compare Cases accepts 2–3 unique cases and never presents a better/worse ranking.
+- [ ] Compare Cases reports direct footprint comparability as `Not established` and exposes matching, different or incomplete basis labels.
+- [ ] Scope, boundary, model architecture and Evidence Profile values are registry-derived; missing structured fields are not inferred.
 - [ ] Archive compare selection is capped at three cases.
 - [ ] The Atlas derives season, subject, hotspot and model-signal routes from `episodes.json`.
 - [ ] The relationship matrix links registered subject × hotspot intersections to combined Archive filters.
