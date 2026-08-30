@@ -161,6 +161,8 @@ def main() -> int:
         ("scripts/publication_qa.py", '"rss_qa.py"'),
         ("scripts/live_site_qa.py", '"feed.xml"'),
         ("scripts/live_site_qa.py", '"updates.html"'),
+        (".github/workflows/seo-sync.yml", "python scripts/rss_sync.py"),
+        (".github/workflows/seo-sync.yml", "feed.xml"),
         ("README.md", "## 38. RSS, readership telemetry and accessory routes"),
     ):
         if token not in read(path):

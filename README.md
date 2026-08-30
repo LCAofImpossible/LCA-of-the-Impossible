@@ -1602,12 +1602,15 @@ The page links directly to the canonical `episodes.json`, descriptive catalogue 
 - `scripts/rss_sync.py` — deterministic feed/discovery synchronizer;
 - `scripts/rss_qa.py` — feed, page, privacy, SEO and publication validator.
 
+The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata synchronizers and stage `feed.xml`. This final pass restores RSS autodiscovery and the Updates sitemap route after base SEO regeneration.
+
 - [ ] RSS item order and membership exactly match `episodes.json`.
 - [ ] Every RSS item uses its canonical episode URL and approved public summaries.
 - [ ] Missing publication dates remain omitted, not reconstructed.
 - [ ] All public pages expose exactly one correctly prefixed RSS discovery link.
 - [ ] Updates uses the existing site counter response and performs no second telemetry request.
 - [ ] Updates, navigation, sitemap, manifest shortcuts and live byte verification are synchronized.
+- [ ] The automated SEO workflow runs the RSS synchronizer last and stages the generated feed.
 - [ ] The feed and page expose no source-PDF link or comparative performance claim.
 
 <!-- ACCESSORY-RULES:END -->

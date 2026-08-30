@@ -47,6 +47,9 @@ jobs:
       - name: Propagate visitor telemetry
         run: python scripts/telemetry_sync.py
 
+      - name: Synchronize RSS and accessory routes
+        run: python scripts/rss_sync.py
+
       - name: Commit synchronized metadata
         shell: bash
         run: |
@@ -56,7 +59,7 @@ jobs:
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add index.html archive.html compare.html explore.html statistics.html collections.html collections.json method.html sources.html about.html glossary.html season-i.html season-ii.html episodes episodes.json README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
+          git add index.html archive.html compare.html explore.html statistics.html updates.html feed.xml collections.html collections.json method.html sources.html about.html glossary.html season-i.html season-ii.html episodes episodes.json README.md sitemap.xml robots.txt site.webmanifest assets/favicon.svg
           git commit -m "Synchronize SEO and editorial infrastructure"
           git pull --rebase origin main
           git push origin HEAD:main
