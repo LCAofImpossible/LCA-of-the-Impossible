@@ -1401,8 +1401,8 @@ not disguised as a generic category.
 headline value. The validator checks it against `kg CO₂e`, `t CO₂e`, `kt CO₂e`
 or `Mt CO₂e`; it is not permission to recalculate the LCA result.
 
-Short descriptions of analysed subjects remain a separate, lower-priority
-editorial task. They are deliberately excluded from this schema.
+Short descriptions of analysed subjects remain deliberately outside this
+schema. They are controlled by the separate registry contract in Section 37.
 
 ### 34.3 Controlled migration
 
@@ -1527,3 +1527,44 @@ The gate also enforces:
 - synchronized canonical/social metadata, JSON-LD, sitemap, collections, Passport and shared assets.
 
 Warnings for explicitly approved native cover proportions remain visible but do not fail publication. Any error returns a non-zero exit code and blocks the QA workflow.
+
+---
+
+## 37. Short subject descriptions — mandatory
+
+Every published record in `episodes.json` contains one `subjectDescription`: a concise, complete sentence explaining the analysed narrative object, place, organism, vehicle, structure or action before the LCA result is introduced.
+
+### 37.1 Editorial boundary
+
+The description must be traceable to the approved episode's `THE SUBJECT` section and must:
+
+- remain between 100 and 190 characters;
+- identify the subject or its controlled physical reconstruction in plain language;
+- remain distinct from `featuredDescription`, the functional unit and the headline footprint;
+- contain no HTML, hidden comparison, ranking or invented environmental claim;
+- remain outside `structuredMetadata`, whose controlled null and provenance semantics are unchanged.
+
+These sentences are editorial orientation, not new source evidence and not permission to revise the approved model.
+
+### 37.2 Registry-driven display
+
+`assets/site.js`, `assets/seasons.js` and `assets/engagement.js` project the same canonical description into:
+
+- Homepage latest and recent cases;
+- Archive and dedicated season cards;
+- thematic Collections and Related Cases;
+- episode heroes as `Subject in brief`;
+- the case-identity group in Compare;
+- copied and native sharing text.
+
+Archive search indexes `subjectDescription`. No page may maintain a separate manual copy.
+
+### 37.3 QA
+
+`scripts/subject_descriptions_qa.py` validates coverage, length, sentence form, uniqueness, separation from LCA summaries and publication wiring. It is part of the mandatory `scripts/publication_qa.py` gate.
+
+- [ ] Every published episode has exactly one valid `subjectDescription`.
+- [ ] Descriptions are visible in catalogue, collection, season and episode contexts.
+- [ ] Compare and Archive use the registry value without inference.
+- [ ] Sharing uses the subject description while preserving the separate registered result.
+- [ ] Structured metadata remains unchanged.

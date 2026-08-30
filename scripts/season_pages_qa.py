@@ -81,7 +81,7 @@ def check_page(season_id: str, config: dict, episodes: list[dict]) -> None:
         'id="season-episode-grid"',
         'id="season-load-more"',
         'assets/seasons.css?v=20260827-season-pages1',
-        'assets/seasons.js?v=20260827-season-pages1',
+        'assets/seasons.js?v=20260830-subject-descriptions1',
         'assets/telemetry.css?v=20260820-telemetry1',
         'assets/telemetry.js?v=20260820-telemetry1',
     ]

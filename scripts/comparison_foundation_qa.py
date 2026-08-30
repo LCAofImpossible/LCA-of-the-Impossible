@@ -110,7 +110,7 @@ def main() -> int:
         (
             "METHODOLOGICAL VIEW",
             "assets/compare.css?v=20260829-compare-synthesis1",
-            "assets/site.js?v=20260829-compare-synthesis1",
+            "assets/site.js?v=20260830-subject-descriptions1",
             'id="compare-picker"',
             'id="comparison-output"',
             'aria-live="polite"',

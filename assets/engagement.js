@@ -11,7 +11,7 @@
 
   const style = document.createElement('link');
   style.rel = 'stylesheet';
-  style.href = `${rootPrefix}assets/engagement.css?v=20260829-editorial-paths1`;
+  style.href = `${rootPrefix}assets/engagement.css?v=20260830-subject-descriptions1`;
   document.head.appendChild(style);
 
   const escapeHtml = (value = '') => String(value)
@@ -77,6 +77,7 @@
       <div>
         <p>${episode.seasonLabel ? `${escapeHtml(episode.seasonLabel)} · ` : ''}${escapeHtml(episode.categoryLabel)} · ${escapeHtml(episode.lcaLabel)}</p>
         <h3>#${episode.number} · ${escapeHtml(episode.title)}</h3>
+        <span class="engagement-case-subject">${escapeHtml(episode.subjectDescription)}</span>
       </div>
       <div class="engagement-case-meta">
         <strong>${escapeHtml(episode.result)}</strong>
@@ -257,7 +258,7 @@
     `LCA of the Impossible #${episode.number} — ${episode.title}`,
     episode.seasonLabel || '',
     '',
-    episode.featuredDescription,
+    episode.subjectDescription,
     '',
     `Headline result: ${episode.result} · LCA lens: ${episode.lcaLabel}`,
     '',
@@ -330,7 +331,7 @@
       try {
         await navigator.share({
           title: `${episode.title} — LCA of the Impossible #${episode.number}${episode.seasonLabel ? ` | ${episode.seasonLabel}` : ''}`,
-          text: episode.featuredDescription,
+          text: episode.subjectDescription,
           url
         });
         setStatus('Share panel opened.');

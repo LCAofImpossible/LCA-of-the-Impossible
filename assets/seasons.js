@@ -27,6 +27,7 @@
       <div class="card-copy">
         <p><span class="card-season">${escapeHtml(episode.seasonLabel)}</span><br>${escapeHtml(episode.categoryLabel)} · ${escapeHtml(episode.lcaLabel)}</p>
         <h3>${escapeHtml(episode.title)}</h3>
+        <p class="card-subject">${escapeHtml(episode.subjectDescription)}</p>
         <div class="card-meta">
           <span>Episode #${Number(episode.number)}</span>
           <span>${escapeHtml(episode.result)}</span>

@@ -13,7 +13,7 @@ SEO_START = "<!-- ENGAGEMENT-SEO:START -->"
 SEO_END = "<!-- ENGAGEMENT-SEO:END -->"
 README_START = "<!-- PHASE4-RULES:START -->"
 README_END = "<!-- PHASE4-RULES:END -->"
-SCRIPT_VERSION = "20260829-editorial-paths1"
+SCRIPT_VERSION = "20260830-subject-descriptions1"
 
 
 def write_if_changed(path: Path, content: str, check: bool, changed: list[Path]) -> None:

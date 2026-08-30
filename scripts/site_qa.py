@@ -226,7 +226,7 @@ def main() -> int:
 
         required_fields = {
             "number", "slug", "title", "url", "cover", "categoryLabel", "categories",
-            "lcaLabel", "lcaCharacteristics", "result", "hotspot", "featuredDescription",
+            "lcaLabel", "lcaCharacteristics", "result", "hotspot", "subjectDescription", "featuredDescription",
             "keywords", "related",
         }
 
@@ -268,7 +268,7 @@ def main() -> int:
 
             for key in (
                 "title", "categoryLabel", "lcaLabel", "result", "hotspot",
-                "featuredDescription",
+                "subjectDescription", "featuredDescription",
             ):
                 check_meaningful_string(number, key, episode.get(key), minimum=3)
             for key in ("categories", "lcaCharacteristics", "keywords"):

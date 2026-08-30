@@ -196,6 +196,15 @@ def validate(
     live_episodes = registry.get("episodes", [])
     if any(isinstance(episode, dict) and "pdf" in episode for episode in live_episodes):
         errors.append("Live episodes.json contains a prohibited pdf field")
+    for episode in live_episodes:
+        if not isinstance(episode, dict):
+            errors.append("Live episodes.json contains a non-object episode record")
+            continue
+        description = episode.get("subjectDescription")
+        if not isinstance(description, str) or not 100 <= len(description) <= 190:
+            errors.append(
+                f"Episode #{episode.get('number')} has no valid live subjectDescription"
+            )
 
     try:
         sitemap = downloaded["sitemap.xml"].decode("utf-8")
@@ -211,7 +220,7 @@ def validate(
             'id="evidence-confidence-filter"',
             'id="clear-filters"',
             "data-clear-archive",
-            "20260829-advanced-archive1",
+            "20260830-subject-descriptions1",
         ),
         "assets/site.js": (
             "archiveStateFromUrl",
@@ -275,7 +284,7 @@ def validate(
             "METHODOLOGICAL VIEW",
             "visual synthesis adds headline magnitude",
             "assets/compare.css?v=20260829-compare-synthesis1",
-            "assets/site.js?v=20260829-compare-synthesis1",
+            "assets/site.js?v=20260830-subject-descriptions1",
             'id="comparison-output"',
         ),
         "assets/site.js": (
@@ -330,7 +339,7 @@ def validate(
             'id="editorial-path-index"',
             'id="editorial-path-list"',
             "GUIDED READING PATHS",
-            "assets/engagement.js?v=20260829-editorial-paths1",
+            "assets/engagement.js?v=20260830-subject-descriptions1",
         ),
         "assets/engagement.js": (
             "renderEditorialPaths",
@@ -339,7 +348,7 @@ def validate(
             "editorial-path-progress",
             "data-copy-path",
             "Path overview",
-            "assets/engagement.css?v=20260829-editorial-paths1",
+            "assets/engagement.css?v=20260830-subject-descriptions1",
         ),
         "assets/engagement.css": (
             ".editorial-path-index",
@@ -355,6 +364,37 @@ def validate(
         for token in required_tokens:
             if token not in source:
                 errors.append(f"Guided editorial paths live contract is missing {token!r} from {path}")
+
+    subject_descriptions_contract = {
+        "index.html": (
+            "assets/style.css?v=20260830-subject-descriptions1",
+            "assets/site.js?v=20260830-subject-descriptions1",
+        ),
+        "archive.html": (
+            "assets/style.css?v=20260830-subject-descriptions1",
+            "assets/site.js?v=20260830-subject-descriptions1",
+        ),
+        "season-i.html": ("assets/seasons.js?v=20260830-subject-descriptions1",),
+        "season-ii.html": ("assets/seasons.js?v=20260830-subject-descriptions1",),
+        "assets/site.js": (
+            "episode.subjectDescription",
+            "current.subjectDescription",
+            "Subject in brief",
+            'class="card-subject"',
+        ),
+        "assets/seasons.js": ("episode.subjectDescription",),
+        "assets/engagement.js": ("episode.subjectDescription",),
+        "assets/style.css": (
+            ".card-subject",
+            ".featured-subject",
+            ".episode-subject-summary",
+        ),
+    }
+    for path, required_tokens in subject_descriptions_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Subject-description live contract is missing {token!r} from {path}")
 
     for episode in episodes:
         number = int(episode["number"])

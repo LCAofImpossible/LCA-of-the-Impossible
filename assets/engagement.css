@@ -37,6 +37,7 @@
 .engagement-case-card:hover{border-color:var(--accent);transform:translateY(-2px)}
 .engagement-case-card p{color:var(--accent);font-size:.69rem;letter-spacing:.11em;text-transform:uppercase;margin-bottom:8px}
 .engagement-case-card h3{font-size:1.28rem;line-height:1.15;margin:0}
+.engagement-case-subject{display:block;color:var(--text);font-size:.88rem;line-height:1.55;margin-top:.65rem}
 .engagement-case-meta{display:flex;flex-direction:column;gap:7px}
 .engagement-case-meta strong{color:var(--accent2);font-size:.92rem}
 .engagement-case-meta span{color:var(--muted);font-size:.82rem;line-height:1.5}

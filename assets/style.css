@@ -73,6 +73,7 @@ nav a:hover{color:var(--accent)}
 .strip-item span{display:block;color:var(--accent);font-size:.72rem;letter-spacing:.18em;margin-bottom:8px}
 .featured-card{display:grid;grid-template-columns:1fr 1fr;gap:28px;padding:26px;border:1px solid var(--line);background:linear-gradient(145deg,var(--panel),var(--panel2));margin-bottom:28px}
 .featured-copy h3{font-size:2rem;margin:8px 0 14px}
+.featured-subject{color:var(--text);font-size:1.02rem;line-height:1.65;margin:0 0 12px}
 .badge-row{display:flex;gap:10px;flex-wrap:wrap;margin:18px 0 22px}
 .badge{border:1px solid var(--line);padding:8px 10px;font-size:.8rem;color:var(--accent2)}
 .cards{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
@@ -267,9 +268,12 @@ footer{display:flex;justify-content:space-between;gap:20px;padding:30px 6vw;colo
 .archive-card .card-copy{display:flex;flex:1;flex-direction:column;padding:18px}
 .archive-card .card-copy p{margin-bottom:9px;line-height:1.45}
 .archive-card .card-copy h3{font-size:1.28rem;line-height:1.1;margin-bottom:13px}
+.card-subject{color:var(--text)!important;font-size:.9rem!important;line-height:1.55!important;margin:0 0 14px!important}
 .card-meta{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:13px}
 .card-meta span{color:var(--accent2);font-size:.76rem;font-weight:720}
 .card-note{display:block;color:var(--muted);font-size:.84rem;line-height:1.55;margin-bottom:18px}
+.episode-subject-summary{max-width:780px;color:var(--text);font-size:1rem;line-height:1.65;margin:18px 0 0}
+.episode-subject-summary span{display:block;color:var(--accent);font-family:var(--mono);font-size:.68rem;font-weight:700;letter-spacing:.13em;margin-bottom:5px;text-transform:uppercase}
 .card-cue{display:block;margin-top:auto;padding-top:15px;border-top:1px solid var(--line-soft);color:var(--accent);font-size:.78rem;letter-spacing:.04em}
 .archive-empty{border:1px solid var(--line);padding:28px;text-align:center;color:var(--muted);margin:20px 0 0}
 .archive-empty strong,.archive-empty span{display:block}

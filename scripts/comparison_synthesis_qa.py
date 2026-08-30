@@ -124,7 +124,7 @@ def main() -> int:
         (
             "visual synthesis adds headline magnitude",
             "assets/compare.css?v=20260829-compare-synthesis1",
-            "assets/site.js?v=20260829-compare-synthesis1",
+            "assets/site.js?v=20260830-subject-descriptions1",
         ),
     )
     compare_match = re.search(r"  const renderCompare = \(episodes\) => \{.*?\n  const resultToKg", site_js, flags=re.S)

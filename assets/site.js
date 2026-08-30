@@ -110,6 +110,7 @@
         <div class="card-copy">
           <p>${season ? `<span class="card-season">${escapeHtml(season)}</span><br>` : ''}${category} · ${lca}</p>
           <h3>${escapeHtml(episode.title)}</h3>
+          <p class="card-subject">${escapeHtml(episode.subjectDescription)}</p>
           <div class="card-meta">
             <span>Episode #${episode.number}</span>
             <span>${escapeHtml(episode.result)}</span>
@@ -171,6 +172,7 @@
       <div class="featured-copy">
         <p class="eyebrow">LATEST CASE · EPISODE #${latest.number}${seasonLabel(latest) ? ` · ${escapeHtml(seasonLabel(latest))}` : ''}</p>
         <h3>${escapeHtml(latest.title)}</h3>
+        <p class="featured-subject">${escapeHtml(latest.subjectDescription)}</p>
         <p>${escapeHtml(latest.featuredDescription)}</p>
         <div class="badge-row">
           <span class="badge">${escapeHtml(latest.result)}</span>
@@ -204,6 +206,7 @@
         <p class="eyebrow">${escapeHtml(episode.seasonLabel)} · EPISODE #${episode.number}</p>
         <h3>${escapeHtml(episode.title)}</h3>
         <p>${escapeHtml(episode.seasonDescriptor)}</p>
+        <p class="featured-subject">${escapeHtml(episode.subjectDescription)}</p>
         <p>${escapeHtml(episode.featuredDescription)}</p>
         <div class="badge-row">
           <span class="badge">${escapeHtml(episode.result)}</span>
@@ -415,6 +418,7 @@
       `#${episode.number}`,
       episode.result,
       episode.hotspot,
+      episode.subjectDescription,
       episode.featuredDescription,
       episode.functionalUnit,
       episode.evidence?.basis,
@@ -688,6 +692,11 @@
       heroEyebrow.textContent = `EPISODE #${current.number} · ${String(current.seasonLabel).toUpperCase()}`;
     }
 
+    const heroQuestion = main.querySelector('.episode-title .episode-question');
+    if (heroQuestion && current.subjectDescription && !main.querySelector('.episode-subject-summary')) {
+      heroQuestion.insertAdjacentHTML('afterend', `<p class="episode-subject-summary"><span>Subject in brief</span>${escapeHtml(current.subjectDescription)}</p>`);
+    }
+
     const subject = main.querySelector(':scope > .split');
     const evidence = document.getElementById('evidence');
     const model = main.querySelector('.episode-visual-section');
@@ -883,6 +892,7 @@
 
       const groups = [
         ['01 · CASE IDENTITY & REPORTING BASIS', [
+          ['Subject in brief', (episode) => episode.subjectDescription, 'Not registered'],
           ['Season', (episode) => seasonLabel(episode, 'Not registered'), 'Not registered'],
           ['Narrative category', (episode) => episode.categoryLabel, 'Not registered'],
           ['Structured subject type', (episode) => metadataValue(episode, 'subject', 'entityType') ? labelFor(metadataValue(episode, 'subject', 'entityType')) : null],

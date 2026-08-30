@@ -63,6 +63,7 @@ def searchable_text(episode: dict[str, Any]) -> str:
         f"#{episode.get('number')}",
         episode.get("result"),
         episode.get("hotspot"),
+        episode.get("subjectDescription"),
         episode.get("featuredDescription"),
         episode.get("functionalUnit"),
         episode.get("categoryLabel"),
@@ -156,6 +157,8 @@ def main() -> int:
         text = searchable_text(episode)
         if normalize(episode.get("title")) not in text:
             fail(f"Episode #{episode.get('number')}: title is not searchable")
+        if normalize(episode.get("subjectDescription")) not in text:
+            fail(f"Episode #{episode.get('number')}: subject description is not searchable")
         if f"#{episode.get('number')}" not in text:
             fail(f"Episode #{episode.get('number')}: hash-prefixed number is not searchable")
 
@@ -184,8 +187,8 @@ def main() -> int:
         'id="active-filters"',
         "data-clear-archive",
         "Search subject, title, episode number, category or keyword",
-        "assets/site.js?v=20260829-advanced-archive1",
-        "assets/style.css?v=20260829-advanced-archive1",
+        "assets/site.js?v=20260830-subject-descriptions1",
+        "assets/style.css?v=20260830-subject-descriptions1",
     ):
         require_token(archive, token, "archive.html")
 

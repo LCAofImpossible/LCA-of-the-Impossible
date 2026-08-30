@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SLUG = re.compile(r"^[a-z0-9]+(?:-[a-z0-9]+)*$")
-SCRIPT_VERSION = "20260829-editorial-paths1"
+SCRIPT_VERSION = "20260830-subject-descriptions1"
 errors: list[str] = []
 
 
@@ -204,7 +204,7 @@ def main() -> int:
         engagement_sync,
         "scripts/engagement_sync.py",
         (
-            'SCRIPT_VERSION = "20260829-editorial-paths1"',
+            'SCRIPT_VERSION = "20260830-subject-descriptions1"',
             "### 26.2 Guided editorial paths",
             "Paths do not create a new taxonomy",
             "Invalid, unknown or mismatched path parameters",
