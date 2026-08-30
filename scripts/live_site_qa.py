@@ -33,6 +33,8 @@ CORE_PATHS = {
     "season-i.html",
     "season-ii.html",
     "statistics.html",
+    "updates.html",
+    "feed.xml",
     "episodes.json",
     "collections.json",
     "schemas/episode-structured-metadata.schema.json",
@@ -60,6 +62,8 @@ CORE_PATHS = {
     "assets/phase6.js",
     "assets/passport-cleanup.js",
     "assets/telemetry.js",
+    "assets/updates.css",
+    "assets/updates.js",
 }
 
 
@@ -396,6 +400,54 @@ def validate(
             if token not in source:
                 errors.append(f"Subject-description live contract is missing {token!r} from {path}")
 
+    accessory_contract = {
+        "updates.html": (
+            "Updates &amp; RSS",
+            'href="feed.xml"',
+            'data-updates-telemetry',
+            'id="updates-case-list"',
+            'href="episodes.json"',
+            'href="site.webmanifest"',
+            "assets/updates.css?v=20260830-accessories1",
+            "assets/updates.js?v=20260830-accessories1",
+        ),
+        "feed.xml": (
+            "LCA of the Impossible — New episodes",
+            f'href="{DEFAULT_BASE_URL}feed.xml" rel="self"',
+            "<item>",
+        ),
+        "assets/updates.js": (
+            "registry.episodes",
+            ".slice(0, 12)",
+            "episode.subjectDescription",
+            "data-site-visitors",
+            "MutationObserver",
+        ),
+        "assets/updates.css": (
+            ".updates-hero",
+            ".updates-case",
+            ".updates-utility-grid",
+            "@media(max-width:620px)",
+        ),
+        "index.html": (
+            'type="application/rss+xml"',
+            'href="feed.xml"',
+            'href="updates.html"',
+        ),
+    }
+    for path, required_tokens in accessory_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"RSS/accessory live contract is missing {token!r} from {path}")
+
+    updates_script = downloaded.get("assets/updates.js", b"").decode(
+        "utf-8", errors="replace"
+    )
+    for forbidden in ("counterapi.com", "site-total", "document.cookie", "localStorage"):
+        if forbidden in updates_script:
+            errors.append(f"RSS/accessory runtime violates telemetry privacy with {forbidden!r}")
+
     for episode in episodes:
         number = int(episode["number"])
         url = str(episode["url"])
@@ -523,6 +575,7 @@ def main() -> int:
     print("- Impossible Atlas routes, relationship map and impact-scale guardrail: **PASS**")
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
+    print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

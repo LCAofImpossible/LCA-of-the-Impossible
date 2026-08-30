@@ -169,6 +169,20 @@ def build_manifest() -> str:
                 "type": "image/svg+xml",
                 "purpose": "any"
             }
+        ],
+        "shortcuts": [
+            {
+                "name": "Latest updates",
+                "short_name": "Updates",
+                "description": "Open the latest LCA of the Impossible episodes and RSS feed.",
+                "url": "/LCA-of-the-Impossible/updates.html"
+            },
+            {
+                "name": "Episode archive",
+                "short_name": "Archive",
+                "description": "Search and filter the complete published episode catalogue.",
+                "url": "/LCA-of-the-Impossible/archive.html"
+            }
         ]
     }, ensure_ascii=False, indent=2) + "\n"
 

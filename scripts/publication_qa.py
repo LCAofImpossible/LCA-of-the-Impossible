@@ -31,6 +31,7 @@ SYNC_SCRIPTS = (
     "phase6_sync.py",
     "epic_passport_sync.py",
     "telemetry_sync.py",
+    "rss_sync.py",
 )
 QA_SCRIPTS = (
     "site_qa.py",
@@ -51,6 +52,7 @@ QA_SCRIPTS = (
     "comparison_synthesis_qa.py",
     "editorial_paths_qa.py",
     "subject_descriptions_qa.py",
+    "rss_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

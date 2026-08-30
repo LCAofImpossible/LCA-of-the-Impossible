@@ -1,0 +1,382 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LCA of the Impossible — New episodes</title>
+    <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/</link>
+    <description>New LCA of the Impossible episodes, reconstructed as transparent life-cycle systems.</description>
+    <language>en</language>
+    <atom:link href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/feed.xml" rel="self" type="application/rss+xml" />
+    <generator>LCA of the Impossible registry</generator>
+    <ttl>1440</ttl>
+    <item>
+      <title>Episode #71 — The Cosmic Turtle</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/cosmic-turtle.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/cosmic-turtle.html</guid>
+      <description>A world-bearing cosmic turtle reimagined as a mobile, closed-loop orbital habitat designed to carry 10,000 residents for a century. One 360 m world-bearing habitat commissioned at an orbital shipyard gate: 1.00 Mt CO₂e before operation, with metals carrying 61.0% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Megastructure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #70 — El Dorado</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/el-dorado.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/el-dorado.html</guid>
+      <description>The legendary golden kingdom reframed as one ceremonial investiture at Lake Guatavita, centred on a gilded ruler and offerings cast into the water. One staged investiture rite at Lake Guatavita: 1,287 t CO₂e, with 50.5 kg of primary gold contributing 99.93% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Rite</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #69 — Valhalla</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/valhalla.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/valhalla.html</guid>
+      <description>Odin's immense hall for chosen warriors, reconstructed as a circular timber complex with 540 gates, a shield roof and spear-lined walls. One reconstructed Valhalla structural shell sized for the first muster of 432,000 einherjar: 607.8 kt CO₂e, with wood and timber products contributing 74.3% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #68 — The Jars of the Danaids</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/jars-of-the-danaids.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/jars-of-the-danaids.html</guid>
+      <description>Fifty condemned Danaids repeatedly carry water in perforated jars toward a bottomless cistern, turning punishment into an endless cycle of loss. One reconstructed operating year of the Danaids’ punishment: 1.36 t CO₂e, with managed water supply and treatment contributing 96.9% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #67 — The Augean Stables</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/augean-stables.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/augean-stables.html</guid>
+      <description>Heracles' one-day cleansing of the Augean cattle yards by diverting river water through temporary channels and returning the site to service. One complete river-assisted clearing campaign at Elis: 181 t CO₂e, with earthmoving fuel contributing 71.7% of the approved baseline while gravity-fed river water carries no pumping burden in the model.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #66 — The Cornucopia</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/cornucopia.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/cornucopia.html</guid>
+      <description>The miraculous horn of plenty treated as a ceremonial vessel presenting one tonne of mixed bounty during a day at the Achelous sanctuary. One 24-hour Cornucopia service presenting 1.00 t of mixed food: 3.74 t CO₂e, with food production contributing 99.1% while vessel, utilities and delivery remain below 0.01%.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #65 — The Forge of Hephaestus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/forge-of-hephaestus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/forge-of-hephaestus.html</guid>
+      <description>Hephaestus' divine forge represented by a single 12-hour campaign producing a five-layer bronze shield for delivery at the workshop gate. One 35 kg, five-layer Achilles-class bronze shield at the forge gate: 196 kg CO₂e, with copper and tin contributing 95.5% and copper alone 82.3% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #64 — The Ship of Theseus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ship-of-theseus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ship-of-theseus.html</guid>
+      <description>Athens' ceremonial ship maintained for a century as every decaying component is gradually replaced while the vessel's identity is preserved. Maintain one 30-oared ceremonial hull at Piraeus for 100 years: 23.6 t CO₂e, with structural wood contributing 45.6% and 82.5% of the footprint occurring after launch.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #63 — Gungnir</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/gungnir.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/gungnir.html</guid>
+      <description>Odin's unerring spear reconstructed as a durable iron-headed weapon with a European ash shaft and proportions anchored to Viking-Age examples. One 2.40 m Gungnir-class spear, manufactured and delivered once: 3.01 kg CO₂e, with forge heat contributing 51.8% and the iron head 30.6% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #62 — Sleipnir</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/sleipnir.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/sleipnir.html</guid>
+      <description>Odin's eight-legged mount reconstructed as a steel-grey horse with paired leg modules, eight hooves and leather-and-bronze tack. One 100 km reconnaissance ride by a 720 kg eight-legged horse: 11.7 kg CO₂e, with feed production contributing 67.5% and enteric methane 15.2% of the approved ride-day footprint.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Biology-driven</category>
+    </item>
+    <item>
+      <title>Episode #61 — The Ice Palace</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ice-palace.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ice-palace.html</guid>
+      <description>A temporary winter palace assembled from artificial ice blocks, illuminated for a month-long exhibition and allowed to melt after use. One freestanding ceremonial ice palace displayed for 30 winter nights: 15.4 t CO₂e, with artificial ice freezing contributing 71.0% of the approved baseline and ice-block freight a further 26.1%.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #60 — The Phoenix</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/phoenix.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/phoenix.html</guid>
+      <description>A mythical firebird represented as a large adult bird consumed on a resinous wooden pyre before beginning another cycle of rebirth. One controlled Phoenix rebirth cycle reconstructed as a 12 kg bird, a hardwood-resin nest and a controlled heat system: 157 kg CO₂e, with auxiliary heat contributing 40.6% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #59 — The Golden Fleece</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/golden-fleece.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/golden-fleece.html</guid>
+      <description>The legendary ram hide sought by Jason and the Argonauts, reconstructed as a ceremonial fleece decorated with gold leaf, dust and filaments. One gold-coated ram fleece prepared for ceremonial display and delivered as the retrieved object: 6.42 t CO₂e, with the 0.25 kg gold coating driving 99.21% of the approved baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #58 — The Philosopher's Stone</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/philosophers-stone.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/philosophers-stone.html</guid>
+      <description>The alchemical substance said to transmute base metal into gold, reconstructed as a palm-sized mineral seed used in one laboratory projection. One successful projection event transforms 1.00 kg of lead into a 1.00 kg gold-equivalent ingot: 23.5 kg CO₂e at bench gate, with furnace heat driving 69.8% of the baseline and avoided-gold credits reported separately.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #57 — Seven-League Boots</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/seven-league-boots.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/seven-league-boots.html</guid>
+      <description>A pair of legendary knee-high leather boots whose single supernatural stride is said to cover seven leagues. One pair of Seven-League Boots reconstructed as a 2.98 kg leather artifact: 32.1 kg CO₂e cradle-to-court, with finished leather driving 65.9% of the footprint while magical displacement remains outside the boundary.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #56 — Hydra of Lerna</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/hydra-of-lerna.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/hydra-of-lerna.html</guid>
+      <description>The many-headed monster of Lerna treated as a regenerating biological hazard neutralised by cutting, cauterisation and controlled containment. A 3.2 t, nine-headed Hydra reconstructed as a hazardous field-control event: cutting is only the first step, while cauterisation, logistics and containment create a 1.35 t CO₂e footprint.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythology</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #55 — The Garden of the Hesperides</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/garden-of-the-hesperides.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/garden-of-the-hesperides.html</guid>
+      <description>Hera's orchard of immortality-bearing golden apples, represented as a guarded garden producing and presenting three gilded fruits in one year. Three golden apples reconstructed as one annual guarded orchard service: a 10 µm gold skin is enough to make primary gold dominate the 336 kg CO₂e baseline while water, electricity and freight remain minor.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #54 — Santa's Sleigh</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/santas-sleigh.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/santas-sleigh.html</guid>
+      <description>A reusable airborne sleigh drawn by reindeer and staged for one global Christmas Eve gift-delivery mission. A reusable 4.2 m sleigh reconstructed as a one-night delivery system: 267 kg CO₂e per Christmas Eve mission, with reindeer forage dominating the baseline and feeding-rate and harness assumptions controlling the main sensitivities.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #53 — Baba Yaga's Hut</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/baba-yagas-hut.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/baba-yagas-hut.html</guid>
+      <description>The walking forest cabin of Slavic folklore, rebuilt as a timber hut supported by articulated legs for a thirty-year service context. A 5.87 t Slavic walking forest hut reconstructed from logs, metal bracing, chimney, glazing and commissioning flows: the 3.73 t CO₂e baseline is driven by the structure that lets the cabin stand on legs, not by magic.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #52 — Hermes Sandals</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/hermes-sandals.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/hermes-sandals.html</guid>
+      <description>Hermes' winged footwear reconstructed as leather sandals fitted with bronze wing frames, feather vanes, a gold finish and emerald inlays. One 0.682 kg pair of winged talaria reconstructed as engineered footwear: 63.5 kg CO₂e cradle-to-delivered-gate, with two grams of gold leaf driving 80.2% of the footprint.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #51 — Pandora's Jar</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pandoras-jar.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pandoras-jar.html</guid>
+      <description>The sealed ceramic pithos entrusted to Pandora, delivered to a household and opened once without assigning a physical burden to its mythical contents. One 45 L sealed pithos reconstructed as clay, metal, seal, workshop energy, packing and freight: 26.0 kg CO₂e from creation to first opening, with kiln energy and transport jointly driving 49.9% of the baseline.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Process-energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #50 — Bifrost</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/bifrost.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/bifrost.html</guid>
+      <description>The rainbow bridge between realms reconstructed as a reusable, walkable light corridor linking two monumental gate structures. One 10-minute Bifrost crossing window reconstructed as a reusable two-gate light bridge: 120.3 kg CO₂e per activation, with electricity at 95.2% and the red fire-guard the largest modeled flow.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #49 — The Argo</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/the-argo.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/the-argo.html</guid>
+      <description>The oared and sailed vessel of Jason and the Argonauts, reconstructed for one long round-trip expedition. One 28.5 m Argo-class fifty-oared vessel and one Pagasae–Colchis–Pagasae expedition: 10.66 t CO₂e per build-and-voyage functional unit, with a conservative sail-and-rigging proxy dominating while direct propulsion uses no purchased fuel.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #48 — Yggdrasil</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/yggdrasil.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/yggdrasil.html</guid>
+      <description>The world tree of Norse cosmology represented as a monumental living ash analogue installed and maintained for one narrative year. Yggdrasil reconstructed as one monumental ash-tree analogue installed and maintained for one narrative year: 797 t CO₂e, with the ash-like wood body contributing 55.4% while metal supports and road freight form the next major burdens.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #47 — Draupnir</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/draupnir.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/draupnir.html</guid>
+      <description>Odin's gold arm-ring, which produces eight equal rings every ninth night, represented as one material-replication event. One nine-night Draupnir replication event reconstructed as nine equal 0.45 kg fine-gold rings: 90.8 t CO₂e, with primary gold carrying 99.996% of the footprint while minor modeled flows total only 3.7 kg CO₂e.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #46 — Nautilus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/nautilus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/nautilus.html</guid>
+      <description>Captain Nemo's electric submarine reconstructed as a complete, launch-ready vessel assembled at a hidden island before its famous voyage. Captain Nemo’s 70 m Nautilus reconstructed cradle-to-launch: 4.69 kt CO₂e before the voyage begins, with hull, machinery and battery blocks contributing 91.5% of the baseline and material origin controlling the main sensitivity.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Science Fiction</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #45 — The Touch of King Midas</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/king-midas.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/king-midas.html</guid>
+      <description>King Midas' fatal gift represented through one touch that transforms a small ceremonial goblet into gold. One touch-converted ceremonial goblet reconstructed as 0.622 kg of primary gold equivalent: 22.7 t CO₂e per conversion event, with gold feedstock contributing 99.996% of the baseline while electricity, packaging, freight, water and substrate remain individually below 0.01%.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #44 — The Wings of Icarus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/wings-of-icarus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/wings-of-icarus.html</guid>
+      <description>Daedalus' feather-and-wax escape device reconstructed as one fixed gliding wing pair rather than a flapping bird analogue. One 19.4 kg launch-ready pair of Icarus wings for at least 1 km of unpowered gliding flight: 70.4 kg CO₂e, with only 2.8 kg of linen bindings and leather harness contributing 88.8% of the baseline while the beeswax contributes 1.4%.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #43 — Sisyphus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/sisyphus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/sisyphus.html</guid>
+      <description>The condemned king eternally pushes a massive stone uphill only for it to roll back, forcing the same effort to begin again. A finite slice of an eternal punishment: one reusable 5.0 t limestone boulder, a 500 m slope, 1,000 ascent-return cycles and a material loop that closes while the energy loop does not.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythology</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #42 — Talos</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/talos.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/talos.html</guid>
+      <description>The bronze guardian of Crete circles the island, blocks hostile landings with thrown rocks and destroys intruders with a heated embrace. A 25 m bronze guardian reconstructed as a mobility system: manufacture is significant, but three daily circuits of Crete make patrol energy the overwhelming life-cycle hotspot.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythology</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #41 — Mjölnir</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/mjolnir.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/mjolnir.html</guid>
+      <description>Thor's short-handled iron hammer never misses when thrown, withstands every blow and returns to its wielder's hand. A reusable 46.7 kg iron hammer becomes an energy system once a 1 GJ thunder-equivalent event is repeated over 1,000 combat cycles: discharge energy overwhelms manufacture and flight.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythology</category>
+      <category>Energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #40 — The Minotaur's Labyrinth</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/minotaur-labyrinth.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/minotaur-labyrinth.html</guid>
+      <description>Daedalus' prison for the Minotaur is a chamber of winding passages designed to conceal the outward way and defeat unaided escape. A Knossos-scale two-level maze reconstructed as a navigation-denial system: 18.595 kt CO₂e over 30 years, while a 24 kg thread defeats the material system by preserving the way back.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #39 — Atlantis</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/atlantis.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/atlantis.html</guid>
+      <description>Plato's island capital of concentric land and water rings, linked to the sea by canal and filled with monumental civic infrastructure. Plato's concentric royal-harbor core reconstructed as a 100-year urban system: 8.41 km² of buildable land, 7.57 Mm² GFA and 500,000 residents, with the result dominated by construction and highly sensitive to where the city boundary is drawn.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic City</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #38 — Trojan Horse</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/trojan-horse.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/trojan-horse.html</guid>
+      <description>A one-use hollow timber horse built to conceal an armed payload, roll to Troy's walls and open from within. A one-use hollow timber machine reconstructed around a 50-warrior payload: 25 m³ of finished timber, 16.52 t rolling mass and a footprint driven far more by materials than by the human-powered entry into Troy.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #37 — Excalibur</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/excalibur.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/excalibur.html</guid>
+      <description>Arthur's lake-born sword of sovereignty and victory, reconstructed from the proportions and mass of a late-medieval European weapon. Arthur's lake-born blade reconstructed as a 1.71 kg late-medieval sword with scabbard over 40 years: the object is light, but bloomery ironmaking and inefficient charcoal production place 517 kg of dry-wood equivalent behind its steel.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Process-energy-driven</category>
+    </item>
+    <item>
+      <title>Episode #36 — The Tower of Babel</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/tower-of-babel.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/tower-of-babel.html</guid>
+      <description>Babylon's seven-stage ziggurat reconstructed as a completed ninety-metre Tower of Babel, with historically anchored footprint and explicitly modelled upper tiers. A 90 m ziggurat reconstructed from Etemenanki: most of the masonry is sun-dried earth, yet the fired-brick skin carries almost the entire climate burden.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Mythic Structure</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #35 — The Flying Dutchman</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/flying-dutchman.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/flying-dutchman.html</guid>
+      <description>The legendary cursed ship reconstructed as a large early-seventeenth-century Dutch East Indiaman, physically anchored to Batavia and checked against Vasa. A cursed East Indiaman that sails forever without fuel: the operational year is light, while metal armament, fittings and the vessel itself carry the carbon burden.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Legends</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #34 — Solar Chariot of Elios</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/solar-chariot-of-elios.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/solar-chariot-of-elios.html</guid>
+      <description>The sun god's gold-plated metal chariot reconstructed with a radiant containment cradle for a finite year of celestial duty. One 4.95 t Solar Chariot reconstructed for 365 dawn-to-dusk journeys: 3,125 t CO₂e per operational year, with 120 kg of gold plating contributing 98.8% while electricity and base metals remain secondary.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #33 — Brahmastra</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/brahmastra.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/brahmastra.html</guid>
+      <description>A legendary astral weapon represented as a non-functional ceremonial relic delivered for one display or ritual use, without modelling its destructive power. One non-functional 2.40 m Brahmastra-inspired ceremonial relic reconstructed as a 22.45 kg delivered artifact: 82.9 kg CO₂e, with primary metals contributing 92.2% and metal-factor selection moving the model from 39.2 to 108.7 kg CO₂e.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Materials-driven</category>
+    </item>
+    <item>
+      <title>Episode #32 — Pegasus</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pegasus.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/pegasus.html</guid>
+      <description>The winged horse of Greek myth represented as a courier carrying one rider and one sealed message on a 300-kilometre flight. One 300 km Pegasus courier flight reconstructed as a one-day mounted airborne service: 5.51 kg CO₂e per mission, with feed at 48.6% and agricultural factor choice shifting the result from 4.46 to 7.86 kg CO₂e.</description>
+      <category>Season II — Myths &amp; Legends</category>
+      <category>Myth &amp; Legend</category>
+      <category>Operation-driven</category>
+    </item>
+    <item>
+      <title>Episode #1 — UFO Robot</title>
+      <link>https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ufo-robot.html</link>
+      <guid isPermaLink="true">https://lcaofimpossible.github.io/LCA-of-the-Impossible/episodes/ufo-robot.html</guid>
+      <description>A thirty-metre super robot paired with the Spazer flying craft to form a combined planetary-defence machine launched from an underground base. One 600 km round-trip planetary-defence interception by a 480 t robot–Spazer system: 73.8 t CO₂e per mission, with electricity contributing 88.9% and supply choice moving the result from 12.1 to 183.2 t CO₂e.</description>
+      <pubDate>Wed, 26 Aug 2026 00:00:00 +0000</pubDate>
+      <category>Season I — Machines &amp; Worlds</category>
+      <category>Science Fiction Machine</category>
+      <category>Operation-driven</category>
+    </item>
+  </channel>
+</rss>

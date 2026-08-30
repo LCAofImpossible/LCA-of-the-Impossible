@@ -1063,6 +1063,7 @@ The homepage includes a compact `PROJECT INFRASTRUCTURE` block linking to:
 - Sources & Data;
 - LCA Glossary;
 - Statistics;
+- Updates & RSS;
 - About.
 
 This block is text-only and must not compete visually with Latest Case or Recent Cases.
@@ -1084,12 +1085,12 @@ Phase 5 canonical files:
 
 - [ ] Every public root page uses the canonical global navigation.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
-- [ ] `Explore` links to Collections, Compare, Atlas, Statistics, Sources & Data and Glossary.
+- [ ] `Explore` links to Collections, Compare, Atlas, Statistics, Updates & RSS, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
 - [ ] All three pages contain complete static canonical/social metadata.
 - [ ] `sources.html` states both source hierarchy and `Specific → Representative → Proxy` factor preference.
 - [ ] Glossary contains at least 20 meaningful project terms and remains usable without the search enhancement.
-- [ ] Homepage exposes the five Project Infrastructure links.
+- [ ] Homepage exposes the six Project Infrastructure links.
 - [ ] `method.html`, `sources.html`, `about.html` and `glossary.html` each appear exactly once in `sitemap.xml`.
 - [ ] Phase 5 pages load `assets/editorial.css` and have no broken local references.
 
@@ -1568,3 +1569,45 @@ Archive search indexes `subjectDescription`. No page may maintain a separate man
 - [ ] Compare and Archive use the registry value without inference.
 - [ ] Sharing uses the subject description while preserving the separate registered result.
 - [ ] Structured metadata remains unchanged.
+
+---
+
+<!-- ACCESSORY-RULES:START -->
+
+## 38. RSS, readership telemetry and accessory routes — mandatory
+
+Priority 12 completes lightweight discovery functions after catalogue navigation and data contracts have stabilized.
+
+### 38.1 Canonical RSS feed
+
+`feed.xml` is an RSS 2.0 feed generated deterministically from the ordered `episodes` array in `episodes.json`. Every item contains the registered episode number, title, canonical URL, `subjectDescription`, `featuredDescription` and registered season/category/LCA labels. Publication dates are emitted only when `datePublished` is explicitly registered; missing dates are never invented.
+
+Every public root page and published episode page exposes one RSS autodiscovery link. `episodes/template.html` remains excluded. The feed must never contain source-PDF URLs, hidden calculation material, comparative rankings or fields that are not present in the approved public registry.
+
+### 38.2 Updates & RSS page
+
+`updates.html` is the canonical human-readable companion to the feed. It is text-only and registry-driven. `assets/updates.js` renders the first twelve ordered registry entries, copies the canonical feed URL and mirrors the single site-wide telemetry value already requested by `assets/telemetry.js`.
+
+The page must not create a second counter request, add cookies, store visitor identifiers or query every episode counter. It explains that counts begin at telemetry activation and are not historical backfill or an episode-performance ranking.
+
+### 38.3 Accessory routes
+
+The page links directly to the canonical `episodes.json`, descriptive catalogue statistics and `site.webmanifest`. The manifest provides shortcuts to Updates and the Archive. These utilities do not expose approved source PDFs or replace the episode audit trail.
+
+### 38.4 Canonical files and QA
+
+- `feed.xml` — generated RSS 2.0 publication feed;
+- `updates.html` — feed, latest-entry, telemetry and data-access surface;
+- `assets/updates.js` and `assets/updates.css` — registry projection and responsive presentation;
+- `scripts/rss_sync.py` — deterministic feed/discovery synchronizer;
+- `scripts/rss_qa.py` — feed, page, privacy, SEO and publication validator.
+
+- [ ] RSS item order and membership exactly match `episodes.json`.
+- [ ] Every RSS item uses its canonical episode URL and approved public summaries.
+- [ ] Missing publication dates remain omitted, not reconstructed.
+- [ ] All public pages expose exactly one correctly prefixed RSS discovery link.
+- [ ] Updates uses the existing site counter response and performs no second telemetry request.
+- [ ] Updates, navigation, sitemap, manifest shortcuts and live byte verification are synchronized.
+- [ ] The feed and page expose no source-PDF link or comparative performance claim.
+
+<!-- ACCESSORY-RULES:END -->
