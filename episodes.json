@@ -4989,6 +4989,144 @@
       ]
     },
     {
+      "number": 2,
+      "slug": "millennium-falcon",
+      "title": "Millennium Falcon",
+      "subjectDescription": "A modified Corellian YT-1300 light freighter in its Battle of Yavin configuration, reconstructed as a 1,015 t interstellar courier system.",
+      "url": "episodes/millennium-falcon.html",
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "science-fiction",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": "Battle of Yavin Millennium Falcon configuration"
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "0.001 spacecraft life · 20,125 MWh planetary maneuver energy · 12 MWh ground support · 0.203 t replacement materials · 0.024 m³ supplied and treated water · 0.001 ship end-of-life processing.",
+          "boundaryType": "cradle-to-grave",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "excludedStages": [
+            "construction",
+            "transport",
+            "other"
+          ],
+          "temporalContext": "One completed mission within 24 hours.",
+          "geographicContext": "From the surface of one Earth-like planet to the surface of another.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "Four crew and 20 t of cargo delivered to the destination planetary pad after landing."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.72,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 3720000,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 99.64
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "materials",
+            "operation"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 2,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears"
+          ]
+        }
+      },
+      "cover": "assets/images/episodes/ep02-millennium-falcon-cover-20260902.png",
+      "coverSha256": "21236d8d222634fc04991b0f3618d50ffb000aa29be09023d03b9be6d558e325",
+      "seasonId": "season-i",
+      "seasonNumber": 1,
+      "seasonLabel": "Season I — Machines & Worlds",
+      "seasonTitle": "Machines & Worlds",
+      "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        1,
+        29
+      ],
+      "categoryLabel": "Science Fiction Vehicle",
+      "categories": [
+        "science-fiction",
+        "vehicles"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "operation-driven",
+        "mobility-driven",
+        "proxy-sensitive"
+      ],
+      "result": "3.72 kt CO₂e",
+      "hotspot": "Planetary maneuver energy contributes 99.64% of the approved lower-bound baseline.",
+      "datePublished": "2026-09-02",
+      "dateModified": "2026-09-02",
+      "featuredDescription": "One 1,000-light-year interstellar courier mission by a 1,015 t freighter: 3.72 kt CO₂e before hyperdrive energy, with planetary maneuver energy contributing 99.64% and supply choice moving the result from 0.233 to 15.9 kt CO₂e.",
+      "functionalUnit": "Complete one 1,000-light-year interstellar courier mission within 24 hours, transporting four crew and 20 t of cargo from the surface of one Earth-like planet to the surface of another, using the Battle of Yavin Millennium Falcon configuration.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode fixes the Battle of Yavin configuration, reconstructs a 34.75 m by 25.6 m freighter with 1,015 t dry mass, and assigns materials, fabrication, planetary maneuver energy, ground support, maintenance, water and end-of-life to one 1,000-light-year courier mission. UK 2026 factors and two declared energy-supply proxies are applied only where activity, unit and boundary are compatible.",
+        "uncertainty": "Hyperdrive energy remains unresolved and is tested parametrically at 0, 20 and 200 GWh. Energy-supply intensity alone moves the approved mission result from 0.233 to 15.9 kt CO₂e while demand, construction and maintenance remain fixed."
+      },
+      "taxonomy": [
+        "season-i",
+        "machines-worlds",
+        "science-fiction",
+        "interstellar-vehicle",
+        "courier-mission",
+        "energy-system"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ],
+      "keywords": [
+        "Millennium Falcon",
+        "Season I",
+        "Machines & Worlds",
+        "science fiction",
+        "Corellian YT-1300",
+        "Battle of Yavin",
+        "interstellar courier",
+        "1,000 light years",
+        "four crew",
+        "20 t cargo",
+        "1,015 t dry mass",
+        "planetary maneuver energy",
+        "ground support",
+        "hyperdrive energy",
+        "energy supply sensitivity",
+        "UK Government 2026",
+        "energy-driven",
+        "mobility-driven",
+        "proxy-sensitive"
+      ],
+      "related": [
+        1,
+        46,
+        42
+      ]
+    },
+    {
       "number": 1,
       "slug": "ufo-robot",
       "title": "UFO Robot",

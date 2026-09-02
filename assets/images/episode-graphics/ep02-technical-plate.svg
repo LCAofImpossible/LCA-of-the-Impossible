@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Millennium Falcon technical reconstruction plate</title>
+  <desc id="desc">A top-view engineering schematic with the approved 34.75 metre length, 25.6 metre width, 8.3 metre height, 1,015 tonne dry mass and 20,125 megawatt-hour planetary maneuver energy.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0b1622"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#234557" stroke-width="1" opacity=".34"/></pattern>
+    <marker id="dim" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 4L8 0V8Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP02 / TECHNICAL PLATE</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">A legend, rebuilt as mass.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="17">Modified Corellian YT-1300 light freighter · Battle of Yavin configuration</text>
+
+  <g transform="translate(100 186) scale(.78)" fill="none" stroke-linejoin="round">
+    <circle cx="342" cy="238" r="190" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <circle cx="342" cy="238" r="155" stroke="#234557" stroke-width="2" stroke-dasharray="8 9"/>
+    <circle cx="342" cy="238" r="74" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+    <circle cx="342" cy="238" r="28" stroke="#6de7ff" stroke-width="3"/>
+    <path d="M210 306Q342 382 474 306L454 476H392L373 390H311L292 476H230Z" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <path d="M247 318L268 442H291L309 356M437 318L416 442H393L375 356" stroke="#d0a563" stroke-width="3"/>
+    <path d="M484 190L574 159L592 177L510 224" fill="#112232" stroke="#eef7fb" stroke-width="4"/>
+    <ellipse cx="582" cy="168" rx="25" ry="18" fill="#071019" stroke="#6de7ff" stroke-width="3"/>
+    <path d="M421 94L444 35M444 35L477 55" stroke="#d0a563" stroke-width="4"/>
+    <ellipse cx="466" cy="50" rx="28" ry="13" transform="rotate(28 466 50)" stroke="#eef7fb" stroke-width="3"/>
+    <path d="M202 238H482M342 48V484" stroke="#234557" stroke-width="2" stroke-dasharray="7 8"/>
+    <path d="M235 158Q342 104 449 158M225 280Q342 330 459 280" stroke="#234557" stroke-width="2"/>
+
+    <path d="M150 515H534" stroke="#6de7ff" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <path d="M150 490V530M534 490V530" stroke="#6de7ff" stroke-width="2"/>
+    <text x="342" y="550" text-anchor="middle" fill="#6de7ff" stroke="none" font-family="Arial, sans-serif" font-size="20">25.6 m WIDTH</text>
+
+    <path d="M625 48V476" stroke="#6de7ff" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <path d="M600 48H640M600 476H640" stroke="#6de7ff" stroke-width="2"/>
+    <text x="651" y="270" fill="#6de7ff" stroke="none" font-family="Arial, sans-serif" font-size="20">34.75 m</text>
+    <text x="651" y="296" fill="#9ab0bc" stroke="none" font-family="Arial, sans-serif" font-size="14">LENGTH</text>
+  </g>
+
+  <g transform="translate(815 210)" font-family="Arial, sans-serif">
+    <rect width="315" height="278" rx="14" fill="#112232" stroke="#234557" stroke-width="2"/>
+    <text x="24" y="38" fill="#6de7ff" font-size="15" letter-spacing="2">PHYSICAL RECONSTRUCTION</text>
+    <line x1="24" y1="58" x2="291" y2="58" stroke="#234557"/>
+    <text x="24" y="92" fill="#9ab0bc" font-size="16">HEIGHT</text><text x="286" y="92" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">8.3 m</text>
+    <text x="24" y="130" fill="#9ab0bc" font-size="16">PLANFORM</text><text x="286" y="130" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">560 m²</text>
+    <text x="24" y="168" fill="#9ab0bc" font-size="16">VOLUME</text><text x="286" y="168" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">2,800 m³</text>
+    <text x="24" y="206" fill="#9ab0bc" font-size="16">DRY MASS</text><text x="286" y="206" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">1,015 t</text>
+    <text x="24" y="244" fill="#9ab0bc" font-size="16">BULK DENSITY</text><text x="286" y="244" text-anchor="end" fill="#eef7fb" font-size="20" font-weight="700">362.5 kg/m³</text>
+  </g>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(70 620)">
+      <rect width="250" height="80" rx="10" fill="#112232" stroke="#234557"/>
+      <text x="18" y="28" fill="#9ab0bc" font-size="14" letter-spacing="1.6">MISSION MASS</text>
+      <text x="18" y="61" fill="#eef7fb" font-size="27" font-weight="700">1,035 t</text>
+    </g>
+    <g transform="translate(340 620)">
+      <rect width="250" height="80" rx="10" fill="#112232" stroke="#234557"/>
+      <text x="18" y="28" fill="#9ab0bc" font-size="14" letter-spacing="1.6">DELIVERED ENERGY</text>
+      <text x="18" y="61" fill="#eef7fb" font-size="27" font-weight="700">70 MJ/kg</text>
+    </g>
+    <g transform="translate(610 620)">
+      <rect width="250" height="80" rx="10" fill="#112232" stroke="#234557"/>
+      <text x="18" y="28" fill="#9ab0bc" font-size="14" letter-spacing="1.6">PHYSICAL CHECK</text>
+      <text x="18" y="61" fill="#eef7fb" font-size="27" font-weight="700">72.45 TJ</text>
+    </g>
+    <g transform="translate(880 620)">
+      <rect width="250" height="80" rx="10" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="18" y="28" fill="#6de7ff" font-size="14" letter-spacing="1.6">MANEUVER ENERGY</text>
+      <text x="18" y="61" fill="#eef7fb" font-size="27" font-weight="700">20,125 MWh</text>
+    </g>
+  </g>
+</svg>

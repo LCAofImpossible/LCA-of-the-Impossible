@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Millennium Falcon life-cycle inventory map</title>
+  <desc id="desc">Allocated ship materials and fabrication, planetary maneuver energy, ground support, replacement materials, water and end-of-life assigned to one 1,000-light-year courier mission.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".35"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP02 / INVENTORY MAP</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">One mission. One allocated system.</text>
+  <text x="70" y="170" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="18">Functional unit: one 1,000-light-year surface-to-surface courier mission within 24 hours</text>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(70 224)">
+      <rect width="260" height="126" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="32" fill="#6de7ff" font-size="14" letter-spacing="1.8">SHIP MATERIALS · 0.001 LIFE</text>
+      <text x="20" y="69" fill="#eef7fb" font-size="27" font-weight="700">1.015 t allocated</text>
+      <text x="20" y="98" fill="#9ab0bc" font-size="16">material-specific factors</text>
+    </g>
+    <g transform="translate(70 382)">
+      <rect width="260" height="126" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="32" fill="#6de7ff" font-size="14" letter-spacing="1.8">FABRICATION · LIFE ALLOCATION</text>
+      <text x="20" y="69" fill="#eef7fb" font-size="27" font-weight="700">6.09 MWh</text>
+      <text x="20" y="98" fill="#9ab0bc" font-size="16">6 MWh/t · lifecycle electricity</text>
+    </g>
+    <g transform="translate(70 540)">
+      <rect width="260" height="126" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="32" fill="#6de7ff" font-size="14" letter-spacing="1.8">MAINTENANCE</text>
+      <text x="20" y="65" fill="#eef7fb" font-size="21" font-weight="700">0.203 t materials</text>
+      <text x="20" y="96" fill="#eef7fb" font-size="19" font-weight="700">1.218 MWh fabrication</text>
+    </g>
+
+    <path d="M350 287H470" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M350 445H430Q458 445 458 413V376Q458 344 482 344" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M350 603H430Q458 603 458 567V504Q458 470 482 470" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(470 226)">
+      <circle cx="170" cy="195" r="154" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+      <circle cx="170" cy="195" r="124" fill="none" stroke="#234557" stroke-width="2" stroke-dasharray="7 9"/>
+      <path d="M72 184Q170 102 268 184L237 236H201L188 268H152L139 236H103Z" fill="#0d1b27" stroke="#6de7ff" stroke-width="3"/>
+      <circle cx="170" cy="189" r="58" fill="none" stroke="#eef7fb" stroke-width="3"/>
+      <path d="M222 162L284 143L292 159L235 185" fill="#112232" stroke="#d0a563" stroke-width="3"/>
+      <text x="170" y="382" text-anchor="middle" fill="#eef7fb" font-size="25" font-weight="700">ONE COMPLETED MISSION</text>
+      <text x="170" y="414" text-anchor="middle" fill="#6de7ff" font-size="18">1,000 ly · 4 crew · 20 t cargo</text>
+      <text x="170" y="444" text-anchor="middle" fill="#9ab0bc" font-size="16">surface → surface · ≤ 24 h</text>
+    </g>
+
+    <path d="M810 306H910" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M810 444H875Q902 444 902 474V500" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(900 222)">
+      <rect width="235" height="142" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="18" y="32" fill="#6de7ff" font-size="14" letter-spacing="1.6">PLANETARY MANEUVER</text>
+      <text x="18" y="72" fill="#eef7fb" font-size="28" font-weight="700">20,125 MWh</text>
+      <text x="18" y="103" fill="#9ab0bc" font-size="16">1,035 t × 70 MJ/kg</text>
+      <text x="18" y="128" fill="#d0a563" font-size="14">99.64% OF BASELINE</text>
+    </g>
+    <g transform="translate(900 394)">
+      <rect width="235" height="112" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="18" y="32" fill="#6de7ff" font-size="14" letter-spacing="1.6">GROUND SUPPORT</text>
+      <text x="18" y="68" fill="#eef7fb" font-size="25" font-weight="700">12 MWh</text>
+      <text x="18" y="94" fill="#9ab0bc" font-size="15">turnaround assumption</text>
+    </g>
+    <g transform="translate(900 536)">
+      <rect width="235" height="130" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="18" y="31" fill="#6de7ff" font-size="14" letter-spacing="1.4">WATER + END OF LIFE</text>
+      <text x="18" y="65" fill="#eef7fb" font-size="20" font-weight="700">0.024 m³ water</text>
+      <text x="18" y="94" fill="#eef7fb" font-size="19" font-weight="700">0.001 ship life</text>
+    </g>
+  </g>
+  <text x="600" y="708" text-anchor="middle" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="14">CARGO FOOTPRINT · SPACEPORT CONSTRUCTION · CREW TRAVEL · FOOD · OXYGEN · WEAPONS · COMBAT · RETURN MISSION — EXCLUDED</text>
+</svg>

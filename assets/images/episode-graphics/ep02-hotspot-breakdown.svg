@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">Millennium Falcon hotspot breakdown</title>
+  <desc id="desc">Planetary maneuver energy contributes 99.64 percent of the approved lower-bound baseline, followed by construction and end-of-life at 0.25 percent, ground support at 0.06 percent and maintenance at 0.05 percent. Water remains below 0.01 percent.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".32"/></pattern>
+  </defs>
+  <rect width="1200" height="720" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="720" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="664" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP02 / HOTSPOT BREAKDOWN</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">Energy defines the mission.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="18">Displayed contribution shares of the 3.72 kt CO₂e lower-bound baseline</text>
+
+  <g transform="translate(85 215)" font-family="Arial, sans-serif">
+    <circle cx="210" cy="210" r="142" fill="none" stroke="#112232" stroke-width="58"/>
+    <circle cx="210" cy="210" r="142" fill="none" stroke="#2a9fc4" stroke-width="58" stroke-dasharray="888.7 3.2" transform="rotate(-90 210 210)"/>
+    <circle cx="210" cy="210" r="96" fill="#071019" stroke="#234557" stroke-width="2"/>
+    <text x="210" y="190" text-anchor="middle" fill="#eef7fb" font-size="58" font-weight="700">3.72</text>
+    <text x="210" y="226" text-anchor="middle" fill="#6de7ff" font-size="18" letter-spacing="2">kt CO₂e / FU</text>
+    <text x="210" y="261" text-anchor="middle" fill="#d0a563" font-size="17">99.64% ENERGY</text>
+    <text x="210" y="400" text-anchor="middle" fill="#eef7fb" font-size="24" font-weight="700">PLANETARY MANEUVER</text>
+    <text x="210" y="430" text-anchor="middle" fill="#9ab0bc" font-size="16">20,125 MWh · UK lifecycle electricity</text>
+  </g>
+
+  <g transform="translate(555 220)" font-family="Arial, sans-serif">
+    <g>
+      <rect width="260" height="150" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="34" fill="#6de7ff" font-size="14" letter-spacing="1.7">01 · PLANETARY ENERGY</text>
+      <text x="20" y="86" fill="#eef7fb" font-size="38" font-weight="700">99.64%</text>
+      <text x="20" y="120" fill="#9ab0bc" font-size="16">dominant baseline share</text>
+    </g>
+    <g transform="translate(285 0)">
+      <rect width="260" height="150" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="34" fill="#d0a563" font-size="14" letter-spacing="1.5">02 · CONSTRUCTION + EOL</text>
+      <text x="20" y="86" fill="#eef7fb" font-size="38" font-weight="700">0.25%</text>
+      <text x="20" y="120" fill="#9ab0bc" font-size="16">allocated ship system</text>
+    </g>
+    <g transform="translate(0 180)">
+      <rect width="260" height="150" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="34" fill="#d0a563" font-size="14" letter-spacing="1.7">03 · GROUND SUPPORT</text>
+      <text x="20" y="86" fill="#eef7fb" font-size="38" font-weight="700">0.06%</text>
+      <text x="20" y="120" fill="#9ab0bc" font-size="16">12 MWh turnaround</text>
+    </g>
+    <g transform="translate(285 180)">
+      <rect width="260" height="150" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="34" fill="#d0a563" font-size="14" letter-spacing="1.7">04 · MAINTENANCE</text>
+      <text x="20" y="86" fill="#eef7fb" font-size="38" font-weight="700">0.05%</text>
+      <text x="20" y="120" fill="#9ab0bc" font-size="16">materials + fabrication</text>
+    </g>
+    <g transform="translate(0 360)">
+      <rect width="545" height="86" rx="12" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+      <text x="272.5" y="34" text-anchor="middle" fill="#eef7fb" font-size="18" font-weight="700">DISPLAYED SHARES RECONCILE TO 100.00%</text>
+      <text x="272.5" y="62" text-anchor="middle" fill="#9ab0bc" font-size="16">Water remains below 0.01%.</text>
+    </g>
+  </g>
+</svg>
