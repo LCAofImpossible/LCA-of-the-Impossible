@@ -1,0 +1,55 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">DeLorean Time Machine hotspot breakdown</title>
+  <desc id="desc">Base vehicle materials contribute 85.2 percent of the 5.14 tonne carbon dioxide equivalent production baseline, retrofit materials 10.5 percent, vehicle assembly 4.1 percent and workshop electricity 0.2 percent.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".32"/></pattern>
+  </defs>
+  <rect width="1200" height="720" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="720" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="664" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP03 / HOTSPOT BREAKDOWN</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">The ordinary car owns the footprint.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="18">Approved shares of the 5.14 t CO₂e production baseline</text>
+
+  <g transform="translate(74 220)" font-family="Arial, sans-serif">
+    <rect width="330" height="386" rx="14" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <text x="165" y="100" text-anchor="middle" fill="#eef7fb" font-size="72" font-weight="700">5.14</text>
+    <text x="165" y="139" text-anchor="middle" fill="#6de7ff" font-size="18" letter-spacing="2">t CO₂e / FU</text>
+    <text x="165" y="180" text-anchor="middle" fill="#d0a563" font-size="16" letter-spacing="1.6">PRODUCTION BASELINE</text>
+    <circle cx="165" cy="277" r="74" fill="none" stroke="#112232" stroke-width="36"/>
+    <circle cx="165" cy="277" r="74" fill="none" stroke="#2a9fc4" stroke-width="36" stroke-dasharray="396.1 68.9" transform="rotate(-90 165 277)"/>
+    <circle cx="165" cy="277" r="46" fill="#071019" stroke="#234557" stroke-width="2"/>
+    <text x="165" y="272" text-anchor="middle" fill="#eef7fb" font-size="31" font-weight="700">85.2%</text>
+    <text x="165" y="298" text-anchor="middle" fill="#9ab0bc" font-size="10">BASE MATERIALS</text>
+    <text x="165" y="355" text-anchor="middle" fill="#eef7fb" font-size="17">THE HOTSPOT EXISTED</text>
+    <text x="165" y="378" text-anchor="middle" fill="#eef7fb" font-size="17">BEFORE THE RETROFIT.</text>
+  </g>
+
+  <g transform="translate(445 220)" font-family="Arial, sans-serif">
+    <g>
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">BASE VEHICLE MATERIALS</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">4.378 t · 85.2%</text>
+      <rect y="45" width="670" height="48" rx="8" fill="#112232"/>
+      <rect y="45" width="571" height="48" rx="8" fill="#2a9fc4"/>
+    </g>
+    <g transform="translate(0 122)">
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">RETROFIT MATERIALS</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">0.542 t · 10.5%</text>
+      <rect y="45" width="670" height="48" rx="8" fill="#112232"/>
+      <rect y="45" width="70" height="48" rx="8" fill="#d0a563"/>
+    </g>
+    <g transform="translate(0 244)">
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">VEHICLE ASSEMBLY</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">0.211 t · 4.1%</text>
+      <rect y="45" width="670" height="48" rx="8" fill="#112232"/>
+      <rect y="45" width="28" height="48" rx="8" fill="#79a6b7"/>
+    </g>
+    <g transform="translate(0 366)">
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">WORKSHOP ELECTRICITY</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">0.009 t · 0.2%</text>
+      <rect y="45" width="670" height="40" rx="8" fill="#112232"/>
+      <rect y="45" width="5" height="40" rx="3" fill="#6de7ff"/>
+    </g>
+  </g>
+</svg>

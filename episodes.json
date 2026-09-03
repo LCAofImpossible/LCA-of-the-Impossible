@@ -4989,6 +4989,141 @@
       ]
     },
     {
+      "number": 3,
+      "slug": "delorean-time-machine",
+      "title": "DeLorean Time Machine",
+      "subjectDescription": "A 1985-configuration DeLorean DMC-12 retrofitted in Doc Brown's workshop as a plutonium-era time machine prepared for its first jump.",
+      "url": "episodes/delorean-time-machine.html",
+      "cover": "assets/images/episodes/ep03-delorean-time-machine-cover-20260903.png",
+      "coverSha256": "2b2ef959d58156ef512c96f466212b0493ffb5c06a2e269eb46d82426ff2fa79",
+      "seasonId": "season-i",
+      "seasonNumber": 1,
+      "seasonLabel": "Season I — Machines & Worlds",
+      "seasonTitle": "Machines & Worlds",
+      "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        1,
+        29
+      ],
+      "categoryLabel": "Science Fiction Vehicle",
+      "categories": [
+        "science-fiction",
+        "vehicles"
+      ],
+      "lcaLabel": "Materials-driven",
+      "lcaCharacteristics": [
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "5.14 t CO₂e",
+      "hotspot": "Base vehicle materials contribute 85.2% of the approved production baseline.",
+      "datePublished": "2026-09-03",
+      "dateModified": "2026-09-03",
+      "featuredDescription": "One complete 1985-configuration DeLorean Time Machine ready for its first jump: 5.14 t CO₂e, with base vehicle materials contributing 85.2% of the approved production baseline.",
+      "functionalUnit": "Produce one complete 1985-configuration DeLorean Time Machine — one DMC-12 plus the plutonium-era retrofit — assembled in Doc Brown's workshop and ready for its first time-jump.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode anchors the reconstruction to a 1,194.5 kg fuel-adjusted DeLorean production mass, a 150 kg time-machine hardware bill of materials, 1,143 kWh-equivalent of vehicle assembly and 50 kWh of workshop electricity. Vehicle composition and assembly energy are Argonne analogues, retrofit masses are engineering estimates and compatible activity flows use the declared UK Government 2026 factors. The episode states overall confidence as medium-low; the site's three-level Evidence Profile records this conservatively as Low.",
+        "uncertainty": "Retrofit mass and time-pulse duration are the published sensitivity levers. Changing only retrofit mass from 100 to 220 kg moves the production result from 4.96 to 5.39 t CO₂e around the 5.14 t baseline. A 1.21 GW pulse lasting 1 ms to 10 s adds 0.062 to 620 kg CO₂e as a UK-grid energy equivalent; plutonium production remains unmodelled."
+      },
+      "taxonomy": [
+        "season-i",
+        "machines-worlds",
+        "science-fiction",
+        "road-vehicle",
+        "time-machine",
+        "vehicle-retrofit",
+        "production-baseline"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ],
+      "keywords": [
+        "DeLorean Time Machine",
+        "Season I",
+        "Machines & Worlds",
+        "science fiction",
+        "1985 configuration",
+        "DMC-12",
+        "Doc Brown's workshop",
+        "plutonium-era retrofit",
+        "first jump",
+        "1,194.5 kg production mass",
+        "150 kg retrofit hardware",
+        "vehicle assembly",
+        "workshop electricity",
+        "1.21 gigawatts",
+        "pulse duration",
+        "UK Government 2026",
+        "Argonne analogue",
+        "materials-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "related": [
+        2,
+        46,
+        64
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "science-fiction",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "single-object",
+          "referenceFlow": "1,194.5 kg donor vehicle materials + 150 kg retrofit hardware + 1,143 kWh-eq vehicle assembly + 50 kWh workshop electricity.",
+          "boundaryType": "cradle-to-commissioning",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "installation"
+          ],
+          "excludedStages": [
+            "operation",
+            "other"
+          ],
+          "temporalContext": "1985 configuration, assembled and ready for its first jump.",
+          "geographicContext": "Doc Brown's workshop.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "Twin Pines Mall infrastructure, Hill Valley roads and buildings, and the plutonium fuel cycle are explicitly cut off; operation is reported separately."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 5.14,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 5140,
+          "hotspotStage": "materials",
+          "hotspotSharePercent": 85.2
+        },
+        "model": {
+          "archetype": "product-system",
+          "primaryDriver": "materials",
+          "secondaryDrivers": [
+            "energy"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 3,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
+    },
+    {
       "number": 2,
       "slug": "millennium-falcon",
       "title": "Millennium Falcon",
