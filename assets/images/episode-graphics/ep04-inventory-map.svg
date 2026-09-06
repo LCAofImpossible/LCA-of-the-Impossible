@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">TARDIS life-cycle inventory map</title>
+  <desc id="desc">Allocated build materials, assembly electricity and inbound freight combine with maintenance, twenty megawatt-hours of operational electricity and recycling transport to represent one round-trip temporal mission.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".34"/></pattern>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto"><path d="M0 0L10 5 0 10Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP04 / INVENTORY MAP</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">Every mission has a bill.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="17">Energy + machine · one round-trip temporal mission</text>
+
+  <g font-family="Arial, sans-serif">
+    <g transform="translate(70 220)">
+      <rect width="300" height="128" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="33" fill="#6de7ff" font-size="14" letter-spacing="1.6">01 · ALLOCATED BUILD</text>
+      <text x="20" y="70" fill="#eef7fb" font-size="27" font-weight="700">0.563 kg</text>
+      <text x="20" y="99" fill="#9ab0bc" font-size="15">16.9 t / 30,000 missions</text>
+    </g>
+    <g transform="translate(70 374)">
+      <rect width="300" height="128" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="33" fill="#6de7ff" font-size="14" letter-spacing="1.6">02 · ASSEMBLY + FREIGHT</text>
+      <text x="20" y="69" fill="#eef7fb" font-size="23" font-weight="700">3.33 kWh</text>
+      <text x="20" y="98" fill="#9ab0bc" font-size="15">+ 0.0845 t·km inbound</text>
+    </g>
+    <g transform="translate(70 528)">
+      <rect width="300" height="112" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="33" fill="#6de7ff" font-size="14" letter-spacing="1.6">03 · RECYCLING TRANSPORT</text>
+      <text x="20" y="70" fill="#eef7fb" font-size="24" font-weight="700">0.000563 t</text>
+      <text x="20" y="94" fill="#9ab0bc" font-size="14">allocated per mission</text>
+    </g>
+
+    <path d="M390 284H482" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M390 438H445Q465 438 465 418V386Q465 366 486 366" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M390 584H445Q465 584 465 564V492Q465 472 486 472" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(470 214)">
+      <circle cx="150" cy="206" r="148" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+      <circle cx="150" cy="206" r="116" fill="none" stroke="#234557" stroke-width="2" stroke-dasharray="7 9"/>
+      <path d="M100 112H200L216 146V300H84V146Z" fill="#0d1b27" stroke="#eef7fb" stroke-width="3"/>
+      <rect x="96" y="158" width="108" height="44" fill="#112232" stroke="#6de7ff" stroke-width="2"/>
+      <path d="M96 218H204M96 256H204M126 158V300M174 158V300" stroke="#234557" stroke-width="2"/>
+      <path d="M134 112V86H166V112M145 86V66H155V86" stroke="#d0a563" stroke-width="3"/>
+      <text x="150" y="332" text-anchor="middle" fill="#eef7fb" font-size="21" font-weight="700">ONE TEMPORAL MISSION</text>
+      <text x="150" y="359" text-anchor="middle" fill="#6de7ff" font-size="16">six occupants · safe return</text>
+    </g>
+
+    <path d="M788 284H878" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M788 458H840Q860 458 860 438V386Q860 366 882 366" fill="none" stroke="#6de7ff" stroke-width="3" marker-end="url(#arrow)"/>
+
+    <g transform="translate(850 220)">
+      <rect width="280" height="164" rx="12" fill="#112232" stroke="#2a9fc4" stroke-width="2"/>
+      <text x="20" y="34" fill="#6de7ff" font-size="14" letter-spacing="1.6">04 · OPERATION</text>
+      <text x="20" y="78" fill="#eef7fb" font-size="32" font-weight="700">20,000 kWh</text>
+      <text x="20" y="110" fill="#9ab0bc" font-size="16">1 MW × 20 powered hours</text>
+      <text x="20" y="140" fill="#d0a563" font-size="14">EXPLICIT ENERGY PROXY</text>
+    </g>
+    <g transform="translate(850 414)">
+      <rect width="280" height="138" rx="12" fill="#112232" stroke="#234557" stroke-width="2"/>
+      <text x="20" y="34" fill="#6de7ff" font-size="14" letter-spacing="1.6">05 · MAINTENANCE</text>
+      <text x="20" y="76" fill="#eef7fb" font-size="30" font-weight="700">0.90 kg</text>
+      <text x="20" y="106" fill="#9ab0bc" font-size="16">assumed replacement pack</text>
+    </g>
+  </g>
+
+  <g transform="translate(470 635)" font-family="Arial, sans-serif">
+    <rect width="660" height="60" rx="10" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <text x="20" y="25" fill="#d0a563" font-size="13" letter-spacing="1.6">CUT-OFF</text>
+    <text x="20" y="47" fill="#eef7fb" font-size="14">RETURN REMATERIALISATION + SAFE DELIVERY OF ALL SIX OCCUPANTS</text>
+  </g>
+</svg>

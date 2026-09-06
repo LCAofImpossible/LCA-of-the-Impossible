@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">TARDIS hotspot breakdown</title>
+  <desc id="desc">Operational electricity contributes 99.77 percent of the 3,695.518 kilogram carbon dioxide equivalent baseline, maintenance contributes 0.14 percent and allocated build plus other flows contribute 0.09 percent.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0d1b27"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#234557" stroke-width="1" opacity=".32"/></pattern>
+  </defs>
+  <rect width="1200" height="720" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="720" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="664" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP04 / HOTSPOT BREAKDOWN</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">The unknown hides in power.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="18">Approved shares of the 3,695.518 kg CO₂e baseline proxy result</text>
+
+  <g transform="translate(74 220)" font-family="Arial, sans-serif">
+    <rect width="330" height="386" rx="14" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <text x="165" y="94" text-anchor="middle" fill="#eef7fb" font-size="58" font-weight="700">3.70</text>
+    <text x="165" y="132" text-anchor="middle" fill="#6de7ff" font-size="18" letter-spacing="2">t CO₂e / FU</text>
+    <text x="165" y="173" text-anchor="middle" fill="#d0a563" font-size="15" letter-spacing="1.5">BASELINE PROXY</text>
+    <circle cx="165" cy="274" r="74" fill="none" stroke="#112232" stroke-width="36"/>
+    <circle cx="165" cy="274" r="74" fill="none" stroke="#2a9fc4" stroke-width="36" stroke-dasharray="464 1.1" transform="rotate(-90 165 274)"/>
+    <circle cx="165" cy="274" r="46" fill="#071019" stroke="#234557" stroke-width="2"/>
+    <text x="165" y="269" text-anchor="middle" fill="#eef7fb" font-size="27" font-weight="700">99.77%</text>
+    <text x="165" y="295" text-anchor="middle" fill="#9ab0bc" font-size="10">ELECTRICITY</text>
+    <text x="165" y="353" text-anchor="middle" fill="#eef7fb" font-size="17">20 MWh CREATES</text>
+    <text x="165" y="377" text-anchor="middle" fill="#eef7fb" font-size="17">3,687.2 kg CO₂e</text>
+  </g>
+
+  <g transform="translate(445 230)" font-family="Arial, sans-serif">
+    <g>
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">OPERATIONAL ELECTRICITY</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">3,687.2 kg · 99.77%</text>
+      <rect y="45" width="670" height="62" rx="8" fill="#112232"/>
+      <rect y="45" width="668.5" height="62" rx="8" fill="#2a9fc4"/>
+    </g>
+    <g transform="translate(0 148)">
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">MAINTENANCE</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">0.14%</text>
+      <rect y="45" width="670" height="62" rx="8" fill="#112232"/>
+      <rect y="45" width="8" height="62" rx="4" fill="#d0a563"/>
+    </g>
+    <g transform="translate(0 296)">
+      <text x="0" y="25" fill="#eef7fb" font-size="18" font-weight="700">ALLOCATED BUILD + OTHER</text>
+      <text x="670" y="25" text-anchor="end" fill="#eef7fb" font-size="18" font-weight="700">0.09%</text>
+      <rect y="45" width="670" height="62" rx="8" fill="#112232"/>
+      <rect y="45" width="6" height="62" rx="3" fill="#79a6b7"/>
+    </g>
+    <rect y="400" width="670" height="60" rx="10" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <text x="20" y="425" fill="#d0a563" font-size="14" letter-spacing="1.6">MODEL DISCLOSURE</text>
+    <text x="20" y="452" fill="#eef7fb" font-size="15">NO CANONICAL ENERGY DEMAND IS AVAILABLE.</text>
+  </g>
+</svg>

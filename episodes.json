@@ -4989,6 +4989,145 @@
       ]
     },
     {
+      "number": 4,
+      "slug": "tardis",
+      "title": "TARDIS",
+      "subjectDescription": "The TARDIS is a time-travel machine whose small police-box exterior conceals an unknown interior, represented here only by a minimum visible control-room proxy.",
+      "url": "episodes/tardis.html",
+      "cover": "assets/images/episodes/ep04-tardis-cover-20260906.png",
+      "coverSha256": "bf157bfb3d75c041c82f693bc11b2345540c5b9865fba196a8deb02e5490f0e2",
+      "seasonId": "season-i",
+      "seasonNumber": 1,
+      "seasonLabel": "Season I — Machines & Worlds",
+      "seasonTitle": "Machines & Worlds",
+      "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        1,
+        29
+      ],
+      "categoryLabel": "Science Fiction Machine",
+      "categories": [
+        "science-fiction",
+        "machines"
+      ],
+      "lcaLabel": "Energy-driven",
+      "lcaCharacteristics": [
+        "energy-driven",
+        "operation-driven",
+        "proxy-sensitive"
+      ],
+      "result": "3.70 t CO₂e",
+      "hotspot": "Operational electricity contributes 99.77% of the approved baseline proxy result.",
+      "datePublished": "2026-09-06",
+      "dateModified": "2026-09-06",
+      "featuredDescription": "One round-trip temporal mission carrying six occupants from London 2026 to London 3026 and back: 3.70 t CO₂e, with operational electricity contributing 99.77% of the approved baseline proxy result.",
+      "functionalUnit": "One round-trip temporal mission carrying six occupants from London 2026 to London 3026 and back, with two temporal legs, two completed materialisations, 20 powered hours and safe return to the departure place and date.",
+      "evidence": {
+        "confidence": "Low",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode constrains the service to one round-trip temporal mission for six occupants, two temporal legs, two completed materialisations and 20 powered hours. It models the 3.05 m by 1.535 m exterior, a 12 m diameter by 6.5 m visible control-room proxy, a 16.9 t minimum build allocated across 30,000 missions, maintenance, logistics and operational electricity. The true interior and the temporal mechanism remain outside the physical reconstruction.",
+        "uncertainty": "No canonical energy demand is available for the temporal drive. The baseline therefore exposes a 1 MW average-load proxy, while the published power-demand sensitivity spans 0.0452 to 369 t CO₂e per mission and the electricity-boundary sensitivity spans 2.63 to 3.70 t CO₂e."
+      },
+      "taxonomy": [
+        "season-i",
+        "machines-worlds",
+        "science-fiction",
+        "time-machine",
+        "temporal-transport",
+        "operational-energy"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ],
+      "keywords": [
+        "TARDIS",
+        "Season I",
+        "Machines & Worlds",
+        "science fiction",
+        "time machine",
+        "temporal transport",
+        "London 2026",
+        "London 3026",
+        "six occupants",
+        "two temporal legs",
+        "two materialisations",
+        "20 powered hours",
+        "20 MWh",
+        "1 MW average load",
+        "16.9 t modeled build",
+        "30,000 missions",
+        "operational electricity",
+        "UK Government 2026",
+        "energy-driven",
+        "proxy-sensitive",
+        "electricity boundary sensitivity"
+      ],
+      "related": [
+        3,
+        2,
+        50
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "science-fiction",
+          "entityType": "machine",
+          "scaleClass": "variable",
+          "mobilityClass": "mobile",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "Energy + machine: electricity, maintenance and allocated build.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation",
+            "maintenance",
+            "replacement",
+            "end-of-life"
+          ],
+          "excludedStages": [
+            "other"
+          ],
+          "temporalContext": "One round-trip mission with two temporal legs, two completed materialisations and 20 powered hours.",
+          "geographicContext": "London 2026 to London 3026 and back to the same departure place and date.",
+          "technologyContext": "speculative-engineering",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model ends after return rematerialisation and safe delivery of all six occupants; dimensional transcendence, vortex or black-hole energy, unknown interior rooms, destination consequences and avoided travel remain excluded."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 3.7,
+          "unit": "t CO₂e",
+          "normalizedKgCO2e": 3700,
+          "hotspotStage": "energy",
+          "hotspotSharePercent": 99.77
+        },
+        "model": {
+          "archetype": "operational-system",
+          "primaryDriver": "energy",
+          "secondaryDrivers": [
+            "operation",
+            "materials"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 4,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
+    },
+    {
       "number": 3,
       "slug": "delorean-time-machine",
       "title": "DeLorean Time Machine",

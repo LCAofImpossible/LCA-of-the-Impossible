@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">TARDIS technical reconstruction plate</title>
+  <desc id="desc">An engineering schematic contrasts the 3.05 metre high exterior and 7.19 cubic metre bounding volume with a 12 metre diameter, 6.5 metre high, 735 cubic metre visible control-room proxy and 16.9 tonne minimum surrogate.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#071019"/><stop offset="1" stop-color="#0b1622"/></linearGradient>
+    <pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#234557" stroke-width="1" opacity=".34"/></pattern>
+    <marker id="dim" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto"><path d="M0 4L8 0V8Z" fill="#6de7ff"/></marker>
+  </defs>
+  <rect width="1200" height="760" rx="20" fill="url(#bg)"/>
+  <rect width="1200" height="760" rx="20" fill="url(#grid)"/>
+  <rect x="28" y="28" width="1144" height="704" rx="14" fill="none" stroke="#d0a563" stroke-width="2"/>
+  <text x="70" y="82" fill="#6de7ff" font-family="Arial, sans-serif" font-size="18" letter-spacing="4">S01 / EP04 / TECHNICAL PLATE</text>
+  <text x="70" y="132" fill="#eef7fb" font-family="Georgia, serif" font-size="40">Small outside. Minimum inside.</text>
+  <text x="70" y="168" fill="#9ab0bc" font-family="Arial, sans-serif" font-size="17">Only the visible control room is physically proxied</text>
+
+  <g transform="translate(70 190)" fill="none" stroke-linejoin="round" font-family="Arial, sans-serif">
+    <text x="155" y="12" text-anchor="middle" fill="#d0a563" stroke="none" font-size="14" letter-spacing="1.7">EXTERIOR BOUND</text>
+    <path d="M104 74H206L225 112V358H85V112Z" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <rect x="98" y="128" width="114" height="54" fill="#112232" stroke="#6de7ff" stroke-width="2"/>
+    <path d="M98 202H212M98 251H212M98 300H212M127 128V358M183 128V358" stroke="#234557" stroke-width="2"/>
+    <path d="M136 74V45H174V74M146 45V22H164V45" stroke="#d0a563" stroke-width="3"/>
+
+    <path d="M42 74V358" stroke="#6de7ff" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <path d="M42 74H84M42 358H84" stroke="#6de7ff" stroke-width="2"/>
+    <text x="22" y="224" text-anchor="middle" fill="#6de7ff" stroke="none" font-size="21" transform="rotate(-90 22 224)">3.05 m HEIGHT</text>
+    <path d="M85 382H225" stroke="#6de7ff" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <path d="M85 358V397M225 358V397" stroke="#6de7ff" stroke-width="2"/>
+    <text x="155" y="416" text-anchor="middle" fill="#6de7ff" stroke="none" font-size="21">1.535 m WIDTH</text>
+    <rect x="48" y="432" width="214" height="72" rx="10" fill="#112232" stroke="#234557"/>
+    <text x="66" y="460" fill="#9ab0bc" stroke="none" font-size="14" letter-spacing="1.3">BOUNDING VOLUME</text>
+    <text x="66" y="491" fill="#eef7fb" stroke="none" font-size="27" font-weight="700">7.19 m³</text>
+  </g>
+
+  <g transform="translate(420 185)" font-family="Arial, sans-serif">
+    <text x="255" y="12" text-anchor="middle" fill="#d0a563" font-size="14" letter-spacing="1.7">VISIBLE CONTROL-ROOM PROXY</text>
+    <ellipse cx="255" cy="270" rx="222" ry="172" fill="#0d1b27" stroke="#eef7fb" stroke-width="4"/>
+    <ellipse cx="255" cy="270" rx="178" ry="132" fill="#071019" stroke="#234557" stroke-width="2" stroke-dasharray="8 9"/>
+    <circle cx="255" cy="270" r="78" fill="#112232" stroke="#6de7ff" stroke-width="3"/>
+    <circle cx="255" cy="270" r="40" fill="#071019" stroke="#d0a563" stroke-width="3"/>
+    <path d="M255 98V442M33 270H477M98 148L412 392M98 392L412 148" stroke="#234557" stroke-width="2"/>
+    <path d="M33 435H477" stroke="#6de7ff" stroke-width="2" marker-start="url(#dim)" marker-end="url(#dim)"/>
+    <path d="M33 410V450M477 410V450" stroke="#6de7ff" stroke-width="2"/>
+    <text x="255" y="470" text-anchor="middle" fill="#6de7ff" font-size="21">12 m DIAMETER</text>
+    <text x="255" y="500" text-anchor="middle" fill="#9ab0bc" font-size="16">6.5 m HIGH · 735 m³</text>
+  </g>
+
+  <g transform="translate(940 190)" font-family="Arial, sans-serif">
+    <rect width="190" height="358" rx="14" fill="#112232" stroke="#234557" stroke-width="2"/>
+    <text x="18" y="38" fill="#6de7ff" font-size="14" letter-spacing="1.6">MODEL DATUM</text>
+    <line x1="18" y1="58" x2="172" y2="58" stroke="#234557"/>
+    <text x="18" y="95" fill="#9ab0bc" font-size="14">MINIMUM BUILD</text>
+    <text x="18" y="128" fill="#eef7fb" font-size="27" font-weight="700">16.9 t</text>
+    <text x="18" y="178" fill="#9ab0bc" font-size="14">ALLOCATED LIFE</text>
+    <text x="18" y="211" fill="#eef7fb" font-size="27" font-weight="700">30,000</text>
+    <text x="18" y="236" fill="#9ab0bc" font-size="14">missions</text>
+    <text x="18" y="286" fill="#d0a563" font-size="13" letter-spacing="1.3">TRUE INTERIOR</text>
+    <text x="18" y="316" fill="#eef7fb" font-size="18">UNKNOWN</text>
+    <text x="18" y="340" fill="#9ab0bc" font-size="13">not modelled</text>
+  </g>
+
+  <g transform="translate(70 704)" font-family="Arial, sans-serif">
+    <rect width="1060" height="26" rx="8" fill="#071019" stroke="#d0a563" stroke-width="2"/>
+    <text x="530" y="18" text-anchor="middle" fill="#eef7fb" font-size="11">PHYSICAL PROXY · NO CLAIM ABOUT DIMENSIONAL TRANSCENDENCE</text>
+  </g>
+</svg>
