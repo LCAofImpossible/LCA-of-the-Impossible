@@ -23,6 +23,7 @@ GRAPHIC_PATTERNS = (
 CORE_PATHS = {
     "index.html",
     "archive.html",
+    "lab.html",
     "collections.html",
     "compare.html",
     "explore.html",
@@ -50,6 +51,7 @@ CORE_PATHS = {
     "assets/method.css",
     "assets/seasons.css",
     "assets/statistics.css",
+    "assets/lab.css",
     "assets/atlas.css",
     "assets/compare.css",
     "assets/phase6.css",
@@ -57,6 +59,7 @@ CORE_PATHS = {
     "assets/site.js",
     "assets/seasons.js",
     "assets/statistics.js",
+    "assets/lab.js",
     "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
@@ -441,6 +444,53 @@ def validate(
             if token not in source:
                 errors.append(f"RSS/accessory live contract is missing {token!r} from {path}")
 
+    lab_contract = {
+        "lab.html": (
+            "IMPOSSIBLE LAB · EXPERIMENT 01",
+            "Guess the <span>Impossible.</span>",
+            'id="lab-clue-list"',
+            'id="lab-answer-form"',
+            'id="lab-result"',
+            "assets/lab.css?v=20260908-impossible-lab1",
+            "assets/lab.js?v=20260908-impossible-lab1",
+        ),
+        "assets/lab.js": (
+            "registry.episodes",
+            "const SCORE_STEPS = [500, 400, 300, 200, 100]",
+            "episode.seasonLabel",
+            "episode.lcaCharacteristics",
+            "episode.result",
+            "episode.functionalUnit",
+            "episode.subjectDescription",
+            "titlePattern(episode.title)",
+            "state.unused.splice",
+        ),
+        "assets/lab.css": (
+            ".lab-workspace",
+            ".lab-clue.is-current",
+            ".lab-result[hidden]",
+            ".lab-home-preview",
+            "@media(max-width:760px)",
+        ),
+        "index.html": (
+            "LAB-HOME:START",
+            'href="lab.html"',
+            "assets/lab.css?v=20260908-impossible-lab1",
+        ),
+    }
+    for path, required_tokens in lab_contract.items():
+        source = downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for token in required_tokens:
+            if token not in source:
+                errors.append(f"Impossible Lab live contract is missing {token!r} from {path}")
+
+    lab_runtime = downloaded.get("assets/lab.js", b"").decode("utf-8", errors="replace")
+    for forbidden in ("document.cookie", "localStorage", "sessionStorage", "assets/images/episodes/"):
+        if forbidden in lab_runtime:
+            errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
+    if sitemap.count(f"/{'lab.html'}") != 1:
+        errors.append("Impossible Lab does not occur exactly once in the live sitemap")
+
     updates_script = downloaded.get("assets/updates.js", b"").decode(
         "utf-8", errors="replace"
     )
@@ -576,6 +626,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
+    print("- Impossible Lab registry coverage, clue sequence and scoring contract: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

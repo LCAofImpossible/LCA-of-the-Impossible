@@ -123,6 +123,7 @@ def main() -> int:
 
     check_public_page(ROOT / "index.html", BASE_URL, latest_image, "website", "WebSite")
     check_public_page(ROOT / "archive.html", BASE_URL + "archive.html", latest_image, "website", "CollectionPage")
+    check_public_page(ROOT / "lab.html", BASE_URL + "lab.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "method.html", BASE_URL + "method.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "compare.html", BASE_URL + "compare.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "explore.html", BASE_URL + "explore.html", latest_image, "website", "CollectionPage")
@@ -183,6 +184,7 @@ def main() -> int:
     expected_urls = {
         BASE_URL,
         BASE_URL + "archive.html",
+        BASE_URL + "lab.html",
         BASE_URL + "method.html",
         BASE_URL + "compare.html",
         BASE_URL + "explore.html",

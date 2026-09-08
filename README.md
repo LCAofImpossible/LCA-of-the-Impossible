@@ -373,9 +373,10 @@ Canonical sequence:
 2. compact project-format strip;
 3. Latest Analysis / Latest Case;
 4. Recent Cases;
-5. Method and process;
-6. Series framing;
-7. Book section.
+5. Impossible Lab preview;
+6. Method and process;
+7. Series framing;
+8. Book section.
 
 `assets/site.js` reads `episodes.json`; do not manually duplicate Latest Case or Recent Cases content in `index.html`.
 
@@ -610,7 +611,7 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, `lab.html`, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -622,7 +623,7 @@ Required on `index.html`, `archive.html`, `method.html`, both dedicated season p
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Impossible Lab, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1010,7 +1011,9 @@ Phase 5 turns the website from an episode archive into a self-explaining editori
 
 Every public page and every episode page uses the same primary navigation:
 
-`Episodes · Explore · Method · About`
+`Episodes · Lab · Explore · Method · About`
+
+`Lab` links to the canonical `Impossible Lab` game hub.
 
 `Explore` contains:
 
@@ -1083,7 +1086,7 @@ Phase 5 canonical files:
 
 ### Phase 5 QA
 
-- [ ] Every public root page uses the canonical global navigation.
+- [ ] Every public root page uses the canonical global navigation, including the Lab entry point.
 - [ ] Every published episode page uses the canonical global navigation after synchronization.
 - [ ] `Explore` links to Collections, Compare, Atlas, Statistics, Updates & RSS, Sources & Data and Glossary.
 - [ ] `sources.html`, `about.html` and `glossary.html` are public, responsive and linked from the site.
@@ -1614,3 +1617,58 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 - [ ] The feed and page expose no source-PDF link or comparative performance claim.
 
 <!-- ACCESSORY-RULES:END -->
+
+---
+
+<!-- IMPOSSIBLE-LAB-RULES:START -->
+
+## 39. Impossible Lab and registry-driven games — mandatory
+
+`lab.html` is the canonical game hub for **Impossible Lab**. The first published experiment is **Guess the Impossible**. Games must operate across the complete published archive rather than create separate implementations for individual episodes.
+
+### 39.1 Guess the Impossible
+
+The game selects one eligible record from `episodes.json` and reveals five clues in this fixed order:
+
+1. `Season` — the registered `seasonLabel`;
+2. `Inventory` — registered model drivers or, where structured metadata is unavailable, the approved LCA lens and characteristics;
+3. `Impact` — the registered headline `result` and `hotspot`;
+4. `Function` — the registered `functionalUnit` or reporting basis;
+5. `Final clue` — the registered `subjectDescription`, with the episode title redacted where it occurs.
+
+Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. Score and streak are session-only interface state and must not create visitor identifiers, cookies or browser-storage tracking.
+
+### 39.2 Registry and editorial guardrails
+
+- Every currently eligible episode and every future complete registry record enters the game automatically.
+- Episode titles, clues, results, links and counts must never be duplicated in `lab.html` or hard-coded in `assets/lab.js`.
+- The game may reformat approved registry values for readability but must not invent a result, assumption, inventory flow, comparison or ranking.
+- Guessing performance scores the player only. It never ranks cases or implies that unlike functional units are environmentally comparable.
+- Catalogue covers remain limited to Homepage and Archive. Impossible Lab results are text-only and link to the canonical episode page.
+- The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
+- A registry failure must leave a clear error state and a working link to the Archive.
+
+### 39.3 Canonical files and automation
+
+- `lab.html` — Impossible Lab hub and complete game interface;
+- `assets/lab.css` — responsive technical game presentation and homepage preview;
+- `assets/lab.js` — registry loading, clue generation, scoring and round state;
+- `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
+- `scripts/lab_qa.py` — registry coverage, gameplay, accessibility, privacy and publication checks.
+
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs `lab_qa.py` as part of the mandatory read-only publication gate. GitHub Pages live QA compares the Lab page and both Lab assets byte-for-byte with the checked-out publication.
+
+### Impossible Lab QA
+
+- [ ] Every eligible registry record supplies all five clue sources.
+- [ ] The first clue is available as soon as the registry loads.
+- [ ] Five scoring levels are exactly `500`, `400`, `300`, `200` and `100`.
+- [ ] Wrong answers and manual reveals progress through the same ordered clue sequence.
+- [ ] The title is redacted from the final clue where present.
+- [ ] No episode title or clue dataset is hard-coded into the game runtime.
+- [ ] The answer and case result use text-only registry data and the canonical episode URL.
+- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include `lab.html`.
+- [ ] Failure and no-JavaScript states retain access to the Archive.
+- [ ] Desktop and mobile layouts have no unintended horizontal overflow.
+
+<!-- IMPOSSIBLE-LAB-RULES:END -->

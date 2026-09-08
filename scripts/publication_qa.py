@@ -28,6 +28,7 @@ SYNC_SCRIPTS = (
     "feature_sync.py",
     "engagement_sync.py",
     "phase5_sync.py",
+    "lab_sync.py",
     "phase6_sync.py",
     "epic_passport_sync.py",
     "telemetry_sync.py",
@@ -53,6 +54,7 @@ QA_SCRIPTS = (
     "editorial_paths_qa.py",
     "subject_descriptions_qa.py",
     "rss_qa.py",
+    "lab_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

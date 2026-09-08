@@ -17,6 +17,12 @@
   ],
   "shortcuts": [
     {
+      "name": "Impossible Lab",
+      "short_name": "Lab",
+      "description": "Play Guess the Impossible across the published episode archive.",
+      "url": "/LCA-of-the-Impossible/lab.html"
+    },
+    {
       "name": "Latest updates",
       "short_name": "Updates",
       "description": "Open the latest LCA of the Impossible episodes and RSS feed.",

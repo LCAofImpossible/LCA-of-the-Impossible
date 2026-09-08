@@ -11,11 +11,11 @@ BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 errors: list[str] = []
 
 ROOT_PAGES = [
-    "index.html", "archive.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "lab.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]
-NAV_LABELS = ["Episodes", "Explore", "Method", "About"]
+NAV_LABELS = ["Episodes", "Lab", "Explore", "Method", "About"]
 EXPLORE_LINKS = ["collections.html", "compare.html", "explore.html", "statistics.html", "updates.html", "sources.html", "glossary.html"]
 
 
@@ -49,6 +49,8 @@ def check_nav(path: Path) -> None:
             fail(f"{path.relative_to(ROOT)}: Explore navigation missing {href}")
     if f'href="{prefix}archive.html"' not in nav:
         fail(f"{path.relative_to(ROOT)}: Episodes link is not canonical")
+    if f'href="{prefix}lab.html"' not in nav:
+        fail(f"{path.relative_to(ROOT)}: Lab link is not canonical")
     if f'href="{prefix}method.html"' not in nav:
         fail(f"{path.relative_to(ROOT)}: Method link is not canonical")
     if f'href="{prefix}about.html"' not in nav:

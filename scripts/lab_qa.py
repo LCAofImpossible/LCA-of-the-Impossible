@@ -1,0 +1,202 @@
+#!/usr/bin/env python3
+"""Validate Impossible Lab registry coverage, gameplay and publication wiring."""
+
+from __future__ import annotations
+
+import json
+import re
+import sys
+import xml.etree.ElementTree as ET
+from pathlib import Path
+
+
+ROOT = Path(__file__).resolve().parents[1]
+BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
+VERSION = "20260908-impossible-lab1"
+REQUIRED_FIELDS = (
+    "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
+    "result", "hotspot", "functionalUnit", "subjectDescription",
+)
+errors: list[str] = []
+
+
+def fail(message: str) -> None:
+    errors.append(message)
+
+
+def read(path: str) -> str:
+    target = ROOT / path
+    if not target.is_file():
+        fail(f"Missing file: {path}")
+        return ""
+    return target.read_text(encoding="utf-8")
+
+
+def check_registry() -> int:
+    try:
+        registry = json.loads(read("episodes.json") or "{}")
+    except json.JSONDecodeError as exc:
+        fail(f"episodes.json is invalid JSON: {exc}")
+        return 0
+    episodes = registry.get("episodes")
+    if not isinstance(episodes, list) or not episodes:
+        fail("episodes.json contains no playable episode records")
+        return 0
+    for episode in episodes:
+        number = episode.get("number", "?") if isinstance(episode, dict) else "?"
+        if not isinstance(episode, dict):
+            fail("episodes.json contains a non-object episode record")
+            continue
+        for field in REQUIRED_FIELDS:
+            value = episode.get(field)
+            valid = bool(value) if not isinstance(value, list) else bool(value)
+            if not valid:
+                fail(f"Episode #{number}: Impossible Lab clue source {field} is missing")
+    return len(episodes)
+
+
+def check_page(episode_count: int) -> None:
+    text = read("lab.html")
+    required = (
+        'data-page="lab"',
+        "IMPOSSIBLE LAB · EXPERIMENT 01",
+        "Guess the <span>Impossible.</span>",
+        'id="lab-clue-list"',
+        'id="lab-answer-form"',
+        'id="lab-answer-input"',
+        'id="lab-reveal"',
+        'id="lab-result"',
+        'aria-live="assertive"',
+        'href="archive.html"',
+        f"assets/lab.css?v={VERSION}",
+        f"assets/lab.js?v={VERSION}",
+        "assets/telemetry.css?v=20260820-telemetry1",
+        "assets/telemetry.js?v=20260820-telemetry1",
+        'type="application/rss+xml"',
+        'href="feed.xml"',
+    )
+    for token in required:
+        if token not in text:
+            fail(f"lab.html: required token missing: {token}")
+    if text.count('data-clue-index=') != 5:
+        fail("lab.html must expose exactly five ordered clue slots")
+    body = text.split("<body", 1)[-1]
+    if "assets/images/episodes/" in body:
+        fail("lab.html renders a catalogue cover in the page body")
+    if re.search(rf'>\s*{episode_count}\s*<', body):
+        fail("lab.html hard-codes the current episode count")
+
+
+def check_runtime() -> None:
+    text = read("assets/lab.js")
+    required = (
+        "const SCORE_STEPS = [500, 400, 300, 200, 100]",
+        "const CLUE_LABELS = ['Season', 'Inventory', 'Impact', 'Function', 'Final clue']",
+        "registry.episodes",
+        "fetch('episodes.json'",
+        "episode.seasonLabel",
+        "episode.lcaLabel",
+        "episode.lcaCharacteristics",
+        "episode.result",
+        "episode.hotspot",
+        "episode.functionalUnit",
+        "episode.subjectDescription",
+        "structuredMetadata?.model",
+        "titlePattern(episode.title)",
+        "replaceChildren(fragment)",
+        "showResult(true, SCORE_STEPS[state.clueIndex])",
+        "showResult(false)",
+        "state.unused.splice",
+        "credentials: 'same-origin'",
+    )
+    for token in required:
+        if token not in text:
+            fail(f"assets/lab.js: required gameplay token missing: {token}")
+    for forbidden in ("document.cookie", "localStorage", "sessionStorage", "assets/images/episodes/"):
+        if forbidden in text:
+            fail(f"assets/lab.js: forbidden persistence or cover token present: {forbidden}")
+    registry = json.loads(read("episodes.json") or "{}")
+    for episode in registry.get("episodes", []):
+        title = episode.get("title")
+        if isinstance(title, str) and len(title) > 3 and title in text:
+            fail(f"assets/lab.js hard-codes an episode title: {title}")
+
+
+def check_styles() -> None:
+    text = read("assets/lab.css")
+    for token in (
+        ".lab-shell", ".lab-workspace", ".lab-clue.is-locked", ".lab-clue.is-current",
+        ".lab-result[hidden]", ".lab-home-preview", "@media(max-width:760px)",
+        "@media(prefers-reduced-motion:reduce)",
+    ):
+        if token not in text:
+            fail(f"assets/lab.css: required responsive token missing: {token}")
+
+
+def check_discovery() -> None:
+    home = read("index.html")
+    for token in ("LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', f"assets/lab.css?v={VERSION}"):
+        if token not in home:
+            fail(f"index.html: Impossible Lab entry point missing {token}")
+
+    sitemap = read("sitemap.xml")
+    try:
+        root = ET.fromstring(sitemap)
+    except ET.ParseError as exc:
+        fail(f"sitemap.xml is invalid XML: {exc}")
+    else:
+        ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+        urls = [node.text for node in root.findall("sm:url/sm:loc", ns)]
+        if urls.count(BASE_URL + "lab.html") != 1:
+            fail("sitemap.xml must contain lab.html exactly once")
+
+    manifest = read("site.webmanifest")
+    if "/LCA-of-the-Impossible/lab.html" not in manifest:
+        fail("site.webmanifest must expose the Impossible Lab shortcut")
+
+    for script, tokens in {
+        "scripts/phase5_sync.py": ('"lab.html"', 'href="{prefix}lab.html"'),
+        "scripts/telemetry_sync.py": ('"lab.html"',),
+        "scripts/rss_sync.py": ('"lab.html"',),
+        "scripts/live_site_qa.py": ('"lab.html"', '"assets/lab.css"', '"assets/lab.js"'),
+        "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"'),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "lab.html"),
+    }.items():
+        source = read(script)
+        for token in tokens:
+            if token not in source:
+                fail(f"{script}: Impossible Lab publication token missing: {token}")
+
+
+def check_readme() -> None:
+    text = read("README.md")
+    for token in (
+        "## 39. Impossible Lab and registry-driven games — mandatory",
+        "Guess the Impossible",
+        "500 → 400 → 300 → 200 → 100",
+        "Catalogue covers remain limited to Homepage and Archive",
+        "scripts/lab_qa.py",
+    ):
+        if token not in text:
+            fail(f"README.md: Impossible Lab rule missing: {token}")
+
+
+def main() -> int:
+    count = check_registry()
+    check_page(count)
+    check_runtime()
+    check_styles()
+    check_discovery()
+    check_readme()
+
+    if errors:
+        for error in errors:
+            print(f"ERROR: {error}", file=sys.stderr)
+        print(f"\nImpossible Lab QA failed with {len(errors)} error(s).", file=sys.stderr)
+        return 1
+    print(f"Impossible Lab QA: PASS ({count} registry-driven cases)")
+    return 0
+
+
+if __name__ == "__main__":
+    raise SystemExit(main())
