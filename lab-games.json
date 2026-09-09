@@ -16,6 +16,14 @@
       "description": "Solve the archive",
       "url": "lab-crossword.html",
       "status": "live"
+    },
+    {
+      "id": "alphabet",
+      "number": 3,
+      "title": "The Impossible Alphabet",
+      "description": "Race through the letters",
+      "url": "lab-alphabet.html",
+      "status": "live"
     }
   ]
 }

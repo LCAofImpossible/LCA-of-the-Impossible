@@ -25,6 +25,7 @@ CORE_PATHS = {
     "archive.html",
     "lab.html",
     "lab-crossword.html",
+    "lab-alphabet.html",
     "collections.html",
     "compare.html",
     "explore.html",
@@ -56,6 +57,7 @@ CORE_PATHS = {
     "assets/statistics.css",
     "assets/lab.css",
     "assets/crossword.css",
+    "assets/alphabet.css",
     "assets/atlas.css",
     "assets/compare.css",
     "assets/phase6.css",
@@ -67,6 +69,7 @@ CORE_PATHS = {
     "assets/lab-nav.js",
     "assets/crossword-generator.js",
     "assets/crossword.js",
+    "assets/alphabet.js",
     "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
@@ -458,8 +461,8 @@ def validate(
             'id="lab-clue-list"',
             'id="lab-answer-form"',
             'id="lab-result"',
-            "assets/lab.css?v=20260909-crossword1",
-            "assets/lab-nav.js?v=20260909-crossword1",
+            "assets/lab.css?v=20260909-alphabet1",
+            "assets/lab-nav.js?v=20260909-alphabet1",
             "assets/lab.js?v=20260908-impossible-lab1",
         ),
         "lab-crossword.html": (
@@ -471,6 +474,17 @@ def validate(
             "assets/crossword.css?v=20260909-crossword1",
             "assets/crossword-generator.js?v=20260909-crossword1",
             "assets/crossword.js?v=20260909-crossword1",
+        ),
+        "lab-alphabet.html": (
+            "IMPOSSIBLE LAB · EXPERIMENT 03",
+            "The Impossible <span>Alphabet.</span>",
+            'id="alphabet-wheel"',
+            'id="alphabet-answer-form"',
+            'id="alphabet-result"',
+            "assets/lab.css?v=20260909-alphabet1",
+            "assets/alphabet.css?v=20260909-alphabet1",
+            "assets/lab-nav.js?v=20260909-alphabet1",
+            "assets/alphabet.js?v=20260909-alphabet1",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -495,7 +509,8 @@ def validate(
             "LAB-HOME:START",
             'href="lab.html"',
             'href="lab-crossword.html"',
-            "assets/lab.css?v=20260909-crossword1",
+            'href="lab-alphabet.html"',
+            "assets/lab.css?v=20260909-alphabet1",
         ),
         "assets/crossword-generator.js": (
             "seededRandom",
@@ -517,6 +532,23 @@ def validate(
             ".crossword-clue.is-correct",
             "@media(max-width:1180px)",
         ),
+        "assets/alphabet.js": (
+            "const ROUND_SECONDS = 90",
+            "const MAX_LETTERS = 18",
+            "const BASE_POINTS = 100",
+            "const STREAK_STEP = 25",
+            "fetch('crossword.json'",
+            ".status = 'passed'",
+            "finishRound('time')",
+            "entry.episode.url",
+        ),
+        "assets/alphabet.css": (
+            ".alphabet-wheel",
+            ".alphabet-letter.is-active",
+            ".alphabet-letter.is-passed",
+            ".alphabet-result[hidden]",
+            "@media(max-width:760px)",
+        ),
     }
     for path, required_tokens in lab_contract.items():
         source = downloaded.get(path, b"").decode("utf-8", errors="replace")
@@ -530,7 +562,7 @@ def validate(
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
     crossword_runtime = "\n".join(
         downloaded.get(path, b"").decode("utf-8", errors="replace")
-        for path in ("assets/crossword.js", "assets/lab-nav.js")
+        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/lab-nav.js")
     )
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:
@@ -549,12 +581,14 @@ def validate(
             for game in game_registry.get("games", [])
             if isinstance(game, dict)
         }
-        if game_status.get("guess") != "live" or game_status.get("crossword") != "live":
-            errors.append("Both live Impossible Lab experiments are not registered")
+        if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet")):
+            errors.append("All three live Impossible Lab experiments are not registered")
     if sitemap.count(f"/{'lab.html'}") != 1:
         errors.append("Impossible Lab does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-crossword.html") != 1:
         errors.append("Cross the Impossible does not occur exactly once in the live sitemap")
+    if sitemap.count("/lab-alphabet.html") != 1:
+        errors.append("The Impossible Alphabet does not occur exactly once in the live sitemap")
 
     updates_script = downloaded.get("assets/updates.js", b"").decode(
         "utf-8", errors="replace"
@@ -691,7 +725,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
-    print("- Impossible Lab guessing and crossword registries, generation and scoring contracts: **PASS**")
+    print("- Impossible Lab guessing, crossword and alphabet generation and scoring contracts: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

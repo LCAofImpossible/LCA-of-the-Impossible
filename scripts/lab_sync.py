@@ -12,15 +12,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260909-crossword1"
+LAB_CSS_VERSION = "20260909-alphabet1"
 GUESS_VERSION = "20260908-impossible-lab1"
 CROSSWORD_VERSION = "20260909-crossword1"
+NAV_VERSION = "20260909-alphabet1"
+ALPHABET_VERSION = "20260909-alphabet1"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
 SEO_END = "<!-- LAB-SEO:END -->"
 CROSSWORD_SEO_START = "<!-- CROSSWORD-SEO:START -->"
 CROSSWORD_SEO_END = "<!-- CROSSWORD-SEO:END -->"
+ALPHABET_SEO_START = "<!-- ALPHABET-SEO:START -->"
+ALPHABET_SEO_END = "<!-- ALPHABET-SEO:END -->"
 README_START = "<!-- IMPOSSIBLE-LAB-RULES:START -->"
 README_END = "<!-- IMPOSSIBLE-LAB-RULES:END -->"
 
@@ -40,23 +44,24 @@ def home_block() -> str:
     <section class="section small-section-title lab-home-preview" id="impossible-lab">
       <div class="section-heading">
         <div><p class="eyebrow">IMPOSSIBLE LAB</p><h2>Play the archive.</h2></div>
-        <p class="section-note">Two registry-driven experiments. Every published episode. Grids are generated automatically.</p>
+        <p class="section-note">Three registry-driven experiments. Every published episode. Challenges are assembled automatically.</p>
       </div>
       <div class="lab-home-grid">
         <div class="lab-home-copy">
-          <p class="eyebrow">EXPERIMENTS 01–02</p>
-          <h3>Guess it. Cross it.</h3>
-          <p>Identify one case from progressive LCA signals or solve ten subjects through narrative and cultural clues.</p>
+          <p class="eyebrow">EXPERIMENTS 01–03</p>
+          <h3>Guess it. Cross it. Race it.</h3>
+          <p>Identify one case from progressive LCA signals, solve a connected grid or race through the archive alphabet.</p>
           <div class="lab-home-actions">
             <a class="button" href="lab.html">Guess the Impossible →</a>
             <a class="button secondary" href="lab-crossword.html">Cross the Impossible →</a>
+            <a class="button secondary" href="lab-alphabet.html">The Impossible Alphabet →</a>
           </div>
         </div>
         <div class="lab-home-terminal" aria-label="Impossible Lab experiment summary">
           <span><b>01</b> FIVE PROGRESSIVE SIGNALS</span>
           <span><b>01</b> UP TO 500 POINTS</span>
           <span><b>02</b> TEN CONNECTED CASES</span>
-          <span><b>02</b> NARRATIVE CLUES ONLY</span>
+          <span><b>03</b> NINETY-SECOND LETTER CIRCUIT</span>
           <span><b>LAB</b> LCA RECORD AFTER SOLUTION</span>
         </div>
       </div>
@@ -189,6 +194,55 @@ def crossword_seo_block(latest: dict) -> str:
     ])
 
 
+def alphabet_seo_block(latest: dict) -> str:
+    title = "The Impossible Alphabet — Impossible Lab"
+    description = "Play The Impossible Alphabet: race through narrative clues drawn automatically from every published case in the LCA of the Impossible archive."
+    social_description = "Answer, pass and return: identify an impossible subject for every active initial before ninety seconds expire."
+    canonical = BASE_URL + "lab-alphabet.html"
+    image = BASE_URL + latest["cover"]
+    image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "The Impossible Alphabet",
+        "url": canonical,
+        "description": description,
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LCA of the Impossible",
+            "url": BASE_URL,
+        },
+    }
+    return "\n".join([
+        ALPHABET_SEO_START,
+        f'  <meta name="description" content="{html.escape(description, quote=True)}">',
+        '  <meta name="robots" content="index,follow,max-image-preview:large">',
+        '  <meta name="theme-color" content="#071019">',
+        f'  <link rel="canonical" href="{canonical}">',
+        '  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="manifest" href="site.webmanifest">',
+        '  <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">',
+        '  <meta property="og:site_name" content="LCA of the Impossible">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta property="og:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta property="og:url" content="{canonical}">',
+        f'  <meta property="og:image" content="{image}">',
+        f'  <meta property="og:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <meta property="og:locale" content="en_US">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta name="twitter:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta name="twitter:image" content="{image}">',
+        f'  <meta name="twitter:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <script type="application/ld+json">',
+        json.dumps(json_ld, ensure_ascii=False, indent=2),
+        '  </script>',
+        ALPHABET_SEO_END,
+    ])
+
+
 def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     registry = json.loads((ROOT / "episodes.json").read_text(encoding="utf-8"))
     latest = max(registry["episodes"], key=lambda episode: episode["number"])
@@ -210,20 +264,35 @@ def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     crossword_updated = re.sub(crossword_pattern, crossword_block, crossword_text, flags=re.S)
     write_if_changed(crossword_path, crossword_updated, check, changed)
 
+    alphabet_path = ROOT / "lab-alphabet.html"
+    alphabet_text = alphabet_path.read_text(encoding="utf-8")
+    alphabet_block = alphabet_seo_block(latest)
+    alphabet_pattern = rf"{re.escape(ALPHABET_SEO_START)}.*?{re.escape(ALPHABET_SEO_END)}"
+    if not re.search(alphabet_pattern, alphabet_text, flags=re.S):
+        raise RuntimeError("Missing The Impossible Alphabet SEO markers")
+    alphabet_updated = re.sub(alphabet_pattern, alphabet_block, alphabet_text, flags=re.S)
+    write_if_changed(alphabet_path, alphabet_updated, check, changed)
+
 
 def update_game_assets(check: bool, changed: list[Path]) -> None:
     contracts = {
         "lab.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab.js": GUESS_VERSION,
-            "assets/lab-nav.js": CROSSWORD_VERSION,
+            "assets/lab-nav.js": NAV_VERSION,
         },
         "lab-crossword.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/crossword.css": CROSSWORD_VERSION,
-            "assets/lab-nav.js": CROSSWORD_VERSION,
+            "assets/lab-nav.js": NAV_VERSION,
             "assets/crossword-generator.js": CROSSWORD_VERSION,
             "assets/crossword.js": CROSSWORD_VERSION,
+        },
+        "lab-alphabet.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/alphabet.css": ALPHABET_VERSION,
+            "assets/lab-nav.js": NAV_VERSION,
+            "assets/alphabet.js": ALPHABET_VERSION,
         },
     }
     for filename, assets in contracts.items():
@@ -238,7 +307,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
 def update_sitemap(check: bool, changed: list[Path]) -> None:
     path = ROOT / "sitemap.xml"
     text = path.read_text(encoding="utf-8")
-    urls = [BASE_URL + "lab.html", BASE_URL + "lab-crossword.html"]
+    urls = [BASE_URL + "lab.html", BASE_URL + "lab-crossword.html", BASE_URL + "lab-alphabet.html"]
     updated = text
     for url in urls:
         updated = re.sub(rf'\s*<url><loc>{re.escape(url)}</loc></url>', '', updated)
@@ -254,7 +323,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible** and **Cross the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible**, **Cross the Impossible** and **The Impossible Alphabet**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 ### 39.1 Guess the Impossible
 
@@ -281,30 +350,48 @@ Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unloc
 
 The crossword score is session-only. It creates no account, leaderboard, cookie or browser-storage record.
 
-### 39.3 Registry and editorial guardrails
+### 39.3 The Impossible Alphabet
+
+`lab-alphabet.html` joins `crossword.json` with `episodes.json`, groups every eligible subject by the initial of its approved crossword answer and selects one case for up to `18` active initials per round:
+
+- available initials rotate automatically when the archive eventually contains more than `18` distinct letters;
+- the timer begins only after an explicit start and lasts exactly `90` seconds;
+- a correct answer awards `100` base points;
+- consecutive correct answers add `25` points per streak step, capped at a `100`-point bonus for one answer;
+- a wrong answer reveals the approved answer and resets the streak;
+- `Pass` keeps the letter unresolved and returns it after the rest of the circuit;
+- the round ends when every letter is resolved or time expires;
+- the final review reveals every answer and links to the canonical episode page.
+
+Every published episode remains eligible for selection. New episodes require no alphabet-specific record: the approved narrative definition already maintained for `crossword.json` supplies the clue, while the registered episode supplies title, season and canonical URL. Scores and selection history remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
+
+### 39.4 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
 - Each newly published episode adds one approved narrative definition to `crossword.json`; the grid and navigation require no manual layout work.
+- The alphabet circuit derives both its letters and questions from `crossword.json`; do not create or maintain a parallel alphabet clue registry.
 - The game may reformat approved registry values for readability but must not invent a result, assumption, inventory flow, comparison or ranking.
 - Guessing performance scores the player only. It never ranks cases or implies that unlike functional units are environmentally comparable.
 - Catalogue covers remain limited to Homepage and Archive. Impossible Lab results are text-only and link to the canonical episode page.
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.4 Canonical files and automation
+### 39.5 Canonical files and automation
 
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
+- `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
 - `lab-games.json` and `assets/lab-nav.js` — shared experiment registry and selector;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
 - `scripts/lab_qa.py` — Guess the Impossible registry coverage, gameplay, accessibility, privacy and publication checks;
 - `scripts/crossword_qa.py` and `scripts/crossword_generator_qa.js` — definition coverage, layout generation, scoring and integration checks.
+- `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs both game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the two game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all three game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the three game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -318,7 +405,11 @@ The crossword score is session-only. It creates no account, leaderboard, cookie 
 - [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
 - [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
 - [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include both game routes.
+- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `90` seconds.
+- [ ] Alphabet scoring is `100` base points plus `25` per consecutive-answer streak step, capped at a `100`-point bonus.
+- [ ] Each round contains no more than 18 active initials; passed letters return, wrong answers reset the streak and the final review links every answer to its canonical episode.
+- [ ] The alphabet reuses `crossword.json` and introduces no duplicate clue registry.
+- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include all three game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

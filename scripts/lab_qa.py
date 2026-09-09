@@ -12,9 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260909-crossword1"
+LAB_CSS_VERSION = "20260909-alphabet1"
 GUESS_VERSION = "20260908-impossible-lab1"
-NAV_VERSION = "20260909-crossword1"
+NAV_VERSION = "20260909-alphabet1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -142,6 +142,7 @@ def check_discovery() -> None:
     home = read("index.html")
     for token in (
         "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', 'href="lab-crossword.html"',
+        'href="lab-alphabet.html"', "Three registry-driven experiments",
         f"assets/lab.css?v={LAB_CSS_VERSION}",
     ):
         if token not in home:
@@ -157,6 +158,8 @@ def check_discovery() -> None:
         urls = [node.text for node in root.findall("sm:url/sm:loc", ns)]
         if urls.count(BASE_URL + "lab.html") != 1:
             fail("sitemap.xml must contain lab.html exactly once")
+        if urls.count(BASE_URL + "lab-alphabet.html") != 1:
+            fail("sitemap.xml must contain lab-alphabet.html exactly once")
 
     manifest = read("site.webmanifest")
     if "/LCA-of-the-Impossible/lab.html" not in manifest:
@@ -182,9 +185,11 @@ def check_readme() -> None:
         "## 39. Impossible Lab and registry-driven games — mandatory",
         "Guess the Impossible",
         "Cross the Impossible",
+        "The Impossible Alphabet",
         "500 → 400 → 300 → 200 → 100",
         "Catalogue covers remain limited to Homepage and Archive",
         "scripts/lab_qa.py",
+        "scripts/alphabet_qa.py",
     ):
         if token not in text:
             fail(f"README.md: Impossible Lab rule missing: {token}")

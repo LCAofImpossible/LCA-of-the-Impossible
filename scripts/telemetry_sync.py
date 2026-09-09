@@ -10,7 +10,7 @@ ASSET_VERSION = "20260820-telemetry1"
 START = "<!-- TELEMETRY-RULES:START -->"
 END = "<!-- TELEMETRY-RULES:END -->"
 ROOT_PAGES = [
-    "index.html", "archive.html", "lab.html", "lab-crossword.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]
