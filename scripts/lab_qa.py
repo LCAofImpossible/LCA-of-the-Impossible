@@ -12,9 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260909-alphabet1"
+LAB_CSS_VERSION = "20260909-alphabet2"
 GUESS_VERSION = "20260908-impossible-lab1"
-NAV_VERSION = "20260909-alphabet1"
+NAV_VERSION = "20260909-alphabet2"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",

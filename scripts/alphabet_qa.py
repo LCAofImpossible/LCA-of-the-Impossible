@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-VERSION = "20260909-alphabet1"
+VERSION = "20260909-alphabet2"
 errors: list[str] = []
 
 
@@ -124,7 +124,7 @@ def check_page() -> None:
         'id="alphabet-result"',
         'id="alphabet-review"',
         'aria-live="assertive"',
-        "Start 90-second round",
+        "Start 3-minute round",
         f"assets/lab.css?v={VERSION}",
         f"assets/alphabet.css?v={VERSION}",
         f"assets/lab-nav.js?v={VERSION}",
@@ -145,7 +145,7 @@ def check_page() -> None:
 def check_runtime() -> None:
     runtime = read("assets/alphabet.js")
     required = (
-        "const ROUND_SECONDS = 90",
+        "const ROUND_SECONDS = 180",
         "const MAX_LETTERS = 18",
         "const BASE_POINTS = 100",
         "const STREAK_STEP = 25",
@@ -209,7 +209,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-alphabet.html exactly once")
 
     home = read("index.html")
-    for token in ('href="lab-alphabet.html"', "Three registry-driven experiments", "NINETY-SECOND LETTER CIRCUIT"):
+    for token in ('href="lab-alphabet.html"', "Three registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
         if token not in home:
             fail(f"index.html: The Impossible Alphabet discovery token missing: {token}")
 

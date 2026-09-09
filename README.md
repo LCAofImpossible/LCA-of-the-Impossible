@@ -1656,7 +1656,7 @@ The crossword score is session-only. It creates no account, leaderboard, cookie 
 `lab-alphabet.html` joins `crossword.json` with `episodes.json`, groups every eligible subject by the initial of its approved crossword answer and selects one case for up to `18` active initials per round:
 
 - available initials rotate automatically when the archive eventually contains more than `18` distinct letters;
-- the timer begins only after an explicit start and lasts exactly `90` seconds;
+- the timer begins only after an explicit start and lasts exactly `180` seconds;
 - a correct answer awards `100` base points;
 - consecutive correct answers add `25` points per streak step, capped at a `100`-point bonus for one answer;
 - a wrong answer reveals the approved answer and resets the streak;
@@ -1706,7 +1706,7 @@ Every published episode remains eligible for selection. New episodes require no 
 - [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
 - [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
 - [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
-- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `90` seconds.
+- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `180` seconds.
 - [ ] Alphabet scoring is `100` base points plus `25` per consecutive-answer streak step, capped at a `100`-point bonus.
 - [ ] Each round contains no more than 18 active initials; passed letters return, wrong answers reset the streak and the final review links every answer to its canonical episode.
 - [ ] The alphabet reuses `crossword.json` and introduces no duplicate clue registry.

@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 CROSSWORD_VERSION = "20260909-crossword1"
-SHARED_VERSION = "20260909-alphabet1"
+SHARED_VERSION = "20260909-alphabet2"
 errors: list[str] = []
 
 

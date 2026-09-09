@@ -461,8 +461,8 @@ def validate(
             'id="lab-clue-list"',
             'id="lab-answer-form"',
             'id="lab-result"',
-            "assets/lab.css?v=20260909-alphabet1",
-            "assets/lab-nav.js?v=20260909-alphabet1",
+            "assets/lab.css?v=20260909-alphabet2",
+            "assets/lab-nav.js?v=20260909-alphabet2",
             "assets/lab.js?v=20260908-impossible-lab1",
         ),
         "lab-crossword.html": (
@@ -481,10 +481,10 @@ def validate(
             'id="alphabet-wheel"',
             'id="alphabet-answer-form"',
             'id="alphabet-result"',
-            "assets/lab.css?v=20260909-alphabet1",
-            "assets/alphabet.css?v=20260909-alphabet1",
-            "assets/lab-nav.js?v=20260909-alphabet1",
-            "assets/alphabet.js?v=20260909-alphabet1",
+            "assets/lab.css?v=20260909-alphabet2",
+            "assets/alphabet.css?v=20260909-alphabet2",
+            "assets/lab-nav.js?v=20260909-alphabet2",
+            "assets/alphabet.js?v=20260909-alphabet2",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -510,7 +510,7 @@ def validate(
             'href="lab.html"',
             'href="lab-crossword.html"',
             'href="lab-alphabet.html"',
-            "assets/lab.css?v=20260909-alphabet1",
+            "assets/lab.css?v=20260909-alphabet2",
         ),
         "assets/crossword-generator.js": (
             "seededRandom",
@@ -533,7 +533,7 @@ def validate(
             "@media(max-width:1180px)",
         ),
         "assets/alphabet.js": (
-            "const ROUND_SECONDS = 90",
+            "const ROUND_SECONDS = 180",
             "const MAX_LETTERS = 18",
             "const BASE_POINTS = 100",
             "const STREAK_STEP = 25",

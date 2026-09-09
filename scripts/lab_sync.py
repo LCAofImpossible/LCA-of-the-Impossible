@@ -12,11 +12,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260909-alphabet1"
+LAB_CSS_VERSION = "20260909-alphabet2"
 GUESS_VERSION = "20260908-impossible-lab1"
 CROSSWORD_VERSION = "20260909-crossword1"
-NAV_VERSION = "20260909-alphabet1"
-ALPHABET_VERSION = "20260909-alphabet1"
+NAV_VERSION = "20260909-alphabet2"
+ALPHABET_VERSION = "20260909-alphabet2"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
@@ -61,7 +61,7 @@ def home_block() -> str:
           <span><b>01</b> FIVE PROGRESSIVE SIGNALS</span>
           <span><b>01</b> UP TO 500 POINTS</span>
           <span><b>02</b> TEN CONNECTED CASES</span>
-          <span><b>03</b> NINETY-SECOND LETTER CIRCUIT</span>
+          <span><b>03</b> THREE-MINUTE LETTER CIRCUIT</span>
           <span><b>LAB</b> LCA RECORD AFTER SOLUTION</span>
         </div>
       </div>
@@ -197,7 +197,7 @@ def crossword_seo_block(latest: dict) -> str:
 def alphabet_seo_block(latest: dict) -> str:
     title = "The Impossible Alphabet — Impossible Lab"
     description = "Play The Impossible Alphabet: race through narrative clues drawn automatically from every published case in the LCA of the Impossible archive."
-    social_description = "Answer, pass and return: identify an impossible subject for every active initial before ninety seconds expire."
+    social_description = "Answer, pass and return: identify an impossible subject for every active initial before three minutes expire."
     canonical = BASE_URL + "lab-alphabet.html"
     image = BASE_URL + latest["cover"]
     image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
@@ -355,7 +355,7 @@ The crossword score is session-only. It creates no account, leaderboard, cookie 
 `lab-alphabet.html` joins `crossword.json` with `episodes.json`, groups every eligible subject by the initial of its approved crossword answer and selects one case for up to `18` active initials per round:
 
 - available initials rotate automatically when the archive eventually contains more than `18` distinct letters;
-- the timer begins only after an explicit start and lasts exactly `90` seconds;
+- the timer begins only after an explicit start and lasts exactly `180` seconds;
 - a correct answer awards `100` base points;
 - consecutive correct answers add `25` points per streak step, capped at a `100`-point bonus for one answer;
 - a wrong answer reveals the approved answer and resets the streak;
@@ -405,7 +405,7 @@ Every published episode remains eligible for selection. New episodes require no 
 - [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
 - [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
 - [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
-- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `90` seconds.
+- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `180` seconds.
 - [ ] Alphabet scoring is `100` base points plus `25` per consecutive-answer streak step, capped at a `100`-point bonus.
 - [ ] Each round contains no more than 18 active initials; passed letters return, wrong answers reset the streak and the final review links every answer to its canonical episode.
 - [ ] The alphabet reuses `crossword.json` and introduces no duplicate clue registry.

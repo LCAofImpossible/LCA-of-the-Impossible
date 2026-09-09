@@ -1,7 +1,7 @@
 (() => {
   'use strict';
 
-  const ROUND_SECONDS = 90;
+  const ROUND_SECONDS = 180;
   const MAX_LETTERS = 18;
   const BASE_POINTS = 100;
   const STREAK_STEP = 25;
