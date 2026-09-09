@@ -124,6 +124,7 @@ def main() -> int:
     check_public_page(ROOT / "index.html", BASE_URL, latest_image, "website", "WebSite")
     check_public_page(ROOT / "archive.html", BASE_URL + "archive.html", latest_image, "website", "CollectionPage")
     check_public_page(ROOT / "lab.html", BASE_URL + "lab.html", latest_image, "website", "WebPage")
+    check_public_page(ROOT / "lab-crossword.html", BASE_URL + "lab-crossword.html", latest_image, "website", "Game")
     check_public_page(ROOT / "method.html", BASE_URL + "method.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "compare.html", BASE_URL + "compare.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "explore.html", BASE_URL + "explore.html", latest_image, "website", "CollectionPage")
@@ -185,6 +186,7 @@ def main() -> int:
         BASE_URL,
         BASE_URL + "archive.html",
         BASE_URL + "lab.html",
+        BASE_URL + "lab-crossword.html",
         BASE_URL + "method.html",
         BASE_URL + "compare.html",
         BASE_URL + "explore.html",
@@ -245,7 +247,7 @@ def main() -> int:
             print(f"ERROR: {error}", file=sys.stderr)
         print(f"\nSEO QA failed with {len(errors)} error(s).", file=sys.stderr)
         return 1
-    print(f"SEO QA passed for {len(episodes) + 13} public pages.")
+    print(f"SEO QA passed for {len(episodes) + 14} public pages.")
     return 0
 
 

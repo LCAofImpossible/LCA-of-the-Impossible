@@ -611,7 +611,7 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, `lab.html`, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, both Impossible Lab game pages, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -623,7 +623,7 @@ Required on `index.html`, `archive.html`, `lab.html`, `method.html`, both dedica
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, Impossible Lab, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, both Impossible Lab games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1624,7 +1624,7 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` is the canonical game hub for **Impossible Lab**. The first published experiment is **Guess the Impossible**. Games must operate across the complete published archive rather than create separate implementations for individual episodes.
+`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible** and **Cross the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 ### 39.1 Guess the Impossible
 
@@ -1638,25 +1638,43 @@ The game selects one eligible record from `episodes.json` and reveals five clues
 
 Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. Score and streak are session-only interface state and must not create visitor identifiers, cookies or browser-storage tracking.
 
-### 39.2 Registry and editorial guardrails
+### 39.2 Cross the Impossible
+
+`lab-crossword.html` generates a connected crossword from `crossword.json` and the current `episodes.json` registry:
+
+- every grid contains exactly ten unique published subjects and represents both seasons;
+- definitions describe narrative, historical or cultural identity without disclosing the answer or using numerical/LCA clues;
+- a correct word awards `50` points and each revealed letter removes `10` points from the maximum score of `500`;
+- once a word is correct, its episode card reveals only the approved `subjectDescription`, `result`, `hotspot`, season and canonical URL;
+- generated grids rotate through the available pool and require no episode-specific page implementation;
+- the generator remains deterministic for a given seed and includes a validated fallback layout.
+
+The crossword score is session-only. It creates no account, leaderboard, cookie or browser-storage record.
+
+### 39.3 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
-- Episode titles, clues, results, links and counts must never be duplicated in `lab.html` or hard-coded in `assets/lab.js`.
+- Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
+- Each newly published episode adds one approved narrative definition to `crossword.json`; the grid and navigation require no manual layout work.
 - The game may reformat approved registry values for readability but must not invent a result, assumption, inventory flow, comparison or ranking.
 - Guessing performance scores the player only. It never ranks cases or implies that unlike functional units are environmentally comparable.
 - Catalogue covers remain limited to Homepage and Archive. Impossible Lab results are text-only and link to the canonical episode page.
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.3 Canonical files and automation
+### 39.4 Canonical files and automation
 
-- `lab.html` — Impossible Lab hub and complete game interface;
-- `assets/lab.css` — responsive technical game presentation and homepage preview;
-- `assets/lab.js` — registry loading, clue generation, scoring and round state;
+- `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
+- `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
+- `assets/crossword-generator.js` — seeded connected-grid generation and validation;
+- `lab-games.json` and `assets/lab-nav.js` — shared experiment registry and selector;
+- `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
+- `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
-- `scripts/lab_qa.py` — registry coverage, gameplay, accessibility, privacy and publication checks.
+- `scripts/lab_qa.py` — Guess the Impossible registry coverage, gameplay, accessibility, privacy and publication checks;
+- `scripts/crossword_qa.py` and `scripts/crossword_generator_qa.js` — definition coverage, layout generation, scoring and integration checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs `lab_qa.py` as part of the mandatory read-only publication gate. GitHub Pages live QA compares the Lab page and both Lab assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs both game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the two game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -1667,7 +1685,10 @@ Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unloc
 - [ ] The title is redacted from the final clue where present.
 - [ ] No episode title or clue dataset is hard-coded into the game runtime.
 - [ ] The answer and case result use text-only registry data and the canonical episode URL.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include `lab.html`.
+- [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
+- [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
+- [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
+- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include both game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

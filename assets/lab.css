@@ -1,4 +1,13 @@
 /* Impossible Lab — a registry-driven case-identification console */
+.lab-game-nav{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));max-width:1440px;margin:0 auto 34px;border:1px solid var(--line);background:rgba(7,16,25,.9)}
+.lab-game-link{position:relative;display:grid;grid-template-columns:1fr auto;gap:5px 16px;min-height:84px;padding:15px 18px;border-right:1px solid var(--line);color:var(--muted)}
+.lab-game-link:last-child{border-right:0}
+.lab-game-link span{grid-column:1;color:var(--gold);font-size:.65rem;font-weight:850;letter-spacing:.15em}
+.lab-game-link strong{grid-column:1;color:var(--text);font-size:.98rem}
+.lab-game-link small{grid-column:1;font-size:.76rem}
+.lab-game-link em{grid-column:2;grid-row:1;align-self:start;color:var(--gold);font-size:.62rem;font-style:normal;font-weight:850;letter-spacing:.12em;text-transform:uppercase}
+.lab-game-link:hover,.lab-game-link[aria-current="page"]{background:linear-gradient(90deg,rgba(109,231,255,.075),transparent);color:var(--accent2)}
+.lab-game-link[aria-current="page"]{box-shadow:inset 0 -2px 0 var(--accent)}
 .lab-shell{position:relative;min-height:calc(100vh - 74px);padding:52px 6vw 88px;overflow:hidden}
 .lab-shell:before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.12;background-image:linear-gradient(rgba(109,231,255,.2) 1px,transparent 1px),linear-gradient(90deg,rgba(109,231,255,.2) 1px,transparent 1px);background-size:48px 48px;mask-image:linear-gradient(to bottom,black,transparent 78%)}
 .lab-shell>*{position:relative;z-index:1}
@@ -70,6 +79,7 @@
 .lab-home-copy{padding:28px;border-left:2px solid var(--gold)}
 .lab-home-copy h3{margin:14px 0 16px;font-size:clamp(2.3rem,5vw,4.8rem);line-height:.93;letter-spacing:-.055em}
 .lab-home-copy p:not(.eyebrow){max-width:720px;color:var(--muted);line-height:1.7}
+.lab-home-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px}
 .lab-home-terminal{display:grid;grid-template-rows:repeat(5,1fr);border:1px solid var(--line);background:rgba(7,16,25,.85)}
 .lab-home-terminal span{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.75rem;letter-spacing:.09em}
 .lab-home-terminal span:last-child{border-bottom:0;color:var(--gold)}
@@ -81,6 +91,8 @@
   .lab-method-note{align-self:end}
 }
 @media(max-width:760px){
+  .lab-game-nav{display:flex;overflow-x:auto;margin-bottom:26px;scroll-snap-type:x mandatory}
+  .lab-game-link{min-width:245px;border-right:1px solid var(--line);scroll-snap-align:start}
   .lab-shell{padding:38px 5vw 70px}
   .lab-intro{grid-template-columns:1fr;gap:24px}
   .lab-registry-readout{min-height:110px;max-width:220px}
@@ -110,4 +122,5 @@
 }
 @media(prefers-reduced-motion:reduce){
   .lab-clue{transition:none}
+  .lab-game-link{scroll-behavior:auto}
 }

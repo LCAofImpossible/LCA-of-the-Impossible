@@ -12,11 +12,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-ASSET_VERSION = "20260908-impossible-lab1"
+LAB_CSS_VERSION = "20260909-crossword1"
+GUESS_VERSION = "20260908-impossible-lab1"
+CROSSWORD_VERSION = "20260909-crossword1"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
 SEO_END = "<!-- LAB-SEO:END -->"
+CROSSWORD_SEO_START = "<!-- CROSSWORD-SEO:START -->"
+CROSSWORD_SEO_END = "<!-- CROSSWORD-SEO:END -->"
 README_START = "<!-- IMPOSSIBLE-LAB-RULES:START -->"
 README_END = "<!-- IMPOSSIBLE-LAB-RULES:END -->"
 
@@ -36,21 +40,24 @@ def home_block() -> str:
     <section class="section small-section-title lab-home-preview" id="impossible-lab">
       <div class="section-heading">
         <div><p class="eyebrow">IMPOSSIBLE LAB</p><h2>Play the archive.</h2></div>
-        <p class="section-note">One registry-driven experiment. Every published episode. No additional case-by-case setup.</p>
+        <p class="section-note">Two registry-driven experiments. Every published episode. Grids are generated automatically.</p>
       </div>
       <div class="lab-home-grid">
         <div class="lab-home-copy">
-          <p class="eyebrow">EXPERIMENT 01</p>
-          <h3>Guess the Impossible.</h3>
-          <p>Identify a case from five progressively revealed signals: season, inventory, impact, function and one final subject clue.</p>
-          <a class="button" href="lab.html">Enter the Impossible Lab →</a>
+          <p class="eyebrow">EXPERIMENTS 01–02</p>
+          <h3>Guess it. Cross it.</h3>
+          <p>Identify one case from progressive LCA signals or solve ten subjects through narrative and cultural clues.</p>
+          <div class="lab-home-actions">
+            <a class="button" href="lab.html">Guess the Impossible →</a>
+            <a class="button secondary" href="lab-crossword.html">Cross the Impossible →</a>
+          </div>
         </div>
-        <div class="lab-home-terminal" aria-label="Guess the Impossible clue sequence">
-          <span><b>01</b> SEASON SIGNAL</span>
-          <span><b>02</b> INVENTORY SIGNAL</span>
-          <span><b>03</b> IMPACT SIGNAL</span>
-          <span><b>04</b> FUNCTION SIGNAL</span>
-          <span><b>05</b> SUBJECT DECLASSIFIED</span>
+        <div class="lab-home-terminal" aria-label="Impossible Lab experiment summary">
+          <span><b>01</b> FIVE PROGRESSIVE SIGNALS</span>
+          <span><b>01</b> UP TO 500 POINTS</span>
+          <span><b>02</b> TEN CONNECTED CASES</span>
+          <span><b>02</b> NARRATIVE CLUES ONLY</span>
+          <span><b>LAB</b> LCA RECORD AFTER SOLUTION</span>
         </div>
       </div>
     </section>
@@ -71,7 +78,7 @@ def update_home(check: bool, changed: list[Path]) -> None:
             raise RuntimeError("Cannot place the Impossible Lab homepage block")
         updated = text[:position] + block + "\n\n    " + text[position:]
 
-    css = f'assets/lab.css?v={ASSET_VERSION}'
+    css = f'assets/lab.css?v={LAB_CSS_VERSION}'
     css_pattern = r'<link\s+rel="stylesheet"\s+href="[^"]*assets/lab\.css(?:\?v=[^"]*)?">'
     if re.search(css_pattern, updated):
         updated = re.sub(css_pattern, f'<link rel="stylesheet" href="{css}">', updated)
@@ -133,6 +140,55 @@ def seo_block(latest: dict) -> str:
     ])
 
 
+def crossword_seo_block(latest: dict) -> str:
+    title = "Cross the Impossible — Impossible Lab"
+    description = "Play Cross the Impossible: solve an automatically generated crossword built from narrative and cultural descriptions of published cases."
+    social_description = "Solve ten connected subjects through narrative clues, then discover the life-cycle model behind every answer."
+    canonical = BASE_URL + "lab-crossword.html"
+    image = BASE_URL + latest["cover"]
+    image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Cross the Impossible",
+        "url": canonical,
+        "description": description,
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LCA of the Impossible",
+            "url": BASE_URL,
+        },
+    }
+    return "\n".join([
+        CROSSWORD_SEO_START,
+        f'  <meta name="description" content="{html.escape(description, quote=True)}">',
+        '  <meta name="robots" content="index,follow,max-image-preview:large">',
+        '  <meta name="theme-color" content="#071019">',
+        f'  <link rel="canonical" href="{canonical}">',
+        '  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="manifest" href="site.webmanifest">',
+        '  <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">',
+        '  <meta property="og:site_name" content="LCA of the Impossible">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta property="og:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta property="og:url" content="{canonical}">',
+        f'  <meta property="og:image" content="{image}">',
+        f'  <meta property="og:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <meta property="og:locale" content="en_US">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta name="twitter:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta name="twitter:image" content="{image}">',
+        f'  <meta name="twitter:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <script type="application/ld+json">',
+        json.dumps(json_ld, ensure_ascii=False, indent=2),
+        '  </script>',
+        CROSSWORD_SEO_END,
+    ])
+
+
 def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     registry = json.loads((ROOT / "episodes.json").read_text(encoding="utf-8"))
     latest = max(registry["episodes"], key=lambda episode: episode["number"])
@@ -145,13 +201,49 @@ def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     updated = re.sub(pattern, block, text, flags=re.S)
     write_if_changed(path, updated, check, changed)
 
+    crossword_path = ROOT / "lab-crossword.html"
+    crossword_text = crossword_path.read_text(encoding="utf-8")
+    crossword_block = crossword_seo_block(latest)
+    crossword_pattern = rf"{re.escape(CROSSWORD_SEO_START)}.*?{re.escape(CROSSWORD_SEO_END)}"
+    if not re.search(crossword_pattern, crossword_text, flags=re.S):
+        raise RuntimeError("Missing Cross the Impossible SEO markers")
+    crossword_updated = re.sub(crossword_pattern, crossword_block, crossword_text, flags=re.S)
+    write_if_changed(crossword_path, crossword_updated, check, changed)
+
+
+def update_game_assets(check: bool, changed: list[Path]) -> None:
+    contracts = {
+        "lab.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/lab.js": GUESS_VERSION,
+            "assets/lab-nav.js": CROSSWORD_VERSION,
+        },
+        "lab-crossword.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/crossword.css": CROSSWORD_VERSION,
+            "assets/lab-nav.js": CROSSWORD_VERSION,
+            "assets/crossword-generator.js": CROSSWORD_VERSION,
+            "assets/crossword.js": CROSSWORD_VERSION,
+        },
+    }
+    for filename, assets in contracts.items():
+        path = ROOT / filename
+        updated = path.read_text(encoding="utf-8")
+        for asset, version in assets.items():
+            pattern = rf'{re.escape(asset)}(?:\?v=[^"\']*)?'
+            updated = re.sub(pattern, f"{asset}?v={version}", updated)
+        write_if_changed(path, updated, check, changed)
+
 
 def update_sitemap(check: bool, changed: list[Path]) -> None:
     path = ROOT / "sitemap.xml"
     text = path.read_text(encoding="utf-8")
-    url = BASE_URL + "lab.html"
-    updated = re.sub(rf'\s*<url><loc>{re.escape(url)}</loc></url>', '', text)
-    updated = updated.replace("</urlset>", f"  <url><loc>{url}</loc></url>\n</urlset>")
+    urls = [BASE_URL + "lab.html", BASE_URL + "lab-crossword.html"]
+    updated = text
+    for url in urls:
+        updated = re.sub(rf'\s*<url><loc>{re.escape(url)}</loc></url>', '', updated)
+    lines = "\n".join(f"  <url><loc>{url}</loc></url>" for url in urls)
+    updated = updated.replace("</urlset>", f"{lines}\n</urlset>")
     write_if_changed(path, updated, check, changed)
 
 
@@ -162,7 +254,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` is the canonical game hub for **Impossible Lab**. The first published experiment is **Guess the Impossible**. Games must operate across the complete published archive rather than create separate implementations for individual episodes.
+`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible** and **Cross the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 ### 39.1 Guess the Impossible
 
@@ -176,25 +268,43 @@ The game selects one eligible record from `episodes.json` and reveals five clues
 
 Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. Score and streak are session-only interface state and must not create visitor identifiers, cookies or browser-storage tracking.
 
-### 39.2 Registry and editorial guardrails
+### 39.2 Cross the Impossible
+
+`lab-crossword.html` generates a connected crossword from `crossword.json` and the current `episodes.json` registry:
+
+- every grid contains exactly ten unique published subjects and represents both seasons;
+- definitions describe narrative, historical or cultural identity without disclosing the answer or using numerical/LCA clues;
+- a correct word awards `50` points and each revealed letter removes `10` points from the maximum score of `500`;
+- once a word is correct, its episode card reveals only the approved `subjectDescription`, `result`, `hotspot`, season and canonical URL;
+- generated grids rotate through the available pool and require no episode-specific page implementation;
+- the generator remains deterministic for a given seed and includes a validated fallback layout.
+
+The crossword score is session-only. It creates no account, leaderboard, cookie or browser-storage record.
+
+### 39.3 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
-- Episode titles, clues, results, links and counts must never be duplicated in `lab.html` or hard-coded in `assets/lab.js`.
+- Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
+- Each newly published episode adds one approved narrative definition to `crossword.json`; the grid and navigation require no manual layout work.
 - The game may reformat approved registry values for readability but must not invent a result, assumption, inventory flow, comparison or ranking.
 - Guessing performance scores the player only. It never ranks cases or implies that unlike functional units are environmentally comparable.
 - Catalogue covers remain limited to Homepage and Archive. Impossible Lab results are text-only and link to the canonical episode page.
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.3 Canonical files and automation
+### 39.4 Canonical files and automation
 
-- `lab.html` — Impossible Lab hub and complete game interface;
-- `assets/lab.css` — responsive technical game presentation and homepage preview;
-- `assets/lab.js` — registry loading, clue generation, scoring and round state;
+- `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
+- `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
+- `assets/crossword-generator.js` — seeded connected-grid generation and validation;
+- `lab-games.json` and `assets/lab-nav.js` — shared experiment registry and selector;
+- `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
+- `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
-- `scripts/lab_qa.py` — registry coverage, gameplay, accessibility, privacy and publication checks.
+- `scripts/lab_qa.py` — Guess the Impossible registry coverage, gameplay, accessibility, privacy and publication checks;
+- `scripts/crossword_qa.py` and `scripts/crossword_generator_qa.js` — definition coverage, layout generation, scoring and integration checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs `lab_qa.py` as part of the mandatory read-only publication gate. GitHub Pages live QA compares the Lab page and both Lab assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs both game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the two game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -205,7 +315,10 @@ Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unloc
 - [ ] The title is redacted from the final clue where present.
 - [ ] No episode title or clue dataset is hard-coded into the game runtime.
 - [ ] The answer and case result use text-only registry data and the canonical episode URL.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include `lab.html`.
+- [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
+- [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
+- [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
+- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include both game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 
@@ -226,6 +339,7 @@ def main() -> int:
 
     update_home(args.check, changed)
     update_lab_metadata(args.check, changed)
+    update_game_assets(args.check, changed)
     update_sitemap(args.check, changed)
     update_readme(args.check, changed)
 

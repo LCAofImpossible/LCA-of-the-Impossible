@@ -1,0 +1,61 @@
+/* Cross the Impossible — generated crossword experiment */
+.crossword-shell{padding-top:28px}
+.crossword-intro{margin-bottom:24px}
+.crossword-workspace{display:grid;grid-template-columns:minmax(480px,.82fr) minmax(520px,1.18fr);max-width:1440px;margin:0 auto;border:1px solid var(--line);border-top:0;background:rgba(7,16,25,.91)}
+.crossword-console{min-width:0;border-right:1px solid var(--line)}
+.crossword-panel-head{display:flex;justify-content:space-between;gap:22px;align-items:center;padding:16px 20px;border-bottom:1px solid var(--line);background:rgba(109,231,255,.025)}
+.crossword-panel-head>div{display:grid;gap:4px}
+.crossword-panel-head span{color:var(--gold);font-size:.65rem;font-weight:850;letter-spacing:.16em}
+.crossword-panel-head strong{font-size:.82rem;letter-spacing:.08em}
+.crossword-panel-head p{max-width:310px;margin:0;color:var(--muted);font-size:.78rem;line-height:1.45;text-align:right}
+.crossword-grid-wrap{padding:20px;overflow:auto}
+.crossword-grid{display:grid;grid-template-columns:repeat(var(--crossword-cols),minmax(31px,1fr));width:min(100%,calc(var(--crossword-cols) * 43px));min-width:calc(var(--crossword-cols) * 31px);margin:0 auto;border:1px solid #54707a;background:#061019}
+.crossword-cell{position:relative;aspect-ratio:1;border-right:1px solid #5c7780;border-bottom:1px solid #5c7780;background:#dce9eb;color:#0b2631}
+.crossword-cell.is-block{background:#061019;border-color:#17323d}
+.crossword-cell.is-active{background:#fff4d8;box-shadow:inset 0 0 0 2px var(--gold);z-index:2}
+.crossword-cell.is-correct{background:#d9f7f4}
+.crossword-cell.is-wrong{background:#f4dfc8}
+.crossword-cell.is-revealed:after{content:"";position:absolute;right:3px;bottom:3px;width:5px;height:5px;background:var(--gold)}
+.crossword-cell-number{position:absolute;top:2px;left:3px;z-index:2;color:#334a53;font-size:.55rem;font-weight:850;line-height:1}
+.crossword-cell input{width:100%;height:100%;min-height:0;padding:5px 1px 0;border:0;border-radius:0;outline:0;background:transparent;color:#0b2631;font:inherit;font-size:clamp(.82rem,1.5vw,1.2rem);font-weight:900;text-align:center;text-transform:uppercase;caret-color:#0b2631}
+.crossword-cell input:focus{outline:0}
+.crossword-cell input:disabled,.crossword-cell input[readonly]{opacity:1;-webkit-text-fill-color:#0b2631}
+.crossword-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;padding:0 20px 14px}
+.crossword-actions .text-link{margin-left:auto;border:0;background:transparent;font-family:inherit;cursor:pointer}
+.crossword-actions button:disabled{cursor:not-allowed;opacity:.45}
+.crossword-feedback{min-height:22px;margin:0;padding:0 20px 20px;color:var(--muted);font-size:.84rem;line-height:1.5}
+.crossword-feedback.is-correct{color:var(--accent2)}
+.crossword-feedback.is-wrong{color:#e1bb7e}
+.crossword-clues{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px;align-content:start;padding:20px}
+.crossword-clues section{min-width:0}
+.crossword-clues h2{margin:0 0 8px;padding-bottom:9px;border-bottom:1px solid var(--accent);color:var(--accent);font-size:1.25rem;letter-spacing:.08em;text-transform:uppercase}
+.crossword-clues ol{list-style:none;margin:0;padding:0}
+.crossword-clue{display:grid;grid-template-columns:26px 1fr;gap:8px;width:100%;padding:11px 6px;border:0;border-bottom:1px solid var(--line);background:transparent;color:var(--muted);font:inherit;font-size:.82rem;line-height:1.5;text-align:left;cursor:pointer}
+.crossword-clue span{color:var(--gold);font-weight:850}
+.crossword-clue p{margin:0}
+.crossword-clue small{color:var(--muted);font-size:.7rem;white-space:nowrap}
+.crossword-clue.is-active{border-left:2px solid var(--gold);background:linear-gradient(90deg,rgba(208,165,99,.09),transparent);color:var(--text)}
+.crossword-clue.is-correct{color:var(--accent2)}
+.crossword-clue.is-correct span{color:var(--accent)}
+.crossword-clue.is-wrong{color:#e1bb7e}
+.crossword-clues .lab-method-note{grid-column:1/-1;margin-top:0}
+.crossword-result{scroll-margin-top:90px}
+.crossword-result.is-complete{box-shadow:inset 0 2px 0 var(--accent)}
+@media(max-width:1180px){
+  .crossword-workspace{grid-template-columns:1fr}
+  .crossword-console{border-right:0;border-bottom:1px solid var(--line)}
+  .crossword-grid{max-width:760px}
+}
+@media(max-width:760px){
+  .crossword-clues{grid-template-columns:1fr;padding:18px}
+  .crossword-panel-head{align-items:flex-start;flex-direction:column}
+  .crossword-panel-head p{text-align:left}
+  .crossword-grid-wrap{padding:14px}
+  .crossword-actions{align-items:stretch;flex-direction:column;padding:0 14px 14px}
+  .crossword-actions .button,.crossword-actions .text-link{width:100%;margin-left:0;text-align:center}
+  .crossword-feedback{padding:0 14px 16px}
+}
+@media(max-width:430px){
+  .crossword-grid{grid-template-columns:repeat(var(--crossword-cols),minmax(28px,1fr));min-width:calc(var(--crossword-cols) * 28px)}
+  .crossword-cell-number{font-size:.48rem}
+}

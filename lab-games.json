@@ -1,0 +1,21 @@
+{
+  "schemaVersion": 1,
+  "games": [
+    {
+      "id": "guess",
+      "number": 1,
+      "title": "Guess the Impossible",
+      "description": "Identify the case",
+      "url": "lab.html",
+      "status": "live"
+    },
+    {
+      "id": "crossword",
+      "number": 2,
+      "title": "Cross the Impossible",
+      "description": "Solve the archive",
+      "url": "lab-crossword.html",
+      "status": "live"
+    }
+  ]
+}

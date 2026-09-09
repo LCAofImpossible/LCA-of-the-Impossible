@@ -12,7 +12,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-VERSION = "20260908-impossible-lab1"
+LAB_CSS_VERSION = "20260909-crossword1"
+GUESS_VERSION = "20260908-impossible-lab1"
+NAV_VERSION = "20260909-crossword1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -68,8 +70,11 @@ def check_page(episode_count: int) -> None:
         'id="lab-result"',
         'aria-live="assertive"',
         'href="archive.html"',
-        f"assets/lab.css?v={VERSION}",
-        f"assets/lab.js?v={VERSION}",
+        f"assets/lab.css?v={LAB_CSS_VERSION}",
+        f"assets/lab.js?v={GUESS_VERSION}",
+        f"assets/lab-nav.js?v={NAV_VERSION}",
+        'data-lab-game="guess"',
+        'data-lab-game-nav',
         "assets/telemetry.css?v=20260820-telemetry1",
         "assets/telemetry.js?v=20260820-telemetry1",
         'type="application/rss+xml"',
@@ -135,7 +140,10 @@ def check_styles() -> None:
 
 def check_discovery() -> None:
     home = read("index.html")
-    for token in ("LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', f"assets/lab.css?v={VERSION}"):
+    for token in (
+        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', 'href="lab-crossword.html"',
+        f"assets/lab.css?v={LAB_CSS_VERSION}",
+    ):
         if token not in home:
             fail(f"index.html: Impossible Lab entry point missing {token}")
 
@@ -173,6 +181,7 @@ def check_readme() -> None:
     for token in (
         "## 39. Impossible Lab and registry-driven games — mandatory",
         "Guess the Impossible",
+        "Cross the Impossible",
         "500 → 400 → 300 → 200 → 100",
         "Catalogue covers remain limited to Homepage and Archive",
         "scripts/lab_qa.py",

@@ -1,0 +1,226 @@
+{
+  "schemaVersion": 1,
+  "description": "Curated narrative clues for Cross the Impossible. Episode facts and result cards are joined from episodes.json at runtime.",
+  "entries": [
+    {
+      "episodeNumber": 71,
+      "answer": "COSMICTURTLE",
+      "clue": "A world-bearing creature imagined with a vast inhabited disc supported upon its shell."
+    },
+    {
+      "episodeNumber": 70,
+      "answer": "ELDORADO",
+      "clue": "A legend rooted in a gilded ruler and ceremonial offerings cast into Lake Guatavita."
+    },
+    {
+      "episodeNumber": 69,
+      "answer": "VALHALLA",
+      "clue": "Odin's immense hall, where warriors chosen after death gather beneath a shield-covered roof."
+    },
+    {
+      "episodeNumber": 68,
+      "answer": "DANAIDS",
+      "clue": "Fifty condemned sisters must endlessly carry water in perforated vessels that can never be filled."
+    },
+    {
+      "episodeNumber": 67,
+      "answer": "AUGEANSTABLES",
+      "clue": "The cattle yards that Heracles cleans in a single day by diverting river water through them."
+    },
+    {
+      "episodeNumber": 66,
+      "answer": "CORNUCOPIA",
+      "clue": "The miraculous horn of plenty associated with an inexhaustible abundance of food."
+    },
+    {
+      "episodeNumber": 65,
+      "answer": "HEPHAESTUS",
+      "clue": "The divine smith whose forge creates extraordinary arms and armour for gods and heroes."
+    },
+    {
+      "episodeNumber": 64,
+      "answer": "SHIPOFTHESEUS",
+      "clue": "The vessel whose identity becomes a paradox after every original component is gradually replaced."
+    },
+    {
+      "episodeNumber": 63,
+      "answer": "GUNGNIR",
+      "clue": "Odin's spear, renowned for being unerring when directed at its target."
+    },
+    {
+      "episodeNumber": 62,
+      "answer": "SLEIPNIR",
+      "clue": "Odin's extraordinary eight-legged mount in Norse mythology."
+    },
+    {
+      "episodeNumber": 61,
+      "answer": "ICEPALACE",
+      "clue": "A temporary winter residence assembled from frozen blocks and destined to melt after use."
+    },
+    {
+      "episodeNumber": 60,
+      "answer": "PHOENIX",
+      "clue": "A mythical bird consumed by fire before beginning another cycle of rebirth."
+    },
+    {
+      "episodeNumber": 59,
+      "answer": "GOLDENFLEECE",
+      "clue": "The legendary ram hide sought by Jason and the Argonauts."
+    },
+    {
+      "episodeNumber": 58,
+      "answer": "PHILOSOPHERSSTONE",
+      "clue": "The alchemical substance believed capable of transmuting base metals into gold."
+    },
+    {
+      "episodeNumber": 57,
+      "answer": "SEVENLEAGUEBOOTS",
+      "clue": "Legendary footwear whose wearer can cover seven leagues in a single stride."
+    },
+    {
+      "episodeNumber": 56,
+      "answer": "HYDRA",
+      "clue": "The many-headed monster of Lerna whose severed heads could regenerate."
+    },
+    {
+      "episodeNumber": 55,
+      "answer": "HESPERIDES",
+      "clue": "Their guarded orchard contains Hera's golden apples, associated with immortality."
+    },
+    {
+      "episodeNumber": 54,
+      "answer": "SANTASSLEIGH",
+      "clue": "A reindeer-drawn flying vehicle used for a global Christmas Eve delivery mission."
+    },
+    {
+      "episodeNumber": 53,
+      "answer": "BABAYAGASHUT",
+      "clue": "The walking forest cabin of Slavic folklore, supported on articulated legs."
+    },
+    {
+      "episodeNumber": 52,
+      "answer": "HERMESSANDALS",
+      "clue": "Winged footwear worn by the messenger god of Greek mythology."
+    },
+    {
+      "episodeNumber": 51,
+      "answer": "PANDORASJAR",
+      "clue": "The sealed vessel entrusted to a woman whose opening changes the human world."
+    },
+    {
+      "episodeNumber": 50,
+      "answer": "BIFROST",
+      "clue": "The rainbow bridge connecting the realm of the gods with the human world."
+    },
+    {
+      "episodeNumber": 49,
+      "answer": "ARGO",
+      "clue": "The ship commanded by Jason on his voyage to retrieve a celebrated golden ram hide."
+    },
+    {
+      "episodeNumber": 48,
+      "answer": "YGGDRASIL",
+      "clue": "The immense world tree connecting the realms of Norse cosmology."
+    },
+    {
+      "episodeNumber": 47,
+      "answer": "DRAUPNIR",
+      "clue": "Odin's golden arm-ring, which produces eight equal rings every ninth night."
+    },
+    {
+      "episodeNumber": 46,
+      "answer": "NAUTILUS",
+      "clue": "Captain Nemo's electric submarine in Jules Verne's undersea adventure."
+    },
+    {
+      "episodeNumber": 45,
+      "answer": "MIDAS",
+      "clue": "The king whose granted wish causes everything he touches to become gold."
+    },
+    {
+      "episodeNumber": 44,
+      "answer": "ICARUS",
+      "clue": "The young flyer who escapes Crete using feather-and-wax wings built by his father."
+    },
+    {
+      "episodeNumber": 43,
+      "answer": "SISYPHUS",
+      "clue": "The condemned king who eternally pushes a stone uphill only for it to roll back."
+    },
+    {
+      "episodeNumber": 42,
+      "answer": "TALOS",
+      "clue": "The bronze guardian who circles Crete and attacks hostile arrivals with rocks and heated metal."
+    },
+    {
+      "episodeNumber": 41,
+      "answer": "MJOLNIR",
+      "clue": "Thor's short-handled hammer, which returns to his hand after being thrown."
+    },
+    {
+      "episodeNumber": 40,
+      "answer": "LABYRINTH",
+      "clue": "Daedalus' maze-like prison built to contain the Minotaur and defeat unaided escape."
+    },
+    {
+      "episodeNumber": 39,
+      "answer": "ATLANTIS",
+      "clue": "Plato's island capital of concentric land and water rings, linked to the sea by a canal."
+    },
+    {
+      "episodeNumber": 38,
+      "answer": "TROJANHORSE",
+      "clue": "The hollow wooden offering used to conceal armed warriors inside the walls of Troy."
+    },
+    {
+      "episodeNumber": 37,
+      "answer": "EXCALIBUR",
+      "clue": "Arthur's sword of sovereignty and victory, associated with the mysterious Lady of the Lake."
+    },
+    {
+      "episodeNumber": 36,
+      "answer": "BABEL",
+      "clue": "The biblical tower whose construction ends with the confusion of human language."
+    },
+    {
+      "episodeNumber": 35,
+      "answer": "FLYINGDUTCHMAN",
+      "clue": "The legendary cursed ship condemned to sail without ever reaching port."
+    },
+    {
+      "episodeNumber": 34,
+      "answer": "SOLARCHARIOT",
+      "clue": "The gold-plated vehicle driven by the sun god across the sky each day."
+    },
+    {
+      "episodeNumber": 33,
+      "answer": "BRAHMASTRA",
+      "clue": "The legendary astral weapon described as possessing overwhelming destructive power."
+    },
+    {
+      "episodeNumber": 32,
+      "answer": "PEGASUS",
+      "clue": "The winged horse of Greek myth, associated with heroic journeys through the sky."
+    },
+    {
+      "episodeNumber": 4,
+      "answer": "TARDIS",
+      "clue": "A time machine disguised as a British police box, with an interior beyond its external dimensions."
+    },
+    {
+      "episodeNumber": 3,
+      "answer": "DELOREAN",
+      "clue": "The stainless-steel sports car modified by Doc Brown for journeys through time."
+    },
+    {
+      "episodeNumber": 2,
+      "answer": "MILLENNIUMFALCON",
+      "clue": "A modified Corellian light freighter used on some of the galaxy's most famous missions."
+    },
+    {
+      "episodeNumber": 1,
+      "answer": "UFOROBOT",
+      "clue": "A giant piloted defender that combines with the Spazer craft before launching from an underground base."
+    }
+  ]
+}

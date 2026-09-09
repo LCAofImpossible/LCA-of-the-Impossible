@@ -24,6 +24,7 @@ CORE_PATHS = {
     "index.html",
     "archive.html",
     "lab.html",
+    "lab-crossword.html",
     "collections.html",
     "compare.html",
     "explore.html",
@@ -37,6 +38,8 @@ CORE_PATHS = {
     "updates.html",
     "feed.xml",
     "episodes.json",
+    "crossword.json",
+    "lab-games.json",
     "collections.json",
     "schemas/episode-structured-metadata.schema.json",
     "verification/structured-metadata-migration.json",
@@ -52,6 +55,7 @@ CORE_PATHS = {
     "assets/seasons.css",
     "assets/statistics.css",
     "assets/lab.css",
+    "assets/crossword.css",
     "assets/atlas.css",
     "assets/compare.css",
     "assets/phase6.css",
@@ -60,6 +64,9 @@ CORE_PATHS = {
     "assets/seasons.js",
     "assets/statistics.js",
     "assets/lab.js",
+    "assets/lab-nav.js",
+    "assets/crossword-generator.js",
+    "assets/crossword.js",
     "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
@@ -451,8 +458,19 @@ def validate(
             'id="lab-clue-list"',
             'id="lab-answer-form"',
             'id="lab-result"',
-            "assets/lab.css?v=20260908-impossible-lab1",
+            "assets/lab.css?v=20260909-crossword1",
+            "assets/lab-nav.js?v=20260909-crossword1",
             "assets/lab.js?v=20260908-impossible-lab1",
+        ),
+        "lab-crossword.html": (
+            "IMPOSSIBLE LAB · EXPERIMENT 02",
+            "Cross the <span>Impossible.</span>",
+            'id="crossword-grid"',
+            'id="crossword-across"',
+            'id="crossword-result"',
+            "assets/crossword.css?v=20260909-crossword1",
+            "assets/crossword-generator.js?v=20260909-crossword1",
+            "assets/crossword.js?v=20260909-crossword1",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -466,6 +484,7 @@ def validate(
             "state.unused.splice",
         ),
         "assets/lab.css": (
+            ".lab-game-nav",
             ".lab-workspace",
             ".lab-clue.is-current",
             ".lab-result[hidden]",
@@ -475,7 +494,28 @@ def validate(
         "index.html": (
             "LAB-HOME:START",
             'href="lab.html"',
-            "assets/lab.css?v=20260908-impossible-lab1",
+            'href="lab-crossword.html"',
+            "assets/lab.css?v=20260909-crossword1",
+        ),
+        "assets/crossword-generator.js": (
+            "seededRandom",
+            "fallbackLayout",
+            "seasonNumber",
+            "validate",
+        ),
+        "assets/crossword.js": (
+            "fetch('crossword.json'",
+            "state.correctEntries.size * 50",
+            "state.revealedCells.size * 10",
+            "episode.subjectDescription",
+            "episode.result",
+            "episode.hotspot",
+        ),
+        "assets/crossword.css": (
+            ".crossword-grid",
+            ".crossword-cell.is-revealed",
+            ".crossword-clue.is-correct",
+            "@media(max-width:1180px)",
         ),
     }
     for path, required_tokens in lab_contract.items():
@@ -488,8 +528,33 @@ def validate(
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "assets/images/episodes/"):
         if forbidden in lab_runtime:
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
+    crossword_runtime = "\n".join(
+        downloaded.get(path, b"").decode("utf-8", errors="replace")
+        for path in ("assets/crossword.js", "assets/lab-nav.js")
+    )
+    for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
+        if forbidden in crossword_runtime:
+            errors.append(f"Crossword runtime violates its privacy or injection contract with {forbidden!r}")
+    try:
+        crossword_registry = json.loads(downloaded["crossword.json"])
+        game_registry = json.loads(downloaded["lab-games.json"])
+    except (KeyError, json.JSONDecodeError) as exc:
+        errors.append(f"Live Impossible Lab registries are unavailable or invalid: {exc}")
+    else:
+        crossword_entries = crossword_registry.get("entries", [])
+        if len(crossword_entries) != len(live_episodes):
+            errors.append("Live crossword registry does not cover every published episode")
+        game_status = {
+            game.get("id"): game.get("status")
+            for game in game_registry.get("games", [])
+            if isinstance(game, dict)
+        }
+        if game_status.get("guess") != "live" or game_status.get("crossword") != "live":
+            errors.append("Both live Impossible Lab experiments are not registered")
     if sitemap.count(f"/{'lab.html'}") != 1:
         errors.append("Impossible Lab does not occur exactly once in the live sitemap")
+    if sitemap.count("/lab-crossword.html") != 1:
+        errors.append("Cross the Impossible does not occur exactly once in the live sitemap")
 
     updates_script = downloaded.get("assets/updates.js", b"").decode(
         "utf-8", errors="replace"
@@ -626,7 +691,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
-    print("- Impossible Lab registry coverage, clue sequence and scoring contract: **PASS**")
+    print("- Impossible Lab guessing and crossword registries, generation and scoring contracts: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0
