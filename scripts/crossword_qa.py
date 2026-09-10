@@ -14,7 +14,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 CROSSWORD_VERSION = "20260909-crossword1"
-SHARED_VERSION = "20260909-alphabet2"
+LAB_VERSION = "20260910-spin1"
+NAV_VERSION = "20260909-alphabet2"
 errors: list[str] = []
 
 
@@ -105,6 +106,7 @@ def check_game_registry() -> None:
         "guess": ("lab.html", "live"),
         "crossword": ("lab-crossword.html", "live"),
         "alphabet": ("lab-alphabet.html", "live"),
+        "spin": ("lab-spin.html", "live"),
     }
     found = {game.get("id"): (game.get("url"), game.get("status")) for game in games if isinstance(game, dict)}
     for game_id, contract in expected.items():
@@ -128,9 +130,9 @@ def check_page() -> None:
         'id="crossword-result"',
         'aria-live="assertive"',
         "Reveal a letter · −10 pts",
-        f"assets/lab.css?v={SHARED_VERSION}",
+        f"assets/lab.css?v={LAB_VERSION}",
         f"assets/crossword.css?v={CROSSWORD_VERSION}",
-        f"assets/lab-nav.js?v={SHARED_VERSION}",
+        f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/crossword-generator.js?v={CROSSWORD_VERSION}",
         f"assets/crossword.js?v={CROSSWORD_VERSION}",
         "CROSSWORD-SEO:START",
@@ -147,7 +149,7 @@ def check_page() -> None:
         fail("lab-crossword.html still exposes a preview label")
 
     guess_page = read("lab.html")
-    for token in ('data-lab-game="guess"', 'data-lab-game-nav', f"assets/lab-nav.js?v={SHARED_VERSION}"):
+    for token in ('data-lab-game="guess"', 'data-lab-game-nav', f"assets/lab-nav.js?v={NAV_VERSION}"):
         if token not in guess_page:
             fail(f"lab.html: shared navigation token missing: {token}")
 
@@ -158,7 +160,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-crossword.html exactly once")
 
     home = read("index.html")
-    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', "Three registry-driven experiments"):
+    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments"):
         if token not in home:
             fail(f"index.html: Cross the Impossible discovery token missing: {token}")
 

@@ -80,7 +80,7 @@
 .lab-home-copy h3{margin:14px 0 16px;font-size:clamp(2.3rem,5vw,4.8rem);line-height:.93;letter-spacing:-.055em}
 .lab-home-copy p:not(.eyebrow){max-width:720px;color:var(--muted);line-height:1.7}
 .lab-home-actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:22px}
-.lab-home-terminal{display:grid;grid-template-rows:repeat(5,1fr);border:1px solid var(--line);background:rgba(7,16,25,.85)}
+.lab-home-terminal{display:grid;grid-auto-rows:1fr;border:1px solid var(--line);background:rgba(7,16,25,.85)}
 .lab-home-terminal span{display:flex;justify-content:space-between;gap:20px;align-items:center;padding:13px 16px;border-bottom:1px solid var(--line);color:var(--muted);font-size:.75rem;letter-spacing:.09em}
 .lab-home-terminal span:last-child{border-bottom:0;color:var(--gold)}
 .lab-home-terminal b{color:var(--accent);font-size:.65rem;letter-spacing:.14em}

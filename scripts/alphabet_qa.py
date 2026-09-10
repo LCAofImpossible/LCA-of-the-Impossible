@@ -13,7 +13,9 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-VERSION = "20260909-alphabet2"
+LAB_VERSION = "20260910-spin1"
+ALPHABET_VERSION = "20260909-alphabet2"
+NAV_VERSION = "20260909-alphabet2"
 errors: list[str] = []
 
 
@@ -100,13 +102,14 @@ def check_game_registry() -> None:
         "guess": (1, "lab.html", "live"),
         "crossword": (2, "lab-crossword.html", "live"),
         "alphabet": (3, "lab-alphabet.html", "live"),
+        "spin": (4, "lab-spin.html", "live"),
     }
     found = {
         game.get("id"): (game.get("number"), game.get("url"), game.get("status"))
         for game in games if isinstance(game, dict)
     }
     if found != expected:
-        fail(f"lab-games.json does not expose the three canonical experiments: {found}")
+        fail(f"lab-games.json does not expose the four canonical experiments: {found}")
 
 
 def check_page() -> None:
@@ -125,10 +128,10 @@ def check_page() -> None:
         'id="alphabet-review"',
         'aria-live="assertive"',
         "Start 3-minute round",
-        f"assets/lab.css?v={VERSION}",
-        f"assets/alphabet.css?v={VERSION}",
-        f"assets/lab-nav.js?v={VERSION}",
-        f"assets/alphabet.js?v={VERSION}",
+        f"assets/lab.css?v={LAB_VERSION}",
+        f"assets/alphabet.css?v={ALPHABET_VERSION}",
+        f"assets/lab-nav.js?v={NAV_VERSION}",
+        f"assets/alphabet.js?v={ALPHABET_VERSION}",
         "ALPHABET-SEO:START",
         'type="application/rss+xml"',
         'href="feed.xml"',
@@ -209,7 +212,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-alphabet.html exactly once")
 
     home = read("index.html")
-    for token in ('href="lab-alphabet.html"', "Three registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
+    for token in ('href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
         if token not in home:
             fail(f"index.html: The Impossible Alphabet discovery token missing: {token}")
 

@@ -11,7 +11,7 @@ BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 errors: list[str] = []
 
 ROOT_PAGES = [
-    "index.html", "archive.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]

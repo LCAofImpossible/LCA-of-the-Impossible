@@ -57,6 +57,7 @@ QA_SCRIPTS = (
     "lab_qa.py",
     "crossword_qa.py",
     "alphabet_qa.py",
+    "spin_qa.py",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 

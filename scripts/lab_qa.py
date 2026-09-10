@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260909-alphabet2"
+LAB_CSS_VERSION = "20260910-spin1"
 GUESS_VERSION = "20260908-impossible-lab1"
 NAV_VERSION = "20260909-alphabet2"
 REQUIRED_FIELDS = (
@@ -142,7 +142,7 @@ def check_discovery() -> None:
     home = read("index.html")
     for token in (
         "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', 'href="lab-crossword.html"',
-        'href="lab-alphabet.html"', "Three registry-driven experiments",
+        'href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments",
         f"assets/lab.css?v={LAB_CSS_VERSION}",
     ):
         if token not in home:
@@ -160,6 +160,8 @@ def check_discovery() -> None:
             fail("sitemap.xml must contain lab.html exactly once")
         if urls.count(BASE_URL + "lab-alphabet.html") != 1:
             fail("sitemap.xml must contain lab-alphabet.html exactly once")
+        if urls.count(BASE_URL + "lab-spin.html") != 1:
+            fail("sitemap.xml must contain lab-spin.html exactly once")
 
     manifest = read("site.webmanifest")
     if "/LCA-of-the-Impossible/lab.html" not in manifest:
@@ -186,10 +188,12 @@ def check_readme() -> None:
         "Guess the Impossible",
         "Cross the Impossible",
         "The Impossible Alphabet",
+        "Spin the Impossible",
         "500 → 400 → 300 → 200 → 100",
         "Catalogue covers remain limited to Homepage and Archive",
         "scripts/lab_qa.py",
         "scripts/alphabet_qa.py",
+        "scripts/spin_qa.py",
     ):
         if token not in text:
             fail(f"README.md: Impossible Lab rule missing: {token}")

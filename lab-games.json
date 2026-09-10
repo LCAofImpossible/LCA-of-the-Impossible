@@ -24,6 +24,14 @@
       "description": "Race through the letters",
       "url": "lab-alphabet.html",
       "status": "live"
+    },
+    {
+      "id": "spin",
+      "number": 4,
+      "title": "Spin the Impossible",
+      "description": "Rebuild the hidden phrase",
+      "url": "lab-spin.html",
+      "status": "live"
     }
   ]
 }

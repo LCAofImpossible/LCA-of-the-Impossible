@@ -26,6 +26,7 @@ CORE_PATHS = {
     "lab.html",
     "lab-crossword.html",
     "lab-alphabet.html",
+    "lab-spin.html",
     "collections.html",
     "compare.html",
     "explore.html",
@@ -58,6 +59,7 @@ CORE_PATHS = {
     "assets/lab.css",
     "assets/crossword.css",
     "assets/alphabet.css",
+    "assets/spin.css",
     "assets/atlas.css",
     "assets/compare.css",
     "assets/phase6.css",
@@ -70,6 +72,7 @@ CORE_PATHS = {
     "assets/crossword-generator.js",
     "assets/crossword.js",
     "assets/alphabet.js",
+    "assets/spin.js",
     "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
@@ -461,7 +464,7 @@ def validate(
             'id="lab-clue-list"',
             'id="lab-answer-form"',
             'id="lab-result"',
-            "assets/lab.css?v=20260909-alphabet2",
+            "assets/lab.css?v=20260910-spin1",
             "assets/lab-nav.js?v=20260909-alphabet2",
             "assets/lab.js?v=20260908-impossible-lab1",
         ),
@@ -481,10 +484,22 @@ def validate(
             'id="alphabet-wheel"',
             'id="alphabet-answer-form"',
             'id="alphabet-result"',
-            "assets/lab.css?v=20260909-alphabet2",
+            "assets/lab.css?v=20260910-spin1",
             "assets/alphabet.css?v=20260909-alphabet2",
             "assets/lab-nav.js?v=20260909-alphabet2",
             "assets/alphabet.js?v=20260909-alphabet2",
+        ),
+        "lab-spin.html": (
+            "IMPOSSIBLE LAB · EXPERIMENT 04",
+            "Spin the <span>Impossible.</span>",
+            'id="spin-wheel"',
+            'id="spin-puzzle"',
+            'id="spin-solve-form"',
+            'id="spin-result"',
+            "assets/lab.css?v=20260910-spin1",
+            "assets/spin.css?v=20260910-spin1",
+            "assets/lab-nav.js?v=20260909-alphabet2",
+            "assets/spin.js?v=20260910-spin1",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -503,6 +518,7 @@ def validate(
             ".lab-clue.is-current",
             ".lab-result[hidden]",
             ".lab-home-preview",
+            "grid-auto-rows:1fr",
             "@media(max-width:760px)",
         ),
         "index.html": (
@@ -510,7 +526,8 @@ def validate(
             'href="lab.html"',
             'href="lab-crossword.html"',
             'href="lab-alphabet.html"',
-            "assets/lab.css?v=20260909-alphabet2",
+            'href="lab-spin.html"',
+            "assets/lab.css?v=20260910-spin1",
         ),
         "assets/crossword-generator.js": (
             "seededRandom",
@@ -549,6 +566,25 @@ def validate(
             ".alphabet-result[hidden]",
             "@media(max-width:760px)",
         ),
+        "assets/spin.js": (
+            "const ROUNDS_PER_SESSION = 5",
+            "const MAX_SPINS = 15",
+            "const SOLVE_ATTEMPTS = 3",
+            "const VOWEL_COST = 150",
+            "const HINT_COST = 300",
+            "const WRONG_SOLUTION_COST = 200",
+            "const BASE_SOLVE_BONUS = 500",
+            "fetch('crossword.json'",
+            "state.entry.episode.result",
+            "state.entry.episode.hotspot",
+        ),
+        "assets/spin.css": (
+            ".spin-wheel",
+            ".spin-puzzle",
+            ".spin-keyboard",
+            ".spin-result[hidden]",
+            "@media(max-width:760px)",
+        ),
     }
     for path, required_tokens in lab_contract.items():
         source = downloaded.get(path, b"").decode("utf-8", errors="replace")
@@ -562,7 +598,7 @@ def validate(
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
     crossword_runtime = "\n".join(
         downloaded.get(path, b"").decode("utf-8", errors="replace")
-        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/lab-nav.js")
+        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/lab-nav.js")
     )
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:
@@ -581,14 +617,16 @@ def validate(
             for game in game_registry.get("games", [])
             if isinstance(game, dict)
         }
-        if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet")):
-            errors.append("All three live Impossible Lab experiments are not registered")
+        if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet", "spin")):
+            errors.append("All four live Impossible Lab experiments are not registered")
     if sitemap.count(f"/{'lab.html'}") != 1:
         errors.append("Impossible Lab does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-crossword.html") != 1:
         errors.append("Cross the Impossible does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-alphabet.html") != 1:
         errors.append("The Impossible Alphabet does not occur exactly once in the live sitemap")
+    if sitemap.count("/lab-spin.html") != 1:
+        errors.append("Spin the Impossible does not occur exactly once in the live sitemap")
 
     updates_script = downloaded.get("assets/updates.js", b"").decode(
         "utf-8", errors="replace"
@@ -725,7 +763,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
-    print("- Impossible Lab guessing, crossword and alphabet generation and scoring contracts: **PASS**")
+    print("- Impossible Lab guessing, crossword, alphabet and hidden-phrase wheel contracts: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

@@ -611,7 +611,7 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, all three Impossible Lab game pages, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, all four Impossible Lab game pages, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -623,7 +623,7 @@ Required on `index.html`, `archive.html`, all three Impossible Lab game pages, `
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, all three Impossible Lab games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, all four Impossible Lab games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1624,7 +1624,7 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible**, **Cross the Impossible** and **The Impossible Alphabet**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 ### 39.1 Guess the Impossible
 
@@ -1666,24 +1666,40 @@ The crossword score is session-only. It creates no account, leaderboard, cookie 
 
 Every published episode remains eligible for selection. New episodes require no alphabet-specific record: the approved narrative definition already maintained for `crossword.json` supplies the clue, while the registered episode supplies title, season and canonical URL. Scores and selection history remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
 
-### 39.4 Registry and editorial guardrails
+### 39.4 Spin the Impossible
+
+`lab-spin.html` joins every approved narrative definition in `crossword.json` to its episode in `episodes.json`. The definition itself becomes a hidden phrase; the subject title remains classified until the phrase is solved, revealed or purchased as a hint.
+
+- one session contains exactly `5` non-repeating phrases where the available registry permits;
+- each round begins with `15` wheel spins and `3` solution attempts, with no timer;
+- numerical sectors award their value for every occurrence of a correctly selected consonant;
+- the `×2` sector awards `400` points per consonant occurrence, `FREE VOWEL` permits one vowel without charge, `MISS` consumes the spin and `RESET` clears only the current round score;
+- buying a vowel costs `150` points, revealing the subject hint costs `300` points and an incorrect full-phrase solution costs `200` points;
+- a correct solution awards a base `500`-point bonus multiplied by phrase length, plus `25` points for every letter still hidden;
+- the completed round reveals the approved subject description, result, hotspot and canonical episode URL.
+
+The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selection and score remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
+
+### 39.5 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
 - Each newly published episode adds one approved narrative definition to `crossword.json`; the grid and navigation require no manual layout work.
 - The alphabet circuit derives both its letters and questions from `crossword.json`; do not create or maintain a parallel alphabet clue registry.
+- Spin the Impossible uses the complete approved definition as its hidden phrase; do not create or maintain a parallel wheel phrase registry.
 - The game may reformat approved registry values for readability but must not invent a result, assumption, inventory flow, comparison or ranking.
 - Guessing performance scores the player only. It never ranks cases or implies that unlike functional units are environmentally comparable.
 - Catalogue covers remain limited to Homepage and Archive. Impossible Lab results are text-only and link to the canonical episode page.
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.5 Canonical files and automation
+### 39.6 Canonical files and automation
 
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
 - `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
+- `lab-spin.html`, `assets/spin.css` and `assets/spin.js` — hidden-phrase wheel, letter controls, session scoring and LCA reveal;
 - `lab-games.json` and `assets/lab-nav.js` — shared experiment registry and selector;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
@@ -1691,8 +1707,9 @@ Every published episode remains eligible for selection. New episodes require no 
 - `scripts/lab_qa.py` — Guess the Impossible registry coverage, gameplay, accessibility, privacy and publication checks;
 - `scripts/crossword_qa.py` and `scripts/crossword_generator_qa.js` — definition coverage, layout generation, scoring and integration checks.
 - `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
+- `scripts/spin_qa.py` — hidden-phrase derivation, wheel outcomes, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all three game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the three game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -1710,7 +1727,10 @@ Every published episode remains eligible for selection. New episodes require no 
 - [ ] Alphabet scoring is `100` base points plus `25` per consecutive-answer streak step, capped at a `100`-point bonus.
 - [ ] Each round contains no more than 18 active initials; passed letters return, wrong answers reset the streak and the final review links every answer to its canonical episode.
 - [ ] The alphabet reuses `crossword.json` and introduces no duplicate clue registry.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include all three game routes.
+- [ ] Spin the Impossible uses five non-repeating phrases per session, fifteen spins per round and three solution attempts without a timer.
+- [ ] Spin wheel values, special sectors, vowel cost, hint cost, incorrect-solution penalty and solve bonus match the canonical constants.
+- [ ] Spin phrases come directly from `crossword.json`; completed rounds reveal only approved episode registry fields and the canonical URL.
+- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 
