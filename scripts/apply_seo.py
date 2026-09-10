@@ -135,6 +135,7 @@ def build_sitemap(episodes: list[dict]) -> str:
     urls = [
         BASE_URL,
         BASE_URL + "archive.html",
+        BASE_URL + "impossible-lab.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
@@ -179,7 +180,7 @@ def build_manifest() -> str:
                 "name": "Impossible Lab",
                 "short_name": "Lab",
                 "description": "Play four registry-driven experiments across the published episode archive.",
-                "url": "/LCA-of-the-Impossible/lab.html"
+                "url": "/LCA-of-the-Impossible/impossible-lab.html"
             },
             {
                 "name": "Latest updates",
@@ -206,7 +207,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, all four Impossible Lab game pages, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, the Impossible Lab hub, all four game pages, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -218,7 +219,7 @@ Required on `index.html`, `archive.html`, all four Impossible Lab game pages, `m
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, all four Impossible Lab games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, the Impossible Lab hub, all four games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 

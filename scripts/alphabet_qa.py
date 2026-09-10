@@ -212,9 +212,13 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-alphabet.html exactly once")
 
     home = read("index.html")
-    for token in ('href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
+    for token in ('href="impossible-lab.html"', "Four registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
         if token not in home:
             fail(f"index.html: The Impossible Alphabet discovery token missing: {token}")
+    hub = read("impossible-lab.html")
+    for token in ('href="lab-alphabet.html"', 'href="lab-spin.html"'):
+        if token not in hub:
+            fail(f"impossible-lab.html: alphabet discovery token missing: {token}")
 
     contracts = {
         "scripts/publication_qa.py": ('"alphabet_qa.py"',),

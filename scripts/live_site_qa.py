@@ -23,6 +23,7 @@ GRAPHIC_PATTERNS = (
 CORE_PATHS = {
     "index.html",
     "archive.html",
+    "impossible-lab.html",
     "lab.html",
     "lab-crossword.html",
     "lab-alphabet.html",
@@ -57,6 +58,7 @@ CORE_PATHS = {
     "assets/seasons.css",
     "assets/statistics.css",
     "assets/lab.css",
+    "assets/lab-hub.css",
     "assets/crossword.css",
     "assets/alphabet.css",
     "assets/spin.css",
@@ -68,6 +70,7 @@ CORE_PATHS = {
     "assets/seasons.js",
     "assets/statistics.js",
     "assets/lab.js",
+    "assets/lab-hub.js",
     "assets/lab-nav.js",
     "assets/crossword-generator.js",
     "assets/crossword.js",
@@ -458,6 +461,17 @@ def validate(
                 errors.append(f"RSS/accessory live contract is missing {token!r} from {path}")
 
     lab_contract = {
+        "impossible-lab.html": (
+            "Choose your <span>experiment.</span>",
+            'data-lab-hub-grid',
+            'data-random-game',
+            'href="lab.html"',
+            'href="lab-crossword.html"',
+            'href="lab-alphabet.html"',
+            'href="lab-spin.html"',
+            "assets/lab-hub.css?v=20260910-hub1",
+            "assets/lab-hub.js?v=20260910-hub1",
+        ),
         "lab.html": (
             "IMPOSSIBLE LAB · EXPERIMENT 01",
             "Guess the <span>Impossible.</span>",
@@ -521,12 +535,23 @@ def validate(
             "grid-auto-rows:1fr",
             "@media(max-width:760px)",
         ),
+        "assets/lab-hub.js": (
+            "fetch('lab-games.json'",
+            "game.summary",
+            "game.duration",
+            "game.category",
+            "replaceChildren(fragment)",
+            "window.location.assign(url)",
+        ),
+        "assets/lab-hub.css": (
+            ".lab-hub-grid",
+            ".lab-hub-card",
+            ".lab-hub-note",
+            "@media(max-width:620px)",
+        ),
         "index.html": (
             "LAB-HOME:START",
-            'href="lab.html"',
-            'href="lab-crossword.html"',
-            'href="lab-alphabet.html"',
-            'href="lab-spin.html"',
+            'href="impossible-lab.html"',
             "assets/lab.css?v=20260910-spin1",
         ),
         "assets/crossword-generator.js": (
@@ -598,7 +623,7 @@ def validate(
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
     crossword_runtime = "\n".join(
         downloaded.get(path, b"").decode("utf-8", errors="replace")
-        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/lab-nav.js")
+        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/lab-nav.js", "assets/lab-hub.js")
     )
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:
@@ -619,6 +644,11 @@ def validate(
         }
         if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet", "spin")):
             errors.append("All four live Impossible Lab experiments are not registered")
+        for game in game_registry.get("games", []):
+            if isinstance(game, dict) and any(not game.get(field) for field in ("summary", "duration", "category")):
+                errors.append(f"Impossible Lab game {game.get('id', '?')} is missing hub card metadata")
+    if sitemap.count("/impossible-lab.html") != 1:
+        errors.append("Impossible Lab hub does not occur exactly once in the live sitemap")
     if sitemap.count(f"/{'lab.html'}") != 1:
         errors.append("Impossible Lab does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-crossword.html") != 1:

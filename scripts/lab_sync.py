@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260910-spin1"
+HUB_VERSION = "20260910-hub1"
 GUESS_VERSION = "20260908-impossible-lab1"
 CROSSWORD_VERSION = "20260909-crossword1"
 NAV_VERSION = "20260909-alphabet2"
@@ -22,6 +23,8 @@ HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
 SEO_END = "<!-- LAB-SEO:END -->"
+HUB_SEO_START = "<!-- LAB-HUB-SEO:START -->"
+HUB_SEO_END = "<!-- LAB-HUB-SEO:END -->"
 CROSSWORD_SEO_START = "<!-- CROSSWORD-SEO:START -->"
 CROSSWORD_SEO_END = "<!-- CROSSWORD-SEO:END -->"
 ALPHABET_SEO_START = "<!-- ALPHABET-SEO:START -->"
@@ -55,10 +58,7 @@ def home_block() -> str:
           <h3>Guess it. Cross it. Race it. Spin it.</h3>
           <p>Identify a case, solve a connected grid, race through the alphabet or rebuild a hidden narrative phrase.</p>
           <div class="lab-home-actions">
-            <a class="button" href="lab.html">Guess the Impossible →</a>
-            <a class="button secondary" href="lab-crossword.html">Cross the Impossible →</a>
-            <a class="button secondary" href="lab-alphabet.html">The Impossible Alphabet →</a>
-            <a class="button secondary" href="lab-spin.html">Spin the Impossible →</a>
+            <a class="button" href="impossible-lab.html">Enter Impossible Lab →</a>
           </div>
         </div>
         <div class="lab-home-terminal" aria-label="Impossible Lab experiment summary">
@@ -147,6 +147,55 @@ def seo_block(latest: dict) -> str:
         json.dumps(json_ld, ensure_ascii=False, indent=2),
         '  </script>',
         SEO_END,
+    ])
+
+
+def hub_seo_block(latest: dict) -> str:
+    title = "Impossible Lab — Play the archive"
+    description = "Enter Impossible Lab and choose among four games built automatically from the published LCA of the Impossible archive."
+    social_description = "Choose a deduction game, crossword, speed quiz or hidden-phrase challenge powered by the published archive."
+    canonical = BASE_URL + "impossible-lab.html"
+    image = BASE_URL + latest["cover"]
+    image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "CollectionPage",
+        "name": title,
+        "url": canonical,
+        "description": social_description,
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LCA of the Impossible",
+            "url": BASE_URL,
+        },
+    }
+    return "\n".join([
+        HUB_SEO_START,
+        f'  <meta name="description" content="{html.escape(description, quote=True)}">',
+        '  <meta name="robots" content="index,follow,max-image-preview:large">',
+        '  <meta name="theme-color" content="#071019">',
+        f'  <link rel="canonical" href="{canonical}">',
+        '  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="manifest" href="site.webmanifest">',
+        '  <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">',
+        '  <meta property="og:site_name" content="LCA of the Impossible">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta property="og:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta property="og:url" content="{canonical}">',
+        f'  <meta property="og:image" content="{image}">',
+        f'  <meta property="og:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <meta property="og:locale" content="en_US">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta name="twitter:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta name="twitter:image" content="{image}">',
+        f'  <meta name="twitter:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <script type="application/ld+json">',
+        json.dumps(json_ld, ensure_ascii=False, indent=2),
+        '  </script>',
+        HUB_SEO_END,
     ])
 
 
@@ -300,6 +349,15 @@ def spin_seo_block(latest: dict) -> str:
 def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     registry = json.loads((ROOT / "episodes.json").read_text(encoding="utf-8"))
     latest = max(registry["episodes"], key=lambda episode: episode["number"])
+    hub_path = ROOT / "impossible-lab.html"
+    hub_text = hub_path.read_text(encoding="utf-8")
+    hub_block = hub_seo_block(latest)
+    hub_pattern = rf"{re.escape(HUB_SEO_START)}.*?{re.escape(HUB_SEO_END)}"
+    if not re.search(hub_pattern, hub_text, flags=re.S):
+        raise RuntimeError("Missing Impossible Lab hub SEO markers")
+    hub_updated = re.sub(hub_pattern, hub_block, hub_text, flags=re.S)
+    write_if_changed(hub_path, hub_updated, check, changed)
+
     path = ROOT / "lab.html"
     text = path.read_text(encoding="utf-8")
     block = seo_block(latest)
@@ -339,6 +397,11 @@ def update_lab_metadata(check: bool, changed: list[Path]) -> None:
 
 def update_game_assets(check: bool, changed: list[Path]) -> None:
     contracts = {
+        "impossible-lab.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/lab-hub.css": HUB_VERSION,
+            "assets/lab-hub.js": HUB_VERSION,
+        },
         "lab.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab.js": GUESS_VERSION,
@@ -377,6 +440,7 @@ def update_sitemap(check: bool, changed: list[Path]) -> None:
     path = ROOT / "sitemap.xml"
     text = path.read_text(encoding="utf-8")
     urls = [
+        BASE_URL + "impossible-lab.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
@@ -397,7 +461,9 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+
+The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub; the shared in-game selector continues to move directly between experiments.
 
 ### 39.1 Guess the Impossible
 
@@ -468,6 +534,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 
 ### 39.6 Canonical files and automation
 
+- `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, responsive cards and random experiment selection;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -482,7 +549,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
 - `scripts/spin_qa.py` — hidden-phrase derivation, wheel outcomes, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -503,7 +570,8 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - [ ] Spin the Impossible uses five non-repeating phrases per session, fifteen spins per round and three solution attempts without a timer.
 - [ ] Spin wheel values, special sectors, vowel cost, hint cost, incorrect-solution penalty and solve bonus match the canonical constants.
 - [ ] Spin phrases come directly from `crossword.json`; completed rounds reveal only approved episode registry fields and the canonical URL.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include all four game routes.
+- [ ] Every hub card exposes its game summary, challenge category and estimated duration without requiring navigation into the game.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

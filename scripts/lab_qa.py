@@ -13,6 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260910-spin1"
+HUB_VERSION = "20260910-hub1"
 GUESS_VERSION = "20260908-impossible-lab1"
 NAV_VERSION = "20260909-alphabet2"
 REQUIRED_FIELDS = (
@@ -138,11 +139,61 @@ def check_styles() -> None:
             fail(f"assets/lab.css: required responsive token missing: {token}")
 
 
+def check_hub() -> None:
+    try:
+        registry = json.loads(read("lab-games.json") or "{}")
+    except json.JSONDecodeError as exc:
+        fail(f"lab-games.json is invalid JSON: {exc}")
+        registry = {}
+    games = registry.get("games", [])
+    if not isinstance(games, list) or len(games) != 4:
+        fail("lab-games.json must expose exactly four live experiments")
+        games = []
+    for game in games:
+        if not isinstance(game, dict):
+            fail("lab-games.json contains a non-object game record")
+            continue
+        for field in ("id", "number", "title", "description", "summary", "duration", "category", "url", "status"):
+            if not game.get(field):
+                fail(f"lab-games.json: {game.get('id', '?')} is missing {field}")
+        if game.get("status") != "live":
+            fail(f"lab-games.json: {game.get('id', '?')} is not live")
+
+    page = read("impossible-lab.html")
+    for token in (
+        'data-lab-hub', 'data-lab-hub-grid', 'data-random-game',
+        "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
+        'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"',
+        f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
+        "assets/telemetry.css?v=20260820-telemetry1", "assets/telemetry.js?v=20260820-telemetry1",
+        'type="application/rss+xml"', 'href="feed.xml"',
+    ):
+        if token not in page:
+            fail(f"impossible-lab.html: required hub token missing: {token}")
+    if page.count('class="lab-hub-card"') != 4:
+        fail("impossible-lab.html must retain four static fallback game cards")
+
+    runtime = read("assets/lab-hub.js")
+    for token in (
+        "fetch('lab-games.json'", "game.summary", "game.duration", "game.category",
+        "replaceChildren(fragment)", "window.location.assign(url)", "credentials: 'same-origin'",
+    ):
+        if token not in runtime:
+            fail(f"assets/lab-hub.js: required catalogue token missing: {token}")
+    for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
+        if forbidden in runtime:
+            fail(f"assets/lab-hub.js: forbidden persistence or injection token present: {forbidden}")
+
+    styles = read("assets/lab-hub.css")
+    for token in (".lab-hub-grid", ".lab-hub-card", ".lab-hub-note", "@media(max-width:620px)", "@media(prefers-reduced-motion:reduce)"):
+        if token not in styles:
+            fail(f"assets/lab-hub.css: required responsive token missing: {token}")
+
+
 def check_discovery() -> None:
     home = read("index.html")
     for token in (
-        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="lab.html"', 'href="lab-crossword.html"',
-        'href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments",
+        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="impossible-lab.html"', "Four registry-driven experiments",
         f"assets/lab.css?v={LAB_CSS_VERSION}",
     ):
         if token not in home:
@@ -156,6 +207,8 @@ def check_discovery() -> None:
     else:
         ns = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
         urls = [node.text for node in root.findall("sm:url/sm:loc", ns)]
+        if urls.count(BASE_URL + "impossible-lab.html") != 1:
+            fail("sitemap.xml must contain impossible-lab.html exactly once")
         if urls.count(BASE_URL + "lab.html") != 1:
             fail("sitemap.xml must contain lab.html exactly once")
         if urls.count(BASE_URL + "lab-alphabet.html") != 1:
@@ -164,16 +217,16 @@ def check_discovery() -> None:
             fail("sitemap.xml must contain lab-spin.html exactly once")
 
     manifest = read("site.webmanifest")
-    if "/LCA-of-the-Impossible/lab.html" not in manifest:
+    if "/LCA-of-the-Impossible/impossible-lab.html" not in manifest:
         fail("site.webmanifest must expose the Impossible Lab shortcut")
 
     for script, tokens in {
-        "scripts/phase5_sync.py": ('"lab.html"', 'href="{prefix}lab.html"'),
-        "scripts/telemetry_sync.py": ('"lab.html"',),
-        "scripts/rss_sync.py": ('"lab.html"',),
-        "scripts/live_site_qa.py": ('"lab.html"', '"assets/lab.css"', '"assets/lab.js"'),
+        "scripts/phase5_sync.py": ('"impossible-lab.html"', 'href="{prefix}impossible-lab.html"'),
+        "scripts/telemetry_sync.py": ('"impossible-lab.html"',),
+        "scripts/rss_sync.py": ('"impossible-lab.html"',),
+        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"'),
         "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"'),
-        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "lab.html"),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "assets/lab-hub.css", "assets/lab-hub.js"),
     }.items():
         source = read(script)
         for token in tokens:
@@ -189,6 +242,8 @@ def check_readme() -> None:
         "Cross the Impossible",
         "The Impossible Alphabet",
         "Spin the Impossible",
+        "`impossible-lab.html` is the canonical entry point",
+        "summary", "duration", "category",
         "500 → 400 → 300 → 200 → 100",
         "Catalogue covers remain limited to Homepage and Archive",
         "scripts/lab_qa.py",
@@ -204,6 +259,7 @@ def main() -> int:
     check_page(count)
     check_runtime()
     check_styles()
+    check_hub()
     check_discovery()
     check_readme()
 

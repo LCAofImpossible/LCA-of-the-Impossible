@@ -1,11 +1,14 @@
 {
-  "schemaVersion": 1,
+  "schemaVersion": 2,
   "games": [
     {
       "id": "guess",
       "number": 1,
       "title": "Guess the Impossible",
       "description": "Identify the case",
+      "summary": "Reveal progressive clues and identify the impossible subject before the final hint.",
+      "duration": "2–4 min",
+      "category": "Deduction",
       "url": "lab.html",
       "status": "live"
     },
@@ -14,6 +17,9 @@
       "number": 2,
       "title": "Cross the Impossible",
       "description": "Solve the archive",
+      "summary": "Complete a crossword using historical and cultural descriptions from across both seasons.",
+      "duration": "8–12 min",
+      "category": "Crossword",
       "url": "lab-crossword.html",
       "status": "live"
     },
@@ -22,6 +28,9 @@
       "number": 3,
       "title": "The Impossible Alphabet",
       "description": "Race through the letters",
+      "summary": "Race through the alphabet: answer each definition, pass when needed and beat the three-minute clock.",
+      "duration": "3 min",
+      "category": "Speed quiz",
       "url": "lab-alphabet.html",
       "status": "live"
     },
@@ -30,6 +39,9 @@
       "number": 4,
       "title": "Spin the Impossible",
       "description": "Rebuild the hidden phrase",
+      "summary": "Spin the wheel, uncover letters and reconstruct a hidden phrase to reveal the impossible subject.",
+      "duration": "5–8 min",
+      "category": "Word puzzle",
       "url": "lab-spin.html",
       "status": "live"
     }

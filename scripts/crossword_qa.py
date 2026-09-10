@@ -160,14 +160,18 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-crossword.html exactly once")
 
     home = read("index.html")
-    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', "Four registry-driven experiments"):
+    for token in ('href="impossible-lab.html"', "Four registry-driven experiments"):
         if token not in home:
             fail(f"index.html: Cross the Impossible discovery token missing: {token}")
+    hub = read("impossible-lab.html")
+    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"'):
+        if token not in hub:
+            fail(f"impossible-lab.html: game discovery token missing: {token}")
 
     manifest = load_json("site.webmanifest")
     lab_shortcuts = [
         item for item in manifest.get("shortcuts", [])
-        if isinstance(item, dict) and item.get("url") == "/LCA-of-the-Impossible/lab.html"
+        if isinstance(item, dict) and item.get("url") == "/LCA-of-the-Impossible/impossible-lab.html"
     ]
     if len(lab_shortcuts) != 1 or "experiments" not in lab_shortcuts[0].get("description", "").lower():
         fail("site.webmanifest must describe the shared Impossible Lab experiments")

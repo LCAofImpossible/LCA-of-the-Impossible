@@ -611,7 +611,7 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, all four Impossible Lab game pages, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, the Impossible Lab hub, all four game pages, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -623,7 +623,7 @@ Required on `index.html`, `archive.html`, all four Impossible Lab game pages, `m
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, all four Impossible Lab games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, the Impossible Lab hub, all four games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1013,7 +1013,7 @@ Every public page and every episode page uses the same primary navigation:
 
 `Episodes · Lab · Explore · Method · About`
 
-`Lab` links to the canonical `Impossible Lab` game hub.
+`Lab` links to the canonical `impossible-lab.html` game hub.
 
 `Explore` contains:
 
@@ -1624,7 +1624,9 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`lab.html` remains the canonical entry point for **Impossible Lab**. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. A shared selector generated from `lab-games.json` connects the games without a separate hub page. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+
+The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub; the shared in-game selector continues to move directly between experiments.
 
 ### 39.1 Guess the Impossible
 
@@ -1695,6 +1697,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 
 ### 39.6 Canonical files and automation
 
+- `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, responsive cards and random experiment selection;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -1709,7 +1712,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
 - `scripts/spin_qa.py` — hidden-phrase derivation, wheel outcomes, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -1730,7 +1733,8 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - [ ] Spin the Impossible uses five non-repeating phrases per session, fifteen spins per round and three solution attempts without a timer.
 - [ ] Spin wheel values, special sectors, vowel cost, hint cost, incorrect-solution penalty and solve bonus match the canonical constants.
 - [ ] Spin phrases come directly from `crossword.json`; completed rounds reveal only approved episode registry fields and the canonical URL.
-- [ ] Homepage, canonical navigation, sitemap, RSS discovery and telemetry include all four game routes.
+- [ ] Every hub card exposes its game summary, challenge category and estimated duration without requiring navigation into the game.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 
