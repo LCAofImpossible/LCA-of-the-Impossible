@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260911-difficulty1"
+LAB_CSS_VERSION = "20260911-mobile1"
 HUB_VERSION = "20260911-difficulty1"
 GUESS_VERSION = "20260911-difficulty1"
 NAV_VERSION = "20260911-difficulty1"
@@ -22,7 +22,7 @@ RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
 DAILY_VERSION = "20260911-daily1"
-DIFFICULTY_VERSION = "20260911-difficulty1"
+DIFFICULTY_VERSION = "20260911-mobile1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -94,6 +94,7 @@ def check_page(episode_count: int) -> None:
         'data-lab-another',
         'data-lab-result-scorecard',
         'data-lab-difficulty',
+        'id="lab-game-area"',
         'id="lab-answer-choices"',
         'href="impossible-lab.html"',
         "assets/telemetry.css?v=20260820-telemetry1",
@@ -162,6 +163,7 @@ def check_styles() -> None:
         ".lab-record-band", ".lab-record-state",
         ".lab-difficulty", ".lab-difficulty-option", ".lab-answer-choices",
         ".lab-run-banner", ".lab-run-result",
+        "scroll-margin-top:96px",
         "@media(max-width:760px)",
         "@media(prefers-reduced-motion:reduce)",
     ):
@@ -223,6 +225,7 @@ def check_shared_navigation_runtime() -> None:
         "letters: 12, seconds: 300", "letters: 18, seconds: 180", "letters: 18, seconds: 120, passLimit: 3",
         "spins: 20, solveAttempts: 5", "spins: 15, solveAttempts: 3", "spins: 10, solveAttempts: 2",
         "isRunMode() ? DEFAULT_LEVEL", "level === DEFAULT_LEVEL", "progressSystem?.record",
+        "const PLAY_TARGET = 'lab-game-area'", "withPlayTarget", "input.addEventListener('click'",
         "clearRecords", "decorateLinks", "data-lab-difficulty",
     ):
         if token not in difficulty:
@@ -308,6 +311,7 @@ if (official.summarize().games.guess.bestNormalized !== 1000) process.exit(6);
 window.location.search = '';
 if (!levels.clearRecords() || levels.summarize().games.guess.explorer) process.exit(7);
 if (official.summarize().games.guess.bestNormalized !== 1000) process.exit(8);
+if (levels.withPlayTarget('lab.html?difficulty=analyst', 'impossible') !== 'lab.html?difficulty=impossible#lab-game-area') process.exit(9);
 """
     difficulty_behavior = subprocess.run(
         ["node", "-e", difficulty_behavior_script], cwd=ROOT, capture_output=True, text=True, check=False

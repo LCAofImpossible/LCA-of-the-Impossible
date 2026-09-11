@@ -48,7 +48,7 @@
 .lab-registry-readout span,.lab-registry-readout small,.lab-scoreboard span,.lab-scoreboard small{color:var(--muted);font-size:.72rem;font-weight:820;letter-spacing:.13em}
 .lab-registry-readout span{color:var(--gold)}
 .lab-registry-readout strong{margin:auto 0 2px;font-size:3.2rem;line-height:.85;letter-spacing:-.06em}
-.lab-scoreboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1440px;margin:0 auto;border:1px solid var(--line);border-bottom:0;background:rgba(7,16,25,.88)}
+.lab-scoreboard{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));max-width:1440px;margin:0 auto;scroll-margin-top:96px;border:1px solid var(--line);border-bottom:0;background:rgba(7,16,25,.88)}
 .lab-scoreboard>div{display:grid;grid-template-columns:1fr auto;gap:8px;align-items:end;min-height:76px;padding:16px 18px;border-right:1px solid var(--line)}
 .lab-scoreboard>div:last-child{border-right:0}
 .lab-scoreboard strong{font-size:1.6rem;line-height:1;color:var(--accent2)}

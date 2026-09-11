@@ -12,7 +12,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260911-difficulty1"
+LAB_CSS_VERSION = "20260911-mobile1"
 HUB_VERSION = "20260911-difficulty1"
 GUESS_VERSION = "20260911-difficulty1"
 ACTION_VERSION = "20260911-difficulty1"
@@ -22,7 +22,7 @@ RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
 DAILY_VERSION = "20260911-daily1"
-DIFFICULTY_VERSION = "20260911-difficulty1"
+DIFFICULTY_VERSION = "20260911-mobile1"
 ALPHABET_VERSION = "20260911-difficulty1"
 SPIN_VERSION = "20260911-difficulty1"
 HOME_START = "<!-- LAB-HOME:START -->"
@@ -747,7 +747,7 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 
 ### 39.8 Difficulty levels
 
-`assets/lab-difficulty.js` is the single configuration and persistence layer for all challenge levels. It owns the level names, per-game parameters, selected-level preference and separate personal records. Game runtimes read those parameters instead of maintaining separate datasets or pages. A level change on an individual game reloads a clean round; the hub carries the choice into every game link.
+`assets/lab-difficulty.js` is the single configuration and persistence layer for all challenge levels. It owns the level names, per-game parameters, selected-level preference and separate personal records. Game runtimes read those parameters instead of maintaining separate datasets or pages. A level change on an individual game reloads a clean round and moves the viewport directly to the play area; the hub carries the choice into every game link.
 
 - Explorer, Analyst and Impossible use the same live episode and narrative registries.
 - The official Lab Score and its maximum of `4,000` use Analyst personal bests only.

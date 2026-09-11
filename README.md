@@ -1745,7 +1745,7 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 
 ### 39.8 Difficulty levels
 
-`assets/lab-difficulty.js` is the single configuration and persistence layer for all challenge levels. It owns the level names, per-game parameters, selected-level preference and separate personal records. Game runtimes read those parameters instead of maintaining separate datasets or pages. A level change on an individual game reloads a clean round; the hub carries the choice into every game link.
+`assets/lab-difficulty.js` is the single configuration and persistence layer for all challenge levels. It owns the level names, per-game parameters, selected-level preference and separate personal records. Game runtimes read those parameters instead of maintaining separate datasets or pages. A level change on an individual game reloads a clean round and moves the viewport directly to the play area; the hub carries the choice into every game link.
 
 - Explorer, Analyst and Impossible use the same live episode and narrative registries.
 - The official Lab Score and its maximum of `4,000` use Analyst personal bests only.

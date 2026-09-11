@@ -4,6 +4,7 @@
   const STORAGE_KEY = 'lca-impossible-lab-difficulty-v1';
   const SCHEMA_VERSION = 1;
   const DEFAULT_LEVEL = 'analyst';
+  const PLAY_TARGET = 'lab-game-area';
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
   const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html']);
   const progressSystem = window.ImpossibleLabProgress;
@@ -239,6 +240,17 @@
     }
   };
 
+  const withPlayTarget = (href, level = current()) => {
+    try {
+      const target = new URL(withLevel(href, level), window.location.href);
+      const filename = target.pathname.split('/').pop();
+      target.hash = PLAY_TARGET;
+      return `${filename}${target.search}${target.hash}`;
+    } catch (error) {
+      return `${withLevel(href, level).split('#')[0]}#${PLAY_TARGET}`;
+    }
+  };
+
   const decorateLinks = (root = document) => {
     if (isRunMode()) return;
     root.querySelectorAll?.('a[href]').forEach((link) => {
@@ -263,6 +275,10 @@
     description.textContent = detail(level).short;
     copy.append(title, description);
     label.append(input, copy);
+    input.addEventListener('click', () => {
+      if (fixed || !document.body?.dataset?.labGame || current() !== level) return;
+      window.location.assign(withPlayTarget(window.location.href, level));
+    });
     input.addEventListener('change', () => {
       if (!input.checked || fixed) return;
       const selected = set(level);
@@ -272,7 +288,7 @@
       });
       decorateLinks();
       document.dispatchEvent(new CustomEvent('impossiblelab:difficultychange', { detail: { level: selected } }));
-      if (document.body?.dataset?.labGame) window.location.assign(withLevel(window.location.href, selected));
+      if (document.body?.dataset?.labGame) window.location.assign(withPlayTarget(window.location.href, selected));
     });
     return label;
   };
@@ -328,6 +344,7 @@
     record,
     clearRecords,
     withLevel,
+    withPlayTarget,
     decorateLinks,
     isRunMode
   });
