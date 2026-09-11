@@ -43,8 +43,8 @@
   <title>The Impossible Alphabet — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
-  <link rel="stylesheet" href="assets/alphabet.css?v=20260909-alphabet2">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-results1">
+  <link rel="stylesheet" href="assets/alphabet.css?v=20260911-results1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="alphabet">
@@ -159,6 +159,7 @@
             <p id="alphabet-result-copy">Review the subjects and open their complete life-cycle records.</p>
           </div>
         </header>
+        <div data-lab-result-scorecard></div>
         <dl class="alphabet-result-data">
           <div><dt>Final score</dt><dd id="alphabet-result-score">0</dd></div>
           <div><dt>Correct</dt><dd id="alphabet-result-correct">0</dd></div>
@@ -166,6 +167,16 @@
           <div><dt>Best streak</dt><dd id="alphabet-result-streak">0</dd></div>
         </dl>
         <ol class="alphabet-review" id="alphabet-review" aria-label="Round answer review"></ol>
+        <article class="lab-case-debrief" id="alphabet-case-debrief" aria-labelledby="alphabet-debrief-subject">
+          <p class="lab-case-meta" id="alphabet-debrief-meta">LCA DEBRIEF</p>
+          <h3 id="alphabet-debrief-subject">Impossible subject</h3>
+          <p id="alphabet-debrief-description"></p>
+          <dl>
+            <div><dt>Result</dt><dd id="alphabet-debrief-impact">—</dd></div>
+            <div><dt>Hotspot</dt><dd id="alphabet-debrief-hotspot">—</dd></div>
+          </dl>
+          <a class="button secondary" id="alphabet-debrief-link" href="archive.html">Open complete LCA →</a>
+        </article>
         <div class="lab-end-actions" aria-label="End of game actions">
           <button class="button" type="button" id="alphabet-new-round">Play again →</button>
           <button class="button secondary" type="button" data-lab-another>Choose another game →</button>
@@ -184,7 +195,8 @@
 
   <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
   <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
-  <script src="assets/alphabet.js?v=20260909-alphabet2"></script>
+  <script src="assets/lab-results.js?v=20260911-results1"></script>
+  <script src="assets/alphabet.js?v=20260911-results1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

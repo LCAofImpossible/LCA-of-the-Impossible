@@ -13,10 +13,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-navigation1"
-ALPHABET_VERSION = "20260909-alphabet2"
+LAB_VERSION = "20260911-results1"
+ALPHABET_VERSION = "20260911-results1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
+RESULTS_VERSION = "20260911-results1"
 errors: list[str] = []
 
 
@@ -131,12 +132,16 @@ def check_page() -> None:
         'class="lab-route-bar"',
         'EXPERIMENT 03 OF 04 · CURRENT GAME',
         'data-lab-another',
+        'data-lab-result-scorecard',
+        'id="alphabet-case-debrief"',
+        'id="alphabet-debrief-impact"',
         'aria-live="assertive"',
         "Start 3-minute round",
         f"assets/lab.css?v={LAB_VERSION}",
         f"assets/alphabet.css?v={ALPHABET_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
+        f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/alphabet.js?v={ALPHABET_VERSION}",
         "ALPHABET-SEO:START",
         'type="application/rss+xml"',
@@ -169,6 +174,12 @@ def check_runtime() -> None:
         "entry.episode.url",
         "replaceChildren(fragment)",
         "credentials: 'same-origin'",
+        "const maximumScore = ()",
+        "const attemptedCount = ()",
+        "resultSystem?.render(elements.resultScorecard",
+        "debrief.episode.subjectDescription",
+        "debrief.episode.result",
+        "debrief.episode.hotspot",
     )
     for token in required:
         if token not in runtime:

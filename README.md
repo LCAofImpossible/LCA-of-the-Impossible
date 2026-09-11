@@ -1682,7 +1682,20 @@ Every published episode remains eligible for selection. New episodes require no 
 
 The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selection and score remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
 
-### 39.5 Registry and editorial guardrails
+### 39.5 Shared result system
+
+All four games retain their original scoring rules and render the same final performance card through `assets/lab-results.js`. The card exposes the original game or round score, the maximum obtainable score, completion, accuracy and a normalized score from `0` to `1,000`.
+
+- normalized score = `round(clamp(original score / maximum obtainable, 0, 1) × 1,000)`;
+- Guess uses a `500`-point maximum; completion is `100%` only when the case is identified, and accuracy is correct guesses divided by submitted guesses;
+- Cross uses its original `500`-point maximum; completion is solved words divided by grid words, and accuracy is solved words divided by completed answer submissions;
+- Alphabet calculates its maximum from a perfect uninterrupted streak across the active letters; completion is answered letters divided by active letters, and accuracy is correct answers divided by submitted answers;
+- Spin calculates a phrase-specific theoretical maximum from its existing wheel, occurrence and solve-bonus rules; completion is the share of letters uncovered unless the complete phrase is solved, and accuracy combines letter selections and full-phrase attempts;
+- multi-case games retain their complete answer review and present one clearly labelled subject debrief without ranking or comparing episode impacts.
+
+The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes. All calculations and result state remain in memory for the current page session only.
+
+### 39.6 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -1695,7 +1708,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.6 Canonical files and automation
+### 39.7 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, responsive cards and random experiment selection;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
@@ -1703,7 +1716,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
 - `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
 - `lab-spin.html`, `assets/spin.css` and `assets/spin.js` — hidden-phrase wheel, letter controls, session scoring and LCA reveal;
-- `lab-games.json`, `assets/lab-nav.js` and `assets/lab-actions.js` — shared experiment registry, current-game selector and end-of-game routing;
+- `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js` and `assets/lab-results.js` — shared experiment registry, navigation, end-of-game routing and normalized result card;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
@@ -1736,6 +1749,9 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - [ ] Every hub card exposes its game summary, challenge category and estimated duration without requiring navigation into the game.
 - [ ] Every game exposes the same Lab route bar, a visible current-game marker and the three standard completion actions on desktop and mobile.
 - [ ] `Choose another game` selects only a different live registry entry and falls back safely to the Lab hub if the registry is unavailable.
+- [ ] Every final result retains the original score and exposes maximum obtainable, completion, accuracy and a normalized score limited to `0–1,000`.
+- [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
+- [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
 - [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.

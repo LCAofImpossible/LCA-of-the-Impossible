@@ -76,6 +76,29 @@
 .lab-result-data>div:nth-child(even){border-right:0}
 .lab-result-data dt{margin-bottom:7px;color:var(--accent);font-size:.66rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
 .lab-result-data dd{margin:0;color:var(--text);line-height:1.55}
+[data-lab-result-scorecard]{grid-column:1/-1}
+.lab-result-scorecard{border:1px solid var(--line);background:rgba(4,13,21,.72)}
+.lab-result-scorecard>header{display:flex;justify-content:space-between;gap:28px;align-items:end;padding:20px 22px;border-bottom:1px solid var(--line)}
+.lab-result-scorecard h3{margin:7px 0 0;font-size:clamp(1.35rem,2.4vw,2rem);letter-spacing:-.025em}
+.lab-normalized-score{display:grid;grid-template-columns:auto auto;align-items:baseline;justify-items:end;margin:0;text-align:right}
+.lab-normalized-score span{grid-column:1/-1;color:var(--gold);font-size:.66rem;font-weight:850;letter-spacing:.14em}
+.lab-normalized-score strong{color:var(--accent2);font-size:clamp(2.3rem,5vw,3.8rem);line-height:1}
+.lab-normalized-score small{color:var(--muted);font-size:.78rem;font-weight:800}
+.lab-result-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));margin:0}
+.lab-result-metrics>div{padding:16px 18px;border-right:1px solid var(--line)}
+.lab-result-metrics>div:last-child{border-right:0}
+.lab-result-metrics dt{margin-bottom:6px;color:var(--muted);font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.lab-result-metrics dd{margin:0;color:var(--text);font-size:1.12rem;font-weight:850}
+.lab-result-scale-note{margin:0;padding:12px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem;line-height:1.55}
+.lab-case-debrief{padding:26px;border-top:1px solid var(--line)}
+.lab-case-debrief .lab-case-meta{margin:0;color:var(--gold);font-size:.7rem;font-weight:850;letter-spacing:.15em}
+.lab-case-debrief h3{margin:10px 0 14px;font-size:clamp(2rem,4vw,3.8rem);line-height:.96;letter-spacing:-.05em}
+.lab-case-debrief>p:not(.lab-case-meta){max-width:900px;color:var(--muted);line-height:1.7}
+.lab-case-debrief dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:24px 0;border:1px solid var(--line)}
+.lab-case-debrief dl>div{padding:18px 20px;border-right:1px solid var(--line)}
+.lab-case-debrief dl>div:last-child{border-right:0}
+.lab-case-debrief dt{margin-bottom:6px;color:var(--muted);font-size:.68rem;font-weight:850;letter-spacing:.13em;text-transform:uppercase}
+.lab-case-debrief dd{margin:0;color:var(--text);line-height:1.55}
 .lab-end-actions{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
 .lab-end-actions .button{min-width:190px;justify-content:center;text-align:center}
 .lab-result>.lab-end-actions{grid-column:1/-1}
@@ -122,6 +145,15 @@
   .lab-result{grid-template-columns:1fr;padding:20px}
   .lab-result-data{grid-template-columns:1fr}
   .lab-result-data>div{border-right:0}
+  .lab-result-scorecard>header{align-items:flex-start;flex-direction:column}
+  .lab-normalized-score{justify-items:start;text-align:left}
+  .lab-result-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .lab-result-metrics>div:nth-child(2){border-right:0}
+  .lab-result-metrics>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .lab-case-debrief{padding:22px 20px}
+  .lab-case-debrief dl{grid-template-columns:1fr}
+  .lab-case-debrief dl>div{border-right:0;border-bottom:1px solid var(--line)}
+  .lab-case-debrief dl>div:last-child{border-bottom:0}
   .lab-end-actions{display:grid;grid-template-columns:1fr}
   .lab-end-actions .button{width:100%;min-width:0}
 }
@@ -130,6 +162,10 @@
   .lab-scoreboard{grid-template-columns:1fr}
   .lab-scoreboard>div{border-right:0;border-bottom:1px solid var(--line)}
   .lab-scoreboard>div:last-child{border-bottom:0}
+  .lab-result-metrics{grid-template-columns:1fr}
+  .lab-result-metrics>div{border-right:0;border-bottom:1px solid var(--line)}
+  .lab-result-metrics>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .lab-result-metrics>div:last-child{border-bottom:0}
 }
 @media(prefers-reduced-motion:reduce){
   .lab-clue{transition:none}

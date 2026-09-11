@@ -8,6 +8,7 @@
   const HINT_COST = 300;
   const WRONG_SOLUTION_COST = 200;
   const BASE_SOLVE_BONUS = 500;
+  const resultSystem = window.ImpossibleLabResults;
   const VOWELS = new Set(['A', 'E', 'I', 'O', 'U']);
   const WHEEL_SECTORS = [
     { label: '50', type: 'points', value: 50 },
@@ -50,6 +51,7 @@
     reveal: document.getElementById('spin-reveal'),
     feedback: document.getElementById('spin-feedback'),
     result: document.getElementById('spin-result'),
+    resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
     resultTitle: document.getElementById('spin-result-title'),
     resultCopy: document.getElementById('spin-result-copy'),
     resultRoundScore: document.getElementById('spin-result-round-score'),
@@ -81,7 +83,11 @@
     running: false,
     spinning: false,
     revealAll: false,
-    rotation: 0
+    rotation: 0,
+    letterAttempts: 0,
+    correctLetterAttempts: 0,
+    phraseAttempts: 0,
+    correctPhraseAttempts: 0
   };
 
   const setText = (element, value) => {
@@ -108,6 +114,23 @@
     if (length <= 45) return 1;
     if (length <= 70) return 1.5;
     return 2;
+  };
+
+  const maximumRoundScore = () => {
+    const consonantCounts = new Map();
+    for (const character of String(state.entry?.phrase || '')) {
+      const letter = normalizedCharacter(character);
+      if (/^[A-Z]$/.test(letter) && !VOWELS.has(letter)) {
+        consonantCounts.set(letter, (consonantCounts.get(letter) || 0) + 1);
+      }
+    }
+    const bestOccurrences = [...consonantCounts.values()]
+      .sort((left, right) => right - left)
+      .slice(0, MAX_SPINS)
+      .reduce((total, count) => total + count, 0);
+    const solveBonus = Math.round(BASE_SOLVE_BONUS * difficultyMultiplier())
+      + Math.max(0, letterCount(state.entry?.phrase) - bestOccurrences) * 25;
+    return bestOccurrences * 400 + solveBonus;
   };
 
   const hiddenLetterCount = () => [...state.entry.phrase].filter((character) => {
@@ -234,6 +257,10 @@
     state.running = false;
     state.spinning = false;
     state.revealAll = false;
+    state.letterAttempts = 0;
+    state.correctLetterAttempts = 0;
+    state.phraseAttempts = 0;
+    state.correctPhraseAttempts = 0;
     elements.result.hidden = true;
     elements.start.hidden = false;
     elements.spin.hidden = true;
@@ -316,6 +343,8 @@
     if ((state.pendingMode === 'vowel') !== vowel) return;
     state.guessedLetters.add(letter);
     const occurrences = [...state.entry.phrase].filter((character) => normalizedCharacter(character) === letter).length;
+    state.letterAttempts += 1;
+    if (occurrences) state.correctLetterAttempts += 1;
     if (occurrences && state.pendingMode === 'consonant') {
       const gained = occurrences * state.pendingValue;
       state.roundScore += gained;
@@ -395,6 +424,17 @@
     elements.resultLink.href = state.entry.episode.url;
     elements.resultLink.setAttribute('aria-label', `Open the complete LCA for ${state.entry.episode.title}`);
     setText(elements.next, 'Play again →');
+    const totalAttempts = state.letterAttempts + state.phraseAttempts;
+    const correctAttempts = state.correctLetterAttempts + state.correctPhraseAttempts;
+    const totalLetters = letterCount(state.entry.phrase);
+    resultSystem?.render(elements.resultScorecard, {
+      title: solved ? 'Phrase solved' : 'Phrase revealed',
+      scoreLabel: 'Round score',
+      score: finalRoundScore,
+      maximum: maximumRoundScore(),
+      completion: solved ? 100 : (totalLetters ? ((totalLetters - hiddenBeforeSolve) / totalLetters) * 100 : 0),
+      accuracy: totalAttempts ? (correctAttempts / totalAttempts) * 100 : 0
+    });
     elements.result.hidden = false;
     setFeedback(solved ? `Correct · +${solveBonus} solve bonus.` : 'No solve bonus awarded.', solved ? 'correct' : 'wrong');
     renderScoreboard();
@@ -411,7 +451,9 @@
       setFeedback('Enter the complete phrase before submitting a solution.', 'wrong');
       return;
     }
+    state.phraseAttempts += 1;
     if (normalize(attempt) === normalize(state.entry.phrase)) {
+      state.correctPhraseAttempts += 1;
       finishRound(true);
       return;
     }

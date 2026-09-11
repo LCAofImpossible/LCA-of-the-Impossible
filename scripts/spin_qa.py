@@ -13,10 +13,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-navigation1"
+LAB_VERSION = "20260911-results1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
-SPIN_VERSION = "20260911-navigation1"
+RESULTS_VERSION = "20260911-results1"
+SPIN_VERSION = "20260911-results1"
 errors: list[str] = []
 
 
@@ -132,12 +133,15 @@ def check_page() -> None:
         'class="lab-route-bar"',
         'EXPERIMENT 04 OF 04 · CURRENT GAME',
         'data-lab-another',
+        'data-lab-result-scorecard',
+        'class="spin-case-reveal lab-case-debrief"',
         'aria-live="assertive"',
         "Start round 1",
         f"assets/lab.css?v={LAB_VERSION}",
         f"assets/spin.css?v={SPIN_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
+        f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/spin.js?v={SPIN_VERSION}",
         "SPIN-SEO:START",
         'type="application/rss+xml"',
@@ -174,6 +178,10 @@ def check_runtime() -> None:
         "state.entry.episode.hotspot",
         "elements.resultLink.href = state.entry.episode.url",
         "setText(elements.next, 'Play again →')",
+        "const maximumRoundScore = ()",
+        "state.letterAttempts += 1",
+        "state.phraseAttempts += 1",
+        "resultSystem?.render(elements.resultScorecard",
         "replaceChildren(fragment)",
         "credentials: 'same-origin'",
     )

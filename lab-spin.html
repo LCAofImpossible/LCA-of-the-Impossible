@@ -43,8 +43,8 @@
   <title>Spin the Impossible — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
-  <link rel="stylesheet" href="assets/spin.css?v=20260911-navigation1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-results1">
+  <link rel="stylesheet" href="assets/spin.css?v=20260911-results1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="spin">
@@ -164,14 +164,15 @@
             <p id="spin-result-copy">The subject and its complete life-cycle record are now available.</p>
           </div>
         </header>
+        <div data-lab-result-scorecard></div>
         <dl class="spin-result-data">
           <div><dt>Round score</dt><dd id="spin-result-round-score">0</dd></div>
           <div><dt>Session score</dt><dd id="spin-result-session-score">0</dd></div>
           <div><dt>Solve bonus</dt><dd id="spin-result-bonus">0</dd></div>
           <div><dt>Phrase length</dt><dd id="spin-result-length">0</dd></div>
         </dl>
-        <article class="spin-case-reveal">
-          <p class="spin-case-meta" id="spin-result-meta">EPISODE</p>
+        <article class="spin-case-reveal lab-case-debrief">
+          <p class="spin-case-meta lab-case-meta" id="spin-result-meta">EPISODE</p>
           <h3 id="spin-result-subject">Impossible subject</h3>
           <p id="spin-result-description"></p>
           <dl>
@@ -198,7 +199,8 @@
 
   <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
   <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
-  <script src="assets/spin.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-results.js?v=20260911-results1"></script>
+  <script src="assets/spin.js?v=20260911-results1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

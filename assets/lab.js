@@ -3,6 +3,7 @@
 
   const SCORE_STEPS = [500, 400, 300, 200, 100];
   const CLUE_LABELS = ['Season', 'Inventory', 'Impact', 'Function', 'Final clue'];
+  const resultSystem = window.ImpossibleLabResults;
   const requiredFields = [
     'number', 'slug', 'title', 'url', 'seasonLabel', 'lcaLabel', 'lcaCharacteristics',
     'result', 'hotspot', 'functionalUnit', 'subjectDescription'
@@ -24,6 +25,7 @@
     reveal: document.getElementById('lab-reveal'),
     newCase: document.getElementById('lab-new-case'),
     result: document.getElementById('lab-result'),
+    resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
     resultState: document.getElementById('lab-result-state'),
     resultTitle: document.getElementById('lab-result-title'),
     resultSubject: document.getElementById('lab-result-subject'),
@@ -45,7 +47,8 @@
     round: 0,
     score: 0,
     streak: 0,
-    resolved: false
+    resolved: false,
+    attempts: 0
   };
 
   const normalize = (value = '') => String(value)
@@ -167,6 +170,14 @@
     setText(elements.resultImpact, episode.result);
     setText(elements.resultHotspot, episode.hotspot);
     elements.resultLink.href = episode.url;
+    resultSystem?.render(elements.resultScorecard, {
+      title: solved ? 'Case identified' : 'Case declassified',
+      scoreLabel: 'Round score',
+      score: solved ? points : 0,
+      maximum: SCORE_STEPS[0],
+      completion: solved ? 100 : 0,
+      accuracy: solved && state.attempts ? 100 / state.attempts : 0
+    });
     setText(elements.status, solved ? 'Identity confirmed against the registry.' : 'Identity revealed after the final clue.');
     setFeedback(
       solved ? `Correct. You identified the case from clue ${state.clueIndex + 1}.` : `The classified subject was ${episode.title}.`,
@@ -202,6 +213,7 @@
     state.clueIndex = 0;
     state.round += 1;
     state.resolved = false;
+    state.attempts = 0;
 
     elements.result.hidden = true;
     elements.newCase.hidden = true;
@@ -237,6 +249,7 @@
       setFeedback('Enter an episode title before submitting.', 'wrong');
       return;
     }
+    state.attempts += 1;
     if (isCorrectAnswer(answer)) {
       showResult(true, SCORE_STEPS[state.clueIndex]);
       return;

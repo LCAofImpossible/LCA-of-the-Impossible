@@ -6,6 +6,7 @@
   const BASE_POINTS = 100;
   const STREAK_STEP = 25;
   const STREAK_CAP = 100;
+  const resultSystem = window.ImpossibleLabResults;
 
   const elements = {
     count: document.getElementById('alphabet-case-count'),
@@ -26,12 +27,19 @@
     pass: document.getElementById('alphabet-pass'),
     feedback: document.getElementById('alphabet-feedback'),
     result: document.getElementById('alphabet-result'),
+    resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
     resultCopy: document.getElementById('alphabet-result-copy'),
     resultScore: document.getElementById('alphabet-result-score'),
     resultCorrect: document.getElementById('alphabet-result-correct'),
     resultMissed: document.getElementById('alphabet-result-missed'),
     resultStreak: document.getElementById('alphabet-result-streak'),
     review: document.getElementById('alphabet-review'),
+    debriefMeta: document.getElementById('alphabet-debrief-meta'),
+    debriefSubject: document.getElementById('alphabet-debrief-subject'),
+    debriefDescription: document.getElementById('alphabet-debrief-description'),
+    debriefImpact: document.getElementById('alphabet-debrief-impact'),
+    debriefHotspot: document.getElementById('alphabet-debrief-hotspot'),
+    debriefLink: document.getElementById('alphabet-debrief-link'),
     newRound: document.getElementById('alphabet-new-round')
   };
 
@@ -47,7 +55,8 @@
     bestStreak: 0,
     remainingSeconds: ROUND_SECONDS,
     deadline: 0,
-    timer: null
+    timer: null,
+    lastResolvedEntry: null
   };
 
   const setText = (element, value) => {
@@ -92,6 +101,10 @@
   };
 
   const correctCount = () => state.entries.filter((entry) => entry.status === 'correct').length;
+  const attemptedCount = () => state.entries.filter((entry) => ['correct', 'wrong'].includes(entry.status)).length;
+  const maximumScore = () => state.entries.reduce((total, _, index) => (
+    total + BASE_POINTS + Math.min(index * STREAK_STEP, STREAK_CAP)
+  ), 0);
 
   const updateScoreboard = () => {
     setText(elements.time, formatTime(state.remainingSeconds));
@@ -159,6 +172,7 @@
     state.score = 0;
     state.streak = 0;
     state.bestStreak = 0;
+    state.lastResolvedEntry = null;
     state.remainingSeconds = ROUND_SECONDS;
     elements.result.hidden = true;
     elements.start.hidden = false;
@@ -252,16 +266,37 @@
     setText(elements.status, reason === 'time' ? 'Time expired. Circuit complete.' : 'Every letter has been resolved.');
     setFeedback(`Final score: ${state.score} points.`, correctCount() ? 'correct' : 'wrong');
     setText(elements.resultCopy, reason === 'time'
-      ? 'Time expired. Review every subject and continue into its complete life-cycle record.'
-      : 'Circuit completed before time expired. Review every subject and its complete life-cycle record.');
+      ? 'Time expired. Review every subject; the latest resolved case is debriefed below.'
+      : 'Circuit completed before time expired. Review every subject; the latest resolved case is debriefed below.');
     setText(elements.resultScore, state.score);
     setText(elements.resultCorrect, correctCount());
     setText(elements.resultMissed, state.entries.length - correctCount());
     setText(elements.resultStreak, state.bestStreak);
+    const attempted = attemptedCount();
+    resultSystem?.render(elements.resultScorecard, {
+      title: reason === 'time' ? 'Time expired' : 'Circuit complete',
+      scoreLabel: 'Circuit score',
+      score: state.score,
+      maximum: maximumScore(),
+      completion: state.entries.length ? (attempted / state.entries.length) * 100 : 0,
+      accuracy: attempted ? (correctCount() / attempted) * 100 : 0
+    });
+    const debrief = state.lastResolvedEntry || state.entries[0];
+    if (debrief) {
+      setText(elements.debriefMeta, `LCA DEBRIEF · EPISODE #${debrief.episode.number} · ${debrief.episode.seasonLabel}`);
+      setText(elements.debriefSubject, debrief.episode.title);
+      setText(elements.debriefDescription, debrief.episode.subjectDescription);
+      setText(elements.debriefImpact, debrief.episode.result);
+      setText(elements.debriefHotspot, debrief.episode.hotspot);
+      elements.debriefLink.href = debrief.episode.url;
+      elements.debriefLink.setAttribute('aria-label', `Open the complete LCA for ${debrief.episode.title}`);
+    }
     buildReview();
     elements.result.hidden = false;
     updateWheel();
     updateScoreboard();
+    const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    elements.result.scrollIntoView({ behavior: reducedMotion ? 'auto' : 'smooth', block: 'start' });
   };
 
   const moveNext = () => {
@@ -293,6 +328,7 @@
       normalizeWithoutArticle(entry.answerLabel),
       normalizeWithoutArticle(entry.episode.title)
     ]);
+    state.lastResolvedEntry = entry;
     if (accepted.has(attempt)) {
       state.streak += 1;
       state.bestStreak = Math.max(state.bestStreak, state.streak);

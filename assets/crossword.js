@@ -2,6 +2,7 @@
   'use strict';
 
   const engine = window.ImpossibleCrossword;
+  const resultSystem = window.ImpossibleLabResults;
   const elements = {
     count: document.getElementById('crossword-case-count'),
     round: document.getElementById('crossword-round'),
@@ -18,6 +19,7 @@
     replay: document.getElementById('crossword-replay'),
     feedback: document.getElementById('crossword-feedback'),
     result: document.getElementById('lab-result') || document.getElementById('crossword-result'),
+    resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
     resultState: document.getElementById('lab-result-state') || document.getElementById('crossword-result-state'),
     resultTitle: document.getElementById('lab-result-title') || document.getElementById('crossword-result-title'),
     resultSubject: document.getElementById('lab-result-subject') || document.getElementById('crossword-result-subject'),
@@ -40,7 +42,8 @@
     inputByCell: new Map(),
     clueByEntry: new Map(),
     round: 0,
-    complete: false
+    complete: false,
+    answerAttempts: 0
   };
 
   const keyOf = (row, col) => `${row},${col}`;
@@ -256,6 +259,15 @@
     setText(elements.resultHotspot, episode.hotspot);
     elements.resultLink.href = episode.url;
     if (elements.replay) elements.replay.hidden = !complete;
+    const totalEntries = state.layout?.entries.length || 10;
+    resultSystem?.render(elements.resultScorecard, {
+      title: complete ? 'Grid complete' : 'Current grid performance',
+      scoreLabel: 'Grid score',
+      score: currentScore(),
+      maximum: 500,
+      completion: (state.correctEntries.size / totalEntries) * 100,
+      accuracy: state.answerAttempts ? (state.correctEntries.size / state.answerAttempts) * 100 : 0
+    });
   };
 
   function checkGrid() {
@@ -266,6 +278,7 @@
       if (state.correctEntries.has(entry.id)) return;
       const value = valueForEntry(entry);
       if (value === entry.answer) {
+        state.answerAttempts += 1;
         state.correctEntries.add(entry.id);
         newlyCorrect.push(entry);
         markEntry(entry, 'is-wrong', false);
@@ -276,6 +289,7 @@
           input.setAttribute('aria-readonly', 'true');
         });
       } else if (value.length === entry.answer.length) {
+        state.answerAttempts += 1;
         hasCompleteWrongWord = true;
         markEntry(entry, 'is-wrong', true);
       }
@@ -351,6 +365,7 @@
     state.correctEntries.clear();
     state.revealedCells.clear();
     state.complete = false;
+    state.answerAttempts = 0;
     elements.result.hidden = true;
     elements.result.classList.remove('is-complete');
     if (elements.replay) elements.replay.hidden = true;
