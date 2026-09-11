@@ -13,9 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-CROSSWORD_VERSION = "20260909-crossword1"
-LAB_VERSION = "20260910-spin1"
-NAV_VERSION = "20260909-alphabet2"
+CROSSWORD_VERSION = "20260911-navigation1"
+LAB_VERSION = "20260911-navigation1"
+NAV_VERSION = "20260911-navigation1"
+ACTION_VERSION = "20260911-navigation1"
 errors: list[str] = []
 
 
@@ -127,12 +128,17 @@ def check_page() -> None:
         'id="crossword-check"',
         'id="crossword-reveal"',
         'id="crossword-new"',
+        'id="crossword-replay"',
         'id="crossword-result"',
+        'class="lab-route-bar"',
+        'EXPERIMENT 02 OF 04 · CURRENT GAME',
+        'data-lab-another',
         'aria-live="assertive"',
         "Reveal a letter · −10 pts",
         f"assets/lab.css?v={LAB_VERSION}",
         f"assets/crossword.css?v={CROSSWORD_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
+        f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/crossword-generator.js?v={CROSSWORD_VERSION}",
         f"assets/crossword.js?v={CROSSWORD_VERSION}",
         "CROSSWORD-SEO:START",
@@ -208,6 +214,8 @@ def check_runtime() -> None:
         "episode.hotspot",
         "episode.url",
         "input.readOnly = true",
+        "elements.replay.hidden = !complete",
+        "elements.replay?.addEventListener('click', startPuzzle)",
     ):
         if token not in controller:
             fail(f"assets/crossword.js: required gameplay token missing: {token}")

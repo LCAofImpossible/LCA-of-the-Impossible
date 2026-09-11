@@ -72,6 +72,7 @@ CORE_PATHS = {
     "assets/lab.js",
     "assets/lab-hub.js",
     "assets/lab-nav.js",
+    "assets/lab-actions.js",
     "assets/crossword-generator.js",
     "assets/crossword.js",
     "assets/alphabet.js",
@@ -478,8 +479,12 @@ def validate(
             'id="lab-clue-list"',
             'id="lab-answer-form"',
             'id="lab-result"',
-            "assets/lab.css?v=20260910-spin1",
-            "assets/lab-nav.js?v=20260909-alphabet2",
+            'class="lab-route-bar"',
+            "EXPERIMENT 01 OF 04 · CURRENT GAME",
+            'data-lab-another',
+            "assets/lab.css?v=20260911-navigation1",
+            "assets/lab-nav.js?v=20260911-navigation1",
+            "assets/lab-actions.js?v=20260911-navigation1",
             "assets/lab.js?v=20260908-impossible-lab1",
         ),
         "lab-crossword.html": (
@@ -488,9 +493,16 @@ def validate(
             'id="crossword-grid"',
             'id="crossword-across"',
             'id="crossword-result"',
-            "assets/crossword.css?v=20260909-crossword1",
-            "assets/crossword-generator.js?v=20260909-crossword1",
-            "assets/crossword.js?v=20260909-crossword1",
+            'id="crossword-replay"',
+            'class="lab-route-bar"',
+            "EXPERIMENT 02 OF 04 · CURRENT GAME",
+            'data-lab-another',
+            "assets/lab.css?v=20260911-navigation1",
+            "assets/lab-nav.js?v=20260911-navigation1",
+            "assets/lab-actions.js?v=20260911-navigation1",
+            "assets/crossword.css?v=20260911-navigation1",
+            "assets/crossword-generator.js?v=20260911-navigation1",
+            "assets/crossword.js?v=20260911-navigation1",
         ),
         "lab-alphabet.html": (
             "IMPOSSIBLE LAB · EXPERIMENT 03",
@@ -498,9 +510,13 @@ def validate(
             'id="alphabet-wheel"',
             'id="alphabet-answer-form"',
             'id="alphabet-result"',
-            "assets/lab.css?v=20260910-spin1",
+            'class="lab-route-bar"',
+            "EXPERIMENT 03 OF 04 · CURRENT GAME",
+            'data-lab-another',
+            "assets/lab.css?v=20260911-navigation1",
             "assets/alphabet.css?v=20260909-alphabet2",
-            "assets/lab-nav.js?v=20260909-alphabet2",
+            "assets/lab-nav.js?v=20260911-navigation1",
+            "assets/lab-actions.js?v=20260911-navigation1",
             "assets/alphabet.js?v=20260909-alphabet2",
         ),
         "lab-spin.html": (
@@ -510,10 +526,14 @@ def validate(
             'id="spin-puzzle"',
             'id="spin-solve-form"',
             'id="spin-result"',
-            "assets/lab.css?v=20260910-spin1",
-            "assets/spin.css?v=20260910-spin1",
-            "assets/lab-nav.js?v=20260909-alphabet2",
-            "assets/spin.js?v=20260910-spin1",
+            'class="lab-route-bar"',
+            "EXPERIMENT 04 OF 04 · CURRENT GAME",
+            'data-lab-another',
+            "assets/lab.css?v=20260911-navigation1",
+            "assets/spin.css?v=20260911-navigation1",
+            "assets/lab-nav.js?v=20260911-navigation1",
+            "assets/lab-actions.js?v=20260911-navigation1",
+            "assets/spin.js?v=20260911-navigation1",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -527,10 +547,12 @@ def validate(
             "state.unused.splice",
         ),
         "assets/lab.css": (
+            ".lab-route-bar",
             ".lab-game-nav",
             ".lab-workspace",
             ".lab-clue.is-current",
             ".lab-result[hidden]",
+            ".lab-end-actions",
             ".lab-home-preview",
             "grid-auto-rows:1fr",
             "@media(max-width:760px)",
@@ -552,7 +574,7 @@ def validate(
         "index.html": (
             "LAB-HOME:START",
             'href="impossible-lab.html"',
-            "assets/lab.css?v=20260910-spin1",
+            "assets/lab.css?v=20260911-navigation1",
         ),
         "assets/crossword-generator.js": (
             "seededRandom",
@@ -602,6 +624,14 @@ def validate(
             "fetch('crossword.json'",
             "state.entry.episode.result",
             "state.entry.episode.hotspot",
+            "setText(elements.next, 'Play again →')",
+        ),
+        "assets/lab-actions.js": (
+            "fetch('lab-games.json'",
+            "game.id !== currentGame",
+            "game.status === 'live'",
+            "window.location.assign(selected.url)",
+            "window.location.assign('impossible-lab.html')",
         ),
         "assets/spin.css": (
             ".spin-wheel",
@@ -623,7 +653,7 @@ def validate(
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
     crossword_runtime = "\n".join(
         downloaded.get(path, b"").decode("utf-8", errors="replace")
-        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/lab-nav.js", "assets/lab-hub.js")
+        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/lab-nav.js", "assets/lab-actions.js", "assets/lab-hub.js")
     )
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:

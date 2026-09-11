@@ -394,7 +394,7 @@
     setText(elements.resultHotspot, state.entry.episode.hotspot);
     elements.resultLink.href = state.entry.episode.url;
     elements.resultLink.setAttribute('aria-label', `Open the complete LCA for ${state.entry.episode.title}`);
-    setText(elements.next, state.roundNumber < ROUNDS_PER_SESSION ? 'Next phrase →' : 'Start new session →');
+    setText(elements.next, 'Play again →');
     elements.result.hidden = false;
     setFeedback(solved ? `Correct · +${solveBonus} solve bonus.` : 'No solve bonus awarded.', solved ? 'correct' : 'wrong');
     renderScoreboard();

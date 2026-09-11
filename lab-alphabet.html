@@ -43,7 +43,7 @@
   <title>The Impossible Alphabet — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260910-spin1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
   <link rel="stylesheet" href="assets/alphabet.css?v=20260909-alphabet2">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
@@ -73,10 +73,14 @@
 
   <main id="main-content" tabindex="-1">
     <section class="lab-shell alphabet-shell" aria-labelledby="alphabet-title">
+      <nav class="lab-route-bar" aria-label="Current Impossible Lab experiment">
+        <a class="lab-route-back" href="impossible-lab.html">← Impossible Lab</a>
+        <p class="lab-route-current"><span>EXPERIMENT 03 OF 04 · CURRENT GAME</span><strong>The Impossible Alphabet</strong></p>
+      </nav>
       <nav class="lab-game-nav" data-lab-game-nav aria-label="Impossible Lab experiments">
         <a class="lab-game-link" href="lab.html"><span>EXPERIMENT 01</span><strong>Guess the Impossible</strong><small>Identify the case</small></a>
         <a class="lab-game-link" href="lab-crossword.html"><span>EXPERIMENT 02</span><strong>Cross the Impossible</strong><small>Solve the archive</small></a>
-        <a class="lab-game-link" href="lab-alphabet.html" aria-current="page"><span>EXPERIMENT 03</span><strong>The Impossible Alphabet</strong><small>Race through the letters</small></a>
+        <a class="lab-game-link" href="lab-alphabet.html" aria-current="page"><span>EXPERIMENT 03</span><strong>The Impossible Alphabet</strong><small>Race through the letters</small><em>CURRENT</em></a>
         <a class="lab-game-link" href="lab-spin.html"><span>EXPERIMENT 04</span><strong>Spin the Impossible</strong><small>Rebuild the hidden phrase</small></a>
       </nav>
 
@@ -154,7 +158,6 @@
             <h2 id="alphabet-result-title">Circuit report</h2>
             <p id="alphabet-result-copy">Review the subjects and open their complete life-cycle records.</p>
           </div>
-          <button class="button" type="button" id="alphabet-new-round">Run another circuit →</button>
         </header>
         <dl class="alphabet-result-data">
           <div><dt>Final score</dt><dd id="alphabet-result-score">0</dd></div>
@@ -163,6 +166,11 @@
           <div><dt>Best streak</dt><dd id="alphabet-result-streak">0</dd></div>
         </dl>
         <ol class="alphabet-review" id="alphabet-review" aria-label="Round answer review"></ol>
+        <div class="lab-end-actions" aria-label="End of game actions">
+          <button class="button" type="button" id="alphabet-new-round">Play again →</button>
+          <button class="button secondary" type="button" data-lab-another>Choose another game →</button>
+          <a class="button secondary" href="impossible-lab.html">Return to the Lab →</a>
+        </div>
       </section>
 
       <noscript><p class="lab-noscript">The Impossible Alphabet requires JavaScript to assemble the current letter circuit. <a href="archive.html">Open the complete archive →</a></p></noscript>
@@ -171,10 +179,11 @@
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="lab-crossword.html">Try Cross the Impossible →</a>
+    <a href="impossible-lab.html">Return to Impossible Lab →</a>
   </footer>
 
-  <script src="assets/lab-nav.js?v=20260909-alphabet2"></script>
+  <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
   <script src="assets/alphabet.js?v=20260909-alphabet2"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>

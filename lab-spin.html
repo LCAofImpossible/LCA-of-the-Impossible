@@ -43,8 +43,8 @@
   <title>Spin the Impossible — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260910-spin1">
-  <link rel="stylesheet" href="assets/spin.css?v=20260910-spin1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
+  <link rel="stylesheet" href="assets/spin.css?v=20260911-navigation1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="spin">
@@ -73,11 +73,15 @@
 
   <main id="main-content" tabindex="-1">
     <section class="lab-shell spin-shell" aria-labelledby="spin-title">
+      <nav class="lab-route-bar" aria-label="Current Impossible Lab experiment">
+        <a class="lab-route-back" href="impossible-lab.html">← Impossible Lab</a>
+        <p class="lab-route-current"><span>EXPERIMENT 04 OF 04 · CURRENT GAME</span><strong>Spin the Impossible</strong></p>
+      </nav>
       <nav class="lab-game-nav" data-lab-game-nav aria-label="Impossible Lab experiments">
         <a class="lab-game-link" href="lab.html"><span>EXPERIMENT 01</span><strong>Guess the Impossible</strong><small>Identify the case</small></a>
         <a class="lab-game-link" href="lab-crossword.html"><span>EXPERIMENT 02</span><strong>Cross the Impossible</strong><small>Solve the archive</small></a>
         <a class="lab-game-link" href="lab-alphabet.html"><span>EXPERIMENT 03</span><strong>The Impossible Alphabet</strong><small>Race through the letters</small></a>
-        <a class="lab-game-link" href="lab-spin.html" aria-current="page"><span>EXPERIMENT 04</span><strong>Spin the Impossible</strong><small>Rebuild the hidden phrase</small></a>
+        <a class="lab-game-link" href="lab-spin.html" aria-current="page"><span>EXPERIMENT 04</span><strong>Spin the Impossible</strong><small>Rebuild the hidden phrase</small><em>CURRENT</em></a>
       </nav>
 
       <header class="lab-intro spin-intro">
@@ -159,7 +163,6 @@
             <h2 id="spin-result-title">Round report</h2>
             <p id="spin-result-copy">The subject and its complete life-cycle record are now available.</p>
           </div>
-          <button class="button" type="button" id="spin-next">Next phrase →</button>
         </header>
         <dl class="spin-result-data">
           <div><dt>Round score</dt><dd id="spin-result-round-score">0</dd></div>
@@ -177,6 +180,11 @@
           </dl>
           <a class="button secondary" id="spin-result-link" href="archive.html">Open complete LCA →</a>
         </article>
+        <div class="lab-end-actions" aria-label="End of game actions">
+          <button class="button" type="button" id="spin-next">Play again →</button>
+          <button class="button secondary" type="button" data-lab-another>Choose another game →</button>
+          <a class="button secondary" href="impossible-lab.html">Return to the Lab →</a>
+        </div>
       </section>
 
       <noscript><p class="lab-noscript">Spin the Impossible requires JavaScript to assemble the hidden phrase. <a href="archive.html">Open the complete archive →</a></p></noscript>
@@ -185,11 +193,12 @@
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="lab-alphabet.html">Try The Impossible Alphabet →</a>
+    <a href="impossible-lab.html">Return to Impossible Lab →</a>
   </footer>
 
-  <script src="assets/lab-nav.js?v=20260909-alphabet2"></script>
-  <script src="assets/spin.js?v=20260910-spin1"></script>
+  <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
+  <script src="assets/spin.js?v=20260911-navigation1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

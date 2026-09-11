@@ -12,10 +12,11 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260910-spin1"
+LAB_CSS_VERSION = "20260911-navigation1"
 HUB_VERSION = "20260910-hub1"
 GUESS_VERSION = "20260908-impossible-lab1"
-NAV_VERSION = "20260909-alphabet2"
+NAV_VERSION = "20260911-navigation1"
+ACTION_VERSION = "20260911-navigation1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -74,8 +75,14 @@ def check_page(episode_count: int) -> None:
         f"assets/lab.css?v={LAB_CSS_VERSION}",
         f"assets/lab.js?v={GUESS_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
+        f"assets/lab-actions.js?v={ACTION_VERSION}",
         'data-lab-game="guess"',
         'data-lab-game-nav',
+        'class="lab-route-bar"',
+        'EXPERIMENT 01 OF 04 · CURRENT GAME',
+        'id="lab-new-case"',
+        'data-lab-another',
+        'href="impossible-lab.html"',
         "assets/telemetry.css?v=20260820-telemetry1",
         "assets/telemetry.js?v=20260820-telemetry1",
         'type="application/rss+xml"',
@@ -132,11 +139,31 @@ def check_styles() -> None:
     text = read("assets/lab.css")
     for token in (
         ".lab-shell", ".lab-workspace", ".lab-clue.is-locked", ".lab-clue.is-current",
-        ".lab-result[hidden]", ".lab-home-preview", "@media(max-width:760px)",
+        ".lab-result[hidden]", ".lab-home-preview", ".lab-route-bar", ".lab-end-actions",
+        "@media(max-width:760px)",
         "@media(prefers-reduced-motion:reduce)",
     ):
         if token not in text:
             fail(f"assets/lab.css: required responsive token missing: {token}")
+
+
+def check_shared_navigation_runtime() -> None:
+    navigation = read("assets/lab-nav.js")
+    actions = read("assets/lab-actions.js")
+    for token in ("fetch('lab-games.json'", "aria-current", "status.textContent = 'Current'"):
+        if token not in navigation:
+            fail(f"assets/lab-nav.js: required current-game token missing: {token}")
+    for token in (
+        "fetch('lab-games.json'", "game.id !== currentGame", "game.status === 'live'",
+        "window.location.assign(selected.url)", "window.location.assign('impossible-lab.html')",
+        "credentials: 'same-origin'",
+    ):
+        if token not in actions:
+            fail(f"assets/lab-actions.js: required routing token missing: {token}")
+    for name, source in (("navigation", navigation), ("actions", actions)):
+        for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
+            if forbidden in source:
+                fail(f"Shared Lab {name} runtime contains forbidden persistence or injection token: {forbidden}")
 
 
 def check_hub() -> None:
@@ -226,7 +253,7 @@ def check_discovery() -> None:
         "scripts/rss_sync.py": ('"impossible-lab.html"',),
         "scripts/live_site_qa.py": ('"impossible-lab.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"'),
         "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"'),
-        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "assets/lab-hub.css", "assets/lab-hub.js"),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js"),
     }.items():
         source = read(script)
         for token in tokens:
@@ -258,6 +285,7 @@ def main() -> int:
     count = check_registry()
     check_page(count)
     check_runtime()
+    check_shared_navigation_runtime()
     check_styles()
     check_hub()
     check_discovery()

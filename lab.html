@@ -43,7 +43,7 @@
   <title>Impossible Lab — Guess the Impossible</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260910-spin1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="guess">
@@ -72,8 +72,12 @@
 
   <main id="main-content" tabindex="-1">
     <section class="lab-shell" aria-labelledby="lab-title">
+      <nav class="lab-route-bar" aria-label="Current Impossible Lab experiment">
+        <a class="lab-route-back" href="impossible-lab.html">← Impossible Lab</a>
+        <p class="lab-route-current"><span>EXPERIMENT 01 OF 04 · CURRENT GAME</span><strong>Guess the Impossible</strong></p>
+      </nav>
       <nav class="lab-game-nav" data-lab-game-nav aria-label="Impossible Lab experiments">
-        <a class="lab-game-link" href="lab.html" aria-current="page"><span>EXPERIMENT 01</span><strong>Guess the Impossible</strong><small>Identify the case</small></a>
+        <a class="lab-game-link" href="lab.html" aria-current="page"><span>EXPERIMENT 01</span><strong>Guess the Impossible</strong><small>Identify the case</small><em>CURRENT</em></a>
         <a class="lab-game-link" href="lab-crossword.html"><span>EXPERIMENT 02</span><strong>Cross the Impossible</strong><small>Solve the archive</small></a>
         <a class="lab-game-link" href="lab-alphabet.html"><span>EXPERIMENT 03</span><strong>The Impossible Alphabet</strong><small>Race through the letters</small></a>
         <a class="lab-game-link" href="lab-spin.html"><span>EXPERIMENT 04</span><strong>Spin the Impossible</strong><small>Rebuild the hidden phrase</small></a>
@@ -126,7 +130,6 @@
 
           <div class="lab-console-actions">
             <button class="button secondary" type="button" id="lab-reveal" disabled>Reveal next clue</button>
-            <button class="text-link lab-new-case" type="button" id="lab-new-case" hidden>Load another case →</button>
           </div>
         </article>
 
@@ -156,7 +159,12 @@
           <div><dt>Headline result</dt><dd id="lab-result-impact">—</dd></div>
           <div><dt>Main hotspot</dt><dd id="lab-result-hotspot">—</dd></div>
         </dl>
-        <a class="button" id="lab-result-link" href="archive.html">Explore the full case →</a>
+        <div class="lab-end-actions" aria-label="End of game actions">
+          <a class="button secondary" id="lab-result-link" href="archive.html">Explore the full case →</a>
+          <button class="button lab-new-case" type="button" id="lab-new-case" hidden>Play again →</button>
+          <button class="button secondary" type="button" data-lab-another>Choose another game →</button>
+          <a class="button secondary" href="impossible-lab.html">Return to the Lab →</a>
+        </div>
       </section>
 
       <noscript><p class="lab-noscript">Guess the Impossible requires JavaScript to read the current episode registry. <a href="archive.html">Open the complete archive →</a></p></noscript>
@@ -165,10 +173,11 @@
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="archive.html">Browse all episodes →</a>
+    <a href="impossible-lab.html">Return to Impossible Lab →</a>
   </footer>
 
-  <script src="assets/lab-nav.js?v=20260909-alphabet2"></script>
+  <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
   <script src="assets/lab.js?v=20260908-impossible-lab1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>

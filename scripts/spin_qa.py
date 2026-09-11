@@ -13,9 +13,10 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260910-spin1"
-NAV_VERSION = "20260909-alphabet2"
-SPIN_VERSION = "20260910-spin1"
+LAB_VERSION = "20260911-navigation1"
+NAV_VERSION = "20260911-navigation1"
+ACTION_VERSION = "20260911-navigation1"
+SPIN_VERSION = "20260911-navigation1"
 errors: list[str] = []
 
 
@@ -127,11 +128,16 @@ def check_page() -> None:
         'id="spin-solve-form"',
         'id="spin-reveal"',
         'id="spin-result"',
+        'id="spin-next"',
+        'class="lab-route-bar"',
+        'EXPERIMENT 04 OF 04 · CURRENT GAME',
+        'data-lab-another',
         'aria-live="assertive"',
         "Start round 1",
         f"assets/lab.css?v={LAB_VERSION}",
         f"assets/spin.css?v={SPIN_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
+        f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/spin.js?v={SPIN_VERSION}",
         "SPIN-SEO:START",
         'type="application/rss+xml"',
@@ -167,6 +173,7 @@ def check_runtime() -> None:
         "state.entry.episode.result",
         "state.entry.episode.hotspot",
         "elements.resultLink.href = state.entry.episode.url",
+        "setText(elements.next, 'Play again →')",
         "replaceChildren(fragment)",
         "credentials: 'same-origin'",
     )

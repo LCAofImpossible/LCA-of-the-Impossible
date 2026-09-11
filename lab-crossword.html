@@ -43,8 +43,8 @@
   <title>Cross the Impossible — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260910-spin1">
-  <link rel="stylesheet" href="assets/crossword.css?v=20260909-crossword1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-navigation1">
+  <link rel="stylesheet" href="assets/crossword.css?v=20260911-navigation1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="crossword">
@@ -73,9 +73,13 @@
 
   <main id="main-content" tabindex="-1">
     <section class="lab-shell crossword-shell" aria-labelledby="crossword-title">
+      <nav class="lab-route-bar" aria-label="Current Impossible Lab experiment">
+        <a class="lab-route-back" href="impossible-lab.html">← Impossible Lab</a>
+        <p class="lab-route-current"><span>EXPERIMENT 02 OF 04 · CURRENT GAME</span><strong>Cross the Impossible</strong></p>
+      </nav>
       <nav class="lab-game-nav" data-lab-game-nav aria-label="Impossible Lab experiments">
         <a class="lab-game-link" href="lab.html"><span>EXPERIMENT 01</span><strong>Guess the Impossible</strong><small>Identify the case</small></a>
-        <a class="lab-game-link" href="lab-crossword.html" aria-current="page"><span>EXPERIMENT 02</span><strong>Cross the Impossible</strong><small>Solve the archive</small></a>
+        <a class="lab-game-link" href="lab-crossword.html" aria-current="page"><span>EXPERIMENT 02</span><strong>Cross the Impossible</strong><small>Solve the archive</small><em>CURRENT</em></a>
         <a class="lab-game-link" href="lab-alphabet.html"><span>EXPERIMENT 03</span><strong>The Impossible Alphabet</strong><small>Race through the letters</small></a>
         <a class="lab-game-link" href="lab-spin.html"><span>EXPERIMENT 04</span><strong>Spin the Impossible</strong><small>Rebuild the hidden phrase</small></a>
       </nav>
@@ -142,7 +146,12 @@
           <div><dt>Headline result</dt><dd id="crossword-result-impact">—</dd></div>
           <div><dt>Main hotspot</dt><dd id="crossword-result-hotspot">—</dd></div>
         </dl>
-        <a class="button" id="crossword-result-link" href="archive.html">Explore the full case →</a>
+        <div class="lab-end-actions" aria-label="End of game actions">
+          <a class="button secondary" id="crossword-result-link" href="archive.html">Explore the full case →</a>
+          <button class="button" type="button" id="crossword-replay" hidden>Play again →</button>
+          <button class="button secondary" type="button" data-lab-another>Choose another game →</button>
+          <a class="button secondary" href="impossible-lab.html">Return to the Lab →</a>
+        </div>
       </section>
 
       <noscript><p class="lab-noscript">Cross the Impossible requires JavaScript to generate the puzzle. <a href="archive.html">Open the complete archive →</a></p></noscript>
@@ -151,12 +160,13 @@
 
   <footer>
     <span>© LCA of the Impossible</span>
-    <a href="lab.html">Try Guess the Impossible →</a>
+    <a href="impossible-lab.html">Return to Impossible Lab →</a>
   </footer>
 
-  <script src="assets/lab-nav.js?v=20260909-alphabet2"></script>
-  <script src="assets/crossword-generator.js?v=20260909-crossword1"></script>
-  <script src="assets/crossword.js?v=20260909-crossword1"></script>
+  <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
+  <script src="assets/crossword-generator.js?v=20260911-navigation1"></script>
+  <script src="assets/crossword.js?v=20260911-navigation1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

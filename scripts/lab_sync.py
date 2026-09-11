@@ -12,13 +12,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260910-spin1"
+LAB_CSS_VERSION = "20260911-navigation1"
 HUB_VERSION = "20260910-hub1"
 GUESS_VERSION = "20260908-impossible-lab1"
-CROSSWORD_VERSION = "20260909-crossword1"
-NAV_VERSION = "20260909-alphabet2"
+ACTION_VERSION = "20260911-navigation1"
+CROSSWORD_VERSION = "20260911-navigation1"
+NAV_VERSION = "20260911-navigation1"
 ALPHABET_VERSION = "20260909-alphabet2"
-SPIN_VERSION = "20260910-spin1"
+SPIN_VERSION = "20260911-navigation1"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
@@ -406,11 +407,13 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab.js": GUESS_VERSION,
             "assets/lab-nav.js": NAV_VERSION,
+            "assets/lab-actions.js": ACTION_VERSION,
         },
         "lab-crossword.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/crossword.css": CROSSWORD_VERSION,
             "assets/lab-nav.js": NAV_VERSION,
+            "assets/lab-actions.js": ACTION_VERSION,
             "assets/crossword-generator.js": CROSSWORD_VERSION,
             "assets/crossword.js": CROSSWORD_VERSION,
         },
@@ -418,12 +421,14 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/alphabet.css": ALPHABET_VERSION,
             "assets/lab-nav.js": NAV_VERSION,
+            "assets/lab-actions.js": ACTION_VERSION,
             "assets/alphabet.js": ALPHABET_VERSION,
         },
         "lab-spin.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/spin.css": SPIN_VERSION,
             "assets/lab-nav.js": NAV_VERSION,
+            "assets/lab-actions.js": ACTION_VERSION,
             "assets/spin.js": SPIN_VERSION,
         },
     }
@@ -463,7 +468,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 `impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
-The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub; the shared in-game selector continues to move directly between experiments.
+The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
 ### 39.1 Guess the Impossible
 
@@ -540,7 +545,7 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
 - `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
 - `lab-spin.html`, `assets/spin.css` and `assets/spin.js` — hidden-phrase wheel, letter controls, session scoring and LCA reveal;
-- `lab-games.json` and `assets/lab-nav.js` — shared experiment registry and selector;
+- `lab-games.json`, `assets/lab-nav.js` and `assets/lab-actions.js` — shared experiment registry, current-game selector and end-of-game routing;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
@@ -571,6 +576,8 @@ The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selecti
 - [ ] Spin wheel values, special sectors, vowel cost, hint cost, incorrect-solution penalty and solve bonus match the canonical constants.
 - [ ] Spin phrases come directly from `crossword.json`; completed rounds reveal only approved episode registry fields and the canonical URL.
 - [ ] Every hub card exposes its game summary, challenge category and estimated duration without requiring navigation into the game.
+- [ ] Every game exposes the same Lab route bar, a visible current-game marker and the three standard completion actions on desktop and mobile.
+- [ ] `Choose another game` selects only a different live registry entry and falls back safely to the Lab hub if the registry is unavailable.
 - [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.

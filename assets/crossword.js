@@ -15,6 +15,7 @@
     check: document.getElementById('crossword-check'),
     reveal: document.getElementById('crossword-reveal'),
     newGrid: document.getElementById('crossword-new'),
+    replay: document.getElementById('crossword-replay'),
     feedback: document.getElementById('crossword-feedback'),
     result: document.getElementById('lab-result') || document.getElementById('crossword-result'),
     resultState: document.getElementById('lab-result-state') || document.getElementById('crossword-result-state'),
@@ -254,6 +255,7 @@
     setText(elements.resultImpact, episode.result);
     setText(elements.resultHotspot, episode.hotspot);
     elements.resultLink.href = episode.url;
+    if (elements.replay) elements.replay.hidden = !complete;
   };
 
   function checkGrid() {
@@ -351,6 +353,7 @@
     state.complete = false;
     elements.result.hidden = true;
     elements.result.classList.remove('is-complete');
+    if (elements.replay) elements.replay.hidden = true;
     elements.check.disabled = false;
     elements.reveal.disabled = false;
     elements.newGrid.disabled = false;
@@ -365,6 +368,7 @@
   elements.check.addEventListener('click', checkGrid);
   elements.reveal.addEventListener('click', revealLetter);
   elements.newGrid.addEventListener('click', startPuzzle);
+  elements.replay?.addEventListener('click', startPuzzle);
 
   Promise.all([
     fetch('episodes.json', { cache: 'no-store', credentials: 'same-origin' }).then((response) => {

@@ -23,7 +23,11 @@
         description.textContent = game.description;
         link.append(number, title, description);
 
-        if (game.status === 'preview') {
+        if (game.id === currentGame) {
+          const status = document.createElement('em');
+          status.textContent = 'Current';
+          link.appendChild(status);
+        } else if (game.status === 'preview') {
           const status = document.createElement('em');
           status.textContent = 'Preview';
           link.appendChild(status);
