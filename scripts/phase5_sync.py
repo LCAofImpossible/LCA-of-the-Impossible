@@ -16,7 +16,7 @@ HOME_END = "<!-- PHASE5-HOME:END -->"
 PHASE5_SEO_START = "<!-- PHASE5-SEO:START -->"
 PHASE5_SEO_END = "<!-- PHASE5-SEO:END -->"
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]
@@ -43,7 +43,7 @@ def current_page(path: Path) -> str:
 
 def nav_html(prefix: str, current: str) -> str:
     episode_current = ' aria-current="page"' if current in {"archive.html", "season-i.html", "season-ii.html"} else ""
-    lab_current = ' aria-current="page"' if current in {"impossible-lab.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html"} else ""
+    lab_current = ' aria-current="page"' if current in {"impossible-lab.html", "impossible-lab-run.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html"} else ""
     method_current = ' aria-current="page"' if current == "method.html" else ""
     about_current = ' aria-current="page"' if current == "about.html" else ""
     explore_class = "nav-explore nav-current" if current in EXPLORE_PAGES else "nav-explore"

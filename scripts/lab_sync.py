@@ -12,14 +12,15 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260911-score1"
-HUB_VERSION = "20260911-score1"
+LAB_CSS_VERSION = "20260911-run1"
+HUB_VERSION = "20260911-run1"
 GUESS_VERSION = "20260911-results1"
 ACTION_VERSION = "20260911-navigation1"
 CROSSWORD_VERSION = "20260911-score1"
 NAV_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-score1"
+RESULTS_VERSION = "20260911-run1"
 PROGRESS_VERSION = "20260911-score1"
+RUN_VERSION = "20260911-run1"
 ALPHABET_VERSION = "20260911-results1"
 SPIN_VERSION = "20260911-results1"
 HOME_START = "<!-- LAB-HOME:START -->"
@@ -28,6 +29,8 @@ SEO_START = "<!-- LAB-SEO:START -->"
 SEO_END = "<!-- LAB-SEO:END -->"
 HUB_SEO_START = "<!-- LAB-HUB-SEO:START -->"
 HUB_SEO_END = "<!-- LAB-HUB-SEO:END -->"
+RUN_SEO_START = "<!-- LAB-RUN-SEO:START -->"
+RUN_SEO_END = "<!-- LAB-RUN-SEO:END -->"
 CROSSWORD_SEO_START = "<!-- CROSSWORD-SEO:START -->"
 CROSSWORD_SEO_END = "<!-- CROSSWORD-SEO:END -->"
 ALPHABET_SEO_START = "<!-- ALPHABET-SEO:START -->"
@@ -202,6 +205,55 @@ def hub_seo_block(latest: dict) -> str:
     ])
 
 
+def run_seo_block(latest: dict) -> str:
+    title = "Impossible Lab Run — Four games. One run."
+    description = "Take the Impossible Lab Run: complete one consecutive round of all four archive-powered games and combine their normalized scores."
+    social_description = "Complete Guess, Cross, Alphabet and Spin in sequence, then combine the four normalized results into one Run Score."
+    canonical = BASE_URL + "impossible-lab-run.html"
+    image = BASE_URL + latest["cover"]
+    image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Impossible Lab Run",
+        "url": canonical,
+        "description": social_description,
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LCA of the Impossible",
+            "url": BASE_URL,
+        },
+    }
+    return "\n".join([
+        RUN_SEO_START,
+        f'  <meta name="description" content="{html.escape(description, quote=True)}">',
+        '  <meta name="robots" content="index,follow,max-image-preview:large">',
+        '  <meta name="theme-color" content="#071019">',
+        f'  <link rel="canonical" href="{canonical}">',
+        '  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="manifest" href="site.webmanifest">',
+        '  <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">',
+        '  <meta property="og:site_name" content="LCA of the Impossible">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta property="og:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta property="og:url" content="{canonical}">',
+        f'  <meta property="og:image" content="{image}">',
+        f'  <meta property="og:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <meta property="og:locale" content="en_US">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta name="twitter:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta name="twitter:image" content="{image}">',
+        f'  <meta name="twitter:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <script type="application/ld+json">',
+        json.dumps(json_ld, ensure_ascii=False, indent=2),
+        '  </script>',
+        RUN_SEO_END,
+    ])
+
+
 def crossword_seo_block(latest: dict) -> str:
     title = "Cross the Impossible — Impossible Lab"
     description = "Play Cross the Impossible: solve an automatically generated crossword built from narrative and cultural descriptions of published cases."
@@ -361,6 +413,15 @@ def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     hub_updated = re.sub(hub_pattern, hub_block, hub_text, flags=re.S)
     write_if_changed(hub_path, hub_updated, check, changed)
 
+    run_path = ROOT / "impossible-lab-run.html"
+    run_text = run_path.read_text(encoding="utf-8")
+    run_block = run_seo_block(latest)
+    run_pattern = rf"{re.escape(RUN_SEO_START)}.*?{re.escape(RUN_SEO_END)}"
+    if not re.search(run_pattern, run_text, flags=re.S):
+        raise RuntimeError("Missing Impossible Lab Run SEO markers")
+    run_updated = re.sub(run_pattern, run_block, run_text, flags=re.S)
+    write_if_changed(run_path, run_updated, check, changed)
+
     path = ROOT / "lab.html"
     text = path.read_text(encoding="utf-8")
     block = seo_block(latest)
@@ -406,12 +467,20 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-progress.js": PROGRESS_VERSION,
             "assets/lab-hub.js": HUB_VERSION,
         },
+        "impossible-lab-run.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/lab-run.css": RUN_VERSION,
+            "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-run.js": RUN_VERSION,
+            "assets/lab-run-page.js": RUN_VERSION,
+        },
         "lab.html": {
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab.js": GUESS_VERSION,
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
         },
         "lab-crossword.html": {
@@ -420,6 +489,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/crossword-generator.js": CROSSWORD_VERSION,
             "assets/crossword.js": CROSSWORD_VERSION,
@@ -430,6 +500,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/alphabet.js": ALPHABET_VERSION,
         },
@@ -439,6 +510,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/spin.js": SPIN_VERSION,
         },
@@ -457,6 +529,7 @@ def update_sitemap(check: bool, changed: list[Path]) -> None:
     text = path.read_text(encoding="utf-8")
     urls = [
         BASE_URL + "impossible-lab.html",
+        BASE_URL + "impossible-lab-run.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
@@ -477,7 +550,7 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
@@ -557,7 +630,15 @@ The hub displays the Lab Score, completion count, percentage and four normalized
 
 The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes.
 
-### 39.6 Registry and editorial guardrails
+### 39.6 Impossible Lab Run
+
+`impossible-lab-run.html` orchestrates one consecutive circuit through the four existing experiments in their canonical order: Guess, Cross, Alphabet and Spin. Starting a Run clears only the previous Run state and opens the first game with `?run=1`. Each game accepts exactly one completed result when it is the expected stage; out-of-order pages and repeated results cannot alter the circuit.
+
+Each accepted result contributes its current normalized score from `0` to `1,000`. The **Run Score** is their sum, for a fixed maximum of `4,000`. It is intentionally different from the persistent Lab Score: the Run Score uses the four results achieved in that single circuit, whereas the Lab Score uses the all-time best normalized result for each game. Completing a Run stage may still improve the independent game record and Lab Score through the shared result system.
+
+The route displays stage order, current stage, completed contributions, total Run Score and a direct continuation action. Progress survives ordinary page changes and reloads through the separate device-local key `lca-impossible-lab-run-v1`. Restarting or clearing a Run never deletes game records or the Lab Score. The Run creates no new clue dataset and therefore inherits the existing registry-driven maintenance model.
+
+### 39.7 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -570,9 +651,10 @@ The normalized score compares game performance only. It must never be presented 
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.7 Canonical files and automation
+### 39.8 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
+- `impossible-lab-run.html`, `assets/lab-run.css`, `assets/lab-run.js` and `assets/lab-run-page.js` — four-stage circuit, sequential state, Run Score and responsive progress route;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -614,10 +696,12 @@ The normalized score compares game performance only. It must never be presented 
 - [ ] Every final result retains the original score and exposes maximum obtainable, completion, accuracy and a normalized score limited to `0–1,000`.
 - [ ] A completed result can improve the independent original-score record and normalized-score record without a lower result reducing either record.
 - [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
+- [ ] Impossible Lab Run accepts one result from each game in canonical order, ignores out-of-order or duplicate completions and never exceeds `4,000`.
+- [ ] The Run Score uses only the four results achieved in the current circuit; restarting or clearing it preserves all personal game records and the persistent Lab Score.
 - [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
-- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Run and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

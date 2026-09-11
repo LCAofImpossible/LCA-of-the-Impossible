@@ -36,6 +36,9 @@
       ? null
       : progressSystem?.record(gameId, { score, maximum, normalized });
     const gameRecord = progressUpdate?.summary?.games?.[gameId];
+    const runUpdate = summary.persist === false
+      ? null
+      : window.ImpossibleLabRun?.record(gameId, { score, maximum, normalized });
 
     const card = document.createElement('section');
     card.className = 'lab-result-scorecard';
@@ -114,6 +117,33 @@
       unavailable.className = 'lab-record-unavailable';
       unavailable.textContent = 'Personal records cannot be saved because browser storage is unavailable. This result remains visible for the current page only.';
       card.appendChild(unavailable);
+    }
+
+    if (runUpdate?.accepted) {
+      const runBand = document.createElement('section');
+      runBand.className = 'lab-run-result';
+      runBand.setAttribute('aria-label', 'Impossible Lab Run progress');
+
+      const runHeading = document.createElement('div');
+      const runEyebrow = document.createElement('p');
+      const runTitle = document.createElement('h4');
+      runEyebrow.className = 'eyebrow';
+      runEyebrow.textContent = runUpdate.summary.complete ? 'IMPOSSIBLE LAB RUN COMPLETE' : `RUN STAGE ${runUpdate.summary.completed} COMPLETE`;
+      runTitle.textContent = scaledPoints(runUpdate.summary.total, runUpdate.summary.maximum);
+      runHeading.append(runEyebrow, runTitle);
+
+      const runMetrics = document.createElement('dl');
+      runMetrics.append(
+        metric('Stage contribution', scaledPoints(normalized, window.ImpossibleLabRun.SCORE_SCALE)),
+        metric('Stages complete', `${runUpdate.summary.completed} / ${window.ImpossibleLabRun.GAME_IDS.length}`)
+      );
+
+      const runLink = document.createElement('a');
+      runLink.className = 'button';
+      runLink.href = 'impossible-lab-run.html';
+      runLink.textContent = runUpdate.summary.complete ? 'View final Run result →' : 'Continue the Run →';
+      runBand.append(runHeading, runMetrics, runLink);
+      card.appendChild(runBand);
     }
 
     card.appendChild(note);

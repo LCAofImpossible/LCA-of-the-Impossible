@@ -13,12 +13,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-score1"
+LAB_VERSION = "20260911-run1"
 ALPHABET_VERSION = "20260911-results1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-score1"
+RESULTS_VERSION = "20260911-run1"
 PROGRESS_VERSION = "20260911-score1"
+RUN_VERSION = "20260911-run1"
 errors: list[str] = []
 
 
@@ -143,6 +144,7 @@ def check_page() -> None:
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-run.js?v={RUN_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/alphabet.js?v={ALPHABET_VERSION}",
         "ALPHABET-SEO:START",

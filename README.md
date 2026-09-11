@@ -611,7 +611,7 @@ The website need not duplicate the full workbook but must preserve the core audi
 
 Every public page must be self-describing in its static HTML. Do not rely on client-side JavaScript for search-engine or social-preview metadata.
 
-Required on `index.html`, `archive.html`, the Impossible Lab hub, all four game pages, `method.html`, both dedicated season pages and every published episode page:
+Required on `index.html`, `archive.html`, the Impossible Lab hub, the Impossible Lab Run, all four game pages, `method.html`, both dedicated season pages and every published episode page:
 
 - one absolute canonical URL under `https://lcaofimpossible.github.io/LCA-of-the-Impossible/`;
 - a concise meta description;
@@ -623,7 +623,7 @@ Required on `index.html`, `archive.html`, the Impossible Lab hub, all four game 
 
 For episode pages, the Open Graph/Twitter image must point to the **exact approved catalogue cover already registered in `episodes.json`**. This use is metadata for link previews and does not change the rule that the cover is not visually displayed in the episode-page hero.
 
-`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, the Impossible Lab hub, all four games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
+`robots.txt` must allow crawling and reference the canonical `sitemap.xml`. `sitemap.xml` must contain the homepage, Archive, the Impossible Lab hub, the Impossible Lab Run, all four games, Method page, both season pages and every published episode URL, and must exclude `episodes/template.html`.
 
 `episodes/template.html` must remain `noindex,nofollow` until instantiated as a real episode.
 
@@ -1624,7 +1624,7 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
 The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
@@ -1704,7 +1704,15 @@ The hub displays the Lab Score, completion count, percentage and four normalized
 
 The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes.
 
-### 39.6 Registry and editorial guardrails
+### 39.6 Impossible Lab Run
+
+`impossible-lab-run.html` orchestrates one consecutive circuit through the four existing experiments in their canonical order: Guess, Cross, Alphabet and Spin. Starting a Run clears only the previous Run state and opens the first game with `?run=1`. Each game accepts exactly one completed result when it is the expected stage; out-of-order pages and repeated results cannot alter the circuit.
+
+Each accepted result contributes its current normalized score from `0` to `1,000`. The **Run Score** is their sum, for a fixed maximum of `4,000`. It is intentionally different from the persistent Lab Score: the Run Score uses the four results achieved in that single circuit, whereas the Lab Score uses the all-time best normalized result for each game. Completing a Run stage may still improve the independent game record and Lab Score through the shared result system.
+
+The route displays stage order, current stage, completed contributions, total Run Score and a direct continuation action. Progress survives ordinary page changes and reloads through the separate device-local key `lca-impossible-lab-run-v1`. Restarting or clearing a Run never deletes game records or the Lab Score. The Run creates no new clue dataset and therefore inherits the existing registry-driven maintenance model.
+
+### 39.7 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -1717,9 +1725,10 @@ The normalized score compares game performance only. It must never be presented 
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.7 Canonical files and automation
+### 39.8 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
+- `impossible-lab-run.html`, `assets/lab-run.css`, `assets/lab-run.js` and `assets/lab-run-page.js` — four-stage circuit, sequential state, Run Score and responsive progress route;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -1761,10 +1770,12 @@ The normalized score compares game performance only. It must never be presented 
 - [ ] Every final result retains the original score and exposes maximum obtainable, completion, accuracy and a normalized score limited to `0–1,000`.
 - [ ] A completed result can improve the independent original-score record and normalized-score record without a lower result reducing either record.
 - [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
+- [ ] Impossible Lab Run accepts one result from each game in canonical order, ignores out-of-order or duplicate completions and never exceeds `4,000`.
+- [ ] The Run Score uses only the four results achieved in the current circuit; restarting or clearing it preserves all personal game records and the persistent Lab Score.
 - [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
-- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Run and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

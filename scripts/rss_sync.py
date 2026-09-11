@@ -18,7 +18,7 @@ FEED_TITLE = "LCA of the Impossible — New episodes"
 README_START = "<!-- ACCESSORY-RULES:START -->"
 README_END = "<!-- ACCESSORY-RULES:END -->"
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html",
     "season-ii.html", "statistics.html", "updates.html",
 ]
