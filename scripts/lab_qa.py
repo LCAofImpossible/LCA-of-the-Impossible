@@ -22,7 +22,7 @@ RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
 DAILY_VERSION = "20260911-daily1"
-DIFFICULTY_VERSION = "20260911-mobile1"
+DIFFICULTY_VERSION = "20260911-mobile2"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -226,6 +226,7 @@ def check_shared_navigation_runtime() -> None:
         "spins: 20, solveAttempts: 5", "spins: 15, solveAttempts: 3", "spins: 10, solveAttempts: 2",
         "isRunMode() ? DEFAULT_LEVEL", "level === DEFAULT_LEVEL", "progressSystem?.record",
         "const PLAY_TARGET = 'lab-game-area'", "withPlayTarget", "input.addEventListener('click'",
+        "document.body.dataset.labDifficultyLevel", "querySelectorAll?.('[data-lab-difficulty]')",
         "clearRecords", "decorateLinks", "data-lab-difficulty",
     ):
         if token not in difficulty:
@@ -233,6 +234,8 @@ def check_shared_navigation_runtime() -> None:
     for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "fetch(", "XMLHttpRequest"):
         if forbidden in difficulty:
             fail(f"assets/lab-difficulty.js: forbidden tracking, injection or network token present: {forbidden}")
+    if "document.body.dataset.labDifficulty =" in difficulty:
+        fail("assets/lab-difficulty.js: body state collides with the difficulty selector attribute")
 
     for asset in ("assets/lab-results.js", "assets/lab-progress.js", "assets/lab-difficulty.js"):
         syntax = subprocess.run(

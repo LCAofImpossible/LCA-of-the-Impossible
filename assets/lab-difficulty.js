@@ -282,7 +282,7 @@
     input.addEventListener('change', () => {
       if (!input.checked || fixed) return;
       const selected = set(level);
-      document.body.dataset.labDifficulty = selected;
+      document.body.dataset.labDifficultyLevel = selected;
       document.querySelectorAll('.lab-difficulty-description').forEach((node) => {
         node.textContent = descriptionFor(selected);
       });
@@ -321,7 +321,7 @@
   };
 
   const selected = current();
-  if (document.body) document.body.dataset.labDifficulty = selected;
+  if (document.body) document.body.dataset.labDifficultyLevel = selected;
   document.querySelectorAll?.('[data-lab-difficulty]').forEach(renderSelector);
   decorateLinks();
 
