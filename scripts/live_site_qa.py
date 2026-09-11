@@ -481,10 +481,12 @@ def validate(
             'data-lab-score-breakdown',
             'data-lab-reset',
             "Impossible Lab Run",
+            "Start Lab Run →",
+            'class="lab-hub-actions"',
             'href="impossible-lab-run.html"',
-            "assets/lab-hub.css?v=20260911-run1",
+            "assets/lab-hub.css?v=20260911-run2",
             "assets/lab-progress.js?v=20260911-score1",
-            "assets/lab-hub.js?v=20260911-run1",
+            "assets/lab-hub.js?v=20260911-run2",
         ),
         "impossible-lab-run.html": (
             'data-lab-run-page',
@@ -622,6 +624,7 @@ def validate(
             "progressSystem?.clear()",
         ),
         "assets/lab-hub.css": (
+            ".lab-hub-actions",
             ".lab-hub-grid",
             ".lab-hub-card",
             ".lab-score-panel",

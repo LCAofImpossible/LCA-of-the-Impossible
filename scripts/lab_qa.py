@@ -14,7 +14,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260911-run1"
-HUB_VERSION = "20260911-run1"
+HUB_VERSION = "20260911-run2"
 GUESS_VERSION = "20260911-results1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
@@ -371,7 +371,7 @@ def check_hub() -> None:
     for token in (
         'data-lab-hub', 'data-lab-hub-grid', 'data-random-game',
         'data-lab-score-panel', 'data-lab-score-total', 'data-lab-score-breakdown', 'data-lab-reset',
-        "Impossible Lab Run", 'href="impossible-lab-run.html"',
+        "Impossible Lab Run", "Start Lab Run →", 'class="lab-hub-actions"', 'href="impossible-lab-run.html"',
         "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
         'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"',
         f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
@@ -396,7 +396,7 @@ def check_hub() -> None:
             fail(f"assets/lab-hub.js: forbidden persistence or injection token present: {forbidden}")
 
     styles = read("assets/lab-hub.css")
-    for token in (".lab-score-panel", ".lab-score-total", ".lab-score-breakdown", ".lab-reset-records", ".lab-run-entry", ".lab-hub-grid", ".lab-hub-card", ".lab-hub-note", "@media(max-width:620px)", "@media(prefers-reduced-motion:reduce)"):
+    for token in (".lab-hub-actions", ".lab-score-panel", ".lab-score-total", ".lab-score-breakdown", ".lab-reset-records", ".lab-run-entry", ".lab-hub-grid", ".lab-hub-card", ".lab-hub-note", "@media(max-width:620px)", "@media(prefers-reduced-motion:reduce)"):
         if token not in styles:
             fail(f"assets/lab-hub.css: required responsive token missing: {token}")
 

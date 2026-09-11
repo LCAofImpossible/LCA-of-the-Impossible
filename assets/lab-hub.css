@@ -6,7 +6,8 @@
 .lab-hub-intro h1{max-width:940px;margin:14px 0 18px;font-size:clamp(3rem,7vw,6rem);line-height:.9;letter-spacing:-.067em}
 .lab-hub-intro h1 span{color:var(--accent2)}
 .lab-hub-intro .intro{max-width:800px;margin:0;font-size:1rem}
-.lab-random-button{min-width:190px;justify-content:center}
+.lab-hub-actions{display:grid;gap:10px;align-self:end}
+.lab-hub-actions .button{min-width:190px;justify-content:center;text-align:center}
 .lab-score-panel{max-width:1440px;margin:0 auto 18px;border:1px solid var(--gold);background:linear-gradient(135deg,rgba(208,165,99,.095),rgba(7,16,25,.96) 52%,rgba(109,231,255,.055));box-shadow:0 22px 70px rgba(0,0,0,.18)}
 .lab-score-overview{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:end;padding:26px 28px;border-bottom:1px solid var(--line)}
 .lab-score-overview h2{margin:8px 0 10px;font-size:clamp(2.2rem,4vw,4.2rem);line-height:.92;letter-spacing:-.055em}
@@ -61,7 +62,7 @@
 .lab-hub-note p{margin:0;color:var(--muted);font-size:.88rem;line-height:1.6}
 @media(max-width:900px){
   .lab-hub-intro{grid-template-columns:1fr;align-items:start}
-  .lab-random-button{justify-self:start}
+  .lab-hub-actions{justify-self:start}
   .lab-run-entry{grid-template-columns:1fr}
   .lab-run-entry dl{justify-self:start}
   .lab-run-entry .button{justify-self:start}
@@ -75,7 +76,8 @@
   .lab-hub-shell{padding:38px 5vw 70px}
   .lab-hub-intro{gap:24px;margin-bottom:26px}
   .lab-hub-intro h1{font-size:clamp(2.8rem,15vw,4rem)}
-  .lab-random-button{width:100%}
+  .lab-hub-actions{width:100%}
+  .lab-hub-actions .button{width:100%}
   .lab-score-overview{grid-template-columns:1fr;gap:24px;padding:22px}
   .lab-score-total{justify-items:start;text-align:left}
   .lab-score-progress{padding:16px 22px}
