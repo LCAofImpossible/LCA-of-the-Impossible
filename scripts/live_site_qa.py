@@ -25,6 +25,7 @@ CORE_PATHS = {
     "archive.html",
     "impossible-lab.html",
     "impossible-lab-run.html",
+    "lab-daily.html",
     "lab.html",
     "lab-crossword.html",
     "lab-alphabet.html",
@@ -79,6 +80,8 @@ CORE_PATHS = {
     "assets/lab-progress.js",
     "assets/lab-run.js",
     "assets/lab-run-page.js",
+    "assets/daily.css",
+    "assets/daily.js",
     "assets/crossword-generator.js",
     "assets/crossword.js",
     "assets/alphabet.js",
@@ -484,9 +487,24 @@ def validate(
             "Start Lab Run →",
             'class="lab-hub-actions"',
             'href="impossible-lab-run.html"',
-            "assets/lab-hub.css?v=20260911-run2",
+            "Daily Impossible",
+            'href="lab-daily.html"',
+            'data-daily-entry',
+            "assets/lab-hub.css?v=20260911-daily1",
             "assets/lab-progress.js?v=20260911-score1",
-            "assets/lab-hub.js?v=20260911-run2",
+            "assets/daily.js?v=20260911-daily1",
+            "assets/lab-hub.js?v=20260911-daily1",
+        ),
+        "lab-daily.html": (
+            'data-lab-daily',
+            "One day.<br><span>One impossible case.</span>",
+            'id="daily-answer-form"',
+            'id="daily-clue-list"',
+            'id="daily-result"',
+            'href="impossible-lab.html"',
+            "assets/lab.css?v=20260911-run1",
+            "assets/daily.css?v=20260911-daily1",
+            "assets/daily.js?v=20260911-daily1",
         ),
         "impossible-lab-run.html": (
             'data-lab-run-page',
@@ -791,6 +809,10 @@ def validate(
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML", "XMLHttpRequest"):
         if forbidden in run_page_runtime:
             errors.append(f"Lab Run page runtime violates its privacy or injection contract with {forbidden!r}")
+    daily_runtime = downloaded.get("assets/daily.js", b"").decode("utf-8", errors="replace")
+    for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "XMLHttpRequest"):
+        if forbidden in daily_runtime:
+            errors.append(f"Daily Impossible runtime violates its local-only privacy contract with {forbidden!r}")
     try:
         crossword_registry = json.loads(downloaded["crossword.json"])
         game_registry = json.loads(downloaded["lab-games.json"])
@@ -814,6 +836,8 @@ def validate(
         errors.append("Impossible Lab hub does not occur exactly once in the live sitemap")
     if sitemap.count("/impossible-lab-run.html") != 1:
         errors.append("Impossible Lab Run does not occur exactly once in the live sitemap")
+    if sitemap.count("/lab-daily.html") != 1:
+        errors.append("Daily Impossible does not occur exactly once in the live sitemap")
     if sitemap.count(f"/{'lab.html'}") != 1:
         errors.append("Impossible Lab does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-crossword.html") != 1:

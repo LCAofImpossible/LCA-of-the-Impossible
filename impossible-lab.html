@@ -4,24 +4,24 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 <!-- LAB-HUB-SEO:START -->
-  <meta name="description" content="Enter Impossible Lab and choose among four games built automatically from the published LCA of the Impossible archive.">
+  <meta name="description" content="Enter Impossible Lab for a new daily challenge, four archive-powered games and the complete four-stage Lab Run.">
   <meta name="robots" content="index,follow,max-image-preview:large">
   <meta name="theme-color" content="#071019">
   <link rel="canonical" href="https://lcaofimpossible.github.io/LCA-of-the-Impossible/impossible-lab.html">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="manifest" href="site.webmanifest">
   <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">
-<meta property="og:site_name" content="LCA of the Impossible">
+  <meta property="og:site_name" content="LCA of the Impossible">
   <meta property="og:type" content="website">
   <meta property="og:title" content="Impossible Lab — Play the archive">
-  <meta property="og:description" content="Choose a deduction game, crossword, speed quiz or hidden-phrase challenge powered by the published archive.">
+  <meta property="og:description" content="Solve today&#x27;s shared case, choose one of four archive-powered games or take the complete Lab Run.">
   <meta property="og:url" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/impossible-lab.html">
   <meta property="og:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta property="og:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Impossible Lab — Play the archive">
-  <meta name="twitter:description" content="Choose a deduction game, crossword, speed quiz or hidden-phrase challenge powered by the published archive.">
+  <meta name="twitter:description" content="Solve today&#x27;s shared case, choose one of four archive-powered games or take the complete Lab Run.">
   <meta name="twitter:image" content="https://lcaofimpossible.github.io/LCA-of-the-Impossible/assets/images/episodes/ep71-cosmic-turtle-cover.png">
   <meta name="twitter:image:alt" content="The Cosmic Turtle — latest LCA of the Impossible episode cover">
   <script type="application/ld+json">
@@ -30,7 +30,7 @@
   "@type": "CollectionPage",
   "name": "Impossible Lab — Play the archive",
   "url": "https://lcaofimpossible.github.io/LCA-of-the-Impossible/impossible-lab.html",
-  "description": "Choose a deduction game, crossword, speed quiz or hidden-phrase challenge powered by the published archive.",
+  "description": "Solve today's shared case, choose one of four archive-powered games or take the complete Lab Run.",
   "inLanguage": "en",
   "isPartOf": {
     "@type": "WebSite",
@@ -44,7 +44,7 @@
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
   <link rel="stylesheet" href="assets/lab.css?v=20260911-run1">
-  <link rel="stylesheet" href="assets/lab-hub.css?v=20260911-run2">
+  <link rel="stylesheet" href="assets/lab-hub.css?v=20260911-daily1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-hub>
@@ -80,12 +80,29 @@
           <p class="intro">Explore the archive through deduction, narrative clues and wordplay. Each game draws automatically from published cases across both seasons.</p>
         </div>
         <div class="lab-hub-actions">
+          <a class="button lab-daily-button" href="lab-daily.html">Play today’s case →</a>
           <a class="button lab-run-button" href="impossible-lab-run.html">Start Lab Run →</a>
           <button class="button secondary lab-random-button" type="button" data-random-game>
             Choose for me →
           </button>
         </div>
       </header>
+
+      <section class="lab-daily-entry" aria-labelledby="lab-daily-entry-title" data-daily-entry>
+        <div class="lab-daily-entry-copy">
+          <p class="eyebrow">DAILY MODE · ONE SHARED CASE</p>
+          <h2 id="lab-daily-entry-title">Daily Impossible</h2>
+          <p>Five progressive clues. One scored attempt each UTC day. Return tomorrow and build a consecutive solving streak.</p>
+        </div>
+        <dl>
+          <div><dt>Available</dt><dd>500 pts</dd></div>
+          <div><dt>Current streak</dt><dd data-daily-hub-streak>0 days</dd></div>
+        </dl>
+        <div class="lab-daily-entry-action">
+          <p data-daily-hub-status aria-live="polite">Today’s case is ready.</p>
+          <a class="button" href="lab-daily.html">Play Daily Impossible →</a>
+        </div>
+      </section>
 
       <section class="lab-score-panel" aria-labelledby="lab-score-title" data-lab-score-panel>
         <div class="lab-score-overview">
@@ -197,7 +214,8 @@
   </footer>
 
   <script src="assets/lab-progress.js?v=20260911-score1"></script>
-  <script src="assets/lab-hub.js?v=20260911-run2"></script>
+  <script src="assets/daily.js?v=20260911-daily1"></script>
+  <script src="assets/lab-hub.js?v=20260911-daily1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

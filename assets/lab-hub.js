@@ -13,6 +13,9 @@
   const scoreStatus = document.querySelector('[data-lab-score-status]');
   const resetButton = document.querySelector('[data-lab-reset]');
   const progressSystem = window.ImpossibleLabProgress;
+  const dailySystem = window.ImpossibleDaily;
+  const dailyStatus = document.querySelector('[data-daily-hub-status]');
+  const dailyStreak = document.querySelector('[data-daily-hub-streak]');
   if (!grid) return;
 
   let playableUrls = [...grid.querySelectorAll('.lab-hub-card')].map((card) => card.getAttribute('href')).filter(Boolean);
@@ -131,6 +134,27 @@
     if (resetButton) resetButton.hidden = !summary.available || summary.completed === 0;
   };
 
+  const renderDaily = () => {
+    if (!dailySystem) return;
+    const loaded = dailySystem.loadRecord();
+    const today = dailySystem.dayKey();
+    const record = dailySystem.recordForDate(loaded.record, today);
+    const completedToday = record.result?.date === today;
+    if (dailyStreak) {
+      const days = Number(record.currentStreak) || 0;
+      dailyStreak.textContent = `${days} ${days === 1 ? 'day' : 'days'}`;
+    }
+    if (dailyStatus) {
+      if (!loaded.available) {
+        dailyStatus.textContent = 'Today’s case is ready. Browser storage is unavailable.';
+      } else if (completedToday) {
+        dailyStatus.textContent = `Completed today · ${record.result.score} / 500 pts`;
+      } else {
+        dailyStatus.textContent = 'Today’s case is ready.';
+      }
+    }
+  };
+
   if (randomButton) {
     randomButton.addEventListener('click', () => {
       if (!playableUrls.length) return;
@@ -146,6 +170,7 @@
     });
   }
 
+  renderDaily();
   renderScore(activeGames);
 
   fetch('lab-games.json', { cache: 'no-store', credentials: 'same-origin' })

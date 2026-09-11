@@ -8,6 +8,18 @@
 .lab-hub-intro .intro{max-width:800px;margin:0;font-size:1rem}
 .lab-hub-actions{display:grid;gap:10px;align-self:end}
 .lab-hub-actions .button{min-width:190px;justify-content:center;text-align:center}
+.lab-daily-button{border-color:var(--accent2);background:var(--accent2);color:#071019}
+.lab-daily-entry{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(230px,.65fr) auto;gap:28px;align-items:center;max-width:1440px;margin:0 auto 18px;padding:26px 28px;border:1px solid var(--accent2);background:linear-gradient(135deg,rgba(109,231,255,.14),rgba(7,16,25,.97) 56%,rgba(208,165,99,.06));box-shadow:0 22px 70px rgba(0,0,0,.2)}
+.lab-daily-entry h2{margin:8px 0 10px;font-size:clamp(2.2rem,4vw,4.2rem);line-height:.92;letter-spacing:-.055em}
+.lab-daily-entry-copy>p:last-child{max-width:690px;margin:0;color:var(--muted);font-size:.92rem;line-height:1.65}
+.lab-daily-entry dl{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));margin:0;border:1px solid var(--line)}
+.lab-daily-entry dl>div{display:grid;gap:5px;padding:15px;border-right:1px solid var(--line)}
+.lab-daily-entry dl>div:last-child{border-right:0}
+.lab-daily-entry dt{font-family:var(--mono);font-size:.64rem;letter-spacing:.1em;color:var(--muted);text-transform:uppercase}
+.lab-daily-entry dd{margin:0;font-family:var(--mono);font-size:.9rem;color:var(--accent2)}
+.lab-daily-entry-action{display:grid;gap:10px;justify-items:stretch;min-width:220px}
+.lab-daily-entry-action p{max-width:260px;margin:0;color:var(--muted);font-family:var(--mono);font-size:.68rem;line-height:1.5;letter-spacing:.05em}
+.lab-daily-entry-action .button{justify-content:center;text-align:center}
 .lab-score-panel{max-width:1440px;margin:0 auto 18px;border:1px solid var(--gold);background:linear-gradient(135deg,rgba(208,165,99,.095),rgba(7,16,25,.96) 52%,rgba(109,231,255,.055));box-shadow:0 22px 70px rgba(0,0,0,.18)}
 .lab-score-overview{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:34px;align-items:end;padding:26px 28px;border-bottom:1px solid var(--line)}
 .lab-score-overview h2{margin:8px 0 10px;font-size:clamp(2.2rem,4vw,4.2rem);line-height:.92;letter-spacing:-.055em}
@@ -63,6 +75,9 @@
 @media(max-width:900px){
   .lab-hub-intro{grid-template-columns:1fr;align-items:start}
   .lab-hub-actions{justify-self:start}
+  .lab-daily-entry{grid-template-columns:1fr}
+  .lab-daily-entry dl{justify-self:start;max-width:500px}
+  .lab-daily-entry-action{justify-items:start}
   .lab-run-entry{grid-template-columns:1fr}
   .lab-run-entry dl{justify-self:start}
   .lab-run-entry .button{justify-self:start}
@@ -78,6 +93,12 @@
   .lab-hub-intro h1{font-size:clamp(2.8rem,15vw,4rem)}
   .lab-hub-actions{width:100%}
   .lab-hub-actions .button{width:100%}
+  .lab-daily-entry{padding:22px}
+  .lab-daily-entry dl{grid-template-columns:1fr;width:100%;max-width:none}
+  .lab-daily-entry dl>div{border-right:0;border-bottom:1px solid var(--line)}
+  .lab-daily-entry dl>div:last-child{border-bottom:0}
+  .lab-daily-entry-action{justify-items:stretch;min-width:0}
+  .lab-daily-entry-action .button{width:100%}
   .lab-score-overview{grid-template-columns:1fr;gap:24px;padding:22px}
   .lab-score-total{justify-items:start;text-align:left}
   .lab-score-progress{padding:16px 22px}
@@ -102,5 +123,5 @@
   .lab-hub-card dl div+div{border-left:0}
 }
 @media(prefers-reduced-motion:reduce){
-  .lab-score-track>span,.lab-score-breakdown a,.lab-hub-card,.lab-hub-card:after,.lab-hub-card>strong span{transition:none}
+  .lab-score-track>span,.lab-score-breakdown a,.lab-hub-card,.lab-hub-card:after,.lab-hub-card>strong span,.lab-daily-entry .button{transition:none}
 }

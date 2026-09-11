@@ -237,7 +237,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-spin.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "Four registry-driven experiments", "FIVE HIDDEN PHRASES"):
+    for token in ('href="impossible-lab.html"', "four registry-driven experiments", "FIVE HIDDEN PHRASES"):
         if token not in home:
             fail(f"index.html: Spin the Impossible discovery token missing: {token}")
     if 'href="lab-spin.html"' not in read("impossible-lab.html"):

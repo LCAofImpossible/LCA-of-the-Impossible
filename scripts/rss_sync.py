@@ -18,7 +18,7 @@ FEED_TITLE = "LCA of the Impossible — New episodes"
 README_START = "<!-- ACCESSORY-RULES:START -->"
 README_END = "<!-- ACCESSORY-RULES:END -->"
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html",
     "season-ii.html", "statistics.html", "updates.html",
 ]
@@ -91,8 +91,8 @@ def build_feed(episodes: list[dict]) -> str:
 def ensure_feed_link(path: Path, prefix: str, check: bool, changed: list[Path]) -> None:
     text = path.read_text(encoding="utf-8")
     tag = f'  <link rel="alternate" type="application/rss+xml" title="{FEED_TITLE}" href="{prefix}feed.xml">'
-    pattern = r'\s*<link\s+rel=["\']alternate["\'][^>]*type=["\']application/rss\+xml["\'][^>]*>\s*'
-    updated = re.sub(pattern, "\n", text, flags=re.I)
+    pattern = r'\n?[ \t]*<link\s+rel=["\']alternate["\'][^>]*type=["\']application/rss\+xml["\'][^>]*>[ \t]*'
+    updated = re.sub(pattern, "", text, flags=re.I)
     manifest = re.search(r'<link\s+rel=["\']manifest["\'][^>]*>', updated, flags=re.I)
     if not manifest:
         raise RuntimeError(f"Cannot add RSS discovery link to {path.relative_to(ROOT)}")

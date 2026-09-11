@@ -137,6 +137,7 @@ def build_sitemap(episodes: list[dict]) -> str:
         BASE_URL + "archive.html",
         BASE_URL + "impossible-lab.html",
         BASE_URL + "impossible-lab-run.html",
+        BASE_URL + "lab-daily.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
@@ -180,7 +181,7 @@ def build_manifest() -> str:
             {
                 "name": "Impossible Lab",
                 "short_name": "Lab",
-                "description": "Play four registry-driven experiments across the published episode archive.",
+                "description": "Play the daily challenge and four registry-driven experiments across the published episode archive.",
                 "url": "/LCA-of-the-Impossible/impossible-lab.html"
             },
             {

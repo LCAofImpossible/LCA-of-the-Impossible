@@ -125,6 +125,7 @@ def main() -> int:
     check_public_page(ROOT / "archive.html", BASE_URL + "archive.html", latest_image, "website", "CollectionPage")
     check_public_page(ROOT / "impossible-lab.html", BASE_URL + "impossible-lab.html", latest_image, "website", "CollectionPage")
     check_public_page(ROOT / "impossible-lab-run.html", BASE_URL + "impossible-lab-run.html", latest_image, "website", "Game")
+    check_public_page(ROOT / "lab-daily.html", BASE_URL + "lab-daily.html", latest_image, "website", "Game")
     check_public_page(ROOT / "lab.html", BASE_URL + "lab.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "lab-crossword.html", BASE_URL + "lab-crossword.html", latest_image, "website", "Game")
     check_public_page(ROOT / "lab-alphabet.html", BASE_URL + "lab-alphabet.html", latest_image, "website", "Game")
@@ -191,6 +192,7 @@ def main() -> int:
         BASE_URL + "archive.html",
         BASE_URL + "impossible-lab.html",
         BASE_URL + "impossible-lab-run.html",
+        BASE_URL + "lab-daily.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",

@@ -13,7 +13,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260911-run1"
-HUB_VERSION = "20260911-run2"
+HUB_VERSION = "20260911-daily1"
 GUESS_VERSION = "20260911-results1"
 ACTION_VERSION = "20260911-navigation1"
 CROSSWORD_VERSION = "20260911-score1"
@@ -21,6 +21,7 @@ NAV_VERSION = "20260911-navigation1"
 RESULTS_VERSION = "20260911-run1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
+DAILY_VERSION = "20260911-daily1"
 ALPHABET_VERSION = "20260911-results1"
 SPIN_VERSION = "20260911-results1"
 HOME_START = "<!-- LAB-HOME:START -->"
@@ -31,6 +32,8 @@ HUB_SEO_START = "<!-- LAB-HUB-SEO:START -->"
 HUB_SEO_END = "<!-- LAB-HUB-SEO:END -->"
 RUN_SEO_START = "<!-- LAB-RUN-SEO:START -->"
 RUN_SEO_END = "<!-- LAB-RUN-SEO:END -->"
+DAILY_SEO_START = "<!-- DAILY-SEO:START -->"
+DAILY_SEO_END = "<!-- DAILY-SEO:END -->"
 CROSSWORD_SEO_START = "<!-- CROSSWORD-SEO:START -->"
 CROSSWORD_SEO_END = "<!-- CROSSWORD-SEO:END -->"
 ALPHABET_SEO_START = "<!-- ALPHABET-SEO:START -->"
@@ -56,13 +59,13 @@ def home_block() -> str:
     <section class="section small-section-title lab-home-preview" id="impossible-lab">
       <div class="section-heading">
         <div><p class="eyebrow">IMPOSSIBLE LAB</p><h2>Play the archive.</h2></div>
-        <p class="section-note">Four registry-driven experiments. Every published episode. Challenges are assembled automatically.</p>
+        <p class="section-note">A shared daily case and four registry-driven experiments. Every published episode. Challenges are assembled automatically.</p>
       </div>
       <div class="lab-home-grid">
         <div class="lab-home-copy">
           <p class="eyebrow">EXPERIMENTS 01–04</p>
-          <h3>Guess it. Cross it. Race it. Spin it.</h3>
-          <p>Identify a case, solve a connected grid, race through the alphabet or rebuild a hidden narrative phrase.</p>
+          <h3>Return daily. Then explore further.</h3>
+          <p>Identify today's shared case, solve a connected grid, race through the alphabet or rebuild a hidden narrative phrase.</p>
           <div class="lab-home-actions">
             <a class="button" href="impossible-lab.html">Enter Impossible Lab →</a>
           </div>
@@ -73,6 +76,7 @@ def home_block() -> str:
           <span><b>02</b> TEN CONNECTED CASES</span>
           <span><b>03</b> THREE-MINUTE LETTER CIRCUIT</span>
           <span><b>04</b> FIVE HIDDEN PHRASES</span>
+          <span><b>DAY</b> ONE SHARED CASE · 500 PTS</span>
           <span><b>LAB</b> LCA RECORD AFTER SOLUTION</span>
         </div>
       </div>
@@ -158,8 +162,8 @@ def seo_block(latest: dict) -> str:
 
 def hub_seo_block(latest: dict) -> str:
     title = "Impossible Lab — Play the archive"
-    description = "Enter Impossible Lab and choose among four games built automatically from the published LCA of the Impossible archive."
-    social_description = "Choose a deduction game, crossword, speed quiz or hidden-phrase challenge powered by the published archive."
+    description = "Enter Impossible Lab for a new daily challenge, four archive-powered games and the complete four-stage Lab Run."
+    social_description = "Solve today's shared case, choose one of four archive-powered games or take the complete Lab Run."
     canonical = BASE_URL + "impossible-lab.html"
     image = BASE_URL + latest["cover"]
     image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
@@ -251,6 +255,55 @@ def run_seo_block(latest: dict) -> str:
         json.dumps(json_ld, ensure_ascii=False, indent=2),
         '  </script>',
         RUN_SEO_END,
+    ])
+
+
+def daily_seo_block(latest: dict) -> str:
+    title = "Daily Impossible — One case every day"
+    description = "Play Daily Impossible: identify one archive-powered LCA of the Impossible subject each UTC day from five progressive clues."
+    social_description = "One shared case, five progressive clues and one attempt each UTC day. Build your solving streak across the archive."
+    canonical = BASE_URL + "lab-daily.html"
+    image = BASE_URL + latest["cover"]
+    image_alt = f"{latest['title']} — latest LCA of the Impossible episode cover"
+    json_ld = {
+        "@context": "https://schema.org",
+        "@type": "Game",
+        "name": "Daily Impossible",
+        "url": canonical,
+        "description": social_description,
+        "inLanguage": "en",
+        "isPartOf": {
+            "@type": "WebSite",
+            "name": "LCA of the Impossible",
+            "url": BASE_URL,
+        },
+    }
+    return "\n".join([
+        DAILY_SEO_START,
+        f'  <meta name="description" content="{html.escape(description, quote=True)}">',
+        '  <meta name="robots" content="index,follow,max-image-preview:large">',
+        '  <meta name="theme-color" content="#071019">',
+        f'  <link rel="canonical" href="{canonical}">',
+        '  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">',
+        '  <link rel="manifest" href="site.webmanifest">',
+        '  <link rel="alternate" type="application/rss+xml" title="LCA of the Impossible — New episodes" href="feed.xml">',
+        '  <meta property="og:site_name" content="LCA of the Impossible">',
+        '  <meta property="og:type" content="website">',
+        f'  <meta property="og:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta property="og:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta property="og:url" content="{canonical}">',
+        f'  <meta property="og:image" content="{image}">',
+        f'  <meta property="og:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <meta property="og:locale" content="en_US">',
+        '  <meta name="twitter:card" content="summary_large_image">',
+        f'  <meta name="twitter:title" content="{html.escape(title, quote=True)}">',
+        f'  <meta name="twitter:description" content="{html.escape(social_description, quote=True)}">',
+        f'  <meta name="twitter:image" content="{image}">',
+        f'  <meta name="twitter:image:alt" content="{html.escape(image_alt, quote=True)}">',
+        '  <script type="application/ld+json">',
+        json.dumps(json_ld, ensure_ascii=False, indent=2),
+        '  </script>',
+        DAILY_SEO_END,
     ])
 
 
@@ -422,6 +475,15 @@ def update_lab_metadata(check: bool, changed: list[Path]) -> None:
     run_updated = re.sub(run_pattern, run_block, run_text, flags=re.S)
     write_if_changed(run_path, run_updated, check, changed)
 
+    daily_path = ROOT / "lab-daily.html"
+    daily_text = daily_path.read_text(encoding="utf-8")
+    daily_block = daily_seo_block(latest)
+    daily_pattern = rf"{re.escape(DAILY_SEO_START)}.*?{re.escape(DAILY_SEO_END)}"
+    if not re.search(daily_pattern, daily_text, flags=re.S):
+        raise RuntimeError("Missing Daily Impossible SEO markers")
+    daily_updated = re.sub(daily_pattern, daily_block, daily_text, flags=re.S)
+    write_if_changed(daily_path, daily_updated, check, changed)
+
     path = ROOT / "lab.html"
     text = path.read_text(encoding="utf-8")
     block = seo_block(latest)
@@ -465,6 +527,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab-hub.css": HUB_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/daily.js": DAILY_VERSION,
             "assets/lab-hub.js": HUB_VERSION,
         },
         "impossible-lab-run.html": {
@@ -473,6 +536,11 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-progress.js": PROGRESS_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-run-page.js": RUN_VERSION,
+        },
+        "lab-daily.html": {
+            "assets/lab.css": LAB_CSS_VERSION,
+            "assets/daily.css": DAILY_VERSION,
+            "assets/daily.js": DAILY_VERSION,
         },
         "lab.html": {
             "assets/lab.css": LAB_CSS_VERSION,
@@ -530,6 +598,7 @@ def update_sitemap(check: bool, changed: list[Path]) -> None:
     urls = [
         BASE_URL + "impossible-lab.html",
         BASE_URL + "impossible-lab-run.html",
+        BASE_URL + "lab-daily.html",
         BASE_URL + "lab.html",
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
@@ -550,9 +619,9 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents **Daily Impossible**, every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
-The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
+The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. Daily Impossible is a separate, prominent hub entry and does not become a fifth Lab Score component. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
 ### 39.1 Guess the Impossible
 
@@ -638,7 +707,20 @@ Each accepted result contributes its current normalized score from `0` to `1,000
 
 The route displays stage order, current stage, completed contributions, total Run Score and a direct continuation action. Progress survives ordinary page changes and reloads through the separate device-local key `lca-impossible-lab-run-v1`. Restarting or clearing a Run never deletes game records or the Lab Score. The Run creates no new clue dataset and therefore inherits the existing registry-driven maintenance model.
 
-### 39.7 Registry and editorial guardrails
+### 39.7 Daily Impossible
+
+`lab-daily.html` selects one deterministic subject from the complete eligible `episodes.json` archive for each UTC calendar date. Every visitor receives the same case on that date without a separate daily clue registry or editorial schedule.
+
+- the challenge reuses the five Guess clue sources and the fixed `500 → 400 → 300 → 200 → 100` scale;
+- one completed result is accepted per UTC date on the current browser; returning on the same day restores a locked result and approved case debrief;
+- a successful solve advances the consecutive-day streak when the previous stored result was a successful solve on the immediately preceding UTC date;
+- a failed or revealed case resets the current streak while preserving the best streak;
+- the device-local `lca-impossible-daily-v1` record contains only date, episode number, score, clue position, attempt count and streak data;
+- Daily score and streak never update the four game records, Lab Score or Run Score.
+
+The date-to-case selector is deterministic, registry-driven and requires no daily deployment. New complete episodes enter the eligible pool through the existing publication process. If local storage is unavailable, the challenge remains playable and explains that its daily result cannot be retained after navigation.
+
+### 39.8 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -651,10 +733,11 @@ The route displays stage order, current stage, completed contributions, total Ru
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.8 Canonical files and automation
+### 39.9 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
 - `impossible-lab-run.html`, `assets/lab-run.css`, `assets/lab-run.js` and `assets/lab-run-page.js` — four-stage circuit, sequential state, Run Score and responsive progress route;
+- `lab-daily.html`, `assets/daily.css` and `assets/daily.js` — deterministic UTC challenge, five-clue interface, one-result daily lock and local streak record;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -669,7 +752,7 @@ The route displays stage order, current stage, completed contributions, total Ru
 - `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
 - `scripts/spin_qa.py` — hidden-phrase derivation, wheel outcomes, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites plus Daily Impossible validation as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, Daily page, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -698,10 +781,13 @@ The route displays stage order, current stage, completed contributions, total Ru
 - [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
 - [ ] Impossible Lab Run accepts one result from each game in canonical order, ignores out-of-order or duplicate completions and never exceeds `4,000`.
 - [ ] The Run Score uses only the four results achieved in the current circuit; restarting or clearing it preserves all personal game records and the persistent Lab Score.
+- [ ] Daily Impossible selects the same eligible case for a given UTC date, exposes the five canonical score steps and accepts only one stored completion per date.
+- [ ] A successful solve advances a consecutive UTC-day streak; a failed or revealed case resets the current streak while preserving the best streak.
+- [ ] Daily result storage contains no identifier and cannot alter a game record, Lab Score or Run Score.
 - [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
-- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Run and all four game routes.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Daily, Run and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

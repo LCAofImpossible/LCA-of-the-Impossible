@@ -173,7 +173,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-crossword.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "Four registry-driven experiments"):
+    for token in ('href="impossible-lab.html"', "four registry-driven experiments"):
         if token not in home:
             fail(f"index.html: Cross the Impossible discovery token missing: {token}")
     hub = read("impossible-lab.html")

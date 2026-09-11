@@ -14,13 +14,14 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260911-run1"
-HUB_VERSION = "20260911-run2"
+HUB_VERSION = "20260911-daily1"
 GUESS_VERSION = "20260911-results1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
 RESULTS_VERSION = "20260911-run1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
+DAILY_VERSION = "20260911-daily1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -347,6 +348,100 @@ if (!run.clear() || run.summarize().total !== 0 || memory.get('lca-impossible-la
         fail(f"assets/lab-run.js behavior validation failed: {behavior.stderr or behavior.stdout}")
 
 
+def check_daily() -> None:
+    page = read("lab-daily.html")
+    for token in (
+        'data-lab-daily', "One day.<br><span>One impossible case.</span>",
+        'id="daily-date"', 'id="daily-answer-form"', 'id="daily-answer-input"',
+        'id="daily-clue-list"', 'id="daily-reveal"', 'id="daily-result"',
+        'id="daily-streak"', 'id="daily-best-streak"', 'href="impossible-lab.html"',
+        f"assets/lab.css?v={LAB_CSS_VERSION}", f"assets/daily.css?v={DAILY_VERSION}",
+        f"assets/daily.js?v={DAILY_VERSION}", "assets/telemetry.js?v=20260820-telemetry1",
+        "DAILY-SEO:START", "one attempt each UTC day",
+    ):
+        if token not in page:
+            fail(f"lab-daily.html: required Daily token missing: {token}")
+    if page.count('data-daily-clue=') != 5:
+        fail("lab-daily.html must expose exactly five ordered daily clue slots")
+    body = page.split("<body", 1)[-1]
+    if "assets/images/episodes/" in body:
+        fail("lab-daily.html renders a catalogue cover in the page body")
+
+    runtime = read("assets/daily.js")
+    for token in (
+        "const STORAGE_KEY = 'lca-impossible-daily-v1'",
+        "const SCORE_STEPS = Object.freeze([500, 400, 300, 200, 100])",
+        "toISOString().slice(0, 10)", "hashDay(key) % ordered.length",
+        "fetch('episodes.json'", "credentials: 'same-origin'", "registry.episodes.filter(eligible)",
+        "previousDayKey(outcome.date)", "prior.result?.date === outcome.date",
+        "recordForDate(stored.record, today)",
+        "state.record.result", "stored.date !== today", "window.localStorage.setItem",
+        "episode.subjectDescription", "episode.functionalUnit", "episode.hotspot",
+        "daily score and streak stay separate",
+    ):
+        if token not in runtime and token not in page:
+            fail(f"assets/daily.js: required Daily behavior token missing: {token}")
+    for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "XMLHttpRequest"):
+        if forbidden in runtime:
+            fail(f"assets/daily.js: forbidden tracking or injection token present: {forbidden}")
+
+    styles = read("assets/daily.css")
+    for token in (
+        ".daily-shell", ".daily-scoreboard", ".daily-workspace", ".daily-console",
+        ".daily-result[hidden]", ".daily-result-score", "@media(max-width:620px)",
+        "@media(prefers-reduced-motion:reduce)",
+    ):
+        if token not in styles:
+            fail(f"assets/daily.css: required responsive token missing: {token}")
+
+    syntax = subprocess.run(
+        ["node", "--check", str(ROOT / "assets/daily.js")], cwd=ROOT,
+        capture_output=True, text=True, check=False,
+    )
+    if syntax.returncode:
+        fail(f"assets/daily.js syntax validation failed: {syntax.stderr or syntax.stdout}")
+
+    behavior_script = r"""
+const fs = require('fs');
+const vm = require('vm');
+const memory = new Map();
+const localStorage = {
+  setItem: (key, value) => memory.set(key, String(value)),
+  getItem: (key) => memory.has(key) ? memory.get(key) : null,
+  removeItem: (key) => memory.delete(key)
+};
+const context = {
+  window: { localStorage },
+  document: { getElementById: () => null },
+  console, Date, Intl, Math, Object, Set, String, Number, Boolean, JSON
+};
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('assets/daily.js', 'utf8'), context);
+const daily = context.window.ImpossibleDaily;
+const episodes = [{ number: 2 }, { number: 1 }, { number: 3 }];
+const firstChoice = daily.selectEpisode(episodes, '2026-09-11');
+const secondChoice = daily.selectEpisode([...episodes].reverse(), '2026-09-11');
+if (!firstChoice || firstChoice.number !== secondChoice.number) process.exit(1);
+const first = daily.nextRecord(null, { date: '2026-09-10', episodeNumber: 1, score: 500, solved: true, clueIndex: 0, attempts: 1 });
+const second = daily.nextRecord(first, { date: '2026-09-11', episodeNumber: 2, score: 300, solved: true, clueIndex: 2, attempts: 2 });
+if (second.currentStreak !== 2 || second.bestStreak !== 2 || second.result.score !== 300) process.exit(2);
+const duplicate = daily.nextRecord(second, { date: '2026-09-11', episodeNumber: 3, score: 500, solved: true, clueIndex: 0, attempts: 1 });
+if (duplicate.result.episodeNumber !== 2 || duplicate.result.score !== 300) process.exit(3);
+const failed = daily.nextRecord(second, { date: '2026-09-12', episodeNumber: 3, score: 0, solved: false, clueIndex: 4, attempts: 2 });
+if (failed.currentStreak !== 0 || failed.bestStreak !== 2) process.exit(4);
+const resumed = daily.nextRecord(failed, { date: '2026-09-13', episodeNumber: 1, score: 100, solved: true, clueIndex: 4, attempts: 1 });
+if (resumed.currentStreak !== 1 || resumed.bestStreak !== 2) process.exit(5);
+if (daily.dayKey(new Date('2026-09-11T23:59:59Z')) !== '2026-09-11') process.exit(6);
+const stale = daily.recordForDate(second, '2026-09-14');
+if (stale.currentStreak !== 0 || stale.bestStreak !== 2) process.exit(7);
+"""
+    behavior = subprocess.run(
+        ["node", "-e", behavior_script], cwd=ROOT, capture_output=True, text=True, check=False
+    )
+    if behavior.returncode:
+        fail(f"assets/daily.js behavior validation failed: {behavior.stderr or behavior.stdout}")
+
+
 def check_hub() -> None:
     try:
         registry = json.loads(read("lab-games.json") or "{}")
@@ -372,9 +467,11 @@ def check_hub() -> None:
         'data-lab-hub', 'data-lab-hub-grid', 'data-random-game',
         'data-lab-score-panel', 'data-lab-score-total', 'data-lab-score-breakdown', 'data-lab-reset',
         "Impossible Lab Run", "Start Lab Run →", 'class="lab-hub-actions"', 'href="impossible-lab-run.html"',
+        "Daily Impossible", "Play today’s case →", 'data-daily-entry', 'href="lab-daily.html"',
         "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
         'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"',
-        f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
+        f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/daily.js?v={DAILY_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
         "assets/telemetry.css?v=20260820-telemetry1", "assets/telemetry.js?v=20260820-telemetry1",
         'type="application/rss+xml"', 'href="feed.xml"',
     ):
@@ -388,6 +485,7 @@ def check_hub() -> None:
         "fetch('lab-games.json'", "game.summary", "game.duration", "game.category",
         "replaceChildren(fragment)", "window.location.assign(url)", "credentials: 'same-origin'",
         "progressSystem.summarize()", "summary.total", "summary.games[game.id]", "progressSystem?.clear()",
+        "dailySystem.loadRecord()", "record.result?.date === today",
     ):
         if token not in runtime:
             fail(f"assets/lab-hub.js: required catalogue token missing: {token}")
@@ -399,12 +497,15 @@ def check_hub() -> None:
     for token in (".lab-hub-actions", ".lab-score-panel", ".lab-score-total", ".lab-score-breakdown", ".lab-reset-records", ".lab-run-entry", ".lab-hub-grid", ".lab-hub-card", ".lab-hub-note", "@media(max-width:620px)", "@media(prefers-reduced-motion:reduce)"):
         if token not in styles:
             fail(f"assets/lab-hub.css: required responsive token missing: {token}")
+    for token in (".lab-daily-entry", ".lab-daily-entry-action", ".lab-daily-button"):
+        if token not in styles:
+            fail(f"assets/lab-hub.css: required Daily entry style missing: {token}")
 
 
 def check_discovery() -> None:
     home = read("index.html")
     for token in (
-        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="impossible-lab.html"', "Four registry-driven experiments",
+        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="impossible-lab.html"', "four registry-driven experiments",
         f"assets/lab.css?v={LAB_CSS_VERSION}",
     ):
         if token not in home:
@@ -422,6 +523,8 @@ def check_discovery() -> None:
             fail("sitemap.xml must contain impossible-lab.html exactly once")
         if urls.count(BASE_URL + "impossible-lab-run.html") != 1:
             fail("sitemap.xml must contain impossible-lab-run.html exactly once")
+        if urls.count(BASE_URL + "lab-daily.html") != 1:
+            fail("sitemap.xml must contain lab-daily.html exactly once")
         if urls.count(BASE_URL + "lab.html") != 1:
             fail("sitemap.xml must contain lab.html exactly once")
         if urls.count(BASE_URL + "lab-alphabet.html") != 1:
@@ -434,12 +537,12 @@ def check_discovery() -> None:
         fail("site.webmanifest must expose the Impossible Lab shortcut")
 
     for script, tokens in {
-        "scripts/phase5_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', 'href="{prefix}impossible-lab.html"'),
-        "scripts/telemetry_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"'),
-        "scripts/rss_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"'),
-        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"'),
+        "scripts/phase5_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', 'href="{prefix}impossible-lab.html"'),
+        "scripts/telemetry_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"'),
+        "scripts/rss_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"'),
+        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"', '"assets/daily.js"'),
         "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"'),
-        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js"),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js", "assets/daily.js"),
     }.items():
         source = read(script)
         for token in tokens:
@@ -471,6 +574,9 @@ def check_readme() -> None:
         "### 39.6 Impossible Lab Run",
         "lca-impossible-lab-run-v1",
         "one consecutive circuit",
+        "### 39.7 Daily Impossible",
+        "lca-impossible-daily-v1",
+        "one completed result",
     ):
         if token not in text:
             fail(f"README.md: Impossible Lab rule missing: {token}")
@@ -482,6 +588,7 @@ def main() -> int:
     check_runtime()
     check_shared_navigation_runtime()
     check_run()
+    check_daily()
     check_styles()
     check_hub()
     check_discovery()

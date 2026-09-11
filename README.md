@@ -1624,9 +1624,9 @@ The `SEO Sync` workflow must run `scripts/rss_sync.py` after the other metadata 
 
 ## 39. Impossible Lab and registry-driven games — mandatory
 
-`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
+`impossible-lab.html` is the canonical entry point for **Impossible Lab**. It presents **Daily Impossible**, every live experiment and the separate **Impossible Lab Run** mode before play, while the existing game URLs remain stable. The published experiments are **Guess the Impossible**, **Cross the Impossible**, **The Impossible Alphabet** and **Spin the Impossible**. Games operate across the complete published archive rather than create separate implementations for individual episodes.
 
-The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
+The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. Daily Impossible is a separate, prominent hub entry and does not become a fifth Lab Score component. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
 ### 39.1 Guess the Impossible
 
@@ -1712,7 +1712,20 @@ Each accepted result contributes its current normalized score from `0` to `1,000
 
 The route displays stage order, current stage, completed contributions, total Run Score and a direct continuation action. Progress survives ordinary page changes and reloads through the separate device-local key `lca-impossible-lab-run-v1`. Restarting or clearing a Run never deletes game records or the Lab Score. The Run creates no new clue dataset and therefore inherits the existing registry-driven maintenance model.
 
-### 39.7 Registry and editorial guardrails
+### 39.7 Daily Impossible
+
+`lab-daily.html` selects one deterministic subject from the complete eligible `episodes.json` archive for each UTC calendar date. Every visitor receives the same case on that date without a separate daily clue registry or editorial schedule.
+
+- the challenge reuses the five Guess clue sources and the fixed `500 → 400 → 300 → 200 → 100` scale;
+- one completed result is accepted per UTC date on the current browser; returning on the same day restores a locked result and approved case debrief;
+- a successful solve advances the consecutive-day streak when the previous stored result was a successful solve on the immediately preceding UTC date;
+- a failed or revealed case resets the current streak while preserving the best streak;
+- the device-local `lca-impossible-daily-v1` record contains only date, episode number, score, clue position, attempt count and streak data;
+- Daily score and streak never update the four game records, Lab Score or Run Score.
+
+The date-to-case selector is deterministic, registry-driven and requires no daily deployment. New complete episodes enter the eligible pool through the existing publication process. If local storage is unavailable, the challenge remains playable and explains that its daily result cannot be retained after navigation.
+
+### 39.8 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -1725,10 +1738,11 @@ The route displays stage order, current stage, completed contributions, total Ru
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.8 Canonical files and automation
+### 39.9 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
 - `impossible-lab-run.html`, `assets/lab-run.css`, `assets/lab-run.js` and `assets/lab-run-page.js` — four-stage circuit, sequential state, Run Score and responsive progress route;
+- `lab-daily.html`, `assets/daily.css` and `assets/daily.js` — deterministic UTC challenge, five-clue interface, one-result daily lock and local streak record;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
@@ -1743,7 +1757,7 @@ The route displays stage order, current stage, completed contributions, total Ru
 - `scripts/alphabet_qa.py` — alphabet derivation, timing, scoring, privacy and publication checks.
 - `scripts/spin_qa.py` — hidden-phrase derivation, wheel outcomes, scoring, privacy and publication checks.
 
-`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
+`scripts/publication_qa.py` runs `lab_sync.py` after global navigation synchronization and runs all four game QA suites plus Daily Impossible validation as part of the mandatory read-only publication gate. GitHub Pages live QA compares the hub, Daily page, four game pages, registries and runtime assets byte-for-byte with the checked-out publication.
 
 ### Impossible Lab QA
 
@@ -1772,10 +1786,13 @@ The route displays stage order, current stage, completed contributions, total Ru
 - [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
 - [ ] Impossible Lab Run accepts one result from each game in canonical order, ignores out-of-order or duplicate completions and never exceeds `4,000`.
 - [ ] The Run Score uses only the four results achieved in the current circuit; restarting or clearing it preserves all personal game records and the persistent Lab Score.
+- [ ] Daily Impossible selects the same eligible case for a given UTC date, exposes the five canonical score steps and accepts only one stored completion per date.
+- [ ] A successful solve advances a consecutive UTC-day streak; a failed or revealed case resets the current streak while preserving the best streak.
+- [ ] Daily result storage contains no identifier and cannot alter a game record, Lab Score or Run Score.
 - [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
-- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Run and all four game routes.
+- [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Daily, Run and all four game routes.
 - [ ] Failure and no-JavaScript states retain access to the Archive.
 - [ ] Desktop and mobile layouts have no unintended horizontal overflow.
 

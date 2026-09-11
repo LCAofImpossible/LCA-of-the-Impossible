@@ -233,7 +233,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-alphabet.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "Four registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
+    for token in ('href="impossible-lab.html"', "four registry-driven experiments", "THREE-MINUTE LETTER CIRCUIT"):
         if token not in home:
             fail(f"index.html: The Impossible Alphabet discovery token missing: {token}")
     hub = read("impossible-lab.html")
