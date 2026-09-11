@@ -2,11 +2,13 @@
   'use strict';
 
   const ROUNDS_PER_SESSION = 5;
-  const MAX_SPINS = 15;
-  const SOLVE_ATTEMPTS = 3;
-  const VOWEL_COST = 150;
-  const HINT_COST = 300;
-  const WRONG_SOLUTION_COST = 200;
+  const difficultySystem = window.ImpossibleLabDifficulty;
+  const difficulty = difficultySystem?.config('spin') || { spins: 15, solveAttempts: 3, vowelCost: 150, hintCost: 300, wrongSolutionCost: 200 };
+  const MAX_SPINS = difficulty.spins;
+  const SOLVE_ATTEMPTS = difficulty.solveAttempts;
+  const VOWEL_COST = difficulty.vowelCost;
+  const HINT_COST = difficulty.hintCost;
+  const WRONG_SOLUTION_COST = difficulty.wrongSolutionCost;
   const BASE_SOLVE_BONUS = 500;
   const resultSystem = window.ImpossibleLabResults;
   const VOWELS = new Set(['A', 'E', 'I', 'O', 'U']);
@@ -50,6 +52,9 @@
     solveSubmit: document.getElementById('spin-solve-submit'),
     reveal: document.getElementById('spin-reveal'),
     feedback: document.getElementById('spin-feedback'),
+    ruleSpins: document.getElementById('spin-rule-spins'),
+    ruleVowel: document.getElementById('spin-rule-vowel'),
+    ruleWrong: document.getElementById('spin-rule-wrong'),
     result: document.getElementById('spin-result'),
     resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
     resultTitle: document.getElementById('spin-result-title'),
@@ -273,6 +278,11 @@
     setText(elements.wheelState, 'STANDBY');
     setText(elements.status, `Round ${state.roundNumber} phrase ready. The subject remains classified.`);
     setFeedback('Start the round to activate the wheel and letter controls.');
+    elements.vowel.textContent = `Buy vowel · ${VOWEL_COST}`;
+    elements.hint.textContent = `Subject hint · ${HINT_COST}`;
+    setText(elements.ruleSpins, MAX_SPINS);
+    setText(elements.ruleVowel, `−${VOWEL_COST}`);
+    setText(elements.ruleWrong, `−${WRONG_SOLUTION_COST}`);
     renderPuzzle();
     renderScoreboard();
     renderControls();
@@ -285,7 +295,7 @@
     elements.spin.hidden = false;
     setText(elements.wheelState, 'READY');
     setText(elements.status, 'Spin for a value, then select an available letter.');
-    setFeedback('The round is live. Consonants require a spin; vowels cost 150 points.');
+    setFeedback(`The round is live. Consonants require a spin; vowels cost ${VOWEL_COST} points.`);
     renderControls();
     elements.spin.focus({ preventScroll: true });
   };
@@ -374,7 +384,7 @@
     state.pendingValue = 0;
     setText(elements.wheelResult, 'VOWEL');
     setText(elements.wheelState, 'PURCHASED');
-    setFeedback('150 points deducted. Choose one available vowel.');
+    setFeedback(`${VOWEL_COST} points deducted. Choose one available vowel.`);
     renderScoreboard();
     renderControls();
   };
@@ -384,7 +394,7 @@
     state.roundScore -= HINT_COST;
     state.hintUsed = true;
     setText(elements.subjectSignal, state.entry.episode.title);
-    setFeedback('Subject signal unlocked for 300 points.');
+    setFeedback(`Subject signal unlocked for ${HINT_COST} points.`);
     renderScoreboard();
     renderControls();
   };

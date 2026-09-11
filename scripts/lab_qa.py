@@ -13,15 +13,16 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260911-run1"
-HUB_VERSION = "20260911-daily1"
-GUESS_VERSION = "20260911-results1"
-NAV_VERSION = "20260911-navigation1"
-ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-run1"
+LAB_CSS_VERSION = "20260911-difficulty1"
+HUB_VERSION = "20260911-difficulty1"
+GUESS_VERSION = "20260911-difficulty1"
+NAV_VERSION = "20260911-difficulty1"
+ACTION_VERSION = "20260911-difficulty1"
+RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
 DAILY_VERSION = "20260911-daily1"
+DIFFICULTY_VERSION = "20260911-difficulty1"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -82,6 +83,7 @@ def check_page(episode_count: int) -> None:
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/lab-run.js?v={RUN_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         'data-lab-game="guess"',
@@ -91,6 +93,8 @@ def check_page(episode_count: int) -> None:
         'id="lab-new-case"',
         'data-lab-another',
         'data-lab-result-scorecard',
+        'data-lab-difficulty',
+        'id="lab-answer-choices"',
         'href="impossible-lab.html"',
         "assets/telemetry.css?v=20260820-telemetry1",
         "assets/telemetry.js?v=20260820-telemetry1",
@@ -131,6 +135,9 @@ def check_runtime() -> None:
         "state.unused.splice",
         "credentials: 'same-origin'",
         "state.attempts += 1",
+        "difficultySystem?.config('guess')",
+        "difficulty.choices",
+        "difficulty.suggestions",
         "resultSystem?.render(elements.resultScorecard",
     )
     for token in required:
@@ -153,6 +160,7 @@ def check_styles() -> None:
         ".lab-result[hidden]", ".lab-home-preview", ".lab-route-bar", ".lab-end-actions",
         ".lab-result-scorecard", ".lab-result-metrics", ".lab-case-debrief",
         ".lab-record-band", ".lab-record-state",
+        ".lab-difficulty", ".lab-difficulty-option", ".lab-answer-choices",
         ".lab-run-banner", ".lab-run-result",
         "@media(max-width:760px)",
         "@media(prefers-reduced-motion:reduce)",
@@ -171,7 +179,7 @@ def check_shared_navigation_runtime() -> None:
             fail(f"assets/lab-nav.js: required current-game token missing: {token}")
     for token in (
         "fetch('lab-games.json'", "game.id !== currentGame", "game.status === 'live'",
-        "window.location.assign(selected.url)", "window.location.assign('impossible-lab.html')",
+        "ImpossibleLabDifficulty?.withLevel", "window.location.assign('impossible-lab.html')",
         "credentials: 'same-origin'",
     ):
         if token not in actions:
@@ -179,7 +187,7 @@ def check_shared_navigation_runtime() -> None:
     for token in (
         "const SCALE_MAX = 1000", "normalizeScore", "finiteNumber(score) / safeMaximum",
         "scoreLabel || 'Game score'", "metric('Maximum obtainable'", "metric('Completion'",
-        "metric('Accuracy'", "It does not compare the environmental results of different episodes",
+        "metric('Accuracy'", "environmental results are never compared",
         "target.replaceChildren(card)",
     ):
         if token not in results:
@@ -193,8 +201,8 @@ def check_shared_navigation_runtime() -> None:
         if token not in progress:
             fail(f"assets/lab-progress.js: required personal-record token missing: {token}")
     for token in (
-        "progressSystem?.record", "NEW GAME RECORD", "Best normalized", "Lab Score",
-        "Experiments completed", "No record this time", "window.ImpossibleLabRun?.record",
+        "difficultySystem?.record", "PERSONAL BEST", "Best ${levelDetail.label}", "Lab Score",
+        "Experiments completed", "official Lab Score remains unchanged", "window.ImpossibleLabRun?.record",
         "IMPOSSIBLE LAB RUN COMPLETE", "Continue the Run",
     ):
         if token not in results:
@@ -206,7 +214,24 @@ def check_shared_navigation_runtime() -> None:
     for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "fetch(", "XMLHttpRequest"):
         if forbidden in progress:
             fail(f"assets/lab-progress.js: forbidden tracking, injection or network token present: {forbidden}")
-    for asset in ("assets/lab-results.js", "assets/lab-progress.js"):
+    difficulty = read("assets/lab-difficulty.js")
+    for token in (
+        "const STORAGE_KEY = 'lca-impossible-lab-difficulty-v1'",
+        "const DEFAULT_LEVEL = 'analyst'",
+        "const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible'])",
+        "choices: 4", "targetWords: 8", "targetWords: 10", "targetWords: 12",
+        "letters: 12, seconds: 300", "letters: 18, seconds: 180", "letters: 18, seconds: 120, passLimit: 3",
+        "spins: 20, solveAttempts: 5", "spins: 15, solveAttempts: 3", "spins: 10, solveAttempts: 2",
+        "isRunMode() ? DEFAULT_LEVEL", "level === DEFAULT_LEVEL", "progressSystem?.record",
+        "clearRecords", "decorateLinks", "data-lab-difficulty",
+    ):
+        if token not in difficulty:
+            fail(f"assets/lab-difficulty.js: required level-system token missing: {token}")
+    for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "fetch(", "XMLHttpRequest"):
+        if forbidden in difficulty:
+            fail(f"assets/lab-difficulty.js: forbidden tracking, injection or network token present: {forbidden}")
+
+    for asset in ("assets/lab-results.js", "assets/lab-progress.js", "assets/lab-difficulty.js"):
         syntax = subprocess.run(
             ["node", "--check", str(ROOT / asset)],
             cwd=ROOT,
@@ -244,6 +269,52 @@ if (!store.clear() || store.summarize().total !== 0) process.exit(4);
     if behavior.returncode:
         fail(f"assets/lab-progress.js behavior validation failed: {behavior.stderr or behavior.stdout}")
 
+    difficulty_behavior_script = r"""
+const fs = require('fs');
+const vm = require('vm');
+const memory = new Map();
+const localStorage = {
+  setItem: (key, value) => memory.set(key, String(value)),
+  getItem: (key) => memory.has(key) ? memory.get(key) : null,
+  removeItem: (key) => memory.delete(key)
+};
+const document = {
+  body: { dataset: {} },
+  querySelectorAll: () => []
+};
+const window = {
+  localStorage,
+  location: { search: '', href: 'https://example.test/lab.html' }
+};
+const context = { window, document, console, URL, URLSearchParams, CustomEvent: class CustomEvent {} };
+vm.createContext(context);
+vm.runInContext(fs.readFileSync('assets/lab-progress.js', 'utf8'), context);
+const official = context.window.ImpossibleLabProgress;
+official.record('guess', { score: 250, maximum: 500, normalized: 500 });
+vm.runInContext(fs.readFileSync('assets/lab-difficulty.js', 'utf8'), context);
+const levels = context.window.ImpossibleLabDifficulty;
+if (levels.current() !== 'analyst' || levels.recordFor('guess', 'analyst').bestScore !== 250) process.exit(1);
+levels.set('explorer');
+const explorer = levels.record('guess', { score: 400, maximum: 500, normalized: 800 });
+if (!explorer.saved || explorer.level !== 'explorer' || explorer.record.bestNormalized !== 800) process.exit(2);
+if (official.summarize().games.guess.bestNormalized !== 500) process.exit(3);
+levels.set('impossible');
+levels.record('guess', { score: 100, maximum: 500, normalized: 200 });
+if (levels.summarize().games.guess.impossible.bestScore !== 100) process.exit(4);
+window.location.search = '?run=1';
+if (levels.current() !== 'analyst') process.exit(5);
+levels.record('guess', { score: 500, maximum: 500, normalized: 1000 });
+if (official.summarize().games.guess.bestNormalized !== 1000) process.exit(6);
+window.location.search = '';
+if (!levels.clearRecords() || levels.summarize().games.guess.explorer) process.exit(7);
+if (official.summarize().games.guess.bestNormalized !== 1000) process.exit(8);
+"""
+    difficulty_behavior = subprocess.run(
+        ["node", "-e", difficulty_behavior_script], cwd=ROOT, capture_output=True, text=True, check=False
+    )
+    if difficulty_behavior.returncode:
+        fail(f"assets/lab-difficulty.js behavior validation failed: {difficulty_behavior.stderr or difficulty_behavior.stdout}")
+
 
 def check_run() -> None:
     page = read("impossible-lab-run.html")
@@ -253,6 +324,7 @@ def check_run() -> None:
         'data-run-restart', 'data-run-clear', "Run Score vs Lab Score",
         'href="impossible-lab.html"', f"assets/lab.css?v={LAB_CSS_VERSION}",
         f"assets/lab-run.css?v={RUN_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}", "Complete one Analyst round",
         f"assets/lab-run.js?v={RUN_VERSION}", f"assets/lab-run-page.js?v={RUN_VERSION}",
         "assets/telemetry.js?v=20260820-telemetry1", "LAB-RUN-SEO:START",
     ):
@@ -465,12 +537,14 @@ def check_hub() -> None:
     page = read("impossible-lab.html")
     for token in (
         'data-lab-hub', 'data-lab-hub-grid', 'data-random-game',
+        'data-lab-difficulty', 'data-card-difficulty',
         'data-lab-score-panel', 'data-lab-score-total', 'data-lab-score-breakdown', 'data-lab-reset',
         "Impossible Lab Run", "Start Lab Run →", 'class="lab-hub-actions"', 'href="impossible-lab-run.html"',
         "Daily Impossible", "Play today’s case →", 'data-daily-entry', 'href="lab-daily.html"',
         "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
         'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"',
         f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/daily.js?v={DAILY_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
         "assets/telemetry.css?v=20260820-telemetry1", "assets/telemetry.js?v=20260820-telemetry1",
         'type="application/rss+xml"', 'href="feed.xml"',
@@ -485,6 +559,7 @@ def check_hub() -> None:
         "fetch('lab-games.json'", "game.summary", "game.duration", "game.category",
         "replaceChildren(fragment)", "window.location.assign(url)", "credentials: 'same-origin'",
         "progressSystem.summarize()", "summary.total", "summary.games[game.id]", "progressSystem?.clear()",
+        "difficultySystem?.clearRecords()", "difficultySystem?.withLevel", "difficultySystem?.detail().label",
         "dailySystem.loadRecord()", "record.result?.date === today",
     ):
         if token not in runtime:
@@ -573,7 +648,7 @@ def check_readme() -> None:
         "Reset records",
         "### 39.6 Impossible Lab Run",
         "lca-impossible-lab-run-v1",
-        "one consecutive circuit",
+        "one consecutive Analyst circuit",
         "### 39.7 Daily Impossible",
         "lca-impossible-daily-v1",
         "one completed result",

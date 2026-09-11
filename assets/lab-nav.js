@@ -35,6 +35,7 @@
         fragment.appendChild(link);
       });
       container.replaceChildren(fragment);
+      window.ImpossibleLabDifficulty?.decorateLinks(container);
     }
   };
 

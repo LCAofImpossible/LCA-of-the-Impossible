@@ -32,16 +32,22 @@
     const normalized = normalizeScore(score, maximum);
     const gameId = document.body?.dataset?.labGame || '';
     const progressSystem = window.ImpossibleLabProgress;
-    const progressUpdate = summary.persist === false
+    const difficultySystem = window.ImpossibleLabDifficulty;
+    const level = difficultySystem?.current() || 'analyst';
+    const levelDetail = difficultySystem?.detail(level) || { label: 'Analyst' };
+    const difficultyUpdate = summary.persist === false
       ? null
-      : progressSystem?.record(gameId, { score, maximum, normalized });
-    const gameRecord = progressUpdate?.summary?.games?.[gameId];
-    const runUpdate = summary.persist === false
+      : difficultySystem?.record(gameId, { score, maximum, normalized });
+    const progressUpdate = difficultyUpdate
+      ? difficultyUpdate.officialUpdate
+      : (summary.persist === false ? null : progressSystem?.record(gameId, { score, maximum, normalized }));
+    const gameRecord = difficultyUpdate?.record || progressUpdate?.summary?.games?.[gameId];
+    const runUpdate = summary.persist === false || level !== 'analyst'
       ? null
       : window.ImpossibleLabRun?.record(gameId, { score, maximum, normalized });
 
     const card = document.createElement('section');
-    card.className = 'lab-result-scorecard';
+    card.className = `lab-result-scorecard is-level-${level}`;
     card.setAttribute('aria-label', 'Experiment performance summary');
 
     const header = document.createElement('header');
@@ -58,7 +64,7 @@
     const normalizedLabel = document.createElement('span');
     const normalizedValue = document.createElement('strong');
     const normalizedScale = document.createElement('small');
-    normalizedLabel.textContent = 'NORMALIZED SCORE';
+    normalizedLabel.textContent = `${levelDetail.label.toUpperCase()} · NORMALIZED SCORE`;
     normalizedValue.textContent = normalized.toLocaleString('en-US');
     normalizedScale.textContent = ' / 1,000';
     normalizedScore.append(normalizedLabel, normalizedValue, normalizedScale);
@@ -75,10 +81,12 @@
 
     const note = document.createElement('p');
     note.className = 'lab-result-scale-note';
-    note.textContent = 'The 0–1,000 score normalizes game performance only. It does not compare the environmental results of different episodes.';
+    note.textContent = level === 'analyst'
+      ? 'The 0–1,000 score normalizes game performance only. Analyst results can update the Lab Score; environmental results are never compared.'
+      : `The 0–1,000 score normalizes ${levelDetail.label} game performance only. This level has a separate record and does not update the Analyst-based Lab Score.`;
     card.append(header, metrics);
 
-    if (progressUpdate?.saved && gameRecord) {
+    if ((difficultyUpdate?.saved || progressUpdate?.saved) && gameRecord) {
       const recordBand = document.createElement('section');
       recordBand.className = 'lab-record-band';
       recordBand.setAttribute('aria-label', 'Personal records');
@@ -87,24 +95,37 @@
       const recordEyebrow = document.createElement('p');
       const recordTitle = document.createElement('h4');
       recordEyebrow.className = 'eyebrow';
-      recordEyebrow.textContent = progressUpdate.rawImproved ? 'NEW GAME RECORD' : 'PERSONAL BEST';
+      const rawImproved = difficultyUpdate?.rawImproved ?? progressUpdate?.rawImproved;
+      const normalizedImproved = difficultyUpdate?.normalizedImproved ?? progressUpdate?.normalizedImproved;
+      recordEyebrow.textContent = rawImproved ? `NEW ${levelDetail.label.toUpperCase()} RECORD` : `${levelDetail.label.toUpperCase()} PERSONAL BEST`;
       recordTitle.textContent = points(gameRecord.bestScore);
       recordHeading.append(recordEyebrow, recordTitle);
 
       const recordMetrics = document.createElement('dl');
-      recordMetrics.append(
-        metric('Best normalized', scaledPoints(gameRecord.bestNormalized, progressSystem.SCORE_SCALE)),
-        metric('Lab Score', scaledPoints(progressUpdate.summary.total, progressUpdate.summary.maximum)),
-        metric('Experiments completed', `${progressUpdate.summary.completed} / ${progressSystem.GAME_IDS.length}`)
-      );
+      recordMetrics.append(metric(`Best ${levelDetail.label}`, scaledPoints(gameRecord.bestNormalized, progressSystem?.SCORE_SCALE || SCALE_MAX)));
+      if (level === 'analyst' && progressUpdate?.summary) {
+        recordMetrics.append(
+          metric('Lab Score', scaledPoints(progressUpdate.summary.total, progressUpdate.summary.maximum)),
+          metric('Experiments completed', `${progressUpdate.summary.completed} / ${progressSystem.GAME_IDS.length}`)
+        );
+      } else {
+        recordMetrics.append(
+          metric('Level plays', gameRecord.plays.toLocaleString('en-US')),
+          metric('Lab Score', 'Analyst only')
+        );
+      }
 
       const recordState = document.createElement('p');
       recordState.className = 'lab-record-state';
-      if (progressUpdate.rawImproved && progressUpdate.normalizedImproved) {
+      if (level !== 'analyst') {
+        recordState.textContent = rawImproved || normalizedImproved
+          ? `${levelDetail.label} personal best updated. The official Lab Score remains unchanged.`
+          : `No ${levelDetail.label} record this time. The official Lab Score remains unchanged.`;
+      } else if (rawImproved && normalizedImproved) {
         recordState.textContent = 'Game record and Lab Score updated.';
-      } else if (progressUpdate.rawImproved) {
+      } else if (rawImproved) {
         recordState.textContent = 'Game record updated. Your previous normalized contribution remains higher.';
-      } else if (progressUpdate.normalizedImproved) {
+      } else if (normalizedImproved) {
         recordState.textContent = 'Lab Score improved. Your original game-score record remains unbeaten.';
       } else {
         recordState.textContent = 'No record this time. Try again to improve both targets.';
@@ -148,7 +169,7 @@
 
     card.appendChild(note);
     target.replaceChildren(card);
-    return { score: rounded(score), maximum: rounded(maximum), normalized, progress: progressUpdate?.summary || null };
+    return { score: rounded(score), maximum: rounded(maximum), normalized, level, progress: progressUpdate?.summary || null };
   };
 
   window.ImpossibleLabResults = Object.freeze({ SCALE_MAX, normalizeScore, render });

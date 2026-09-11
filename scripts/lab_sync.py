@@ -12,18 +12,19 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_CSS_VERSION = "20260911-run1"
-HUB_VERSION = "20260911-daily1"
-GUESS_VERSION = "20260911-results1"
-ACTION_VERSION = "20260911-navigation1"
-CROSSWORD_VERSION = "20260911-score1"
-NAV_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-run1"
+LAB_CSS_VERSION = "20260911-difficulty1"
+HUB_VERSION = "20260911-difficulty1"
+GUESS_VERSION = "20260911-difficulty1"
+ACTION_VERSION = "20260911-difficulty1"
+CROSSWORD_VERSION = "20260911-difficulty1"
+NAV_VERSION = "20260911-difficulty1"
+RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
 DAILY_VERSION = "20260911-daily1"
-ALPHABET_VERSION = "20260911-results1"
-SPIN_VERSION = "20260911-results1"
+DIFFICULTY_VERSION = "20260911-difficulty1"
+ALPHABET_VERSION = "20260911-difficulty1"
+SPIN_VERSION = "20260911-difficulty1"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
@@ -527,6 +528,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab-hub.css": HUB_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/daily.js": DAILY_VERSION,
             "assets/lab-hub.js": HUB_VERSION,
         },
@@ -534,6 +536,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab.css": LAB_CSS_VERSION,
             "assets/lab-run.css": RUN_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-run-page.js": RUN_VERSION,
         },
@@ -548,6 +551,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
         },
@@ -557,6 +561,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/crossword-generator.js": CROSSWORD_VERSION,
@@ -568,6 +573,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/alphabet.js": ALPHABET_VERSION,
@@ -578,6 +584,7 @@ def update_game_assets(check: bool, changed: list[Path]) -> None:
             "assets/lab-nav.js": NAV_VERSION,
             "assets/lab-actions.js": ACTION_VERSION,
             "assets/lab-progress.js": PROGRESS_VERSION,
+            "assets/lab-difficulty.js": DIFFICULTY_VERSION,
             "assets/lab-run.js": RUN_VERSION,
             "assets/lab-results.js": RESULTS_VERSION,
             "assets/spin.js": SPIN_VERSION,
@@ -623,6 +630,8 @@ def update_readme(check: bool, changed: list[Path]) -> None:
 
 The hub catalogue is generated from `lab-games.json`. Every game record includes a concise navigation label plus a complete `summary`, estimated `duration` and `category`, all displayed directly in the game card. The static HTML retains the same four cards as an accessible fallback. Daily Impossible is a separate, prominent hub entry and does not become a fifth Lab Score component. The global `Lab` navigation always opens the hub. Every game page provides the same route bar, marks the current experiment in the shared selector and ends with `Play again`, `Choose another game` and `Return to the Lab` actions. The random alternative is selected from live `lab-games.json` records and never repeats the current game.
 
+The four experiments expose three shared challenge levels: **Explorer**, **Analyst** and **Impossible**. The selected level is remembered locally and follows the player between the hub and game routes. **Analyst** preserves every original rule and is the only level that contributes to the official Lab Score. Existing pre-level records are Analyst records. Explorer and Impossible maintain separate personal bests. Daily Impossible and Impossible Lab Run always use fixed Analyst rules.
+
 ### 39.1 Guess the Impossible
 
 The game selects one eligible record from `episodes.json` and reveals five clues in this fixed order:
@@ -635,25 +644,33 @@ The game selects one eligible record from `episodes.json` and reveals five clues
 
 Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. The running score and streak remain session-only; a completed round may update the device-local personal record described in Section 39.5.
 
+- Explorer presents four registry-derived answer choices.
+- Analyst retains title entry with the complete registry suggestion list.
+- Impossible requires free title entry without suggestions.
+
 ### 39.2 Cross the Impossible
 
 `lab-crossword.html` generates a connected crossword from `crossword.json` and the current `episodes.json` registry:
 
-- every grid contains exactly ten unique published subjects and represents both seasons;
+- every grid contains unique published subjects from both seasons;
 - definitions describe narrative, historical or cultural identity without disclosing the answer or using numerical/LCA clues;
-- a correct word awards `50` points and each revealed letter removes `10` points from the maximum score of `500`;
+- a correct word awards `50` points and each paid revealed letter removes `10` points from the selected level's `400`, `500` or `600` point grid maximum;
 - once a word is correct, its episode card reveals only the approved `subjectDescription`, `result`, `hotspot`, season and canonical URL;
 - generated grids rotate through the available pool and require no episode-specific page implementation;
 - the generator remains deterministic for a given seed and includes a validated fallback layout.
 
 The in-progress crossword score remains session-only. Only a completed grid may update the device-local personal record described in Section 39.5.
 
+- Explorer targets `8` words and reveals the first letter of every answer without a score penalty.
+- Analyst targets `10` words and retains unrestricted paid letter reveals.
+- Impossible targets `12` words and limits paid letter reveals to `3` per grid.
+
 ### 39.3 The Impossible Alphabet
 
 `lab-alphabet.html` joins `crossword.json` with `episodes.json`, groups every eligible subject by the initial of its approved crossword answer and selects one case for up to `18` active initials per round:
 
 - available initials rotate automatically when the archive eventually contains more than `18` distinct letters;
-- the timer begins only after an explicit start and lasts exactly `180` seconds;
+- the timer begins only after an explicit start;
 - a correct answer awards `100` base points;
 - consecutive correct answers add `25` points per streak step, capped at a `100`-point bonus for one answer;
 - a wrong answer reveals the approved answer and resets the streak;
@@ -663,19 +680,27 @@ The in-progress crossword score remains session-only. Only a completed grid may 
 
 Every published episode remains eligible for selection. New episodes require no alphabet-specific record: the approved narrative definition already maintained for `crossword.json` supplies the clue, while the registered episode supplies title, season and canonical URL. Round state and selection history remain in memory for the current page session; only the completed circuit's personal records persist locally as described in Section 39.5.
 
+- Explorer selects `12` initials, lasts `300` seconds and permits unlimited passes.
+- Analyst selects up to `18` initials, lasts `180` seconds and permits unlimited passes.
+- Impossible selects up to `18` initials, lasts `120` seconds and permits at most `3` passes.
+
 ### 39.4 Spin the Impossible
 
 `lab-spin.html` joins every approved narrative definition in `crossword.json` to its episode in `episodes.json`. The definition itself becomes a hidden phrase; the subject title remains classified until the phrase is solved, revealed or purchased as a hint.
 
 - one session contains exactly `5` non-repeating phrases where the available registry permits;
-- each round begins with `15` wheel spins and `3` solution attempts, with no timer;
+- each round has no timer and uses the spins, solution attempts and assistance costs defined by the selected level;
 - numerical sectors award their value for every occurrence of a correctly selected consonant;
 - the `×2` sector awards `400` points per consonant occurrence, `FREE VOWEL` permits one vowel without charge, `MISS` consumes the spin and `RESET` clears only the current round score;
-- buying a vowel costs `150` points, revealing the subject hint costs `300` points and an incorrect full-phrase solution costs `200` points;
+- buying a vowel, revealing the subject hint and submitting an incorrect full-phrase solution deduct the selected level's configured costs;
 - a correct solution awards a base `500`-point bonus multiplied by phrase length, plus `25` points for every letter still hidden;
 - the completed round reveals the approved subject description, result, hotspot and canonical episode URL.
 
 The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selection and active-round state remain in memory for the current page session; only completed-round personal records persist locally as described in Section 39.5.
+
+- Explorer provides `20` spins and `5` solution attempts; vowel, hint and wrong-solution costs are `75`, `150` and `100` points.
+- Analyst provides `15` spins and `3` solution attempts; vowel, hint and wrong-solution costs are `150`, `300` and `200` points.
+- Impossible provides `10` spins and `2` solution attempts; vowel, hint and wrong-solution costs are `200`, `450` and `300` points.
 
 ### 39.5 Shared result system
 
@@ -683,7 +708,7 @@ All four games retain their original scoring rules and render the same final per
 
 - normalized score = `round(clamp(original score / maximum obtainable, 0, 1) × 1,000)`;
 - Guess uses a `500`-point maximum; completion is `100%` only when the case is identified, and accuracy is correct guesses divided by submitted guesses;
-- Cross uses its original `500`-point maximum; completion is solved words divided by grid words, and accuracy is solved words divided by completed answer submissions;
+- Cross uses `50 × active grid words` as its maximum; completion is solved words divided by grid words, and accuracy is solved words divided by completed answer submissions;
 - Alphabet calculates its maximum from a perfect uninterrupted streak across the active letters; completion is answered letters divided by active letters, and accuracy is correct answers divided by submitted answers;
 - Spin calculates a phrase-specific theoretical maximum from its existing wheel, occurrence and solve-bonus rules; completion is the share of letters uncovered unless the complete phrase is solved, and accuracy combines letter selections and full-phrase attempts;
 - multi-case games retain their complete answer review and present one clearly labelled subject debrief without ranking or comparing episode impacts.
@@ -695,13 +720,13 @@ All four games retain their original scoring rules and render the same final per
 
 The **Lab Score** is `best normalized Guess + best normalized Cross + best normalized Alphabet + best normalized Spin`, for a fixed maximum of `4,000`. An experiment without a completed record contributes zero. A lower later result never reduces either personal best. The original-score record and normalized-score record may come from different rounds when a game's theoretical maximum varies.
 
-The hub displays the Lab Score, completion count, percentage and four normalized contributions. Result cards display the current result, game record, best normalized contribution and updated Lab Score. Records use the single device-local `localStorage` key `lca-impossible-lab-progress-v1`; the payload contains scores and play counts only, creates no account or visitor identifier, is never transmitted by the site and can be deleted with `Reset records`. When browser storage is unavailable, gameplay continues and the interface states that records cannot be retained.
+The hub displays the Analyst-based Lab Score, completion count, percentage and four normalized contributions. Result cards identify the active level, display that level's personal best and explain whether the official Lab Score changed. The original `lca-impossible-lab-progress-v1` key remains the canonical Analyst/Lab Score record so existing records migrate without conversion or loss. `lca-impossible-lab-difficulty-v1` stores the selected level plus level-specific scores and play counts. Neither payload creates an account or visitor identifier; neither is transmitted by the site, and both record sets can be deleted with `Reset records`. When browser storage is unavailable, gameplay continues and the interface states that records cannot be retained.
 
 The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes.
 
 ### 39.6 Impossible Lab Run
 
-`impossible-lab-run.html` orchestrates one consecutive circuit through the four existing experiments in their canonical order: Guess, Cross, Alphabet and Spin. Starting a Run clears only the previous Run state and opens the first game with `?run=1`. Each game accepts exactly one completed result when it is the expected stage; out-of-order pages and repeated results cannot alter the circuit.
+`impossible-lab-run.html` orchestrates one consecutive Analyst circuit through the four existing experiments in their canonical order: Guess, Cross, Alphabet and Spin. Starting a Run clears only the previous Run state and opens the first game with `?run=1`. Run mode forces and visibly identifies Analyst rules. Each game accepts exactly one completed result when it is the expected stage; out-of-order pages and repeated results cannot alter the circuit.
 
 Each accepted result contributes its current normalized score from `0` to `1,000`. The **Run Score** is their sum, for a fixed maximum of `4,000`. It is intentionally different from the persistent Lab Score: the Run Score uses the four results achieved in that single circuit, whereas the Lab Score uses the all-time best normalized result for each game. Completing a Run stage may still improve the independent game record and Lab Score through the shared result system.
 
@@ -709,7 +734,7 @@ The route displays stage order, current stage, completed contributions, total Ru
 
 ### 39.7 Daily Impossible
 
-`lab-daily.html` selects one deterministic subject from the complete eligible `episodes.json` archive for each UTC calendar date. Every visitor receives the same case on that date without a separate daily clue registry or editorial schedule.
+`lab-daily.html` uses fixed Analyst rules and selects one deterministic subject from the complete eligible `episodes.json` archive for each UTC calendar date. Every visitor receives the same case on that date without a separate daily clue registry or editorial schedule.
 
 - the challenge reuses the five Guess clue sources and the fixed `500 → 400 → 300 → 200 → 100` scale;
 - one completed result is accepted per UTC date on the current browser; returning on the same day restores a locked result and approved case debrief;
@@ -720,7 +745,18 @@ The route displays stage order, current stage, completed contributions, total Ru
 
 The date-to-case selector is deterministic, registry-driven and requires no daily deployment. New complete episodes enter the eligible pool through the existing publication process. If local storage is unavailable, the challenge remains playable and explains that its daily result cannot be retained after navigation.
 
-### 39.8 Registry and editorial guardrails
+### 39.8 Difficulty levels
+
+`assets/lab-difficulty.js` is the single configuration and persistence layer for all challenge levels. It owns the level names, per-game parameters, selected-level preference and separate personal records. Game runtimes read those parameters instead of maintaining separate datasets or pages. A level change on an individual game reloads a clean round; the hub carries the choice into every game link.
+
+- Explorer, Analyst and Impossible use the same live episode and narrative registries.
+- The official Lab Score and its maximum of `4,000` use Analyst personal bests only.
+- Explorer and Impossible results can improve only their matching level record.
+- Existing records in `lca-impossible-lab-progress-v1` remain valid Analyst records.
+- A Run query overrides the stored preference with Analyst without deleting or changing that preference.
+- Difficulty parameters must remain centralized and require no episode-specific maintenance.
+
+### 39.9 Registry and editorial guardrails
 
 - Every currently eligible episode and every future complete registry record enters the game automatically.
 - Episode titles, results, links and counts must never be duplicated in the game pages or hard-coded in runtime JavaScript.
@@ -733,7 +769,7 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 - The game must remain keyboard-accessible, responsive, readable at enlarged text sizes and usable on touch devices.
 - A registry failure must leave a clear error state and a working link to the Archive.
 
-### 39.9 Canonical files and automation
+### 39.10 Canonical files and automation
 
 - `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
 - `impossible-lab-run.html`, `assets/lab-run.css`, `assets/lab-run.js` and `assets/lab-run-page.js` — four-stage circuit, sequential state, Run Score and responsive progress route;
@@ -743,7 +779,7 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
 - `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
 - `lab-spin.html`, `assets/spin.css` and `assets/spin.js` — hidden-phrase wheel, letter controls, session scoring and LCA reveal;
-- `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js`, `assets/lab-results.js` and `assets/lab-progress.js` — shared experiment registry, navigation, end-of-game routing, normalized result card and device-local personal records;
+- `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js`, `assets/lab-results.js`, `assets/lab-progress.js` and `assets/lab-difficulty.js` — shared experiment registry, navigation, end-of-game routing, normalized result card, level configuration and device-local personal records;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
@@ -764,20 +800,22 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 - [ ] No episode title or clue dataset is hard-coded into the game runtime.
 - [ ] The answer and case result use text-only registry data and the canonical episode URL.
 - [ ] Every crossword definition covers one published episode, matches its title and contains no numerical or LCA terminology.
-- [ ] Generated crosswords contain ten unique cases, both seasons, valid intersections and no adjacent-word collisions.
-- [ ] Crossword scoring is exactly `50` per correct word and `−10` per revealed letter, with a maximum of `500`.
-- [ ] The alphabet circuit includes one case per available initial, starts only on request and lasts exactly `180` seconds.
+- [ ] Generated crosswords contain the level target of `8`, `10` or `12` unique cases where the pool permits, both seasons, valid intersections and no adjacent-word collisions.
+- [ ] Crossword scoring is exactly `50` per correct word and `−10` per paid revealed letter; Explorer starter letters carry no penalty and Impossible permits only three paid reveals.
+- [ ] The alphabet circuit starts only on request and uses exactly `12 / 300 s`, `18 / 180 s` or `18 / 120 s` for Explorer, Analyst and Impossible.
 - [ ] Alphabet scoring is `100` base points plus `25` per consecutive-answer streak step, capped at a `100`-point bonus.
 - [ ] Each round contains no more than 18 active initials; passed letters return, wrong answers reset the streak and the final review links every answer to its canonical episode.
 - [ ] The alphabet reuses `crossword.json` and introduces no duplicate clue registry.
-- [ ] Spin the Impossible uses five non-repeating phrases per session, fifteen spins per round and three solution attempts without a timer.
-- [ ] Spin wheel values, special sectors, vowel cost, hint cost, incorrect-solution penalty and solve bonus match the canonical constants.
+- [ ] Spin the Impossible uses five non-repeating phrases per session and the selected level's spin, solution-attempt and assistance-cost parameters without a timer.
+- [ ] Spin wheel values, special sectors, level-specific costs and solve bonus match the canonical configuration.
 - [ ] Spin phrases come directly from `crossword.json`; completed rounds reveal only approved episode registry fields and the canonical URL.
 - [ ] Every hub card exposes its game summary, challenge category and estimated duration without requiring navigation into the game.
 - [ ] Every game exposes the same Lab route bar, a visible current-game marker and the three standard completion actions on desktop and mobile.
 - [ ] `Choose another game` selects only a different live registry entry and falls back safely to the Lab hub if the registry is unavailable.
 - [ ] Every final result retains the original score and exposes maximum obtainable, completion, accuracy and a normalized score limited to `0–1,000`.
 - [ ] A completed result can improve the independent original-score record and normalized-score record without a lower result reducing either record.
+- [ ] Explorer, Analyst and Impossible maintain separate records; existing records remain Analyst and only Analyst updates the official Lab Score.
+- [ ] Impossible Lab Run overrides the stored choice with Analyst while Daily Impossible visibly retains fixed Analyst rules.
 - [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
 - [ ] Impossible Lab Run accepts one result from each game in canonical order, ignores out-of-order or duplicate completions and never exceeds `4,000`.
 - [ ] The Run Score uses only the four results achieved in the current circuit; restarting or clearing it preserves all personal game records and the persistent Lab Score.

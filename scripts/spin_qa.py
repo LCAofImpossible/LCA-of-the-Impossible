@@ -13,13 +13,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-run1"
-NAV_VERSION = "20260911-navigation1"
-ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-run1"
+LAB_VERSION = "20260911-difficulty1"
+NAV_VERSION = "20260911-difficulty1"
+ACTION_VERSION = "20260911-difficulty1"
+RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
-SPIN_VERSION = "20260911-results1"
+DIFFICULTY_VERSION = "20260911-difficulty1"
+SPIN_VERSION = "20260911-difficulty1"
 errors: list[str] = []
 
 
@@ -136,6 +137,7 @@ def check_page() -> None:
         'EXPERIMENT 04 OF 04 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
+        'data-lab-difficulty',
         'class="spin-case-reveal lab-case-debrief"',
         'aria-live="assertive"',
         "Start round 1",
@@ -144,6 +146,7 @@ def check_page() -> None:
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/lab-run.js?v={RUN_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/spin.js?v={SPIN_VERSION}",
@@ -164,11 +167,12 @@ def check_runtime() -> None:
     runtime = read("assets/spin.js")
     required = (
         "const ROUNDS_PER_SESSION = 5",
-        "const MAX_SPINS = 15",
-        "const SOLVE_ATTEMPTS = 3",
-        "const VOWEL_COST = 150",
-        "const HINT_COST = 300",
-        "const WRONG_SOLUTION_COST = 200",
+        "difficultySystem?.config('spin')",
+        "const MAX_SPINS = difficulty.spins",
+        "const SOLVE_ATTEMPTS = difficulty.solveAttempts",
+        "const VOWEL_COST = difficulty.vowelCost",
+        "const HINT_COST = difficulty.hintCost",
+        "const WRONG_SOLUTION_COST = difficulty.wrongSolutionCost",
         "const BASE_SOLVE_BONUS = 500",
         "type: 'free-vowel'",
         "type: 'miss'",

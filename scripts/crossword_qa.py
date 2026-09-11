@@ -13,13 +13,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-CROSSWORD_VERSION = "20260911-score1"
-LAB_VERSION = "20260911-run1"
-NAV_VERSION = "20260911-navigation1"
-ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-run1"
+CROSSWORD_VERSION = "20260911-difficulty1"
+LAB_VERSION = "20260911-difficulty1"
+NAV_VERSION = "20260911-difficulty1"
+ACTION_VERSION = "20260911-difficulty1"
+RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
+DIFFICULTY_VERSION = "20260911-difficulty1"
 errors: list[str] = []
 
 
@@ -137,6 +138,7 @@ def check_page() -> None:
         'EXPERIMENT 02 OF 04 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
+        'data-lab-difficulty',
         'aria-live="assertive"',
         "Reveal a letter · −10 pts",
         f"assets/lab.css?v={LAB_VERSION}",
@@ -144,6 +146,7 @@ def check_page() -> None:
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/lab-run.js?v={RUN_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/crossword-generator.js?v={CROSSWORD_VERSION}",
@@ -227,6 +230,11 @@ def check_runtime() -> None:
         "resultSystem?.render(elements.resultScorecard",
         "completion: (state.correctEntries.size / totalEntries) * 100",
         "persist: complete",
+        "difficultySystem?.config('crossword')",
+        "difficulty.targetWords",
+        "difficulty.freeInitials",
+        "difficulty.revealLimit",
+        "revealInitialLetters",
     ):
         if token not in controller:
             fail(f"assets/crossword.js: required gameplay token missing: {token}")
@@ -250,7 +258,7 @@ def check_styles() -> None:
             fail(f"assets/lab.css: shared game navigation style missing: {token}")
     for token in (
         ".crossword-workspace", ".crossword-grid", ".crossword-cell.is-active",
-        ".crossword-cell.is-revealed", ".crossword-clue.is-correct", "@media(max-width:1180px)",
+        ".crossword-cell.is-revealed", ".crossword-cell.is-starter", ".crossword-clue.is-correct", "@media(max-width:1180px)",
     ):
         if token not in crossword:
             fail(f"assets/crossword.css: required responsive style missing: {token}")

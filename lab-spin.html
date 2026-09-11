@@ -43,8 +43,8 @@
   <title>Spin the Impossible — Impossible Lab</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260911-run1">
-  <link rel="stylesheet" href="assets/spin.css?v=20260911-results1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-difficulty1">
+  <link rel="stylesheet" href="assets/spin.css?v=20260911-difficulty1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-game="spin">
@@ -97,6 +97,8 @@
         </div>
       </header>
 
+      <div data-lab-difficulty></div>
+
       <div class="lab-scoreboard spin-scoreboard" aria-label="Current Spin the Impossible statistics">
         <div><span>ROUND</span><strong id="spin-round">1 / 5</strong></div>
         <div><span>ROUND SCORE</span><strong id="spin-score">0</strong></div>
@@ -147,9 +149,9 @@
             <p class="spin-feedback" id="spin-feedback" aria-live="assertive">Start the round to activate the wheel and letter controls.</p>
           </form>
           <div class="spin-rules">
-            <div><strong>15</strong><span>wheel spins</span></div>
-            <div><strong>−150</strong><span>buy a vowel</span></div>
-            <div><strong>−200</strong><span>wrong solution</span></div>
+            <div><strong id="spin-rule-spins">15</strong><span>wheel spins</span></div>
+            <div><strong id="spin-rule-vowel">−150</strong><span>buy a vowel</span></div>
+            <div><strong id="spin-rule-wrong">−200</strong><span>wrong solution</span></div>
             <div><strong>×2</strong><span>400 per occurrence</span></div>
           </div>
           <p class="lab-method-note">The hidden sentence comes directly from the approved narrative definition already maintained for Cross the Impossible. No separate phrase dataset is required.</p>
@@ -197,12 +199,13 @@
     <a href="impossible-lab.html">Return to Impossible Lab →</a>
   </footer>
 
-  <script src="assets/lab-nav.js?v=20260911-navigation1"></script>
-  <script src="assets/lab-actions.js?v=20260911-navigation1"></script>
+  <script src="assets/lab-nav.js?v=20260911-difficulty1"></script>
+  <script src="assets/lab-actions.js?v=20260911-difficulty1"></script>
   <script src="assets/lab-progress.js?v=20260911-score1"></script>
+  <script src="assets/lab-difficulty.js?v=20260911-difficulty1"></script>
   <script src="assets/lab-run.js?v=20260911-run1"></script>
-  <script src="assets/lab-results.js?v=20260911-run1"></script>
-  <script src="assets/spin.js?v=20260911-results1"></script>
+  <script src="assets/lab-results.js?v=20260911-difficulty1"></script>
+  <script src="assets/spin.js?v=20260911-difficulty1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

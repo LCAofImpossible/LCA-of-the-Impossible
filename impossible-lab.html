@@ -43,8 +43,8 @@
   <title>Impossible Lab — Play the archive</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260911-run1">
-  <link rel="stylesheet" href="assets/lab-hub.css?v=20260911-daily1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-difficulty1">
+  <link rel="stylesheet" href="assets/lab-hub.css?v=20260911-difficulty1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-hub>
@@ -88,6 +88,8 @@
         </div>
       </header>
 
+      <div class="lab-hub-difficulty" data-lab-difficulty></div>
+
       <section class="lab-daily-entry" aria-labelledby="lab-daily-entry-title" data-daily-entry>
         <div class="lab-daily-entry-copy">
           <p class="eyebrow">DAILY MODE · ONE SHARED CASE</p>
@@ -109,7 +111,7 @@
           <div>
             <p class="eyebrow">YOUR LAB RECORD</p>
             <h2 id="lab-score-title">Lab Score</h2>
-            <p>Your best normalized result from each experiment contributes up to 1,000 points.</p>
+            <p>Your best normalized Analyst result from each experiment contributes up to 1,000 points. Explorer and Impossible keep separate records.</p>
           </div>
           <p class="lab-score-total" aria-label="Lab Score: zero out of four thousand">
             <strong data-lab-score-total>0</strong>
@@ -161,6 +163,7 @@
           <dl>
             <div><dt>Challenge</dt><dd>Deduction</dd></div>
             <div><dt>Duration</dt><dd>2–4 min</dd></div>
+            <div><dt>Level</dt><dd data-card-difficulty>Analyst</dd></div>
           </dl>
           <strong>Play now <span aria-hidden="true">→</span></strong>
         </a>
@@ -172,6 +175,7 @@
           <dl>
             <div><dt>Challenge</dt><dd>Crossword</dd></div>
             <div><dt>Duration</dt><dd>8–12 min</dd></div>
+            <div><dt>Level</dt><dd data-card-difficulty>Analyst</dd></div>
           </dl>
           <strong>Play now <span aria-hidden="true">→</span></strong>
         </a>
@@ -183,6 +187,7 @@
           <dl>
             <div><dt>Challenge</dt><dd>Speed quiz</dd></div>
             <div><dt>Duration</dt><dd>3 min</dd></div>
+            <div><dt>Level</dt><dd data-card-difficulty>Analyst</dd></div>
           </dl>
           <strong>Play now <span aria-hidden="true">→</span></strong>
         </a>
@@ -194,6 +199,7 @@
           <dl>
             <div><dt>Challenge</dt><dd>Word puzzle</dd></div>
             <div><dt>Duration</dt><dd>5–8 min</dd></div>
+            <div><dt>Level</dt><dd data-card-difficulty>Analyst</dd></div>
           </dl>
           <strong>Play now <span aria-hidden="true">→</span></strong>
         </a>
@@ -214,8 +220,9 @@
   </footer>
 
   <script src="assets/lab-progress.js?v=20260911-score1"></script>
+  <script src="assets/lab-difficulty.js?v=20260911-difficulty1"></script>
   <script src="assets/daily.js?v=20260911-daily1"></script>
-  <script src="assets/lab-hub.js?v=20260911-daily1"></script>
+  <script src="assets/lab-hub.js?v=20260911-difficulty1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

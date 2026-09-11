@@ -13,6 +13,7 @@
   const scoreStatus = document.querySelector('[data-lab-score-status]');
   const resetButton = document.querySelector('[data-lab-reset]');
   const progressSystem = window.ImpossibleLabProgress;
+  const difficultySystem = window.ImpossibleLabDifficulty;
   const dailySystem = window.ImpossibleDaily;
   const dailyStatus = document.querySelector('[data-daily-hub-status]');
   const dailyStreak = document.querySelector('[data-daily-hub-streak]');
@@ -54,7 +55,11 @@
     summary.textContent = game.summary;
 
     const metadata = document.createElement('dl');
-    metadata.append(makeMeta('Challenge', game.category), makeMeta('Duration', game.duration));
+    metadata.append(
+      makeMeta('Challenge', game.category),
+      makeMeta('Duration', game.duration),
+      makeMeta('Level', difficultySystem?.detail().label || 'Analyst')
+    );
 
     const action = document.createElement('strong');
     action.textContent = 'Play now ';
@@ -71,6 +76,7 @@
     const fragment = document.createDocumentFragment();
     games.sort((left, right) => left.number - right.number).forEach((game) => fragment.appendChild(makeCard(game)));
     grid.replaceChildren(fragment);
+    difficultySystem?.decorateLinks(grid);
     playableUrls = games.map((game) => game.url);
   };
 
@@ -95,6 +101,8 @@
     const summary = progressSystem.summarize();
     const percentage = summary.maximum ? Math.round((summary.total / summary.maximum) * 100) : 0;
     const gameCount = progressSystem.GAME_IDS.length;
+    const levelSummary = difficultySystem?.summarize();
+    const hasLevelRecords = Object.values(levelSummary?.games || {}).some((records) => Object.keys(records).length > 0);
 
     if (scoreTotal) {
       scoreTotal.textContent = summary.total.toLocaleString('en-US');
@@ -115,15 +123,20 @@
         .sort((left, right) => left.number - right.number)
         .forEach((game) => fragment.appendChild(makeContribution(game, summary.games[game.id])));
       scoreBreakdown.replaceChildren(fragment);
+      difficultySystem?.decorateLinks(scoreBreakdown);
     }
 
     if (scoreStatus) {
+      const selectedLevel = difficultySystem?.current() || 'analyst';
+      const selectedLabel = difficultySystem?.detail(selectedLevel).label || 'Analyst';
       if (reset) {
         scoreStatus.textContent = 'All personal records have been reset on this browser.';
       } else if (!summary.available) {
         scoreStatus.textContent = 'Browser storage is unavailable. Game results can be viewed, but personal records cannot be retained.';
       } else if (!summary.completed) {
-        scoreStatus.textContent = 'Complete an experiment to establish your first record. Scores are stored only in this browser.';
+        scoreStatus.textContent = selectedLevel === 'analyst'
+          ? 'Complete an Analyst experiment to establish your first Lab Score contribution. Scores are stored only in this browser.'
+          : `${selectedLabel} results keep separate records. Switch to Analyst to establish the official Lab Score.`;
       } else if (summary.completed === gameCount) {
         scoreStatus.textContent = 'All four experiments now contribute to your Lab Score. Improve any personal best to raise the total.';
       } else {
@@ -131,7 +144,7 @@
       }
     }
 
-    if (resetButton) resetButton.hidden = !summary.available || summary.completed === 0;
+    if (resetButton) resetButton.hidden = !summary.available || (!summary.completed && !hasLevelRecords);
   };
 
   const renderDaily = () => {
@@ -158,17 +171,28 @@
   if (randomButton) {
     randomButton.addEventListener('click', () => {
       if (!playableUrls.length) return;
-      const url = playableUrls[Math.floor(Math.random() * playableUrls.length)];
+      const rawUrl = playableUrls[Math.floor(Math.random() * playableUrls.length)];
+      const url = difficultySystem?.withLevel(rawUrl) || rawUrl;
       window.location.assign(url);
     });
   }
 
   if (resetButton) {
     resetButton.addEventListener('click', () => {
-      if (!window.confirm('Reset all four Impossible Lab records stored in this browser?')) return;
-      if (progressSystem?.clear()) renderScore(activeGames, true);
+      if (!window.confirm('Reset all Impossible Lab game records at every difficulty on this browser?')) return;
+      const progressCleared = progressSystem?.clear();
+      const levelsCleared = difficultySystem?.clearRecords() ?? true;
+      if (progressCleared && levelsCleared) renderScore(activeGames, true);
     });
   }
+
+  document.addEventListener('impossiblelab:difficultychange', () => {
+    document.querySelectorAll('[data-card-difficulty]').forEach((node) => {
+      node.textContent = difficultySystem?.detail().label || 'Analyst';
+    });
+    render(activeGames);
+    renderScore(activeGames);
+  });
 
   renderDaily();
   renderScore(activeGames);

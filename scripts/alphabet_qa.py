@@ -13,13 +13,14 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-run1"
-ALPHABET_VERSION = "20260911-results1"
-NAV_VERSION = "20260911-navigation1"
-ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-run1"
+LAB_VERSION = "20260911-difficulty1"
+ALPHABET_VERSION = "20260911-difficulty1"
+NAV_VERSION = "20260911-difficulty1"
+ACTION_VERSION = "20260911-difficulty1"
+RESULTS_VERSION = "20260911-difficulty1"
 PROGRESS_VERSION = "20260911-score1"
 RUN_VERSION = "20260911-run1"
+DIFFICULTY_VERSION = "20260911-difficulty1"
 errors: list[str] = []
 
 
@@ -135,6 +136,7 @@ def check_page() -> None:
         'EXPERIMENT 03 OF 04 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
+        'data-lab-difficulty',
         'id="alphabet-case-debrief"',
         'id="alphabet-debrief-impact"',
         'aria-live="assertive"',
@@ -144,6 +146,7 @@ def check_page() -> None:
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/lab-run.js?v={RUN_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/alphabet.js?v={ALPHABET_VERSION}",
@@ -163,8 +166,10 @@ def check_page() -> None:
 def check_runtime() -> None:
     runtime = read("assets/alphabet.js")
     required = (
-        "const ROUND_SECONDS = 180",
-        "const MAX_LETTERS = 18",
+        "difficultySystem?.config('alphabet')",
+        "const ROUND_SECONDS = difficulty.seconds",
+        "const MAX_LETTERS = difficulty.letters",
+        "const PASS_LIMIT = difficulty.passLimit",
         "const BASE_POINTS = 100",
         "const STREAK_STEP = 25",
         "const STREAK_CAP = 100",
@@ -184,6 +189,7 @@ def check_runtime() -> None:
         "debrief.episode.subjectDescription",
         "debrief.episode.result",
         "debrief.episode.hotspot",
+        "state.passesUsed >= PASS_LIMIT",
     )
     for token in required:
         if token not in runtime:

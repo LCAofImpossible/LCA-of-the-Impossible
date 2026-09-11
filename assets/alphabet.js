@@ -1,8 +1,11 @@
 (() => {
   'use strict';
 
-  const ROUND_SECONDS = 180;
-  const MAX_LETTERS = 18;
+  const difficultySystem = window.ImpossibleLabDifficulty;
+  const difficulty = difficultySystem?.config('alphabet') || { letters: 18, seconds: 180, passLimit: null };
+  const ROUND_SECONDS = difficulty.seconds;
+  const MAX_LETTERS = difficulty.letters;
+  const PASS_LIMIT = difficulty.passLimit;
   const BASE_POINTS = 100;
   const STREAK_STEP = 25;
   const STREAK_CAP = 100;
@@ -25,6 +28,7 @@
     input: document.getElementById('alphabet-answer-input'),
     submit: document.getElementById('alphabet-submit'),
     pass: document.getElementById('alphabet-pass'),
+    ruleTime: document.getElementById('alphabet-rule-time'),
     feedback: document.getElementById('alphabet-feedback'),
     result: document.getElementById('alphabet-result'),
     resultScorecard: document.querySelector('[data-lab-result-scorecard]'),
@@ -56,7 +60,8 @@
     remainingSeconds: ROUND_SECONDS,
     deadline: 0,
     timer: null,
-    lastResolvedEntry: null
+    lastResolvedEntry: null,
+    passesUsed: 0
   };
 
   const setText = (element, value) => {
@@ -173,10 +178,12 @@
     state.streak = 0;
     state.bestStreak = 0;
     state.lastResolvedEntry = null;
+    state.passesUsed = 0;
     state.remainingSeconds = ROUND_SECONDS;
     elements.result.hidden = true;
     elements.start.hidden = false;
     elements.start.disabled = false;
+    elements.start.textContent = `Start ${Math.round(ROUND_SECONDS / 60)}-minute round`;
     elements.input.disabled = true;
     elements.submit.disabled = true;
     elements.pass.disabled = true;
@@ -186,6 +193,7 @@
     setText(elements.prefix, 'READY SIGNAL');
     setText(elements.clue, 'Start the round when you are ready. The first definition will appear here.');
     setText(elements.status, `${state.entries.length}-letter circuit ready from ${state.pool.length} published cases.`);
+    setText(elements.ruleTime, `${Math.round(ROUND_SECONDS / 60)} min`);
     setFeedback('One case has been selected for each active initial in this circuit.');
     renderWheel();
     updateScoreboard();
@@ -206,11 +214,14 @@
     setText(elements.wheelState, entry.status === 'passed' ? 'RETURNED' : 'ACTIVE');
     setText(elements.prefix, `BEGINS WITH ${entry.letter}`);
     setText(elements.clue, entry.clue);
-    setText(elements.status, `Letter ${index + 1} of ${state.entries.length}. Pass to return later.`);
+    const passesRemaining = Number.isFinite(PASS_LIMIT) ? Math.max(0, PASS_LIMIT - state.passesUsed) : null;
+    setText(elements.status, passesRemaining === null
+      ? `Letter ${index + 1} of ${state.entries.length}. Pass to return later.`
+      : `Letter ${index + 1} of ${state.entries.length}. ${passesRemaining} ${passesRemaining === 1 ? 'pass' : 'passes'} remaining.`);
     elements.input.value = '';
     elements.input.disabled = false;
     elements.submit.disabled = false;
-    elements.pass.disabled = false;
+    elements.pass.disabled = passesRemaining === 0;
     updateWheel();
     elements.input.focus({ preventScroll: true });
   };
@@ -349,8 +360,16 @@
 
   const passEntry = () => {
     if (!state.running || state.currentIndex < 0) return;
+    if (Number.isFinite(PASS_LIMIT) && state.passesUsed >= PASS_LIMIT) {
+      setFeedback('No passes remain at this difficulty. Submit an answer to continue.', 'wrong');
+      return;
+    }
+    state.passesUsed += 1;
     state.entries[state.currentIndex].status = 'passed';
-    setFeedback('Passed. This letter will return after the rest of the circuit.');
+    const remaining = Number.isFinite(PASS_LIMIT) ? Math.max(0, PASS_LIMIT - state.passesUsed) : null;
+    setFeedback(remaining === null
+      ? 'Passed. This letter will return after the rest of the circuit.'
+      : `Passed. This letter will return later; ${remaining} ${remaining === 1 ? 'pass' : 'passes'} remain.`);
     updateWheel();
     moveNext();
   };

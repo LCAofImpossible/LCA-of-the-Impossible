@@ -4,6 +4,8 @@
   const SCORE_STEPS = [500, 400, 300, 200, 100];
   const CLUE_LABELS = ['Season', 'Inventory', 'Impact', 'Function', 'Final clue'];
   const resultSystem = window.ImpossibleLabResults;
+  const difficultySystem = window.ImpossibleLabDifficulty;
+  const difficulty = difficultySystem?.config('guess') || { choices: 0, suggestions: true };
   const requiredFields = [
     'number', 'slug', 'title', 'url', 'seasonLabel', 'lcaLabel', 'lcaCharacteristics',
     'result', 'hotspot', 'functionalUnit', 'subjectDescription'
@@ -18,8 +20,10 @@
     status: document.getElementById('lab-status'),
     clueList: document.getElementById('lab-clue-list'),
     form: document.getElementById('lab-answer-form'),
+    answerRow: document.getElementById('lab-answer-row'),
     input: document.getElementById('lab-answer-input'),
     options: document.getElementById('lab-answer-options'),
+    choices: document.getElementById('lab-answer-choices'),
     submit: document.getElementById('lab-submit'),
     feedback: document.getElementById('lab-feedback'),
     reveal: document.getElementById('lab-reveal'),
@@ -114,6 +118,15 @@
     return Math.floor(Math.random() * length);
   };
 
+  const shuffled = (items) => {
+    const copy = [...items];
+    for (let index = copy.length - 1; index > 0; index -= 1) {
+      const swap = randomIndex(index + 1);
+      [copy[index], copy[swap]] = [copy[swap], copy[index]];
+    }
+    return copy;
+  };
+
   const setText = (element, value) => {
     if (element) element.textContent = String(value);
   };
@@ -128,6 +141,11 @@
   const setFeedback = (message, type = '') => {
     elements.feedback.className = `lab-feedback${type ? ` is-${type}` : ''}`;
     setText(elements.feedback, message);
+  };
+
+  const focusAnswer = () => {
+    if (difficulty.choices) elements.choices?.querySelector('button:not(:disabled)')?.focus();
+    else elements.input.focus();
   };
 
   const renderClues = () => {
@@ -159,6 +177,7 @@
 
     elements.input.disabled = true;
     elements.submit.disabled = true;
+    elements.choices?.querySelectorAll('button').forEach((button) => { button.disabled = true; });
     elements.reveal.disabled = true;
     elements.newCase.hidden = false;
     elements.result.hidden = false;
@@ -198,7 +217,7 @@
     elements.reveal.textContent = state.clueIndex === state.clues.length - 1 ? 'Reveal answer' : 'Reveal next clue';
     setText(elements.status, `Clue ${String(state.clueIndex + 1).padStart(2, '0')} of 05 unlocked.`);
     setFeedback(fromWrongGuess ? 'Not this case. The next clue has been unlocked.' : `${CLUE_LABELS[state.clueIndex]} clue unlocked.`, fromWrongGuess ? 'wrong' : '');
-    elements.input.focus();
+    focusAnswer();
   };
 
   const chooseEpisode = () => {
@@ -217,16 +236,17 @@
 
     elements.result.hidden = true;
     elements.newCase.hidden = true;
-    elements.input.disabled = false;
-    elements.submit.disabled = false;
+    elements.input.disabled = Boolean(difficulty.choices);
+    elements.submit.disabled = Boolean(difficulty.choices);
     elements.reveal.disabled = false;
     elements.input.value = '';
     elements.reveal.textContent = 'Reveal next clue';
     setText(elements.status, 'Clue 01 of 05 unlocked. Subject identity remains classified.');
     setFeedback('Submit a title now for 500 points, or reveal another clue.');
+    renderAnswerMode();
     renderClues();
     updateScoreboard();
-    elements.input.focus();
+    focusAnswer();
   };
 
   const renderOptions = () => {
@@ -240,6 +260,35 @@
       });
     elements.options.replaceChildren(fragment);
   };
+
+  function renderAnswerMode() {
+    if (!elements.answerRow || !elements.choices) return;
+    elements.input.toggleAttribute('list', Boolean(difficulty.suggestions));
+    elements.input.placeholder = difficulty.suggestions ? 'Enter or select an episode title' : 'Enter the exact subject title';
+    elements.answerRow.hidden = Boolean(difficulty.choices);
+    elements.choices.hidden = !difficulty.choices;
+    if (!difficulty.choices || !state.current) {
+      elements.choices.replaceChildren();
+      return;
+    }
+    const alternatives = shuffled(state.episodes.filter((episode) => episode.number !== state.current.number))
+      .slice(0, Math.max(0, difficulty.choices - 1));
+    const choices = shuffled([state.current, ...alternatives]);
+    const fragment = document.createDocumentFragment();
+    choices.forEach((episode) => {
+      const button = document.createElement('button');
+      button.type = 'button';
+      button.className = 'lab-answer-choice';
+      button.textContent = episode.title;
+      button.addEventListener('click', () => {
+        button.disabled = true;
+        elements.input.value = episode.title;
+        elements.form.requestSubmit();
+      });
+      fragment.appendChild(button);
+    });
+    elements.choices.replaceChildren(fragment);
+  }
 
   elements.form.addEventListener('submit', (event) => {
     event.preventDefault();
@@ -271,7 +320,7 @@
       if (!state.episodes.length) throw new Error('No complete episode records are available');
       state.unused = [...state.episodes];
       setText(elements.count, state.episodes.length);
-      renderOptions();
+      if (difficulty.suggestions) renderOptions();
       startRound();
     })
     .catch((error) => {

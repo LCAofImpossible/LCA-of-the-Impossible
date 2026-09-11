@@ -3,6 +3,8 @@
 
   const engine = window.ImpossibleCrossword;
   const resultSystem = window.ImpossibleLabResults;
+  const difficultySystem = window.ImpossibleLabDifficulty;
+  const difficulty = difficultySystem?.config('crossword') || { targetWords: 10, minWords: 8, freeInitials: false, revealLimit: null };
   const elements = {
     count: document.getElementById('crossword-case-count'),
     round: document.getElementById('crossword-round'),
@@ -56,14 +58,17 @@
     return [...entry.answer].map((_, index) => keyOf(entry.row + rowStep * index, entry.col + colStep * index));
   };
 
+  const gridMaximum = () => (state.layout?.entries.length || difficulty.targetWords) * 50;
   const currentScore = () => Math.max(0, state.correctEntries.size * 50 - state.revealedCells.size * 10);
-  const maximumPossible = () => Math.max(0, 500 - state.revealedCells.size * 10);
+  const maximumPossible = () => Math.max(0, gridMaximum() - state.revealedCells.size * 10);
+  const revealLimitReached = () => Number.isFinite(difficulty.revealLimit) && state.revealedCells.size >= difficulty.revealLimit;
 
   const updateScoreboard = () => {
     setText(elements.round, state.round);
     setText(elements.progress, `${state.correctEntries.size} / ${state.layout?.entries.length || 10}`);
     setText(elements.score, currentScore());
     setText(elements.available, maximumPossible());
+    if (elements.reveal && state.layout) elements.reveal.disabled = state.complete || revealLimitReached();
   };
 
   const setFeedback = (message, type = '') => {
@@ -264,7 +269,7 @@
       title: complete ? 'Grid complete' : 'Current grid performance',
       scoreLabel: 'Grid score',
       score: currentScore(),
-      maximum: 500,
+      maximum: gridMaximum(),
       completion: (state.correctEntries.size / totalEntries) * 100,
       accuracy: state.answerAttempts ? (state.correctEntries.size / state.answerAttempts) * 100 : 0,
       persist: complete
@@ -314,12 +319,15 @@
     if (state.complete) {
       elements.check.disabled = true;
       elements.reveal.disabled = true;
-      setText(elements.status, 'All ten cases identified. The grid is complete.');
+      setText(elements.status, `All ${state.layout.entries.length} cases identified. The grid is complete.`);
     }
   }
 
   const revealLetter = () => {
-    if (!state.layout || state.complete) return;
+    if (!state.layout || state.complete || revealLimitReached()) {
+      if (revealLimitReached()) setFeedback(`The ${difficulty.revealLimit}-letter reveal limit has been reached.`, 'wrong');
+      return;
+    }
     let entry = entryById(state.activeEntryId);
     if (!entry || state.correctEntries.has(entry.id)) entry = state.layout.entries.find((item) => !state.correctEntries.has(item.id));
     if (!entry) return;
@@ -339,6 +347,19 @@
     input.focus();
   };
 
+  const revealInitialLetters = () => {
+    if (!difficulty.freeInitials) return;
+    state.layout.entries.forEach((entry) => {
+      const key = cellsForEntry(entry)[0];
+      const input = state.inputByCell.get(key);
+      if (!input) return;
+      input.value = entry.answer[0];
+      input.readOnly = true;
+      input.setAttribute('aria-readonly', 'true');
+      input.parentElement.classList.add('is-starter');
+    });
+  };
+
   const availablePool = () => {
     const unused = state.pool.filter((item) => !state.usedEpisodes.has(item.episodeNumber));
     const seasonOneRemaining = unused.some((item) => item.episode.seasonNumber === 1);
@@ -355,11 +376,11 @@
     state.round += 1;
     const day = new Date().toISOString().slice(0, 10);
     try {
-      state.layout = engine.generate(candidates, { seed: `${day}:puzzle-${state.round}`, targetWords: 10, minWords: 8 });
+      state.layout = engine.generate(candidates, { seed: `${day}:puzzle-${state.round}`, targetWords: difficulty.targetWords, minWords: difficulty.minWords });
     } catch (error) {
       console.warn('Crossword generation retried against the full case pool:', error);
       state.usedEpisodes.clear();
-      state.layout = engine.generate(state.pool, { seed: `${day}:fallback-${state.round}`, targetWords: 10, minWords: 8 });
+      state.layout = engine.generate(state.pool, { seed: `${day}:fallback-${state.round}`, targetWords: difficulty.targetWords, minWords: difficulty.minWords });
     }
     state.layout.entries.forEach((entry) => state.usedEpisodes.add(entry.episodeNumber));
     state.activeEntryId = null;
@@ -374,11 +395,19 @@
     elements.reveal.disabled = false;
     elements.newGrid.disabled = false;
     renderGrid();
+    revealInitialLetters();
     renderClues();
     updateScoreboard();
     const first = state.layout.entries.find((entry) => entry.direction === 'across') || state.layout.entries[0];
     activateEntry(first.id, false);
-    setFeedback('Select a clue or a white cell and enter one letter at a time.');
+    setText(document.getElementById('grid-title'), `${state.layout.entries.length} CASES · ONE SYSTEM`);
+    if (difficulty.freeInitials) {
+      setFeedback('Every answer begins with one free letter. Select a clue or white cell to continue.');
+    } else if (Number.isFinite(difficulty.revealLimit)) {
+      setFeedback(`Select a clue or white cell to begin. Only ${difficulty.revealLimit} letter reveals are available.`);
+    } else {
+      setFeedback('Select a clue or a white cell and enter one letter at a time.');
+    }
   };
 
   elements.check.addEventListener('click', checkGrid);
@@ -406,7 +435,7 @@
       seenAnswers.add(answer);
       return { ...entry, answer, episode };
     }).filter(Boolean);
-    if (state.pool.length < 10) throw new Error('Fewer than ten complete crossword cases are available');
+    if (state.pool.length < difficulty.targetWords) throw new Error(`Fewer than ${difficulty.targetWords} complete crossword cases are available`);
     setText(elements.count, state.pool.length);
     startPuzzle();
   }).catch((error) => {
