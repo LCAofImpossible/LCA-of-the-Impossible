@@ -13,11 +13,12 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-CROSSWORD_VERSION = "20260911-results1"
-LAB_VERSION = "20260911-results1"
+CROSSWORD_VERSION = "20260911-score1"
+LAB_VERSION = "20260911-score1"
 NAV_VERSION = "20260911-navigation1"
 ACTION_VERSION = "20260911-navigation1"
-RESULTS_VERSION = "20260911-results1"
+RESULTS_VERSION = "20260911-score1"
+PROGRESS_VERSION = "20260911-score1"
 errors: list[str] = []
 
 
@@ -141,6 +142,7 @@ def check_page() -> None:
         f"assets/crossword.css?v={CROSSWORD_VERSION}",
         f"assets/lab-nav.js?v={NAV_VERSION}",
         f"assets/lab-actions.js?v={ACTION_VERSION}",
+        f"assets/lab-progress.js?v={PROGRESS_VERSION}",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         f"assets/crossword-generator.js?v={CROSSWORD_VERSION}",
         f"assets/crossword.js?v={CROSSWORD_VERSION}",
@@ -222,6 +224,7 @@ def check_runtime() -> None:
         "state.answerAttempts += 1",
         "resultSystem?.render(elements.resultScorecard",
         "completion: (state.correctEntries.size / totalEntries) * 100",
+        "persist: complete",
     ):
         if token not in controller:
             fail(f"assets/crossword.js: required gameplay token missing: {token}")

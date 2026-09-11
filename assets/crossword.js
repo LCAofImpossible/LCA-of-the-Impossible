@@ -266,7 +266,8 @@
       score: currentScore(),
       maximum: 500,
       completion: (state.correctEntries.size / totalEntries) * 100,
-      accuracy: state.answerAttempts ? (state.correctEntries.size / state.answerAttempts) * 100 : 0
+      accuracy: state.answerAttempts ? (state.correctEntries.size / state.answerAttempts) * 100 : 0,
+      persist: complete
     });
   };
 

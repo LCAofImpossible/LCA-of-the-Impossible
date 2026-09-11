@@ -1638,7 +1638,7 @@ The game selects one eligible record from `episodes.json` and reveals five clues
 4. `Function` — the registered `functionalUnit` or reporting basis;
 5. `Final clue` — the registered `subjectDescription`, with the episode title redacted where it occurs.
 
-Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. Score and streak are session-only interface state and must not create visitor identifiers, cookies or browser-storage tracking.
+Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unlocks the next clue. Revealing the answer scores zero and resets the current streak. The running score and streak remain session-only; a completed round may update the device-local personal record described in Section 39.5.
 
 ### 39.2 Cross the Impossible
 
@@ -1651,7 +1651,7 @@ Available points are `500 → 400 → 300 → 200 → 100`. A wrong answer unloc
 - generated grids rotate through the available pool and require no episode-specific page implementation;
 - the generator remains deterministic for a given seed and includes a validated fallback layout.
 
-The crossword score is session-only. It creates no account, leaderboard, cookie or browser-storage record.
+The in-progress crossword score remains session-only. Only a completed grid may update the device-local personal record described in Section 39.5.
 
 ### 39.3 The Impossible Alphabet
 
@@ -1666,7 +1666,7 @@ The crossword score is session-only. It creates no account, leaderboard, cookie 
 - the round ends when every letter is resolved or time expires;
 - the final review reveals every answer and links to the canonical episode page.
 
-Every published episode remains eligible for selection. New episodes require no alphabet-specific record: the approved narrative definition already maintained for `crossword.json` supplies the clue, while the registered episode supplies title, season and canonical URL. Scores and selection history remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
+Every published episode remains eligible for selection. New episodes require no alphabet-specific record: the approved narrative definition already maintained for `crossword.json` supplies the clue, while the registered episode supplies title, season and canonical URL. Round state and selection history remain in memory for the current page session; only the completed circuit's personal records persist locally as described in Section 39.5.
 
 ### 39.4 Spin the Impossible
 
@@ -1680,7 +1680,7 @@ Every published episode remains eligible for selection. New episodes require no 
 - a correct solution awards a base `500`-point bonus multiplied by phrase length, plus `25` points for every letter still hidden;
 - the completed round reveals the approved subject description, result, hotspot and canonical episode URL.
 
-The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selection and score remain in memory for the current page session only and create no account, leaderboard, cookie or browser-storage record.
+The hidden phrase is never duplicated in a Spin-specific dataset. Phrase selection and active-round state remain in memory for the current page session; only completed-round personal records persist locally as described in Section 39.5.
 
 ### 39.5 Shared result system
 
@@ -1693,7 +1693,16 @@ All four games retain their original scoring rules and render the same final per
 - Spin calculates a phrase-specific theoretical maximum from its existing wheel, occurrence and solve-bonus rules; completion is the share of letters uncovered unless the complete phrase is solved, and accuracy combines letter selections and full-phrase attempts;
 - multi-case games retain their complete answer review and present one clearly labelled subject debrief without ranking or comparing episode impacts.
 
-The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes. All calculations and result state remain in memory for the current page session only.
+`assets/lab-progress.js` stores two independent personal bests for each of the four game identifiers:
+
+- the highest original score, preserving the scoring language of that specific game;
+- the highest normalized score, limited to `0–1,000`, which becomes that game's contribution to the Lab Score.
+
+The **Lab Score** is `best normalized Guess + best normalized Cross + best normalized Alphabet + best normalized Spin`, for a fixed maximum of `4,000`. An experiment without a completed record contributes zero. A lower later result never reduces either personal best. The original-score record and normalized-score record may come from different rounds when a game's theoretical maximum varies.
+
+The hub displays the Lab Score, completion count, percentage and four normalized contributions. Result cards display the current result, game record, best normalized contribution and updated Lab Score. Records use the single device-local `localStorage` key `lca-impossible-lab-progress-v1`; the payload contains scores and play counts only, creates no account or visitor identifier, is never transmitted by the site and can be deleted with `Reset records`. When browser storage is unavailable, gameplay continues and the interface states that records cannot be retained.
+
+The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes.
 
 ### 39.6 Registry and editorial guardrails
 
@@ -1710,13 +1719,13 @@ The normalized score compares game performance only. It must never be presented 
 
 ### 39.7 Canonical files and automation
 
-- `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, responsive cards and random experiment selection;
+- `impossible-lab.html`, `assets/lab-hub.css` and `assets/lab-hub.js` — canonical game catalogue, combined Lab Score, responsive cards and random experiment selection;
 - `lab.html` and `assets/lab.js` — Guess the Impossible interface and runtime;
 - `lab-crossword.html`, `assets/crossword.css` and `assets/crossword.js` — crossword interface, scoring and result-card runtime;
 - `assets/crossword-generator.js` — seeded connected-grid generation and validation;
 - `lab-alphabet.html`, `assets/alphabet.css` and `assets/alphabet.js` — timed letter circuit, scoring, pass/return flow and answer review;
 - `lab-spin.html`, `assets/spin.css` and `assets/spin.js` — hidden-phrase wheel, letter controls, session scoring and LCA reveal;
-- `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js` and `assets/lab-results.js` — shared experiment registry, navigation, end-of-game routing and normalized result card;
+- `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js`, `assets/lab-results.js` and `assets/lab-progress.js` — shared experiment registry, navigation, end-of-game routing, normalized result card and device-local personal records;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `assets/lab.css` — shared responsive Lab presentation and homepage entry point;
 - `scripts/lab_sync.py` — homepage entry point, metadata, sitemap and README synchronization;
@@ -1750,6 +1759,9 @@ The normalized score compares game performance only. It must never be presented 
 - [ ] Every game exposes the same Lab route bar, a visible current-game marker and the three standard completion actions on desktop and mobile.
 - [ ] `Choose another game` selects only a different live registry entry and falls back safely to the Lab hub if the registry is unavailable.
 - [ ] Every final result retains the original score and exposes maximum obtainable, completion, accuracy and a normalized score limited to `0–1,000`.
+- [ ] A completed result can improve the independent original-score record and normalized-score record without a lower result reducing either record.
+- [ ] The hub Lab Score equals the sum of the four best normalized contributions, treats unplayed games as zero and never exceeds `4,000`.
+- [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
 - [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub and all four game routes.

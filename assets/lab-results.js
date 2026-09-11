@@ -7,6 +7,7 @@
   const rounded = (value) => Math.round(finiteNumber(value));
   const percentage = (value) => `${rounded(clamp(finiteNumber(value), 0, 100))}%`;
   const points = (value) => `${rounded(Math.max(0, finiteNumber(value))).toLocaleString('en-US')} pts`;
+  const scaledPoints = (value, maximum) => `${rounded(Math.max(0, finiteNumber(value))).toLocaleString('en-US')} / ${rounded(Math.max(0, finiteNumber(maximum))).toLocaleString('en-US')}`;
 
   const normalizeScore = (score, maximum) => {
     const safeMaximum = Math.max(0, finiteNumber(maximum));
@@ -29,6 +30,12 @@
     const score = Math.max(0, finiteNumber(summary.score));
     const maximum = Math.max(0, finiteNumber(summary.maximum));
     const normalized = normalizeScore(score, maximum);
+    const gameId = document.body?.dataset?.labGame || '';
+    const progressSystem = window.ImpossibleLabProgress;
+    const progressUpdate = summary.persist === false
+      ? null
+      : progressSystem?.record(gameId, { score, maximum, normalized });
+    const gameRecord = progressUpdate?.summary?.games?.[gameId];
 
     const card = document.createElement('section');
     card.className = 'lab-result-scorecard';
@@ -66,9 +73,52 @@
     const note = document.createElement('p');
     note.className = 'lab-result-scale-note';
     note.textContent = 'The 0–1,000 score normalizes game performance only. It does not compare the environmental results of different episodes.';
-    card.append(header, metrics, note);
+    card.append(header, metrics);
+
+    if (progressUpdate?.saved && gameRecord) {
+      const recordBand = document.createElement('section');
+      recordBand.className = 'lab-record-band';
+      recordBand.setAttribute('aria-label', 'Personal records');
+
+      const recordHeading = document.createElement('div');
+      const recordEyebrow = document.createElement('p');
+      const recordTitle = document.createElement('h4');
+      recordEyebrow.className = 'eyebrow';
+      recordEyebrow.textContent = progressUpdate.rawImproved ? 'NEW GAME RECORD' : 'PERSONAL BEST';
+      recordTitle.textContent = points(gameRecord.bestScore);
+      recordHeading.append(recordEyebrow, recordTitle);
+
+      const recordMetrics = document.createElement('dl');
+      recordMetrics.append(
+        metric('Best normalized', scaledPoints(gameRecord.bestNormalized, progressSystem.SCORE_SCALE)),
+        metric('Lab Score', scaledPoints(progressUpdate.summary.total, progressUpdate.summary.maximum)),
+        metric('Experiments completed', `${progressUpdate.summary.completed} / ${progressSystem.GAME_IDS.length}`)
+      );
+
+      const recordState = document.createElement('p');
+      recordState.className = 'lab-record-state';
+      if (progressUpdate.rawImproved && progressUpdate.normalizedImproved) {
+        recordState.textContent = 'Game record and Lab Score updated.';
+      } else if (progressUpdate.rawImproved) {
+        recordState.textContent = 'Game record updated. Your previous normalized contribution remains higher.';
+      } else if (progressUpdate.normalizedImproved) {
+        recordState.textContent = 'Lab Score improved. Your original game-score record remains unbeaten.';
+      } else {
+        recordState.textContent = 'No record this time. Try again to improve both targets.';
+      }
+
+      recordBand.append(recordHeading, recordMetrics, recordState);
+      card.appendChild(recordBand);
+    } else if (summary.persist !== false && progressSystem && !progressSystem.available) {
+      const unavailable = document.createElement('p');
+      unavailable.className = 'lab-record-unavailable';
+      unavailable.textContent = 'Personal records cannot be saved because browser storage is unavailable. This result remains visible for the current page only.';
+      card.appendChild(unavailable);
+    }
+
+    card.appendChild(note);
     target.replaceChildren(card);
-    return { score: rounded(score), maximum: rounded(maximum), normalized };
+    return { score: rounded(score), maximum: rounded(maximum), normalized, progress: progressUpdate?.summary || null };
   };
 
   window.ImpossibleLabResults = Object.freeze({ SCALE_MAX, normalizeScore, render });

@@ -89,6 +89,14 @@
 .lab-result-metrics>div:last-child{border-right:0}
 .lab-result-metrics dt{margin-bottom:6px;color:var(--muted);font-size:.68rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
 .lab-result-metrics dd{margin:0;color:var(--text);font-size:1.12rem;font-weight:850}
+.lab-record-band{display:grid;grid-template-columns:minmax(180px,.65fr) minmax(0,1.35fr);gap:20px;align-items:center;padding:18px 22px;border-top:1px solid var(--gold);background:linear-gradient(90deg,rgba(208,165,99,.075),rgba(109,231,255,.04))}
+.lab-record-band h4{margin:5px 0 0;color:var(--accent2);font-size:clamp(1.65rem,3vw,2.6rem);line-height:1}
+.lab-record-band dl{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin:0}
+.lab-record-band dl>div{padding:7px 16px;border-left:1px solid var(--line)}
+.lab-record-band dt{margin-bottom:6px;color:var(--muted);font-size:.65rem;font-weight:850;letter-spacing:.1em;text-transform:uppercase}
+.lab-record-band dd{margin:0;color:var(--text);font-size:.92rem;font-weight:850}
+.lab-record-state{grid-column:1/-1;margin:0;padding-top:12px;border-top:1px solid var(--line);color:var(--gold);font-size:.78rem;line-height:1.55}
+.lab-record-unavailable{margin:0;padding:14px 18px;border-top:1px solid var(--gold);color:var(--muted);font-size:.78rem;line-height:1.55}
 .lab-result-scale-note{margin:0;padding:12px 18px;border-top:1px solid var(--line);color:var(--muted);font-size:.76rem;line-height:1.55}
 .lab-case-debrief{padding:26px;border-top:1px solid var(--line)}
 .lab-case-debrief .lab-case-meta{margin:0;color:var(--gold);font-size:.7rem;font-weight:850;letter-spacing:.15em}
@@ -150,6 +158,9 @@
   .lab-result-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}
   .lab-result-metrics>div:nth-child(2){border-right:0}
   .lab-result-metrics>div:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .lab-record-band{grid-template-columns:1fr;padding:18px}
+  .lab-record-band dl{grid-template-columns:1fr}
+  .lab-record-band dl>div{padding:10px 0;border-left:0;border-top:1px solid var(--line)}
   .lab-case-debrief{padding:22px 20px}
   .lab-case-debrief dl{grid-template-columns:1fr}
   .lab-case-debrief dl>div{border-right:0;border-bottom:1px solid var(--line)}

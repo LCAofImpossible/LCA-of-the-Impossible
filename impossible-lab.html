@@ -43,8 +43,8 @@
   <title>Impossible Lab — Play the archive</title>
   <link rel="stylesheet" href="assets/style.css?v=20260830-subject-descriptions1">
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
-  <link rel="stylesheet" href="assets/lab.css?v=20260911-results1">
-  <link rel="stylesheet" href="assets/lab-hub.css?v=20260910-hub1">
+  <link rel="stylesheet" href="assets/lab.css?v=20260911-score1">
+  <link rel="stylesheet" href="assets/lab-hub.css?v=20260911-score1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-hub>
@@ -83,6 +83,42 @@
           Choose for me →
         </button>
       </header>
+
+      <section class="lab-score-panel" aria-labelledby="lab-score-title" data-lab-score-panel>
+        <div class="lab-score-overview">
+          <div>
+            <p class="eyebrow">YOUR LAB RECORD</p>
+            <h2 id="lab-score-title">Lab Score</h2>
+            <p>Your best normalized result from each experiment contributes up to 1,000 points.</p>
+          </div>
+          <p class="lab-score-total" aria-label="Lab Score: zero out of four thousand">
+            <strong data-lab-score-total>0</strong>
+            <span>/ 4,000</span>
+          </p>
+        </div>
+
+        <div class="lab-score-progress">
+          <div class="lab-score-progress-copy">
+            <span data-lab-score-completion>0 of 4 experiments completed</span>
+            <span data-lab-score-percent>0%</span>
+          </div>
+          <div class="lab-score-track" role="progressbar" aria-label="Lab Score progress" aria-valuemin="0" aria-valuemax="4000" aria-valuenow="0" data-lab-score-track>
+            <span data-lab-score-fill></span>
+          </div>
+        </div>
+
+        <div class="lab-score-breakdown" data-lab-score-breakdown aria-label="Score contribution by experiment">
+          <a href="lab.html"><span>Guess the Impossible</span><strong>Not played</strong></a>
+          <a href="lab-crossword.html"><span>Cross the Impossible</span><strong>Not played</strong></a>
+          <a href="lab-alphabet.html"><span>The Impossible Alphabet</span><strong>Not played</strong></a>
+          <a href="lab-spin.html"><span>Spin the Impossible</span><strong>Not played</strong></a>
+        </div>
+
+        <footer class="lab-score-footer">
+          <p data-lab-score-status aria-live="polite">Complete an experiment to establish your first record. Scores are stored only in this browser.</p>
+          <button class="lab-reset-records" type="button" data-lab-reset hidden>Reset records</button>
+        </footer>
+      </section>
 
       <div class="lab-hub-grid" data-lab-hub-grid aria-label="Impossible Lab games">
         <a class="lab-hub-card" href="lab.html" data-game-id="guess" data-experiment="01">
@@ -144,7 +180,8 @@
     <a href="archive.html">Browse all episodes →</a>
   </footer>
 
-  <script src="assets/lab-hub.js?v=20260910-hub1"></script>
+  <script src="assets/lab-progress.js?v=20260911-score1"></script>
+  <script src="assets/lab-hub.js?v=20260911-score1"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>
 </html>

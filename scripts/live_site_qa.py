@@ -74,6 +74,7 @@ CORE_PATHS = {
     "assets/lab-nav.js",
     "assets/lab-actions.js",
     "assets/lab-results.js",
+    "assets/lab-progress.js",
     "assets/crossword-generator.js",
     "assets/crossword.js",
     "assets/alphabet.js",
@@ -471,8 +472,13 @@ def validate(
             'href="lab-crossword.html"',
             'href="lab-alphabet.html"',
             'href="lab-spin.html"',
-            "assets/lab-hub.css?v=20260910-hub1",
-            "assets/lab-hub.js?v=20260910-hub1",
+            'data-lab-score-panel',
+            'data-lab-score-total',
+            'data-lab-score-breakdown',
+            'data-lab-reset',
+            "assets/lab-hub.css?v=20260911-score1",
+            "assets/lab-progress.js?v=20260911-score1",
+            "assets/lab-hub.js?v=20260911-score1",
         ),
         "lab.html": (
             "IMPOSSIBLE LAB · EXPERIMENT 01",
@@ -484,10 +490,11 @@ def validate(
             "EXPERIMENT 01 OF 04 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
-            "assets/lab.css?v=20260911-results1",
+            "assets/lab.css?v=20260911-score1",
             "assets/lab-nav.js?v=20260911-navigation1",
             "assets/lab-actions.js?v=20260911-navigation1",
-            "assets/lab-results.js?v=20260911-results1",
+            "assets/lab-progress.js?v=20260911-score1",
+            "assets/lab-results.js?v=20260911-score1",
             "assets/lab.js?v=20260911-results1",
         ),
         "lab-crossword.html": (
@@ -501,13 +508,14 @@ def validate(
             "EXPERIMENT 02 OF 04 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
-            "assets/lab.css?v=20260911-results1",
+            "assets/lab.css?v=20260911-score1",
             "assets/lab-nav.js?v=20260911-navigation1",
             "assets/lab-actions.js?v=20260911-navigation1",
-            "assets/lab-results.js?v=20260911-results1",
-            "assets/crossword.css?v=20260911-results1",
-            "assets/crossword-generator.js?v=20260911-results1",
-            "assets/crossword.js?v=20260911-results1",
+            "assets/lab-progress.js?v=20260911-score1",
+            "assets/lab-results.js?v=20260911-score1",
+            "assets/crossword.css?v=20260911-score1",
+            "assets/crossword-generator.js?v=20260911-score1",
+            "assets/crossword.js?v=20260911-score1",
         ),
         "lab-alphabet.html": (
             "IMPOSSIBLE LAB · EXPERIMENT 03",
@@ -520,11 +528,12 @@ def validate(
             'data-lab-another',
             'data-lab-result-scorecard',
             'id="alphabet-case-debrief"',
-            "assets/lab.css?v=20260911-results1",
+            "assets/lab.css?v=20260911-score1",
             "assets/alphabet.css?v=20260911-results1",
             "assets/lab-nav.js?v=20260911-navigation1",
             "assets/lab-actions.js?v=20260911-navigation1",
-            "assets/lab-results.js?v=20260911-results1",
+            "assets/lab-progress.js?v=20260911-score1",
+            "assets/lab-results.js?v=20260911-score1",
             "assets/alphabet.js?v=20260911-results1",
         ),
         "lab-spin.html": (
@@ -538,11 +547,12 @@ def validate(
             "EXPERIMENT 04 OF 04 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
-            "assets/lab.css?v=20260911-results1",
+            "assets/lab.css?v=20260911-score1",
             "assets/spin.css?v=20260911-results1",
             "assets/lab-nav.js?v=20260911-navigation1",
             "assets/lab-actions.js?v=20260911-navigation1",
-            "assets/lab-results.js?v=20260911-results1",
+            "assets/lab-progress.js?v=20260911-score1",
+            "assets/lab-results.js?v=20260911-score1",
             "assets/spin.js?v=20260911-results1",
         ),
         "assets/lab.js": (
@@ -567,6 +577,7 @@ def validate(
             ".lab-end-actions",
             ".lab-result-scorecard",
             ".lab-result-metrics",
+            ".lab-record-band",
             ".lab-case-debrief",
             ".lab-home-preview",
             "grid-auto-rows:1fr",
@@ -579,17 +590,22 @@ def validate(
             "game.category",
             "replaceChildren(fragment)",
             "window.location.assign(url)",
+            "progressSystem.summarize()",
+            "summary.games[game.id]",
+            "progressSystem?.clear()",
         ),
         "assets/lab-hub.css": (
             ".lab-hub-grid",
             ".lab-hub-card",
+            ".lab-score-panel",
+            ".lab-score-breakdown",
             ".lab-hub-note",
             "@media(max-width:620px)",
         ),
         "index.html": (
             "LAB-HOME:START",
             'href="impossible-lab.html"',
-            "assets/lab.css?v=20260911-results1",
+            "assets/lab.css?v=20260911-score1",
         ),
         "assets/crossword-generator.js": (
             "seededRandom",
@@ -606,6 +622,7 @@ def validate(
             "episode.hotspot",
             "state.answerAttempts += 1",
             "resultSystem?.render(elements.resultScorecard",
+            "persist: complete",
         ),
         "assets/crossword.css": (
             ".crossword-grid",
@@ -664,7 +681,21 @@ def validate(
             "metric('Completion'",
             "metric('Accuracy'",
             "It does not compare the environmental results of different episodes",
+            "progressSystem?.record",
+            "NEW GAME RECORD",
+            "Best normalized",
+            "Lab Score",
             "target.replaceChildren(card)",
+        ),
+        "assets/lab-progress.js": (
+            "const STORAGE_KEY = 'lca-impossible-lab-progress-v1'",
+            "window.localStorage",
+            "const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin'])",
+            "const LAB_MAX = GAME_IDS.length * SCORE_SCALE",
+            "bestScore",
+            "bestNormalized",
+            "summarize",
+            "clear",
         ),
         "assets/spin.css": (
             ".spin-wheel",
@@ -691,6 +722,10 @@ def validate(
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:
             errors.append(f"Crossword runtime violates its privacy or injection contract with {forbidden!r}")
+    progress_runtime = downloaded.get("assets/lab-progress.js", b"").decode("utf-8", errors="replace")
+    for forbidden in ("document.cookie", "sessionStorage", "innerHTML", "fetch(", "XMLHttpRequest"):
+        if forbidden in progress_runtime:
+            errors.append(f"Lab record runtime violates its local-only privacy contract with {forbidden!r}")
     try:
         crossword_registry = json.loads(downloaded["crossword.json"])
         game_registry = json.loads(downloaded["lab-games.json"])
