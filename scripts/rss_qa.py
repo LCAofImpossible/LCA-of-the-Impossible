@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 VERSION = "20260830-accessories1"
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "lab-timeline.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html",
     "season-ii.html", "statistics.html", "updates.html",
 ]

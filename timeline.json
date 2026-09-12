@@ -1,0 +1,358 @@
+{
+  "schemaVersion": 1,
+  "description": "Curated real-world chronology for Impossible Timeline. Dates represent the earliest documented appearance, surviving attestation or public debut used by the game; episode facts are joined from episodes.json at runtime.",
+  "entries": [
+    {
+      "episodeNumber": 71,
+      "orderYear": -300,
+      "dateLabel": "c. 4th century BCE",
+      "eraLabel": "Ancient source",
+      "event": "World-bearing turtle imagery is attested in ancient South Asian cosmological traditions preserved in Sanskrit literature.",
+      "source": "Early Sanskrit cosmological tradition"
+    },
+    {
+      "episodeNumber": 70,
+      "orderYear": 1537,
+      "dateLabel": "c. 1537",
+      "eraLabel": "Early modern record",
+      "event": "Spanish reports connected a Muisca investiture ritual involving gold offerings with the developing legend of El Dorado.",
+      "source": "Early Spanish accounts of the Muisca ritual"
+    },
+    {
+      "episodeNumber": 69,
+      "orderYear": 954,
+      "dateLabel": "c. 954 CE",
+      "eraLabel": "Medieval source",
+      "event": "The skaldic poem Eiríksmál describes the fallen ruler Erik Bloodaxe being welcomed into Odin's hall.",
+      "source": "Eiríksmál"
+    },
+    {
+      "episodeNumber": 68,
+      "orderYear": -23,
+      "dateLabel": "c. 23 BCE",
+      "eraLabel": "Classical source",
+      "event": "Horace evokes the Danaids' endless punishment of trying to fill a vessel that cannot retain water.",
+      "source": "Horace, Odes 3.11"
+    },
+    {
+      "episodeNumber": 67,
+      "orderYear": -460,
+      "dateLabel": "c. 460 BCE",
+      "eraLabel": "Classical source",
+      "event": "Pindar recounts Heracles' encounter with Augeas and the reward connected with cleansing the king's cattle domain.",
+      "source": "Pindar, Olympian 10"
+    },
+    {
+      "episodeNumber": 66,
+      "orderYear": 8,
+      "dateLabel": "c. 8 CE",
+      "eraLabel": "Classical source",
+      "event": "Ovid links the broken horn of Achelous with the horn of plenty filled with fruit and flowers.",
+      "source": "Ovid, Metamorphoses 9"
+    },
+    {
+      "episodeNumber": 65,
+      "orderYear": -720,
+      "dateLabel": "c. 8th century BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "The Iliad describes Hephaestus working at his forge and crafting extraordinary armour for Achilles.",
+      "source": "Homer, Iliad 18"
+    },
+    {
+      "episodeNumber": 64,
+      "orderYear": 75,
+      "dateLabel": "c. 75 CE",
+      "eraLabel": "Classical source",
+      "event": "Plutarch records how Athenians preserved Theseus' ship by replacing decayed timbers, creating the celebrated identity paradox.",
+      "source": "Plutarch, Life of Theseus 23"
+    },
+    {
+      "episodeNumber": 63,
+      "orderYear": 1270,
+      "dateLabel": "c. 1270",
+      "eraLabel": "Medieval manuscript",
+      "event": "The Poetic Edda manuscript tradition preserves references to Gungnir, Odin's spear.",
+      "source": "Poetic Edda, Codex Regius tradition"
+    },
+    {
+      "episodeNumber": 62,
+      "orderYear": 1270,
+      "dateLabel": "c. 1270",
+      "eraLabel": "Medieval manuscript",
+      "event": "The surviving Poetic Edda manuscript tradition preserves Sleipnir as Odin's exceptional eight-legged horse.",
+      "source": "Poetic Edda, Codex Regius tradition"
+    },
+    {
+      "episodeNumber": 61,
+      "orderYear": 1740,
+      "dateLabel": "1740",
+      "eraLabel": "Early modern record",
+      "event": "A monumental palace built from ice was erected in Saint Petersburg during the reign of Empress Anna Ivanovna.",
+      "source": "Accounts of the Saint Petersburg Ice House"
+    },
+    {
+      "episodeNumber": 60,
+      "orderYear": -450,
+      "dateLabel": "c. 450 BCE",
+      "eraLabel": "Classical source",
+      "event": "Herodotus provides one of the earliest surviving Greek descriptions of the phoenix and its cycle of return.",
+      "source": "Herodotus, Histories 2.73"
+    },
+    {
+      "episodeNumber": 59,
+      "orderYear": -462,
+      "dateLabel": "462 BCE",
+      "eraLabel": "Classical source",
+      "event": "Pindar's fourth Pythian Ode gives the earliest substantial surviving account of Jason's voyage for the Golden Fleece.",
+      "source": "Pindar, Pythian 4"
+    },
+    {
+      "episodeNumber": 58,
+      "orderYear": 300,
+      "dateLabel": "c. 300 CE",
+      "eraLabel": "Late antique source",
+      "event": "Writings associated with Zosimos of Panopolis document early alchemical ideas of transmutation that later developed into the philosopher's stone tradition.",
+      "source": "Zosimos of Panopolis, alchemical writings"
+    },
+    {
+      "episodeNumber": 57,
+      "orderYear": 1697,
+      "dateLabel": "1697",
+      "eraLabel": "Early modern publication",
+      "event": "Charles Perrault published Hop-o'-My-Thumb, whose ogre owns boots capable of crossing seven leagues at every stride.",
+      "source": "Charles Perrault, Histoires ou contes du temps passé"
+    },
+    {
+      "episodeNumber": 56,
+      "orderYear": -700,
+      "dateLabel": "c. 700 BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "Hesiod's Theogony names the Hydra of Lerna among the monstrous offspring faced by Heracles.",
+      "source": "Hesiod, Theogony"
+    },
+    {
+      "episodeNumber": 55,
+      "orderYear": -700,
+      "dateLabel": "c. 700 BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "Hesiod places the Hesperides beyond Ocean and associates them with the guarded golden apples.",
+      "source": "Hesiod, Theogony"
+    },
+    {
+      "episodeNumber": 54,
+      "orderYear": 1823,
+      "dateLabel": "1823",
+      "eraLabel": "Modern publication",
+      "event": "A Visit from St. Nicholas popularised Santa's airborne sleigh drawn by eight named reindeer.",
+      "source": "A Visit from St. Nicholas"
+    },
+    {
+      "episodeNumber": 53,
+      "orderYear": 1755,
+      "dateLabel": "1755",
+      "eraLabel": "Early modern record",
+      "event": "Mikhail Lomonosov's Russian Grammar lists Baba Yaga among figures of Slavic popular belief, an early printed record of the character.",
+      "source": "Mikhail Lomonosov, Russian Grammar"
+    },
+    {
+      "episodeNumber": 52,
+      "orderYear": -600,
+      "dateLabel": "c. 6th century BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "The Homeric Hymn to Hermes describes the young god's extraordinary movement and divine attributes.",
+      "source": "Homeric Hymn to Hermes"
+    },
+    {
+      "episodeNumber": 51,
+      "orderYear": -700,
+      "dateLabel": "c. 700 BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "Hesiod's Works and Days tells how Pandora opens a jar and releases afflictions into the human world.",
+      "source": "Hesiod, Works and Days"
+    },
+    {
+      "episodeNumber": 50,
+      "orderYear": 1270,
+      "dateLabel": "c. 1270",
+      "eraLabel": "Medieval manuscript",
+      "event": "The Poetic Edda manuscript tradition preserves Bifröst as the burning bridge between the human and divine realms.",
+      "source": "Poetic Edda, Codex Regius tradition"
+    },
+    {
+      "episodeNumber": 49,
+      "orderYear": -462,
+      "dateLabel": "462 BCE",
+      "eraLabel": "Classical source",
+      "event": "Pindar's fourth Pythian Ode presents the Argo and its crew in the voyage undertaken by Jason.",
+      "source": "Pindar, Pythian 4"
+    },
+    {
+      "episodeNumber": 48,
+      "orderYear": 1270,
+      "dateLabel": "c. 1270",
+      "eraLabel": "Medieval manuscript",
+      "event": "The surviving Poetic Edda manuscript describes Yggdrasil as the immense ash at the centre of the Norse cosmos.",
+      "source": "Poetic Edda, Völuspá and Grímnismál"
+    },
+    {
+      "episodeNumber": 47,
+      "orderYear": 1220,
+      "dateLabel": "c. 1220",
+      "eraLabel": "Medieval source",
+      "event": "Snorri Sturluson's Prose Edda recounts the forging of Draupnir and its power to reproduce eight rings every ninth night.",
+      "source": "Snorri Sturluson, Prose Edda"
+    },
+    {
+      "episodeNumber": 46,
+      "orderYear": 1870,
+      "dateLabel": "1870",
+      "eraLabel": "Modern publication",
+      "event": "Jules Verne completed publication of Twenty Thousand Leagues Under the Seas, introducing Captain Nemo's electric submarine Nautilus.",
+      "source": "Jules Verne, Twenty Thousand Leagues Under the Seas"
+    },
+    {
+      "episodeNumber": 45,
+      "orderYear": 8,
+      "dateLabel": "c. 8 CE",
+      "eraLabel": "Classical source",
+      "event": "Ovid's Metamorphoses preserves the celebrated version in which Midas receives the power to turn what he touches into gold.",
+      "source": "Ovid, Metamorphoses 11"
+    },
+    {
+      "episodeNumber": 44,
+      "orderYear": 8,
+      "dateLabel": "c. 8 CE",
+      "eraLabel": "Classical source",
+      "event": "Ovid gives the best-known surviving classical account of Daedalus and Icarus escaping with feather-and-wax wings.",
+      "source": "Ovid, Metamorphoses 8"
+    },
+    {
+      "episodeNumber": 43,
+      "orderYear": -710,
+      "dateLabel": "c. 8th century BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "The Odyssey describes Sisyphus in the underworld repeatedly forcing his immense stone uphill.",
+      "source": "Homer, Odyssey 11"
+    },
+    {
+      "episodeNumber": 42,
+      "orderYear": -250,
+      "dateLabel": "c. 3rd century BCE",
+      "eraLabel": "Hellenistic source",
+      "event": "Apollonius of Rhodes' Argonautica presents Talos as the bronze guardian who circles Crete.",
+      "source": "Apollonius of Rhodes, Argonautica 4"
+    },
+    {
+      "episodeNumber": 41,
+      "orderYear": 1221,
+      "dateLabel": "c. 1220",
+      "eraLabel": "Medieval source",
+      "event": "The Prose Edda recounts the forging of Thor's hammer Mjölnir and explains its unusually short handle.",
+      "source": "Snorri Sturluson, Prose Edda"
+    },
+    {
+      "episodeNumber": 40,
+      "orderYear": 8,
+      "dateLabel": "c. 8 CE",
+      "eraLabel": "Classical source",
+      "event": "Ovid's Metamorphoses relates how Daedalus built the labyrinth to conceal the Minotaur on Crete.",
+      "source": "Ovid, Metamorphoses 8"
+    },
+    {
+      "episodeNumber": 39,
+      "orderYear": -360,
+      "dateLabel": "c. 360 BCE",
+      "eraLabel": "Classical source",
+      "event": "Plato introduced Atlantis in the dialogues Timaeus and Critias as a powerful island civilisation defeated and submerged.",
+      "source": "Plato, Timaeus and Critias"
+    },
+    {
+      "episodeNumber": 38,
+      "orderYear": -705,
+      "dateLabel": "c. 8th century BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "The Odyssey refers to the wooden horse used by the Greeks to enter Troy, one of its earliest surviving literary attestations.",
+      "source": "Homer, Odyssey 8"
+    },
+    {
+      "episodeNumber": 37,
+      "orderYear": 1136,
+      "dateLabel": "c. 1136",
+      "eraLabel": "Medieval source",
+      "event": "Geoffrey of Monmouth names Arthur's sword Caliburn in Historia Regum Britanniae, a direct ancestor of Excalibur.",
+      "source": "Geoffrey of Monmouth, Historia Regum Britanniae"
+    },
+    {
+      "episodeNumber": 36,
+      "orderYear": -500,
+      "dateLabel": "c. 6th–5th century BCE",
+      "eraLabel": "Ancient written tradition",
+      "event": "The Tower of Babel narrative took its surviving written form in Genesis, reflecting the monumental temple towers of Mesopotamia.",
+      "source": "Genesis 11:1–9"
+    },
+    {
+      "episodeNumber": 35,
+      "orderYear": 1790,
+      "dateLabel": "1790",
+      "eraLabel": "Modern publication",
+      "event": "John MacDonald's published travel narrative records sailors using the name Flying Dutchman for a phantom ship in stormy seas.",
+      "source": "John MacDonald, Travels in Various Parts of Europe, Asia and Africa"
+    },
+    {
+      "episodeNumber": 34,
+      "orderYear": -590,
+      "dateLabel": "c. 6th century BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "The Homeric Hymn to Helios describes the sun god driving his chariot across the sky.",
+      "source": "Homeric Hymn to Helios"
+    },
+    {
+      "episodeNumber": 33,
+      "orderYear": -200,
+      "dateLabel": "c. 3rd–2nd century BCE",
+      "eraLabel": "Ancient epic tradition",
+      "event": "The developing Mahabharata tradition describes the Brahmastra among the divine weapons invoked by trained warriors.",
+      "source": "Mahabharata tradition"
+    },
+    {
+      "episodeNumber": 32,
+      "orderYear": -700,
+      "dateLabel": "c. 700 BCE",
+      "eraLabel": "Ancient Greek source",
+      "event": "Hesiod's Theogony recounts the birth of Pegasus from Medusa after she is slain by Perseus.",
+      "source": "Hesiod, Theogony"
+    },
+    {
+      "episodeNumber": 4,
+      "orderYear": 1963,
+      "dateLabel": "23 November 1963",
+      "eraLabel": "Television debut",
+      "event": "The TARDIS first appeared in An Unearthly Child, the opening episode of Doctor Who.",
+      "source": "Doctor Who, An Unearthly Child"
+    },
+    {
+      "episodeNumber": 3,
+      "orderYear": 1985,
+      "dateLabel": "3 July 1985",
+      "eraLabel": "Film debut",
+      "event": "Doc Brown's DeLorean time machine debuted with the theatrical release of Back to the Future.",
+      "source": "Back to the Future"
+    },
+    {
+      "episodeNumber": 2,
+      "orderYear": 1977,
+      "dateLabel": "25 May 1977",
+      "eraLabel": "Film debut",
+      "event": "The Millennium Falcon entered popular culture with the original theatrical release of Star Wars.",
+      "source": "Star Wars"
+    },
+    {
+      "episodeNumber": 1,
+      "orderYear": 1975,
+      "dateLabel": "5 October 1975",
+      "eraLabel": "Television debut",
+      "event": "UFO Robot Grendizer began its original Japanese television broadcast on Fuji TV.",
+      "source": "UFO Robot Grendizer television series"
+    }
+  ]
+}

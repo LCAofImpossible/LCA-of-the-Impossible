@@ -4,7 +4,7 @@
   const STORAGE_KEY = 'lca-impossible-lab-progress-v1';
   const SCHEMA_VERSION = 1;
   const SCORE_SCALE = 1000;
-  const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin']);
+  const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline']);
   const LAB_MAX = GAME_IDS.length * SCORE_SCALE;
 
   const finiteNumber = (value) => Number.isFinite(Number(value)) ? Number(value) : 0;

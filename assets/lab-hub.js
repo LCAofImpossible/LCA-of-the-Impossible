@@ -138,9 +138,9 @@
           ? 'Complete an Analyst experiment to establish your first Lab Score contribution. Scores are stored only in this browser.'
           : `${selectedLabel} results keep separate records. Switch to Analyst to establish the official Lab Score.`;
       } else if (summary.completed === gameCount) {
-        scoreStatus.textContent = 'All four experiments now contribute to your Lab Score. Improve any personal best to raise the total.';
+        scoreStatus.textContent = `All ${gameCount} experiments now contribute to your Lab Score. Improve any personal best to raise the total.`;
       } else {
-        scoreStatus.textContent = `${summary.completed} personal ${summary.completed === 1 ? 'record is' : 'records are'} active. Complete the remaining experiments to unlock the full 4,000-point scale.`;
+        scoreStatus.textContent = `${summary.completed} personal ${summary.completed === 1 ? 'record is' : 'records are'} active. Complete the remaining experiments to unlock the full ${summary.maximum.toLocaleString('en-US')}-point scale.`;
       }
     }
 

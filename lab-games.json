@@ -44,6 +44,17 @@
       "category": "Word puzzle",
       "url": "lab-spin.html",
       "status": "live"
+    },
+    {
+      "id": "timeline",
+      "number": 5,
+      "title": "Impossible Timeline",
+      "description": "Order cultural history",
+      "summary": "Arrange impossible subjects by their first documented attestation or real-world public appearance.",
+      "duration": "4–7 min",
+      "category": "Chronology",
+      "url": "lab-timeline.html",
+      "status": "live"
     }
   ]
 }

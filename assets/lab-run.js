@@ -4,7 +4,7 @@
   const STORAGE_KEY = 'lca-impossible-lab-run-v1';
   const SCHEMA_VERSION = 1;
   const progressSystem = window.ImpossibleLabProgress;
-  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin']);
+  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline']);
   const SCORE_SCALE = progressSystem?.SCORE_SCALE || 1000;
   const RUN_MAX = GAME_IDS.length * SCORE_SCALE;
   const available = Boolean(progressSystem?.available);

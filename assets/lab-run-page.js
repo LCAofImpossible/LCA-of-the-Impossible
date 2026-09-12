@@ -115,7 +115,7 @@
       if (message) {
         status.textContent = message;
       } else if (!summary.available) {
-        status.textContent = 'Browser storage is unavailable. The four-stage Run cannot continue between pages on this device.';
+        status.textContent = 'Browser storage is unavailable. The five-stage Run cannot continue between pages on this device.';
       } else if (summary.complete) {
         status.textContent = 'Run complete. This score combines one consecutive result from each game; your separate Lab Score still uses all-time personal bests.';
       } else if (summary.active) {
@@ -127,7 +127,7 @@
   };
 
   const start = (restart = false) => {
-    if (restart && !window.confirm('Restart the current Impossible Lab Run? Its four-stage progress will be replaced.')) return;
+    if (restart && !window.confirm('Restart the current Impossible Lab Run? Its five-stage progress will be replaced.')) return;
     const started = runSystem.start();
     if (started.saved) {
       const first = games.find((game) => game.id === started.summary.nextGameId);

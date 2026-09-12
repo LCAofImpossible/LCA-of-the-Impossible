@@ -33,7 +33,7 @@
 .lab-score-progress-copy span:last-child{color:var(--accent)}
 .lab-score-track{height:7px;overflow:hidden;background:rgba(109,231,255,.1)}
 .lab-score-track>span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent2));transition:width .35s ease}
-.lab-score-breakdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr))}
+.lab-score-breakdown{display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
 .lab-score-breakdown a{display:flex;min-width:0;gap:14px;align-items:center;justify-content:space-between;padding:18px 20px;border-right:1px solid var(--line);color:var(--text);transition:background .2s,color .2s}
 .lab-score-breakdown a:last-child{border-right:0}
 .lab-score-breakdown a:hover,.lab-score-breakdown a:focus-visible{background:rgba(109,231,255,.055);color:var(--accent2)}
@@ -82,8 +82,8 @@
   .lab-run-entry dl{justify-self:start}
   .lab-run-entry .button{justify-self:start}
   .lab-score-breakdown{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .lab-score-breakdown a:nth-child(2){border-right:0}
-  .lab-score-breakdown a:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .lab-score-breakdown a:nth-child(even){border-right:0}
+  .lab-score-breakdown a:not(:last-child){border-bottom:1px solid var(--line)}
   .lab-hub-grid{grid-template-columns:1fr}
   .lab-hub-card{min-height:320px}
 }
@@ -105,8 +105,8 @@
   .lab-score-progress-copy{align-items:flex-start;flex-direction:column;gap:5px}
   .lab-score-breakdown{grid-template-columns:1fr}
   .lab-score-breakdown a{border-right:0;border-bottom:1px solid var(--line)}
-  .lab-score-breakdown a:nth-child(2){border-right:0}
-  .lab-score-breakdown a:nth-child(-n+2){border-bottom:1px solid var(--line)}
+  .lab-score-breakdown a:nth-child(even){border-right:0}
+  .lab-score-breakdown a:not(:last-child){border-bottom:1px solid var(--line)}
   .lab-score-breakdown a:last-child{border-bottom:0}
   .lab-score-footer{align-items:flex-start;flex-direction:column;padding:16px 22px}
   .lab-run-entry{padding:22px}

@@ -130,6 +130,7 @@ def main() -> int:
     check_public_page(ROOT / "lab-crossword.html", BASE_URL + "lab-crossword.html", latest_image, "website", "Game")
     check_public_page(ROOT / "lab-alphabet.html", BASE_URL + "lab-alphabet.html", latest_image, "website", "Game")
     check_public_page(ROOT / "lab-spin.html", BASE_URL + "lab-spin.html", latest_image, "website", "Game")
+    check_public_page(ROOT / "lab-timeline.html", BASE_URL + "lab-timeline.html", latest_image, "website", "Game")
     check_public_page(ROOT / "method.html", BASE_URL + "method.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "compare.html", BASE_URL + "compare.html", latest_image, "website", "WebPage")
     check_public_page(ROOT / "explore.html", BASE_URL + "explore.html", latest_image, "website", "CollectionPage")
@@ -197,6 +198,7 @@ def main() -> int:
         BASE_URL + "lab-crossword.html",
         BASE_URL + "lab-alphabet.html",
         BASE_URL + "lab-spin.html",
+        BASE_URL + "lab-timeline.html",
         BASE_URL + "method.html",
         BASE_URL + "compare.html",
         BASE_URL + "explore.html",

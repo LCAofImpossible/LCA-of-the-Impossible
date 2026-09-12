@@ -6,7 +6,7 @@
   const DEFAULT_LEVEL = 'analyst';
   const PLAY_TARGET = 'lab-game-area';
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
-  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html']);
+  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html']);
   const progressSystem = window.ImpossibleLabProgress;
 
   const LEVEL_DETAILS = Object.freeze({
@@ -47,6 +47,11 @@
       explorer: Object.freeze({ spins: 20, solveAttempts: 5, vowelCost: 75, hintCost: 150, wrongSolutionCost: 100 }),
       analyst: Object.freeze({ spins: 15, solveAttempts: 3, vowelCost: 150, hintCost: 300, wrongSolutionCost: 200 }),
       impossible: Object.freeze({ spins: 10, solveAttempts: 2, vowelCost: 200, hintCost: 450, wrongSolutionCost: 300 })
+    }),
+    timeline: Object.freeze({
+      explorer: Object.freeze({ cards: 3, rounds: 4, eraHints: true, spreadYears: 150 }),
+      analyst: Object.freeze({ cards: 4, rounds: 5, eraHints: false, spreadYears: 0 }),
+      impossible: Object.freeze({ cards: 5, rounds: 5, eraHints: false, spreadYears: 0 })
     })
   });
 
@@ -70,6 +75,11 @@
       explorer: 'Play with 20 spins, five solution attempts and lower assistance costs.',
       analyst: 'Play the standard round with 15 spins, three attempts and standard costs.',
       impossible: 'Play with 10 spins, two solution attempts and higher assistance costs.'
+    }),
+    timeline: Object.freeze({
+      explorer: 'Order three widely separated subjects per round with a broad historical-era hint.',
+      analyst: 'Order four subjects per round using titles and the documented historical record alone.',
+      impossible: 'Order five subjects per round, including deliberately close historical dates, without era hints.'
     })
   });
 
@@ -307,7 +317,7 @@
     eyebrow.textContent = fixed ? 'RUN RULES · FIXED LEVEL' : 'CHALLENGE LEVEL';
     heading.textContent = fixed ? 'Analyst mode' : 'Choose your mode';
     description.textContent = fixed
-      ? 'Impossible Lab Run always uses Analyst rules so every four-stage score stays comparable.'
+      ? 'Impossible Lab Run always uses Analyst rules so every five-stage score stays comparable.'
       : descriptionFor();
     intro.append(eyebrow, heading, description);
 

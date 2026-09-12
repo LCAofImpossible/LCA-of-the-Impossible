@@ -13,13 +13,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260911-mobile1"
-NAV_VERSION = "20260911-difficulty1"
-ACTION_VERSION = "20260911-difficulty1"
-RESULTS_VERSION = "20260911-difficulty1"
-PROGRESS_VERSION = "20260911-score1"
-RUN_VERSION = "20260911-run1"
-DIFFICULTY_VERSION = "20260911-mobile2"
+LAB_VERSION = "20260912-timeline1"
+NAV_VERSION = "20260912-timeline1"
+ACTION_VERSION = "20260912-timeline1"
+RESULTS_VERSION = "20260912-timeline1"
+PROGRESS_VERSION = "20260912-timeline1"
+RUN_VERSION = "20260912-timeline1"
+DIFFICULTY_VERSION = "20260912-timeline1"
 SPIN_VERSION = "20260911-difficulty1"
 errors: list[str] = []
 
@@ -106,13 +106,14 @@ def check_game_registry() -> None:
         "crossword": (2, "lab-crossword.html", "live"),
         "alphabet": (3, "lab-alphabet.html", "live"),
         "spin": (4, "lab-spin.html", "live"),
+        "timeline": (5, "lab-timeline.html", "live"),
     }
     found = {
         game.get("id"): (game.get("number"), game.get("url"), game.get("status"))
         for game in games if isinstance(game, dict)
     }
     if found != expected:
-        fail(f"lab-games.json does not expose the four canonical experiments: {found}")
+        fail(f"lab-games.json does not expose the five canonical experiments: {found}")
 
 
 def check_page() -> None:
@@ -134,7 +135,7 @@ def check_page() -> None:
         'id="spin-result"',
         'id="spin-next"',
         'class="lab-route-bar"',
-        'EXPERIMENT 04 OF 04 · CURRENT GAME',
+        'EXPERIMENT 04 OF 05 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
         'data-lab-difficulty',
@@ -242,7 +243,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-spin.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "four registry-driven experiments", "FIVE HIDDEN PHRASES"):
+    for token in ('href="impossible-lab.html"', "five registry-driven experiments", "FIVE HIDDEN PHRASES"):
         if token not in home:
             fail(f"index.html: Spin the Impossible discovery token missing: {token}")
     if 'href="lab-spin.html"' not in read("impossible-lab.html"):

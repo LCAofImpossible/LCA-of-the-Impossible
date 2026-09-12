@@ -8,7 +8,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ASSET_VERSION = "20260820-telemetry1"
 errors: list[str] = []
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "lab-timeline.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]
