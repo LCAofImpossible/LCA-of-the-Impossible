@@ -10,7 +10,7 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "20260912-timeline1"
+VERSION = "20260915-relics1"
 errors: list[str] = []
 
 
@@ -66,7 +66,7 @@ def main() -> int:
     page = read("lab-timeline.html")
     for token in (
         'data-lab-game="timeline"', "Impossible <span>Timeline.</span>",
-        "EXPERIMENT 05 OF 05 · CURRENT GAME", 'id="lab-game-area"',
+        "EXPERIMENT 05 OF 06 · CURRENT GAME", 'id="lab-game-area"',
         'id="timeline-start"', 'id="timeline-list"', 'id="timeline-submit"',
         'id="timeline-reveal-list"', 'id="timeline-final"', 'data-lab-result-scorecard',
         'data-lab-another', 'data-lab-difficulty', 'href="impossible-lab.html"',
@@ -113,6 +113,8 @@ def main() -> int:
         fail("assets/lab-progress.js does not include the Timeline Lab Score contribution")
     if 'data-game-id="timeline"' not in read("impossible-lab-run.html"):
         fail("Impossible Lab Run does not include the Timeline stage")
+    if 'href="lab-relics.html"' not in page:
+        fail("Impossible Timeline navigation does not include Impossible Relics")
 
     syntax = subprocess.run(["node", "--check", str(ROOT / "assets/timeline.js")], cwd=ROOT, capture_output=True, text=True, check=False)
     if syntax.returncode:

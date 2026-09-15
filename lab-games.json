@@ -55,6 +55,17 @@
       "category": "Chronology",
       "url": "lab-timeline.html",
       "status": "live"
+    },
+    {
+      "id": "relics",
+      "number": 6,
+      "title": "Impossible Relics",
+      "description": "Match the archive",
+      "summary": "Match every impossible subject with the historical, mythological or cultural trace preserved in the archive.",
+      "duration": "2–5 min",
+      "category": "Memory",
+      "url": "lab-relics.html",
+      "status": "live"
     }
   ]
 }

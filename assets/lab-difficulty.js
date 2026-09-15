@@ -6,7 +6,7 @@
   const DEFAULT_LEVEL = 'analyst';
   const PLAY_TARGET = 'lab-game-area';
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
-  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html']);
+  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html', 'lab-relics.html']);
   const progressSystem = window.ImpossibleLabProgress;
 
   const LEVEL_DETAILS = Object.freeze({
@@ -52,6 +52,11 @@
       explorer: Object.freeze({ cards: 3, rounds: 4, eraHints: true, spreadYears: 150 }),
       analyst: Object.freeze({ cards: 4, rounds: 5, eraHints: false, spreadYears: 0 }),
       impossible: Object.freeze({ cards: 5, rounds: 5, eraHints: false, spreadYears: 0 })
+    }),
+    relics: Object.freeze({
+      explorer: Object.freeze({ pairs: 4, hints: 2 }),
+      analyst: Object.freeze({ pairs: 6, hints: 1 }),
+      impossible: Object.freeze({ pairs: 8, hints: 0 })
     })
   });
 
@@ -80,6 +85,11 @@
       explorer: 'Order three widely separated subjects per round with a broad historical-era hint.',
       analyst: 'Order four subjects per round using titles and the documented historical record alone.',
       impossible: 'Order five subjects per round, including deliberately close historical dates, without era hints.'
+    }),
+    relics: Object.freeze({
+      explorer: 'Recover four subject-and-trace pairs with up to two archive assists.',
+      analyst: 'Recover six subject-and-trace pairs with one archive assist.',
+      impossible: 'Recover eight subject-and-trace pairs without assistance.'
     })
   });
 
@@ -317,7 +327,7 @@
     eyebrow.textContent = fixed ? 'RUN RULES · FIXED LEVEL' : 'CHALLENGE LEVEL';
     heading.textContent = fixed ? 'Analyst mode' : 'Choose your mode';
     description.textContent = fixed
-      ? 'Impossible Lab Run always uses Analyst rules so every five-stage score stays comparable.'
+      ? 'Impossible Lab Run always uses Analyst rules so every six-stage score stays comparable.'
       : descriptionFor();
     intro.append(eyebrow, heading, description);
 

@@ -13,13 +13,13 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
-LAB_VERSION = "20260912-timeline1"
-NAV_VERSION = "20260912-timeline1"
-ACTION_VERSION = "20260912-timeline1"
-RESULTS_VERSION = "20260912-timeline1"
-PROGRESS_VERSION = "20260912-timeline1"
-RUN_VERSION = "20260912-timeline1"
-DIFFICULTY_VERSION = "20260912-timeline1"
+LAB_VERSION = "20260915-relics1"
+NAV_VERSION = "20260915-relics1"
+ACTION_VERSION = "20260915-relics1"
+RESULTS_VERSION = "20260915-relics1"
+PROGRESS_VERSION = "20260915-relics1"
+RUN_VERSION = "20260915-relics1"
+DIFFICULTY_VERSION = "20260915-relics1"
 SPIN_VERSION = "20260911-difficulty1"
 errors: list[str] = []
 
@@ -107,6 +107,7 @@ def check_game_registry() -> None:
         "alphabet": (3, "lab-alphabet.html", "live"),
         "spin": (4, "lab-spin.html", "live"),
         "timeline": (5, "lab-timeline.html", "live"),
+        "relics": (6, "lab-relics.html", "live"),
     }
     found = {
         game.get("id"): (game.get("number"), game.get("url"), game.get("status"))
@@ -135,7 +136,7 @@ def check_page() -> None:
         'id="spin-result"',
         'id="spin-next"',
         'class="lab-route-bar"',
-        'EXPERIMENT 04 OF 05 · CURRENT GAME',
+        'EXPERIMENT 04 OF 06 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
         'data-lab-difficulty',
@@ -243,7 +244,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-spin.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "five registry-driven experiments", "FIVE HIDDEN PHRASES"):
+    for token in ('href="impossible-lab.html"', "six registry-driven experiments", "FIVE HIDDEN PHRASES"):
         if token not in home:
             fail(f"index.html: Spin the Impossible discovery token missing: {token}")
     if 'href="lab-spin.html"' not in read("impossible-lab.html"):
