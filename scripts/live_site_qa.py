@@ -1177,7 +1177,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
-    print("- Impossible Lab games, persistent records and four-stage Run contracts: **PASS**")
+    print("- Impossible Lab games, persistent records and seven-stage Run contracts: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0
