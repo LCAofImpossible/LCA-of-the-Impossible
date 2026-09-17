@@ -1736,6 +1736,8 @@ The board uses no Relics-specific content registry. Every episode already carryi
 - Explorer uses `8` cases, four candidate regions, the subject description and visible era ranges;
 - Analyst uses `10` cases and the complete labelled map with standard historical guidance;
 - Impossible uses `12` cases, hides the subject description, map labels and numeric era ranges, and prioritises qualified cultural origins after retaining Season I representation;
+- the world map uses local inline SVG geometry derived from public-domain Natural Earth data, groups that geometry into the fourteen approved macroregions and never depends on an external map service;
+- hover, focus and selection states share the same region controls, while the reveal beacon identifies the recovered macroregion and the text selector remains the accessible fallback;
 - every reveal exposes the approved location basis, date, historical event, source and any ambiguity note;
 - the game never uses fictional geography, prop manufacture or episode publication as origin evidence.
 

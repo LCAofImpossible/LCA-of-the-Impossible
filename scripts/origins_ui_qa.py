@@ -9,7 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-VERSION = "20260916-origins3"
+SHARED_VERSION = "20260916-origins3"
+ORIGINS_VERSION = "20260917-origins-map1"
 errors: list[str] = []
 
 
@@ -36,6 +37,10 @@ def main() -> int:
         "Impossible <span>Origins.</span>",
         'id="lab-game-area"',
         'id="origins-map"',
+        'class="origins-map-frame"',
+        'id="origins-map-hud-name"',
+        'id="origins-map-beacon"',
+        "public-domain Natural Earth geometry",
         'id="origins-score"',
         'id="origins-region-select"',
         'id="origins-era-options"',
@@ -48,14 +53,14 @@ def main() -> int:
         'tabindex="-1" role="button" aria-label="North America" aria-pressed="false" aria-disabled="true"',
         'href="impossible-lab.html"',
         'data-lab-game-nav',
-        f"assets/origins.css?v={VERSION}",
-        f"assets/origins.js?v={VERSION}",
-        f"assets/lab-nav.js?v={VERSION}",
-        f"assets/lab-actions.js?v={VERSION}",
-        f"assets/lab-progress.js?v={VERSION}",
-        f"assets/lab-difficulty.js?v={VERSION}",
-        f"assets/lab-run.js?v={VERSION}",
-        f"assets/lab-results.js?v={VERSION}",
+        f"assets/origins.css?v={ORIGINS_VERSION}",
+        f"assets/origins.js?v={ORIGINS_VERSION}",
+        f"assets/lab-nav.js?v={SHARED_VERSION}",
+        f"assets/lab-actions.js?v={SHARED_VERSION}",
+        f"assets/lab-progress.js?v={SHARED_VERSION}",
+        f"assets/lab-difficulty.js?v={SHARED_VERSION}",
+        f"assets/lab-run.js?v={SHARED_VERSION}",
+        f"assets/lab-results.js?v={SHARED_VERSION}",
         "assets/telemetry.js?v=20260820-telemetry1",
     ):
         if token not in page:
@@ -107,6 +112,10 @@ def main() -> int:
         "timeline: timeline.get",
         "acceptedMapRegions.includes",
         "eraFor(entry.timeline.orderYear)",
+        "const REGION_ANCHORS = Object.freeze({",
+        "const setMapFocus =",
+        "const setMapBeacon =",
+        "path.addEventListener('pointerenter'",
         "path.addEventListener('keydown'",
         "elements.regionSelect.addEventListener('change'",
         "replaceChildren",
@@ -136,10 +145,13 @@ def main() -> int:
     for token in (
         ".origins-workspace",
         ".origins-map-regions path",
-        ".origins-map-regions path.is-selected",
-        ".origins-map-regions path.is-correct",
-        ".origins-map-regions path.is-wrong",
-        ".origins-map-regions path.is-unavailable",
+        ".origins-map-frame",
+        ".origins-map-hud",
+        ".origins-map-regions [data-region].is-selected",
+        ".origins-map-regions [data-region].is-correct",
+        ".origins-map-regions [data-region].is-wrong",
+        ".origins-map-regions [data-region].is-unavailable",
+        ".origins-map-beacon",
         ".origins-era-option",
         ".origins-reveal",
         ".origins-final",

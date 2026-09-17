@@ -31,6 +31,8 @@
     subjectTitle: document.getElementById('origins-subject-title'),
     subjectDescription: document.getElementById('origins-subject-description'),
     mapLabels: document.getElementById('origins-map-labels'),
+    mapHudName: document.getElementById('origins-map-hud-name'),
+    mapBeacon: document.getElementById('origins-map-beacon'),
     regionSelect: document.getElementById('origins-region-select'),
     eraPanel: document.getElementById('origins-era-panel'),
     eraOptions: document.getElementById('origins-era-options'),
@@ -60,6 +62,23 @@
   const resultTarget = elements.final?.querySelector('[data-lab-result-scorecard]');
   const difficultySystem = window.ImpossibleLabDifficulty;
   const regionPaths = [...map.querySelectorAll('[data-region]')];
+  const regionLabels = [...map.querySelectorAll('[data-map-label]')];
+  const REGION_ANCHORS = Object.freeze({
+    'north-america': [205, 160],
+    'latin-america-caribbean': [276, 338],
+    'northern-europe': [493, 103],
+    'western-europe': [490, 139],
+    'southern-europe-mediterranean': [520, 169],
+    'eastern-europe': [558, 126],
+    'north-africa': [491, 242],
+    'sub-saharan-africa': [531, 345],
+    'west-asia': [604, 214],
+    'central-asia': [674, 153],
+    'south-asia': [683, 257],
+    'east-asia': [796, 175],
+    'southeast-asia': [797, 285],
+    oceania: [865, 362]
+  });
   const state = {
     pool: [],
     regions: [],
@@ -68,6 +87,7 @@
     index: 0,
     selectedRegion: '',
     selectedEra: '',
+    revealedRegion: '',
     activeRegions: new Set(),
     score: 0,
     correctRegions: 0,
@@ -98,6 +118,31 @@
     elements.feedback.classList.toggle('is-partial', stateName === 'partial');
   };
   const regionLabel = (id) => state.regions.find((region) => region.id === id)?.label || id;
+  const setMapFocus = (id = '', prefix = '') => {
+    regionLabels.forEach((label) => label.classList.toggle('is-active', label.dataset.mapLabel === id));
+    if (!elements.mapHudName) return;
+    elements.mapHudName.textContent = id
+      ? `${prefix ? `${prefix} · ` : ''}${regionLabel(id)}`
+      : 'Scan the atlas';
+  };
+  const setMapBeacon = (id = '') => {
+    if (!elements.mapBeacon) return;
+    const anchor = REGION_ANCHORS[id];
+    if (!anchor) {
+      elements.mapBeacon.hidden = true;
+      elements.mapBeacon.removeAttribute('transform');
+      return;
+    }
+    elements.mapBeacon.setAttribute('transform', `translate(${anchor[0]} ${anchor[1]})`);
+    elements.mapBeacon.hidden = false;
+  };
+  const restoreMapFocus = () => {
+    if (state.revealedRegion) {
+      setMapFocus(state.revealedRegion, 'RECOVERED ORIGIN');
+      return;
+    }
+    setMapFocus(state.selectedRegion, state.selectedRegion ? 'REGION SELECTED' : '');
+  };
   const eraFor = (orderYear) => state.eraBands.find((band) => {
     const aboveMinimum = band.minimumOrderYear === undefined || orderYear >= band.minimumOrderYear;
     const belowMaximum = band.maximumOrderYear === undefined || orderYear <= band.maximumOrderYear;
@@ -175,6 +220,7 @@
       path.classList.toggle('is-selected', selected);
       path.setAttribute('aria-pressed', String(selected));
     });
+    setMapFocus(id, 'REGION SELECTED');
     setFeedback(`${regionLabel(id)} selected. Choose a period, then confirm.`);
     updateConfirm();
   };
@@ -194,11 +240,14 @@
   const resetSelections = () => {
     state.selectedRegion = '';
     state.selectedEra = '';
+    state.revealedRegion = '';
     elements.regionSelect.value = '';
     regionPaths.forEach((path) => {
       path.classList.remove('is-selected', 'is-correct', 'is-wrong');
       path.setAttribute('aria-pressed', 'false');
     });
+    setMapBeacon();
+    setMapFocus();
     elements.eraOptions.querySelectorAll('button').forEach((button) => {
       button.classList.remove('is-selected', 'is-correct', 'is-wrong');
       button.setAttribute('aria-pressed', 'false');
@@ -322,6 +371,9 @@
       path.classList.toggle('is-correct', entry.acceptedMapRegions.includes(id));
       path.classList.toggle('is-wrong', id === state.selectedRegion && !regionIsCorrect);
     });
+    state.revealedRegion = entry.mapRegion || entry.acceptedMapRegions[0];
+    setMapBeacon(state.revealedRegion);
+    setMapFocus(state.revealedRegion, 'RECOVERED ORIGIN');
     elements.eraOptions.querySelectorAll('button').forEach((button) => {
       button.classList.toggle('is-correct', button.dataset.era === expectedEra?.id);
       button.classList.toggle('is-wrong', button.dataset.era === state.selectedEra && !eraIsCorrect);
@@ -390,6 +442,12 @@
 
   regionPaths.forEach((path) => {
     path.addEventListener('click', () => selectRegion(path.dataset.region));
+    path.addEventListener('pointerenter', () => {
+      if (!path.classList.contains('is-unavailable')) setMapFocus(path.dataset.region, 'TRACE REGION');
+    });
+    path.addEventListener('pointerleave', restoreMapFocus);
+    path.addEventListener('focus', () => setMapFocus(path.dataset.region, 'TRACE REGION'));
+    path.addEventListener('blur', restoreMapFocus);
     path.addEventListener('keydown', (event) => {
       if (event.key !== 'Enter' && event.key !== ' ') return;
       event.preventDefault();

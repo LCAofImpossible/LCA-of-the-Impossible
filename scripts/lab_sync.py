@@ -27,7 +27,7 @@ ALPHABET_VERSION = "20260911-difficulty1"
 SPIN_VERSION = "20260911-difficulty1"
 TIMELINE_VERSION = "20260915-relics1"
 RELICS_VERSION = "20260915-relics1"
-ORIGINS_VERSION = "20260916-origins3"
+ORIGINS_VERSION = "20260917-origins-map1"
 HOME_START = "<!-- LAB-HOME:START -->"
 HOME_END = "<!-- LAB-HOME:END -->"
 SEO_START = "<!-- LAB-SEO:START -->"
@@ -1002,6 +1002,8 @@ The board uses no Relics-specific content registry. Every episode already carryi
 - Explorer uses `8` cases, four candidate regions, the subject description and visible era ranges;
 - Analyst uses `10` cases and the complete labelled map with standard historical guidance;
 - Impossible uses `12` cases, hides the subject description, map labels and numeric era ranges, and prioritises qualified cultural origins after retaining Season I representation;
+- the world map uses local inline SVG geometry derived from public-domain Natural Earth data, groups that geometry into the fourteen approved macroregions and never depends on an external map service;
+- hover, focus and selection states share the same region controls, while the reveal beacon identifies the recovered macroregion and the text selector remains the accessible fallback;
 - every reveal exposes the approved location basis, date, historical event, source and any ambiguity note;
 - the game never uses fictional geography, prop manufacture or episode publication as origin evidence.
 
