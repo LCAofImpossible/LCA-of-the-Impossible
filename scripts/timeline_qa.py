@@ -12,6 +12,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "20260915-relics1"
 SHARED_VERSION = "20260916-origins3"
+RESULTS_VERSION = "20260917-leaderboards1"
 errors: list[str] = []
 
 
@@ -73,7 +74,7 @@ def main() -> int:
         'data-lab-another', 'data-lab-difficulty', 'href="impossible-lab.html"',
         f"assets/timeline.css?v={VERSION}", f"assets/timeline.js?v={VERSION}",
         f"assets/lab-progress.js?v={SHARED_VERSION}", f"assets/lab-difficulty.js?v={SHARED_VERSION}",
-        f"assets/lab-run.js?v={SHARED_VERSION}", f"assets/lab-results.js?v={SHARED_VERSION}",
+        f"assets/lab-run.js?v={SHARED_VERSION}", f"assets/lab-results.js?v={RESULTS_VERSION}",
         "TIMELINE-SEO:START", "earlier/later controls",
     ):
         if token not in page:

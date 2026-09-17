@@ -176,7 +176,19 @@
 
     card.appendChild(note);
     target.replaceChildren(card);
-    return { score: rounded(score), maximum: rounded(maximum), normalized, level, progress: progressUpdate?.summary || null };
+    const rendered = { score: rounded(score), maximum: rounded(maximum), normalized, level, progress: progressUpdate?.summary || null };
+    if (officialGame && summary.persist !== false) {
+      void window.ImpossibleLabLeaderboard?.handleResult({
+        gameId,
+        level,
+        score: rendered.score,
+        maximum: rendered.maximum,
+        completion: clamp(finiteNumber(summary.completion), 0, 100),
+        accuracy: clamp(finiteNumber(summary.accuracy), 0, 100),
+        persist: summary.persist
+      });
+    }
+    return rendered;
   };
 
   window.ImpossibleLabResults = Object.freeze({ SCALE_MAX, normalizeScore, render });

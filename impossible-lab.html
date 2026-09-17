@@ -45,6 +45,7 @@
   <link rel="stylesheet" href="assets/editorial.css?v=20260819-phase5">
   <link rel="stylesheet" href="assets/lab.css?v=20260915-relics1">
   <link rel="stylesheet" href="assets/lab-hub.css?v=20260916-origins3">
+  <link rel="stylesheet" href="assets/lab-leaderboard.css?v=20260917-leaderboards1">
   <link rel="stylesheet" href="assets/telemetry.css?v=20260820-telemetry1">
 </head>
 <body data-page="lab" data-lab-hub>
@@ -144,6 +145,19 @@
           <button class="lab-reset-records" type="button" data-lab-reset hidden>Reset records</button>
         </footer>
       </section>
+
+      <div class="lab-leaderboard-host" data-lab-global-leaderboard>
+        <section class="lab-leaderboard-panel is-lab" aria-labelledby="lab-public-ranking-title">
+          <header class="lab-leaderboard-header">
+            <div>
+              <p class="eyebrow">PUBLIC ANALYST RANKING</p>
+              <h2 id="lab-public-ranking-title">Impossible Lab leaderboard</h2>
+              <p>The sum of each player’s seven best normalized Analyst results, up to 7,000 points. Joining is optional and local records remain separate.</p>
+            </div>
+          </header>
+          <p class="lab-leaderboard-status">JavaScript is required to load public rankings.</p>
+        </section>
+      </div>
 
       <section class="lab-run-entry" aria-labelledby="lab-run-entry-title">
         <div>
@@ -261,6 +275,9 @@
   <script src="assets/lab-progress.js?v=20260916-origins3"></script>
   <script src="assets/lab-difficulty.js?v=20260916-origins3"></script>
   <script src="assets/daily.js?v=20260911-daily1"></script>
+  <script src="assets/lab-leaderboard-config.js?v=20260917-leaderboards1"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.116.0/dist/umd/supabase.js" integrity="sha384-iLddHTLokph6Omwoyid4XKxHaWa6w41BnoEj0q5oOrzmYPpHIKt1wyjReA7s//pP" crossorigin="anonymous"></script>
+  <script src="assets/lab-leaderboard.js?v=20260917-leaderboards1"></script>
   <script src="assets/lab-hub.js?v=20260916-origins3"></script>
   <script src="assets/telemetry.js?v=20260820-telemetry1"></script>
 </body>

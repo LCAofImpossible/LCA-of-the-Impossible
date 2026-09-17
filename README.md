@@ -1764,9 +1764,24 @@ All seven games retain their original scoring rules and render the same final pe
 
 The **Lab Score** is `best normalized Guess + best normalized Cross + best normalized Alphabet + best normalized Spin + best normalized Timeline + best normalized Relics + best normalized Origins`, for a fixed maximum of `7,000`. An experiment without a completed record contributes zero. Existing six-game records retain their exact points and receive a zero Origins contribution until that experiment is completed. A lower later result never reduces either personal best. The original-score record and normalized-score record may come from different rounds when a game's theoretical maximum varies.
 
-The hub displays the Analyst-based Lab Score, completion count, percentage and seven normalized contributions. Result cards identify the active level, display that level's personal best and explain whether the official Lab Score changed. The original `lca-impossible-lab-progress-v1` key remains the canonical Analyst/Lab Score record so existing records migrate without conversion or loss. `lca-impossible-lab-difficulty-v1` stores the selected level plus level-specific scores and play counts. Neither payload creates an account or visitor identifier; neither is transmitted by the site, and both record sets can be deleted with `Reset records`. When browser storage is unavailable, gameplay continues and the interface states that records cannot be retained.
+The hub displays the Analyst-based Lab Score, completion count, percentage and seven normalized contributions. Result cards identify the active level, display that level's personal best and explain whether the official Lab Score changed. The original `lca-impossible-lab-progress-v1` key remains the canonical Analyst/Lab Score record so existing records migrate without conversion or loss. `lca-impossible-lab-difficulty-v1` stores the selected level plus level-specific scores and play counts. These device-local payloads create no account or visitor identifier, are never transmitted automatically and can be deleted with `Reset records`. When browser storage is unavailable, gameplay continues and the interface states that records cannot be retained.
 
 The normalized score compares game performance only. It must never be presented as a comparison, ranking or normalization of the environmental results, footprints or functional units of different episodes.
+
+#### 39.8.1 Optional public leaderboards
+
+`assets/lab-leaderboard.js` adds an optional Supabase-backed ranking layer without replacing the device-local record system. A visitor may read public rankings without an account. Joining requires an explicit public nickname and creates a Supabase anonymous-auth session on that browser; no email address is requested. Existing local records are not uploaded. After opt-in, only newly completed game results are submitted automatically.
+
+- every game exposes independent Explorer, Analyst and Impossible rankings ordered by the server-calculated normalized score;
+- the hub exposes the official public Lab ranking as the sum of each player's best normalized Analyst result across the seven experiments, with a maximum of `7,000`;
+- the public result contains only nickname, score, maximum, normalized score, play count and ranking timestamps; authentication identifiers are never returned by public RPC functions;
+- PostgreSQL recalculates normalized scores, validates ranges, deduplicates submission UUIDs and limits each authenticated player to `30` accepted submissions per hour;
+- Row Level Security is enabled on all exposed tables, direct access to player, submission and best-score tables is denied, and all permitted operations use narrowly granted RPC functions;
+- leaving the public rankings deletes the remote nickname, submissions and bests for that anonymous profile without touching local browser records;
+- the publishable browser key may be public; secret and service-role keys must never appear in the repository;
+- anonymous profiles remain compatible with a future verified-email recovery flow, but no recovery identity is collected in this release.
+
+The canonical database definition is `supabase/migrations/20260917154048_impossible_lab_leaderboards.sql`. Public leaderboard availability is an enhancement: a network, Auth or Supabase failure must never block gameplay, local scoring, result review or navigation.
 
 ### 39.9 Impossible Lab Run
 
@@ -1830,6 +1845,8 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 - `lab-relics.html`, `assets/relics.css` and `assets/relics.js` — archive memory board, pair scoring, assists and complete recovered-pair review;
 - `lab-origins.html`, `assets/origins.css` and `assets/origins.js` — geographic map, period recovery, level-aware assistance, scoring and historical evidence reveal;
 - `lab-games.json`, `assets/lab-nav.js`, `assets/lab-actions.js`, `assets/lab-results.js`, `assets/lab-progress.js` and `assets/lab-difficulty.js` — shared experiment registry, navigation, end-of-game routing, normalized result card, level configuration and device-local personal records;
+- `assets/lab-leaderboard-config.js`, `assets/lab-leaderboard.js` and `assets/lab-leaderboard.css` — publishable Supabase configuration, optional nickname profile, per-game rankings, overall Analyst ranking and resilient public-ranking presentation;
+- `supabase/migrations/20260917154048_impossible_lab_leaderboards.sql` — versioned tables, constraints, indexes, RLS, least-privilege grants and ranking/submission RPC functions;
 - `crossword.json` — approved answer/definition pairs joined to `episodes.json` by episode number;
 - `timeline.json` — curated real-world historical date, event and source basis joined to `episodes.json` by episode number;
 - `origins.json` — curated geographic classifications and ambiguity treatment joined to the episode and Timeline registries by episode number;
@@ -1887,6 +1904,11 @@ The date-to-case selector is deterministic, registry-driven and requires no dail
 - [ ] A successful solve advances a consecutive UTC-day streak; a failed or revealed case resets the current streak while preserving the best streak.
 - [ ] Daily result storage contains no identifier and cannot alter a game record, Lab Score or Run Score.
 - [ ] Device-local progress contains no account or visitor identifier, survives navigation and reloads, can be reset by the player and fails gracefully when browser storage is unavailable.
+- [ ] Public rankings remain optional, do not upload historical local records and request only a public nickname before publishing new completed results.
+- [ ] Per-game public boards remain separate by Explorer, Analyst and Impossible; the public Lab ranking uses Analyst bests only and never exceeds `7,000`.
+- [ ] Supabase calculates normalization server-side, rejects invalid or duplicate payloads, rate-limits submissions and exposes no authentication UUID through public ranking RPCs.
+- [ ] Every leaderboard table has RLS enabled; browser code contains only the publishable key and never a secret or service-role credential.
+- [ ] Losing Supabase connectivity leaves all gameplay, local records, result cards and end-of-game navigation operational.
 - [ ] The result card states that normalization applies to game performance only and never compares environmental results between episodes.
 - [ ] Every completed game retains a subject and LCA debrief using only approved registry fields and canonical episode links.
 - [ ] Homepage and global `Lab` navigation lead to `impossible-lab.html`; sitemap, RSS discovery and telemetry include the hub, Daily, Run and all seven game routes.

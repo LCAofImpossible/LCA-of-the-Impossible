@@ -1,0 +1,219 @@
+.lab-leaderboard-host,
+.lab-leaderboard-panel{
+  margin-top:28px;
+}
+
+.lab-leaderboard-panel{
+  border:1px solid rgba(94,235,255,.24);
+  border-radius:22px;
+  padding:clamp(20px,4vw,36px);
+  background:
+    linear-gradient(145deg,rgba(7,16,25,.97),rgba(10,25,35,.94)),
+    radial-gradient(circle at 85% 15%,rgba(236,37,114,.1),transparent 38%);
+  box-shadow:0 22px 55px rgba(0,0,0,.24);
+}
+
+.lab-leaderboard-header{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:24px;
+  margin-bottom:22px;
+}
+
+.lab-leaderboard-header h2,
+.lab-leaderboard-identity h3{
+  margin:.2rem 0 .45rem;
+}
+
+.lab-leaderboard-header p:last-child,
+.lab-leaderboard-identity-copy>p:last-child{
+  max-width:68ch;
+  margin:0;
+  color:var(--muted,#a8b8c1);
+}
+
+.lab-leaderboard-tabs{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
+
+.lab-leaderboard-tab{
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;
+  padding:8px 13px;
+  color:inherit;
+  background:rgba(255,255,255,.035);
+  font:inherit;
+  font-size:.78rem;
+  font-weight:800;
+  letter-spacing:.05em;
+  cursor:pointer;
+}
+
+.lab-leaderboard-tab[aria-pressed="true"]{
+  color:#061019;
+  border-color:#5eebff;
+  background:#5eebff;
+}
+
+.lab-leaderboard-identity{
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(280px,.8fr);
+  gap:24px;
+  align-items:end;
+  margin-bottom:22px;
+  padding:20px;
+  border:1px solid rgba(255,255,255,.1);
+  border-radius:16px;
+  background:rgba(255,255,255,.025);
+}
+
+.lab-leaderboard-form{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:flex-end;
+  gap:10px;
+}
+
+.lab-leaderboard-form label{
+  flex:1 1 210px;
+  color:var(--muted,#a8b8c1);
+  font-size:.76rem;
+  font-weight:800;
+  letter-spacing:.07em;
+  text-transform:uppercase;
+}
+
+.lab-leaderboard-form input{
+  display:block;
+  width:100%;
+  margin-top:7px;
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:10px;
+  padding:11px 12px;
+  color:inherit;
+  background:#071019;
+  font:inherit;
+  text-transform:none;
+}
+
+.lab-leaderboard-form input:focus-visible,
+.lab-leaderboard-tab:focus-visible{
+  outline:3px solid rgba(94,235,255,.35);
+  outline-offset:2px;
+}
+
+.lab-leaderboard-form .button{
+  min-height:44px;
+  white-space:nowrap;
+}
+
+.lab-leaderboard-leave{
+  border-color:rgba(236,37,114,.45)!important;
+}
+
+.lab-leaderboard-status{
+  min-height:1.5em;
+  margin:0 0 12px;
+  color:var(--muted,#a8b8c1);
+  font-size:.88rem;
+}
+
+.lab-leaderboard-list{
+  display:grid;
+  gap:8px;
+  margin:0;
+  padding:0;
+  list-style:none;
+}
+
+.lab-leaderboard-row{
+  display:grid;
+  grid-template-columns:58px minmax(0,1fr) minmax(145px,auto);
+  gap:14px;
+  align-items:center;
+  padding:12px 14px;
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:12px;
+  background:rgba(255,255,255,.025);
+}
+
+.lab-leaderboard-row:first-child{
+  border-color:rgba(247,194,72,.48);
+  background:linear-gradient(90deg,rgba(247,194,72,.1),rgba(255,255,255,.02));
+}
+
+.lab-leaderboard-rank{
+  color:#5eebff;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-weight:800;
+}
+
+.lab-leaderboard-name{
+  min-width:0;
+  overflow-wrap:anywhere;
+}
+
+.lab-leaderboard-value{
+  text-align:right;
+  font-family:var(--mono,"IBM Plex Mono",monospace);
+  font-weight:800;
+}
+
+.lab-leaderboard-value small{
+  display:block;
+  margin-top:2px;
+  color:var(--muted,#a8b8c1);
+  font-family:inherit;
+  font-size:.68rem;
+  font-weight:500;
+}
+
+.lab-leaderboard-empty,
+.lab-leaderboard-unavailable{
+  padding:18px;
+  border:1px dashed rgba(255,255,255,.14);
+  border-radius:12px;
+  color:var(--muted,#a8b8c1);
+  text-align:center;
+}
+
+@media(max-width:760px){
+  .lab-leaderboard-header,
+  .lab-leaderboard-identity{
+    display:grid;
+    grid-template-columns:1fr;
+    align-items:start;
+  }
+
+  .lab-leaderboard-row{
+    grid-template-columns:46px minmax(0,1fr);
+  }
+
+  .lab-leaderboard-value{
+    grid-column:2;
+    text-align:left;
+  }
+}
+
+@media(max-width:520px){
+  .lab-leaderboard-panel{
+    border-radius:16px;
+    padding:18px 14px;
+  }
+
+  .lab-leaderboard-form .button{
+    width:100%;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  .lab-leaderboard-panel *,
+  .lab-leaderboard-panel *::before,
+  .lab-leaderboard-panel *::after{
+    scroll-behavior:auto!important;
+    transition:none!important;
+  }
+}

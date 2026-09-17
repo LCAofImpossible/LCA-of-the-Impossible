@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SHARED_VERSION = "20260916-origins3"
+RESULTS_VERSION = "20260917-leaderboards1"
 ORIGINS_VERSION = "20260917-origins-map1"
 errors: list[str] = []
 
@@ -60,7 +61,7 @@ def main() -> int:
         f"assets/lab-progress.js?v={SHARED_VERSION}",
         f"assets/lab-difficulty.js?v={SHARED_VERSION}",
         f"assets/lab-run.js?v={SHARED_VERSION}",
-        f"assets/lab-results.js?v={SHARED_VERSION}",
+        f"assets/lab-results.js?v={RESULTS_VERSION}",
         "assets/telemetry.js?v=20260820-telemetry1",
     ):
         if token not in page:

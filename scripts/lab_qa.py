@@ -18,8 +18,9 @@ HUB_VERSION = "20260916-origins3"
 GUESS_VERSION = "20260911-difficulty1"
 NAV_VERSION = "20260916-origins3"
 ACTION_VERSION = "20260916-origins3"
-RESULTS_VERSION = "20260916-origins3"
+RESULTS_VERSION = "20260917-leaderboards1"
 PROGRESS_VERSION = "20260916-origins3"
+LEADERBOARD_VERSION = "20260917-leaderboards1"
 RUN_VERSION = "20260916-origins3"
 DAILY_VERSION = "20260911-daily1"
 DIFFICULTY_VERSION = "20260916-origins3"
@@ -85,6 +86,10 @@ def check_page(episode_count: int) -> None:
         f"assets/lab-progress.js?v={PROGRESS_VERSION}",
         f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/lab-run.js?v={RUN_VERSION}",
+        f"assets/lab-leaderboard.css?v={LEADERBOARD_VERSION}",
+        f"assets/lab-leaderboard-config.js?v={LEADERBOARD_VERSION}",
+        f"assets/lab-leaderboard.js?v={LEADERBOARD_VERSION}",
+        "@supabase/supabase-js@2.116.0/dist/umd/supabase.js",
         f"assets/lab-results.js?v={RESULTS_VERSION}",
         'data-lab-game="guess"',
         'data-lab-game-nav',
@@ -205,7 +210,7 @@ def check_shared_navigation_runtime() -> None:
     for token in (
         "difficultySystem?.record", "PERSONAL BEST", "Best ${levelDetail.label}", "Lab Score",
         "Experiments completed", "official Lab Score remains unchanged", "window.ImpossibleLabRun?.record",
-        "IMPOSSIBLE LAB RUN COMPLETE", "Continue the Run",
+        "IMPOSSIBLE LAB RUN COMPLETE", "Continue the Run", "ImpossibleLabLeaderboard?.handleResult",
     ):
         if token not in results:
             fail(f"assets/lab-results.js: required record-display token missing: {token}")
@@ -564,6 +569,10 @@ def check_hub() -> None:
         "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
         'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', 'href="lab-timeline.html"', 'href="lab-relics.html"', 'href="lab-origins.html"',
         f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}",
+        f"assets/lab-leaderboard.css?v={LEADERBOARD_VERSION}",
+        f"assets/lab-leaderboard-config.js?v={LEADERBOARD_VERSION}",
+        f"assets/lab-leaderboard.js?v={LEADERBOARD_VERSION}",
+        "@supabase/supabase-js@2.116.0/dist/umd/supabase.js", "data-lab-global-leaderboard",
         f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/daily.js?v={DAILY_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
         "assets/telemetry.css?v=20260820-telemetry1", "assets/telemetry.js?v=20260820-telemetry1",
@@ -595,6 +604,77 @@ def check_hub() -> None:
     for token in (".lab-daily-entry", ".lab-daily-entry-action", ".lab-daily-button"):
         if token not in styles:
             fail(f"assets/lab-hub.css: required Daily entry style missing: {token}")
+
+
+def check_leaderboards() -> None:
+    config = read("assets/lab-leaderboard-config.js")
+    runtime = read("assets/lab-leaderboard.js")
+    styles = read("assets/lab-leaderboard.css")
+    migration = read("supabase/migrations/20260917154048_impossible_lab_leaderboards.sql")
+
+    for token in (
+        "https://sauoqmjgmwasehfrvlzu.supabase.co", "sb_publishable_", "clientVersion: '2.116.0'",
+    ):
+        if token not in config:
+            fail(f"assets/lab-leaderboard-config.js: required configuration token missing: {token}")
+    for forbidden in ("service_role", "sb_secret_", "password"):
+        if forbidden in config:
+            fail(f"assets/lab-leaderboard-config.js: forbidden secret token present: {forbidden}")
+
+    for token in (
+        "signInAnonymously", "get_my_lab_profile", "set_lab_nickname", "submit_lab_score",
+        "get_game_leaderboard", "get_lab_leaderboard", "get_my_lab_ranks", "leave_lab_leaderboards",
+        "p_submission_id", "p_completion", "p_accuracy", "PUBLIC ANALYST RANKING",
+        "OPTIONAL PUBLIC PROFILE", "existing local records stay private", "Environmental results are never compared",
+        "window.ImpossibleLabLeaderboard", "crypto?.randomUUID", "aria-pressed",
+    ):
+        if token not in runtime:
+            fail(f"assets/lab-leaderboard.js: required leaderboard token missing: {token}")
+    for forbidden in ("innerHTML", "document.cookie", "service_role", "sb_secret_"):
+        if forbidden in runtime:
+            fail(f"assets/lab-leaderboard.js: forbidden token present: {forbidden}")
+
+    for token in (
+        ".lab-leaderboard-panel", ".lab-leaderboard-identity", ".lab-leaderboard-form",
+        ".lab-leaderboard-list", ".lab-leaderboard-row", ".lab-leaderboard-tabs",
+        "@media(max-width:760px)", "@media(prefers-reduced-motion:reduce)",
+    ):
+        if token not in styles:
+            fail(f"assets/lab-leaderboard.css: required responsive token missing: {token}")
+
+    for token in (
+        "create table public.lab_players", "create table public.lab_score_submissions",
+        "create table public.lab_player_bests", "generated always as", "enable row level security",
+        "revoke all on public.lab_players", "security definer", "set search_path = ''",
+        "create or replace function public.submit_lab_score", "p_score > p_maximum",
+        "interval '1 hour'", ") >= 30", "on conflict (user_id, game_id, difficulty) do update",
+        "create or replace function public.get_game_leaderboard", "create or replace function public.get_lab_leaderboard",
+        "grant execute on function public.get_game_leaderboard", "grant execute on function public.submit_lab_score",
+    ):
+        if token not in migration:
+            fail(f"Supabase leaderboard migration missing security or schema token: {token}")
+
+    pages = [
+        "impossible-lab.html", "lab.html", "lab-crossword.html", "lab-alphabet.html",
+        "lab-spin.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html",
+    ]
+    for page_name in pages:
+        page = read(page_name)
+        for token in (
+            f"assets/lab-leaderboard.css?v={LEADERBOARD_VERSION}",
+            f"assets/lab-leaderboard-config.js?v={LEADERBOARD_VERSION}",
+            f"assets/lab-leaderboard.js?v={LEADERBOARD_VERSION}",
+            "@supabase/supabase-js@2.116.0/dist/umd/supabase.js",
+        ):
+            if token not in page:
+                fail(f"{page_name}: public leaderboard dependency missing: {token}")
+
+    for asset in ("assets/lab-leaderboard-config.js", "assets/lab-leaderboard.js"):
+        syntax = subprocess.run(
+            ["node", "--check", str(ROOT / asset)], cwd=ROOT, capture_output=True, text=True, check=False
+        )
+        if syntax.returncode:
+            fail(f"{asset} syntax validation failed: {syntax.stderr or syntax.stdout}")
 
 
 def check_discovery() -> None:
@@ -641,9 +721,9 @@ def check_discovery() -> None:
         "scripts/phase5_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"', 'href="{prefix}impossible-lab.html"'),
         "scripts/telemetry_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"'),
         "scripts/rss_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"'),
-        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"', '"assets/daily.js"', '"assets/timeline.js"', '"assets/relics.js"', '"assets/origins.js"'),
+        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"', '"assets/daily.js"', '"assets/timeline.js"', '"assets/relics.js"', '"assets/origins.js"', '"assets/lab-leaderboard.css"', '"assets/lab-leaderboard-config.js"', '"assets/lab-leaderboard.js"'),
         "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"', '"relics_qa.py"', '"origins_qa.py"', '"origins_ui_qa.py"'),
-        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js", "assets/daily.js", "assets/timeline.js", "assets/relics.js", "assets/origins.js"),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js", "assets/daily.js", "assets/timeline.js", "assets/relics.js", "assets/origins.js", "assets/lab-leaderboard.css", "assets/lab-leaderboard-config.js", "assets/lab-leaderboard.js", "supabase/migrations"),
     }.items():
         source = read(script)
         for token in tokens:
@@ -688,6 +768,10 @@ def check_readme() -> None:
         "### 39.10 Daily Impossible",
         "lca-impossible-daily-v1",
         "one completed result",
+        "#### 39.8.1 Optional public leaderboards",
+        "Supabase anonymous-auth session",
+        "30` accepted submissions per hour",
+        "supabase/migrations/20260917154048_impossible_lab_leaderboards.sql",
     ):
         if token not in text:
             fail(f"README.md: Impossible Lab rule missing: {token}")
@@ -702,6 +786,7 @@ def main() -> int:
     check_daily()
     check_styles()
     check_hub()
+    check_leaderboards()
     check_discovery()
     check_readme()
 
