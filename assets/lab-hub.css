@@ -33,7 +33,7 @@
 .lab-score-progress-copy span:last-child{color:var(--accent)}
 .lab-score-track{height:7px;overflow:hidden;background:rgba(109,231,255,.1)}
 .lab-score-track>span{display:block;width:0;height:100%;background:linear-gradient(90deg,var(--gold),var(--accent2));transition:width .35s ease}
-.lab-score-breakdown{display:grid;grid-template-columns:repeat(6,minmax(0,1fr))}
+.lab-score-breakdown{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}
 .lab-score-breakdown a{display:flex;min-width:0;gap:14px;align-items:center;justify-content:space-between;padding:18px 20px;border-right:1px solid var(--line);color:var(--text);transition:background .2s,color .2s}
 .lab-score-breakdown a:last-child{border-right:0}
 .lab-score-breakdown a:hover,.lab-score-breakdown a:focus-visible{background:rgba(109,231,255,.055);color:var(--accent2)}

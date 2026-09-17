@@ -66,6 +66,17 @@
       "category": "Memory",
       "url": "lab-relics.html",
       "status": "live"
+    },
+    {
+      "id": "origins",
+      "number": 7,
+      "title": "Impossible Origins",
+      "description": "Locate cultural history",
+      "summary": "Place each impossible subject in its documented geographic region and recover the historical period in which it entered human culture.",
+      "duration": "5–9 min",
+      "category": "Geography",
+      "url": "lab-origins.html",
+      "status": "live"
     }
   ]
 }

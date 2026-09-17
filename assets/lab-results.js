@@ -33,6 +33,7 @@
     const gameId = document.body?.dataset?.labGame || '';
     const progressSystem = window.ImpossibleLabProgress;
     const difficultySystem = window.ImpossibleLabDifficulty;
+    const officialGame = Boolean(progressSystem?.GAME_IDS?.includes(gameId));
     const level = difficultySystem?.current() || 'analyst';
     const levelDetail = difficultySystem?.detail(level) || { label: 'Analyst' };
     const difficultyUpdate = summary.persist === false
@@ -81,9 +82,11 @@
 
     const note = document.createElement('p');
     note.className = 'lab-result-scale-note';
-    note.textContent = level === 'analyst'
+    note.textContent = level === 'analyst' && officialGame
       ? 'The 0–1,000 score normalizes game performance only. Analyst results can update the Lab Score; environmental results are never compared.'
-      : `The 0–1,000 score normalizes ${levelDetail.label} game performance only. This level has a separate record and does not update the Analyst-based Lab Score.`;
+      : level === 'analyst'
+        ? 'The 0–1,000 score normalizes this prototype result. Its Analyst record is saved separately and will not enter the Lab Score until the game is integrated.'
+        : `The 0–1,000 score normalizes ${levelDetail.label} game performance only. This level has a separate record and does not update the Analyst-based Lab Score.`;
     card.append(header, metrics);
 
     if ((difficultyUpdate?.saved || progressUpdate?.saved) && gameRecord) {
@@ -103,7 +106,7 @@
 
       const recordMetrics = document.createElement('dl');
       recordMetrics.append(metric(`Best ${levelDetail.label}`, scaledPoints(gameRecord.bestNormalized, progressSystem?.SCORE_SCALE || SCALE_MAX)));
-      if (level === 'analyst' && progressUpdate?.summary) {
+      if (level === 'analyst' && officialGame && progressUpdate?.summary) {
         recordMetrics.append(
           metric('Lab Score', scaledPoints(progressUpdate.summary.total, progressUpdate.summary.maximum)),
           metric('Experiments completed', `${progressUpdate.summary.completed} / ${progressSystem.GAME_IDS.length}`)
@@ -111,13 +114,17 @@
       } else {
         recordMetrics.append(
           metric('Level plays', gameRecord.plays.toLocaleString('en-US')),
-          metric('Lab Score', 'Analyst only')
+          metric('Lab Score', level === 'analyst' ? 'Not yet included' : 'Analyst only')
         );
       }
 
       const recordState = document.createElement('p');
       recordState.className = 'lab-record-state';
-      if (level !== 'analyst') {
+      if (level === 'analyst' && !officialGame) {
+        recordState.textContent = rawImproved || normalizedImproved
+          ? 'Prototype personal best updated. The official Lab Score remains unchanged.'
+          : 'No prototype record this time. The official Lab Score remains unchanged.';
+      } else if (level !== 'analyst') {
         recordState.textContent = rawImproved || normalizedImproved
           ? `${levelDetail.label} personal best updated. The official Lab Score remains unchanged.`
           : `No ${levelDetail.label} record this time. The official Lab Score remains unchanged.`;
@@ -133,7 +140,7 @@
 
       recordBand.append(recordHeading, recordMetrics, recordState);
       card.appendChild(recordBand);
-    } else if (summary.persist !== false && progressSystem && !progressSystem.available) {
+    } else if (summary.persist !== false && ((difficultySystem && !difficultySystem.available) || (progressSystem && !progressSystem.available))) {
       const unavailable = document.createElement('p');
       unavailable.className = 'lab-record-unavailable';
       unavailable.textContent = 'Personal records cannot be saved because browser storage is unavailable. This result remains visible for the current page only.';

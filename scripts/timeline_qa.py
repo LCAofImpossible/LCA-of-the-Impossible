@@ -11,6 +11,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 VERSION = "20260915-relics1"
+SHARED_VERSION = "20260916-origins3"
 errors: list[str] = []
 
 
@@ -66,13 +67,13 @@ def main() -> int:
     page = read("lab-timeline.html")
     for token in (
         'data-lab-game="timeline"', "Impossible <span>Timeline.</span>",
-        "EXPERIMENT 05 OF 06 · CURRENT GAME", 'id="lab-game-area"',
+        "EXPERIMENT 05 OF 07 · CURRENT GAME", 'id="lab-game-area"',
         'id="timeline-start"', 'id="timeline-list"', 'id="timeline-submit"',
         'id="timeline-reveal-list"', 'id="timeline-final"', 'data-lab-result-scorecard',
         'data-lab-another', 'data-lab-difficulty', 'href="impossible-lab.html"',
         f"assets/timeline.css?v={VERSION}", f"assets/timeline.js?v={VERSION}",
-        f"assets/lab-progress.js?v={VERSION}", f"assets/lab-difficulty.js?v={VERSION}",
-        f"assets/lab-run.js?v={VERSION}", f"assets/lab-results.js?v={VERSION}",
+        f"assets/lab-progress.js?v={SHARED_VERSION}", f"assets/lab-difficulty.js?v={SHARED_VERSION}",
+        f"assets/lab-run.js?v={SHARED_VERSION}", f"assets/lab-results.js?v={SHARED_VERSION}",
         "TIMELINE-SEO:START", "earlier/later controls",
     ):
         if token not in page:

@@ -15,12 +15,12 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 CROSSWORD_VERSION = "20260911-difficulty1"
 LAB_VERSION = "20260915-relics1"
-NAV_VERSION = "20260915-relics1"
-ACTION_VERSION = "20260915-relics1"
-RESULTS_VERSION = "20260915-relics1"
-PROGRESS_VERSION = "20260915-relics1"
-RUN_VERSION = "20260915-relics1"
-DIFFICULTY_VERSION = "20260915-relics1"
+NAV_VERSION = "20260916-origins3"
+ACTION_VERSION = "20260916-origins3"
+RESULTS_VERSION = "20260916-origins3"
+PROGRESS_VERSION = "20260916-origins3"
+RUN_VERSION = "20260916-origins3"
+DIFFICULTY_VERSION = "20260916-origins3"
 errors: list[str] = []
 
 
@@ -114,6 +114,7 @@ def check_game_registry() -> None:
         "spin": ("lab-spin.html", "live"),
         "timeline": ("lab-timeline.html", "live"),
         "relics": ("lab-relics.html", "live"),
+        "origins": ("lab-origins.html", "live"),
     }
     found = {game.get("id"): (game.get("url"), game.get("status")) for game in games if isinstance(game, dict)}
     for game_id, contract in expected.items():
@@ -137,7 +138,7 @@ def check_page() -> None:
         'id="crossword-replay"',
         'id="crossword-result"',
         'class="lab-route-bar"',
-        'EXPERIMENT 02 OF 06 · CURRENT GAME',
+        'EXPERIMENT 02 OF 07 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
         'data-lab-difficulty',
@@ -179,11 +180,11 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-crossword.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "six registry-driven experiments"):
+    for token in ('href="impossible-lab.html"', "seven registry-driven experiments"):
         if token not in home:
             fail(f"index.html: Cross the Impossible discovery token missing: {token}")
     hub = read("impossible-lab.html")
-    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', 'href="lab-timeline.html"', 'href="lab-relics.html"'):
+    for token in ('href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', 'href="lab-timeline.html"', 'href="lab-relics.html"', 'href="lab-origins.html"'):
         if token not in hub:
             fail(f"impossible-lab.html: game discovery token missing: {token}")
 

@@ -2,9 +2,9 @@
   'use strict';
 
   const STORAGE_KEY = 'lca-impossible-lab-run-v1';
-  const SCHEMA_VERSION = 1;
+  const SCHEMA_VERSION = 2;
   const progressSystem = window.ImpossibleLabProgress;
-  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics']);
+  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins']);
   const SCORE_SCALE = progressSystem?.SCORE_SCALE || 1000;
   const RUN_MAX = GAME_IDS.length * SCORE_SCALE;
   const available = Boolean(progressSystem?.available);

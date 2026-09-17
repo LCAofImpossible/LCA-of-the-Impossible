@@ -6,7 +6,7 @@
   const DEFAULT_LEVEL = 'analyst';
   const PLAY_TARGET = 'lab-game-area';
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
-  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html', 'lab-relics.html']);
+  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html', 'lab-relics.html', 'lab-origins.html']);
   const progressSystem = window.ImpossibleLabProgress;
 
   const LEVEL_DETAILS = Object.freeze({
@@ -57,6 +57,11 @@
       explorer: Object.freeze({ pairs: 4, hints: 2 }),
       analyst: Object.freeze({ pairs: 6, hints: 1 }),
       impossible: Object.freeze({ pairs: 8, hints: 0 })
+    }),
+    origins: Object.freeze({
+      explorer: Object.freeze({ rounds: 8, regionChoices: 4, subjectDescription: true, mapLabels: true, eraRanges: true, qualifiedFirst: false }),
+      analyst: Object.freeze({ rounds: 10, regionChoices: 0, subjectDescription: true, mapLabels: true, eraRanges: true, qualifiedFirst: false }),
+      impossible: Object.freeze({ rounds: 12, regionChoices: 0, subjectDescription: false, mapLabels: false, eraRanges: false, qualifiedFirst: true })
     })
   });
 
@@ -90,6 +95,11 @@
       explorer: 'Recover four subject-and-trace pairs with up to two archive assists.',
       analyst: 'Recover six subject-and-trace pairs with one archive assist.',
       impossible: 'Recover eight subject-and-trace pairs without assistance.'
+    }),
+    origins: Object.freeze({
+      explorer: 'Locate eight subjects using four candidate regions, the approved description and visible period ranges.',
+      analyst: 'Locate ten subjects on the complete map and recover their historical period using the standard archive evidence.',
+      impossible: 'Locate twelve subjects with no descriptive clue, map labels or period ranges; qualified cultural origins are prioritised.'
     })
   });
 
@@ -214,7 +224,7 @@
       plays: (previous?.plays || 0) + 1
     };
     const saved = write(state);
-    const officialUpdate = level === DEFAULT_LEVEL
+    const officialUpdate = level === DEFAULT_LEVEL && progressSystem?.GAME_IDS?.includes(gameId)
       ? progressSystem?.record(gameId, { score, maximum, normalized }) || null
       : null;
     return {
@@ -327,7 +337,7 @@
     eyebrow.textContent = fixed ? 'RUN RULES · FIXED LEVEL' : 'CHALLENGE LEVEL';
     heading.textContent = fixed ? 'Analyst mode' : 'Choose your mode';
     description.textContent = fixed
-      ? 'Impossible Lab Run always uses Analyst rules so every six-stage score stays comparable.'
+      ? 'Impossible Lab Run always uses Analyst rules so every seven-stage score stays comparable.'
       : descriptionFor();
     intro.append(eyebrow, heading, description);
 

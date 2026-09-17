@@ -14,15 +14,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 LAB_CSS_VERSION = "20260915-relics1"
-HUB_VERSION = "20260915-relics1"
+HUB_VERSION = "20260916-origins3"
 GUESS_VERSION = "20260911-difficulty1"
-NAV_VERSION = "20260915-relics1"
-ACTION_VERSION = "20260915-relics1"
-RESULTS_VERSION = "20260915-relics1"
-PROGRESS_VERSION = "20260915-relics1"
-RUN_VERSION = "20260915-relics1"
+NAV_VERSION = "20260916-origins3"
+ACTION_VERSION = "20260916-origins3"
+RESULTS_VERSION = "20260916-origins3"
+PROGRESS_VERSION = "20260916-origins3"
+RUN_VERSION = "20260916-origins3"
 DAILY_VERSION = "20260911-daily1"
-DIFFICULTY_VERSION = "20260915-relics1"
+DIFFICULTY_VERSION = "20260916-origins3"
 REQUIRED_FIELDS = (
     "number", "slug", "title", "url", "seasonLabel", "lcaLabel", "lcaCharacteristics",
     "result", "hotspot", "functionalUnit", "subjectDescription",
@@ -89,7 +89,7 @@ def check_page(episode_count: int) -> None:
         'data-lab-game="guess"',
         'data-lab-game-nav',
         'class="lab-route-bar"',
-        'EXPERIMENT 01 OF 06 · CURRENT GAME',
+        'EXPERIMENT 01 OF 07 · CURRENT GAME',
         'id="lab-new-case"',
         'data-lab-another',
         'data-lab-result-scorecard',
@@ -196,7 +196,7 @@ def check_shared_navigation_runtime() -> None:
             fail(f"assets/lab-results.js: required result-system token missing: {token}")
     for token in (
         "const STORAGE_KEY = 'lca-impossible-lab-progress-v1'", "window.localStorage",
-        "const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics'])",
+        "const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins'])",
         "const LAB_MAX = GAME_IDS.length * SCORE_SCALE", "bestScore", "bestNormalized",
         "previous.bestScore", "previous.bestNormalized", "summarize", "clear",
     ):
@@ -268,7 +268,7 @@ const lower = store.record('guess', { score: 100, maximum: 500, normalized: 200 
 const second = store.record('crossword', { score: 400, maximum: 500, normalized: 800 });
 if (!first.saved || first.summary.total !== 500) process.exit(1);
 if (lower.summary.games.guess.bestScore !== 250 || lower.summary.games.guess.bestNormalized !== 500) process.exit(2);
-if (second.summary.total !== 1300 || second.summary.completed !== 2 || second.summary.maximum !== 6000) process.exit(3);
+if (second.summary.total !== 1300 || second.summary.completed !== 2 || second.summary.maximum !== 7000) process.exit(3);
 if (!store.clear() || store.summarize().total !== 0) process.exit(4);
 """
     behavior = subprocess.run(
@@ -328,7 +328,7 @@ if (levels.withPlayTarget('lab.html?difficulty=analyst', 'impossible') !== 'lab.
 def check_run() -> None:
     page = read("impossible-lab-run.html")
     for token in (
-        'data-lab-run-page', "Six games.<br><span>One run.</span>", "Run Score",
+        'data-lab-run-page', "Seven games.<br><span>One run.</span>", "Run Score",
         'data-run-total', 'data-run-stages', 'data-run-start', 'data-run-continue',
         'data-run-restart', 'data-run-clear', "Run Score vs Lab Score",
         'href="impossible-lab.html"', f"assets/lab.css?v={LAB_CSS_VERSION}",
@@ -339,12 +339,13 @@ def check_run() -> None:
     ):
         if token not in page:
             fail(f"impossible-lab-run.html: required Run token missing: {token}")
-    if page.count('data-run-stage') != 7:
-        fail("impossible-lab-run.html must expose one stage container plus six static fallback stages")
+    if page.count('data-run-stage') != 8:
+        fail("impossible-lab-run.html must expose one stage container plus seven static fallback stages")
 
     runtime = read("assets/lab-run.js")
     for token in (
         "const STORAGE_KEY = 'lca-impossible-lab-run-v1'", "window.localStorage",
+        "const SCHEMA_VERSION = 2",
         "new URLSearchParams(window.location.search).get('run') === '1'",
         "before.nextGameId !== gameId", "RUN_MAX", "summary.completed + 1",
         "Return to the Run", "createGameBanner", "removeItem(STORAGE_KEY)",
@@ -387,7 +388,10 @@ def check_run() -> None:
     behavior_script = r"""
 const fs = require('fs');
 const vm = require('vm');
-const memory = new Map([['lca-impossible-lab-progress-v1', 'preserve-me']]);
+const memory = new Map([
+  ['lca-impossible-lab-progress-v1', 'preserve-me'],
+  ['lca-impossible-lab-run-v1', JSON.stringify({ version: 1, status: 'active', results: { guess: { score: 250, maximum: 500, normalized: 500 } } })]
+]);
 const localStorage = {
   setItem: (key, value) => memory.set(key, String(value)),
   getItem: (key) => memory.has(key) ? memory.get(key) : null,
@@ -399,7 +403,7 @@ const context = {
     location: { search: '?run=1' },
     ImpossibleLabProgress: {
       available: true,
-      GAME_IDS: Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics']),
+      GAME_IDS: Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins']),
       SCORE_SCALE: 1000
     }
   },
@@ -410,20 +414,24 @@ const context = {
 vm.createContext(context);
 vm.runInContext(fs.readFileSync('assets/lab-run.js', 'utf8'), context);
 const run = context.window.ImpossibleLabRun;
+const migrated = run.summarize();
+if (migrated.active || migrated.completed !== 0 || migrated.nextGameId !== 'guess' || migrated.maximum !== 7000) process.exit(1);
 const started = run.start();
-if (!started.saved || started.summary.nextGameId !== 'guess' || started.summary.total !== 0) process.exit(1);
+if (!started.saved || started.summary.nextGameId !== 'guess' || started.summary.total !== 0) process.exit(2);
 const guess = run.record('guess', { score: 250, maximum: 500, normalized: 500 });
-if (!guess.accepted || guess.summary.nextGameId !== 'crossword' || guess.summary.total !== 500) process.exit(2);
-if (run.record('alphabet', { score: 600, maximum: 1000, normalized: 600 }).accepted) process.exit(3);
-if (run.record('guess', { score: 500, maximum: 500, normalized: 1000 }).accepted) process.exit(4);
+if (!guess.accepted || guess.summary.nextGameId !== 'crossword' || guess.summary.total !== 500) process.exit(3);
+if (run.record('alphabet', { score: 600, maximum: 1000, normalized: 600 }).accepted) process.exit(4);
+if (run.record('guess', { score: 500, maximum: 500, normalized: 1000 }).accepted) process.exit(5);
 run.record('crossword', { score: 400, maximum: 500, normalized: 800 });
 run.record('alphabet', { score: 900, maximum: 1500, normalized: 600 });
 run.record('spin', { score: 900, maximum: 1000, normalized: 900 });
 const timeline = run.record('timeline', { score: 2400, maximum: 3000, normalized: 800 });
-if (!timeline.accepted || timeline.summary.complete || timeline.summary.nextGameId !== 'relics') process.exit(5);
-const final = run.record('relics', { score: 420, maximum: 600, normalized: 700 });
-if (!final.accepted || !final.summary.complete || final.summary.total !== 4300 || final.summary.maximum !== 6000) process.exit(6);
-if (!run.clear() || run.summarize().total !== 0 || memory.get('lca-impossible-lab-progress-v1') !== 'preserve-me') process.exit(7);
+if (!timeline.accepted || timeline.summary.complete || timeline.summary.nextGameId !== 'relics') process.exit(6);
+const relics = run.record('relics', { score: 420, maximum: 600, normalized: 700 });
+if (!relics.accepted || relics.summary.complete || relics.summary.nextGameId !== 'origins') process.exit(7);
+const final = run.record('origins', { score: 1500, maximum: 2500, normalized: 600 });
+if (!final.accepted || !final.summary.complete || final.summary.total !== 4900 || final.summary.maximum !== 7000) process.exit(8);
+if (!run.clear() || run.summarize().total !== 0 || memory.get('lca-impossible-lab-progress-v1') !== 'preserve-me') process.exit(9);
 """
     behavior = subprocess.run(
         ["node", "-e", behavior_script], cwd=ROOT, capture_output=True, text=True, check=False
@@ -533,8 +541,8 @@ def check_hub() -> None:
         fail(f"lab-games.json is invalid JSON: {exc}")
         registry = {}
     games = registry.get("games", [])
-    if not isinstance(games, list) or len(games) != 6:
-        fail("lab-games.json must expose exactly six live experiments")
+    if not isinstance(games, list) or len(games) != 7:
+        fail("lab-games.json must expose exactly seven live experiments")
         games = []
     for game in games:
         if not isinstance(game, dict):
@@ -554,7 +562,7 @@ def check_hub() -> None:
         "Impossible Lab Run", "Start Lab Run →", 'class="lab-hub-actions"', 'href="impossible-lab-run.html"',
         "Daily Impossible", "Play today’s case →", 'data-daily-entry', 'href="lab-daily.html"',
         "Choose your <span>experiment.</span>", "REGISTRY-DRIVEN",
-        'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', 'href="lab-timeline.html"', 'href="lab-relics.html"',
+        'href="lab.html"', 'href="lab-crossword.html"', 'href="lab-alphabet.html"', 'href="lab-spin.html"', 'href="lab-timeline.html"', 'href="lab-relics.html"', 'href="lab-origins.html"',
         f"assets/lab-hub.css?v={HUB_VERSION}", f"assets/lab-progress.js?v={PROGRESS_VERSION}",
         f"assets/lab-difficulty.js?v={DIFFICULTY_VERSION}",
         f"assets/daily.js?v={DAILY_VERSION}", f"assets/lab-hub.js?v={HUB_VERSION}",
@@ -563,8 +571,8 @@ def check_hub() -> None:
     ):
         if token not in page:
             fail(f"impossible-lab.html: required hub token missing: {token}")
-    if page.count('class="lab-hub-card"') != 6:
-        fail("impossible-lab.html must retain six static fallback game cards")
+    if page.count('class="lab-hub-card"') != 7:
+        fail("impossible-lab.html must retain seven static fallback game cards")
 
     runtime = read("assets/lab-hub.js")
     for token in (
@@ -592,7 +600,7 @@ def check_hub() -> None:
 def check_discovery() -> None:
     home = read("index.html")
     for token in (
-        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="impossible-lab.html"', "six registry-driven experiments",
+        "LAB-HOME:START", "IMPOSSIBLE LAB", 'href="impossible-lab.html"', "seven registry-driven experiments",
         f"assets/lab.css?v={LAB_CSS_VERSION}",
     ):
         if token not in home:
@@ -622,18 +630,20 @@ def check_discovery() -> None:
             fail("sitemap.xml must contain lab-timeline.html exactly once")
         if urls.count(BASE_URL + "lab-relics.html") != 1:
             fail("sitemap.xml must contain lab-relics.html exactly once")
+        if urls.count(BASE_URL + "lab-origins.html") != 1:
+            fail("sitemap.xml must contain lab-origins.html exactly once")
 
     manifest = read("site.webmanifest")
     if "/LCA-of-the-Impossible/impossible-lab.html" not in manifest:
         fail("site.webmanifest must expose the Impossible Lab shortcut")
 
     for script, tokens in {
-        "scripts/phase5_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', 'href="{prefix}impossible-lab.html"'),
-        "scripts/telemetry_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"'),
-        "scripts/rss_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"'),
-        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"', '"assets/daily.js"', '"assets/timeline.js"', '"assets/relics.js"'),
-        "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"', '"relics_qa.py"'),
-        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab-timeline.html", "lab-relics.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js", "assets/daily.js", "assets/timeline.js", "assets/relics.js"),
+        "scripts/phase5_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"', 'href="{prefix}impossible-lab.html"'),
+        "scripts/telemetry_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"'),
+        "scripts/rss_sync.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"'),
+        "scripts/live_site_qa.py": ('"impossible-lab.html"', '"impossible-lab-run.html"', '"lab-daily.html"', '"lab-timeline.html"', '"lab-relics.html"', '"lab-origins.html"', '"assets/lab-hub.css"', '"assets/lab-hub.js"', '"assets/lab-run.js"', '"assets/daily.js"', '"assets/timeline.js"', '"assets/relics.js"', '"assets/origins.js"'),
+        "scripts/publication_qa.py": ('"lab_sync.py"', '"lab_qa.py"', '"relics_qa.py"', '"origins_qa.py"', '"origins_ui_qa.py"'),
+        ".github/workflows/seo-sync.yml": ("python scripts/lab_sync.py", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html", "assets/lab-hub.css", "assets/lab-hub.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-progress.js", "assets/lab-run.js", "assets/lab-run-page.js", "assets/daily.js", "assets/timeline.js", "assets/relics.js", "assets/origins.js"),
     }.items():
         source = read(script)
         for token in tokens:
@@ -651,6 +661,7 @@ def check_readme() -> None:
         "Spin the Impossible",
         "Impossible Timeline",
         "Impossible Relics",
+        "Impossible Origins",
         "`impossible-lab.html` is the canonical entry point",
         "summary", "duration", "category",
         "500 → 400 → 300 → 200 → 100",
@@ -660,18 +671,21 @@ def check_readme() -> None:
         "scripts/spin_qa.py",
         "scripts/timeline_qa.py",
         "scripts/relics_qa.py",
+        "scripts/origins_qa.py",
+        "scripts/origins_ui_qa.py",
         "### 39.5 Impossible Timeline",
         "### 39.6 Impossible Relics",
-        "### 39.7 Shared result system",
+        "### 39.7 Impossible Origins",
+        "### 39.8 Shared result system",
         "normalized score",
         "game performance only",
         "Lab Score",
         "lca-impossible-lab-progress-v1",
         "Reset records",
-        "### 39.8 Impossible Lab Run",
+        "### 39.9 Impossible Lab Run",
         "lca-impossible-lab-run-v1",
         "one consecutive Analyst circuit",
-        "### 39.9 Daily Impossible",
+        "### 39.10 Daily Impossible",
         "lca-impossible-daily-v1",
         "one completed result",
     ):
