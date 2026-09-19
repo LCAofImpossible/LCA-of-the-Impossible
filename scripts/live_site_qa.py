@@ -33,6 +33,7 @@ CORE_PATHS = {
     "lab-timeline.html",
     "lab-relics.html",
     "lab-origins.html",
+    "lab-ascent.html",
     "collections.html",
     "compare.html",
     "explore.html",
@@ -74,6 +75,7 @@ CORE_PATHS = {
     "assets/timeline.css",
     "assets/relics.css",
     "assets/origins.css",
+    "assets/ascent.css",
     "assets/atlas.css",
     "assets/compare.css",
     "assets/phase6.css",
@@ -101,6 +103,7 @@ CORE_PATHS = {
     "assets/timeline.js",
     "assets/relics.js",
     "assets/origins.js",
+    "assets/ascent.js",
     "assets/atlas.js",
     "assets/engagement.js",
     "assets/phase6.js",
@@ -497,6 +500,7 @@ def validate(
             'href="lab-timeline.html"',
             'href="lab-relics.html"',
             'href="lab-origins.html"',
+            'href="lab-ascent.html"',
             'data-lab-score-panel',
             'data-lab-score-total',
             'data-lab-score-breakdown',
@@ -509,11 +513,11 @@ def validate(
             'href="lab-daily.html"',
             'data-daily-entry',
             'data-lab-difficulty',
-            "assets/lab-hub.css?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
+            "assets/lab-hub.css?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
             "assets/daily.js?v=20260911-daily1",
-            "assets/lab-hub.js?v=20260916-origins3",
+            "assets/lab-hub.js?v=20260918-ascent1",
         ),
         "lab-daily.html": (
             'data-lab-daily',
@@ -528,7 +532,7 @@ def validate(
         ),
         "impossible-lab-run.html": (
             'data-lab-run-page',
-            "Seven games.<br><span>One run.</span>",
+            "Eight games.<br><span>One run.</span>",
             "Run Score",
             'data-run-total',
             'data-run-stages',
@@ -537,11 +541,11 @@ def validate(
             "Run Score vs Lab Score",
             "Complete one Analyst round",
             "assets/lab.css?v=20260915-relics1",
-            "assets/lab-run.css?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-run-page.js?v=20260916-origins3",
+            "assets/lab-run.css?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-run-page.js?v=20260918-ascent1",
         ),
         "lab.html": (
             "IMPOSSIBLE LAB · EXPERIMENT 01",
@@ -550,18 +554,18 @@ def validate(
             'id="lab-answer-form"',
             'id="lab-result"',
             'class="lab-route-bar"',
-            "EXPERIMENT 01 OF 07 · CURRENT GAME",
+            "EXPERIMENT 01 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/lab.js?v=20260911-difficulty1",
         ),
         "lab-crossword.html": (
@@ -572,18 +576,18 @@ def validate(
             'id="crossword-result"',
             'id="crossword-replay"',
             'class="lab-route-bar"',
-            "EXPERIMENT 02 OF 07 · CURRENT GAME",
+            "EXPERIMENT 02 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/crossword.css?v=20260911-difficulty1",
             "assets/crossword-generator.js?v=20260911-difficulty1",
             "assets/crossword.js?v=20260911-difficulty1",
@@ -595,7 +599,7 @@ def validate(
             'id="alphabet-answer-form"',
             'id="alphabet-result"',
             'class="lab-route-bar"',
-            "EXPERIMENT 03 OF 07 · CURRENT GAME",
+            "EXPERIMENT 03 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'id="alphabet-case-debrief"',
@@ -603,12 +607,12 @@ def validate(
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
             "assets/alphabet.css?v=20260911-difficulty1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/alphabet.js?v=20260911-difficulty1",
         ),
         "lab-spin.html": (
@@ -619,19 +623,19 @@ def validate(
             'id="spin-solve-form"',
             'id="spin-result"',
             'class="lab-route-bar"',
-            "EXPERIMENT 04 OF 07 · CURRENT GAME",
+            "EXPERIMENT 04 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
             "assets/spin.css?v=20260911-difficulty1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/spin.js?v=20260911-difficulty1",
         ),
         "lab-timeline.html": (
@@ -641,19 +645,19 @@ def validate(
             'id="timeline-submit"',
             'id="timeline-reveal-list"',
             'id="timeline-final"',
-            "EXPERIMENT 05 OF 07 · CURRENT GAME",
+            "EXPERIMENT 05 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
             "assets/timeline.css?v=20260915-relics1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/timeline.js?v=20260915-relics1",
         ),
         "lab-relics.html": (
@@ -662,19 +666,19 @@ def validate(
             'id="relics-board"',
             'id="relics-hint"',
             'id="relics-final"',
-            "EXPERIMENT 06 OF 07 · CURRENT GAME",
+            "EXPERIMENT 06 OF 08 · CURRENT GAME",
             'data-lab-another',
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
             "assets/relics.css?v=20260915-relics1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/relics.js?v=20260915-relics1",
         ),
         "lab-origins.html": (
@@ -685,19 +689,29 @@ def validate(
             'id="origins-region-select"',
             'id="origins-era-options"',
             'id="origins-final"',
-            "EXPERIMENT 07 OF 07 · CURRENT GAME",
+            "EXPERIMENT 07 OF 08 · CURRENT GAME",
             'data-lab-result-scorecard',
             'data-lab-difficulty',
             'id="lab-game-area"',
             "assets/lab.css?v=20260915-relics1",
             "assets/origins.css?v=20260917-origins-map1",
-            "assets/lab-nav.js?v=20260916-origins3",
-            "assets/lab-actions.js?v=20260916-origins3",
-            "assets/lab-progress.js?v=20260916-origins3",
-            "assets/lab-difficulty.js?v=20260916-origins3",
-            "assets/lab-run.js?v=20260916-origins3",
-            "assets/lab-results.js?v=20260917-leaderboards1",
+            "assets/lab-nav.js?v=20260918-ascent1",
+            "assets/lab-actions.js?v=20260918-ascent1",
+            "assets/lab-progress.js?v=20260918-ascent1",
+            "assets/lab-difficulty.js?v=20260918-ascent1",
+            "assets/lab-run.js?v=20260918-ascent1",
+            "assets/lab-results.js?v=20260918-ascent1",
             "assets/origins.js?v=20260917-origins-map1",
+        ),
+        "lab-ascent.html": (
+            'data-lab-game="ascent"',
+            'id="ascent-start-button"',
+            'id="ascent-choices"',
+            'id="ascent-final"',
+            'data-lab-result-scorecard',
+            "EXPERIMENT 08 OF 08 · CURRENT GAME",
+            "assets/ascent.css?v=20260918-ascent1",
+            "assets/ascent.js?v=20260918-ascent1",
         ),
         "assets/lab.js": (
             "registry.episodes",
@@ -850,7 +864,7 @@ def validate(
         "assets/lab-progress.js": (
             "const STORAGE_KEY = 'lca-impossible-lab-progress-v1'",
             "window.localStorage",
-            "const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins'])",
+            "const GAME_IDS = Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins', 'ascent'])",
             "const LAB_MAX = GAME_IDS.length * SCORE_SCALE",
             "bestScore",
             "bestNormalized",
@@ -959,6 +973,12 @@ def validate(
             "window.ImpossibleLabResults?.render",
             "Review your result and record status below",
         ),
+        "assets/ascent.js": (
+            "buildBank", "fetch(url", "window.ImpossibleLabResults?.render", "ASSIST_COST = 25",
+        ),
+        "assets/ascent.css": (
+            ".ascent-choices", ".ascent-final", "@media(max-width:620px)",
+        ),
         "assets/origins.css": (
             ".origins-workspace",
             ".origins-map-regions path.origins-region-shape",
@@ -981,7 +1001,7 @@ def validate(
             errors.append(f"Impossible Lab runtime violates its privacy or cover contract with {forbidden!r}")
     crossword_runtime = "\n".join(
         downloaded.get(path, b"").decode("utf-8", errors="replace")
-        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/relics.js", "assets/origins.js", "assets/lab-nav.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-hub.js")
+        for path in ("assets/crossword.js", "assets/alphabet.js", "assets/spin.js", "assets/relics.js", "assets/origins.js", "assets/ascent.js", "assets/lab-nav.js", "assets/lab-actions.js", "assets/lab-results.js", "assets/lab-hub.js")
     )
     for forbidden in ("document.cookie", "localStorage", "sessionStorage", "innerHTML"):
         if forbidden in crossword_runtime:
@@ -1020,8 +1040,8 @@ def validate(
             for game in game_registry.get("games", [])
             if isinstance(game, dict)
         }
-        if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet", "spin", "timeline", "relics", "origins")):
-            errors.append("All seven live Impossible Lab experiments are not registered")
+        if any(game_status.get(game) != "live" for game in ("guess", "crossword", "alphabet", "spin", "timeline", "relics", "origins", "ascent")):
+            errors.append("All eight live Impossible Lab experiments are not registered")
         for game in game_registry.get("games", []):
             if isinstance(game, dict) and any(not game.get(field) for field in ("summary", "duration", "category")):
                 errors.append(f"Impossible Lab game {game.get('id', '?')} is missing hub card metadata")
@@ -1045,6 +1065,8 @@ def validate(
         errors.append("Impossible Relics does not occur exactly once in the live sitemap")
     if sitemap.count("/lab-origins.html") != 1:
         errors.append("Impossible Origins does not occur exactly once in the live sitemap")
+    if sitemap.count("/lab-ascent.html") != 1:
+        errors.append("Impossible Ascent does not occur exactly once in the live sitemap")
 
     updates_script = downloaded.get("assets/updates.js", b"").decode(
         "utf-8", errors="replace"
@@ -1181,7 +1203,7 @@ def main() -> int:
     print("- Comparison visual synthesis, methodological fields and non-comparability verdict: **PASS**")
     print("- Guided editorial paths, ordered steps and episode context navigation: **PASS**")
     print("- RSS discovery, updates hub and single-request readership telemetry: **PASS**")
-    print("- Impossible Lab games, persistent records and seven-stage Run contracts: **PASS**")
+    print("- Impossible Lab games, persistent records and eight-stage Run contracts: **PASS**")
     print("- Epic Passport-only runtime and source-PDF link policy: **PASS**")
     print("- Result: **PASS**")
     return 0

@@ -9,8 +9,8 @@ from pathlib import Path
 
 
 ROOT = Path(__file__).resolve().parents[1]
-SHARED_VERSION = "20260916-origins3"
-RESULTS_VERSION = "20260917-leaderboards1"
+SHARED_VERSION = "20260918-ascent1"
+RESULTS_VERSION = "20260918-ascent1"
 ORIGINS_VERSION = "20260917-origins-map1"
 errors: list[str] = []
 
@@ -34,7 +34,7 @@ def main() -> int:
         'data-origins-phase="5"',
         '<meta name="robots" content="index,follow,max-image-preview:large">',
         "ORIGINS-SEO:START",
-        "EXPERIMENT 07 OF 07 · CURRENT GAME",
+        "EXPERIMENT 07 OF 08 · CURRENT GAME",
         "Impossible <span>Origins.</span>",
         'id="lab-game-area"',
         'id="origins-map"',
@@ -192,8 +192,8 @@ def main() -> int:
     if "'origins'" not in progress:
         fail("assets/lab-progress.js does not include the Origins Lab Score contribution")
     run = read("assets/lab-run.js")
-    if "const SCHEMA_VERSION = 2" not in run or "'origins'" not in run:
-        fail("assets/lab-run.js does not expose the seven-stage Origins migration")
+    if "const SCHEMA_VERSION = 3" not in run or "'origins'" not in run:
+        fail("assets/lab-run.js does not expose the eight-stage Ascent extension")
 
     registry_qa = subprocess.run(
         [sys.executable, str(ROOT / "scripts/origins_qa.py")],
@@ -238,7 +238,7 @@ if (levels.config('origins', 'impossible').rounds !== 12) process.exit(3);
 const update = levels.record('origins', { score: 1750, maximum: 2500, normalized: 700 });
 if (!update.saved || update.record.bestNormalized !== 700) process.exit(4);
 if (!update.officialUpdate?.saved || official.summarize().games.origins.bestNormalized !== 700) process.exit(5);
-if (official.summarize().maximum !== 7000 || official.summarize().completed !== 1) process.exit(6);
+if (official.summarize().maximum !== 8000 || official.summarize().completed !== 1) process.exit(6);
 if (levels.withPlayTarget('lab-origins.html', 'impossible') !== 'lab-origins.html?difficulty=impossible#lab-game-area') process.exit(7);
 """
     behavior = subprocess.run(

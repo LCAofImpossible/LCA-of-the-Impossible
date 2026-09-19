@@ -6,7 +6,7 @@
   const DEFAULT_LEVEL = 'analyst';
   const PLAY_TARGET = 'lab-game-area';
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
-  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html', 'lab-relics.html', 'lab-origins.html']);
+  const GAME_FILES = new Set(['lab.html', 'lab-crossword.html', 'lab-alphabet.html', 'lab-spin.html', 'lab-timeline.html', 'lab-relics.html', 'lab-origins.html', 'lab-ascent.html']);
   const progressSystem = window.ImpossibleLabProgress;
 
   const LEVEL_DETAILS = Object.freeze({
@@ -62,6 +62,11 @@
       explorer: Object.freeze({ rounds: 8, regionChoices: 4, subjectDescription: true, mapLabels: true, eraRanges: true, qualifiedFirst: false }),
       analyst: Object.freeze({ rounds: 10, regionChoices: 0, subjectDescription: true, mapLabels: true, eraRanges: true, qualifiedFirst: false }),
       impossible: Object.freeze({ rounds: 12, regionChoices: 0, subjectDescription: false, mapLabels: false, eraRanges: false, qualifiedFirst: true })
+    }),
+    ascent: Object.freeze({
+      explorer: Object.freeze({ questions: 8 }),
+      analyst: Object.freeze({ questions: 12 }),
+      impossible: Object.freeze({ questions: 15 })
     })
   });
 
@@ -100,6 +105,11 @@
       explorer: 'Locate eight subjects using four candidate regions, the approved description and visible period ranges.',
       analyst: 'Locate ten subjects on the complete map and recover their historical period using the standard archive evidence.',
       impossible: 'Locate twelve subjects with no descriptive clue, map labels or period ranges; qualified cultural origins are prioritised.'
+    }),
+    ascent: Object.freeze({
+      explorer: 'Climb eight archive questions with three one-use assists and a checkpoint at question four.',
+      analyst: 'Climb twelve archive questions with three one-use assists and checkpoints every four answers.',
+      impossible: 'Climb fifteen archive questions with three one-use assists and checkpoints every four answers.'
     })
   });
 
@@ -337,7 +347,7 @@
     eyebrow.textContent = fixed ? 'RUN RULES · FIXED LEVEL' : 'CHALLENGE LEVEL';
     heading.textContent = fixed ? 'Analyst mode' : 'Choose your mode';
     description.textContent = fixed
-      ? 'Impossible Lab Run always uses Analyst rules so every seven-stage score stays comparable.'
+      ? 'Impossible Lab Run always uses Analyst rules so every eight-stage score stays comparable.'
       : descriptionFor();
     intro.append(eyebrow, heading, description);
 

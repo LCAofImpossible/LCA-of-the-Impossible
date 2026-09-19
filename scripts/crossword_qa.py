@@ -15,12 +15,12 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE_URL = "https://lcaofimpossible.github.io/LCA-of-the-Impossible/"
 CROSSWORD_VERSION = "20260911-difficulty1"
 LAB_VERSION = "20260915-relics1"
-NAV_VERSION = "20260916-origins3"
-ACTION_VERSION = "20260916-origins3"
-RESULTS_VERSION = "20260917-leaderboards1"
-PROGRESS_VERSION = "20260916-origins3"
-RUN_VERSION = "20260916-origins3"
-DIFFICULTY_VERSION = "20260916-origins3"
+NAV_VERSION = "20260918-ascent1"
+ACTION_VERSION = "20260918-ascent1"
+RESULTS_VERSION = "20260918-ascent1"
+PROGRESS_VERSION = "20260918-ascent1"
+RUN_VERSION = "20260918-ascent1"
+DIFFICULTY_VERSION = "20260918-ascent1"
 errors: list[str] = []
 
 
@@ -138,7 +138,7 @@ def check_page() -> None:
         'id="crossword-replay"',
         'id="crossword-result"',
         'class="lab-route-bar"',
-        'EXPERIMENT 02 OF 07 · CURRENT GAME',
+        'EXPERIMENT 02 OF 08 · CURRENT GAME',
         'data-lab-another',
         'data-lab-result-scorecard',
         'data-lab-difficulty',
@@ -180,7 +180,7 @@ def check_publication_integration() -> None:
         fail("sitemap.xml must contain lab-crossword.html exactly once")
 
     home = read("index.html")
-    for token in ('href="impossible-lab.html"', "seven registry-driven experiments"):
+    for token in ('href="impossible-lab.html"', "eight registry-driven experiments"):
         if token not in home:
             fail(f"index.html: Cross the Impossible discovery token missing: {token}")
     hub = read("impossible-lab.html")
