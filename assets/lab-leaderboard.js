@@ -10,7 +10,8 @@
     spin: 'Spin the Impossible',
     timeline: 'Impossible Timeline',
     relics: 'Impossible Relics',
-    origins: 'Impossible Origins'
+    origins: 'Impossible Origins',
+    ascent: 'Impossible Ascent'
   });
   const LEVELS = Object.freeze(['explorer', 'analyst', 'impossible']);
   const LEVEL_LABELS = Object.freeze({ explorer: 'Explorer', analyst: 'Analyst', impossible: 'Impossible' });
@@ -333,7 +334,7 @@
     const board = createBoard({
       type: 'lab',
       title: 'Impossible Lab leaderboard',
-      description: 'The sum of each player’s seven best normalized Analyst results, up to 7,000 points.'
+      description: 'The sum of each player’s eight best normalized Analyst results, up to 8,000 points.'
     });
     host.replaceChildren(board.section);
     void board.refresh();

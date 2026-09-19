@@ -62,13 +62,14 @@ QA_SCRIPTS = (
     "relics_qa.py",
     "origins_qa.py",
     "origins_ui_qa.py",
+    "ascent_qa.js",
 )
 IGNORED_NAMES = {".git", "__pycache__", ".pytest_cache", ".DS_Store"}
 
 
 def run_script(root: Path, script: str) -> tuple[int, str]:
     completed = subprocess.run(
-        [sys.executable, str(root / "scripts" / script)],
+        (["node"] if script.endswith(".js") else [sys.executable]) + [str(root / "scripts" / script)],
         cwd=root,
         text=True,
         stdout=subprocess.PIPE,

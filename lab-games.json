@@ -77,6 +77,17 @@
       "category": "Geography",
       "url": "lab-origins.html",
       "status": "live"
+    },
+    {
+      "id": "ascent",
+      "number": 8,
+      "title": "Impossible Ascent",
+      "description": "Climb the archive",
+      "summary": "Answer a rising sequence of four-choice questions about published subjects, cultural origins and modeled findings.",
+      "duration": "5–8 min",
+      "category": "Quiz challenge",
+      "url": "lab-ascent.html",
+      "status": "live"
     }
   ]
 }

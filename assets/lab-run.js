@@ -2,9 +2,9 @@
   'use strict';
 
   const STORAGE_KEY = 'lca-impossible-lab-run-v1';
-  const SCHEMA_VERSION = 2;
+  const SCHEMA_VERSION = 3;
   const progressSystem = window.ImpossibleLabProgress;
-  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins']);
+  const GAME_IDS = progressSystem?.GAME_IDS || Object.freeze(['guess', 'crossword', 'alphabet', 'spin', 'timeline', 'relics', 'origins', 'ascent']);
   const SCORE_SCALE = progressSystem?.SCORE_SCALE || 1000;
   const RUN_MAX = GAME_IDS.length * SCORE_SCALE;
   const available = Boolean(progressSystem?.available);
@@ -23,7 +23,7 @@
   };
 
   const sanitize = (candidate) => {
-    if (!candidate || typeof candidate !== 'object' || candidate.version !== SCHEMA_VERSION) return emptyRun();
+    if (!candidate || typeof candidate !== 'object' || ![2, SCHEMA_VERSION].includes(candidate.version)) return emptyRun();
     const clean = { version: SCHEMA_VERSION, status: 'active', results: {} };
     let sequenceOpen = true;
     GAME_IDS.forEach((gameId) => {
@@ -36,6 +36,7 @@
     });
     const completed = Object.keys(clean.results).length;
     if (!completed && candidate.status !== 'active') return emptyRun();
+    // Keep completed seven-stage results. They can continue with the new eighth stage.
     clean.status = completed === GAME_IDS.length ? 'complete' : 'active';
     return clean;
   };

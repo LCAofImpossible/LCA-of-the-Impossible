@@ -16,7 +16,7 @@ HOME_END = "<!-- PHASE5-HOME:END -->"
 PHASE5_SEO_START = "<!-- PHASE5-SEO:START -->"
 PHASE5_SEO_END = "<!-- PHASE5-SEO:END -->"
 ROOT_PAGES = [
-    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html", "compare.html", "explore.html", "collections.html",
+    "index.html", "archive.html", "impossible-lab.html", "impossible-lab-run.html", "lab-daily.html", "lab.html", "lab-crossword.html", "lab-alphabet.html", "lab-spin.html", "lab-timeline.html", "lab-relics.html", "lab-origins.html", "lab-ascent.html", "compare.html", "explore.html", "collections.html",
     "method.html", "sources.html", "about.html", "glossary.html", "season-i.html", "season-ii.html", "statistics.html",
     "updates.html",
 ]
