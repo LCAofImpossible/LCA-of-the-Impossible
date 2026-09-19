@@ -901,7 +901,7 @@ def validate(
         ),
         "assets/lab-run.js": (
             "const STORAGE_KEY = 'lca-impossible-lab-run-v1'",
-            "const SCHEMA_VERSION = 2",
+            "const SCHEMA_VERSION = 3",
             "window.localStorage",
             "before.nextGameId !== gameId",
             "new URLSearchParams(window.location.search).get('run') === '1'",
