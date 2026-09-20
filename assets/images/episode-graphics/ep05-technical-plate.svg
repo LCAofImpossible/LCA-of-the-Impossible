@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Discovery One technical reconstruction plate</title>
+  <desc id="desc">A line reconstruction of the spacecraft with approved geometry, mass, hydrogen, propulsion and tank-volume parameters.</desc>
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" fill="none" stroke="#173345" stroke-width="1"/>
+    </pattern>
+    <style>
+      .bg{fill:#071019}.grid{fill:url(#grid);opacity:.65}.frame{fill:none;stroke:#234557;stroke-width:2}.ship{fill:#0e2130;stroke:#c4f7ff;stroke-width:3}.detail{fill:none;stroke:#6de7ff;stroke-width:2}.fine{fill:none;stroke:#537d8e;stroke-width:1.5}.dim{fill:none;stroke:#d0a563;stroke-width:2}.k{font:700 17px Arial,sans-serif;letter-spacing:2px;fill:#6de7ff}.h{font:700 30px Georgia,serif;fill:#eef7fb}.v{font:700 22px Arial,sans-serif;fill:#eef7fb}.n{font:16px Arial,sans-serif;fill:#9ab0bc}.small{font:14px Arial,sans-serif;fill:#9ab0bc}.gold{fill:#d0a563}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <rect class="grid" x="18" y="18" width="1164" height="724"/>
+  <rect class="frame" x="18" y="18" width="1164" height="724" rx="8"/>
+  <text class="k" x="60" y="70">TECHNICAL PLATE · FILM CONFIGURATION + ENGINEERING RECONSTRUCTION</text>
+  <text class="h" x="60" y="112">A skeleton with 1,200 tonnes</text>
+
+  <g aria-label="Discovery One spacecraft side elevation">
+    <circle class="ship" cx="220" cy="338" r="105"/>
+    <circle class="detail" cx="220" cy="338" r="72"/>
+    <path class="fine" d="M115 338H325M220 233V443M146 264Q220 310 294 264M146 412Q220 366 294 412"/>
+    <path class="ship" d="M325 315H932V361H325Z"/>
+    <path class="fine" d="M335 319L405 357 475 319 545 357 615 319 685 357 755 319 825 357 895 319M335 357L405 319 475 357 545 319 615 357 685 319 755 357 825 319 895 357"/>
+    <g fill="#102a3a" stroke="#c4f7ff" stroke-width="2.5">
+      <circle cx="520" cy="338" r="42"/><circle cx="603" cy="338" r="42"/><circle cx="686" cy="338" r="42"/><circle cx="769" cy="338" r="42"/><circle cx="852" cy="338" r="42"/>
+    </g>
+    <path class="detail" d="M432 315V235M398 235H466M403 235Q432 190 461 235"/>
+    <ellipse class="detail" cx="432" cy="230" rx="50" ry="18" transform="rotate(-18 432 230)"/>
+    <path class="ship" d="M932 300H1028L1088 330V346L1028 376H932Z"/>
+    <path class="detail" d="M1028 310V366M1050 318V358M1070 325V351"/>
+  </g>
+
+  <path class="dim" d="M115 492V518M1088 492V518M115 510H1088"/>
+  <path d="M115 510l14-7v14zm973 0l-14-7v14z" fill="#d0a563"/>
+  <text class="k gold" x="498" y="544">213.4 m OVERALL LENGTH</text>
+
+  <path class="dim" d="M92 233H66M92 443H66M74 233V443"/>
+  <path d="M74 233l-7 14h14zm0 210l-7-14h14z" fill="#d0a563"/>
+  <text class="small gold" x="42" y="354" transform="rotate(-90 42 354)">12.2 m rotating habitat sphere</text>
+
+  <g transform="translate(60 594)">
+    <rect class="ship" width="245" height="112" rx="8"/>
+    <text class="k" x="16" y="30">DRY MASS</text>
+    <text class="v" x="16" y="64">1,050 t</text>
+    <text class="small" x="16" y="91">engineering estimate</text>
+  </g>
+  <g transform="translate(325 594)">
+    <rect class="ship" width="245" height="112" rx="8"/>
+    <text class="k" x="16" y="30">MISSION H₂</text>
+    <text class="v" x="16" y="64">150 t</text>
+    <text class="small" x="16" y="91">ten-module volume check</text>
+  </g>
+  <g transform="translate(590 594)">
+    <rect class="ship" width="245" height="112" rx="8"/>
+    <text class="k" x="16" y="30">IDEAL ΔV</text>
+    <text class="v" x="16" y="64">6.54 km/s</text>
+    <text class="small" x="16" y="91">5,000 s analogue Isp</text>
+  </g>
+  <g transform="translate(855 594)">
+    <rect class="ship" width="285" height="112" rx="8"/>
+    <text class="k" x="16" y="30">VOLUME CHECK</text>
+    <text class="v" x="16" y="64">2,117 m³ H₂</text>
+    <text class="small" x="16" y="91">≈2,150 m³ envelope · 98.5% fill</text>
+  </g>
+</svg>

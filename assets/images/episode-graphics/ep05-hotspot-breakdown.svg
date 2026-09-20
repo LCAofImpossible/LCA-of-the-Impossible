@@ -1,0 +1,51 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Discovery One hotspot contribution breakdown</title>
+  <desc id="desc">Earth launch contributes 72.8 percent, spacecraft production 24.5 percent, mission hydrogen 2.25 percent, ground logistics 0.28 percent, and cruise plus food 0.17 percent of the approved baseline.</desc>
+  <defs>
+    <style>
+      .bg{fill:#071019}.frame{fill:none;stroke:#234557;stroke-width:2}.track{fill:#102230}.launch{fill:#d0a563}.prod{fill:#6de7ff}.hydrogen{fill:#8ec7d8}.minor{fill:#537d8e}.k{font:700 17px Arial,sans-serif;letter-spacing:2px;fill:#6de7ff}.h{font:700 30px Georgia,serif;fill:#eef7fb}.big{font:700 58px Georgia,serif;fill:#eef7fb}.label{font:700 18px Arial,sans-serif;fill:#eef7fb}.value{font:700 18px Arial,sans-serif;fill:#c4f7ff}.n{font:16px Arial,sans-serif;fill:#9ab0bc}.small{font:14px Arial,sans-serif;fill:#9ab0bc}.gold{fill:#d0a563}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <rect class="frame" x="18" y="18" width="1164" height="724" rx="8"/>
+  <text class="k" x="60" y="70">HOTSPOT BREAKDOWN · APPROVED BASELINE</text>
+  <text class="h" x="60" y="112">The impact arrives before Jupiter</text>
+  <text class="big" x="60" y="190">73.4 kt CO₂e</text>
+  <text class="n" x="60" y="221">per completed Earth-to-Jupiter encounter mission</text>
+
+  <g transform="translate(60 278)">
+    <text class="label" x="0" y="20">Earth launch</text>
+    <rect class="track" x="250" y="0" width="650" height="28" rx="4"/>
+    <rect class="launch" x="250" y="0" width="473.2" height="28" rx="4"/>
+    <text class="value gold" x="1080" y="21" text-anchor="end">72.8% · 53,400.3 t</text>
+  </g>
+  <g transform="translate(60 356)">
+    <text class="label" x="0" y="20">Spacecraft production</text>
+    <rect class="track" x="250" y="0" width="650" height="28" rx="4"/>
+    <rect class="prod" x="250" y="0" width="159.25" height="28" rx="4"/>
+    <text class="value" x="1080" y="21" text-anchor="end">24.5% · 17,989.6 t</text>
+  </g>
+  <g transform="translate(60 434)">
+    <text class="label" x="0" y="20">Mission hydrogen</text>
+    <rect class="track" x="250" y="0" width="650" height="28" rx="4"/>
+    <rect class="hydrogen" x="250" y="0" width="14.625" height="28" rx="4"/>
+    <text class="value" x="1080" y="21" text-anchor="end">2.25% · 1,650.0 t</text>
+  </g>
+  <g transform="translate(60 512)">
+    <text class="label" x="0" y="20">Ground logistics</text>
+    <rect class="track" x="250" y="0" width="650" height="28" rx="4"/>
+    <rect class="minor" x="250" y="0" width="1.82" height="28" rx="1"/>
+    <text class="value" x="1080" y="21" text-anchor="end">0.28% · 202.3 t</text>
+  </g>
+  <g transform="translate(60 590)">
+    <text class="label" x="0" y="20">Cruise + food</text>
+    <rect class="track" x="250" y="0" width="650" height="28" rx="4"/>
+    <rect class="minor" x="250" y="0" width="1.105" height="28" rx="1"/>
+    <text class="value" x="1080" y="21" text-anchor="end">0.17% · 127.4 t</text>
+  </g>
+
+  <rect x="60" y="656" width="1080" height="48" rx="6" fill="#102230" stroke="#2c6074"/>
+  <text class="small" x="82" y="686">Baseline total · 73,369.676 t CO₂e</text>
+  <text class="small" x="470" y="686">Shares sum to 100.000%</text>
+  <text class="small gold" x="1120" y="686" text-anchor="end">Earth launch remains dominant in both sensitivities.</text>
+</svg>

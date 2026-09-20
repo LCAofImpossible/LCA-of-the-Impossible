@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Discovery One life-cycle inventory map</title>
+  <desc id="desc">A five-stage flow from materials and fabrication through ground freight, Earth launch and cruise to the Jupiter encounter cut-off. The map records the approved activity data for one completed mission.</desc>
+  <defs>
+    <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#102536"/>
+      <stop offset="1" stop-color="#0a1722"/>
+    </linearGradient>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0 0 10 5 0 10Z" fill="#6de7ff"/>
+    </marker>
+    <style>
+      .bg{fill:#071019}.frame{fill:none;stroke:#234557;stroke-width:2}.panel{fill:url(#panel);stroke:#2c6074;stroke-width:2}.hot{fill:#142b39;stroke:#d0a563;stroke-width:2}.line{fill:none;stroke:#6de7ff;stroke-width:3;marker-end:url(#arrow)}.feed{fill:none;stroke:#d0a563;stroke-width:2;stroke-dasharray:8 7;marker-end:url(#arrow)}.k{font:700 17px Arial,sans-serif;letter-spacing:2px;fill:#6de7ff}.h{font:700 29px Georgia,serif;fill:#eef7fb}.v{font:700 23px Arial,sans-serif;fill:#eef7fb}.n{font:16px Arial,sans-serif;fill:#9ab0bc}.small{font:14px Arial,sans-serif;fill:#9ab0bc}.gold{fill:#d0a563}.cut{stroke:#d0a563;stroke-width:2;stroke-dasharray:7 7}
+    </style>
+  </defs>
+  <rect class="bg" width="1200" height="760"/>
+  <rect class="frame" x="18" y="18" width="1164" height="724" rx="8"/>
+  <text class="k" x="60" y="70">INVENTORY MAP · ONE COMPLETED MISSION</text>
+  <text class="h" x="60" y="112">Earth systems before the quiet cruise</text>
+  <text class="n" x="60" y="143">Functional unit: one crewed Earth-to-Jupiter encounter mission, ending before capture or return.</text>
+
+  <path class="line" d="M238 314H274"/>
+  <path class="line" d="M452 314H488"/>
+  <path class="line" d="M666 314H702"/>
+  <path class="line" d="M904 314H940"/>
+
+  <g transform="translate(60 220)">
+    <rect class="panel" width="178" height="188" rx="12"/>
+    <text class="k" x="18" y="34">01 · MATERIALS</text>
+    <text class="v" x="18" y="84">1,050 t</text>
+    <text class="n" x="18" y="112">dry material mix</text>
+    <text class="small" x="18" y="145">Raw materials</text>
+    <text class="small" x="18" y="167">+ components</text>
+  </g>
+
+  <g transform="translate(274 220)">
+    <rect class="panel" width="178" height="188" rx="12"/>
+    <text class="k" x="18" y="34">02 · MAKING</text>
+    <text class="v" x="18" y="84">21.0 GWh</text>
+    <text class="n" x="18" y="112">fabrication energy</text>
+    <text class="small" x="18" y="145">Sphere · truss · tanks</text>
+    <text class="small" x="18" y="167">antennas · engines</text>
+  </g>
+
+  <g transform="translate(488 220)">
+    <rect class="panel" width="178" height="188" rx="12"/>
+    <text class="k" x="18" y="34">03 · FREIGHT</text>
+    <text class="v" x="18" y="84">2.10 M</text>
+    <text class="n" x="18" y="112">t·km ground freight</text>
+    <text class="small" x="18" y="145">Components moved</text>
+    <text class="small" x="18" y="167">2,000 km by HGV</text>
+  </g>
+
+  <g transform="translate(702 202)">
+    <rect class="hot" width="202" height="224" rx="12"/>
+    <text class="k" x="18" y="34">04 · EARTH LAUNCH</text>
+    <text class="v" x="18" y="84">10 payloads</text>
+    <text class="n" x="18" y="112">to 195 km parking orbit</text>
+    <text class="small" x="18" y="150">6,512 t RP-1</text>
+    <text class="small" x="18" y="174">922 t launch H₂</text>
+    <text class="small" x="18" y="198">1,880 t hardware</text>
+  </g>
+
+  <g transform="translate(940 220)">
+    <rect class="panel" width="200" height="188" rx="12"/>
+    <text class="k" x="18" y="34">05 · CRUISE</text>
+    <text class="v" x="18" y="84">10.512 GWh</text>
+    <text class="n" x="18" y="112">219-day electricity</text>
+    <text class="small" x="18" y="145">350.4 kg awake-crew food</text>
+    <text class="small" x="18" y="167">5 carried · 2 awake</text>
+  </g>
+
+  <g transform="translate(648 500)">
+    <rect class="panel" width="280" height="104" rx="10"/>
+    <text class="k" x="18" y="32">MISSION HYDROGEN</text>
+    <text class="v" x="18" y="70">150 t H₂</text>
+    <text class="small" x="154" y="70">loaded reference flow</text>
+  </g>
+  <path class="feed" d="M788 500V441"/>
+
+  <g transform="translate(60 500)">
+    <rect class="panel" width="520" height="104" rx="10"/>
+    <text class="k" x="18" y="32">REFERENCE FLOW</text>
+    <text class="v" x="18" y="70">1,200 t loaded</text>
+    <text class="small" x="225" y="70">1,050 t dry + 150 t H₂</text>
+  </g>
+
+  <line class="cut" x1="1038" y1="436" x2="1038" y2="632"/>
+  <circle cx="1038" cy="457" r="7" fill="#d0a563"/>
+  <text class="k gold" x="956" y="665">CUT-OFF</text>
+  <text class="n" x="886" y="694">Jupiter encounter condition</text>
+  <text class="small" x="866" y="719">No capture · no return · no EOL credits</text>
+</svg>

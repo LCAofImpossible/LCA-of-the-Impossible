@@ -4989,6 +4989,149 @@
       ]
     },
     {
+      "number": 5,
+      "slug": "discovery-one",
+      "title": "Discovery One",
+      "subjectDescription": "Discovery One is a crewed deep-space spacecraft reconstructed as a 213.4 m, 1,200 t loaded system for a one-way encounter mission to Jupiter.",
+      "url": "episodes/discovery-one.html",
+      "cover": "assets/images/episodes/ep05-discovery-one-cover-20260920.png",
+      "coverSha256": "f70806f963113d0b260ae07597924787581f81bea9834566ea408dac30651d27",
+      "coverAspectPolicy": "approved-native",
+      "seasonId": "season-i",
+      "seasonNumber": 1,
+      "seasonLabel": "Season I — Machines & Worlds",
+      "seasonTitle": "Machines & Worlds",
+      "seasonDescriptor": "Science fiction, reconstructed through life-cycle logic.",
+      "editorialDescriptor": "Impossible technologies, reconstructed as traceable systems.",
+      "seasonEpisodeRange": [
+        1,
+        29
+      ],
+      "categoryLabel": "Science Fiction Spacecraft",
+      "categories": [
+        "science-fiction",
+        "vehicles"
+      ],
+      "lcaLabel": "Operation-driven",
+      "lcaCharacteristics": [
+        "operation-driven",
+        "mobility-driven",
+        "energy-driven",
+        "mass-sensitive",
+        "proxy-sensitive"
+      ],
+      "result": "73.4 kt CO₂e",
+      "hotspot": "Earth launch contributes 72.8% of the approved baseline, including launch fuel, hydrogen, expendable hardware and launcher manufacturing.",
+      "datePublished": "2026-09-20",
+      "dateModified": "2026-09-20",
+      "featuredDescription": "One 219-day crewed Earth-to-Jupiter encounter mission by a 1,200 t loaded spacecraft: 73.4 kt CO₂e, with Earth launch contributing 72.8% of the approved baseline.",
+      "functionalUnit": "Complete one crewed Earth-to-Jupiter encounter mission, including the Earth systems needed to make departure possible, ending at encounter condition without Jupiter capture or Earth return.",
+      "evidence": {
+        "confidence": "Medium",
+        "proxyDependence": "High",
+        "assumptionSensitivity": "High",
+        "basis": "The approved episode fixes one 219-day crewed encounter mission with five people, a 213.4 m spacecraft, a 12.2 m rotating habitat sphere, 1,050 t dry mass, 150 t of mission hydrogen and ten Saturn V-equivalent payload launches. The inventory includes dry materials, 21.0 GWh of fabrication energy, 2.10 million t·km of ground freight, launch fuel and hardware, 10.512 GWh of cruise electricity and 350.4 kg of awake-crew food. Film configuration, NASA context, engineering reconstruction, DEFRA 2026 proxies and technical literature form the declared basis.",
+        "uncertainty": "Dry mass and hydrogen supply are the published sensitivity levers. Changing dry mass from 800 to 1,500 t moves the result from 58.4 to 97.2 kt CO₂e as the launch count changes from eight to thirteen. Changing the hydrogen factor from 1 to 26 kg CO₂e/kg H₂ moves the total from 62.6 to 89.5 kt CO₂e while Earth launch remains dominant."
+      },
+      "taxonomy": [
+        "season-i",
+        "machines-worlds",
+        "science-fiction",
+        "deep-space-spacecraft",
+        "crewed-jupiter-mission",
+        "earth-launch",
+        "operation-driven"
+      ],
+      "collectionSlugs": [
+        "legendary-engineering"
+      ],
+      "keywords": [
+        "Discovery One",
+        "Season I",
+        "Machines & Worlds",
+        "science fiction",
+        "deep-space spacecraft",
+        "Earth-to-Jupiter encounter mission",
+        "219 days",
+        "five crew",
+        "213.4 m length",
+        "1,050 t dry mass",
+        "150 t hydrogen",
+        "1,200 t loaded mass",
+        "ten payload launches",
+        "Saturn V-equivalent proxy",
+        "launch fuel",
+        "expendable hardware",
+        "cruise electricity",
+        "DEFRA 2026",
+        "operation-driven",
+        "mass-sensitive",
+        "hydrogen sensitivity"
+      ],
+      "related": [
+        2,
+        1,
+        46
+      ],
+      "structuredMetadata": {
+        "schemaVersion": 1,
+        "subject": {
+          "narrativeDomain": "science-fiction",
+          "entityType": "vehicle",
+          "scaleClass": "vehicle",
+          "mobilityClass": "route-based",
+          "narrativeOrigin": null
+        },
+        "assessment": {
+          "reportingBasisType": "mission",
+          "referenceFlow": "1,200 t loaded spacecraft: 1,050 t dry mass plus 150 t of mission hydrogen, requiring ten payload launches.",
+          "boundaryType": "partial-life-cycle",
+          "includedStages": [
+            "raw-materials",
+            "manufacturing",
+            "transport",
+            "operation"
+          ],
+          "excludedStages": [
+            "end-of-life",
+            "recycling-credit",
+            "other"
+          ],
+          "temporalContext": "One 219-day development-scenario cruise ending at Jupiter encounter condition.",
+          "geographicContext": "Earth-to-Jupiter encounter trajectory.",
+          "technologyContext": "hybrid",
+          "lifetimeYears": null,
+          "cutoffSummary": "The model stops at Jupiter encounter condition; R&D, capital facilities, upper-atmosphere non-CO₂ forcing, failure, extra boil-off, capture, return and end-of-life credits remain outside the boundary."
+        },
+        "impact": {
+          "indicator": "climate-change-total",
+          "value": 73.4,
+          "unit": "kt CO₂e",
+          "normalizedKgCO2e": 73400000,
+          "hotspotStage": "transport",
+          "hotspotSharePercent": 72.8
+        },
+        "model": {
+          "archetype": "transport-system",
+          "primaryDriver": "operation",
+          "secondaryDrivers": [
+            "energy",
+            "materials",
+            "transport"
+          ],
+          "repetitionClass": "single"
+        },
+        "provenance": {
+          "sourceStatus": "approved-episode-only",
+          "approvedEpisodeNumber": 5,
+          "missingApprovedFields": [
+            "assessment.lifetimeYears",
+            "subject.narrativeOrigin"
+          ]
+        }
+      }
+    },
+    {
       "number": 4,
       "slug": "tardis",
       "title": "TARDIS",

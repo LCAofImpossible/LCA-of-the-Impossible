@@ -588,6 +588,20 @@
       "ambiguityNote": null
     },
     {
+      "episodeNumber": 5,
+      "originType": "public-debut",
+      "mapRegion": "north-america",
+      "acceptedMapRegions": ["north-america"],
+      "originLabel": "United States",
+      "countryCodes": ["US"],
+      "culturalArea": "American cinema",
+      "precision": "country",
+      "confidence": "documented",
+      "eligible": true,
+      "locationBasis": "The analysed spacecraft first appeared publicly at the film's premiere in Washington, D.C., United States.",
+      "ambiguityNote": "The origin follows the documented first public debut, not the fictional mission route or any spacecraft-model production location."
+    },
+    {
       "episodeNumber": 4,
       "originType": "public-debut",
       "mapRegion": "northern-europe",
